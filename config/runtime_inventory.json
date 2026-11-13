@@ -1,29 +1,75 @@
 {
   "schema_version": "1.0",
-  "observed_at": null,
+  "observed_at": "2026-11-13T13:18:30.669599+00:00",
   "application": {
-    "target": null,
-    "existing_repo": null,
-    "branch": null,
+    "target": "local Docker HIS POC development",
+    "existing_repo": "https://github.com/siriponsri/his-poc",
+    "branch": "main",
     "commit": null,
     "dirty": null,
-    "network_location": null
+    "network_location": "single-origin loopback app with private SSH inference route",
+    "commit_binding": "Current source/commit binding is recorded by execution evidence, not inferred from this inventory metadata."
   },
   "dr_train": {
     "cpu": null,
     "ram_gib": null,
-    "gpus": null,
-    "vram_gib": null,
+    "gpus": [
+      {
+        "name": "NVIDIA GeForce RTX2080Ti",
+        "vram_mib": 11264,
+        "vram_gib": 11.0
+      },
+      {
+        "name": "Tesla V100-SXM2-32GB",
+        "vram_mib": 32768,
+        "vram_gib": 32.0
+      }
+    ],
+    "vram_gib": [
+      11.0,
+      32.0
+    ],
     "disk_free_gib": null,
     "os": null,
     "driver": null,
     "cuda": null,
-    "engine": null,
-    "existing_workloads": null,
-    "allowed_changes": null,
-    "concurrency_budget": null,
+    "engine": {
+      "name": "ollama",
+      "version": "0.12.6",
+      "container_runtime": "nvidia"
+    },
+    "existing_workloads": "Shared existing services were left unchanged; unrelated workload identities are not published here.",
+    "allowed_changes": "Session-authorized existing-model inspection/inference only; no remote service restart, model download, training or server configuration changes performed.",
+    "concurrency_budget": {
+      "HIS_global_live_calls": 1,
+      "scope": "HIS admission limit, not server-wide capacity or an evaluated throughput claim"
+    },
     "endpoint": null,
-    "route_verified": false
+    "route_verified": true,
+    "endpoint_env": "DR_TRAIN_BASE_URL",
+    "endpoint_disclosure": "Private operator environment; no address/SSH key is published.",
+    "gpu_observation": {
+      "gpu_access_verified": true,
+      "probe_model_size_vram_bytes": 9162133088,
+      "probe_context_tokens": 4096,
+      "selected_probe_gpu": "Tesla V100-SXM2-32GB",
+      "selected_gpu_source": "Session nvidia-smi observation; protocol report separately records model VRAM residency. This is not a scheduler guarantee or capacity benchmark.",
+      "initial_usage_note": "Zero usage in inventory describes that initial observation only, not present-day availability."
+    },
+    "evidence": [
+      {
+        "source": "evidence/fullsystem/live-ai/dr-train-inventory.json",
+        "sha256": "467dae7322b97a4773426e1c48c05150e4dac3a510d6d2369bd7312bb5bfe728"
+      },
+      {
+        "source": "evidence/fullsystem/live-ai/typhoon-protocol-probe.json",
+        "sha256": "94df1d4844af7344fd780f3fff5909620368fdfc01bcf05d590cc96325e2c085"
+      },
+      {
+        "source": "evidence/fullsystem/live-ai/real-provider-cases.json",
+        "sha256": "567d479af1ab4c9c25863112cb75f59b2b5d21e51807149673be6b6454e9905a"
+      }
+    ]
   },
   "local": {
     "cpu": null,
@@ -36,8 +82,17 @@
   },
   "authorization": {
     "paid_api_budget": null,
-    "server_compute_allocation": null,
+    "server_compute_allocation": {
+      "scope": "Existing Ollama dr-train synthetic-document requests authorized by user in session",
+      "HIS_admission_limit": 1,
+      "new_hardware_or_paid_resources": false
+    },
     "real_data_use": false
   },
-  "note": "null = UNKNOWN. Scratch execution environment is not evidence about owner local machine or dr-train."
+  "note": "Metadata only. Null CPU/RAM/disk/OS/driver/CUDA/upstream revisions remain UNKNOWN. Hardware observations are from dr-train evidence, not this Windows host. The two GPU memories are per device, not a pooled model budget. No clinical, general quality, throughput or production readiness claim.",
+  "observation_times": {
+    "inventory": "2026-11-13T13:08:38.146809+00:00",
+    "protocol_probe": "2026-11-13T13:09:13.363368+00:00",
+    "provider_cases": "2026-11-13T13:18:30.669599+00:00"
+  }
 }

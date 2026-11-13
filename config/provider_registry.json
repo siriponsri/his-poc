@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "null_means": "UNKNOWN, not false or unsupported",
+  "null_means": "UNKNOWN, not false/unsupported, except endpoint fields explicitly kept undisclosed in private operator environment.",
   "providers": [
     {
       "id": "mock",
@@ -43,7 +43,8 @@
         "result": "PASS",
         "capabilities_not_exercised": "image, tool calling, streaming, cancellation, context limits and token usage"
       },
-      "status": "EXPLICIT_MOCK"
+      "status": "EXPLICIT_MOCK",
+      "runtime_provider_id": "mock_demo"
     },
     {
       "id": "cloud",
@@ -84,18 +85,18 @@
     {
       "id": "dr_train",
       "enabled": false,
-      "adapter": "protocol_PENDING",
+      "adapter": "native_ollama_chat",
       "location": "private_server",
       "endpoint": null,
       "endpoint_env": "DR_TRAIN_BASE_URL",
-      "secret_env": "DR_TRAIN_API_KEY",
-      "network_verified": false,
+      "secret_env": null,
+      "network_verified": true,
       "declared_capabilities": {
-        "text": null,
+        "text": true,
         "image": null,
         "tool_calling": null,
-        "json": null,
-        "json_schema": null,
+        "json": true,
+        "json_schema": true,
         "streaming": null,
         "cancellation": null,
         "limits": null,
@@ -103,19 +104,96 @@
         "usage": null
       },
       "verified_capabilities": {
-        "text": null,
+        "text": true,
         "image": null,
         "tool_calling": null,
-        "json": null,
-        "json_schema": null,
+        "json": true,
+        "json_schema": true,
         "streaming": null,
         "cancellation": null,
         "limits": null,
         "timeouts": null,
-        "usage": null
+        "usage": true
       },
-      "verification_record": null,
-      "status": "NOT_IMPLEMENTED_FAIL_CLOSED"
+      "verification_record": {
+        "observed_at": "2026-11-13T13:18:30.669599+00:00",
+        "result": "PASS",
+        "scope": "Named synthetic-document completeness checklist only; three authored smoke fixtures. This is not a general model-quality, clinical, throughput or production validation.",
+        "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+        "evidence": [
+          {
+            "source": "evidence/fullsystem/live-ai/dr-train-inventory.json",
+            "sha256": "467dae7322b97a4773426e1c48c05150e4dac3a510d6d2369bd7312bb5bfe728"
+          },
+          {
+            "source": "evidence/fullsystem/live-ai/typhoon-protocol-probe.json",
+            "sha256": "94df1d4844af7344fd780f3fff5909620368fdfc01bcf05d590cc96325e2c085"
+          },
+          {
+            "source": "evidence/fullsystem/live-ai/real-provider-cases.json",
+            "sha256": "567d479af1ab4c9c25863112cb75f59b2b5d21e51807149673be6b6454e9905a"
+          }
+        ],
+        "cases": [
+          {
+            "name": "complete",
+            "integration_status": "PASS",
+            "synthetic_fixture_status": "PASS",
+            "elapsed_ms": 10797
+          },
+          {
+            "name": "missing_plan",
+            "integration_status": "PASS",
+            "synthetic_fixture_status": "PASS",
+            "elapsed_ms": 11485
+          },
+          {
+            "name": "missing_author",
+            "integration_status": "PASS",
+            "synthetic_fixture_status": "PASS",
+            "elapsed_ms": 10641
+          }
+        ],
+        "unknowns": [
+          "upstream Hugging Face revision",
+          "independent physical artifact checksum",
+          "server-side cancellation",
+          "arbitrary schemas/modalities",
+          "clinical/product effectiveness",
+          "capacity/concurrency benchmark"
+        ],
+        "reported_vs_independent_hashes": "Ollama manifest digest and /api/show blob references were observed; the physical weight files were not rehashed in this session."
+      },
+      "status": "VERIFIED_SYNTHETIC_DOCUMENT_COMPLETENESS_OPT_IN_DEFAULT_OFF",
+      "runtime_provider_id": "dr_train_ollama",
+      "endpoint_disclosure": "Private SSH loopback route; address is kept only in operator environment.",
+      "authentication": "Existing owner SSH identity and strict known-host verification; no key is copied into the app and no public model API was opened.",
+      "declaration_scope": "Ollama0.12.6 native chat/schema protocol and the selected runtime completion capability; not arbitrary-model support.",
+      "supported_task_kinds": [
+        "document_review"
+      ],
+      "supported_data_classes": [
+        "synthetic"
+      ],
+      "selected_model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+      "model_manifest_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+      "runtime_controls": {
+        "default_profile": "mock_demo",
+        "activation_requires": [
+          "HIS_AI_PROVIDER=dr_train_ollama",
+          "HIS_LIVE_SYNTHETIC_ENABLED=true",
+          "exact model/digest/engine settings"
+        ],
+        "no_cloud_fallback": true,
+        "no_live_to_mock_fallback": true,
+        "absolute_http_deadline_seconds": 180,
+        "request_context_tokens": 8192,
+        "max_output_tokens": 1024,
+        "context_budget": "conservative UTF-8 byte bound; over-budget input rejected, not silently truncated",
+        "HIS_global_live_admission_limit": 1,
+        "server_cancellation": "UNKNOWN",
+        "measured_cost": null
+      }
     },
     {
       "id": "local",
@@ -189,5 +267,6 @@
       "verification_record": null,
       "status": "NOT_IMPLEMENTED_FAIL_CLOSED"
     }
-  ]
+  ],
+  "registry_role": "Descriptive metadata/defaults only. Runtime provider selection and the explicit synthetic-only opt-in are controlled by environment and backend code; this JSON is not a general policy enforcement parser."
 }

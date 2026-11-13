@@ -1,6 +1,6 @@
 # Domain coverage — 38 local L2 workflows
 
-All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 describes this prototype scope; external L4 and clinical/production effectiveness remain unverified. Per-domain scenarios, source reports and hashes are retained in [DOMAIN_COVERAGE.json](DOMAIN_COVERAGE.json).
+All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 describes this prototype scope; named external verification is reported separately; clinical/production effectiveness remains unverified. Per-domain scenarios, source reports and hashes are retained in [DOMAIN_COVERAGE.json](DOMAIN_COVERAGE.json).
 
 | Domain | Name | Implementation | Verified | External |
 |---|---|---|---|---|
@@ -40,7 +40,7 @@ All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 
 | D34 | ตัวตนผู้ใช้งาน สิทธิ และการตรวจสอบการเข้าถึง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 | D35 | การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 | D36 | คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
-| D37 | AI และระบบช่วยตัดสินใจ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D37 | AI และระบบช่วยตัดสินใจ | Local PostgreSQL workflow + opt-in live document review | L2 PASS | Named synthetic document route PASS |
 | D38 | การเดินระบบ ความต่อเนื่อง และการกู้คืน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 
-D37 executes explicit DEMO mock. UI conflict/scope/audit/restart and real backup/isolated restore are supported by the recovery and read-only restore evidence. Initial failures remain in the evidence history.
+D37 defaults to explicit DEMO mock. An opt-in Typhoon/Ollama dr-train route passed three authored Thai document cases, seven live-browser assertions and two read-only assertions. This named scope does not promote DR/CAD or the whole domain to clinical/L4 acceptance. See docs/DR_TRAIN_AI.md. UI conflict/scope/audit/restart and real backup/isolated restore are supported by the recovery and read-only restore evidence. Initial failures remain in the evidence history.

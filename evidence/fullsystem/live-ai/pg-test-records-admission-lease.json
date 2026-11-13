@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-13T13:18:03.869387+00:00",
+  "method": "INJECTED_PROVIDER_WITH_ACTUAL_POSTGRESQL",
+  "remote_inference": "NOT_RUN_BY_THIS_SUITE",
+  "completed_assertion_records": [
+    {
+      "check": "global_live_admission_busy_retained",
+      "admitted_task_id": "27a00ea0-ffac-4a3b-adc1-5413a3d662b9",
+      "busy_task_id": "5bd4e905-b172-4b41-86a5-c442e4af3a57",
+      "busy_run_id": "3e36dd8b-d5d9-4997-ad6f-70d16a0d2245",
+      "busy_operation_key": "e13e9fb7-9209-4265-8681-6a2fe173fc37"
+    },
+    {
+      "check": "expired_lease_and_late_result_fenced",
+      "task_id": "3435f543-8e8c-425d-854b-6b88ac41f7c1",
+      "run_id": "b5cdb706-963b-431f-905b-c4ee8e5b9bee",
+      "operation_key": "332c4766-3d28-4990-adf5-c1f6276a3d35"
+    }
+  ],
+  "source_sha256": {
+    "C:/Users/User/Desktop/myProject/his-poc/tests/fullsystem/test_live_ai.py": "d737ec2232273dde2cb38c73f2435d9a773081a1b5e8f7db28173a1311987ff5",
+    "backend/app/ai.py": "de77981d342b197a07fe6d4f2bad942e91645236957e8c4dd9d6a4d0dc5a1f4b",
+    "backend/app/models.py": "18cc76aa7e8f3f8218f569c7d82cacf52bb142dcbd8a4063cd44ab1408e90208"
+  }
+}

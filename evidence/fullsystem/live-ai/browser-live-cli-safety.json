@@ -1,0 +1,13 @@
+{
+  "observed_at": "2026-11-13T13:39:09.081799+00:00",
+  "check": "live_browser_help_without_password_and_syntax",
+  "status": "PASS",
+  "command": [
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "apps/web/scripts/browser_live_ai.py",
+    "--help"
+  ],
+  "exit_code": 0,
+  "credential_present_in_process": false,
+  "network_or_domain_mutations": "none; argparse help exits before app/login code"
+}

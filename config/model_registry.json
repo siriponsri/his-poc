@@ -50,33 +50,42 @@
         "usage": null
       },
       "verification_record": null,
-      "status": "UNKNOWN_NOT_SELECTED"
+      "status": "UNKNOWN_NOT_SELECTED",
+      "inventory_note": "Not listed by the inspected Ollama service. This was not an exhaustive disk/all-engine search."
     },
     {
       "alias": "typhoon",
       "requested_family": "Typhoon",
       "role": "thai_text",
-      "exact_model_id": null,
+      "exact_model_id": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
       "revision": null,
       "artifact_sha256": null,
       "quantization": null,
-      "serving_engine": null,
-      "engine_version": null,
-      "endpoint_model_name": null,
+      "serving_engine": "ollama",
+      "engine_version": "0.12.6",
+      "endpoint_model_name": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
       "license_terms_accepted": null,
       "thinking_mode": null,
       "chat_template_revision": null,
       "reasoning_parser": null,
       "tool_parser": null,
-      "prompt_version": null,
-      "preprocessing_version": null,
-      "modalities": [],
+      "prompt_version": "his-document-completeness-v1",
+      "preprocessing_version": "utf8-json-data-envelope-v1",
+      "modalities": [
+        "text"
+      ],
       "max_images": null,
-      "context_tokens": null,
-      "max_output_tokens": null,
-      "generation_settings": null,
+      "context_tokens": 8192,
+      "max_output_tokens": 1024,
+      "generation_settings": {
+        "temperature": 0,
+        "seed": 0,
+        "num_ctx": 8192,
+        "num_predict": 1024,
+        "keep_alive_seconds": 0
+      },
       "declared_capabilities": {
-        "text": null,
+        "text": true,
         "image": null,
         "tool_calling": null,
         "json": null,
@@ -88,31 +97,96 @@
         "usage": null
       },
       "verified_capabilities": {
-        "text": null,
+        "text": true,
         "image": null,
         "tool_calling": null,
-        "json": null,
-        "json_schema": null,
+        "json": true,
+        "json_schema": true,
         "streaming": null,
         "cancellation": null,
         "limits": null,
         "timeouts": null,
-        "usage": null
+        "usage": true
       },
-      "verification_record": null,
-      "status": "UNKNOWN_NOT_SELECTED"
+      "verification_record": {
+        "observed_at": "2026-11-13T13:18:30.669599+00:00",
+        "result": "PASS",
+        "scope": "Named synthetic-document completeness checklist only; three authored smoke fixtures. This is not a general model-quality, clinical, throughput or production validation.",
+        "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+        "evidence": [
+          {
+            "source": "evidence/fullsystem/live-ai/dr-train-inventory.json",
+            "sha256": "467dae7322b97a4773426e1c48c05150e4dac3a510d6d2369bd7312bb5bfe728"
+          },
+          {
+            "source": "evidence/fullsystem/live-ai/typhoon-protocol-probe.json",
+            "sha256": "94df1d4844af7344fd780f3fff5909620368fdfc01bcf05d590cc96325e2c085"
+          },
+          {
+            "source": "evidence/fullsystem/live-ai/real-provider-cases.json",
+            "sha256": "567d479af1ab4c9c25863112cb75f59b2b5d21e51807149673be6b6454e9905a"
+          }
+        ],
+        "cases": [
+          {
+            "name": "complete",
+            "integration_status": "PASS",
+            "synthetic_fixture_status": "PASS",
+            "elapsed_ms": 10797
+          },
+          {
+            "name": "missing_plan",
+            "integration_status": "PASS",
+            "synthetic_fixture_status": "PASS",
+            "elapsed_ms": 11485
+          },
+          {
+            "name": "missing_author",
+            "integration_status": "PASS",
+            "synthetic_fixture_status": "PASS",
+            "elapsed_ms": 10641
+          }
+        ],
+        "unknowns": [
+          "upstream Hugging Face revision",
+          "independent physical artifact checksum",
+          "server-side cancellation",
+          "arbitrary schemas/modalities",
+          "clinical/product effectiveness",
+          "capacity/concurrency benchmark"
+        ],
+        "reported_vs_independent_hashes": "Ollama manifest digest and /api/show blob references were observed; the physical weight files were not rehashed in this session."
+      },
+      "status": "VERIFIED_SYNTHETIC_DOCUMENT_COMPLETENESS",
+      "model_id_kind": "observed Ollama tag",
+      "ollama_manifest_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+      "reported_blob_sha256": [
+        "4a1f36682cbeae8153f64a496ebcee10a23378abae631e905865fabfd3b21388"
+      ],
+      "artifact_hash_status": "API-reported manifest/blob identities; physical artifact file not independently hashed.",
+      "hf_revision": null,
+      "quantization_tag": "Q4_K_M",
+      "quantization_api_report": "unknown",
+      "quantization_note": "Tag Q4_K_M is a label; /api/tags and /api/show report unknown. No independent GGUF quantization verification is claimed.",
+      "chat_template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+      "runtime_declared_context_tokens": 131072,
+      "declared_runtime_capabilities": [
+        "completion"
+      ],
+      "system_prompt_sha256": "2712af860df4cfc89a1cdbadb271c28182d26c2211338f88ba2def8cd8d7f21b",
+      "output_schema_sha256": "0c07ecf3d871e84ea032de9e927667c06ba69ddac9285885c18879fd9b211c5e"
     },
     {
       "alias": "medgemma",
       "requested_family": "MedGemma",
       "role": "medical_task",
-      "exact_model_id": null,
+      "exact_model_id": "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q4_K_M",
       "revision": null,
       "artifact_sha256": null,
       "quantization": null,
-      "serving_engine": null,
-      "engine_version": null,
-      "endpoint_model_name": null,
+      "serving_engine": "ollama",
+      "engine_version": "0.12.6",
+      "endpoint_model_name": "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q4_K_M",
       "license_terms_accepted": null,
       "thinking_mode": null,
       "chat_template_revision": null,
@@ -126,7 +200,7 @@
       "max_output_tokens": null,
       "generation_settings": null,
       "declared_capabilities": {
-        "text": null,
+        "text": true,
         "image": null,
         "tool_calling": null,
         "json": null,
@@ -149,8 +223,34 @@
         "timeouts": null,
         "usage": null
       },
-      "verification_record": null,
-      "status": "UNKNOWN_NOT_SELECTED"
+      "verification_record": {
+        "observed_at": "2026-11-13T13:08:38.146809+00:00",
+        "scope": "Installed model identity/metadata only; no inference request, task evaluation or clinical claim.",
+        "inference_status": "NOT_RUN",
+        "evidence": [
+          {
+            "source": "evidence/fullsystem/live-ai/dr-train-inventory.json",
+            "sha256": "467dae7322b97a4773426e1c48c05150e4dac3a510d6d2369bd7312bb5bfe728"
+          }
+        ]
+      },
+      "status": "INSTALLED_NOT_RUN_NOT_SELECTED",
+      "model_id_kind": "observed Ollama tag",
+      "ollama_manifest_digest": "5370d71cef17b08981562112095859458982cd3e3ffa4a254f956fdb076a1aa0",
+      "reported_blob_sha256": [
+        "383b1c414d3f2f1a9c577a61e623d29a4ed4f7834f60b9e5412f5ff4e8aaf080"
+      ],
+      "artifact_hash_status": "API-reported manifest/blob identities; physical artifact file not independently hashed.",
+      "hf_revision": null,
+      "quantization_tag": "Q4_K_M",
+      "quantization_api_report": "unknown",
+      "quantization_note": "Tag Q4_K_M is a label; /api/tags and /api/show report unknown. No independent GGUF quantization verification is claimed.",
+      "chat_template_sha256": "4b19ac7dd2fb1ab2f2818b73454c5a9128ca39875a8fcf686a6b1c36100a0d68",
+      "runtime_declared_context_tokens": 131072,
+      "declared_runtime_capabilities": [
+        "completion"
+      ]
     }
-  ]
+  ],
+  "registry_role": "Observed model identity and bounded integration evidence. Upstream revisions/physical hash/license acceptance remain UNKNOWN unless explicitly evidenced; runtime environment selects the provider."
 }

@@ -64,9 +64,10 @@ def validation_cases(pg_bin, include_frontend=False):
   # Build before same-origin smoke so a fresh checkout has served assets.
   cases=[('frontend-'+name,[npm,'--prefix','apps/web','run',name]) for name in ['test','test:component','test:audit','typecheck','build']]+cases
  for name,command in cases:
-  if name=='launcher':command[-1:-1]=['backend/tests/test_validation_launcher_unit.py','backend/tests/test_catalog_encoding_unit.py','backend/tests/test_release_packaging_unit.py','backend/tests/test_contract_export_unit.py','backend/tests/test_browser_restore_verifier_unit.py','backend/tests/test_browser_cli_unit.py']
+  if name=='launcher':command[-1:-1]=['backend/tests/test_validation_launcher_unit.py','backend/tests/test_catalog_encoding_unit.py','backend/tests/test_release_packaging_unit.py','backend/tests/test_contract_export_unit.py','backend/tests/test_browser_restore_verifier_unit.py','backend/tests/test_browser_cli_unit.py','backend/tests/test_document_provider_unit.py','backend/tests/test_dr_train_tunnel_unit.py']
  for name in ['auth','clinical','erp']:
   cases.append((name+'-additional',wrapper+['-m','pytest','tests/fullsystem/test_'+name+'_acceptance.py','-q']))
+ cases.append(('live-ai-orchestration',wrapper+['-m','pytest','tests/fullsystem/test_live_ai.py','-q']))
  cases.append(('security-event-concurrency',wrapper+['-m','pytest','tests/fullsystem/test_security_event_concurrency.py','-q']))
  return cases
 

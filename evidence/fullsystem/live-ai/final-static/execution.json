@@ -1,0 +1,36 @@
+[
+  {
+    "check": "provider-tunnel-launcher-contracts",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_document_provider_unit.py",
+      "backend/tests/test_dr_train_tunnel_unit.py",
+      "backend/tests/test_operations_unit.py",
+      "backend/tests/test_validation_launcher_unit.py",
+      "backend/tests/test_contract_export_unit.py",
+      "backend/tests/test_browser_cli_unit.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T13:42:59.330+00:00",
+    "completed_at": "2026-11-13T13:43:10.698+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 11.368,
+    "log": "evidence\\fullsystem\\live-ai\\final-static\\provider-tunnel-launcher-contracts.txt"
+  },
+  {
+    "check": "package",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/check_fullsystem_package.py"
+    ],
+    "started_at": "2026-11-13T13:43:10.701+00:00",
+    "completed_at": "2026-11-13T13:43:12.966+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.265,
+    "log": "evidence\\fullsystem\\live-ai\\final-static\\package.txt"
+  }
+]

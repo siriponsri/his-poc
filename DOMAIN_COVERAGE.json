@@ -1,6 +1,6 @@
 {
   "release": "0.3.0-local-accepted",
-  "policy": "Executed local synthetic PostgreSQL workflows plus rendered browser evidence support all38 L2 and all10 L3. Per-run failures and source/runtime bindings are retained. MOCK is not live/clinical effectiveness; external L4 remains separate.",
+  "policy": "Executed local synthetic PostgreSQL workflows plus rendered browser evidence support all38 L2 and all10 L3. Per-run failures and source/runtime bindings are retained. MOCK is not live/clinical effectiveness; external L4 remains separate. Named dr-train document completeness has separate live synthetic evidence; no blanket L4 or clinical promotion.",
   "domains": [
     {
       "id": "D01",
@@ -1569,12 +1569,13 @@
       "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
       "verified_level": "L2",
       "verification_status": "PASS",
-      "external_integration_status": "NOT_CONNECTED",
+      "external_integration_status": "VERIFIED_NAMED_SYNTHETIC_DOCUMENT_ROUTE",
       "limitations": [
-        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation.",
-        "Executed inference profile is explicit DEMO mock; external hardware/endpoints/model revisions remain UNKNOWN."
+        "Baseline all38/10 acceptance used explicit mock. Subsequent live verification covers document completeness only.",
+        "Three authored Thai cases and browser flow are integration evidence; clinical/semantic accuracy and DR/CAD live prediction remain NOT_RUN.",
+        "Hugging Face revision and engine-side cancellation UNKNOWN; installed MedGemma NOT_RUN."
       ],
-      "implemented_subset": "Explicit mock proposal/evidence with editable immutable revisions, bound human approval, stale/context checks, atomic commit/result/audit and idempotency; failure/timeout/abstention retention.",
+      "implemented_subset": "Explicit mock proposal/evidence with editable immutable revisions, bound human approval, stale/context checks, atomic commit/result/audit and idempotency; failure/timeout/abstention retention. Opt-in pinned Typhoon native Ollama document_review with five source-quoted checks, durable reservation, transaction-free inference, deadline/admission and final current authorization/source checks.",
       "required_invariants": "แก้ไขสร้าง version ใหม่ใน pending ไม่ใช้ approval เดิม; approval ผูก version/hash/evidence; fail/timeout/abstain อยู่ denominator; explicit mock และ no live fallback; ไม่มี autonomous clinical write",
       "acceptance_case": "แก้ proposal แล้ว approval เดิมใช้ไม่ได้; retry commit ไม่ซ้ำ; failed attempt ไม่มี proposal สำเร็จแอบแทรกและตรวจ reason ได้",
       "test_definitions": [
@@ -1608,7 +1609,11 @@
         "evidence/fullsystem/windows-final/core.txt",
         "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
         "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
-        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/live-ai/real-provider-cases.json",
+        "evidence/fullsystem/live-ai/final/execution.json",
+        "apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json",
+        "apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json"
       ],
       "journeys": [
         "J01",
@@ -1623,6 +1628,16 @@
         "journey": "J01",
         "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
         "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      },
+      "named_external_verification": {
+        "scope": "authored synthetic document_review only",
+        "status": "PASS",
+        "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "engine": "Ollama0.12.6",
+        "real_provider_cases": 3,
+        "browser_assertions": 7,
+        "read_only_assertions": 2,
+        "clinical_validation": "NOT_RUN"
       }
     },
     {

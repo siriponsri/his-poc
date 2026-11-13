@@ -1,0 +1,20 @@
+[
+  {
+    "check": "core-mock-regression",
+    "command": [
+      ".venv/Scripts/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      ".venv/Scripts/python",
+      "backend/tests/run_core_validation.py"
+    ],
+    "started_at": "2026-11-13T13:18:36.763+00:00",
+    "completed_at": "2026-11-13T13:19:32.977+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 56.214,
+    "log": "evidence\\fullsystem\\live-ai\\mock-core-regression\\core-mock-regression.txt"
+  }
+]

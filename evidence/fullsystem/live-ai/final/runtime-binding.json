@@ -1,0 +1,26 @@
+{
+  "observed_at": "2026-11-13T13:44:12.255194+00:00",
+  "status": "PASS",
+  "scope": "Read-only binding of live backend/runtime build to checkout; no historical backdating",
+  "files": 13,
+  "sha256": {
+    "backend/app/ai.py": "9493573037aa051ddbe3e7d7585bcae05c0787465cfe8520700748471b49bd3f",
+    "backend/app/providers.py": "bd8d9f6b1d69404505cc9f969ff5b8f247512a06e89553b3aeaf4e515c26c4d9",
+    "backend/app/document_completeness.py": "d6d2b6b5f36efb1489b18a7bcdb841d11749548ceef515331b91205e2afe37d5",
+    "backend/app/models.py": "18cc76aa7e8f3f8218f569c7d82cacf52bb142dcbd8a4063cd44ab1408e90208",
+    "backend/app/main.py": "4a883e322b99bda908dd4c133d573d678880d06eb3bf735bc54a1199aa586591",
+    "backend/migrations/versions/0002_live_inference.py": "9f6067f4618e35f12fd30569d43d9232c8538f5998490d0e0c67a87720971a1f",
+    "apps/web/dist/index.html": "1a3347e212e60a421ccfbfb22d24792577918f522c6502ac0d5af6b4c9297d3f",
+    "apps/web/dist/assets/index-Bxeuu6gi.css": "55ff825117a8d6480062024bb63a6c118a065073b504c8d22c2a437fbf2fae52",
+    "apps/web/dist/assets/index-ehe3nytw.js": "379af4379fef4e1ca68797e29e7546164352138de8cab67f6dd59bf1ffa5596a",
+    "apps/web/dist/licenses/REACT_DOM_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "apps/web/dist/licenses/REACT_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "apps/web/dist/licenses/SCHEDULER_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "apps/web/dist/licenses/SHADCN_LICENSE.txt": "cbe191a94b1484349d68d02b943bdeae08f3a9a34cc19cbaa7746bee50dd69ac"
+  },
+  "ready": {
+    "ready": true,
+    "migration": "0002_live_inference"
+  },
+  "mismatches": []
+}

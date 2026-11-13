@@ -1,0 +1,47 @@
+{
+  "observed_at": "2026-11-13T13:09:13.363368+00:00",
+  "kind": "REAL_MODEL_PROTOCOL_PROBE_SYNTHETIC",
+  "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+  "status_code": 200,
+  "elapsed_seconds": 7.828,
+  "response": {
+    "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+    "created_at": "2026-11-13T13:09:14.50741871Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"ready\": true,\n  \"language\": \"th\"\n}\n"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7313401735,
+    "load_duration": 6155020948,
+    "prompt_eval_count": 27,
+    "prompt_eval_duration": 90784305,
+    "eval_count": 20,
+    "eval_duration": 338425808
+  },
+  "running_models": {
+    "models": [
+      {
+        "name": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "size": 9162133088,
+        "digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "gemma3",
+          "families": [
+            "gemma3"
+          ],
+          "parameter_size": "11.8B",
+          "quantization_level": "unknown"
+        },
+        "expires_at": "2026-11-13T13:10:14.508061149Z",
+        "size_vram": 9162133088,
+        "context_length": 4096
+      }
+    ]
+  },
+  "status": "PASS"
+}

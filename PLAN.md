@@ -19,4 +19,8 @@
 
 ## Executed local gate — 13 November 2026
 
-F0–F4 local synthetic acceptance passed, including38 L2 domains,10 L3 journeys and actual same-app backup/isolated restore. F5 evidence/contracts/coverage are reconciled; release integrity is checked by scripts/package_release.py and scripts/verify_hashes.py. Source publication to the user's main branch is authorized. External L4, live inference and clinical/production evaluation remain separate, unchanged boundaries. See VALIDATION_REPORT.md for multi-run/source binding and retained failures.
+F0–F4 local synthetic acceptance passed, including38 L2 domains,10 L3 journeys and actual same-app backup/isolated restore. F5 evidence/contracts/coverage are reconciled; release integrity is checked by scripts/package_release.py and scripts/verify_hashes.py. Source publication to the user's main branch is authorized. A subsequent named dr-train document-completeness route has separate actual synthetic inference/browser evidence; it does not rerun or promote all domains to L4. Clinical/production evaluation remains NOT_RUN. See VALIDATION_REPORT.md for multi-run/source binding and retained failures.
+
+## Named live document route — 13 November 2026
+
+Discover existing service/model digests → strict native Ollama adapter → transaction-free reservation/inference/final authorization checks → source-quoted five-item checklist → human edit/approve/commit. Completed: 3 real authored Thai cases, browser PASS7 and readback PASS2, 17 PostgreSQL orchestration tests with injected providers, mock core18 regression, provider/tunnel units and frontend checks. Default remains explicit mock; local private .env opts into the real route. See docs/DR_TRAIN_AI.md and the named evidence section in VALIDATION_REPORT.md.

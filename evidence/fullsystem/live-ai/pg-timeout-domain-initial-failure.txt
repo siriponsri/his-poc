@@ -1,0 +1,59 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "C:\\Users\\User\\AppData\\Local\\Temp\\his-pg-tests-gsxefmcd\\files"}
+.F                                                                       [100%]
+================================== FAILURES ===================================
+_ test_current_task_and_encounter_versions_are_rechecked_after_inference[task_domain] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000255993B58E0>
+changed = 'task_domain'
+
+    @pytest.mark.parametrize('changed', ['task_version', 'encounter_version', 'task_domain'])
+    def test_current_task_and_encounter_versions_are_rechecked_after_inference(monkeypatch, changed):
+        started, release = threading.Event(), threading.Event()
+        provider = FakeLiveProvider(callback=lambda: (started.set(), release.wait(20)))
+        install(monkeypatch, provider)
+        with login() as client:
+            encounter = post(client, '/encounters', {'patient_id': 'patient-001', 'kind': 'OPD'}, 201)
+            _, task, payload = subject(client, encounter_id=encounter['id'])
+    
+            def request():
+                with cloned(client) as other:
+                    return post(other, '/proposals', payload)
+    
+            with ThreadPoolExecutor(max_workers=1) as pool:
+                pending = pool.submit(request)
+                try:
+                    assert started.wait(10)
+                    if changed == 'task_version':
+                        post(client, '/tasks/'+task['id']+'/transition', {
+                            'version': task['version'], 'target': 'in_progress'})
+                    elif changed == 'task_domain':
+                        # Emulate an integration/operator reassignment without a
+                        # version bump: current domain is independently rechecked.
+                        with SessionLocal.begin() as db:
+                            db.get(Task, task['id']).domain = 'D10'
+                    else:
+                        post(client, '/encounters/'+encounter['id']+'/transition', {
+                            'version': encounter['version'], 'target': 'in_consult'})
+                finally:
+                    release.set()
+                result = pending.result(timeout=10)
+>           assert result['run']['outcome'] == 'stale_context' and result['proposal'] is None
+E           AssertionError: assert ('success' == 'stale_context'
+E             
+E             - stale_context
+E             + success)
+
+tests\fullsystem\test_live_ai.py:464: AssertionError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\User\Desktop\myProject\his-poc\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+tests/fullsystem/test_live_ai.py::test_live_settings_timeout_sets_full_lease_without_direct_provider_attribute
+  C:\Users\User\Desktop\myProject\his-poc\.venv\Lib\site-packages\alembic\config.py:604: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+    util.warn_deprecated(
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/fullsystem/test_live_ai.py::test_current_task_and_encounter_versions_are_rechecked_after_inference[task_domain]
+1 failed, 1 passed, 15 deselected, 2 warnings in 14.93s

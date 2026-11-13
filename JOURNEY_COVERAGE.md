@@ -15,4 +15,4 @@ All ten local synthetic journeys have executed PostgreSQL and rendered-browser e
 | J09 | PASS | PASS | L3 | apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json |
 | J10 | PASS | PASS | L3 | apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json |
 
-Supporting gates: browser recovery PASS9; final-image smoke PASS11; read-only verification of the actual UI restore PASS109 tables/1 file/8 exact browser records. D37 is MOCK. Live interfaces, model/clinical validation and production deployment remain separate.
+Supporting gates: browser recovery PASS9; final-image smoke PASS11; read-only verification of the actual UI restore PASS109 tables/1 file/8 exact browser records. Baseline D37 is MOCK. A subsequent J01 document-review extension uses real pinned Typhoon on dr-train: browser PASS7 + read-only PASS2, with separate IDs/evidence in JOURNEY_COVERAGE.json. Other live interfaces, clinical validation and production deployment remain separate.

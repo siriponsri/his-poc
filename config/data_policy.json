@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "implementation_status": "runtime synthetic mock only; external outbound absent",
+  "implementation_status": "Default explicit mock plus opt-in native Ollama route for the versioned synthetic-document completeness task; private outbound is implemented and evidenced.",
   "default": "deny",
   "classes": [
     "synthetic",
@@ -18,5 +18,39 @@
   "retention_days": null,
   "real_data_allowed": false,
   "unknown_data_class": "deny",
-  "policy_change_requires": "versioned config and targeted regression; data/budget authorization for real outbound"
+  "policy_change_requires": "versioned config and targeted regression; data/budget authorization for real outbound",
+  "registry_role": "This file documents intended scope and observed authorization. Backend environment/role/scope/task/checklist/model-digest guards enforce the implemented route; no arbitrary JSON policy engine or automatic PHI detector is claimed.",
+  "private_route_scope": {
+    "provider": "dr_train_ollama",
+    "default_enabled": false,
+    "endpoint_env": "DR_TRAIN_BASE_URL",
+    "transport": "owner SSH private loopback tunnel",
+    "task_kinds": [
+      "document_review"
+    ],
+    "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+    "allowed_classes": [
+      "synthetic"
+    ],
+    "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+    "model_manifest_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+    "authorization": "User requested named dr-train inspection and real synthetic-document completeness integration in this session.",
+    "evidence": [
+      {
+        "source": "evidence/fullsystem/live-ai/dr-train-inventory.json",
+        "sha256": "467dae7322b97a4773426e1c48c05150e4dac3a510d6d2369bd7312bb5bfe728"
+      },
+      {
+        "source": "evidence/fullsystem/live-ai/typhoon-protocol-probe.json",
+        "sha256": "94df1d4844af7344fd780f3fff5909620368fdfc01bcf05d590cc96325e2c085"
+      },
+      {
+        "source": "evidence/fullsystem/live-ai/real-provider-cases.json",
+        "sha256": "567d479af1ab4c9c25863112cb75f59b2b5d21e51807149673be6b6454e9905a"
+      }
+    ]
+  },
+  "data_class_enforcement_note": "Authored synthetic development perimeter and explicit operator opt-in; input text is not automatically certified deidentified or PHI-free. Real/deidentified/restricted outbound use is not authorized here.",
+  "server_retention_policy": "UNKNOWN",
+  "server_cancellation": "UNKNOWN"
 }

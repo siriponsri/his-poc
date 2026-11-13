@@ -9,6 +9,8 @@ from backend.app.db import Base
 ROOT=Path(__file__).resolve().parents[1]
 def main():
  target=ROOT/'contracts/v2';target.mkdir(parents=True,exist_ok=True)
+ from backend.app.document_completeness import CHECKLIST_ID, CHECKLIST, PROMPT_VERSION, output_schema
+ (target/'document-completeness.json').write_text(json.dumps({'checklist_id':CHECKLIST_ID,'prompt_version':PROMPT_VERSION,'checklist':[{'key':k,'label':v} for k,v in CHECKLIST],'model_output_schema':output_schema(),'scope':'authored synthetic documentation completeness only; source quotes and human review required'},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  from backend.app.domains.clinical import domain_schemas
  (target/'clinical-inputs.json').write_text(json.dumps(domain_schemas(),ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
  from backend.app.domains.erp import CREATES,ACTIONS

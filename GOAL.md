@@ -6,10 +6,10 @@
 
 สถานะที่ทำจริงแยกอยู่ `DOMAIN_COVERAGE.json`, `JOURNEY_COVERAGE.md`, `VALIDATION_REPORT.md`. ถ้าส่วนสำคัญยังไม่ผ่าน ผลส่งมอบต้องเรียก checkpoint ไม่ประกาศ full-system acceptance. ไม่ลด target เพื่อให้รายงานผ่าน
 
-ระบบประกอบด้วย React/TypeScript/Vite, FastAPI modular monolith, SQLAlchemy/Alembic, PostgreSQL18, server-backed local development sessions และ domain services. ส่วน application location แยก inference location. AI default เป็น explicit mock; cloud/dr-train/local ไม่เปิดจนมี endpoint/revision/policy/budget ที่ยืนยัน
+ระบบประกอบด้วย React/TypeScript/Vite, FastAPI modular monolith, SQLAlchemy/Alembic, PostgreSQL18, server-backed local development sessions และ domain services. ส่วน application location แยก inference location. AI default เป็น explicit mock; dr-train เปิดได้เฉพาะ profile document_review บนข้อมูลสังเคราะห์ที่ผู้ใช้อนุญาตและตรวจ engine/model digest แล้ว ส่วน cloud/local อื่นยังไม่เปิด
 
 Champion candidates ยังคง 4 งาน: document completeness/review, DR screening/referral workflow, claim completeness/reconciliation และ CAD specialist review. Shared clinical workflow รองรับ manual documentation/authorization; ไม่มี automatic diagnosis/dose/triage/blood compatibility ที่อ้างผ่าน clinical validation
 
 ผลผลิตที่ต้องการคือเจ้าของเปิด URL เดียวพบ login เลือกผู้ป่วยและ encounter ทำงานข้ามหน่วยงาน แล้ว reload/restart ยังพบผลเดิม. เงินรับและต้นทุนสะท้อน ledger จริง แยก billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost. การเชื่อม endpoint ผ่านไม่ใช่ clinical/product effectiveness
 
-UNKNOWN: โรงพยาบาล/SOPจริง, production IdP, production deployment, external interfaces, hardware, exact Qwen/Typhoon/MedGemma checkpoint, model revision, live budget และ intended clinical use. สิ่งเหล่านี้บล็อกเฉพาะงานที่ต้องใช้ ไม่บล็อก local synthetic implementation
+ยืนยันแล้วเฉพาะ dr-train Ollama0.12.6 และ Typhoon2.1-Gemma3-12B ที่ผูก manifest digest สำหรับ document completeness; GPU V10032GB และ RTX2080Ti11GB ตรวจพบจริง ส่วน UNKNOWN ยังรวมโรงพยาบาล/SOPจริง, production IdP/deployment, external hospital interfaces, Qwen checkpoint, Hugging Face revision ของ GGUF ที่มีอยู่, paid budget และ intended clinical use. สิ่งเหล่านี้บล็อกเฉพาะงานที่ต้องใช้ ไม่บล็อก local synthetic implementation

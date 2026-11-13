@@ -1,0 +1,91 @@
+{
+  "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+  "prompt_version": "his-document-completeness-v1",
+  "checklist": [
+    {
+      "key": "chief_complaint",
+      "label": "อาการสำคัญหรือเหตุผลที่มารับบริการ"
+    },
+    {
+      "key": "history",
+      "label": "ประวัติหรือข้อมูลประกอบ"
+    },
+    {
+      "key": "assessment",
+      "label": "การประเมินโดยผู้บันทึก"
+    },
+    {
+      "key": "plan",
+      "label": "แผนหรือการติดตามที่ผู้บันทึกระบุ"
+    },
+    {
+      "key": "author",
+      "label": "ชื่อหรือรหัสผู้บันทึก"
+    }
+  ],
+  "model_output_schema": {
+    "$defs": {
+      "ChecklistItem": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "enum": [
+              "chief_complaint",
+              "history",
+              "assessment",
+              "plan",
+              "author"
+            ],
+            "title": "Key",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "present",
+              "missing",
+              "unclear"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "evidence_quote": {
+            "maxLength": 600,
+            "title": "Evidence Quote",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key",
+          "status",
+          "evidence_quote"
+        ],
+        "title": "ChecklistItem",
+        "type": "object"
+      }
+    },
+    "additionalProperties": false,
+    "properties": {
+      "checklist_id": {
+        "const": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+        "title": "Checklist Id",
+        "type": "string"
+      },
+      "items": {
+        "items": {
+          "$ref": "#/$defs/ChecklistItem"
+        },
+        "maxItems": 5,
+        "minItems": 5,
+        "title": "Items",
+        "type": "array"
+      }
+    },
+    "required": [
+      "checklist_id",
+      "items"
+    ],
+    "title": "ModelChecklist",
+    "type": "object"
+  },
+  "scope": "authored synthetic documentation completeness only; source quotes and human review required"
+}

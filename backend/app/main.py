@@ -40,13 +40,13 @@ async def headers(request:Request,call_next):
     response.headers['Content-Security-Policy']="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; font-src 'self'; frame-ancestors 'none'"
     return response
 @app.get('/health')
-def health():return {'status':'alive','version':'0.3.0','profile':'synthetic_postgresql','provider':'mock_demo'}
+def health():return {'status':'alive','version':'0.3.0','profile':'synthetic_postgresql','provider':os.getenv('HIS_AI_PROVIDER','mock_demo')}
 @app.get('/ready')
 def ready():
     try:
         with engine.connect() as conn:
             version=conn.scalar(text('select version_num from alembic_version'))
-            if version!='0001_fullsystem':return JSONResponse(status_code=503,content={'ready':False,'reason':'MIGRATION_REQUIRED'})
+            if version!='0002_live_inference':return JSONResponse(status_code=503,content={'ready':False,'reason':'MIGRATION_REQUIRED'})
         return {'ready':True,'migration':version}
     except Exception:return JSONResponse(status_code=503,content={'ready':False,'reason':'DATABASE_OR_SCHEMA_UNAVAILABLE'})
 @app.get('/{path:path}',include_in_schema=False)

@@ -1,0 +1,130 @@
+{
+  "observed_at": "2026-11-13T13:08:38.146809+00:00",
+  "host_verified": "dr-train",
+  "engine": "Ollama",
+  "engine_version": "0.12.6",
+  "transport": "SSH private loopback tunnel; no public model API opened",
+  "models": [
+    {
+      "name": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+      "manifest_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+      "size_bytes": 7300583628,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "11.8B",
+        "quantization_level": "unknown"
+      },
+      "show_details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "11.8B",
+        "quantization_level": "unknown"
+      },
+      "capabilities_declared_by_runtime": [
+        "completion"
+      ],
+      "model_info": {
+        "gemma3.context_length": 131072,
+        "general.architecture": "gemma3",
+        "general.basename": "typhoon2.1-gemma3",
+        "general.file_type": 15,
+        "general.license": "gemma",
+        "general.parameter_count": 11765792256,
+        "general.quantization_version": 2,
+        "general.size_label": "12B",
+        "general.tags": null,
+        "general.type": "model"
+      },
+      "template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+      "parameters": "stop                           \"<end_of_turn>\"",
+      "blob_sha256": [
+        "4a1f36682cbeae8153f64a496ebcee10a23378abae631e905865fabfd3b21388"
+      ],
+      "hf_revision": "UNKNOWN",
+      "inference_status": "NOT_RUN"
+    },
+    {
+      "name": "hf.co/unsloth/medgemma-27b-text-it-GGUF:Q4_K_M",
+      "manifest_digest": "5370d71cef17b08981562112095859458982cd3e3ffa4a254f956fdb076a1aa0",
+      "size_bytes": 16546406453,
+      "details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "27B",
+        "quantization_level": "unknown"
+      },
+      "show_details": {
+        "parent_model": "",
+        "format": "gguf",
+        "family": "gemma3",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "27B",
+        "quantization_level": "unknown"
+      },
+      "capabilities_declared_by_runtime": [
+        "completion"
+      ],
+      "model_info": {
+        "gemma3.context_length": 131072,
+        "general.architecture": "gemma3",
+        "general.base_model.0.name": "Medgemma 27b Text It",
+        "general.base_model.0.organization": "Google",
+        "general.base_model.0.repo_url": "https://huggingface.co/google/medgemma-27b-text-it",
+        "general.base_model.count": 1,
+        "general.basename": "Medgemma-27B-Text-It",
+        "general.file_type": 15,
+        "general.finetune": "text-it",
+        "general.license": "other",
+        "general.license.link": "https://developers.google.com/health-ai-developer-foundations/terms",
+        "general.license.name": "health-ai-developer-foundations",
+        "general.parameter_count": 27009002240,
+        "general.quantization_version": 2,
+        "general.quantized_by": "Unsloth",
+        "general.repo_url": "https://huggingface.co/unsloth",
+        "general.size_label": "27B",
+        "general.tags": null,
+        "general.type": "model"
+      },
+      "template_sha256": "4b19ac7dd2fb1ab2f2818b73454c5a9128ca39875a8fcf686a6b1c36100a0d68",
+      "parameters": "stop                           \"<end_of_turn>\"\ntop_k                          64\ntop_p                          0.95",
+      "blob_sha256": [
+        "383b1c414d3f2f1a9c577a61e623d29a4ed4f7834f60b9e5412f5ff4e8aaf080"
+      ],
+      "hf_revision": "UNKNOWN",
+      "inference_status": "NOT_RUN"
+    }
+  ],
+  "initial_running_models": [],
+  "hardware": {
+    "observed_via_nvidia_smi": [
+      {
+        "gpu": "NVIDIA GeForce RTX2080Ti",
+        "vram_mib": 11264,
+        "used_mib": 0
+      },
+      {
+        "gpu": "Tesla V100-SXM2-32GB",
+        "vram_mib": 32768,
+        "used_mib": 0
+      }
+    ],
+    "container_runtime": "nvidia",
+    "container_gpu_access": "verified by nvidia-smi"
+  },
+  "scope": "Installed artifacts and runtime declarations; availability is not an inference or clinical quality claim."
+}

@@ -1684,9 +1684,16 @@ CREATE TABLE inference_runs (
 	elapsed_ms INTEGER NOT NULL, 
 	measured_cost NUMERIC(18, 6), 
 	usage JSONB, 
+	operation_key VARCHAR(120), 
+	request_hash VARCHAR(64), 
+	authorization_hash VARCHAR(64), 
+	context_snapshot JSONB, 
+	provenance JSONB, 
+	completed_at TIMESTAMP WITH TIME ZONE, 
 	id VARCHAR(64) NOT NULL, 
 	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
 	CONSTRAINT pk_inference_runs PRIMARY KEY (id), 
+	CONSTRAINT uq_inference_runs_actor_id_operation_key UNIQUE (actor_id, operation_key), 
 	CONSTRAINT fk_inference_runs_task_id_tasks FOREIGN KEY(task_id) REFERENCES tasks (id), 
 	CONSTRAINT fk_inference_runs_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id)
 )

@@ -1,0 +1,25 @@
+{
+  "observed_at": "2026-11-13T13:22:17.025195+00:00",
+  "method": "INJECTED_PROVIDER_WITH_ACTUAL_POSTGRESQL",
+  "remote_inference": "NOT_RUN_BY_THIS_SUITE",
+  "completed_assertion_records": [
+    {
+      "check": "settings_timeout_lease_binding",
+      "task_id": "3cb92ce2-16d7-411a-b098-d23f66f1a37f",
+      "run_id": "8729f757-1826-4f9e-9324-b6b43aa9c845",
+      "request_timeout_seconds": 300,
+      "durable_lease_seconds": 360
+    },
+    {
+      "check": "current_version_fence_task_domain",
+      "task_id": "1f1b2b1a-542a-4adb-a92c-1302259ed53c",
+      "encounter_id": "8d00e00a-5def-4913-bf7e-f58d008475f5",
+      "run_id": "774c3682-557a-46fd-9b21-8b2f887e008f"
+    }
+  ],
+  "source_sha256": {
+    "C:/Users/User/Desktop/myProject/his-poc/tests/fullsystem/test_live_ai.py": "f288d285c01b2581f039a2bf73271b3eb94e257d3b415dbd816bf67e1f4094c1",
+    "backend/app/ai.py": "9493573037aa051ddbe3e7d7585bcae05c0787465cfe8520700748471b49bd3f",
+    "backend/app/models.py": "18cc76aa7e8f3f8218f569c7d82cacf52bb142dcbd8a4063cd44ab1408e90208"
+  }
+}

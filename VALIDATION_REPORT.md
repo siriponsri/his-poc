@@ -4,7 +4,7 @@ Date: 13 November 2026. Data: authored synthetic only.
 
 **Local development target PASS: D01–D38 at L2 and J01–J10 at L3.** This combines executed PostgreSQL workflows, real rendered browser actions, negative cases, persistence and restore evidence. It does not certify clinical effectiveness, external integrations, or production readiness.
 
-## Executed checks
+## Baseline local checks (before the live document extension)
 
 | Check | Result | Evidence |
 |---|---|---|
@@ -30,7 +30,7 @@ The 84 current PostgreSQL workflow/security tests and 10 legacy-import tests are
 
 ## Browser and source provenance
 
-All browser mutations used visible React forms and actions against the same local PostgreSQL application. Observed responses supplied exact IDs; read-only denied navigations checked server authorization. D37 used explicit DEMO mock throughout.
+All browser mutations used visible React forms and actions against the same local PostgreSQL application. Observed responses supplied exact IDs; read-only denied navigations checked server authorization. D37 used explicit DEMO mock throughout these baseline journeys. Subsequent actual live document evidence is separate below.
 
 Journey evidence is composed from recorded successful scenarios, with source reports, report hashes and runtime bindings retained per journey. J01–J08 preceded the final staff-audit visibility restriction; J09–J10, smoke, credential revocation and recovery ran on the final image. The affected own/other-staff authorization path also passed a live Uvicorn/PostgreSQL regression.
 
@@ -44,14 +44,40 @@ Harness failures from asynchronous locators/response observation, missing requir
 
 A Playwright teardown warning occurred after the final recovery assertions; its process exited 0. Deprecation warnings from TestClient/httpx and Alembic were observed. Neither warning is counted as an application assertion.
 
+## Named real dr-train document route — 13 November 2026
+
+The user authorized inspecting the existing server and connecting real AI to synthetic document completeness. This extension is separate from the baseline 38-domain/10-journey results above. No paid API, model download, shared remote service restart, training, Cloudflare deployment or real patient data was used.
+
+| Check | Result | Evidence |
+|---|---|---|
+| Server and installed model discovery | Existing Ollama0.12.6; Typhoon12B and MedGemma27B manifests; V10032GB and RTX2080Ti11GB observed | evidence/fullsystem/live-ai/dr-train-inventory.json |
+| Real protocol probe | Typhoon JSON response PASS; GPU-backed resident model observed | evidence/fullsystem/live-ai/typhoon-protocol-probe.json |
+| Real provider cases | 3 authored Thai examples PASS: complete, missing plan, missing author; source quotes validated | evidence/fullsystem/live-ai/real-provider-cases.json |
+| Actual live React workflow | PASS7: document/task → real model → typed five-item checklist → human edit/version2 → approve → commit → reload | apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json |
+| Exact persisted run-row readback | PASS2; no further inference/domain mutations | apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json |
+| PostgreSQL live orchestration | 17 PASS with injected deterministic providers; these are not extra real-model observations | evidence/fullsystem/live-ai/final/execution.json |
+| Default mock core regression + migration drift | 18 PASS; no Alembic drift | evidence/fullsystem/live-ai/mock-core-regression/execution.json |
+| Provider/tunnel/operations/launcher/contracts/browser CLI units | 57 PASS +5 subtests; includes slow-chunk absolute deadline regression | evidence/fullsystem/live-ai/final-static/execution.json |
+| Frontend | 25 unit /60 jsdom component PASS; audit/typecheck/build PASS | evidence/dr-train/frontend-ui/execution.json |
+| Pre-migration backup and in-place upgrade | Backup PASS; migrated0002 without seed/reset | evidence/fullsystem/live-ai/pre-migration-backup.json; docker-live-start.txt |
+| Running backend/build source binding | PASS13 files; readiness reports0002 | evidence/fullsystem/live-ai/final/runtime-binding.json |
+| Independent source review | Both P2 findings resolved; no remaining actionable blocker in reviewed scope; reviewer did not independently rerun tests | evidence/fullsystem/live-ai/independent-review.json |
+
+The selected artifact is hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M, pinned to Ollama manifest digest ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b and engine0.12.6. The existing GGUF source Hugging Face commit is UNKNOWN. Q4_K_M is the installed tag; runtime reports quantization unknown, so independent quantization verification is not claimed. Installed MedGemma was not inference-tested.
+
+The actual browser run ID2e8c3ec9-11e9-4073-99b6-6a6c731bbe3e took11205ms with408 input/141 output tokens and cost null. Result ID8d61f05f-6b07-45d6-8d76-dc3296693dbb remained after reload. This is one observed run, not a latency guarantee or pricing measurement. Checklist headings are chief complaint, history, recorded assessment, recorded plan and author; they do not judge treatment or clinical correctness.
+
+DB12 transaction release and current-state revalidation were exercised using actual PostgreSQL plus injected blocking providers, including NOWAIT identity locking and idle-transaction inspection. Same-key pending/replay/conflict, cross-user admission, stale document/task/encounter/domain, revoked session, expired lease, and retained failed/timeout/invalid/abstained outcomes passed. Final real-browser evidence additionally traversed the actual remote call. Closing the client transport on the absolute deadline does not prove the engine cancels server computation.
+
+The original live browser harness failed on selector/helper usage before its first proposal request; its FAIL remains under apps/web/evidence/fullsystem/live-dr-train/ and evidence/fullsystem/live-ai/browser-live-execution.json. Corrected workflow and read-only reports are separate. The initial domain-fence regression and subsequent repair are retained in pg-evidence-index.json. The final17-test suite passed on frozen backend source. Later documentation, registry and validation-launcher changes are disclosed by their own source snapshots; no earlier run is backdated.
+
 ## Scope that remains separate
 
-- MOCK: all AI proposals and DR-related review integration. No live model was invoked; measured live cost remains unknown/null.
-- NOT_RUN / NOT_CONNECTED: live inference, payer/national/HIS/LIS/PACS connectors, training, deployment, production/server changes, hospital SOP acceptance, clinical/product effectiveness.
-- UNKNOWN: external endpoints, hardware and exact Qwen/Typhoon/MedGemma checkpoints/revisions.
-- The native application launcher alternative was not needed; the chosen Windows Docker path and native disposable PostgreSQL test path were executed.
-
-DB12 behavior across live external inference remains NOT_RUN with live routes disabled. Local mock integration does not establish that future live-provider behavior.
+- Default committed configuration: explicit DEMO mock; the owner's private local .env explicitly selects real synthetic dr_train_ollama.
+- Verified named external scope: document_review completeness only. DR/CAD live prediction, other model inference and clinical/semantic accuracy are NOT_RUN.
+- NOT_RUN / NOT_CONNECTED: payer/national/HIS/LIS/PACS connectors, production IdP, training, deployment, hospital SOP acceptance and clinical/product effectiveness.
+- UNKNOWN: original GGUF Hugging Face revisions, general real-world model quality, engine-side cancellation and live cost. Unknown values remain null.
+- The native application launcher alternative was not needed; the Windows Docker app and native disposable PostgreSQL tests were executed.
 
 ## Reproduction and release integrity
 

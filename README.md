@@ -13,7 +13,7 @@
   <img src="https://img.shields.io/badge/status-local%20validation%20passed-0f766e" alt="Status: local validation passed" />
   <img src="https://img.shields.io/badge/data-synthetic%20only-0f766e" alt="Synthetic data only" />
   <img src="https://img.shields.io/badge/PostgreSQL-18-4169e1" alt="PostgreSQL 18" />
-  <img src="https://img.shields.io/badge/AI-explicit%20DEMO%20mock-64748b" alt="AI: explicit DEMO mock" />
+  <img src="https://img.shields.io/badge/AI-mock%20default%20%7C%20optional%20Typhoon-64748b" alt="AI: mock default, optional Typhoon" />
 </p>
 
 <p align="center">
@@ -42,7 +42,7 @@ The development scope covers **38 domains** and **10 cross-module journeys**, fr
 | Finance and supply chain | Versioned prices, charges, invoices, synthetic claims and remittance, receipts, independently reviewed refunds, costs, procurement, lots, and stock movements |
 | Hospital operations | Staff references, assets, maintenance, support services, quality incidents, reporting, integration records, and analytical snapshots |
 | Shared controls | Sessions, scope and permission checks, immutable document revisions, version-bound approvals, audit records, idempotent mutations, and isolated backup/restore |
-| AI review | Explicit DEMO mock proposals with human editing, review, approval, and commit; failed or stale operations retain their own outcomes |
+| AI review | Explicit DEMO mock by default; optional pinned Typhoon inference for synthetic document completeness, with human editing, review, approval, and commit |
 
 The [domain matrix](spec/DOMAIN_IMPLEMENTATION_MATRIX.md) defines the minimum required behavior. The [coverage files](DOMAIN_COVERAGE.json) describe implementation and verification separately.
 
@@ -58,6 +58,7 @@ flowchart LR
     Services --> Jobs["Operational jobs<br/>Backup / isolated restore"]
     Services --> AI["AI provider boundary"]
     AI --> Mock["Explicit DEMO mock"]
+    AI -. "Explicit synthetic opt-in" .-> Typhoon["Private dr-train Ollama<br/>Pinned Typhoon document checklist"]
 ```
 
 The application serves the production frontend and API from one origin. SQLAlchemy models and Alembic migrations own the database schema. PostgreSQL is the primary database; there is no automatic SQLite fallback. Historical SQLite and v1 demo code remain isolated for regression and import work and are not mounted in the default application.
@@ -117,7 +118,7 @@ python scripts/dev.py native-up
 
 ## Verification and acceptance
 
-Results below were executed on 13 November 2026 using synthetic data. PostgreSQL, browser, component and mock results retain separate evidence.
+The local acceptance baseline below was executed on 13 November 2026 using synthetic data and the explicit mock AI profile. Subsequent real Typhoon checks are listed separately; they do not turn the baseline journeys into live-model evaluations.
 
 | Evidence category | Executed local result |
 |---|---|
@@ -130,7 +131,22 @@ Results below were executed on 13 November 2026 using synthetic data. PostgreSQL
 | Browser recovery | 9 assertions PASS: conflict, scope isolation, audit, restart and UI restore |
 | Real UI backup/isolated restore | 109 tables including Alembic, one file and eight exact browser records verified |
 | Local L2/L3 target | 38/38 domains and 10/10 journeys PASS |
-| Live external integrations and clinical effectiveness | NOT_RUN / NOT_CONNECTED |
+| Other external integrations and clinical effectiveness | NOT_RUN / NOT_CONNECTED |
+
+### Optional real document completeness
+
+A separately authorized private route has executed **Typhoon 2.1 Gemma 3 12B** through Ollama 0.12.6 on dr-train, with V100 hardware observed. The exact model is `hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M`, pinned by its installed Ollama manifest digest. It checks five documentation sections in authored synthetic Thai text and cites source excerpts. It does not evaluate clinical correctness.
+
+| Additional evidence | Executed result |
+|---|---|
+| Real provider cases | Three authored Thai cases PASS: complete, missing plan, missing author |
+| Real rendered workflow | 7 browser assertions PASS: findings, source quotes, human edit/approve/commit, provenance, and reload |
+| Read-only browser verification | 2 assertions PASS; existing run/result read back without new inference |
+| Sample browser inference | 11.205 seconds; 408 input / 141 output tokens reported by Ollama; measured cost `null` |
+| New orchestration regressions | 17 PostgreSQL tests PASS with deterministic provider doubles; these are not 17 real model calls |
+| Updated frontend | 60 component tests PASS; the baseline above retains its own 25 unit / 53 component results |
+
+Use the [private AI setup guide](docs/DR_TRAIN_AI.md) for opt-in configuration, identity pins, SSH forwarding, resource limits, evidence links, and the five-section review flow. **MedGemma 27B is installed but has not been inference-tested in this work.** No additional model download is needed for the verified document-completeness scope.
 
 The [validation report](VALIDATION_REPORT.md) and linked execution logs are the source of truth for subsequent reruns and corrections. [Domain coverage](DOMAIN_COVERAGE.json) and [journey coverage](JOURNEY_COVERAGE.json) retain per-item status and evidence references.
 
@@ -158,6 +174,7 @@ The PostgreSQL wrapper creates disposable synthetic test clusters. Browser scrip
 | [`spec/`](spec/) | Canonical system scope, domain matrix, and acceptance plan |
 | [`evidence/fullsystem/`](evidence/fullsystem/) | Executed checks, source evidence, and review records |
 | [`CODEX_HANDOFF.md`](CODEX_HANDOFF.md) | Current technical handoff and remaining work |
+| [`docs/DR_TRAIN_AI.md`](docs/DR_TRAIN_AI.md) | Optional private Typhoon setup, limits, and real-inference evidence |
 
 ## Development principles
 
@@ -176,9 +193,9 @@ Follow [AGENTS.md](AGENTS.md), the [acceptance plan](spec/ACCEPTANCE_TEST_PLAN_T
 
 This repository uses **synthetic development data**. Keep `.env`, database credentials, session material, local database files, backup contents, and real patient information out of commits, issues, screenshots, and logs.
 
-AI defaults to an explicitly labeled **DEMO mock**. Live providers require a named endpoint and model revision, an approved data policy, and authorized resources. Unknown or unsupported providers fail closed; there is no silent cloud or mock fallback. Manual image/report workflows and mock proposals are not clinical predictions.
+AI defaults to an explicitly labeled **DEMO mock**. The optional `dr_train_ollama` profile requires explicit synthetic-only opt-in and exact engine/model identity pins. Its verified scope is document completeness. Unknown providers, missing configuration, unavailable connections, identity mismatches, and invalid output fail closed; there is no silent cloud or mock fallback. Manual image/report workflows and mock proposals are not clinical predictions.
 
-Production deployment, hospital interfaces, payer certification, live inference, and clinical or product effectiveness are separate work. Their status must be supported by their own evidence. These local results do not establish production or clinical readiness.
+Production deployment, hospital interfaces, payer certification, other live models/tasks, and clinical or product effectiveness remain separate work. Their status must be supported by their own evidence. The three real provider cases and one rendered real-model workflow establish a bounded integration check, not a benchmark or production/clinical readiness.
 
 ## Licensing and provenance
 

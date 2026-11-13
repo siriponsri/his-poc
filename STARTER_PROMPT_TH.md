@@ -10,6 +10,6 @@
 
 รักษา shared identity/scope, immutable revisions, approval ที่ผูก version/hash/evidence, การตรวจสิทธิ์ซ้ำก่อนเขียน, atomic audit/ledger และ idempotency การบันทึก security event ที่รอ DB ต้องไม่ขวาง event loop ของแอป
 
-AI ทุกเส้นทางที่ตรวจแล้วเป็น explicit DEMO mock เท่านั้น รุ่นโมเดล hardware และ endpoint ภายนอกยัง UNKNOWN ไม่เปิด live API, training, deploy หรือแก้ production/server โดยไม่มีทรัพยากรและ authorization ที่ยืนยันใน session
+AI default เป็น explicit DEMO mock. ผู้ใช้อนุญาตและเชื่อม dr_train_ollama จริงเฉพาะงาน document_review บนข้อมูลสังเคราะห์แล้ว ดู docs/DR_TRAIN_AI.md และ evidence/fullsystem/live-ai สำหรับ engine/model digest, hardware และผล browser ที่แยกจาก baseline. DR/CAD และ clinical effectiveness ยัง NOT_RUN; ห้ามอนุมานสิทธิ training/deploy/paid API/real data หรือแก้ shared remote service จากผลนี้
 
 หลังเปลี่ยน API/model ให้ export contracts และ data dictionary ตรวจ consistency อัปเดต coverage ตามผลจริง แล้วสร้าง ZIP พร้อมตรวจ CRC และ SHA-256 เก็บผล FAIL เดิมไว้ แยก PASS/FAIL, MOCK, NOT_RUN และ external L4 เสมอ

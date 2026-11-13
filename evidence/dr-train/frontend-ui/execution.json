@@ -1,0 +1,82 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T13:14:43.475+00:00",
+    "completed_at": "2026-11-13T13:14:44.559+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.084,
+    "log": "evidence\\dr-train\\frontend-ui\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T13:14:44.561+00:00",
+    "completed_at": "2026-11-13T13:14:54.316+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 9.756,
+    "log": "evidence\\dr-train\\frontend-ui\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T13:14:54.318+00:00",
+    "completed_at": "2026-11-13T13:14:56.414+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.096,
+    "log": "evidence\\dr-train\\frontend-ui\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T13:14:56.415+00:00",
+    "completed_at": "2026-11-13T13:14:58.894+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.479,
+    "log": "evidence\\dr-train\\frontend-ui\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T13:14:58.899+00:00",
+    "completed_at": "2026-11-13T13:15:00.780+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.882,
+    "log": "evidence\\dr-train\\frontend-ui\\frontend-build.txt"
+  }
+]

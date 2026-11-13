@@ -1,10 +1,10 @@
-"""Explicit demo proposal pipeline; no endpoint/model SDK in business services."""
-import json,time
+"""Evidence-bound proposals; explicit mock or authorized two-phase live inference."""
+import hashlib,json,time
 from datetime import timedelta
 from typing import Literal
 from fastapi import APIRouter,Depends,Header,HTTPException
 from pydantic import Field
-from sqlalchemy import select
+from sqlalchemy import select,text
 from .db import get_db
 from .auth import current_actor,revalidate_actor,require_domain,require,scoped_encounter,DTO,actor_for
 from .models import *
@@ -28,7 +28,9 @@ def proposal_dto(db,p):
     value=serialize(p);v=db.get(DocumentVersion,p.document_version_id);t=db.get(Task,p.task_id)
     value.pop('action_canonical',None);value['action']=json.loads(p.action_canonical)
     value['evidence']={'document_version_id':v.id,'document_id':v.document_id,'content_hash':v.content_hash,'content':v.content,'encounter_version':p.encounter_version,'task_version':p.task_version}
-    value['patient_id']=t.patient_id;value['encounter_id']=t.encounter_id;value['demo']=True
+    run=db.get(InferenceRun,p.run_id)
+    value['patient_id']=t.patient_id;value['encounter_id']=t.encounter_id;value['demo']=run.provider=='mock_demo'
+    value['provider']=run.provider;value['provenance']=run.provenance
     return value
 
 def scoped_proposal(db,actor,id,lock=False):
@@ -49,15 +51,20 @@ def proposals(task_id:str|None=None,actor=Depends(current_actor),db=Depends(get_
     return {'items':[proposal_dto(db,p) for p in db.scalars(select(Proposal).where(Proposal.task_id.in_(ids)).order_by(Proposal.created_at.desc()).limit(100))]}
 @router.post('/proposals')
 def propose(body:Propose,actor=Depends(current_actor),db=Depends(get_db,scope="function"),key:str=Header(alias='Idempotency-Key')):
-    revalidate_actor(db,actor);require_domain(actor,'D37',True);require(actor,'documents.content');op='proposals.create';payload=body.model_dump();old=begin_operation(db,actor,key,op,payload)
-    if old:return old
+    revalidate_actor(db,actor);require_domain(actor,'D37',True);require(actor,'documents.content')
+    from .providers import resolve_provider
+    provider=resolve_provider();op='proposals.create';payload=body.model_dump()
+    if getattr(provider,'is_live',False):payload['provider_binding']=provider.public_config()
+    old=begin_operation(db,actor,key,op,payload)
+    if old:
+        record(db,actor,Task,body.task_id);record(db,actor,Document,body.document_id)
+        return old
     t=record(db,actor,Task,body.task_id,True);require_domain(actor,t.domain,True);d=record(db,actor,Document,body.document_id,True);e=scoped_encounter(db,actor,t.encounter_id,True)
     if d.encounter_id!=t.encounter_id or d.patient_id!=t.patient_id:raise HTTPException(404,detail={'code':'CONTEXT_NOT_FOUND'})
     if t.domain!='D37' or t.kind not in ('document_review','imaging_review','dr_review'):raise HTTPException(422,detail={'code':'TASK_NOT_AI_REVIEW_USE_CASE','outcome':'not_written'})
     if t.status not in ('open','in_progress') or e.status=='closed':raise HTTPException(409,detail={'code':'TARGET_CLOSED'})
     v=db.get(DocumentVersion,d.current_version_id)
-    from .providers import resolve_provider
-    provider=resolve_provider()
+    if getattr(provider,'is_live',False):return live_propose(db,actor,body,key,payload,provider,t,d,e,v)
     # Immediate deterministic simulation only; no live adapter can enter this transaction.
     start=time.perf_counter_ns();simulation=provider.generate(body.scenario,d.title);outcome=simulation['outcome']
     run=InferenceRun(id=uid(),task_id=t.id,actor_id=actor.user_id,provider='mock_demo',outcome=outcome,reason=None if outcome=='success' else 'Explicit synthetic scenario: '+body.scenario,elapsed_ms=int((time.perf_counter_ns()-start)/1_000_000),measured_cost=None,usage=None);db.add(run);db.flush()
@@ -66,6 +73,96 @@ def propose(body:Propose,actor=Depends(current_actor),db=Depends(get_db,scope="f
     action=simulation['action'];raw=canonical(action)
     p=Proposal(id=uid(),task_id=t.id,run_id=run.id,document_version_id=v.id,encounter_version=e.version,task_version=t.version,version=1,action_canonical=raw,action_hash=text_hash(raw),expires_at=utcnow()+timedelta(minutes=15));db.add(p);db.flush();db.add(ProposalVersion(proposal_id=p.id,version=1,action_canonical=raw,action_hash=p.action_hash))
     audit(db,actor,'D37',p.id,'proposed',{'task_id':t.id,'document_version_id':v.id,'provider':'mock_demo'});return finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':proposal_dto(db,p),'demo':True})
+
+
+def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
+    """Reserve -> release transaction -> infer -> recheck and atomically finalize.
+
+    A durable per-actor key reserves one attempt. Completed operations are immutable;
+    a disconnected client retries the same key, never a second inference silently.
+    """
+    if t.kind!='document_review' or body.scenario!='success':raise HTTPException(422,detail={'code':'LIVE_DOCUMENT_REVIEW_ONLY','outcome':'not_written'})
+    if text_hash(v.content)!=v.content_hash:raise HTTPException(409,detail={'code':'INTEGRITY_MISMATCH','outcome':'not_written'})
+    op='proposals.create';request_hash=digest(payload);auth_hash=authorization_hash(actor)
+    prior=db.scalar(select(InferenceRun).where(InferenceRun.actor_id==actor.user_id,InferenceRun.operation_key==key).with_for_update())
+    if prior:
+        if prior.request_hash!=request_hash or prior.authorization_hash!=auth_hash:raise HTTPException(409,detail={'code':'IDEMPOTENCY_CONFLICT','outcome':'not_written'})
+        if prior.outcome=='running':
+            deadline=int((prior.context_snapshot or {}).get('lease_seconds',360))
+            if (utcnow()-prior.created_at).total_seconds()<=deadline:
+                from fastapi.responses import JSONResponse
+                return JSONResponse(status_code=202,content={'run':serialize(prior),'proposal':None,'pending':True,'demo':False})
+            prior.outcome='interrupted';prior.reason='INFERENCE_LEASE_EXPIRED';prior.completed_at=utcnow()
+            audit(db,actor,'D37',prior.id,'inference_interrupted',{'task_id':prior.task_id,'provider':prior.provider})
+        if prior.outcome=='success':raise HTTPException(409,detail={'code':'INFERENCE_STATE_INCONSISTENT','outcome':'not_written'})
+        response={'run':serialize(prior),'proposal':None,'demo':False}
+        return finish_operation(db,actor,key,op,payload,response)
+    timeout=getattr(provider,'timeout_seconds',getattr(getattr(provider,'settings',None),'timeout_seconds',180))
+    snapshot={'task_id':t.id,'task_version':t.version,'document_id':d.id,'document_version':d.version,'document_version_id':v.id,'content_hash':v.content_hash,'encounter_id':e.id,'encounter_version':e.version,'patient_id':t.patient_id,'checklist_id':'SYNTHETIC_DOCUMENT_COMPLETENESS_V1','lease_seconds':min(300,max(1,int(timeout)))+60}
+    title,content=d.title,v.content
+    run=InferenceRun(id=uid(),task_id=t.id,actor_id=actor.user_id,provider=provider.name,outcome='running',reason=None,elapsed_ms=0,measured_cost=None,usage=None,operation_key=key,request_hash=request_hash,authorization_hash=auth_hash,context_snapshot=snapshot,provenance=provider.public_config())
+    db.add(run);db.flush();run_id=run.id
+    admission_lock=int.from_bytes(hashlib.sha256(('his-inference-admission:'+provider.name).encode()).digest()[:8],'big',signed=True)
+    db.execute(text('SELECT pg_advisory_xact_lock(:key)'),{'key':admission_lock})
+    active=db.scalars(select(InferenceRun).where(InferenceRun.provider==provider.name,InferenceRun.outcome=='running',InferenceRun.id!=run_id)).all()
+    if any((utcnow()-other.created_at).total_seconds()<=int((other.context_snapshot or {}).get('lease_seconds',360)) for other in active):
+        run.outcome='failed';run.reason='LIVE_PROVIDER_BUSY';run.completed_at=utcnow()
+        audit(db,actor,'D37',run.id,'inference_failed',{'task_id':run.task_id,'provider':run.provider,'reason':'LIVE_PROVIDER_BUSY'})
+        return finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':False})
+    audit(db,actor,'D37',run_id,'inference_started',{'task_id':t.id,'document_version_id':v.id,'provider':run.provider})
+    db.commit();db.close()
+    started=time.perf_counter_ns()
+    try:generated=provider.generate_document(title,content,snapshot['checklist_id'])
+    except Exception:
+        generated={'outcome':'failed','reason':'PROVIDER_UNEXPECTED_ERROR','action':None,'provenance':{},'usage':None}
+    elapsed=int((time.perf_counter_ns()-started)/1_000_000)
+    # No reads or ORM access occur between close() above and provider return.
+    try:
+        revalidate_actor(db,actor);require_domain(actor,'D37',True);require(actor,'documents.content')
+        run=db.get(InferenceRun,run_id,with_for_update=True)
+        if run.outcome!='running':
+            response={'run':serialize(run),'proposal':None,'demo':False}
+            old=begin_operation(db,actor,key,op,payload)
+            return old if old else finish_operation(db,actor,key,op,payload,response)
+        run.elapsed_ms=generated.get('elapsed_ms',elapsed);run.usage=generated.get('usage');run.measured_cost=None
+        run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed')}
+        fresh_task=record(db,actor,Task,snapshot['task_id'],True);require_domain(actor,fresh_task.domain,True)
+        fresh_doc=record(db,actor,Document,snapshot['document_id'],True);fresh_enc=scoped_encounter(db,actor,snapshot['encounter_id'],True)
+        current_revision=db.get(DocumentVersion,snapshot['document_version_id'])
+        stale=(authorization_hash(actor)!=auth_hash or fresh_task.version!=snapshot['task_version'] or fresh_task.status not in ('open','in_progress') or fresh_task.kind!='document_review' or fresh_task.domain!='D37' or fresh_task.patient_id!=snapshot['patient_id'] or fresh_task.encounter_id!=snapshot['encounter_id'] or fresh_doc.patient_id!=snapshot['patient_id'] or fresh_doc.encounter_id!=snapshot['encounter_id'] or fresh_doc.version!=snapshot['document_version'] or fresh_doc.current_version_id!=snapshot['document_version_id'] or fresh_enc.patient_id!=snapshot['patient_id'] or fresh_enc.version!=snapshot['encounter_version'] or fresh_enc.status in ('closed','completed','discharged','cancelled') or not current_revision or current_revision.document_id!=snapshot['document_id'] or current_revision.content_hash!=snapshot['content_hash'] or text_hash(current_revision.content)!=snapshot['content_hash'])
+        if stale:generated={**generated,'outcome':'stale_context','reason':'EVIDENCE_OR_AUTHORIZATION_CHANGED','action':None}
+        if (utcnow()-run.created_at).total_seconds()>snapshot['lease_seconds']:generated={**generated,'outcome':'interrupted','reason':'INFERENCE_LEASE_EXPIRED','action':None}
+        outcome=generated.get('outcome','failed')
+        if outcome not in ('success','failed','timeout','invalid_output','abstained','stale_context','interrupted'):outcome='invalid_output'
+        run.outcome=outcome;run.reason=generated.get('reason');run.completed_at=utcnow()
+        if outcome!='success':
+            audit(db,actor,'D37',run.id,'inference_'+outcome,{'task_id':run.task_id,'provider':run.provider})
+            response=finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':False})
+        else:
+            action=generated.get('action')
+            if not isinstance(action,dict) or not isinstance(action.get('text'),str) or not isinstance(action.get('completeness'),dict):
+                run.outcome='invalid_output';run.reason='INVALID_NORMALIZED_COMPLETENESS'
+                audit(db,actor,'D37',run.id,'inference_invalid_output',{'task_id':run.task_id,'provider':run.provider})
+                response=finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':False})
+            else:
+                raw=canonical(action)
+                p=Proposal(id=uid(),task_id=fresh_task.id,run_id=run.id,document_version_id=current_revision.id,encounter_version=fresh_enc.version,task_version=fresh_task.version,version=1,action_canonical=raw,action_hash=text_hash(raw),expires_at=utcnow()+timedelta(minutes=15))
+                db.add(p);db.flush();db.add(ProposalVersion(proposal_id=p.id,version=1,action_canonical=raw,action_hash=p.action_hash))
+                audit(db,actor,'D37',p.id,'proposed',{'task_id':fresh_task.id,'document_version_id':current_revision.id,'provider':run.provider,'run_id':run.id})
+                response=finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':proposal_dto(db,p),'demo':False})
+        db.commit()
+        return response
+    except HTTPException as rejection:
+        db.rollback()
+        run=db.get(InferenceRun,run_id,with_for_update=True)
+        if run and run.outcome=='running':
+            run.outcome='permission_revoked' if rejection.status_code in (401,403,404) else 'stale_context'
+            run.reason='AUTHORIZATION_OR_SCOPE_CHANGED';run.elapsed_ms=elapsed;run.completed_at=utcnow()
+            run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed')}
+            run.usage=generated.get('usage')
+            audit(db,actor,'D37',run.id,'inference_'+run.outcome,{'task_id':run.task_id,'provider':run.provider})
+            db.commit()
+        raise
 @router.post('/proposals/{id}/review')
 def review(id:str,body:Review,actor=Depends(current_actor),db=Depends(get_db,scope="function"),key:str=Header(alias='Idempotency-Key')):
     revalidate_actor(db,actor);require_domain(actor,'D37',True);require(actor,'clinical.approve');op='proposals.review:'+id;payload=body.model_dump();old=begin_operation(db,actor,key,op,payload)
@@ -76,7 +173,8 @@ def review(id:str,body:Review,actor=Depends(current_actor),db=Depends(get_db,sco
     db.add(HumanReview(proposal_id=id,actor_id=actor.user_id,version=p.version,action_hash=p.action_hash,decision=body.decision,edited_text=body.edited_text))
     if body.decision=='edit':
         if not body.edited_text:raise HTTPException(422,detail={'code':'EDIT_REQUIRED'})
-        p.version+=1;p.action_canonical=canonical({'text':body.edited_text});p.action_hash=text_hash(p.action_canonical);p.status='pending';db.add(ProposalVersion(proposal_id=id,version=p.version,action_canonical=p.action_canonical,action_hash=p.action_hash))
+        edited_action=json.loads(p.action_canonical);edited_action['text']=body.edited_text
+        p.version+=1;p.action_canonical=canonical(edited_action);p.action_hash=text_hash(p.action_canonical);p.status='pending';db.add(ProposalVersion(proposal_id=id,version=p.version,action_canonical=p.action_canonical,action_hash=p.action_hash))
     else:p.status='approved' if body.decision=='approve' else 'rejected'
     audit(db,actor,'D37',id,'review_'+body.decision,{'version':p.version,'action_hash':p.action_hash});return finish_operation(db,actor,key,op,payload,proposal_dto(db,p))
 
@@ -113,4 +211,8 @@ def runs(task_id:str|None=None,actor=Depends(current_actor),db=Depends(get_db,sc
     return {'items':[serialize(r) for r in db.scalars(select(InferenceRun).where(InferenceRun.task_id.in_(ids)).order_by(InferenceRun.created_at.desc()))]}
 @router.get('/ai/config')
 def ai_config(actor=Depends(current_actor)):
-    require_domain(actor,'D37');return {'active_provider':'mock_demo','demo':True,'live_routes_enabled':False,'cost_measured':None,'unknown_revisions':['Qwen 8B','Typhoon','MedGemma'],'declared_capabilities':['demo document review'],'verified_capabilities':[],'verification_evidence':'evidence/fullsystem/core-journeys.json; inspect actual run before claiming verification','external_integration_status':'NOT_CONFIGURED'}
+    require_domain(actor,'D37')
+    from .providers import resolve_provider
+    provider=resolve_provider()
+    if getattr(provider,'is_live',False):return {**provider.public_config(),'cost_measured':None,'verified_capabilities':[],'verification_evidence':'evidence/fullsystem/live-ai; individual runs retain exact provenance','external_integration_status':'CONFIGURED_REQUIRES_EXECUTED_EVIDENCE'}
+    return {'active_provider':'mock_demo','demo':True,'live_routes_enabled':False,'supported_task_kinds':['document_review','imaging_review','dr_review'],'model':None,'model_digest':None,'cost_measured':None,'unknown_revisions':['Qwen 8B','Typhoon','MedGemma'],'declared_capabilities':['demo document review'],'verified_capabilities':[],'verification_evidence':'evidence/fullsystem/core-journeys.json; inspect actual run before claiming verification','external_integration_status':'NOT_CONFIGURED'}

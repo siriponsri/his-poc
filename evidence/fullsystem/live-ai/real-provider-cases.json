@@ -1,0 +1,346 @@
+{
+  "observed_at": "2026-11-13T13:18:30.669599+00:00",
+  "method": "REAL_DR_TRAIN_OLLAMA_SYNTHETIC_DOCUMENTS",
+  "cases": [
+    {
+      "case": "complete",
+      "source_content": "เอกสารสังเคราะห์เพื่อทดสอบระบบ\nอาการสำคัญ: มาทบทวนเอกสารตามนัด\nประวัติ: เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง\nการประเมิน: ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล\nแผน: นัดตรวจทานเอกสารกับผู้รับผิดชอบ\nผู้บันทึก: ผู้ทดสอบระบบ A01",
+      "expected_statuses": {
+        "chief_complaint": "present",
+        "history": "present",
+        "assessment": "present",
+        "plan": "present",
+        "author": "present"
+      },
+      "observed_statuses": {
+        "chief_complaint": "present",
+        "history": "present",
+        "assessment": "present",
+        "plan": "present",
+        "author": "present"
+      },
+      "integration_status": "PASS",
+      "synthetic_fixture_status": "PASS",
+      "result": {
+        "provider": "dr_train_ollama",
+        "demo": false,
+        "outcome": "success",
+        "action": {
+          "text": "พบหลักฐาน 5/5 หัวข้อ ไม่พบ 0 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ\nอาการสำคัญหรือเหตุผลที่มารับบริการ: พบหลักฐาน\nประวัติหรือข้อมูลประกอบ: พบหลักฐาน\nการประเมินโดยผู้บันทึก: พบหลักฐาน\nแผนหรือการติดตามที่ผู้บันทึกระบุ: พบหลักฐาน\nชื่อหรือรหัสผู้บันทึก: พบหลักฐาน\nผู้ตรวจต้องตรวจเอกสารต้นฉบับก่อนอนุมัติ ผลนี้ไม่ประเมินความถูกต้องทางคลินิก",
+          "completeness": {
+            "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+            "items": [
+              {
+                "key": "chief_complaint",
+                "label": "อาการสำคัญหรือเหตุผลที่มารับบริการ",
+                "status": "present",
+                "evidence_quote": "มาทบทวนเอกสารตามนัด"
+              },
+              {
+                "key": "history",
+                "label": "ประวัติหรือข้อมูลประกอบ",
+                "status": "present",
+                "evidence_quote": "เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง"
+              },
+              {
+                "key": "assessment",
+                "label": "การประเมินโดยผู้บันทึก",
+                "status": "present",
+                "evidence_quote": "ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล"
+              },
+              {
+                "key": "plan",
+                "label": "แผนหรือการติดตามที่ผู้บันทึกระบุ",
+                "status": "present",
+                "evidence_quote": "นัดตรวจทานเอกสารกับผู้รับผิดชอบ"
+              },
+              {
+                "key": "author",
+                "label": "ชื่อหรือรหัสผู้บันทึก",
+                "status": "present",
+                "evidence_quote": "ผู้บันทึก: ผู้ทดสอบระบบ A01"
+              }
+            ],
+            "summary": "พบหลักฐาน 5/5 หัวข้อ ไม่พบ 0 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ",
+            "requires_human_review": true,
+            "scope": "documentation_completeness_only"
+          }
+        },
+        "reason": null,
+        "provenance": {
+          "provider": "dr_train_ollama",
+          "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+          "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+          "engine": "ollama",
+          "engine_version": "0.12.6",
+          "prompt_version": "his-document-completeness-v1",
+          "system_prompt_sha256": "2712af860df4cfc89a1cdbadb271c28182d26c2211338f88ba2def8cd8d7f21b",
+          "input_sha256": "c121b6cb30b2ab78d28c56aedc07d6dccc519cefe2d93be39e9aace32723221a",
+          "schema_sha256": "0c07ecf3d871e84ea032de9e927667c06ba69ddac9285885c18879fd9b211c5e",
+          "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+          "temperature": 0,
+          "seed": 0,
+          "num_ctx": 8192,
+          "num_predict": 1024,
+          "keep_alive_seconds": 0,
+          "data_class": "synthetic",
+          "artifact_revision": "ollama_manifest_digest",
+          "hf_revision": null,
+          "chat_template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+          "template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+          "parameters_sha256": "9ce3defaaf78fa2c3b43e556f9089ed90a2c022f566ba4b3af6da55d5e58377e",
+          "model_details": {
+            "format": "gguf",
+            "family": "gemma3",
+            "families": [
+              "gemma3"
+            ],
+            "parameter_size": "11.8B",
+            "quantization_level": "unknown"
+          },
+          "declared_capabilities": [
+            "completion"
+          ],
+          "response_sha256": "fccd414fa3797e67b3339b99dcbd59b757a86aee9445e1751e283a1201fb9b34"
+        },
+        "usage": {
+          "prompt_eval_count": 417,
+          "eval_count": 151,
+          "total_duration": 9916216975,
+          "load_duration": 5763530015,
+          "prompt_eval_duration": 327109428,
+          "eval_duration": 2473248241
+        },
+        "measured_cost": null,
+        "elapsed_ms": 10797
+      }
+    },
+    {
+      "case": "missing_plan",
+      "source_content": "เอกสารสังเคราะห์เพื่อทดสอบระบบ\nอาการสำคัญ: มาทบทวนเอกสารตามนัด\nประวัติ: เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง\nการประเมิน: ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล\nผู้บันทึก: ผู้ทดสอบระบบ A01",
+      "expected_statuses": {
+        "chief_complaint": "present",
+        "history": "present",
+        "assessment": "present",
+        "plan": "missing",
+        "author": "present"
+      },
+      "observed_statuses": {
+        "chief_complaint": "present",
+        "history": "present",
+        "assessment": "present",
+        "plan": "missing",
+        "author": "present"
+      },
+      "integration_status": "PASS",
+      "synthetic_fixture_status": "PASS",
+      "result": {
+        "provider": "dr_train_ollama",
+        "demo": false,
+        "outcome": "success",
+        "action": {
+          "text": "พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ\nอาการสำคัญหรือเหตุผลที่มารับบริการ: พบหลักฐาน\nประวัติหรือข้อมูลประกอบ: พบหลักฐาน\nการประเมินโดยผู้บันทึก: พบหลักฐาน\nแผนหรือการติดตามที่ผู้บันทึกระบุ: ไม่พบหลักฐาน\nชื่อหรือรหัสผู้บันทึก: พบหลักฐาน\nผู้ตรวจต้องตรวจเอกสารต้นฉบับก่อนอนุมัติ ผลนี้ไม่ประเมินความถูกต้องทางคลินิก",
+          "completeness": {
+            "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+            "items": [
+              {
+                "key": "chief_complaint",
+                "label": "อาการสำคัญหรือเหตุผลที่มารับบริการ",
+                "status": "present",
+                "evidence_quote": "มาทบทวนเอกสารตามนัด"
+              },
+              {
+                "key": "history",
+                "label": "ประวัติหรือข้อมูลประกอบ",
+                "status": "present",
+                "evidence_quote": "เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง"
+              },
+              {
+                "key": "assessment",
+                "label": "การประเมินโดยผู้บันทึก",
+                "status": "present",
+                "evidence_quote": "ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล"
+              },
+              {
+                "key": "plan",
+                "label": "แผนหรือการติดตามที่ผู้บันทึกระบุ",
+                "status": "missing",
+                "evidence_quote": ""
+              },
+              {
+                "key": "author",
+                "label": "ชื่อหรือรหัสผู้บันทึก",
+                "status": "present",
+                "evidence_quote": "ผู้บันทึก: ผู้ทดสอบระบบ A01"
+              }
+            ],
+            "summary": "พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ",
+            "requires_human_review": true,
+            "scope": "documentation_completeness_only"
+          }
+        },
+        "reason": null,
+        "provenance": {
+          "provider": "dr_train_ollama",
+          "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+          "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+          "engine": "ollama",
+          "engine_version": "0.12.6",
+          "prompt_version": "his-document-completeness-v1",
+          "system_prompt_sha256": "2712af860df4cfc89a1cdbadb271c28182d26c2211338f88ba2def8cd8d7f21b",
+          "input_sha256": "159c7312c1526f3a12d9b2c2424c18de8bc7901dea17ed6dbd93973336597558",
+          "schema_sha256": "0c07ecf3d871e84ea032de9e927667c06ba69ddac9285885c18879fd9b211c5e",
+          "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+          "temperature": 0,
+          "seed": 0,
+          "num_ctx": 8192,
+          "num_predict": 1024,
+          "keep_alive_seconds": 0,
+          "data_class": "synthetic",
+          "artifact_revision": "ollama_manifest_digest",
+          "hf_revision": null,
+          "chat_template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+          "template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+          "parameters_sha256": "9ce3defaaf78fa2c3b43e556f9089ed90a2c022f566ba4b3af6da55d5e58377e",
+          "model_details": {
+            "format": "gguf",
+            "family": "gemma3",
+            "families": [
+              "gemma3"
+            ],
+            "parameter_size": "11.8B",
+            "quantization_level": "unknown"
+          },
+          "declared_capabilities": [
+            "completion"
+          ],
+          "response_sha256": "f4156e63809fafcbf67335916a96ba22e7d0d5bf9a7edc6713709321271347e3"
+        },
+        "usage": {
+          "prompt_eval_count": 404,
+          "eval_count": 141,
+          "total_duration": 10479341432,
+          "load_duration": 6267381100,
+          "prompt_eval_duration": 325351406,
+          "eval_duration": 2288248268
+        },
+        "measured_cost": null,
+        "elapsed_ms": 11485
+      }
+    },
+    {
+      "case": "missing_author",
+      "source_content": "เอกสารสังเคราะห์เพื่อทดสอบระบบ\nอาการสำคัญ: มาทบทวนเอกสารตามนัด\nประวัติ: เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง\nการประเมิน: ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล\nแผน: นัดตรวจทานเอกสารกับผู้รับผิดชอบ",
+      "expected_statuses": {
+        "chief_complaint": "present",
+        "history": "present",
+        "assessment": "present",
+        "plan": "present",
+        "author": "missing"
+      },
+      "observed_statuses": {
+        "chief_complaint": "present",
+        "history": "present",
+        "assessment": "present",
+        "plan": "present",
+        "author": "missing"
+      },
+      "integration_status": "PASS",
+      "synthetic_fixture_status": "PASS",
+      "result": {
+        "provider": "dr_train_ollama",
+        "demo": false,
+        "outcome": "success",
+        "action": {
+          "text": "พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ\nอาการสำคัญหรือเหตุผลที่มารับบริการ: พบหลักฐาน\nประวัติหรือข้อมูลประกอบ: พบหลักฐาน\nการประเมินโดยผู้บันทึก: พบหลักฐาน\nแผนหรือการติดตามที่ผู้บันทึกระบุ: พบหลักฐาน\nชื่อหรือรหัสผู้บันทึก: ไม่พบหลักฐาน\nผู้ตรวจต้องตรวจเอกสารต้นฉบับก่อนอนุมัติ ผลนี้ไม่ประเมินความถูกต้องทางคลินิก",
+          "completeness": {
+            "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+            "items": [
+              {
+                "key": "chief_complaint",
+                "label": "อาการสำคัญหรือเหตุผลที่มารับบริการ",
+                "status": "present",
+                "evidence_quote": "มาทบทวนเอกสารตามนัด"
+              },
+              {
+                "key": "history",
+                "label": "ประวัติหรือข้อมูลประกอบ",
+                "status": "present",
+                "evidence_quote": "เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง"
+              },
+              {
+                "key": "assessment",
+                "label": "การประเมินโดยผู้บันทึก",
+                "status": "present",
+                "evidence_quote": "ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล"
+              },
+              {
+                "key": "plan",
+                "label": "แผนหรือการติดตามที่ผู้บันทึกระบุ",
+                "status": "present",
+                "evidence_quote": "นัดตรวจทานเอกสารกับผู้รับผิดชอบ"
+              },
+              {
+                "key": "author",
+                "label": "ชื่อหรือรหัสผู้บันทึก",
+                "status": "missing",
+                "evidence_quote": ""
+              }
+            ],
+            "summary": "พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ",
+            "requires_human_review": true,
+            "scope": "documentation_completeness_only"
+          }
+        },
+        "reason": null,
+        "provenance": {
+          "provider": "dr_train_ollama",
+          "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+          "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+          "engine": "ollama",
+          "engine_version": "0.12.6",
+          "prompt_version": "his-document-completeness-v1",
+          "system_prompt_sha256": "2712af860df4cfc89a1cdbadb271c28182d26c2211338f88ba2def8cd8d7f21b",
+          "input_sha256": "10fbbb0f05a0e8164596dbe351881f05ddf9ee1672678ac072c241c1cf650f30",
+          "schema_sha256": "0c07ecf3d871e84ea032de9e927667c06ba69ddac9285885c18879fd9b211c5e",
+          "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+          "temperature": 0,
+          "seed": 0,
+          "num_ctx": 8192,
+          "num_predict": 1024,
+          "keep_alive_seconds": 0,
+          "data_class": "synthetic",
+          "artifact_revision": "ollama_manifest_digest",
+          "hf_revision": null,
+          "chat_template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+          "template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+          "parameters_sha256": "9ce3defaaf78fa2c3b43e556f9089ed90a2c022f566ba4b3af6da55d5e58377e",
+          "model_details": {
+            "format": "gguf",
+            "family": "gemma3",
+            "families": [
+              "gemma3"
+            ],
+            "parameter_size": "11.8B",
+            "quantization_level": "unknown"
+          },
+          "declared_capabilities": [
+            "completion"
+          ],
+          "response_sha256": "c65290fcbe7d437f9b76a2cd6f7662bcda5622c435792e214185ef990e51d78f"
+        },
+        "usage": {
+          "prompt_eval_count": 405,
+          "eval_count": 139,
+          "total_duration": 9668774931,
+          "load_duration": 5651200149,
+          "prompt_eval_duration": 309808781,
+          "eval_duration": 2251780291
+        },
+        "measured_cost": null,
+        "elapsed_ms": 10641
+      }
+    }
+  ],
+  "scope": "Small authored smoke cases, not clinical or general quality validation"
+}

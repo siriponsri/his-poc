@@ -1,0 +1,23 @@
+[
+  {
+    "check": "live-orchestration-final",
+    "command": [
+      ".venv/Scripts/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      ".venv/Scripts/python",
+      "-m",
+      "pytest",
+      "tests/fullsystem/test_live_ai.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T13:27:27.781+00:00",
+    "completed_at": "2026-11-13T13:28:20.639+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 52.858,
+    "log": "evidence\\fullsystem\\live-ai\\final\\live-orchestration-final.txt"
+  }
+]

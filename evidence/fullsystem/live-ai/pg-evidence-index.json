@@ -1,0 +1,62 @@
+{
+  "observed_at": "2026-11-13T13:25:22.727950+00:00",
+  "status": "PASS",
+  "verification_scope": "INJECTED_DETERMINISTIC_PROVIDER_WITH_ACTUAL_POSTGRESQL",
+  "remote_dr_train_inference": "NOT_RUN_BY_THIS_SUITE",
+  "unique_current_test_cases": 17,
+  "passing_executions_including_admission_recheck": 18,
+  "full_suite_single_frozen_run": false,
+  "evidence_policy": "Incremental actual executions; per-run snapshots retained. The final cross-user admission run supersedes the earlier same-user case without changing total unique test count. Failed initial domain-fence run is retained separately.",
+  "test_source": "tests/fullsystem/test_live_ai.py",
+  "test_source_sha256": "0b877e49d79ac7cbda9a6e141f2afe1fe42b33fd87d84f412edb42f43b42ae3d",
+  "runs": [
+    {
+      "log": "pg-tests.txt",
+      "records": "pg-test-records-first13.json",
+      "passing_cases": 13,
+      "selection": "initial 13 cases",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "49f3f52f413f0ba98042c2820ed559f959be3e886d4c6614a9847f065eb90f46",
+      "records_sha256": "317c43da342ea561362148da54caca0f7b25499535825c2750e76ada1a446eaa"
+    },
+    {
+      "log": "pg-admission-lease.txt",
+      "records": "pg-test-records-admission-lease.json",
+      "passing_cases": 2,
+      "selection": "global_live_admission or expired_running_lease",
+      "note": "Admission case later strengthened to cross-user admission below.",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "795b9aeea9b73112ea0517cc15a8d15158a5c9a75b80b854f042ccb8f757d5a5",
+      "records_sha256": "37c499d9225bc7c1a28a3e3253866bfc9eafef89fc363a22f0a8d918f1fd210e"
+    },
+    {
+      "log": "pg-timeout-domain.txt",
+      "records": "pg-test-records-timeout-domain.json",
+      "passing_cases": 2,
+      "selection": "settings_timeout or task_domain",
+      "note": "Exact assertions unchanged after initial domain-fence failure and root repair.",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "457fce37029cec40e219a3c93603a5466c0bb98583559663d515fd76611988db",
+      "records_sha256": "e6231cf5369327defc843d71902d479aef5bb82db55273f3e16af0b54d4876ea"
+    },
+    {
+      "log": "pg-global-admission-final.txt",
+      "records": "pg-test-records-global-admission-final.json",
+      "passing_cases": 1,
+      "selection": "global_live_admission",
+      "note": "Final admission case: clinician admitted, imaging user denied capacity; retry after slot free replays original failure.",
+      "exit_code": 0,
+      "status": "PASS",
+      "log_sha256": "e205ba26cf4a145dea08bd5b11aa35f86ae1e5b76f6feeb46743fdfc83f367fd",
+      "records_sha256": "eb87a2caf499db005e0ee47de35972d8acfcf958dcf84a89dee2217285c61d26"
+    }
+  ],
+  "retained_failure": {
+    "log": "pg-timeout-domain-initial-failure.txt",
+    "exit_code": 1,
+    "observed": "Domain changed to D10 during inference was initially accepted; unchanged assertion passed after root domain-fence repair in a fresh process."
+  }
+}

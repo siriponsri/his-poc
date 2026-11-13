@@ -1,6 +1,6 @@
 # Codex handoff — v0.3.0 locally validated development prototype
 
-Local synthetic acceptance: 38 domains L2 and 10 journeys L3 PASS. Read VALIDATION_REPORT.md, DOMAIN_COVERAGE.json and JOURNEY_COVERAGE.json for the exact scope and evidence. This is not production, clinical or L4 acceptance.
+Local synthetic acceptance: 38 domains L2 and 10 journeys L3 PASS. Read VALIDATION_REPORT.md, DOMAIN_COVERAGE.json and JOURNEY_COVERAGE.json for the exact scope and evidence. The subsequent named real dr-train document route is recorded separately below; production and clinical acceptance remain NOT_RUN.
 
 ## Application
 
@@ -37,6 +37,14 @@ Contracts/data dictionary were exported from runtime definitions, including all 
 
 Reproduce on a new isolated synthetic environment before changing code. Use a fresh validation output directory and inspect every exit code. Browser scenarios now use fresh encounter records where repeat runs require them; retained failures must not be erased to improve status.
 
-No internal acceptance blocker remains in the reviewed local scope. Future external work requires named resources and session authorization. Live inference, exact model/hardware/endpoint verification, hospital interfaces, production IdP, deployment, payer certification and clinical/product evaluation remain NOT_RUN/UNKNOWN/NOT_CONNECTED as applicable. All AI evidence here is explicit DEMO mock.
+No internal acceptance blocker remains in the reviewed local scope. Future external work requires named resources and session authorization. Hospital interfaces, production IdP, deployment, payer certification and clinical/product evaluation remain NOT_RUN/UNKNOWN/NOT_CONNECTED as applicable. Baseline AI evidence is explicit DEMO mock; the named live document route below has actual inference evidence.
 
 A repository-wide software license has not been selected. Third-party notices and generated-logo provenance are recorded separately.
+
+## Real dr-train document route
+
+Local private .env now opts into dr_train_ollama, while committed defaults remain mock_demo. Docker app on port8000 is running this explicit live synthetic profile. Existing SSH private-key configuration is used through a loopback-only forward; no key or endpoint identity is published. dev.py start verifies/starts that forward only when both live profile and tunnel opt-in are set. Read docs/DR_TRAIN_AI.md for native/Docker URL distinctions and pinned model/engine configuration. Migration0002 adds durable inference reservation/provenance without resetting data. A pre-migration backup is recorded under evidence/fullsystem/live-ai.
+
+Actual Typhoon inference: three authored Thai cases PASS; browser document → task → five source-quoted checks → human edit v2 → approve → commit → reload PASS7, followed by read-only exact run-row PASS2. Sample run11.205s,408 input/141 output tokens,cost null. Evidence: apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json and live-dr-train-readback/browser-live-ai-readback.json. PostgreSQL17 orchestration tests use injected providers and are not extra real-model observations. Mock core18 and provider/tunnel/frontend regressions passed.
+
+Never hold a database transaction across inference. Keep durable started/outcome rows, actor+key replay, one active inference across users/workers, absolute HTTP deadline, post-call permission/session/scope/source checks, and version-bound human approval. A client deadline closes transport; cancellation inside the remote engine is UNKNOWN. Exact quote checks do not prove semantic correctness. DR/CAD remain unconnected to live prediction. MedGemma is installed but not inference-tested. No model download, Cloudflare deployment or remote service restart was performed.

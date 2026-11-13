@@ -1,0 +1,14 @@
+{
+  "command": [
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "apps/web/scripts/browser_live_ai.py",
+    "--output-dir",
+    "apps/web/evidence/fullsystem/live-dr-train-final"
+  ],
+  "started_at": "2026-11-13T13:35:30.370310+00:00",
+  "completed_at": "2026-11-13T13:35:55.052570+00:00",
+  "exit_code": 0,
+  "source_sha256": "2dff764d6fc7bf2aaa18a880befe04f944d6a6e268662afbd6dbd227dca24ae5",
+  "log": "evidence\\fullsystem\\live-ai\\browser-live-final-command.txt",
+  "report": "apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json"
+}

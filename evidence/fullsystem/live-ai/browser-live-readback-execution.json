@@ -1,0 +1,16 @@
+{
+  "command": [
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "apps/web/scripts/browser_live_ai.py",
+    "--readback-report",
+    "apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json",
+    "--output-dir",
+    "apps/web/evidence/fullsystem/live-dr-train-readback"
+  ],
+  "started_at": "2026-11-13T13:38:29.149220+00:00",
+  "completed_at": "2026-11-13T13:38:34.915962+00:00",
+  "exit_code": 0,
+  "source_sha256": "5c59a2301ff54808c5ce6389c931dc10e5045305b9fb5bd0780b4f3371b77786",
+  "log": "evidence\\fullsystem\\live-ai\\browser-live-readback-command.txt",
+  "report": "apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json"
+}

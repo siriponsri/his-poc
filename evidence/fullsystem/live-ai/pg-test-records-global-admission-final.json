@@ -1,0 +1,21 @@
+{
+  "observed_at": "2026-11-13T13:24:08.314272+00:00",
+  "method": "INJECTED_PROVIDER_WITH_ACTUAL_POSTGRESQL",
+  "remote_inference": "NOT_RUN_BY_THIS_SUITE",
+  "completed_assertion_records": [
+    {
+      "check": "global_live_admission_busy_retained",
+      "admitted_task_id": "85cf9b89-c382-49e5-87e1-64570c237c00",
+      "busy_task_id": "1e0f1946-6c2d-4b2f-b612-225252c0bd53",
+      "busy_run_id": "bbb3a0b9-c64c-4138-b03b-7240973da289",
+      "busy_operation_key": "cebda7b4-dc1e-415e-b002-401034e68405",
+      "admitted_actor": "user-clinician",
+      "busy_actor": "user-imaging"
+    }
+  ],
+  "source_sha256": {
+    "C:/Users/User/Desktop/myProject/his-poc/tests/fullsystem/test_live_ai.py": "0b877e49d79ac7cbda9a6e141f2afe1fe42b33fd87d84f412edb42f43b42ae3d",
+    "backend/app/ai.py": "9493573037aa051ddbe3e7d7585bcae05c0787465cfe8520700748471b49bd3f",
+    "backend/app/models.py": "18cc76aa7e8f3f8218f569c7d82cacf52bb142dcbd8a4063cd44ab1408e90208"
+  }
+}

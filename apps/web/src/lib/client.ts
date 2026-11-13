@@ -1,7 +1,9 @@
 export type Row = {id:string;version?:number;status?:string;[key:string]:unknown}
 export type User = {id:string;username:string;display_name:string;organization_id:string;facility_id:string;roles:string[];permissions:string[];patient_scope:string|null;memberships?:{id:string;role:string;facility_id:string}[]}
 export type Session = {user:User;csrf_token:string;expires_at:string;memberships?:{id:string;role:string;facility_id:string}[]}
-export type ProposalV2 = Row & {version:number;action_hash:string;task_id:string;action:{text:string};evidence:{document_version_id:string;content_hash:string;encounter_version:number}}
+export type CompletenessItem={key:string;label:string;status:'present'|'missing'|'unclear';evidence_quote:string}
+export type CompletenessReport={checklist_id:string;items:CompletenessItem[];summary:string;requires_human_review:true}
+export type ProposalV2 = Row & {version:number;action_hash:string;task_id:string;demo?:boolean;provider?:string;action:{text:string;completeness?:CompletenessReport};evidence:{document_version_id:string;content_hash:string;encounter_version:number}}
 export type PendingOperation = {path:string;body:Record<string,unknown>;key:string;proposal_id?:string;version?:number;action_hash?:string;method?:string}
 export class HttpError extends Error {status:number;definitive:boolean;constructor(code:string,status=0){super(code);this.status=status;this.definitive=[400,401,403,404,409,422].includes(status)}}
 export class Client {

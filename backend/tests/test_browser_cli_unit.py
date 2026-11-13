@@ -15,7 +15,7 @@ class BrowserCLI(unittest.TestCase):
   env.update(HIS_BASE_URL='https://not-a-local-app.invalid',PYTHONIOENCODING='utf-8',PYTHONUTF8='1')
   with tempfile.TemporaryDirectory() as temp:
    destination=Path(temp)/'must-not-exist'
-   for name in ['browser_check.py','browser_journeys.py','browser_domains.py','browser_recovery.py']:
+   for name in ['browser_check.py','browser_journeys.py','browser_domains.py','browser_recovery.py','browser_live_ai.py']:
     with self.subTest(script=name):
      result=subprocess.run([sys.executable,str(ROOT/'apps/web/scripts'/name),'--output-dir',str(destination),'--help'],
        cwd=ROOT,env=env,capture_output=True,text=True,encoding='utf-8',timeout=20)

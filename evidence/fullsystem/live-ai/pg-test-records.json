@@ -1,0 +1,124 @@
+{
+  "observed_at": "2026-11-13T13:28:15.419646+00:00",
+  "method": "INJECTED_PROVIDER_WITH_ACTUAL_POSTGRESQL",
+  "remote_inference": "NOT_RUN_BY_THIS_SUITE",
+  "completed_assertion_records": [
+    {
+      "check": "live_content_unlocked_and_exact_replay",
+      "task_id": "0b32321e-32d4-473a-9f54-c642a37e6295",
+      "document_id": "551d79ed-afb4-46f9-9ce3-5f58ddae3d98",
+      "run_id": "fc78a45f-85b4-447e-b0d3-8c4b76f634f1",
+      "proposal_id": "d676b1a8-cfa4-44be-9007-f4246ce3eeab",
+      "observations": [
+        "independent_user_lock_and_no_idle_transaction"
+      ]
+    },
+    {
+      "check": "concurrent_same_key_single_inference",
+      "task_id": "0bd130d4-f40c-49cd-ab68-c1a3cfd94fdc",
+      "run_id": "9b10d76d-b6b9-45d9-a1aa-849dcdbf9ab0",
+      "operation_key": "681bcf6f-4613-4d5a-99c7-8e4b2952f541"
+    },
+    {
+      "check": "global_live_admission_busy_retained",
+      "admitted_task_id": "e6de1124-b8d9-48c2-89cb-f48ef3e47ac4",
+      "busy_task_id": "d52c8453-5221-4e1d-a0f9-d7e705e6b087",
+      "busy_run_id": "f420bf6c-1b33-42af-a663-4ea5a09e1ef8",
+      "busy_operation_key": "5771693b-1b13-4a5f-813d-90e86d79b4b7",
+      "admitted_actor": "user-clinician",
+      "busy_actor": "user-imaging"
+    },
+    {
+      "check": "expired_lease_and_late_result_fenced",
+      "task_id": "db993f54-2c59-4176-8ba2-3e66c48af98f",
+      "run_id": "6df746c0-31e0-47a9-b36a-8702ae45bd8c",
+      "operation_key": "0d7a0276-a6b9-4357-bc24-e064a88ad16d"
+    },
+    {
+      "check": "settings_timeout_lease_binding",
+      "task_id": "a9e1fcb9-90c1-4a16-935c-b6cf90db37de",
+      "run_id": "d3a234b8-530a-44f9-b3ac-f13d7d075cdf",
+      "request_timeout_seconds": 300,
+      "durable_lease_seconds": 360
+    },
+    {
+      "check": "source_revision_fenced_after_inference",
+      "task_id": "3ec4d415-05f4-4ba8-976a-0bf155115560",
+      "run_id": "8bde3b66-88b6-4d98-97f9-3fda9297b47a",
+      "original_revision_id": "fe6ffe14-afed-4825-b959-1a078b442fd7"
+    },
+    {
+      "check": "revoked_session_fenced_after_inference",
+      "task_id": "f8f74848-1f1b-4951-b3c8-2038ddab3cbd",
+      "run_id": "44e3bbb4-3e16-405f-be1b-49223173d92f",
+      "response_status": 401
+    },
+    {
+      "check": "current_version_fence_task_version",
+      "task_id": "f8435a2c-fc95-459a-a9f8-1ada272f8d23",
+      "encounter_id": "b5575ade-5185-4a4d-9701-6c10c832990d",
+      "run_id": "2718c63a-13a9-4b4d-bf7c-52a902663b2b"
+    },
+    {
+      "check": "current_version_fence_encounter_version",
+      "task_id": "b326fcd1-b2a8-4077-b87f-50e0c4d75892",
+      "encounter_id": "ce1c7a96-0f42-4d48-8a03-32d05ac8808b",
+      "run_id": "d7e5ad29-65c6-42e5-bbd8-4dadff549e18"
+    },
+    {
+      "check": "current_version_fence_task_domain",
+      "task_id": "6de9732b-6d5f-46d2-a1a6-2722aea75c2d",
+      "encounter_id": "d8c3b891-77a6-4468-ba1a-0510825254a4",
+      "run_id": "8312b6a1-8a03-4341-a4e9-af0bf23c1d41"
+    },
+    {
+      "check": "failed_attempt_retained_failed",
+      "task_id": "5344930f-7a3a-4829-9a4c-54d493ba6b7e",
+      "run_id": "b0a40f4f-1898-4e8e-942c-7b125f3cf1b5",
+      "operation_key": "96056e8e-d486-4356-84fc-b9053b116999"
+    },
+    {
+      "check": "failed_attempt_retained_timeout",
+      "task_id": "def25d72-5ec8-4f96-9018-aafe9be1e627",
+      "run_id": "05cb13cb-935c-4372-ace4-20497442bd44",
+      "operation_key": "b8aa2ca4-3fb8-4e98-aca2-da3a07f3a339"
+    },
+    {
+      "check": "failed_attempt_retained_invalid_output",
+      "task_id": "abc13c16-afe7-4474-9761-831e9a24f93a",
+      "run_id": "a8958797-c61b-42d7-803b-0ce654fc0907",
+      "operation_key": "7be02f41-1458-4ed6-8a6c-07e552245822"
+    },
+    {
+      "check": "failed_attempt_retained_abstained",
+      "task_id": "26d5013e-1651-4962-b743-b6afe67f11ef",
+      "run_id": "6f9fbac6-e4fe-4729-a570-35b495a98480",
+      "operation_key": "f92b5454-3cf6-4b09-acac-f60f5b9f1b98"
+    },
+    {
+      "check": "report_and_human_edit_binding",
+      "task_id": "925b8362-db9a-4932-9744-54e4c61db682",
+      "proposal_id": "7c20ec9f-1a71-4f44-96f6-5325f6e949a6",
+      "result_id": "51a0df21-d3fe-4867-b991-bcfc7f939a37"
+    },
+    {
+      "check": "unsupported_live_request_no_inference",
+      "task_id": "e73ba7cf-59ff-4a79-8b6d-c8a527fb8901",
+      "kind": "dr_review",
+      "scenario": "success",
+      "response_status": 422
+    },
+    {
+      "check": "unsupported_live_request_no_inference",
+      "task_id": "4d0d12cc-3ed0-448f-91a5-0c7d18951d7e",
+      "kind": "document_review",
+      "scenario": "failure",
+      "response_status": 422
+    }
+  ],
+  "source_sha256": {
+    "C:/Users/User/Desktop/myProject/his-poc/tests/fullsystem/test_live_ai.py": "0b877e49d79ac7cbda9a6e141f2afe1fe42b33fd87d84f412edb42f43b42ae3d",
+    "backend/app/ai.py": "9493573037aa051ddbe3e7d7585bcae05c0787465cfe8520700748471b49bd3f",
+    "backend/app/models.py": "18cc76aa7e8f3f8218f569c7d82cacf52bb142dcbd8a4063cd44ab1408e90208"
+  }
+}

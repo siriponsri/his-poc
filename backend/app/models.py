@@ -168,6 +168,13 @@ class InferenceRun(ID,Stamp,Base):
     elapsed_ms:Mapped[int]=mapped_column(Integer)
     measured_cost:Mapped[Decimal|None]=mapped_column(Numeric(18,6),nullable=True)
     usage:Mapped[dict|None]=mapped_column(JSONB,nullable=True)
+    operation_key:Mapped[str|None]=mapped_column(String(120),nullable=True)
+    request_hash:Mapped[str|None]=mapped_column(String(64),nullable=True)
+    authorization_hash:Mapped[str|None]=mapped_column(String(64),nullable=True)
+    context_snapshot:Mapped[dict|None]=mapped_column(JSONB,nullable=True)
+    provenance:Mapped[dict|None]=mapped_column(JSONB,nullable=True)
+    completed_at:Mapped[datetime|None]=mapped_column(DateTime(timezone=True),nullable=True)
+    __table_args__=(UniqueConstraint('actor_id','operation_key'),)
 class Proposal(ID,Stamp,Base):
     __tablename__='proposals'
     task_id:Mapped[str]=mapped_column(ForeignKey('tasks.id'),index=True)

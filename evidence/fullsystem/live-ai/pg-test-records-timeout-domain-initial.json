@@ -1,0 +1,19 @@
+{
+  "observed_at": "2026-11-13T13:20:31.839980+00:00",
+  "method": "INJECTED_PROVIDER_WITH_ACTUAL_POSTGRESQL",
+  "remote_inference": "NOT_RUN_BY_THIS_SUITE",
+  "completed_assertion_records": [
+    {
+      "check": "settings_timeout_lease_binding",
+      "task_id": "30a3fd9a-a4b5-4b1a-a74d-d98c24ee7e15",
+      "run_id": "3ac363cc-b8b6-45f3-b6dc-4391bf7441d0",
+      "request_timeout_seconds": 300,
+      "durable_lease_seconds": 360
+    }
+  ],
+  "source_sha256": {
+    "C:/Users/User/Desktop/myProject/his-poc/tests/fullsystem/test_live_ai.py": "f288d285c01b2581f039a2bf73271b3eb94e257d3b415dbd816bf67e1f4094c1",
+    "backend/app/ai.py": "ffcfb211937233f6c11f3e2c0b27a345420e7b2e38025e3c409c2b96b49b70c9",
+    "backend/app/models.py": "18cc76aa7e8f3f8218f569c7d82cacf52bb142dcbd8a4063cd44ab1408e90208"
+  }
+}

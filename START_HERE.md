@@ -59,7 +59,30 @@ Legacy tests ข้างต้นใช้ SQLite ที่แยกจาก d
 
 เริ่ม role registration สร้าง patient/encounter. Clinical users มี care assignment ฝั่ง server; admin จัดสิทธิ์ให้ผู้รับผิดชอบก่อนเลือกผู้ป่วยใหม่. ใช้ document/task/proposal review ที่ผูก patient/encounter/version เดียวกัน. เปลี่ยนบทบาทด้วย logout/login หรือ membership ที่ server ยืนยัน. UI ไม่ให้ dropdown role กลายเป็นสิทธิเอง
 
-AI ทุกผลติด DEMO และใช้ explicit mock. ไม่มี live inference, paid API, training หรือ deploy. External integrations มี local/manual/synthetic workflows ตามสถานะ coverage; external acknowledgements ไม่ถูกแต่งเป็น success
+ค่าเริ่มต้นของ AI คือ explicit mock และแสดง DEMO ชัดเจน ส่วนทางเลือก `dr_train_ollama` ใช้ Typhoon จริงเฉพาะการตรวจความครบถ้วนของเอกสารสังเคราะห์ ต้องเปิดใช้เองและตรึงรุ่นตามคู่มือด้านล่าง ผลจริงแสดง provider/model และไม่ติดป้ายว่าเป็น mock ไม่มีการสลับไปใช้ cloud หรือ mock อัตโนมัติเมื่อทางเลือกนี้มีปัญหา งานเชื่อมต่อภายนอกอื่นยังแยกตาม coverage ไม่มีการอนุมานว่าเชื่อมสำเร็จจาก workflow จำลอง
+
+## ใช้ Typhoon จริงกับเอกสารสังเคราะห์แบบเลือกเปิด
+
+อ่าน [docs/DR_TRAIN_AI.md](docs/DR_TRAIN_AI.md) ก่อนตั้งค่า ค่าเริ่มต้นยังเป็น `HIS_AI_PROVIDER=mock_demo` ผลผ่าน 38 domains และ 10 journeys เดิมเป็นหลักฐาน local workflow ที่ใช้ mock ไม่ใช่ผลทดสอบโมเดลจริงทุกเส้นทาง
+
+ทางเลือกที่ตรวจแล้วใช้ `hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M` ผ่าน Ollama 0.12.6 บน dr-train ตรวจเอกสารไทยที่แต่งขึ้นสามกรณี ผ่าน browser workflow จริง 7 ข้อ และตรวจอ่านผลเดิมอีก 2 ข้อ ตัวอย่างหนึ่งใช้เวลา 11.205 วินาที รับเข้า 408 และส่งออก 141 tokens ตาม runtime ส่วนต้นทุนยังเป็น `null` ไม่ได้วัดเป็นเงิน MedGemma 27B พบว่าติดตั้งอยู่ แต่ยังไม่ได้ทดสอบ inference จึงไม่ต้องดาวน์โหลดโมเดลเพิ่มเพื่อทำงานขอบเขตนี้
+
+ตั้งค่าทางเลือกนี้ใน `.env` ส่วนตัวตาม [.env.example](.env.example) และใช้ model/digest/engine pins จากคู่มือ กำหนด SSH target เป็น alias ที่คุณตั้งไว้เองใน SSH config ไม่ใส่ IP รหัสผ่าน หรือ private key ลงเอกสารหรือ repository สำหรับ app ที่รัน native ใช้ `http://127.0.0.1:18134` ส่วน Docker Desktop ใช้ `http://host.docker.internal:18134`
+
+หลังตั้งค่าและเปิดใช้ `HIS_LIVE_SYNTHETIC_ENABLED=true` กับ `DR_TRAIN_TUNNEL_ENABLED=true` แล้ว:
+
+```powershell
+python -m pip install -r requirements-backend.txt
+python scripts/dr_train_tunnel.py start
+python scripts/dr_train_tunnel.py status
+python scripts/dev.py start
+```
+
+ตัวช่วย tunnel ตรวจเฉพาะ metadata รุ่นของ Ollama และ model digest ไม่โหลดโมเดลหรือสั่ง inference คำสั่ง `dev.py start` และ `native-up` จะตรวจหรือเริ่ม tunnel ให้เมื่อเลือก profile นี้ไว้ชัดเจน โดยไม่ seed ข้อมูลใหม่ ถ้าตรวจเส้นทางหรือรุ่นไม่ผ่านจะไม่เริ่ม app ต่อ ค่าใน process environment มีลำดับก่อน `.env` จึงควรตรวจค่าที่ตั้งค้างไว้เมื่อต้องแก้การเชื่อมต่อ
+
+เข้า D22 เพื่อบันทึกเอกสารสังเคราะห์ แล้วใช้ D37 กับงาน `document_review` ของผู้ป่วยและ encounter เดียวกัน ผลตรวจมีห้าหัวข้อพร้อมสถานะพบหลักฐาน ไม่พบหลักฐาน หรือยังไม่ชัดเจน และข้อความอ้างอิงจากต้นฉบับ ผู้ใช้ต้องอ่าน แก้ข้อความสรุปตามต้องการ อนุมัติรุ่นที่แสดง แล้วจึงยืนยันบันทึกผล ระบบไม่ใช้ผลนี้วินิจฉัยหรือสั่งการรักษา
+
+เอกสารมีเพดานจำนวนอักขระ และยังต้องผ่าน guard ที่คิดจาก UTF-8 bytes กับพื้นที่ context จึงอาจถูกปฏิเสธก่อนถึงเพดานอักขระ โดยเฉพาะภาษาไทย อ่านรายละเอียดขนาดเอกสาร เวลารอ และการ retry ด้วยคำสั่งเดิมในคู่มือ
 
 ไฟล์เริ่มส่งต่อ: `STARTER_PROMPT_TH.md` + `CODEX_HANDOFF.md`. เมื่อนำไปทำงานต่อ ให้ reproduce PG+browser บนเครื่องผู้รับก่อนแก้โค้ด ใช้ coverage และผลรันใหม่กำหนดงานต่อ ไม่ลดขอบเขตกลับไปเป็น placeholder
 

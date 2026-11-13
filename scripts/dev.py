@@ -57,16 +57,27 @@ def native(env):
     # Seed is an explicit separate action; native-up never seeds implicitly.
     run([sys.executable,'-m','uvicorn','backend.app.main:app','--host','127.0.0.1','--port',env.get('HIS_WEB_PORT','8000')],env=env)
 
+def private_inference_preflight(env):
+    if env.get('HIS_AI_PROVIDER')!='dr_train_ollama' or env.get('DR_TRAIN_TUNNEL_ENABLED','').lower()!='true':return
+    if __package__:
+        from .dr_train_tunnel import ensure_tunnel
+    else:
+        from dr_train_tunnel import ensure_tunnel
+    result=ensure_tunnel(env)
+    if result['status']!='PASS':raise RuntimeError('Private AI connection was not verified; application was not started.')
+    print('Private AI connection verified against the configured engine and model digest.')
+
 def main():
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('action',choices=['init','config','up','start','stop','status','logs','seed','native-up','native-seed']);a=p.parse_args()
     if a.action=='init':initialize();return
     env=load_env()
-    if a.action=='native-up':native(env);return
+    if a.action=='native-up':private_inference_preflight(env);native(env);return
     if a.action=='native-seed':
         run([sys.executable,'scripts/wait_db.py','--timeout','60'],env=env)
         run([sys.executable,'-m','alembic','-c','backend/alembic.ini','upgrade','head'],env=env)
         run([sys.executable,'-m','backend.app.seed'],env=env);return
     docker_preflight(env)
+    if a.action in ['up','start']:private_inference_preflight(env)
     base=['docker','compose']
     if a.action=='config':run(base+['config','--quiet'],env=env);print('Compose configuration valid (secrets not printed).')
     elif a.action in ['up','start','seed']:

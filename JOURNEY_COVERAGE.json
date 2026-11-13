@@ -45,7 +45,14 @@
       "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
     ],
     "external_integration_status": "NOT_CONNECTED",
-    "data_profile": "AUTHORED_SYNTHETIC"
+    "data_profile": "AUTHORED_SYNTHETIC",
+    "named_live_document_extension": {
+      "status": "PASS",
+      "data_profile": "AUTHORED_SYNTHETIC",
+      "scope": "separate document-review extension, not a rerun of the original J01 IDs",
+      "evidence": "apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json",
+      "readback": "apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json"
+    }
   },
   {
     "journey": "J02",
