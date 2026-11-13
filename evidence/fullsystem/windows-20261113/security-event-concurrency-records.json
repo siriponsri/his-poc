@@ -1,0 +1,29 @@
+{
+  "observed_at": "2026-11-13T12:39:33.063876+00:00",
+  "method": "LIVE_UVICORN_HTTP_POSTGRESQL",
+  "records": [
+    {
+      "check": "security_event_fk_lock_event_loop",
+      "security_event_id": "7f686986-5495-40ac-ab79-f2818981949b",
+      "route_template": "/admin/users",
+      "actor_id": "user-quality",
+      "held_fk_lock_observed": true,
+      "independent_health_status": 200,
+      "independent_health_seconds": 1.047,
+      "denied_status": 403
+    },
+    {
+      "check": "support_staff_entity_audit",
+      "staff_id": "staff-nurse",
+      "audit_ids": [
+        "64bcb40e-43ce-4f3f-9423-12f3e6a5775d"
+      ],
+      "quality_status": 200,
+      "wrong_role_status": 403,
+      "other_facility_status": 404,
+      "nurse_own_status": 200,
+      "nurse_other_staff_status": 404,
+      "quality_other_staff_status": 200
+    }
+  ]
+}

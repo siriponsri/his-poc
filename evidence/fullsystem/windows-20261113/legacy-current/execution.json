@@ -1,0 +1,23 @@
+[
+  {
+    "check": "legacy-import",
+    "command": [
+      ".venv/Scripts/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      ".venv/Scripts/python",
+      "-m",
+      "pytest",
+      "tests/fullsystem/test_legacy_import.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T12:28:29.990+00:00",
+    "completed_at": "2026-11-13T12:28:55.467+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 25.477,
+    "log": "evidence\\fullsystem\\windows-20261113\\legacy-current\\legacy-import.txt"
+  }
+]

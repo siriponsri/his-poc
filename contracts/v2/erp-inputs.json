@@ -1,0 +1,1308 @@
+{
+  "D23": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "encounter_id": {
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "encounter_id",
+        "label"
+      ],
+      "title": "InvoiceCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "price",
+            "reprice",
+            "review",
+            "invoice",
+            "adjust",
+            "cancel"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "price_version_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Price Version Id"
+        },
+        "original_charge_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Charge Id"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "InvoiceAction",
+      "type": "object"
+    }
+  },
+  "D24": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "invoice_id": {
+          "title": "Invoice Id",
+          "type": "string"
+        },
+        "payer_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Payer Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "invoice_id",
+        "payer_name"
+      ],
+      "title": "ClaimCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "validate",
+            "export",
+            "simulate_submit",
+            "remittance",
+            "reconcile"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "approved_amount": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Approved Amount"
+        },
+        "source_key": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Key"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "ClaimAction",
+      "type": "object"
+    }
+  },
+  "D25": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "invoice_id": {
+          "title": "Invoice Id",
+          "type": "string"
+        },
+        "payer_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Payer Name",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        }
+      },
+      "required": [
+        "invoice_id",
+        "payer_name",
+        "amount"
+      ],
+      "title": "ReceiptCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "review",
+            "post",
+            "refund_request",
+            "refund_approve",
+            "refund",
+            "reverse"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Amount"
+        },
+        "refund_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Refund Id"
+        },
+        "reason": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reason"
+        },
+        "release_allocation": {
+          "default": false,
+          "title": "Release Allocation",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "ReceiptAction",
+      "type": "object"
+    }
+  },
+  "D26": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "encounter_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Encounter Id"
+        },
+        "department_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Department Id"
+        },
+        "label": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "amount": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Amount"
+        },
+        "method_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Method Version",
+          "type": "string"
+        },
+        "source_movement_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Movement Id"
+        }
+      },
+      "required": [
+        "label",
+        "amount",
+        "method_version"
+      ],
+      "title": "CostCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "review",
+            "post",
+            "reverse"
+          ],
+          "title": "Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "CostAction",
+      "type": "object"
+    }
+  },
+  "D27": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "supplier_id": {
+          "title": "Supplier Id",
+          "type": "string"
+        },
+        "item_id": {
+          "title": "Item Id",
+          "type": "string"
+        },
+        "department_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Department Id"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "unit_price": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Unit Price"
+        }
+      },
+      "required": [
+        "supplier_id",
+        "item_id",
+        "quantity",
+        "unit_price"
+      ],
+      "title": "PurchaseCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "approve",
+            "record_po",
+            "receive",
+            "verify_invoice",
+            "close"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "lot_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lot Id"
+        },
+        "location_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location Id"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity"
+        },
+        "receipt_key": {
+          "anyOf": [
+            {
+              "maxLength": 160,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Receipt Key"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "PurchaseAction",
+      "type": "object"
+    }
+  },
+  "D28": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "lot_id": {
+          "title": "Lot Id",
+          "type": "string"
+        },
+        "location_id": {
+          "title": "Location Id",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "source_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "original_movement_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Original Movement Id"
+        },
+        "disposition": {
+          "default": "available",
+          "enum": [
+            "available",
+            "quarantine"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        }
+      },
+      "required": [
+        "lot_id",
+        "location_id",
+        "quantity",
+        "source_id"
+      ],
+      "title": "StockCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "validate",
+            "post",
+            "reverse",
+            "transfer"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity"
+        },
+        "location_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location Id"
+        },
+        "disposition": {
+          "default": "quarantine",
+          "enum": [
+            "available",
+            "quarantine"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "StockAction",
+      "type": "object"
+    }
+  },
+  "D29": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "location_id": {
+          "title": "Location Id",
+          "type": "string"
+        },
+        "department_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Department Id"
+        }
+      },
+      "required": [
+        "name",
+        "location_id"
+      ],
+      "title": "AssetCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "activate",
+            "schedule",
+            "start",
+            "record",
+            "verify",
+            "release",
+            "retire"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "maintenance_due": {
+          "anyOf": [
+            {
+              "format": "date",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Maintenance Due"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "AssetAction",
+      "type": "object"
+    }
+  },
+  "D30": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "staff_id": {
+          "title": "Staff Id",
+          "type": "string"
+        },
+        "starts_at": {
+          "format": "date-time",
+          "title": "Starts At",
+          "type": "string"
+        },
+        "ends_at": {
+          "format": "date-time",
+          "title": "Ends At",
+          "type": "string"
+        }
+      },
+      "required": [
+        "staff_id",
+        "starts_at",
+        "ends_at"
+      ],
+      "title": "RosterCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "review",
+            "publish",
+            "acknowledge",
+            "revise"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "starts_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Starts At"
+        },
+        "ends_at": {
+          "anyOf": [
+            {
+              "format": "date-time",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Ends At"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "RosterAction",
+      "type": "object"
+    }
+  },
+  "D31": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "enum": [
+            "cssd",
+            "linen",
+            "facility"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        },
+        "location_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location Id"
+        },
+        "cycle_code": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cycle Code"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "exclusiveMinimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Quantity"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "maxLength": 2000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "SupportCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "clean",
+            "record_cycle",
+            "quarantine",
+            "review_release",
+            "release",
+            "return_linen",
+            "reconcile",
+            "assign",
+            "verify",
+            "close"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "returned_quantity": {
+          "anyOf": [
+            {
+              "minimum": 0.0,
+              "type": "number"
+            },
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Returned Quantity"
+        },
+        "assignee_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Assignee Id"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "SupportAction",
+      "type": "object"
+    }
+  },
+  "D32": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4000,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "encounter_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Encounter Id"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        }
+      },
+      "required": [
+        "description"
+      ],
+      "title": "IncidentCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "triage",
+            "investigate",
+            "plan",
+            "evidence",
+            "review",
+            "close"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "classification": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Classification"
+        },
+        "case_definition_version": {
+          "anyOf": [
+            {
+              "maxLength": 100,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Case Definition Version"
+        },
+        "owner_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Owner Id"
+        },
+        "action_plan": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Action Plan"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "maxLength": 4000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "IncidentAction",
+      "type": "object"
+    }
+  },
+  "D33": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "period_start": {
+          "format": "date",
+          "title": "Period Start",
+          "type": "string"
+        },
+        "period_end": {
+          "format": "date",
+          "title": "Period End",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "period_start",
+        "period_end"
+      ],
+      "title": "ReportCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "generate",
+            "review",
+            "export",
+            "correct"
+          ],
+          "title": "Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "ReportAction",
+      "type": "object"
+    }
+  },
+  "D35": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "source_id": {
+          "maxLength": 160,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "sequence": {
+          "minimum": 1,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "contract_version": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Contract Version",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "claim",
+            "referral",
+            "report",
+            "test"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "source_record_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Source Record Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_id",
+        "sequence",
+        "contract_version",
+        "kind",
+        "source_record_id"
+      ],
+      "title": "MessageCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "validate",
+            "queue",
+            "deliver",
+            "fail",
+            "retry",
+            "acknowledge"
+          ],
+          "title": "Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "MessageAction",
+      "type": "object"
+    }
+  },
+  "D36": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "encounter_kind": {
+          "default": "OPD",
+          "enum": [
+            "OPD",
+            "IPD",
+            "ER"
+          ],
+          "title": "Encounter Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "title": "DatasetCreate",
+      "type": "object"
+    },
+    "action": {
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "minimum": 1,
+          "title": "Version",
+          "type": "integer"
+        },
+        "action": {
+          "enum": [
+            "preview",
+            "approve",
+            "freeze",
+            "export",
+            "revoke"
+          ],
+          "title": "Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "version",
+        "action"
+      ],
+      "title": "DatasetAction",
+      "type": "object"
+    }
+  }
+}

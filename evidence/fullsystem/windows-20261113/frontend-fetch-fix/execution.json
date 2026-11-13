@@ -1,0 +1,82 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T12:07:58.954+00:00",
+    "completed_at": "2026-11-13T12:08:01.110+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.156,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-fetch-fix\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T12:08:01.131+00:00",
+    "completed_at": "2026-11-13T12:08:29.990+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 28.858,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-fetch-fix\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T12:08:29.995+00:00",
+    "completed_at": "2026-11-13T12:08:31.455+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.46,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-fetch-fix\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T12:08:31.463+00:00",
+    "completed_at": "2026-11-13T12:08:33.708+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.246,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-fetch-fix\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T12:08:33.713+00:00",
+    "completed_at": "2026-11-13T12:08:38.545+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 4.831,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-fetch-fix\\frontend-build.txt"
+  }
+]

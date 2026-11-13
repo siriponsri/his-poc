@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:evidence_snapshot",
+  "title": "evidence_snapshot",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "encounter_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "document_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "document_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "document_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "locator": {
+      "const": "document.content"
+    },
+    "data_class": {
+      "const": "synthetic"
+    }
+  },
+  "required": [
+    "encounter_version",
+    "document_id",
+    "document_version",
+    "document_hash",
+    "locator",
+    "data_class"
+  ],
+  "additionalProperties": false
+}

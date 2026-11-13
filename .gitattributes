@@ -1,0 +1,8 @@
+# Preserve release/source hashes across Windows and Linux checkouts.
+# Text diffs still work; Git must not rewrite the delivered bytes.
+* -text whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+# Markdown hard breaks and verbatim execution evidence preserve intentional spaces.
+*.md whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+contracts/v2/schema-reference.sql -whitespace
+evidence/** -whitespace
+apps/web/evidence/** -whitespace

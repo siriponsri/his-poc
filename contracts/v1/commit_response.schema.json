@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:commit_response",
+  "title": "commit_response",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "patient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "$ref": "document_completeness_action.schema.json"
+        },
+        "review": {
+          "type": "string",
+          "minLength": 1
+        },
+        "demo": {
+          "const": true
+        }
+      },
+      "required": [
+        "id",
+        "proposal",
+        "patient",
+        "encounter",
+        "action",
+        "review",
+        "demo"
+      ],
+      "additionalProperties": false
+    },
+    "replayed": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "result",
+    "replayed"
+  ],
+  "additionalProperties": false
+}

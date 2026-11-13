@@ -1,0 +1,2078 @@
+{
+  "items": [
+    {
+      "id": "D02",
+      "api_path": "/clinical/D02/records",
+      "name_th": "นัดหมายและคิว",
+      "initial": "requested",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "slot_id",
+          "label": "ช่วงบริการ",
+          "type": "text",
+          "required": true,
+          "source": "slots"
+        },
+        {
+          "name": "reason",
+          "label": "เหตุผลการนัด",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "booked",
+          "label": "ยืนยันจอง",
+          "from": [
+            "requested"
+          ],
+          "fields": []
+        },
+        {
+          "name": "reschedule",
+          "label": "เลื่อนนัด",
+          "from": [
+            "booked"
+          ],
+          "fields": [
+            {
+              "name": "slot_id",
+              "label": "ช่วงบริการใหม่",
+              "type": "text",
+              "required": true,
+              "source": "slots"
+            }
+          ]
+        },
+        {
+          "name": "checked_in",
+          "label": "เช็กอินและเปิด Encounter",
+          "from": [
+            "booked"
+          ],
+          "fields": []
+        },
+        {
+          "name": "called",
+          "label": "เรียกคิว",
+          "from": [
+            "checked_in"
+          ],
+          "fields": []
+        },
+        {
+          "name": "completed",
+          "label": "เสร็จบริการ",
+          "from": [
+            "called"
+          ],
+          "fields": []
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิก",
+          "from": [
+            "requested",
+            "booked"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D04",
+      "api_path": "/clinical/D04/records",
+      "name_th": "ห้องฉุกเฉิน",
+      "initial": "arrived",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "presenting_complaint",
+          "label": "อาการที่แจ้ง",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "assessed",
+          "label": "บันทึกการประเมินโดยคน",
+          "from": [
+            "arrived"
+          ],
+          "fields": [
+            {
+              "name": "triage_level",
+              "label": "ระดับที่ผู้ประเมินเลือก",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "assessment",
+              "label": "ผลประเมิน",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "in_care",
+          "label": "รับดูแล",
+          "from": [
+            "assessed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "discharged",
+          "label": "จำหน่าย",
+          "from": [
+            "in_care"
+          ],
+          "fields": [
+            {
+              "name": "disposition_reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "admission_requested",
+          "label": "ขอรับผู้ป่วยใน",
+          "from": [
+            "in_care"
+          ],
+          "fields": [
+            {
+              "name": "disposition_reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "referral_requested",
+          "label": "ขอส่งต่อ",
+          "from": [
+            "in_care"
+          ],
+          "fields": [
+            {
+              "name": "disposition_reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D05",
+      "api_path": "/clinical/D05/records",
+      "name_th": "ผู้ป่วยในและเตียง",
+      "initial": "requested",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "admission_reason",
+          "label": "เหตุผลการรับไว้",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "admitted",
+          "label": "จัดเตียง/ยืนยันย้าย",
+          "from": [
+            "requested",
+            "transfer_requested"
+          ],
+          "fields": [
+            {
+              "name": "bed_id",
+              "label": "เตียง",
+              "type": "text",
+              "required": true,
+              "source": "beds"
+            }
+          ]
+        },
+        {
+          "name": "transfer_requested",
+          "label": "ขอย้ายเตียง",
+          "from": [
+            "admitted"
+          ],
+          "fields": []
+        },
+        {
+          "name": "discharge_ready",
+          "label": "พร้อมจำหน่าย",
+          "from": [
+            "admitted"
+          ],
+          "fields": [
+            {
+              "name": "discharge_summary",
+              "label": "สรุปจำหน่าย",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "discharged",
+          "label": "จำหน่ายและคืนเตียง",
+          "from": [
+            "discharge_ready"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D06",
+      "api_path": "/clinical/D06/records",
+      "name_th": "พยาบาลและส่งเวร",
+      "initial": "draft",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "summary",
+          "label": "สรุปส่งเวร",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "pending_tasks",
+          "label": "งานที่ต้องติดตาม",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "task_ids",
+          "label": "Task IDs คั่นด้วยจุลภาค",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "receiving_staff_id",
+          "label": "ผู้รับเวร",
+          "type": "text",
+          "required": true,
+          "source": "staff"
+        }
+      ],
+      "actions": [
+        {
+          "name": "signed",
+          "label": "ลงนามส่งเวร",
+          "from": [
+            "draft"
+          ],
+          "fields": []
+        },
+        {
+          "name": "acknowledged",
+          "label": "รับทราบเวร",
+          "from": [
+            "signed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "amended",
+          "label": "เพิ่มฉบับแก้ไข",
+          "from": [
+            "acknowledged"
+          ],
+          "fields": [
+            {
+              "name": "summary",
+              "label": "สรุปฉบับแก้",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D08",
+      "api_path": "/clinical/D08/records",
+      "name_th": "เภสัชกรรม",
+      "initial": "received",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "order_id",
+          "label": "คำสั่งยา",
+          "type": "text",
+          "required": true,
+          "source": "orders"
+        },
+        {
+          "name": "item_id",
+          "label": "รหัสรายการยา",
+          "type": "text",
+          "required": true,
+          "source": "items"
+        },
+        {
+          "name": "medication_name",
+          "label": "ชื่อยาสังเคราะห์",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "prescribed_dose",
+          "label": "ขนาดยาที่ผู้สั่งระบุ",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "route",
+          "label": "วิธีให้ยา",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "quantity",
+          "label": "จำนวน",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "unit",
+          "label": "หน่วย",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "reviewed",
+          "label": "เภสัชกรตรวจคำสั่ง",
+          "from": [
+            "received"
+          ],
+          "fields": []
+        },
+        {
+          "name": "prepared",
+          "label": "จัดยา",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "dispensed",
+          "label": "ยืนยันจ่าย",
+          "from": [
+            "prepared"
+          ],
+          "fields": [
+            {
+              "name": "lot_id",
+              "label": "Lot",
+              "type": "text",
+              "required": true,
+              "source": "lots"
+            },
+            {
+              "name": "location_id",
+              "label": "คลัง",
+              "type": "text",
+              "required": true,
+              "source": "stock-locations"
+            },
+            {
+              "name": "quantity",
+              "label": "จำนวนที่จ่าย",
+              "type": "number",
+              "required": true
+            },
+            {
+              "name": "unit_price",
+              "label": "ราคาต่อหน่วย",
+              "type": "number",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "rejected",
+          "label": "ปฏิเสธคำสั่ง",
+          "from": [
+            "received"
+          ],
+          "fields": [
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "return_recorded",
+          "label": "บันทึกคืนเพื่อกักกัน",
+          "from": [
+            "dispensed",
+            "return_recorded"
+          ],
+          "fields": [
+            {
+              "name": "quantity",
+              "label": "จำนวนคืน",
+              "type": "number",
+              "required": true
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D09",
+      "api_path": "/clinical/D09/records",
+      "name_th": "การให้ยา",
+      "initial": "scheduled",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "medication_id",
+          "label": "รายการยาที่ตรวจแล้ว",
+          "type": "text",
+          "required": true,
+          "source": "medications"
+        },
+        {
+          "name": "scheduled_at",
+          "label": "เวลาที่กำหนด",
+          "type": "datetime-local",
+          "required": true
+        },
+        {
+          "name": "dose",
+          "label": "ขนาดยาตามคำสั่ง",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "route",
+          "label": "วิธีให้",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "verified",
+          "label": "ยืนยันผู้ป่วยและคำสั่ง",
+          "from": [
+            "scheduled"
+          ],
+          "fields": []
+        },
+        {
+          "name": "administered",
+          "label": "บันทึกให้ยา",
+          "from": [
+            "verified"
+          ],
+          "fields": [
+            {
+              "name": "actual_at",
+              "label": "เวลาที่ให้",
+              "type": "datetime-local",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "held",
+          "label": "งดยาชั่วคราว",
+          "from": [
+            "verified"
+          ],
+          "fields": [
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "not_given",
+          "label": "ไม่ได้ให้ยา",
+          "from": [
+            "verified"
+          ],
+          "fields": [
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "corrected",
+          "label": "แก้เหตุการณ์เป็นฉบับใหม่",
+          "from": [
+            "administered"
+          ],
+          "fields": [
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "actual_at",
+              "label": "เวลาที่ถูกต้อง",
+              "type": "datetime-local",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "api_path": "/clinical/D10/records",
+      "name_th": "ห้องปฏิบัติการ",
+      "initial": "ordered",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "order_id",
+          "label": "คำสั่งตรวจ",
+          "type": "text",
+          "required": true,
+          "source": "orders"
+        },
+        {
+          "name": "analyte",
+          "label": "รายการตรวจ",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "specimen_type",
+          "label": "สิ่งส่งตรวจ",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "collected",
+          "label": "เก็บสิ่งส่งตรวจ",
+          "from": [
+            "ordered"
+          ],
+          "fields": []
+        },
+        {
+          "name": "received",
+          "label": "รับสิ่งส่งตรวจ",
+          "from": [
+            "collected"
+          ],
+          "fields": []
+        },
+        {
+          "name": "preliminary",
+          "label": "ลงผลสังเคราะห์",
+          "from": [
+            "received"
+          ],
+          "fields": [
+            {
+              "name": "result_value",
+              "label": "ผล",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "unit",
+              "label": "หน่วย",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "reference_range",
+              "label": "ช่วงอ้างอิงที่คนระบุ",
+              "type": "text",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "verified",
+          "label": "ตรวจรับรองโดยคน",
+          "from": [
+            "preliminary"
+          ],
+          "fields": []
+        },
+        {
+          "name": "released",
+          "label": "เผยแพร่ผล",
+          "from": [
+            "verified"
+          ],
+          "fields": []
+        },
+        {
+          "name": "publish_portal",
+          "label": "อนุญาตเผยแพร่แก่เจ้าของข้อมูล",
+          "from": [
+            "released",
+            "corrected"
+          ],
+          "fields": []
+        },
+        {
+          "name": "acknowledge",
+          "label": "แพทย์รับทราบผล",
+          "from": [
+            "released",
+            "corrected"
+          ],
+          "fields": []
+        },
+        {
+          "name": "corrected",
+          "label": "แก้ผลโดยเก็บฉบับเดิม",
+          "from": [
+            "released",
+            "corrected"
+          ],
+          "fields": [
+            {
+              "name": "result_value",
+              "label": "ผลฉบับแก้",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "unit",
+              "label": "หน่วย",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "reference_range",
+              "label": "ช่วงอ้างอิง",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "api_path": "/clinical/D11/records",
+      "name_th": "รังสีและภาพ",
+      "initial": "ordered",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "order_id",
+          "label": "คำสั่งภาพ",
+          "type": "text",
+          "required": true,
+          "source": "orders"
+        },
+        {
+          "name": "modality",
+          "label": "Modality",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "body_site",
+          "label": "ตำแหน่ง",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "asset_id",
+          "label": "อุปกรณ์ที่ใช้",
+          "type": "text",
+          "required": false,
+          "source": "assets"
+        }
+      ],
+      "actions": [
+        {
+          "name": "scheduled",
+          "label": "จัดนัด",
+          "from": [
+            "ordered"
+          ],
+          "fields": []
+        },
+        {
+          "name": "acquired",
+          "label": "รับไฟล์สังเคราะห์",
+          "from": [
+            "scheduled"
+          ],
+          "fields": [
+            {
+              "name": "file_base64",
+              "label": "ไฟล์ PNG/TXT สังเคราะห์แบบ Base64",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "file_mime",
+              "label": "ชนิดไฟล์ image/png หรือ text/plain",
+              "type": "text",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "report_draft",
+          "label": "ร่างรายงานโดยคน",
+          "from": [
+            "acquired"
+          ],
+          "fields": [
+            {
+              "name": "report",
+              "label": "รายงาน",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "verified",
+          "label": "ตรวจรายงาน",
+          "from": [
+            "report_draft"
+          ],
+          "fields": []
+        },
+        {
+          "name": "released",
+          "label": "เผยแพร่รายงาน",
+          "from": [
+            "verified"
+          ],
+          "fields": []
+        },
+        {
+          "name": "publish_portal",
+          "label": "อนุญาตเผยแพร่แก่ผู้ป่วย",
+          "from": [
+            "released",
+            "amended"
+          ],
+          "fields": []
+        },
+        {
+          "name": "amended",
+          "label": "เพิ่มรายงานแก้ไข",
+          "from": [
+            "released",
+            "amended"
+          ],
+          "fields": [
+            {
+              "name": "report",
+              "label": "รายงานฉบับแก้",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D12",
+      "api_path": "/clinical/D12/records",
+      "name_th": "ผ่าตัดและวิสัญญี",
+      "initial": "requested",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "procedure_name",
+          "label": "หัตถการที่บุคลากรเลือก",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "asset_id",
+          "label": "อุปกรณ์",
+          "type": "text",
+          "required": false,
+          "source": "assets"
+        },
+        {
+          "name": "cssd_cycle_id",
+          "label": "Cycle เครื่องมือที่ปล่อยแล้ว",
+          "type": "text",
+          "required": false
+        }
+      ],
+      "actions": [
+        {
+          "name": "scheduled",
+          "label": "จองห้อง",
+          "from": [
+            "requested"
+          ],
+          "fields": [
+            {
+              "name": "room",
+              "label": "ห้อง",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "starts_at",
+              "label": "เริ่ม",
+              "type": "datetime-local",
+              "required": true
+            },
+            {
+              "name": "ends_at",
+              "label": "สิ้นสุด",
+              "type": "datetime-local",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "checklist_verified",
+          "label": "ตรวจ Checklist",
+          "from": [
+            "scheduled"
+          ],
+          "fields": [
+            {
+              "name": "checklist",
+              "label": "หลักฐาน Checklist",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "in_progress",
+          "label": "เริ่มหัตถการ",
+          "from": [
+            "checklist_verified"
+          ],
+          "fields": []
+        },
+        {
+          "name": "documented",
+          "label": "บันทึกหัตถการและวิสัญญี",
+          "from": [
+            "in_progress"
+          ],
+          "fields": [
+            {
+              "name": "anesthesia_record",
+              "label": "บันทึกโดยผู้ปฏิบัติ",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "closed",
+          "label": "ปิด Case",
+          "from": [
+            "documented"
+          ],
+          "fields": []
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิก",
+          "from": [
+            "scheduled"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D13",
+      "api_path": "/clinical/D13/records",
+      "name_th": "ICU และ Observation",
+      "initial": "draft",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "admission_id",
+          "label": "Admission",
+          "type": "text",
+          "required": true,
+          "source": "admissions"
+        },
+        {
+          "name": "observation_name",
+          "label": "รายการ",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "observation_value",
+          "label": "ค่าที่วัด",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "unit",
+          "label": "หน่วย",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "observed_at",
+          "label": "เวลาที่วัด",
+          "type": "datetime-local",
+          "required": true
+        },
+        {
+          "name": "round_note",
+          "label": "Round note",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "asset_id",
+          "label": "อุปกรณ์ที่ผูก Episode",
+          "type": "text",
+          "required": false,
+          "source": "assets"
+        }
+      ],
+      "actions": [
+        {
+          "name": "assign_device",
+          "label": "บันทึกผูกอุปกรณ์กับ Episode",
+          "from": [
+            "draft",
+            "recorded",
+            "reviewed"
+          ],
+          "fields": [
+            {
+              "name": "asset_id",
+              "label": "อุปกรณ์ที่ใช้งานได้",
+              "type": "text",
+              "required": true,
+              "source": "assets"
+            }
+          ]
+        },
+        {
+          "name": "release_device",
+          "label": "คืนอุปกรณ์",
+          "from": [
+            "draft",
+            "recorded",
+            "reviewed",
+            "signed",
+            "amended"
+          ],
+          "fields": [
+            {
+              "name": "assignment_id",
+              "label": "Device assignment",
+              "type": "text",
+              "required": true,
+              "source": "device-assignments"
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผลคืน",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "recorded",
+          "label": "บันทึกค่า",
+          "from": [
+            "draft"
+          ],
+          "fields": []
+        },
+        {
+          "name": "reviewed",
+          "label": "ทบทวน",
+          "from": [
+            "recorded"
+          ],
+          "fields": []
+        },
+        {
+          "name": "signed",
+          "label": "ลงนาม",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "amended",
+          "label": "เพิ่มฉบับแก้",
+          "from": [
+            "signed",
+            "amended"
+          ],
+          "fields": [
+            {
+              "name": "observation_value",
+              "label": "ค่าที่แก้",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "round_note",
+              "label": "บันทึกฉบับแก้",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D14",
+      "api_path": "/clinical/D14/records",
+      "name_th": "มารดาและทารก",
+      "initial": "registered",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "gestation_note",
+          "label": "ข้อมูลครรภ์ที่คนบันทึก",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "antenatal_active",
+          "label": "เริ่มติดตามครรภ์",
+          "from": [
+            "registered"
+          ],
+          "fields": []
+        },
+        {
+          "name": "delivery_documented",
+          "label": "บันทึกคลอดและสร้างตัวตนทารก",
+          "from": [
+            "antenatal_active"
+          ],
+          "fields": [
+            {
+              "name": "delivery_note",
+              "label": "บันทึกคลอด",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "child_name",
+              "label": "ชื่อสังเคราะห์ทารก",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "child_identifier",
+              "label": "เลขทะเบียนทารกสังเคราะห์",
+              "type": "text",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "verified",
+          "label": "ตรวจความสัมพันธ์แม่ลูก",
+          "from": [
+            "delivery_documented"
+          ],
+          "fields": []
+        },
+        {
+          "name": "closed",
+          "label": "ปิด Episode",
+          "from": [
+            "verified"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D15",
+      "api_path": "/clinical/D15/records",
+      "name_th": "กุมารเวชกรรมและการเติบโต",
+      "initial": "draft",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "measurement_name",
+          "label": "รายการวัด",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "measurement_value",
+          "label": "ค่าที่วัด",
+          "type": "number",
+          "required": true
+        },
+        {
+          "name": "unit",
+          "label": "หน่วย",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "measured_at",
+          "label": "เวลาที่วัด",
+          "type": "datetime-local",
+          "required": true
+        },
+        {
+          "name": "immunization_note",
+          "label": "วัคซีนที่บันทึกด้วยคน",
+          "type": "textarea",
+          "required": false
+        }
+      ],
+      "actions": [
+        {
+          "name": "recorded",
+          "label": "บันทึกค่า",
+          "from": [
+            "draft"
+          ],
+          "fields": []
+        },
+        {
+          "name": "reviewed",
+          "label": "ทบทวน",
+          "from": [
+            "recorded"
+          ],
+          "fields": []
+        },
+        {
+          "name": "closed",
+          "label": "ปิด Visit",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "immunization",
+          "label": "บันทึกวัคซีนด้วยคน",
+          "from": [
+            "draft",
+            "recorded",
+            "reviewed"
+          ],
+          "fields": [
+            {
+              "name": "item_id",
+              "label": "วัคซีนสังเคราะห์",
+              "type": "text",
+              "required": true,
+              "source": "items"
+            },
+            {
+              "name": "lot_id",
+              "label": "Lot",
+              "type": "text",
+              "required": true,
+              "source": "lots"
+            },
+            {
+              "name": "administered_at",
+              "label": "เวลาที่ให้ตามบันทึก",
+              "type": "datetime-local",
+              "required": true
+            },
+            {
+              "name": "quantity",
+              "label": "จำนวนตามบันทึก ไม่คำนวณขนาดยา",
+              "type": "number",
+              "required": true
+            },
+            {
+              "name": "unit",
+              "label": "หน่วย",
+              "type": "text",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "amended",
+          "label": "เพิ่มฉบับแก้",
+          "from": [
+            "closed",
+            "amended"
+          ],
+          "fields": [
+            {
+              "name": "measurement_value",
+              "label": "ค่าฉบับแก้",
+              "type": "number",
+              "required": true
+            },
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D16",
+      "api_path": "/clinical/D16/records",
+      "name_th": "เวชศาสตร์ฟื้นฟู",
+      "initial": "requested",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "order_id",
+          "label": "คำสั่งส่งฟื้นฟู",
+          "type": "text",
+          "required": true,
+          "source": "orders"
+        },
+        {
+          "name": "goals",
+          "label": "เป้าหมายที่ผู้รักษากำหนด",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "therapist_id",
+          "label": "ผู้รับผิดชอบ",
+          "type": "text",
+          "required": true,
+          "source": "staff"
+        }
+      ],
+      "actions": [
+        {
+          "name": "assessed",
+          "label": "ประเมินโดยคน",
+          "from": [
+            "requested"
+          ],
+          "fields": [
+            {
+              "name": "assessment",
+              "label": "ผลประเมิน",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "active",
+          "label": "เริ่มแผน",
+          "from": [
+            "assessed",
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "schedule",
+          "label": "นัด Session",
+          "from": [
+            "active"
+          ],
+          "fields": [
+            {
+              "name": "slot_id",
+              "label": "ช่วงบริการ",
+              "type": "text",
+              "required": true,
+              "source": "slots"
+            }
+          ]
+        },
+        {
+          "name": "session",
+          "label": "บันทึก Session ที่นัดไว้",
+          "from": [
+            "active"
+          ],
+          "fields": [
+            {
+              "name": "session_id",
+              "label": "Session ที่นัดไว้",
+              "type": "text",
+              "required": true,
+              "source": "therapy-sessions"
+            },
+            {
+              "name": "performed_at",
+              "label": "วันเวลาที่ทำ",
+              "type": "datetime-local",
+              "required": true
+            },
+            {
+              "name": "progress",
+              "label": "ความก้าวหน้า",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "reviewed",
+          "label": "ทบทวนแผน",
+          "from": [
+            "active"
+          ],
+          "fields": []
+        },
+        {
+          "name": "completed",
+          "label": "สิ้นสุดแผน",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "discontinued",
+          "label": "ยุติ",
+          "from": [
+            "active"
+          ],
+          "fields": [
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "D17",
+      "api_path": "/clinical/D17/records",
+      "name_th": "ทันตกรรมและเฉพาะทาง",
+      "initial": "draft",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "tooth_code",
+          "label": "ตำแหน่งฟัน",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "finding",
+          "label": "ผลตรวจโดยคน",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "procedure_name",
+          "label": "หัตถการ",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "reviewed",
+          "label": "ตรวจแผน",
+          "from": [
+            "draft"
+          ],
+          "fields": []
+        },
+        {
+          "name": "scheduled",
+          "label": "จัดนัด",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "performed",
+          "label": "บันทึกทำหัตถการและค่าบริการ",
+          "from": [
+            "scheduled"
+          ],
+          "fields": [
+            {
+              "name": "unit_price",
+              "label": "ค่าบริการ",
+              "type": "number",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "verified",
+          "label": "ตรวจบันทึก",
+          "from": [
+            "performed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "closed",
+          "label": "ปิด Visit",
+          "from": [
+            "verified"
+          ],
+          "fields": []
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิก",
+          "from": [
+            "scheduled"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D18",
+      "api_path": "/clinical/D18/records",
+      "name_th": "ธนาคารเลือด",
+      "initial": "requested",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "indication",
+          "label": "เหตุผลคำขอ",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "reviewed",
+          "label": "ตรวจคำขอ",
+          "from": [
+            "requested"
+          ],
+          "fields": []
+        },
+        {
+          "name": "reserved",
+          "label": "จอง Unit",
+          "from": [
+            "reviewed"
+          ],
+          "fields": [
+            {
+              "name": "unit_id",
+              "label": "Unit สังเคราะห์",
+              "type": "text",
+              "required": true,
+              "source": "blood-units"
+            }
+          ]
+        },
+        {
+          "name": "compatibility_verified",
+          "label": "บันทึกการตรวจ Compatibility โดยคน",
+          "from": [
+            "reserved"
+          ],
+          "fields": [
+            {
+              "name": "verification_evidence",
+              "label": "หลักฐานผู้ตรวจ ไม่ใช่ AI",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "released",
+          "label": "ปล่อย Unit หลังตรวจซ้ำ",
+          "from": [
+            "compatibility_verified"
+          ],
+          "fields": []
+        },
+        {
+          "name": "administration_recorded",
+          "label": "บันทึกให้เลือด",
+          "from": [
+            "released"
+          ],
+          "fields": [
+            {
+              "name": "administration_note",
+              "label": "บันทึกโดยผู้ปฏิบัติ",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิกจอง",
+          "from": [
+            "reserved"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D19",
+      "api_path": "/clinical/D19/records",
+      "name_th": "โภชนาการและอาหาร",
+      "initial": "ordered",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "diet_description",
+          "label": "คำสั่งอาหารโดยคน",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "allergy_note",
+          "label": "ข้อมูลแพ้ที่บันทึก",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "meal_period",
+          "label": "รอบอาหาร เช่น 2026-11-12-lunch",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "revise",
+          "label": "แก้คำสั่งก่อนเตรียม",
+          "from": [
+            "ordered",
+            "reviewed"
+          ],
+          "fields": [
+            {
+              "name": "diet_description",
+              "label": "คำสั่งอาหารฉบับใหม่",
+              "type": "textarea",
+              "required": true
+            },
+            {
+              "name": "allergy_note",
+              "label": "ข้อมูลแพ้",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "reviewed",
+          "label": "ตรวจคำสั่ง",
+          "from": [
+            "ordered"
+          ],
+          "fields": []
+        },
+        {
+          "name": "prepared",
+          "label": "จัดเตรียม",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "delivered",
+          "label": "ยืนยันส่ง",
+          "from": [
+            "prepared"
+          ],
+          "fields": []
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิก",
+          "from": [
+            "ordered",
+            "reviewed"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D20",
+      "api_path": "/clinical/D20/records",
+      "name_th": "ส่งต่อและติดตาม",
+      "initial": "draft",
+      "fields": [
+        {
+          "name": "patient_id",
+          "label": "ผู้ป่วย",
+          "type": "text",
+          "required": true,
+          "source": "patients"
+        },
+        {
+          "name": "encounter_id",
+          "label": "Encounter",
+          "type": "text",
+          "required": true,
+          "source": "encounters"
+        },
+        {
+          "name": "destination",
+          "label": "หน่วยงานปลายทาง",
+          "type": "text",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "label": "เหตุผลส่งต่อ",
+          "type": "textarea",
+          "required": true
+        },
+        {
+          "name": "document_revision_id",
+          "label": "Document revision ID",
+          "type": "text",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "reviewed",
+          "label": "ตรวจเอกสาร",
+          "from": [
+            "draft"
+          ],
+          "fields": []
+        },
+        {
+          "name": "exported",
+          "label": "สร้าง Referral packet",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "response_recorded",
+          "label": "บันทึกตอบกลับด้วยคน",
+          "from": [
+            "exported"
+          ],
+          "fields": [
+            {
+              "name": "response_source",
+              "label": "แหล่งข้อมูลตอบกลับ",
+              "type": "text",
+              "required": true
+            },
+            {
+              "name": "response_note",
+              "label": "รายละเอียดตอบกลับ",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "closed",
+          "label": "ปิดติดตาม",
+          "from": [
+            "response_recorded"
+          ],
+          "fields": []
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิก",
+          "from": [
+            "draft"
+          ],
+          "fields": []
+        }
+      ]
+    },
+    {
+      "id": "D21",
+      "api_path": "/clinical/D21/records",
+      "name_th": "พอร์ทัลผู้ป่วย",
+      "initial": "requested",
+      "fields": [
+        {
+          "name": "request_kind",
+          "label": "ประเภทคำขอ",
+          "type": "select",
+          "required": true,
+          "options": [
+            {
+              "value": "appointment",
+              "label": "ขอนัดหมาย"
+            },
+            {
+              "value": "correction",
+              "label": "ขอแก้ไขข้อมูลเอกสาร"
+            }
+          ]
+        },
+        {
+          "name": "slot_id",
+          "label": "ช่วงบริการ สำหรับขอนัด",
+          "type": "text",
+          "required": false,
+          "source": "slots"
+        },
+        {
+          "name": "document_revision_id",
+          "label": "เอกสารที่ขอแก้",
+          "type": "text",
+          "required": false,
+          "source": "released-documents"
+        },
+        {
+          "name": "reason",
+          "label": "เหตุผลคำขอ",
+          "type": "textarea",
+          "required": true
+        }
+      ],
+      "actions": [
+        {
+          "name": "reviewed",
+          "label": "เจ้าหน้าที่ทบทวน",
+          "from": [
+            "requested"
+          ],
+          "fields": []
+        },
+        {
+          "name": "booked",
+          "label": "เจ้าหน้าที่จองนัด",
+          "from": [
+            "reviewed"
+          ],
+          "fields": []
+        },
+        {
+          "name": "completed",
+          "label": "ปิดคำขอพร้อมผลพิจารณา",
+          "from": [
+            "booked",
+            "reviewed"
+          ],
+          "fields": [
+            {
+              "name": "response_note",
+              "label": "ผลพิจารณา/การดำเนินการ",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        },
+        {
+          "name": "cancelled",
+          "label": "ยกเลิกคำขอของตน",
+          "from": [
+            "requested"
+          ],
+          "fields": []
+        },
+        {
+          "name": "declined",
+          "label": "ปฏิเสธพร้อมเหตุผล",
+          "from": [
+            "reviewed"
+          ],
+          "fields": [
+            {
+              "name": "reason",
+              "label": "เหตุผล",
+              "type": "textarea",
+              "required": true
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

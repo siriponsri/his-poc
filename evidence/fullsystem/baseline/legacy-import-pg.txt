@@ -1,0 +1,16 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "/tmp/his-pg-tests-kjv1glfk/files"}
+test_exact_ids_hashes_and_json_strings_survive_without_source_mutation (test_legacy_import.LegacyImportInspectionTests.test_exact_ids_hashes_and_json_strings_survive_without_source_mutation) ... ok
+test_invalid_action_hash_is_quarantined_and_original_retained (test_legacy_import.LegacyImportInspectionTests.test_invalid_action_hash_is_quarantined_and_original_retained) ... ok
+test_orphan_references_preserved_and_reported (test_legacy_import.LegacyImportInspectionTests.test_orphan_references_preserved_and_reported) ... ok
+test_overwritten_revision_is_unavailable_not_recreated (test_legacy_import.LegacyImportInspectionTests.test_overwritten_revision_is_unavailable_not_recreated) ... ok
+test_repeat_inspection_is_identical (test_legacy_import.LegacyImportInspectionTests.test_repeat_inspection_is_identical) ... ok
+test_wal_source_is_rejected_before_read (test_legacy_import.LegacyImportInspectionTests.test_wal_source_is_rejected_before_read) ... ok
+test_archive_persistence_replay_and_missing_revision_survive_reconnect (test_legacy_import.LegacyPostgresTests.test_archive_persistence_replay_and_missing_revision_survive_reconnect) ... ok
+test_archive_read_is_scoped_and_commit_always_denied (test_legacy_import.LegacyPostgresTests.test_archive_read_is_scoped_and_commit_always_denied) ... ok
+test_cli_apply_verifies_password_archives_and_revokes_operator_session (test_legacy_import.LegacyPostgresTests.test_cli_apply_verifies_password_archives_and_revokes_operator_session) ... ok
+test_replay_different_mapping_and_revoked_permission_rejected (test_legacy_import.LegacyPostgresTests.test_replay_different_mapping_and_revoked_permission_rejected) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 2.760s
+
+OK

@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:context_response",
+  "title": "context_response",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "demo": {
+      "const": true
+    },
+    "patient": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encounter": {
+      "$ref": "#/$defs/encounter"
+    },
+    "document": {
+      "$ref": "#/$defs/document"
+    },
+    "evidence": {
+      "$ref": "evidence_snapshot.schema.json"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/task"
+      }
+    },
+    "reviews": {
+      "type": "array",
+      "items": {
+        "$ref": "review_record.schema.json"
+      }
+    },
+    "proposal_versions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/proposal_version"
+      }
+    },
+    "proposals": {
+      "type": "array",
+      "items": {
+        "$ref": "proposal.schema.json"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/stored_result"
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/run"
+      }
+    },
+    "audit": {
+      "type": "array",
+      "items": {
+        "$ref": "audit_event.schema.json"
+      }
+    }
+  },
+  "required": [
+    "demo",
+    "patient",
+    "encounter",
+    "document",
+    "evidence",
+    "tasks",
+    "reviews",
+    "proposal_versions",
+    "proposals",
+    "results",
+    "runs",
+    "audit"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "encounter": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "patient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "patient",
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "document": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "content": {
+          "type": "string",
+          "contentMediaType": "application/json",
+          "description": "Serialized JSON string retained by the v1 wire contract; parse in the frontend adapter."
+        }
+      },
+      "required": [
+        "id",
+        "encounter",
+        "version",
+        "content"
+      ],
+      "additionalProperties": false
+    },
+    "task": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "encounter",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "proposal_version": {
+      "type": "object",
+      "properties": {
+        "proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "action": {
+          "type": "string",
+          "contentMediaType": "application/json",
+          "description": "Serialized JSON string retained by the v1 wire contract; parse in the frontend adapter."
+        },
+        "action_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": [
+        "proposal",
+        "version",
+        "action",
+        "action_hash"
+      ],
+      "additionalProperties": false
+    },
+    "stored_result": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposal": {
+          "type": "string",
+          "minLength": 1
+        },
+        "patient": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "type": "string",
+          "contentMediaType": "application/json",
+          "description": "Serialized JSON string retained by the v1 wire contract; parse in the frontend adapter."
+        },
+        "review": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "proposal",
+        "patient",
+        "encounter",
+        "action",
+        "review",
+        "created"
+      ],
+      "additionalProperties": false
+    },
+    "run": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "enum": [
+            "success",
+            "failed",
+            "timeout",
+            "abstained"
+          ]
+        },
+        "provider": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "model_revision": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "latency_ms": {
+          "type": "number",
+          "minimum": 0
+        },
+        "usage": {
+          "type": "string",
+          "contentMediaType": "application/json",
+          "description": "Serialized JSON string retained by the v1 wire contract; parse in the frontend adapter."
+        },
+        "cost": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "demo": {
+          "type": "integer",
+          "const": 1
+        },
+        "abstain_reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "id",
+        "encounter",
+        "outcome",
+        "provider",
+        "model_revision",
+        "latency_ms",
+        "usage",
+        "cost",
+        "error",
+        "demo",
+        "abstain_reason"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

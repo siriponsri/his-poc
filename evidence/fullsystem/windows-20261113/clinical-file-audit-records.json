@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-11-13T12:26:02.460021+00:00",
+  "method": "EXECUTED_HTTP_POSTGRESQL_SYNTHETIC",
+  "browser": "NOT_RUN",
+  "records": [
+    {
+      "domain": "D11",
+      "study_id": "08d81861-b0b9-47c4-a7d9-c70771361bc4",
+      "file_sha256": "7933246b52235b380a63971e70c10de1efa25a698af5b6c28a3a221e8d063700",
+      "limited_clinician_id": "cd8c1b6d-6184-4fbb-849e-8702bc018b21",
+      "download_audit_ids": [
+        "3c31e50e-99c7-4d9c-a0a9-0c08b327a8d6",
+        "6e1b3e73-8c6e-4dd2-8d82-7561b3f6c5c3"
+      ],
+      "assertions": [
+        "authorized imaging and clinician bytes/checksum verified",
+        "file audit stores hash only",
+        "actual file GET denied across patient care scope",
+        "auditor and registration raw-file denied without bytes or success audit"
+      ]
+    }
+  ]
+}

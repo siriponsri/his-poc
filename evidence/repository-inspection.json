@@ -1,0 +1,59 @@
+{
+  "date": "2026-11-12",
+  "repo": "siriponsri/LabClear",
+  "ref": "86ba619bcf481ceae214a067a37513ae9c824bca",
+  "root_paths": [
+    ".claude",
+    ".env.example",
+    ".gitattributes",
+    ".gitignore",
+    ".python-version",
+    "CHANGELOG.md",
+    "HANDOFF.md",
+    "NOTICE.md",
+    "README.md",
+    "START.bat",
+    "business_data",
+    "config.py",
+    "data",
+    "docs",
+    "eval",
+    "examples",
+    "i18n",
+    "knowledge",
+    "main.py",
+    "notebooks",
+    "package-lock.json",
+    "package.json",
+    "presentation",
+    "pytest.ini",
+    "render.yaml",
+    "requirements-dev.txt",
+    "requirements-eval.txt",
+    "requirements.txt",
+    "routers",
+    "runtime_skills",
+    "scripts",
+    "services",
+    "static",
+    "templates",
+    "tests"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "blob": "88e20cbd2b41a72de68e48df1f15708ae34d51f9"
+    },
+    {
+      "path": "requirements.txt",
+      "blob": "8c6a744081467a21aa5cd08dda3d4e738b2658b3"
+    },
+    {
+      "path": "package.json",
+      "blob": "10f2504ab360b4980f9c78f3b1bbba5bbde43cb3"
+    }
+  ],
+  "agents_result": "404 NOT_FOUND",
+  "pharmacore_search_result": "No repositories returned; not proof of nonexistence",
+  "local_worktree": "UNKNOWN"
+}

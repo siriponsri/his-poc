@@ -1,0 +1,1273 @@
+{
+  "review_version": "1.0.0",
+  "created_at": "2026-11-12T09:05:58.300621+00:00",
+  "reviewer": "independent migration/review agent",
+  "scope": "Static implementation and invariant review against exact supplied matrix, with observed execution artifacts; not blanket domain certification. Concurrent owners may add code/tests after this snapshot.",
+  "specification": {
+    "file": "/workspace/scratch/9ae50286259c/full_spec/HIS_POC_Full_System_Review_and_Work_Brief_2026-11-12/DOMAIN_IMPLEMENTATION_MATRIX.json",
+    "sha256": "f2cb497d539b34ddde50d6d82cf2ad57734af5d0e09ebb23a8280b2c10e8ff99",
+    "matrix_version": "1.0.0"
+  },
+  "status_policy": {
+    "no_blanket_L2": "No verified level is assigned by this review. Shared schemas, navigation and generic successful action loops alone do not prove domain acceptance.",
+    "browser": "NOT_RUN: Chromium sandbox/socket restriction; actual same-origin HTTP smoke is separate and is not browser evidence.",
+    "mock": "D37 integration uses explicit authored mock, not real model inference.",
+    "external": "Real model endpoints, hardware, checkpoint revisions, national reporting and hospital integrations remain UNKNOWN/NOT_CONNECTED unless separately evidenced.",
+    "test_definitions": "Names below prove test source existence only. Final execution logs and source-hash matching must be checked by release integrator."
+  },
+  "common_L2_acceptance_exact": [
+    "List/search/detail/domain-specific form and valid state transitions execute against the backend and PostgreSQL.",
+    "Reload/restart preserves state; create a second patient/encounter/task or non-patient business record without resetting prior evidence.",
+    "Wrong role/scope, stale version, invalid transition and duplicate command are rejected without partial writes; accepted actions create audit.",
+    "Meaningful domain tests plus browser interaction evidence where available; build/fixtures alone do not prove behavior.",
+    "No unvalidated dose, triage, blood-compatibility or diagnosis automation; clinical values and approvals are manual/synthetic for this prototype."
+  ],
+  "reviewed_source_sha256": {
+    "backend/app/core.py": "36b311777c4df63a53b65b3515d0c28aca9aea58fd322a0c0f13b42ed1fd6792",
+    "backend/app/auth.py": "800e96689df68f09b13bfcd7cbc155d7ba4a7b88335f8201ee339d0e956c7423",
+    "backend/app/common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
+    "backend/app/admin.py": "c236609c58f062ea53b02a2fc4609fccf5f44c29c05833289eab6c8b1a7d088b",
+    "backend/app/ai.py": "ba4a0a514f3a274ca517b369e79121cf7f2fa9c5698b0d55078caec7960c5cab",
+    "backend/app/providers.py": "ec9e00098152cdf3550415475dfd2653d560ac0894a2387b56f731300eb53a7d",
+    "backend/app/domains/clinical.py": "6ff15b854f3884b33f6cd6c8a99fdb0eae110a5a643aed69bd245918d8e8464b",
+    "backend/app/domains/erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653",
+    "backend/app/domains/operations.py": "0b135d1c5dfd349d694a8a84ae96cdcec88fb68d24070d25200a84b006319447",
+    "backend/app/models_clinical.py": "aaf85c0c10cff67712b77376cb38b1acc9f0d24af68c5bec5937e2dce6a6b850",
+    "backend/app/models_erp.py": "2e16a16d4fcd15a7b89f98e1c1c4da2f400a0260c3889a745e6916957b25e913",
+    "apps/web/src/components/workspace.tsx": "40bcf7f55101570067ce22c7979228f5d57e60336716e78c37e4368b473c2f51",
+    "apps/web/src/components/forms.tsx": "601a2a634b1974d48078c9b6caf7bd270bf8f7e3d31457f5dcce06b658c2f806",
+    "apps/web/src/components/core-workspaces.tsx": "a4c78a283ae160b896d98bd0e2323e515bda25d36bec7164079c2f4067f016bb",
+    "apps/web/src/components/growth.tsx": "60258427c3a5a07bd8b3fd108e6130bf84242f10ab7887a25a38f02e5b61bbba",
+    "apps/web/src/components/portal.tsx": "00ebfd9ad798a081c10f69f6775a37fd4a62d0a3809b878c2dbf3ecf984061ca",
+    "apps/web/src/components/operations.tsx": "d276670b5d06aa8c70311900a4f9d2eeb7cbf66c5f3a86fa8a5480304ee2d9f4",
+    "backend/tests/test_core.py": "47aa522aa6d2647c65a00f3e082c78b7062b426cb988bc9b1c8b0bf879324a95",
+    "tests/fullsystem/test_clinical.py": "bb11eb74b6f64cef4c6eca30e7e2d52d8ad9dc109b1e3640b15ba9f0e50a6314",
+    "tests/fullsystem/test_erp.py": "1679545e8777217e5f9188f88e28f7e2ce8deb119132bf62f7bb973a0545fc35",
+    "backend/tests/test_operations_pg.py": "2817149ffbb37fe6ed3e4ba9ba4d320ed2159fd75164b9bccab57624ab70d3b6"
+  },
+  "observed_execution_artifacts": {
+    "evidence/fullsystem/core-journeys.json": {
+      "sha256": "b5e97be6f761844a5e3db3c50694dc19fcfbdddc2669b983b42afea61e64b2a4",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/clinical-journeys.json": {
+      "sha256": "6ab4c4ea1d564ab54403f7d0f074772317ab46d0f7aecd771646a2f4c05db09f",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/erp-journeys.json": {
+      "sha256": "431d9aee22ef9e81d29c44b995ca5483df3f560346d512a500b8079891ff5125",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/same-origin/result.json": {
+      "sha256": "940de91023e05e0c9878416ce03c2a0b651e0b6f6cce5b72122c8e85a40aaa67",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/browser-preflight.json": {
+      "sha256": "53b6c10329b5dc8d020dfa0c3471b902e268abc3738498153b291751145fb7da",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/baseline/legacy-import-pg.txt": {
+      "sha256": "a522c221cd44feedb0730c85a47df7609f69c446c40d62e92361f306c3efcd62",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/erp-execution.json": {
+      "sha256": "0f78dfe0dfcea12bead11fdd2a83c276e00a5ff43ed156333712952570a94b8f",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/fullsystem/operations-validation.json": {
+      "sha256": "39bc7c28c2571c5b59188f07cf68aadff8d1fdb386f8adefa73fbb1d3331d4ba",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    },
+    "evidence/v0.3/operations/execution.json": {
+      "sha256": "e14ea90d52763091d092a317b782dc868f3bb72ca8acf5e8c09e9a4c82f5908b",
+      "note": "Read actual artifact. See its own assertions, command/runtime and limitations; presence is not all-domain PASS."
+    }
+  },
+  "domains": [
+    {
+      "id": "D01",
+      "name_th": "ทะเบียนและตัวตนผู้ป่วย",
+      "required_level": "L2",
+      "required_api_exact": "GET patients/search/detail; POST patients; PATCH draft/demographics with version; POST verify/activate/inactivate",
+      "required_invariants_exact": "Identifier ที่กำหนดเป็น unique ต้องไม่ซ้ำใน issuer; ห้ามลบผู้ป่วยที่มี encounter; ไม่ merge อัตโนมัติ",
+      "acceptance_case_exact": "สร้างผู้ป่วยสองราย ยืนยันและเปิดแฟ้มได้หลัง restart; identifier ซ้ำต้อง conflict และไม่เขียนครึ่งรายการ",
+      "journeys": [
+        "J01",
+        "J04",
+        "J07",
+        "J10"
+      ],
+      "implemented_subset_observed": "Multi-patient registration/search/detail, unique identifiers, versioned demographics and verify/activate/inactivate; UI now exposes demographic PATCH.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Unique issuer collision rollback and app restart two patients are covered by existing tests/HTTP smoke; browser patient form interactions NOT_RUN."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_03_unique_context_and_immutable_history",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D02",
+      "name_th": "นัดหมาย คิว และความจุบริการ",
+      "required_level": "L2",
+      "required_api_exact": "GET slots/appointments/queues; POST book/reschedule/check-in/call/complete/cancel",
+      "required_invariants_exact": "ตรวจความจุ slot ใน transaction; check-in ซ้ำไม่สร้าง encounter/คิวซ้ำ",
+      "acceptance_case_exact": "ผู้ใช้สองคนจองที่นั่งสุดท้ายพร้อมกัน สำเร็จได้เพียงคนเดียว; check-in แล้วไป OPD ด้วย encounter เดิม",
+      "journeys": [
+        "J01",
+        "J04",
+        "J10"
+      ],
+      "implemented_subset_observed": "Persisted slots, reservation capacity lock, appointment states, atomic check-in encounter/queue and reschedule/cancel forms.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Capacity race/check-in replay have dedicated tests; reschedule/cancel boundary matrix and browser queue interactions not fully evidenced."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_slot_capacity_race_and_idempotent_checkin",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D03",
+      "name_th": "OPD และเวชระเบียนการตรวจ",
+      "required_level": "L2",
+      "required_api_exact": "GET encounters/detail/timeline; POST encounter/start/note/review/complete/close",
+      "required_invariants_exact": "คำวินิจฉัยและแผนเป็นข้อมูลที่บุคลากรกรอก; context ต้องตรงผู้ป่วย; การปิดมีรายการงานค้างให้ยืนยัน",
+      "acceptance_case_exact": "เปิด encounter สองราย บันทึกแยกกัน สั่งตรวจและอ่านผลกลับในแฟ้มที่ถูกต้องหลัง reload",
+      "journeys": [
+        "J01",
+        "J02",
+        "J03",
+        "J08"
+      ],
+      "implemented_subset_observed": "Multi-encounter context, manual document/plan and tasks, versioned status transitions and close guard.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Context mismatch and closed-encounter guards have tests; exact two-encounter manual plan browser acceptance not executed."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_03_unique_context_and_immutable_history",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_09_stale_task_and_document_and_provider_config",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D04",
+      "name_th": "ห้องฉุกเฉิน",
+      "required_level": "L2",
+      "required_api_exact": "GET emergency-board/episode; POST arrival/assessment/update/disposition",
+      "required_invariants_exact": "ระดับ triage และการตัดสินใจเป็น manual; ไม่สร้างคะแนน/diagnosis จาก AI; บันทึกฉบับและผู้ประเมิน",
+      "acceptance_case_exact": "บันทึก triage สังเคราะห์แล้วขอ admit สร้างคำขอ D05 ครั้งเดียว พร้อมประวัติเดิมตรวจย้อนหลังได้",
+      "journeys": [
+        "J04"
+      ],
+      "implemented_subset_observed": "Manual versioned triage/ER record, actor history and admission-request workflow.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Specialist generic state loop covers one flow; dedicated triage revision/admit replay/multiple-record negative tests still required."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D05",
+      "name_th": "ผู้ป่วยใน เตียง และการปิดการรับบริการ",
+      "required_level": "L2",
+      "required_api_exact": "GET beds/admissions; POST admit/transfer/discharge-ready/discharge",
+      "required_invariants_exact": "เตียงมี active assignment ได้หนึ่งรายการ; ย้าย/จำหน่ายและคืนเตียงเป็น transaction; ห้ามรีเซ็ต encounter เก่า",
+      "acceptance_case_exact": "admit แข่งกันใช้เตียงเดียวต้องสำเร็จหนึ่งราย; ย้ายเตียงแล้วเตียงเก่าว่างและประวัติยังครบ",
+      "journeys": [
+        "J04"
+      ],
+      "implemented_subset_observed": "Admission, active bed allocation, transactional transfer/release and discharge follow-up linkage.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Occupied-bed conflict tested sequentially; true concurrent last-bed reservation acceptance not found in test definitions reviewed."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j04_admission_transfer_handover_discharge_followup",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D06",
+      "name_th": "งานพยาบาลและการส่งเวร",
+      "required_level": "L2",
+      "required_api_exact": "GET nursing-worklist/handover; POST care-task/complete/handover/sign/acknowledge/amend",
+      "required_invariants_exact": "รับเวรต้องเป็นผู้มีสิทธิ์; ฉบับลงนามคงเดิมและ amendment มีเหตุผล; ไม่ถือ task complete เท่ากับให้ยา",
+      "acceptance_case_exact": "พยาบาลเวรแรกส่งงานค้าง เวรถัดไปรับทราบแล้วเห็นงานเดิม ไม่มี task หายหรือถูกทำซ้ำ",
+      "journeys": [
+        "J04"
+      ],
+      "implemented_subset_observed": "Assigned recipient nursing handover with real shared task references, signatures, acknowledgement and amendment history.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J04 links real pending task and discharge; complete recipient/wrong actor/amendment negative matrix not demonstrated independently."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j04_admission_transfer_handover_discharge_followup",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D07",
+      "name_th": "คำสั่งแพทย์และการจัดการคำสั่ง",
+      "required_level": "L2",
+      "required_api_exact": "GET orders/catalog/status; POST draft/sign/acknowledge/start/complete/cancel",
+      "required_invariants_exact": "ไม่คำนวณขนาดยา/ข้อบ่งชี้อัตโนมัติ; signed order แก้ด้วย revision; ปลายทางตรวจ cancellation/version",
+      "acceptance_case_exact": "ลงคำสั่งแล็บและยาแล้วเกิด worklist ที่ถูกประเภท; retry ไม่สร้างคำสั่งซ้ำและยกเลิกตรวจย้อนหลังได้",
+      "journeys": [
+        "J02",
+        "J03",
+        "J08"
+      ],
+      "implemented_subset_observed": "Signed manual orders, versioned revision/cancellation, type-specific downstream task and state guards; rehab kind added.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Dedicated signed revision/cancel tests present; browser signed-order edit and rehab creation require execution."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_08_order_lifecycle_and_versioned_revision",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_order_cancel_blocks_downstream_action",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D08",
+      "name_th": "เภสัชกรรมและการจ่ายยา",
+      "required_level": "L2",
+      "required_api_exact": "GET pharmacy-queue/dispense/eligible-lots; POST review/prepare/dispense/return",
+      "required_invariants_exact": "ตรวจยาด้วยผู้มีสิทธิ์; ไม่แนะนำ dose; quantity/lot/stock/charge ผูก transaction และห้ามติดลบ; การคืนสร้างรายการใหม่ผูก dispense line เดิม โดยยอดคืนสะสมไม่เกินยอดจ่ายที่ยังคืนได้; disposition ของยาคืนต้องมีผู้ตรวจและไม่เพิ่ม available stock อัตโนมัติ",
+      "acceptance_case_exact": "จ่ายจาก lot สังเคราะห์แล้ว stock ลด/charge เพิ่มครั้งเดียว; คืนอ้างอิงรายการเดิมและมี audit; ส่งคืนซ้ำหรือเกินยอดต้องถูกปฏิเสธ และของที่ยังไม่ผ่าน disposition ไม่กลับเข้า available stock",
+      "journeys": [
+        "J03"
+      ],
+      "implemented_subset_observed": "Pharmacist review, explicit item/lot/order version, atomic dispense stock/charge, retry replay and bounded quarantined return.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J03 and wrong-lot/stale-order tests cover main transaction; no clinical appropriateness or external pharmacy validation is claimed."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j03_dispense_retry_return_and_conservation",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_wrong_lot_item_and_stale_order_refuse_dispense",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D09",
+      "name_th": "การให้ยา ณ จุดดูแล",
+      "required_level": "L2",
+      "required_api_exact": "GET mar/tasks/history; POST verify/administer/hold/not-given/correct",
+      "required_invariants_exact": "กรอก dose/time/route ตามคำสั่งด้วยคน; ไม่แปลงหน่วยหรือคำนวณยาอัตโนมัติ; event ซ้ำต้องป้องกัน",
+      "acceptance_case_exact": "บันทึกให้ยาหนึ่งครั้งแล้วส่งซ้ำไม่เพิ่ม event; รายการงดต้องมีเหตุผลและไม่แสดงว่า administered",
+      "journeys": [],
+      "implemented_subset_observed": "Manual dose/route/time matched to reviewed medication; scheduled/verified/held/not-given/administered events and immutable correction.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Dedicated duplicate/held/correction tests present; bedside identity/dose clinical effectiveness not evaluated."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_mar_duplicate_hold_and_invalid_transition",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_mar_administration_exactly_once_then_immutable_correction",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D10",
+      "name_th": "ห้องปฏิบัติการและผลวิกฤต",
+      "required_level": "L2",
+      "required_api_exact": "GET lab-worklist/specimens/results; POST collect/receive/enter-result/verify/release/correct",
+      "required_invariants_exact": "ผล/หน่วย/reference เป็นข้อมูล manual; release ต้องตรวจสิทธิ์และ version; corrected result เก็บฉบับเดิม",
+      "acceptance_case_exact": "กรอกผล synthetic และ release แล้ว OPD เห็นผลของ encounter นั้น; correction แสดงทั้งฉบับเก่าและใหม่",
+      "journeys": [
+        "J02",
+        "J10"
+      ],
+      "implemented_subset_observed": "Lab order/worklist, manual result/unit/reference, human release, retained correction history and clinician acknowledgement.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J02 covers role release, two revisions and acknowledgement; analyzer integration remains NOT_CONNECTED."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j02_lab_revisions_authority_and_acknowledgement",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D11",
+      "name_th": "รังสี RIS และภาพทางการแพทย์",
+      "required_level": "L2",
+      "required_api_exact": "GET imaging-worklist/studies/files; POST schedule/upload/report/verify/release/amend",
+      "required_invariants_exact": "ไฟล์ allowlist/size/hash และ ownership ตรวจจริง; ไม่อ้าง PACS/DICOM conformance หรือวินิจฉัยจากภาพ",
+      "acceptance_case_exact": "แนบภาพสังเคราะห์กับ study แล้วเปิดจากแฟ้มถูกคน; release report ตามสิทธิ์และเข้าถึงไฟล์ข้ามคนไม่ได้",
+      "journeys": [
+        "J08",
+        "J10"
+      ],
+      "implemented_subset_observed": "Imaging order, synthetic allowlisted file/checksum, asset link, human report verification/release, portal publication and amendment.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J08 uses actual synthetic file/HTTP/manual report/mock proposal/referral; added asset availability boundary requires fresh evidence."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j08_imaging_file_report_referral_and_cross_patient_denial",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D12",
+      "name_th": "ห้องผ่าตัดและวิสัญญี",
+      "required_level": "L2",
+      "required_api_exact": "GET or-calendar/cases/checklists; POST schedule/check/record/close/cancel",
+      "required_invariants_exact": "ไม่ให้ dose/วิสัญญี recommendation; ห้อง/เวลาไม่ชน; checklist verification ต้องมี actor จริง",
+      "acceptance_case_exact": "จองห้องแล้วตรวจ checklist และปิด case เก็บเอกสารครบ; การจองชนกันถูกปฏิเสธ",
+      "journeys": [],
+      "implemented_subset_observed": "Procedure room/time scheduling, explicit checklist actor, manual anesthesia record, asset/CSSD links and availability recheck.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Dedicated room overlap and concurrent room booking test not found at snapshot; added asset/CSSD start guards need negative execution."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D13",
+      "name_th": "ICU และข้อมูลจากอุปกรณ์",
+      "required_level": "L2",
+      "required_api_exact": "GET icu-board/observations/rounds; POST observation/round/review/sign/amend",
+      "required_invariants_exact": "บันทึกค่าและหน่วยที่คนกรอก; ไม่สร้าง alarm/คะแนนวิกฤต/ตั้งอุปกรณ์อัตโนมัติ",
+      "acceptance_case_exact": "บันทึกหลายเวลาของผู้ป่วยสองคนแล้ว timeline ไม่ปน; แก้ค่าที่ลงนามต้องเป็นฉบับใหม่",
+      "journeys": [],
+      "implemented_subset_observed": "Manual ICU observations linked admission/encounter, timestamp/value/unit, round review/sign/amendment and optional asset reference.",
+      "implementation_limitations": [
+        "Optional asset reference is implemented; dedicated episode/device assignment lifecycle from principal entity DeviceAssignment is not separately modelled."
+      ],
+      "acceptance_evidence_limits": [
+        "Generic specialist loop does not prove required two patients/multiple chronological observations; asset reference alone is not a full device-assignment workflow."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D14",
+      "name_th": "สูติกรรม มารดา และทารกแรกเกิด",
+      "required_level": "L2",
+      "required_api_exact": "GET pregnancies/deliveries/links; POST episode/delivery/verify-link/close",
+      "required_invariants_exact": "อายุครรภ์/ผลการคลอดเป็น manual; การสร้างทารกและ link ต้อง atomic และ retry ไม่เพิ่มตัวตนซ้ำ",
+      "acceptance_case_exact": "บันทึกคลอดสังเคราะห์แล้วลงทะเบียนทารกหนึ่งราย ลิงก์แม่–ลูกคงอยู่หลัง restart และส่งซ้ำไม่สร้างลูกซ้ำ",
+      "journeys": [],
+      "implemented_subset_observed": "Pregnancy episode, human delivery documentation, atomic linked newborn Patient/identifier and event history.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Generic specialist loop does not prove same-key delivery retry produces exactly one newborn and one maternal link."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D15",
+      "name_th": "กุมารเวชกรรมและการเติบโต",
+      "required_level": "L2",
+      "required_api_exact": "GET child-history/growth/immunizations; POST measurements/records/review/close/amend",
+      "required_invariants_exact": "เก็บค่าดิบ/หน่วยและแสดงกราฟตามเวลา; ไม่คำนวณ dose/percentile หรือแนะนำวัคซีนโดยโมเดล",
+      "acceptance_case_exact": "เพิ่ม measurement ต่างวันแล้วกราฟ/history ใช้ค่าจริงจากฐาน; ฉบับแก้และผู้แก้ตรวจย้อนหลังได้",
+      "journeys": [],
+      "implemented_subset_observed": "Persisted growth observations, patient/time/unit-based UI plot and immutable amendment; manual vaccine item/lot records newly added.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Generic specialist loop does not prove two measurement dates across two patients or browser plot source; newly added immunization actions need execution."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D16",
+      "name_th": "เวชศาสตร์ฟื้นฟูและกายภาพบำบัด",
+      "required_level": "L2",
+      "required_api_exact": "GET referrals/plans/sessions; POST assess/plan/schedule/session/review/complete",
+      "required_invariants_exact": "เป้าหมาย/แบบประเมินกรอกโดยคน; แผนมีรุ่นและผู้รับผิดชอบ; ไม่อ้างผลการรักษาจาก mock",
+      "acceptance_case_exact": "รับ referral จัดสาม session บันทึกผลแต่ละครั้งแล้วปิดแผนโดยไม่ลบ progress เดิม",
+      "journeys": [],
+      "implemented_subset_observed": "Signed rehab order, human assessment/plan, slot-backed appointments and scheduled sessions, separate unique progress, completion guard.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "New scheduled-session/order linkage code replaced prior unscheduled progress loop; fresh three-session appointment/progress acceptance required."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D17",
+      "name_th": "ทันตกรรมและคลินิกเฉพาะทาง",
+      "required_level": "L2",
+      "required_api_exact": "GET specialty-visits/charts/plans; POST finding/plan/schedule/perform/verify/close",
+      "required_invariants_exact": "ตำแหน่งและหัตถการเลือกด้วยคน; ไม่ทำ diagnosis/plan อัตโนมัติ; chart edits มี version",
+      "acceptance_case_exact": "บันทึกคนละตำแหน่งในสอง visit แล้วเปิด chart ย้อนหลังถูกฉบับ และค่าบริการผูก procedure ถูกตัว",
+      "journeys": [],
+      "implemented_subset_observed": "Patient/encounter/tooth-specific findings and manual procedure lifecycle; performed action creates linked charge.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Generic specialist loop does not prove two tooth positions across two visits and per-procedure charge source integrity."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D18",
+      "name_th": "ธนาคารเลือดและการให้เลือด",
+      "required_level": "L2",
+      "required_api_exact": "GET requests/units/trace; POST review/reserve/manual-verification/release/record-event",
+      "required_invariants_exact": "ห้ามคำนวณ blood compatibility หรือปล่อยจาก AI; unit จองซ้อนไม่ได้; verification ผูก patient/request/unit revision และหลักฐานของผู้ตรวจ; ก่อน release ตรวจ expiry/quarantine/recall flags ที่บันทึกไว้และ eligibility ตาม policy โดย transaction เดียวกัน; ถ้าข้อมูลที่ใช้ยืนยันเปลี่ยนต้องตรวจใหม่",
+      "acceptance_case_exact": "จอง unit เดียวพร้อมกันต้องได้หนึ่งคำขอ; ผู้ตรวจยืนยันแล้วปล่อยและตามกลับผู้รับ/lot ได้; ถ้า unit หมดอายุ ถูก quarantine/recall หรือ revision เปลี่ยนหลัง verification ต้อง release ไม่ได้และไม่มี partial write",
+      "journeys": [],
+      "implemented_subset_observed": "Locked single-unit reservation, manual compatibility evidence hash bound patient/request/unit revisions, rechecked expiry/eligibility and human release.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Eligibility/patient revision and expiry guards tested; true concurrent same-unit reservation test not found at snapshot."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_blood_revision_and_eligibility_binding",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_blood_success_patient_revision_and_expiry_guards",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D19",
+      "name_th": "โภชนาการและอาหารผู้ป่วย",
+      "required_level": "L2",
+      "required_api_exact": "GET diet-orders/meal-rounds; POST order/review/prepare/deliver/cancel",
+      "required_invariants_exact": "ข้อจำกัดและอาหารเป็น manual; แสดงข้อมูลแพ้ที่บันทึกไว้โดยไม่แนะนำอาหารเอง; รอบส่งมี unique key",
+      "acceptance_case_exact": "เปลี่ยน diet ก่อนรอบเตรียมแล้วครัวเห็นฉบับล่าสุด; ยืนยันส่งซ้ำไม่เพิ่มมื้อและรายการยกเลิกไม่ถูกเตรียม",
+      "journeys": [],
+      "implemented_subset_observed": "Manual diet/allergy order, preparation/delivery states, versioned revision and meal-period uniqueness.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Generic specialist loop does not independently prove concurrent duplicate meal-period rejection and revision-before-preparation behavior."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D20",
+      "name_th": "การส่งต่อและการติดตามผล",
+      "required_level": "L2",
+      "required_api_exact": "GET referrals/detail/export-status; POST draft/review/export/record-response/close",
+      "required_invariants_exact": "exported ไม่เท่ากับ remote received; response manual ต้องมีแหล่ง/ผู้บันทึก; ไม่ส่งข้อความนอกระบบเอง",
+      "acceptance_case_exact": "สร้าง referral packet จากฉบับเอกสารที่เลือก ดาวน์โหลดได้และสถานะยังแสดงว่ายังไม่ยืนยันการรับจากภายนอก",
+      "journeys": [
+        "J04",
+        "J08",
+        "J10"
+      ],
+      "implemented_subset_observed": "Referral packet binds selected document revision; download and response evidence distinguish local/manual from external receipt.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J08 confirms revision-bound local referral and false external receipt; real receiving facility interoperability NOT_CONNECTED."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j08_imaging_file_report_referral_and_cross_patient_denial",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D21",
+      "name_th": "พอร์ทัลและการเข้าถึงของผู้ป่วย",
+      "required_level": "L2",
+      "required_api_exact": "GET portal/me/own-records/released-results/appointments; POST own-request/cancel/correction",
+      "required_invariants_exact": "patient_id มาจาก session/link ที่เจ้าหน้าที่รับรอง ไม่เชื่อ request parameter; อ่านเฉพาะของตนและข้อมูลที่ release แล้ว",
+      "acceptance_case_exact": "portal user A เห็นผลของ A และขอนัดได้; เปลี่ยน URL/id เป็นผู้ป่วย B ต้อง 403/404 โดยไม่เปิดข้อมูล",
+      "journeys": [
+        "J10"
+      ],
+      "implemented_subset_observed": "Server-linked patient identity, own published encounters/results, appointment requests/cancel; document correction requests now link released revision and staff task.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Owner/published-result isolation and appointment J10 tested; newly added correction request/task/no-overwrite flow needs fresh acceptance."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j10_portal_owner_request_staff_booking_and_release",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_portal_results_never_leak_other_patient_or_unreleased",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D22",
+      "name_th": "เวชระเบียน เอกสาร และการลงนาม",
+      "required_level": "L2",
+      "required_api_exact": "GET documents/versions/attachments; POST draft/review/return/attest/amend",
+      "required_invariants_exact": "ฉบับรับรองห้าม overwrite; actor/version/hash binding; attestation ภายในไม่อ้าง qualified digital signature",
+      "acceptance_case_exact": "รับรอง v1 แล้วแก้ไขต้องเกิด amendment/v2; อ่าน hash/ผู้รับรอง/เหตุผลย้อนหลังได้ครบ",
+      "journeys": [
+        "J01",
+        "J02",
+        "J05",
+        "J08"
+      ],
+      "implemented_subset_observed": "Versioned document content/hash, explicit attestation and amendment reason; UI now fetches and displays historical versions.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Immutable history/hash and attestation tests present; newly exposed old content/reason UI needs browser execution."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_03_unique_context_and_immutable_history",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_11_sensitive_document_content_and_denials_audited",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D23",
+      "name_th": "ค่าบริการ ราคา และสิทธิการรักษา",
+      "required_level": "L2",
+      "required_api_exact": "GET prices/coverage/charges/bills; POST price-version/charge/reprice-draft/review/invoice/adjust",
+      "required_invariants_exact": "Decimal amount/currency; issued bill ไม่ถูกเปลี่ยนย้อนหลังจากราคาใหม่; source charge/idempotency ป้องกันซ้ำ; adjustment/credit เป็น record ใหม่อ้าง invoice/charge เดิมพร้อมเหตุผล ผู้อนุมัติ และผลต่อ receivable โดยไม่ overwrite posted lines",
+      "acceptance_case_exact": "ออกบิลด้วยราคา v1 แล้วเปิดราคา v2 บิลเก่ายังยอดเดิม; source event ซ้ำไม่เพิ่ม charge; credit/adjustment มี reference และยอดของตน โดยต้นฉบับยังอ่านได้และ retry ไม่ลงซ้ำ",
+      "journeys": [
+        "J03",
+        "J05"
+      ],
+      "implemented_subset_observed": "Price-version snapshots, deduplicated source charges, decimal invoices/adjustments and distinct amounts.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J05 financial invariants and correction test present; full historical price-change/invoice display browser acceptance not run."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_adjustment_original_and_cost_reversal",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D24",
+      "name_th": "เคลม ลูกหนี้ และการกระทบยอดเงินชดเชย",
+      "required_level": "L2",
+      "required_api_exact": "GET claims/validation/adjudications; POST draft/validate/export/simulate-submit/import-remittance/reconcile",
+      "required_invariants_exact": "billed/submitted/approved/gross_received/refunded/net_received เป็นคนละค่าและหลักฐาน; imported approval ไม่ลง cash received; external acknowledgement ห้ามปลอม",
+      "acceptance_case_exact": "บิล 1000 ส่งเคลมจำลองแล้ว remittance อนุมัติ 800: แสดง billed=1000/approved=800/gross_received=0/refunded=0/net_received=0 จนมี D25 receipt; import ซ้ำไม่เพิ่มยอด",
+      "journeys": [
+        "J05"
+      ],
+      "implemented_subset_observed": "Claim lines/export/local submission/adjudication/reconciliation with billed/submitted/approved separate from receipts.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J05 separates billed1000/approved800/cash; actual payer format/submission/receipt not verified."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D25",
+      "name_th": "บัญชี การเงิน การรับชำระและคืนเงิน",
+      "required_level": "L2",
+      "required_api_exact": "GET balances/receipts/ledger; POST receive/allocate/review/post/refund-request/approve/refund/reverse",
+      "required_invariants_exact": "balanced Decimal journal; posted rows immutable; refund/reversal เป็น record แยกอ้างต้นทางและยอดคืนสะสมไม่เกินยอดที่คืนได้; retry ไม่รับหรือคืนเงินซ้ำ; แยก gross_received, refunded และ net_received พร้อม payment allocations",
+      "acceptance_case_exact": "รับ 800 ผูกเคลมเดิม แล้วคืน 100 ผ่านผู้อนุมัติ: gross_received=800, refunded=100, net_received=700 พร้อม journal สมดุลและ refund record อ้าง receipt เดิม; retry ไม่ลงซ้ำ",
+      "journeys": [
+        "J05",
+        "J06"
+      ],
+      "implemented_subset_observed": "Receipt allocation, balanced append-only journal, independent bounded refund/reversal and exactly-once command replay.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J05 and database immutability tests cover money/retry; no bank/real payment integration or accounting policy validation claimed."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_database_immutable_financial_and_balanced_journal",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D26",
+      "name_th": "ต้นทุนบริการ งบประมาณ และการวิเคราะห์ทรัพยากร",
+      "required_level": "L2",
+      "required_api_exact": "GET budgets/cost-lines/variance; POST budget-version/cost-entry/allocation/review/post/reverse",
+      "required_invariants_exact": "billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost แยกคอลัมน์; allocation มีวิธี/รุ่น; ไม่ตีความยอดอนุมัติเป็นเงินรับหรือกำไร",
+      "acceptance_case_exact": "ใช้วัสดุต้นทุน 200 และค่าแรงที่กรอก 100: cost=300 แยกจาก billed=1000, approved=800, gross_received=800, refunded=100 และ net_received=700 พร้อม source links; outstanding อิง receivable allocations/adjustments ที่กำหนด ไม่อนุมานจาก refund เพียงค่าเดียว",
+      "journeys": [
+        "J05",
+        "J06"
+      ],
+      "implemented_subset_observed": "Cost entries/method version and reversal; departmental budget review/post/reverse and period variance endpoint newly added.",
+      "implementation_limitations": [
+        "Variance policy uses recorded departmental cost creation year/month; configurable cost allocation methodology remains authored manual subset, not validated hospital allocation policy."
+      ],
+      "acceptance_evidence_limits": [
+        "New budget review/variance test definition present; independent allocation-method correctness and browser variance view require acceptance."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_budget_review_post_and_period_variance",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_adjustment_original_and_cost_reversal",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D27",
+      "name_th": "จัดซื้อ สัญญา รับพัสดุ และเจ้าหนี้",
+      "required_level": "L2",
+      "required_api_exact": "GET suppliers/requests/orders/receipts; POST request/approve/po/receive/verify-invoice/close",
+      "required_invariants_exact": "quantity/price snapshot; รับซ้ำตาม receipt key ไม่ได้; inventory receipt และ payable ผูกกันโดยไม่สร้างเงินจริงหรือส่ง PO ภายนอกเอง; การแก้ receipt ที่ post แล้วใช้ correction/return record อ้างต้นทางและกติกาปริมาณสะสมของ D28 ไม่เขียนทับจำนวนรับเดิม",
+      "acceptance_case_exact": "รับของบางส่วนแล้วครบ สต็อกเพิ่มตามรับจริงและ AP ตรง invoice; replay receipt ไม่เพิ่มของซ้ำ",
+      "journeys": [
+        "J06"
+      ],
+      "implemented_subset_observed": "Purchase requests/independent approval, versioned lines, partial goods receipt and linked stock/obligation, supplier return.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J06 partial4+6 receipt/obligation/return covered; remote supplier integration NOT_CONNECTED."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J06_procurement_partial_receipt_stock_return",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D28",
+      "name_th": "คลังยา เวชภัณฑ์ และห่วงโซ่อุปทาน",
+      "required_level": "L2",
+      "required_api_exact": "GET stock/lots/movements/counts; POST receive/reserve/issue/transfer/return/count/approve-adjustment/reverse",
+      "required_invariants_exact": "ledger/ยอดคงเหลือตรงกัน; no negative stock; หน่วย/ต้นทุน/lot ชัดเจน; lock/version ป้องกัน concurrent issue; posted movement immutable; return/reversal สร้างรายการใหม่อ้าง movement เดิม จำกัดยอดสะสมตามจำนวนที่ยังคืน/กลับรายการได้ และตรวจ disposition ก่อนกลับเป็น available",
+      "acceptance_case_exact": "จ่ายของชิ้นสุดท้ายพร้อมกันสำเร็จหนึ่งคำสั่ง; โอนระหว่างคลังแล้วผลรวมคงเดิมและตาม lot ได้; return/reversal ซ้ำหรือเกินยอดเดิมถูกปฏิเสธโดย posted movement เดิมคงอยู่",
+      "journeys": [
+        "J03",
+        "J06"
+      ],
+      "implemented_subset_observed": "Stock ledger/location/lot balance, atomic issue/transfer/quarantine return, reservations/counts and independently approved count adjustment.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Dedicated actual concurrent last-unit test and reservation/count validation present; full physical count policy is authored synthetic only."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J06_procurement_partial_receipt_stock_return",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_stock_last_unit_concurrent_and_quarantine",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_reservation_count_and_zero_validation",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D29",
+      "name_th": "ครุภัณฑ์และวิศวกรรมการแพทย์",
+      "required_level": "L2",
+      "required_api_exact": "GET assets/maintenance/history; POST asset/schedule/start/record/verify/release/retire",
+      "required_invariants_exact": "งานซ่อมยังไม่ verify ห้ามกลับ in_service; user มีสิทธิ์ปล่อย; ไม่ควบคุมเครื่องมือแพทย์จริง",
+      "acceptance_case_exact": "เปิดซ่อมเครื่องสังเคราะห์แล้วห้องตรวจเห็น unavailable; ผู้ตรวจปล่อยแล้วจึงจองใช้งานได้",
+      "journeys": [
+        "J09"
+      ],
+      "implemented_subset_observed": "Asset record and maintenance/verification workflow, in-service gating; downstream imaging/procedure/ICU use now rechecks availability.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J09 maintenance state lifecycle tested; newly linked clinical booking/use unavailable-asset negative test needs fresh result."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D30",
+      "name_th": "บุคลากร ตารางเวร และสมรรถนะ",
+      "required_level": "L2",
+      "required_api_exact": "GET staff/credentials/rosters; POST staff/credential-review/roster/validate/publish/acknowledge/revise",
+      "required_invariants_exact": "ไม่ลงเวรชนเวลาตามกติกาที่ตั้ง; published roster มี version; credential ระงับต้องมีผลต่อ privilege ที่ผูกไว้",
+      "acceptance_case_exact": "เผยแพร่เวรและพนักงานรับทราบ; ระงับ credential แล้วคำสั่งที่ต้องใช้ privilege นั้นถูกปฏิเสธและ audit",
+      "journeys": [
+        "J07",
+        "J09"
+      ],
+      "implemented_subset_observed": "Staff credential/roster versions and acknowledgements, time clash checks and suspension filtering; nurse/staff limited to own roster acknowledgement.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Actual ERP13-test run covers nurse review denial, own roster acknowledgement and credential suspend/restore; browser roster workflow NOT_RUN."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_D30_roster_and_credential",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D31",
+      "name_th": "CSSD ซักฟอก อาคาร และบริการสนับสนุน",
+      "required_level": "L2",
+      "required_api_exact": "GET cycles/sets/linen/work-orders; POST cycle/evidence/quarantine/release; POST linen-issue/return; POST facility-assign/verify-close",
+      "required_invariants_exact": "ไม่ตัดสิน sterility อัตโนมัติ; release โดยคนมีหลักฐาน; linen issued→returned→reconciled และ facility opened→assigned→verified→closed ต้องแยก state",
+      "acceptance_case_exact": "cycle ที่ถูก quarantine ห้ามส่งชุดให้ห้องผ่าตัด; ชุด released ตามกลับ cycle ได้ และการคืนผ้าไม่เปลี่ยนสถานะเครื่องมือ",
+      "journeys": [
+        "J09"
+      ],
+      "implemented_subset_observed": "Separate CSSD, linen and facility maintenance state machines, manual release/verification; procedure links released CSSD cycle.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J09 verifies separated state machines; new quarantine-to-OR use denial needs dedicated execution."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D32",
+      "name_th": "คุณภาพ ความเสี่ยง และการควบคุมการติดเชื้อ",
+      "required_level": "L2",
+      "required_api_exact": "GET incidents/capa/restricted-detail; POST report/triage/investigate/assign/evidence/review/close",
+      "required_invariants_exact": "reporter identity จำกัดสิทธิ์; classification/ติดเชื้อยืนยันด้วยคน; ปิด CAPA ต้องมีผู้ตรวจและ evidence",
+      "acceptance_case_exact": "รายงานเหตุแล้วส่ง CAPA ผู้รับผิดชอบแนบหลักฐาน ผู้ตรวจปิด; ผู้ไม่มีสิทธิ์อ่านชื่อผู้รายงานไม่ได้",
+      "journeys": [
+        "J09"
+      ],
+      "implemented_subset_observed": "Restricted incident report, human classification, CAPA owner/evidence and independent closure.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "J09 independent closure present; reporter confidentiality across all list/detail/audit surfaces requires broader adversarial validation."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D33",
+      "name_th": "รายงานสาธารณสุขและข้อมูลระดับเครือข่าย",
+      "required_level": "L2",
+      "required_api_exact": "GET reports/definitions/lineage/errors; POST generate/review/export/correction/record-ack",
+      "required_invariants_exact": "missing≠zero; นิยามและ sourceversion ต้องตามได้; exported ไม่แปลว่าหน่วยรับยอมรับ; ไม่อ้างมาตรฐานไทยที่ยังไม่ตรวจ",
+      "acceptance_case_exact": "สร้างรายงานยอดจาก encounters แล้วตามทุกรายการกลับต้นทางได้; correction สร้าง batch ใหม่ไม่เขียนทับที่ export แล้ว",
+      "journeys": [
+        "J09"
+      ],
+      "implemented_subset_observed": "Versioned local report definition, period actual-encounter aggregation, lineage and correction/export; manual/local acknowledgement records newly added.",
+      "implementation_limitations": [
+        "Only encounters-by-status-v1 local definition is implemented; national reporting schemas and submissions remain NOT_VERIFIED, intentionally separate from local workflow."
+      ],
+      "acceptance_evidence_limits": [
+        "Actual ERP13-test run covers J09 lineage/correction and explicitly local acknowledgement. Official reporting standard NOT_VERIFIED; browser export NOT_RUN."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D34",
+      "name_th": "ตัวตนผู้ใช้งาน สิทธิ และการตรวจสอบการเข้าถึง",
+      "required_level": "L2",
+      "required_api_exact": "POST auth/login/logout/revoke; GET auth/me/users/roles/sessions; POST user/role-grant/suspend; server authorization ทุก write/read",
+      "required_invariants_exact": "session จริงไม่ใช่ public demo token; password hash/secure cookie/CSRF ตามวิธี auth; scope enforcement ฝั่ง server; session state active→revoked/expired แยกบัญชี",
+      "acceptance_case_exact": "login ถูก/ผิด,logout,หมดอายุและถอนสิทธิ์ต้องมีผลจริง; ผู้ใช้ต่าง patient/organization อ่านหรือเขียนข้าม scope ไม่ได้",
+      "journeys": [
+        "J01",
+        "J07",
+        "J10"
+      ],
+      "implemented_subset_observed": "Database users/roles/memberships, password hash, server cookie sessions/CSRF/logout/expiry/revocation, care/portal/org/facility scope and server audit.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Auth/revocation/facility replay/commit failure/session cache tests present; browser lifecycle NOT_RUN and deployment hardening is separate."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_02_auth_and_scope",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_05_j07_revocation_scope_switch_and_replay",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_10_seed_does_not_restore_revoked_permissions",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_11_sensitive_document_content_and_denials_audited",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_12_commit_failure_never_returns_success",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_13_cached_session_revocation_revalidated",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_15_expiry_and_foreign_keys",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D35",
+      "name_th": "การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน",
+      "required_level": "L2",
+      "required_api_exact": "GET inbox/outbox/errors/attempts; POST validate/accept/enqueue/local-deliver/retry/reconcile",
+      "required_invariants_exact": "duplicate/out-of-order ตรวจจริง; local/simulated ack แยก external verified; ไม่เปลี่ยนเป็น sent/received ภายนอกเมื่อไม่มี endpoint",
+      "acceptance_case_exact": "ส่ง synthetic message ซ้ำสองครั้งเกิด domain transaction ครั้งเดียว; schema ผิดเข้าคิว error และ retry เก็บ attempt เดิมครบ",
+      "journeys": [
+        "J05",
+        "J08"
+      ],
+      "implemented_subset_observed": "Contract/schema validation, dedup/out-of-order guard, durable attempts/retry; local delivery now creates unique receipt and reconciliation task atomically.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Dedicated local receipt+reconciliation exactly-once test definition present; no remote delivery effectiveness claim."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_D35_message_dedup_order_and_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_local_delivery_creates_single_reconciliation_transaction",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D36",
+      "name_th": "คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง",
+      "required_level": "L2",
+      "required_api_exact": "GET datasets/preview/lineage/access; POST cohort/approve/freeze/export/revoke",
+      "required_invariants_exact": "ไม่รัน SQL อิสระจาก LLM; scope และ export permissions; patient ไม่ข้าม train/test; revoked ไม่อ้างว่าเรียกคืนไฟล์ที่ download ไปแล้ว",
+      "acceptance_case_exact": "freeze cohort แล้วเปลี่ยน source ข้อมูล snapshot เดิมยังทำซ้ำได้; split ไม่มี patient ซ้ำข้ามชุดและ unauthorized export ถูกปฏิเสธ",
+      "journeys": [],
+      "implemented_subset_observed": "Allowlisted cohort, frozen version/snapshot and lineage/patient split; metadata-only GET, explicit export and revocation; per-user dataset access newly added.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Actual ERP13-test run covers frozen snapshot, metadata-only GET, per-user grant/revoke and revoked dataset export. Browser evidence NOT_RUN."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_D36_snapshot_export_and_revoke",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D37",
+      "name_th": "AI และระบบช่วยตัดสินใจ",
+      "required_level": "L2",
+      "required_api_exact": "GET tasks/runs/evidence/proposals/models; POST propose/edit/review/commit; GET policy/capability/evaluation status",
+      "required_invariants_exact": "แก้ไขสร้าง version ใหม่ใน pending ไม่ใช้ approval เดิม; approval ผูก version/hash/evidence; fail/timeout/abstain อยู่ denominator; explicit mock และ no live fallback; ไม่มี autonomous clinical write",
+      "acceptance_case_exact": "แก้ proposal แล้ว approval เดิมใช้ไม่ได้; retry commit ไม่ซ้ำ; failed attempt ไม่มี proposal สำเร็จแอบแทรกและตรวจ reason ได้",
+      "journeys": [
+        "J01",
+        "J08"
+      ],
+      "implemented_subset_observed": "Explicit mock proposal/evidence with editable immutable revisions, bound human approval, stale/context checks, atomic commit/result/audit and idempotency; failure/timeout/abstention retention.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Concurrency, approval edit-binding, failure denominators and mock provider config tests present; all real providers/checkpoints and clinical effectiveness NOT_RUN."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_04_failure_denominators_and_task_boundary",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_06_concurrent_commit_atomicity",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_09_stale_task_and_document_and_provider_config",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_14_different_keys_commit_once",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    },
+    {
+      "id": "D38",
+      "name_th": "การเดินระบบ ความต่อเนื่อง และการกู้คืน",
+      "required_level": "L2",
+      "required_api_exact": "GET health/ready/jobs/migrations/backups; POST local-backup/isolated-restore/verify via allowlisted job runner; CLI migration จริง",
+      "required_invariants_exact": "ห้ามปุ่ม success ปลอม; command allowlist และ admin permission; restore เฉพาะ isolated DB ไม่ทับฐานใช้งาน; ครอบคลุม DB+files+manifest",
+      "acceptance_case_exact": "สร้าง backup จาก PostgreSQL จริงแล้ว restore ลงฐานทดสอบแยก ตรวจ row counts/FKs/hashes/เอกสารและ audit ผ่านก่อนแสดง verified",
+      "journeys": [
+        "J09"
+      ],
+      "implemented_subset_observed": "Real PostgreSQL dump plus referenced file/hash manifests, isolated restore and FK/row/file verification, durable jobs/recovery; server-only platform allowlist guards global snapshot and redacts ordinary scoped readers.",
+      "implementation_limitations": [],
+      "acceptance_evidence_limits": [
+        "Actual11 PostgreSQL tests PASS include server allowlist/revocation/redaction plus real backup/restore.6 launcher tests PASS. Docker and PowerShell execution NOT_RUN."
+      ],
+      "known_test_definitions": [
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_01_backup_restore_rows_files_and_foreign_keys",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_02_missing_referenced_file_fails_backup",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_03_tamper_blocks_restore",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_04_path_traversal_rejected",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_05_auditor_cannot_schedule_job",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_06_real_job_and_idempotent_replay",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_07_queued_and_interrupted_job_recovery",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_08_row_fingerprints_normalize_session_timezone",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_09_worker_rechecks_revoked_permission",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_10_scoped_role_cannot_grant_global_backup_access",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_11_reader_receives_no_global_file_references",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "verified_level": null,
+      "verification_assessment": "PERSISTED_CODE_PRESENT_REVIEWED; acceptance limited to cited tests/receipts, final run required after concurrent changes",
+      "browser_status": "NOT_RUN"
+    }
+  ]
+}

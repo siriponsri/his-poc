@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:review_response",
+  "title": "review_response",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "review_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "proposal": {
+      "$ref": "proposal.schema.json"
+    }
+  },
+  "required": [
+    "review_id",
+    "proposal"
+  ],
+  "additionalProperties": false
+}

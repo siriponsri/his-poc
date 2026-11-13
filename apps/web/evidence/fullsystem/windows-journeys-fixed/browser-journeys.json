@@ -1,0 +1,161 @@
+{
+  "started_at_utc": "2026-11-13T12:07:43.632635+00:00",
+  "command": [
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "apps/web/scripts/browser_journeys.py",
+    "--output-dir",
+    "apps/web/evidence/fullsystem/windows-journeys-fixed"
+  ],
+  "data_profile": "AUTHORED_SYNTHETIC",
+  "source_sha256": {
+    "apps/web/scripts/browser_check.py": "a43f372d63290fb3b58518cedf37f9d8c828588bea4a8b6d6c9a8b8deb4fb854",
+    "apps/web/scripts/browser_domains.py": "3008a5867ee1f7be792bbed71fbef5f531187cc6ef771274a75a9103d11196e8",
+    "apps/web/scripts/browser_driver.py": "c546003cdb9e9c15c6d0cf568020d1fcd84ed24efe3670dc2e193855f8300895",
+    "apps/web/scripts/browser_journeys.py": "337b090e2199bebb9fded4edcd0207dfffa14ae00b5bd378823aa1de78266c54",
+    "apps/web/scripts/browser_support.py": "fd599d00f28167fef2ff57135bfa3a5084fa6a6fcb4335c14a7dcaa4cbd3458a",
+    "apps/web/scripts/sync_data.py": "126e9cb6f4205e679d00193e3649d83e3ebcad09a7ddf13b90168c3e16a6c91d",
+    "apps/web/scripts/sync_full_catalog.py": "61329380638ba812cae196bb8c0a31939a97a523212e0d788948e7908ea93e57",
+    "apps/web/src/App.tsx": "e08815736b9a7de6826a8cf2d9126ae29590d8f9d01f854a584b0e01a912eacf",
+    "apps/web/src/components/app-sidebar.tsx": "04e77214c9767cacf0be7804c150a75cb9b22f43afbf77a899cdfd9a91f1ad61",
+    "apps/web/src/components/core-workspaces.tsx": "a4c78a283ae160b896d98bd0e2323e515bda25d36bec7164079c2f4067f016bb",
+    "apps/web/src/components/forms.tsx": "fca4e035b5868a7c5113b86e831618cd1dfb27f978b4d0c017a49f224c195980",
+    "apps/web/src/components/growth.tsx": "60258427c3a5a07bd8b3fd108e6130bf84242f10ab7887a25a38f02e5b61bbba",
+    "apps/web/src/components/operations.tsx": "d276670b5d06aa8c70311900a4f9d2eeb7cbf66c5f3a86fa8a5480304ee2d9f4",
+    "apps/web/src/components/portal.tsx": "00ebfd9ad798a081c10f69f6775a37fd4a62d0a3809b878c2dbf3ecf984061ca",
+    "apps/web/src/components/sidebar.tsx": "f7284be7419d9be4173e3f84c436d56df7b57e1535c7d2969353e3eb12349ffc",
+    "apps/web/src/components/workspace.tsx": "2bb59e648581c07490fac34cddc3ec21f3999676af361755c421b68a97f2b594",
+    "apps/web/src/data/domains.json": "f2dbdb1e7c7c783459e34ff70863a0003e63e439d09517e5f0bcb18098cb439a",
+    "apps/web/src/data/full-domains.json": "ebb95be12796cc43bae70b2e4ee7034d98208d95701bff8320b2340cf9489a72",
+    "apps/web/src/data/resource-catalog.json": "ed8ad499a93ad73cb85fa29617dca8c4dec54e81e7a6440f0375b9dec54a352a",
+    "apps/web/src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303",
+    "apps/web/src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "apps/web/src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "apps/web/src/lib/catalog.ts": "c924b48539b9828ee6de6e57f09d6e9db7b2e9f603f0013ceb420fbe42ed402d",
+    "apps/web/src/lib/client.ts": "6992d938792223808e2d12929669a5e97ef053539c954eec037ee04523ff99ac",
+    "apps/web/src/main.tsx": "b8dce1127336236105527faf70084839bdea99da921c74b367f50c1a0997a1bf",
+    "apps/web/src/styles.css": "15cc6e0b0aa539e75657ef243d38c5db95aab973243790e6d5befa11e19e26ca",
+    "apps/web/src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/admin.py": "aee9e49084ca82f4f356b459d7b0144fb614aa94436b7ecb09addb63a14d26c4",
+    "backend/app/ai.py": "ba4a0a514f3a274ca517b369e79121cf7f2fa9c5698b0d55078caec7960c5cab",
+    "backend/app/auth.py": "cdf14f2fab1040813c6f8398fbbcd876ffc5c98e161dac64afc932e6435fa97a",
+    "backend/app/common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
+    "backend/app/core.py": "b1ff4d39a1e632bba9a21cbc23ab0d3e72da52d6b852c59e6f0bb83dcc74b41b",
+    "backend/app/db.py": "05aade4aea809dd29ef07c6acbb635593093f62ad8513b152c6ca7d7b417e7f4",
+    "backend/app/domains/clinical.py": "18a364b631e0820b465029adfa292b9fd91bf777ef26571d839faf708d0afabe",
+    "backend/app/domains/clinical_catalog.json": "82a1415c3daf9f25114fd34e25288f4d4b7531b5cdf3d00c70b8492cbab87b38",
+    "backend/app/domains/erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653",
+    "backend/app/domains/erp_catalog.json": "8a487b5b2754bb48ccaaa1dec7be95001d81a00777232a6114260c1d4c140d76",
+    "backend/app/domains/operations.py": "0b135d1c5dfd349d694a8a84ae96cdcec88fb68d24070d25200a84b006319447",
+    "backend/app/legacy_import.py": "b075c251d7847f95557c2eadf2dd34dcb58a75039f0145445e302f4690b0a6ea",
+    "backend/app/main.py": "4747aa0a11a883b77399b57b83fa7aeafeec1e4023a660970b8f2f0a97456783",
+    "backend/app/model_registry.py": "3f09946e2e66fe727a05092909505a2994b7a8fa55489cacf41fbbde686aa17f",
+    "backend/app/models.py": "277055976e0919b31f2d3cd1cf43e63cccebf93ea02e2f4d70bd266897bdd9d5",
+    "backend/app/models_clinical.py": "e1172752510427718e6ee466c680c279c1edd9a6955a758d33fa3b0fb96a5ee5",
+    "backend/app/models_erp.py": "2e16a16d4fcd15a7b89f98e1c1c4da2f400a0260c3889a745e6916957b25e913",
+    "backend/app/models_legacy.py": "070e52e6a389356e3a2bb3596e4673235fb6b039ab47397f8e2c134f2c6e23cc",
+    "backend/app/providers.py": "ec9e00098152cdf3550415475dfd2653d560ac0894a2387b56f731300eb53a7d",
+    "backend/app/seed.py": "9066fd69f2bab4a396ca3761719aef75da6c31ee26309aaa6d3ae9556d10047a",
+    "backend/app/storage.py": "8a657b09a9dce48d434cdd563b4ae8d4711da35c2f85084817db980e6e7ceec6"
+  },
+  "status": "FAIL",
+  "browser_assertions": 0,
+  "journeys": {
+    "J01": {
+      "status": "FAIL",
+      "reason": "Locator expected to be visible\nActual value: None\nError: element(s) not found \nCall log:\n  - Expect \"to_be_visible\" with timeout 5000ms\n  - waiting for get_by_role(\"heading\", name=\"งานที่มอบหมาย\", exact=True).first\n\nAria snapshot:\n- button \"ข้ามไปยังเนื้อหา\"\n- complementary \"เมนูระบบ\":\n  - link \"＋ CareBalance HOSPITAL WORKSPACE\":\n    - /url: /home\n  - strong: facility-demo\n  - text: Development · Synthetic\n  - textbox \"ค้นหาเมนู\":\n    - /placeholder: ค้นหางานหรือรหัส domain…\n  - navigation:\n    - heading \"พื้นที่ทำงาน\" [level=2]\n    - button \"⌂ ภาพรวมงาน\"\n    - button \"☷ รายการงาน\"\n    - heading \"ทะเบียนและการเข้าถึง\" [level=2]\n    - button \"D01 ทะเบียนและตัวตนผู้ป่วย\"\n    - button \"D02 นัดหมาย คิว และความจุบริการ\"\n    - heading \"การดูแลผู้ป่วย\" [level=2]\n    - button \"D03 OPD และเวชระเบียนการตรวจ\"\n    - button \"D04 ห้องฉุกเฉิน\"\n    - button \"D05 ผู้ป่วยใน เตียง และการปิดการรับบริการ\"\n    - button \"D06 งานพยาบาลและการส่งเวร\"\n    - button \"D07 คำสั่งแพทย์และการจัดการคำสั่ง\"\n    - button \"D14 สูติกรรม มารดา และทารกแรกเกิด\"\n    - button \"D15 กุมารเวชกรรมและการเติบโต\"\n    - button \"D16 เวชศาสตร์ฟื้นฟูและกายภาพบำบัด\"\n    - button \"D17 ทันตกรรมและคลินิกเฉพาะทาง\"\n    - button \"D19 โภชนาการและอาหารผู้ป่วย\"\n    - heading \"diagnostics and treatment\" [level=2]\n    - button \"D09 การให้ยา ณ จุดดูแล\"\n    - button \"D10 ห้องปฏิบัติการและผลวิกฤต\"\n    - button \"D11 รังสี RIS และภาพทางการแพทย์\"\n    - button \"D12 ห้องผ่าตัดและวิสัญญี\"\n    - button \"D13 ICU และข้อมูลจากอุปกรณ์\"\n    - button \"D18 ธนาคารเลือดและการให้เลือด\"\n    - heading \"coordination and records\" [level=2]\n    - button \"D20 การส่งต่อและการติดตามผล\"\n    - button \"D22 เวชระเบียน เอกสาร และการลงนาม\"\n    - heading \"governance and platform\" [level=2]\n    - button \"D37 AI และระบบช่วยตัดสินใจ\"\n  - text: DE\n  - strong: DEMO clinician\n  - text: clinician\n- main:\n  - text: พื้นที่ทำงาน /\n  - strong: คำสั่งแพทย์และการจัดการคำสั่ง\n  - text: SYNTHETIC · MOCK AI\n  - button \"ออกจากระบบ\"\n  - text: ＋ บริบทการทำงาน\n  - strong: เลือกผู้ป่วยก่อนทำงาน\n  - text: ผู้ป่วย\n  - combobox \"ผู้ป่วย\":\n    - option \"ยังไม่เลือก\" [selected]\n    - option \"ผู้ป่วยสังเคราะห์ 001 · patient-001\"\n    - option \"ผู้ป่วยสังเคราะห์ 002 · patient-002\"\n    - option \"ผู้ป่วยสังเคราะห์ 003 · patient-003\"\n    - option \"ผู้ป่วยสังเคราะห์ 004 · patient-004\"\n    - option \"ผู้ป่วยสังเคราะห์ browser d50d9a · 9e163f09-1f12-4980-839b-84ad6dbf81db\"\n  - text: การรับบริการ\n  - combobox \"การรับบริการ\" [disabled]:\n    - option \"ทุก encounter ของผู้ป่วย\" [selected]\n  - paragraph: D07 / CONNECTED WORKSPACE\n  - heading \"คำสั่งแพทย์และการจัดการคำสั่ง\" [level=1]\n  - text: clinician\n  - tablist:\n    - tab \"คำสั่งตรวจและรักษา\" [selected]\n    - tab \"งานที่มอบหมาย\"\n  - heading \"คำสั่งตรวจและรักษา\" [level=2]\n  - paragraph: ข้อมูลจริงจากฐานพัฒนาขององค์กรที่คุณมีสิทธิ์\n  - button \"โหลดล่าสุด\"\n  - button \"＋ เพิ่มคำสั่งตรวจและรักษา\"\n  - text: ค้นหาในรายการ\n  - textbox \"ค้นหาในรายการ\":\n    - /placeholder: รหัส ชื่อ หรือสถานะ…\n  - text: 0 รายการ ▤\n  - heading \"ยังไม่มีรายการที่ตรงเงื่อนไข\" [level=3]\n  - paragraph: เพิ่มข้อมูลหรือปรับบริบทผู้ป่วยเพื่อเริ่มงาน\n  - text: ↗\n  - heading \"เลือกรายการเพื่อทำงาน\" [level=3]\n  - paragraph: รายละเอียด รุ่นข้อมูล และคำสั่งตามสถานะจะแสดงที่นี่\n  - text: CareBalance · HIS POC · Development prototype ข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา",
+      "executed_dom_mutations": [
+        {
+          "actor": "registration",
+          "path": "patients",
+          "id": "9e163f09-1f12-4980-839b-84ad6dbf81db",
+          "status": "draft"
+        },
+        {
+          "actor": "registration",
+          "path": "patients/9e163f09-1f12-4980-839b-84ad6dbf81db/transition",
+          "id": "9e163f09-1f12-4980-839b-84ad6dbf81db",
+          "status": "verified"
+        },
+        {
+          "actor": "registration",
+          "path": "patients/9e163f09-1f12-4980-839b-84ad6dbf81db/transition",
+          "id": "9e163f09-1f12-4980-839b-84ad6dbf81db",
+          "status": "active"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records",
+          "id": "4ccf74ff-dfa1-4cbe-8b52-98a21fc84262",
+          "status": "requested"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/4ccf74ff-dfa1-4cbe-8b52-98a21fc84262/actions",
+          "id": "4ccf74ff-dfa1-4cbe-8b52-98a21fc84262",
+          "status": "booked"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/4ccf74ff-dfa1-4cbe-8b52-98a21fc84262/actions",
+          "id": "4ccf74ff-dfa1-4cbe-8b52-98a21fc84262",
+          "status": "checked_in"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/4ccf74ff-dfa1-4cbe-8b52-98a21fc84262/actions",
+          "id": "4ccf74ff-dfa1-4cbe-8b52-98a21fc84262",
+          "status": "called"
+        },
+        {
+          "actor": "system_admin",
+          "path": "admin/users/user-clinician/care-assignments",
+          "id": null,
+          "status": null
+        },
+        {
+          "actor": "clinician",
+          "path": "encounters/2d8dc25d-4d1c-453f-a786-fd2b5a46667b/transition",
+          "id": "2d8dc25d-4d1c-453f-a786-fd2b5a46667b",
+          "status": "in_consult"
+        },
+        {
+          "actor": "clinician",
+          "path": "documents",
+          "id": "35aa4ab0-9b95-4082-b730-50e9a10b938d",
+          "status": "draft"
+        }
+      ]
+    },
+    "J02": {
+      "status": "NOT_RUN"
+    },
+    "J03": {
+      "status": "NOT_RUN"
+    },
+    "J04": {
+      "status": "NOT_RUN"
+    },
+    "J05": {
+      "status": "NOT_RUN"
+    },
+    "J06": {
+      "status": "NOT_RUN"
+    },
+    "J07": {
+      "status": "NOT_RUN"
+    },
+    "J08": {
+      "status": "NOT_RUN"
+    },
+    "J09": {
+      "status": "NOT_RUN"
+    },
+    "J10": {
+      "status": "NOT_RUN"
+    }
+  },
+  "method": "Playwright DOM forms/actions; response observation for exact IDs, no direct API mutations",
+  "full_L3_claim": false,
+  "scope_note": "Combine executed scenarios with canonical acceptance, negative/concurrency and domain coverage; this script alone does not certify L3"
+}

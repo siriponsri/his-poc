@@ -1,0 +1,1795 @@
+[
+  {
+    "id": "D23",
+    "name_th": "ค่าบริการ ราคา และสิทธิการรักษา",
+    "fields": [
+      {
+        "name": "encounter_id",
+        "label": "การรับบริการ",
+        "type": "text",
+        "required": true,
+        "source": "encounters"
+      },
+      {
+        "name": "label",
+        "label": "รายการ",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "price",
+        "label": "รวมค่าบริการ",
+        "from": [
+          "open"
+        ],
+        "fields": []
+      },
+      {
+        "name": "reprice",
+        "label": "คำนวณราคาใหม่เฉพาะร่าง",
+        "from": [
+          "priced"
+        ],
+        "fields": [
+          {
+            "name": "original_charge_id",
+            "label": "รายการค่าบริการเดิม",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "price_version_id",
+            "label": "price version id",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/prices"
+          }
+        ]
+      },
+      {
+        "name": "review",
+        "label": "ตรวจทาน",
+        "from": [
+          "priced"
+        ],
+        "fields": []
+      },
+      {
+        "name": "invoice",
+        "label": "ออกใบแจ้งหนี้",
+        "from": [
+          "reviewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "adjust",
+        "label": "ปรับปรุงด้วยรายการใหม่",
+        "from": [
+          "invoiced",
+          "adjusted"
+        ],
+        "fields": [
+          {
+            "name": "original_charge_id",
+            "label": "รายการค่าบริการเดิม",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "amount",
+            "label": "จำนวนเงิน (บาท)",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "reason",
+            "label": "เหตุผล",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "cancel",
+        "label": "ยกเลิก",
+        "from": [
+          "open"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": [
+      {
+        "name": "prices",
+        "label": "prices",
+        "endpoint": "/api/v2/erp/prices",
+        "fields": [
+          {
+            "name": "name",
+            "label": "ชื่อ",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "effective_from",
+            "label": "วันที่ราคาเริ่มใช้",
+            "type": "date",
+            "required": true
+          },
+          {
+            "name": "unit_price",
+            "label": "ราคาต่อหน่วย",
+            "type": "number",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "coverage",
+        "label": "coverage",
+        "endpoint": "/api/v2/erp/coverage",
+        "fields": [
+          {
+            "name": "patient_id",
+            "label": "ผู้ป่วย",
+            "type": "text",
+            "required": true,
+            "source": "patients"
+          },
+          {
+            "name": "payer_name",
+            "label": "ผู้ชำระ / สิทธิ",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "evidence",
+            "label": "หลักฐานที่บันทึกด้วยคน",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "charges",
+        "label": "charges",
+        "endpoint": "/api/v2/erp/charges",
+        "fields": [
+          {
+            "name": "encounter_id",
+            "label": "การรับบริการ",
+            "type": "text",
+            "required": true,
+            "source": "encounters"
+          },
+          {
+            "name": "source_id",
+            "label": "เลขอ้างอิงต้นทาง",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "label",
+            "label": "รายการ",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "quantity",
+            "label": "จำนวน",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "price_version_id",
+            "label": "price version id",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/prices"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D24",
+    "name_th": "เคลม ลูกหนี้ และการกระทบยอดเงินชดเชย",
+    "fields": [
+      {
+        "name": "invoice_id",
+        "label": "ใบแจ้งหนี้",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/invoices"
+      },
+      {
+        "name": "payer_name",
+        "label": "ผู้ชำระ / สิทธิ",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "validate",
+        "label": "ตรวจความครบถ้วน",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "export",
+        "label": "ส่งออกภายใน",
+        "from": [
+          "validated"
+        ],
+        "fields": []
+      },
+      {
+        "name": "simulate_submit",
+        "label": "บันทึกส่งเคลมจำลอง",
+        "from": [
+          "exported"
+        ],
+        "fields": []
+      },
+      {
+        "name": "remittance",
+        "label": "ลงผลพิจารณาสังเคราะห์",
+        "from": [
+          "simulated_submitted"
+        ],
+        "fields": [
+          {
+            "name": "approved_amount",
+            "label": "ยอดอนุมัติสังเคราะห์",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "source_key",
+            "label": "รหัส remittance",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "reconcile",
+        "label": "กระทบยอด",
+        "from": [
+          "adjudicated"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": []
+  },
+  {
+    "id": "D25",
+    "name_th": "บัญชี การเงิน การรับชำระและคืนเงิน",
+    "fields": [
+      {
+        "name": "invoice_id",
+        "label": "ใบแจ้งหนี้",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/invoices"
+      },
+      {
+        "name": "payer_name",
+        "label": "ผู้ชำระ / สิทธิ",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "label": "จำนวนเงิน (บาท)",
+        "type": "number",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "review",
+        "label": "ตรวจทาน",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "post",
+        "label": "ลงรายการ",
+        "from": [
+          "reviewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "refund_request",
+        "label": "ขอคืนเงิน",
+        "from": [
+          "posted",
+          "refunded"
+        ],
+        "fields": [
+          {
+            "name": "amount",
+            "label": "จำนวนเงิน (บาท)",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "reason",
+            "label": "เหตุผล",
+            "type": "textarea",
+            "required": true
+          },
+          {
+            "name": "release_allocation",
+            "label": "เปิดยอดลูกหนี้คืนอย่างชัดเจน",
+            "type": "checkbox",
+            "required": false,
+            "default": false
+          }
+        ]
+      },
+      {
+        "name": "refund_approve",
+        "label": "อนุมัติคืนเงิน",
+        "from": [
+          "refund_requested"
+        ],
+        "fields": [
+          {
+            "name": "refund_id",
+            "label": "รหัสรายการขอคืน",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "refund",
+        "label": "บันทึกคืนเงิน",
+        "from": [
+          "refund_approved"
+        ],
+        "fields": [
+          {
+            "name": "refund_id",
+            "label": "รหัสรายการขอคืน",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "reverse",
+        "label": "กลับรายการ / คืน",
+        "from": [
+          "posted"
+        ],
+        "fields": [
+          {
+            "name": "reason",
+            "label": "เหตุผล",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      }
+    ],
+    "subresources": []
+  },
+  {
+    "id": "D26",
+    "name_th": "ต้นทุนบริการ งบประมาณ และการวิเคราะห์ทรัพยากร",
+    "fields": [
+      {
+        "name": "encounter_id",
+        "label": "การรับบริการ",
+        "type": "text",
+        "required": false,
+        "source": "encounters"
+      },
+      {
+        "name": "department_id",
+        "label": "หน่วยงาน",
+        "type": "text",
+        "required": false,
+        "source": "departments"
+      },
+      {
+        "name": "label",
+        "label": "รายการ",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "amount",
+        "label": "จำนวนเงิน (บาท)",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "method_version",
+        "label": "วิธี / รุ่นการจัดสรร",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "source_movement_id",
+        "label": "รายการเคลื่อนไหวอ้างอิง",
+        "type": "text",
+        "required": false,
+        "source": "erp/options/movements"
+      }
+    ],
+    "actions": [
+      {
+        "name": "review",
+        "label": "ตรวจทาน",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "post",
+        "label": "ลงรายการ",
+        "from": [
+          "reviewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "reverse",
+        "label": "กลับรายการ / คืน",
+        "from": [
+          "posted"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": [
+      {
+        "name": "budgets",
+        "label": "budgets",
+        "endpoint": "/api/v2/erp/budgets",
+        "fields": [
+          {
+            "name": "department_id",
+            "label": "หน่วยงาน",
+            "type": "text",
+            "required": true,
+            "source": "departments"
+          },
+          {
+            "name": "period",
+            "label": "งวด",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "amount",
+            "label": "จำนวนเงิน (บาท)",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "method_version",
+            "label": "วิธี / รุ่นการจัดสรร",
+            "type": "text",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "name": "review",
+            "label": "ตรวจทาน",
+            "from": [
+              "active"
+            ],
+            "fields": []
+          },
+          {
+            "name": "post",
+            "label": "ลงรายการ",
+            "from": [
+              "reviewed"
+            ],
+            "fields": []
+          },
+          {
+            "name": "reverse",
+            "label": "กลับรายการ / คืน",
+            "from": [
+              "posted"
+            ],
+            "fields": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D27",
+    "name_th": "จัดซื้อ สัญญา รับพัสดุ และเจ้าหนี้",
+    "fields": [
+      {
+        "name": "supplier_id",
+        "label": "ผู้ขาย",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/suppliers"
+      },
+      {
+        "name": "item_id",
+        "label": "สินค้า / เวชภัณฑ์",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/items"
+      },
+      {
+        "name": "department_id",
+        "label": "หน่วยงาน",
+        "type": "text",
+        "required": false,
+        "source": "departments"
+      },
+      {
+        "name": "quantity",
+        "label": "จำนวน",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "unit_price",
+        "label": "ราคาต่อหน่วย",
+        "type": "number",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "approve",
+        "label": "อนุมัติ",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "record_po",
+        "label": "บันทึก PO ภายใน",
+        "from": [
+          "approved"
+        ],
+        "fields": []
+      },
+      {
+        "name": "receive",
+        "label": "รับสินค้า",
+        "from": [
+          "po_recorded",
+          "part_received"
+        ],
+        "fields": [
+          {
+            "name": "lot_id",
+            "label": "ล็อต",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/lots"
+          },
+          {
+            "name": "location_id",
+            "label": "สถานที่ / คลัง",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/stock-locations"
+          },
+          {
+            "name": "quantity",
+            "label": "จำนวน",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "receipt_key",
+            "label": "รหัสรับสินค้า",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "verify_invoice",
+        "label": "ตรวจใบแจ้งหนี้ผู้ขาย",
+        "from": [
+          "received"
+        ],
+        "fields": []
+      },
+      {
+        "name": "close",
+        "label": "ปิดงาน",
+        "from": [
+          "invoice_verified"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": [
+      {
+        "name": "suppliers",
+        "label": "suppliers",
+        "endpoint": "/api/v2/erp/suppliers",
+        "fields": [
+          {
+            "name": "name",
+            "label": "ชื่อ",
+            "type": "text",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D28",
+    "name_th": "คลังยา เวชภัณฑ์ และห่วงโซ่อุปทาน",
+    "fields": [
+      {
+        "name": "lot_id",
+        "label": "ล็อต",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/lots"
+      },
+      {
+        "name": "location_id",
+        "label": "สถานที่ / คลัง",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/stock-locations"
+      },
+      {
+        "name": "quantity",
+        "label": "จำนวน",
+        "type": "number",
+        "required": true
+      },
+      {
+        "name": "source_id",
+        "label": "เลขอ้างอิงต้นทาง",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "original_movement_id",
+        "label": "รายการเดิมที่จะคืน",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "disposition",
+        "label": "สถานะสินค้าคืน",
+        "type": "select",
+        "required": false,
+        "options": [
+          {
+            "value": "available",
+            "label": "available"
+          },
+          {
+            "value": "quarantine",
+            "label": "quarantine"
+          }
+        ],
+        "default": "available"
+      }
+    ],
+    "actions": [
+      {
+        "name": "validate",
+        "label": "ตรวจความครบถ้วน",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "post",
+        "label": "ลงรายการ",
+        "from": [
+          "validated"
+        ],
+        "fields": []
+      },
+      {
+        "name": "reverse",
+        "label": "กลับรายการ / คืน",
+        "from": [
+          "posted"
+        ],
+        "fields": [
+          {
+            "name": "quantity",
+            "label": "จำนวน",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "disposition",
+            "label": "สถานะสินค้าคืน",
+            "type": "select",
+            "required": false,
+            "options": [
+              {
+                "value": "available",
+                "label": "available"
+              },
+              {
+                "value": "quarantine",
+                "label": "quarantine"
+              }
+            ],
+            "default": "quarantine"
+          }
+        ]
+      },
+      {
+        "name": "transfer",
+        "label": "โอนคลัง",
+        "from": [
+          "posted"
+        ],
+        "fields": [
+          {
+            "name": "quantity",
+            "label": "จำนวน",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "location_id",
+            "label": "สถานที่ / คลัง",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/stock-locations"
+          }
+        ]
+      }
+    ],
+    "subresources": [
+      {
+        "name": "items",
+        "label": "items",
+        "endpoint": "/api/v2/erp/items",
+        "fields": [
+          {
+            "name": "name",
+            "label": "ชื่อ",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "unit",
+            "label": "หน่วย",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "lots",
+        "label": "lots",
+        "endpoint": "/api/v2/erp/lots",
+        "fields": [
+          {
+            "name": "item_id",
+            "label": "สินค้า / เวชภัณฑ์",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/items"
+          },
+          {
+            "name": "lot_number",
+            "label": "เลขล็อต",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "expiry_date",
+            "label": "วันหมดอายุ",
+            "type": "date",
+            "required": true
+          },
+          {
+            "name": "unit_cost",
+            "label": "ต้นทุนต่อหน่วย",
+            "type": "number",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "stock-locations",
+        "label": "stock locations",
+        "endpoint": "/api/v2/erp/stock-locations",
+        "fields": [
+          {
+            "name": "name",
+            "label": "ชื่อ",
+            "type": "text",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "reservations",
+        "label": "reservations",
+        "endpoint": "/api/v2/erp/reservations",
+        "fields": [
+          {
+            "name": "task_id",
+            "label": "task id",
+            "type": "text",
+            "required": true,
+            "source": "tasks"
+          },
+          {
+            "name": "lot_id",
+            "label": "ล็อต",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/lots"
+          },
+          {
+            "name": "location_id",
+            "label": "สถานที่ / คลัง",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/stock-locations"
+          },
+          {
+            "name": "quantity",
+            "label": "จำนวน",
+            "type": "number",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "name": "consume",
+            "label": "จ่ายของที่สำรอง",
+            "from": [
+              "reserved"
+            ],
+            "fields": []
+          },
+          {
+            "name": "cancel",
+            "label": "ยกเลิกสำรอง",
+            "from": [
+              "reserved"
+            ],
+            "fields": []
+          }
+        ]
+      },
+      {
+        "name": "counts",
+        "label": "counts",
+        "endpoint": "/api/v2/erp/counts",
+        "fields": [
+          {
+            "name": "lot_id",
+            "label": "ล็อต",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/lots"
+          },
+          {
+            "name": "location_id",
+            "label": "สถานที่ / คลัง",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/stock-locations"
+          },
+          {
+            "name": "counted_available",
+            "label": "counted available",
+            "type": "number",
+            "required": true
+          },
+          {
+            "name": "reason",
+            "label": "เหตุผล",
+            "type": "textarea",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "name": "approve",
+            "label": "อนุมัติผลตรวจนับ",
+            "from": [
+              "draft"
+            ],
+            "fields": []
+          },
+          {
+            "name": "post",
+            "label": "ปรับยอดตามตรวจนับ",
+            "from": [
+              "validated"
+            ],
+            "fields": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D29",
+    "name_th": "ครุภัณฑ์และวิศวกรรมการแพทย์",
+    "fields": [
+      {
+        "name": "name",
+        "label": "ชื่อ",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "location_id",
+        "label": "สถานที่ / คลัง",
+        "type": "text",
+        "required": true,
+        "source": "locations"
+      },
+      {
+        "name": "department_id",
+        "label": "หน่วยงาน",
+        "type": "text",
+        "required": false,
+        "source": "departments"
+      }
+    ],
+    "actions": [
+      {
+        "name": "activate",
+        "label": "เริ่มใช้งาน",
+        "from": [
+          "registered"
+        ],
+        "fields": []
+      },
+      {
+        "name": "schedule",
+        "label": "กำหนดซ่อม",
+        "from": [
+          "in_service"
+        ],
+        "fields": [
+          {
+            "name": "maintenance_due",
+            "label": "วันที่กำหนดซ่อม",
+            "type": "date",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "start",
+        "label": "เริ่มซ่อม",
+        "from": [
+          "maintenance_due"
+        ],
+        "fields": []
+      },
+      {
+        "name": "record",
+        "label": "บันทึกหลักฐาน",
+        "from": [
+          "under_maintenance"
+        ],
+        "fields": [
+          {
+            "name": "evidence",
+            "label": "หลักฐานที่บันทึกด้วยคน",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "verify",
+        "label": "ตรวจรับรองงาน",
+        "from": [
+          "under_maintenance"
+        ],
+        "fields": [
+          {
+            "name": "evidence",
+            "label": "หลักฐานที่บันทึกด้วยคน",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "release",
+        "label": "ปล่อยใช้งาน",
+        "from": [
+          "verified"
+        ],
+        "fields": []
+      },
+      {
+        "name": "retire",
+        "label": "ปลดระวาง",
+        "from": [
+          "in_service"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": []
+  },
+  {
+    "id": "D30",
+    "name_th": "บุคลากร ตารางเวร และสมรรถนะ",
+    "fields": [
+      {
+        "name": "staff_id",
+        "label": "บุคลากร",
+        "type": "text",
+        "required": true,
+        "source": "erp/options/staff"
+      },
+      {
+        "name": "starts_at",
+        "label": "เริ่มเวลา",
+        "type": "datetime-local",
+        "required": true
+      },
+      {
+        "name": "ends_at",
+        "label": "สิ้นสุด",
+        "type": "datetime-local",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "review",
+        "label": "ตรวจทาน",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "publish",
+        "label": "เผยแพร่",
+        "from": [
+          "reviewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "acknowledge",
+        "label": "รับทราบ",
+        "from": [
+          "published"
+        ],
+        "fields": []
+      },
+      {
+        "name": "revise",
+        "label": "สร้างฉบับแก้ไข",
+        "from": [
+          "published",
+          "acknowledged"
+        ],
+        "fields": [
+          {
+            "name": "starts_at",
+            "label": "เริ่มเวลา",
+            "type": "datetime-local",
+            "required": true
+          },
+          {
+            "name": "ends_at",
+            "label": "สิ้นสุด",
+            "type": "datetime-local",
+            "required": true
+          }
+        ]
+      }
+    ],
+    "subresources": [
+      {
+        "name": "staff",
+        "label": "staff",
+        "endpoint": "/api/v2/erp/staff",
+        "fields": [
+          {
+            "name": "user_id",
+            "label": "บัญชีผู้ใช้",
+            "type": "text",
+            "required": true,
+            "source": "staff-directory"
+          },
+          {
+            "name": "department_id",
+            "label": "หน่วยงาน",
+            "type": "text",
+            "required": true,
+            "source": "departments"
+          },
+          {
+            "name": "credential_valid_until",
+            "label": "วันที่สมรรถนะหมดอายุ",
+            "type": "date",
+            "required": true
+          },
+          {
+            "name": "privilege",
+            "label": "สิทธิที่ผูกกับสมรรถนะ",
+            "type": "text",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "name": "credential",
+            "label": "ตรวจหรือระงับสมรรถนะ",
+            "from": [
+              "active"
+            ],
+            "endpoint_suffix": "credential",
+            "fields": [
+              {
+                "name": "status",
+                "label": "สถานะสมรรถนะ",
+                "type": "select",
+                "required": true,
+                "options": [
+                  {
+                    "value": "active",
+                    "label": "พร้อมใช้งาน"
+                  },
+                  {
+                    "value": "suspended",
+                    "label": "ระงับ"
+                  }
+                ]
+              },
+              {
+                "name": "reason",
+                "label": "เหตุผล",
+                "type": "textarea",
+                "required": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D31",
+    "name_th": "CSSD ซักฟอก อาคาร และบริการสนับสนุน",
+    "fields": [
+      {
+        "name": "kind",
+        "label": "ประเภทงาน",
+        "type": "select",
+        "required": true,
+        "options": [
+          {
+            "value": "cssd",
+            "label": "cssd"
+          },
+          {
+            "value": "linen",
+            "label": "linen"
+          },
+          {
+            "value": "facility",
+            "label": "facility"
+          }
+        ]
+      },
+      {
+        "name": "asset_id",
+        "label": "ครุภัณฑ์",
+        "type": "text",
+        "required": false,
+        "source": "erp/options/assets"
+      },
+      {
+        "name": "location_id",
+        "label": "สถานที่ / คลัง",
+        "type": "text",
+        "required": false,
+        "source": "locations"
+      },
+      {
+        "name": "cycle_code",
+        "label": "รหัสรอบนึ่ง",
+        "type": "text",
+        "required": false
+      },
+      {
+        "name": "quantity",
+        "label": "จำนวน",
+        "type": "number",
+        "required": false
+      },
+      {
+        "name": "description",
+        "label": "รายละเอียด",
+        "type": "textarea",
+        "required": false
+      }
+    ],
+    "actions": [
+      {
+        "name": "clean",
+        "label": "บันทึกทำความสะอาด",
+        "from": [
+          "received"
+        ],
+        "fields": []
+      },
+      {
+        "name": "record_cycle",
+        "label": "บันทึกรอบพร้อมหลักฐาน",
+        "from": [
+          "cleaned"
+        ],
+        "fields": [
+          {
+            "name": "evidence",
+            "label": "หลักฐานที่บันทึกด้วยคน",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "quarantine",
+        "label": "กักกัน",
+        "from": [
+          "cycle_recorded"
+        ],
+        "fields": []
+      },
+      {
+        "name": "review_release",
+        "label": "ตรวจหลักฐานก่อนปล่อย",
+        "from": [
+          "cycle_recorded"
+        ],
+        "fields": []
+      },
+      {
+        "name": "release",
+        "label": "ปล่อยใช้งาน",
+        "from": [
+          "release_reviewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "return_linen",
+        "label": "รับผ้าคืน",
+        "from": [
+          "issued"
+        ],
+        "fields": [
+          {
+            "name": "returned_quantity",
+            "label": "จำนวนส่งคืน",
+            "type": "number",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "reconcile",
+        "label": "กระทบยอด",
+        "from": [
+          "returned"
+        ],
+        "fields": []
+      },
+      {
+        "name": "assign",
+        "label": "มอบหมาย",
+        "from": [
+          "opened"
+        ],
+        "fields": [
+          {
+            "name": "assignee_id",
+            "label": "ผู้รับผิดชอบ",
+            "type": "text",
+            "required": true,
+            "source": "staff-directory"
+          }
+        ]
+      },
+      {
+        "name": "verify",
+        "label": "ตรวจรับรองงาน",
+        "from": [
+          "assigned"
+        ],
+        "fields": [
+          {
+            "name": "evidence",
+            "label": "หลักฐานที่บันทึกด้วยคน",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "close",
+        "label": "ปิดงาน",
+        "from": [
+          "verified"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": []
+  },
+  {
+    "id": "D32",
+    "name_th": "คุณภาพ ความเสี่ยง และการควบคุมการติดเชื้อ",
+    "fields": [
+      {
+        "name": "description",
+        "label": "รายละเอียด",
+        "type": "textarea",
+        "required": true
+      },
+      {
+        "name": "encounter_id",
+        "label": "การรับบริการ",
+        "type": "text",
+        "required": false,
+        "source": "encounters"
+      },
+      {
+        "name": "asset_id",
+        "label": "ครุภัณฑ์",
+        "type": "text",
+        "required": false,
+        "source": "erp/options/assets"
+      }
+    ],
+    "actions": [
+      {
+        "name": "triage",
+        "label": "จำแนกเหตุการณ์ด้วยคน",
+        "from": [
+          "reported"
+        ],
+        "fields": [
+          {
+            "name": "classification",
+            "label": "ประเภทเหตุการณ์",
+            "type": "text",
+            "required": true
+          },
+          {
+            "name": "case_definition_version",
+            "label": "รุ่นนิยามเหตุการณ์",
+            "type": "text",
+            "required": false
+          }
+        ]
+      },
+      {
+        "name": "investigate",
+        "label": "เริ่มสอบสวน",
+        "from": [
+          "triaged"
+        ],
+        "fields": []
+      },
+      {
+        "name": "plan",
+        "label": "กำหนด CAPA",
+        "from": [
+          "investigating"
+        ],
+        "fields": [
+          {
+            "name": "owner_id",
+            "label": "ผู้รับผิดชอบ CAPA",
+            "type": "text",
+            "required": true,
+            "source": "staff-directory"
+          },
+          {
+            "name": "action_plan",
+            "label": "แผนแก้ไข",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "evidence",
+        "label": "ส่งหลักฐานแก้ไข",
+        "from": [
+          "action_planned"
+        ],
+        "fields": [
+          {
+            "name": "evidence",
+            "label": "หลักฐานที่บันทึกด้วยคน",
+            "type": "textarea",
+            "required": true
+          }
+        ]
+      },
+      {
+        "name": "review",
+        "label": "ตรวจทาน",
+        "from": [
+          "effectiveness_review"
+        ],
+        "fields": []
+      },
+      {
+        "name": "close",
+        "label": "ปิดงาน",
+        "from": [
+          "effectiveness_review"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": []
+  },
+  {
+    "id": "D33",
+    "name_th": "รายงานสาธารณสุขและข้อมูลระดับเครือข่าย",
+    "fields": [
+      {
+        "name": "name",
+        "label": "ชื่อ",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "period_start",
+        "label": "วันที่เริ่ม",
+        "type": "date",
+        "required": true
+      },
+      {
+        "name": "period_end",
+        "label": "วันที่สิ้นสุด",
+        "type": "date",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "generate",
+        "label": "สร้างรายงานจากข้อมูลจริง",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "review",
+        "label": "ตรวจทาน",
+        "from": [
+          "generated"
+        ],
+        "fields": []
+      },
+      {
+        "name": "export",
+        "label": "ส่งออกภายใน",
+        "from": [
+          "reviewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "correct",
+        "label": "สร้างรายงานแก้ไข",
+        "from": [
+          "exported"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": [
+      {
+        "name": "report-acknowledgments",
+        "label": "บันทึกรับทราบแบบ manual/local",
+        "endpoint": "/api/v2/erp/report-acknowledgments",
+        "fields": [
+          {
+            "name": "batch_id",
+            "label": "รายงานที่ส่งออกแล้ว",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/reports"
+          },
+          {
+            "name": "source_type",
+            "label": "source type",
+            "type": "select",
+            "required": true,
+            "options": [
+              {
+                "value": "manual_receipt",
+                "label": "manual_receipt"
+              },
+              {
+                "value": "local_stub",
+                "label": "local_stub"
+              }
+            ]
+          },
+          {
+            "name": "reference",
+            "label": "reference",
+            "type": "text",
+            "required": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "D35",
+    "name_th": "การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน",
+    "fields": [
+      {
+        "name": "source_id",
+        "label": "เลขอ้างอิงต้นทาง",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "sequence",
+        "label": "ลำดับข้อความ",
+        "type": "integer",
+        "min": 1,
+        "required": true
+      },
+      {
+        "name": "contract_version",
+        "label": "สัญญารุ่น (his-local-event-v1)",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "kind",
+        "label": "ประเภทงาน",
+        "type": "select",
+        "required": true,
+        "options": [
+          {
+            "value": "claim",
+            "label": "claim"
+          },
+          {
+            "value": "referral",
+            "label": "referral"
+          },
+          {
+            "value": "report",
+            "label": "report"
+          },
+          {
+            "value": "test",
+            "label": "test"
+          }
+        ]
+      },
+      {
+        "name": "source_record_id",
+        "label": "รหัสข้อมูลต้นทาง",
+        "type": "text",
+        "required": true
+      }
+    ],
+    "actions": [
+      {
+        "name": "validate",
+        "label": "ตรวจความครบถ้วน",
+        "from": [
+          "received"
+        ],
+        "fields": []
+      },
+      {
+        "name": "queue",
+        "label": "เข้าคิวท้องถิ่น",
+        "from": [
+          "validated"
+        ],
+        "fields": []
+      },
+      {
+        "name": "deliver",
+        "label": "ส่งให้ local stub",
+        "from": [
+          "queued"
+        ],
+        "fields": []
+      },
+      {
+        "name": "fail",
+        "label": "จำลองความล้มเหลว",
+        "from": [
+          "queued"
+        ],
+        "fields": []
+      },
+      {
+        "name": "retry",
+        "label": "ลองส่งใหม่",
+        "from": [
+          "failed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "acknowledge",
+        "label": "รับทราบ",
+        "from": [
+          "delivered_local"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": []
+  },
+  {
+    "id": "D36",
+    "name_th": "คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง",
+    "fields": [
+      {
+        "name": "name",
+        "label": "ชื่อ",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "encounter_kind",
+        "label": "ประเภทการรับบริการ",
+        "type": "select",
+        "required": false,
+        "options": [
+          {
+            "value": "OPD",
+            "label": "OPD"
+          },
+          {
+            "value": "IPD",
+            "label": "IPD"
+          },
+          {
+            "value": "ER",
+            "label": "ER"
+          }
+        ],
+        "default": "OPD"
+      }
+    ],
+    "actions": [
+      {
+        "name": "preview",
+        "label": "ตรวจตัวอย่าง",
+        "from": [
+          "draft"
+        ],
+        "fields": []
+      },
+      {
+        "name": "approve",
+        "label": "อนุมัติ",
+        "from": [
+          "previewed"
+        ],
+        "fields": []
+      },
+      {
+        "name": "freeze",
+        "label": "ตรึงชุดข้อมูล",
+        "from": [
+          "approved"
+        ],
+        "fields": []
+      },
+      {
+        "name": "export",
+        "label": "ส่งออกภายใน",
+        "from": [
+          "frozen"
+        ],
+        "fields": []
+      },
+      {
+        "name": "revoke",
+        "label": "ถอนสิทธิ์ชุดข้อมูล",
+        "from": [
+          "frozen",
+          "exported"
+        ],
+        "fields": []
+      }
+    ],
+    "subresources": [
+      {
+        "name": "dataset-access",
+        "label": "สิทธิ์ดาวน์โหลดชุดข้อมูล",
+        "endpoint": "/api/v2/erp/dataset-access",
+        "fields": [
+          {
+            "name": "dataset_id",
+            "label": "ชุดข้อมูล",
+            "type": "text",
+            "required": true,
+            "source": "erp/options/datasets"
+          },
+          {
+            "name": "user_id",
+            "label": "บัญชีผู้ใช้",
+            "type": "text",
+            "required": true,
+            "source": "staff-directory"
+          },
+          {
+            "name": "purpose",
+            "label": "purpose",
+            "type": "text",
+            "required": true
+          }
+        ],
+        "actions": [
+          {
+            "name": "revoke",
+            "label": "ถอนสิทธิ์",
+            "from": [
+              "active"
+            ],
+            "fields": []
+          },
+          {
+            "name": "restore",
+            "label": "คืนสิทธิ์",
+            "from": [
+              "revoked"
+            ],
+            "fields": []
+          }
+        ]
+      }
+    ]
+  }
+]

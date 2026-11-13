@@ -1,0 +1,79 @@
+[
+  {
+    "name": "HIS_POC_Starter_v0.2.0_2026-11-12.zip",
+    "sha256": "2696a29275e9143f0f839968ed00d2ee97655487135e9dda3fa1ff5c748fb9ea",
+    "bytes": 406076,
+    "received": true,
+    "read_scope": "archive extracted/inventory"
+  },
+  {
+    "name": "WORK_FULL_SYSTEM_PROMPT_TH.md",
+    "sha256": "795b7fc4881bdcc2494eb2888dbf3e7f8122701b4f9b848b0b5b7a78c2f75fc5",
+    "bytes": 23402,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "HIS_POC_Full_System_Review_and_Work_Brief_2026-11-12.zip",
+    "sha256": "893d3a84549e504927fdc2e395f15525f72234faa8b65ab1c30b6a5a047db297",
+    "bytes": 110184,
+    "received": true,
+    "read_scope": "archive extracted/inventory"
+  },
+  {
+    "name": "WORK_FULL_SYSTEM_PROMPT_TH.md",
+    "sha256": "795b7fc4881bdcc2494eb2888dbf3e7f8122701b4f9b848b0b5b7a78c2f75fc5",
+    "bytes": 23402,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "START_HERE_TH.md",
+    "sha256": "5c7a43713a1c3c72db7d8f0c0651b88b785b6c582daffa1f3812d131c24c6ce8",
+    "bytes": 8691,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "POSTGRESQL_DECISION_AND_MIGRATION_TH.md",
+    "sha256": "98c1ea2d4359985c66664779077bec2eb51079fd2136f6df9993075e1320c6fe",
+    "bytes": 32691,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "ACCEPTANCE_TEST_PLAN_TH.md",
+    "sha256": "1dc4b0143335b5c12f3f1e2b7c8f274a20b6f8d7828944c0218d5d43d6c575df",
+    "bytes": 21232,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "FULL_SYSTEM_SPEC_TH.md",
+    "sha256": "c25623073e3c25cb0e83a160731d2b2d1393c0953ab2e639ff9d22be78da47ab",
+    "bytes": 31822,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "DOMAIN_IMPLEMENTATION_MATRIX.md",
+    "sha256": "32c003465aeb86760ac0dce217590302813aa639d3f0c91ebd44c127cd31d91e",
+    "bytes": 72760,
+    "received": true,
+    "read_scope": "brief instructions and acceptance read; domain owners read their assigned matrix sections"
+  },
+  {
+    "name": "REVIEW_V020_TH.md",
+    "sha256": "8243ad4b28d908ad4fd13920a14b1a440b06669e53ed2331dca820fec804705e",
+    "bytes": 28057,
+    "received": true,
+    "read_scope": "read"
+  },
+  {
+    "name": "DOMAIN_IMPLEMENTATION_MATRIX.json",
+    "sha256": "f2cb497d539b34ddde50d6d82cf2ad57734af5d0e09ebb23a8280b2c10e8ff99",
+    "bytes": 135004,
+    "received": true,
+    "read_scope": "brief instructions and acceptance read; domain owners read their assigned matrix sections"
+  }
+]

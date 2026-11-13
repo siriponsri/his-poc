@@ -1,0 +1,15 @@
+
+> his-poc-web@0.2.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 22 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.45 kB │ gzip:  0.34 kB
+dist/assets/index-Bx2CZ7RD.css   16.93 kB │ gzip:  4.73 kB
+dist/assets/index-DOsOXsxn.js   393.80 kB │ gzip: 97.17 kB
+
+✓ built in 158ms
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

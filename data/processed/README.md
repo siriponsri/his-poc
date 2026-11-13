@@ -1,0 +1,1 @@
+No external dataset has been transformed. Authored fixtures are generated directly into ../fixtures/; no claim of Synthea/FHIR mapping execution. Future derived files must record source asset IDs, input hashes, script version/hash and mapping losses.

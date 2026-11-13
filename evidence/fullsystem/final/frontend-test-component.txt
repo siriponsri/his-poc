@@ -1,0 +1,62 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> his-poc-web@0.3.0 test:component
+> node --import tsx --test tests/*.component.test.tsx
+
+✔ actual mounted AI: edit response + refresh failure keeps displayed revision and approval binding aligned (78.292162ms)
+✔ actual mounted AI: definitive commit409 clears unknown state without reconnect (18.748203ms)
+✔ actual mounted AI: lost response matches readback identity and clears pending (19.430672ms)
+✔ actual mounted patient form sends typed fields and displays server-created record (22.661132ms)
+✔ actual mounted app: login backend session, scoped home counters, logout clears prior records (56.966085ms)
+✔ actual mounted app: skip focus retains route and unknown route shows404 (18.288692ms)
+✔ actual mounted app: unauthorized deep link shows denied and never mutates (8.919809ms)
+✔ actual mounted route has functional controls D01 (28.665898ms)
+✔ actual mounted route has functional controls D02 (28.726357ms)
+✔ actual mounted route has functional controls D03 (75.141249ms)
+✔ actual mounted route has functional controls D04 (26.000945ms)
+✔ actual mounted route has functional controls D05 (25.036803ms)
+✔ actual mounted route has functional controls D06 (29.321748ms)
+✔ actual mounted route has functional controls D07 (24.642755ms)
+✔ actual mounted route has functional controls D08 (24.517239ms)
+✔ actual mounted route has functional controls D09 (20.962949ms)
+✔ actual mounted route has functional controls D10 (13.909643ms)
+✔ actual mounted route has functional controls D11 (24.498492ms)
+✔ actual mounted route has functional controls D12 (12.49512ms)
+✔ actual mounted route has functional controls D13 (12.971585ms)
+✔ actual mounted route has functional controls D14 (16.060485ms)
+✔ actual mounted route has functional controls D15 (15.63836ms)
+✔ actual mounted route has functional controls D16 (13.152402ms)
+✔ actual mounted route has functional controls D17 (13.089198ms)
+✔ actual mounted route has functional controls D18 (12.701415ms)
+✔ actual mounted route has functional controls D19 (13.782164ms)
+✔ actual mounted route has functional controls D20 (12.908401ms)
+✔ actual mounted route has functional controls D21 (13.893419ms)
+✔ actual mounted route has functional controls D22 (19.747451ms)
+✔ actual mounted route has functional controls D23 (18.569848ms)
+✔ actual mounted route has functional controls D24 (11.999817ms)
+✔ actual mounted route has functional controls D25 (10.899429ms)
+✔ actual mounted route has functional controls D26 (10.654956ms)
+✔ actual mounted route has functional controls D27 (11.971234ms)
+✔ actual mounted route has functional controls D28 (13.364647ms)
+✔ actual mounted route has functional controls D29 (15.196246ms)
+✔ actual mounted route has functional controls D30 (20.94912ms)
+✔ actual mounted route has functional controls D31 (22.183216ms)
+✔ actual mounted route has functional controls D32 (21.974226ms)
+✔ actual mounted route has functional controls D33 (16.829683ms)
+✔ actual mounted route has functional controls D34 (27.157426ms)
+✔ actual mounted route has functional controls D35 (22.509198ms)
+✔ actual mounted route has functional controls D36 (29.765185ms)
+✔ actual mounted route has functional controls D37 (11.34672ms)
+✔ actual mounted route has functional controls D38 (11.584692ms)
+✔ actual form preserves Decimal strings and serializes local datetime as aware ISO (4.537575ms)
+✔ actual record detail ignores delayed result for previous selection (9.134517ms)
+✔ actual file form hides encoding and submits only internally derived file bytes/MIME (5.417327ms)
+✔ actual metadata-only document role has no content editing controls (7.106356ms)
+ℹ tests 49
+ℹ suites 0
+ℹ pass 49
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2861.0422

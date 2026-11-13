@@ -1,0 +1,3517 @@
+{
+  "D02": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "slot_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Slot Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "slot_id",
+        "reason"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "booked": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "booked",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "reschedule": {
+        "additionalProperties": false,
+        "properties": {
+          "slot_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Slot Id",
+            "type": "string"
+          },
+          "action": {
+            "const": "reschedule",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "slot_id",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "checked_in": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "checked_in",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "called": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "called",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "completed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "completed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D04": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "presenting_complaint": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Presenting Complaint",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "presenting_complaint"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "assessed": {
+        "additionalProperties": false,
+        "properties": {
+          "triage_level": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Triage Level",
+            "type": "string"
+          },
+          "assessment": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Assessment",
+            "type": "string"
+          },
+          "action": {
+            "const": "assessed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "triage_level",
+          "assessment",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "in_care": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "in_care",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "discharged": {
+        "additionalProperties": false,
+        "properties": {
+          "disposition_reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Disposition Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "discharged",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "disposition_reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "admission_requested": {
+        "additionalProperties": false,
+        "properties": {
+          "disposition_reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Disposition Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "admission_requested",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "disposition_reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "referral_requested": {
+        "additionalProperties": false,
+        "properties": {
+          "disposition_reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Disposition Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "referral_requested",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "disposition_reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D05": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "admission_reason": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Admission Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "admission_reason"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "admitted": {
+        "additionalProperties": false,
+        "properties": {
+          "bed_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Bed Id",
+            "type": "string"
+          },
+          "action": {
+            "const": "admitted",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "bed_id",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "transfer_requested": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "transfer_requested",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "discharge_ready": {
+        "additionalProperties": false,
+        "properties": {
+          "discharge_summary": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Discharge Summary",
+            "type": "string"
+          },
+          "action": {
+            "const": "discharge_ready",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "discharge_summary",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "discharged": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "discharged",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D06": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "summary": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Summary",
+          "type": "string"
+        },
+        "pending_tasks": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Pending Tasks",
+          "type": "string"
+        },
+        "task_ids": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Task Ids",
+          "type": "string"
+        },
+        "receiving_staff_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Receiving Staff Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "summary",
+        "pending_tasks",
+        "task_ids",
+        "receiving_staff_id"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "signed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "signed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "acknowledged": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "acknowledged",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "amended": {
+        "additionalProperties": false,
+        "properties": {
+          "summary": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Summary",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "amended",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "summary",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D08": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Order Id",
+          "type": "string"
+        },
+        "item_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Item Id",
+          "type": "string"
+        },
+        "medication_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Medication Name",
+          "type": "string"
+        },
+        "prescribed_dose": {
+          "maxLength": 150,
+          "minLength": 1,
+          "title": "Prescribed Dose",
+          "type": "string"
+        },
+        "route": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Route",
+          "type": "string"
+        },
+        "quantity": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Quantity"
+        },
+        "unit": {
+          "maxLength": 40,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "order_id",
+        "item_id",
+        "medication_name",
+        "prescribed_dose",
+        "route",
+        "quantity",
+        "unit"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "prepared": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "prepared",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "dispensed": {
+        "additionalProperties": false,
+        "properties": {
+          "lot_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Lot Id",
+            "type": "string"
+          },
+          "location_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Location Id",
+            "type": "string"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "unit_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Unit Price"
+          },
+          "action": {
+            "const": "dispensed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "lot_id",
+          "location_id",
+          "quantity",
+          "unit_price",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "rejected": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "rejected",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "return_recorded": {
+        "additionalProperties": false,
+        "properties": {
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "return_recorded",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "quantity",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D09": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "medication_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Medication Id",
+          "type": "string"
+        },
+        "scheduled_at": {
+          "format": "date-time",
+          "title": "Scheduled At",
+          "type": "string"
+        },
+        "dose": {
+          "maxLength": 150,
+          "minLength": 1,
+          "title": "Dose",
+          "type": "string"
+        },
+        "route": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Route",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "medication_id",
+        "scheduled_at",
+        "dose",
+        "route"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "verified": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "administered": {
+        "additionalProperties": false,
+        "properties": {
+          "actual_at": {
+            "format": "date-time",
+            "title": "Actual At",
+            "type": "string"
+          },
+          "action": {
+            "const": "administered",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "actual_at",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "held": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "held",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "not_given": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "not_given",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "corrected": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "actual_at": {
+            "format": "date-time",
+            "title": "Actual At",
+            "type": "string"
+          },
+          "action": {
+            "const": "corrected",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reason",
+          "actual_at",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D10": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Order Id",
+          "type": "string"
+        },
+        "analyte": {
+          "maxLength": 150,
+          "minLength": 1,
+          "title": "Analyte",
+          "type": "string"
+        },
+        "specimen_type": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Specimen Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "order_id",
+        "analyte",
+        "specimen_type"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "collected": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "collected",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "received": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "received",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "preliminary": {
+        "additionalProperties": false,
+        "properties": {
+          "result_value": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Result Value",
+            "type": "string"
+          },
+          "unit": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Unit",
+            "type": "string"
+          },
+          "reference_range": {
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Reference Range",
+            "type": "string"
+          },
+          "action": {
+            "const": "preliminary",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "result_value",
+          "unit",
+          "reference_range",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "verified": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "released": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "released",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "publish_portal": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "publish_portal",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "acknowledge": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "acknowledge",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "corrected": {
+        "additionalProperties": false,
+        "properties": {
+          "result_value": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Result Value",
+            "type": "string"
+          },
+          "unit": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Unit",
+            "type": "string"
+          },
+          "reference_range": {
+            "maxLength": 150,
+            "minLength": 1,
+            "title": "Reference Range",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "corrected",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "result_value",
+          "unit",
+          "reference_range",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D11": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Order Id",
+          "type": "string"
+        },
+        "modality": {
+          "maxLength": 40,
+          "minLength": 1,
+          "title": "Modality",
+          "type": "string"
+        },
+        "body_site": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Body Site",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "order_id",
+        "modality",
+        "body_site"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "scheduled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "scheduled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "acquired": {
+        "additionalProperties": false,
+        "properties": {
+          "file_base64": {
+            "maxLength": 1400000,
+            "minLength": 1,
+            "title": "File Base64",
+            "type": "string"
+          },
+          "file_mime": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "File Mime",
+            "type": "string"
+          },
+          "action": {
+            "const": "acquired",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "file_base64",
+          "file_mime",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "report_draft": {
+        "additionalProperties": false,
+        "properties": {
+          "report": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Report",
+            "type": "string"
+          },
+          "action": {
+            "const": "report_draft",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "report",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "verified": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "released": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "released",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "publish_portal": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "publish_portal",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "amended": {
+        "additionalProperties": false,
+        "properties": {
+          "report": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Report",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "amended",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "report",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D12": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "procedure_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Procedure Name",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        },
+        "cssd_cycle_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cssd Cycle Id"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "procedure_name"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "scheduled": {
+        "additionalProperties": false,
+        "properties": {
+          "room": {
+            "maxLength": 80,
+            "minLength": 1,
+            "title": "Room",
+            "type": "string"
+          },
+          "starts_at": {
+            "format": "date-time",
+            "title": "Starts At",
+            "type": "string"
+          },
+          "ends_at": {
+            "format": "date-time",
+            "title": "Ends At",
+            "type": "string"
+          },
+          "action": {
+            "const": "scheduled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "room",
+          "starts_at",
+          "ends_at",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "checklist_verified": {
+        "additionalProperties": false,
+        "properties": {
+          "checklist": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Checklist",
+            "type": "string"
+          },
+          "action": {
+            "const": "checklist_verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "checklist",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "in_progress": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "in_progress",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "documented": {
+        "additionalProperties": false,
+        "properties": {
+          "anesthesia_record": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Anesthesia Record",
+            "type": "string"
+          },
+          "action": {
+            "const": "documented",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "anesthesia_record",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "closed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "closed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D13": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "admission_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Admission Id",
+          "type": "string"
+        },
+        "observation_name": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Observation Name",
+          "type": "string"
+        },
+        "observation_value": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Observation Value",
+          "type": "string"
+        },
+        "unit": {
+          "maxLength": 40,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        },
+        "observed_at": {
+          "format": "date-time",
+          "title": "Observed At",
+          "type": "string"
+        },
+        "round_note": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Round Note",
+          "type": "string"
+        },
+        "asset_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Asset Id"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "admission_id",
+        "observation_name",
+        "observation_value",
+        "unit",
+        "observed_at",
+        "round_note"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "assign_device": {
+        "additionalProperties": false,
+        "properties": {
+          "asset_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Asset Id",
+            "type": "string"
+          },
+          "action": {
+            "const": "assign_device",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "asset_id",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "release_device": {
+        "additionalProperties": false,
+        "properties": {
+          "assignment_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Assignment Id",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "release_device",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "assignment_id",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "recorded": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "recorded",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "signed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "signed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "amended": {
+        "additionalProperties": false,
+        "properties": {
+          "observation_value": {
+            "maxLength": 120,
+            "minLength": 1,
+            "title": "Observation Value",
+            "type": "string"
+          },
+          "round_note": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Round Note",
+            "type": "string"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "amended",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "observation_value",
+          "round_note",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D14": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "gestation_note": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Gestation Note",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "gestation_note"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "antenatal_active": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "antenatal_active",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "delivery_documented": {
+        "additionalProperties": false,
+        "properties": {
+          "delivery_note": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Delivery Note",
+            "type": "string"
+          },
+          "child_name": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Child Name",
+            "type": "string"
+          },
+          "child_identifier": {
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Child Identifier",
+            "type": "string"
+          },
+          "action": {
+            "const": "delivery_documented",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "delivery_note",
+          "child_name",
+          "child_identifier",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "verified": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "closed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "closed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D15": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "measurement_name": {
+          "maxLength": 80,
+          "minLength": 1,
+          "title": "Measurement Name",
+          "type": "string"
+        },
+        "measurement_value": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "string"
+            }
+          ],
+          "title": "Measurement Value"
+        },
+        "unit": {
+          "maxLength": 40,
+          "minLength": 1,
+          "title": "Unit",
+          "type": "string"
+        },
+        "measured_at": {
+          "format": "date-time",
+          "title": "Measured At",
+          "type": "string"
+        },
+        "immunization_note": {
+          "anyOf": [
+            {
+              "maxLength": 10000,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Immunization Note"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "measurement_name",
+        "measurement_value",
+        "unit",
+        "measured_at"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "recorded": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "recorded",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "closed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "closed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "immunization": {
+        "additionalProperties": false,
+        "properties": {
+          "item_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Item Id",
+            "type": "string"
+          },
+          "lot_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Lot Id",
+            "type": "string"
+          },
+          "administered_at": {
+            "format": "date-time",
+            "title": "Administered At",
+            "type": "string"
+          },
+          "quantity": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Quantity"
+          },
+          "unit": {
+            "maxLength": 40,
+            "minLength": 1,
+            "title": "Unit",
+            "type": "string"
+          },
+          "action": {
+            "const": "immunization",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "item_id",
+          "lot_id",
+          "administered_at",
+          "quantity",
+          "unit",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "amended": {
+        "additionalProperties": false,
+        "properties": {
+          "measurement_value": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Measurement Value"
+          },
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "amended",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "measurement_value",
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D16": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "order_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Order Id",
+          "type": "string"
+        },
+        "goals": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Goals",
+          "type": "string"
+        },
+        "therapist_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Therapist Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "order_id",
+        "goals",
+        "therapist_id"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "assessed": {
+        "additionalProperties": false,
+        "properties": {
+          "assessment": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Assessment",
+            "type": "string"
+          },
+          "action": {
+            "const": "assessed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "assessment",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "active": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "active",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "schedule": {
+        "additionalProperties": false,
+        "properties": {
+          "slot_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Slot Id",
+            "type": "string"
+          },
+          "action": {
+            "const": "schedule",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "slot_id",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "session": {
+        "additionalProperties": false,
+        "properties": {
+          "session_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Session Id",
+            "type": "string"
+          },
+          "performed_at": {
+            "format": "date-time",
+            "title": "Performed At",
+            "type": "string"
+          },
+          "progress": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Progress",
+            "type": "string"
+          },
+          "action": {
+            "const": "session",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "session_id",
+          "performed_at",
+          "progress",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "completed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "completed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "discontinued": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "discontinued",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D17": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "tooth_code": {
+          "maxLength": 12,
+          "minLength": 1,
+          "title": "Tooth Code",
+          "type": "string"
+        },
+        "finding": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Finding",
+          "type": "string"
+        },
+        "procedure_name": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Procedure Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "tooth_code",
+        "finding",
+        "procedure_name"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "scheduled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "scheduled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "performed": {
+        "additionalProperties": false,
+        "properties": {
+          "unit_price": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "string"
+              }
+            ],
+            "title": "Unit Price"
+          },
+          "action": {
+            "const": "performed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "unit_price",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "verified": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "closed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "closed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D18": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "indication": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Indication",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "indication"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "reserved": {
+        "additionalProperties": false,
+        "properties": {
+          "unit_id": {
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Unit Id",
+            "type": "string"
+          },
+          "action": {
+            "const": "reserved",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "unit_id",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "compatibility_verified": {
+        "additionalProperties": false,
+        "properties": {
+          "verification_evidence": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Verification Evidence",
+            "type": "string"
+          },
+          "action": {
+            "const": "compatibility_verified",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "verification_evidence",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "released": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "released",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "administration_recorded": {
+        "additionalProperties": false,
+        "properties": {
+          "administration_note": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Administration Note",
+            "type": "string"
+          },
+          "action": {
+            "const": "administration_recorded",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "administration_note",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D19": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "diet_description": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Diet Description",
+          "type": "string"
+        },
+        "allergy_note": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Allergy Note",
+          "type": "string"
+        },
+        "meal_period": {
+          "maxLength": 100,
+          "minLength": 1,
+          "title": "Meal Period",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "diet_description",
+        "allergy_note",
+        "meal_period"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "revise": {
+        "additionalProperties": false,
+        "properties": {
+          "diet_description": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Diet Description",
+            "type": "string"
+          },
+          "allergy_note": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Allergy Note",
+            "type": "string"
+          },
+          "action": {
+            "const": "revise",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "diet_description",
+          "allergy_note",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "prepared": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "prepared",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "delivered": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "delivered",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D20": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "patient_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Patient Id",
+          "type": "string"
+        },
+        "encounter_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Encounter Id",
+          "type": "string"
+        },
+        "destination": {
+          "maxLength": 200,
+          "minLength": 1,
+          "title": "Destination",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "document_revision_id": {
+          "maxLength": 64,
+          "minLength": 1,
+          "title": "Document Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "patient_id",
+        "encounter_id",
+        "destination",
+        "reason",
+        "document_revision_id"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "exported": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "exported",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "response_recorded": {
+        "additionalProperties": false,
+        "properties": {
+          "response_source": {
+            "maxLength": 200,
+            "minLength": 1,
+            "title": "Response Source",
+            "type": "string"
+          },
+          "response_note": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Response Note",
+            "type": "string"
+          },
+          "action": {
+            "const": "response_recorded",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "response_source",
+          "response_note",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "closed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "closed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  },
+  "D21": {
+    "create": {
+      "additionalProperties": false,
+      "properties": {
+        "request_kind": {
+          "enum": [
+            "appointment",
+            "correction"
+          ],
+          "title": "Request Kind",
+          "type": "string"
+        },
+        "slot_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Slot Id"
+        },
+        "document_revision_id": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Document Revision Id"
+        },
+        "reason": {
+          "maxLength": 10000,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_kind",
+        "reason"
+      ],
+      "title": "ClinicalInput",
+      "type": "object"
+    },
+    "actions": {
+      "reviewed": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "reviewed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "booked": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "booked",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "completed": {
+        "additionalProperties": false,
+        "properties": {
+          "response_note": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Response Note",
+            "type": "string"
+          },
+          "action": {
+            "const": "completed",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "response_note",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "cancelled": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "const": "cancelled",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      },
+      "declined": {
+        "additionalProperties": false,
+        "properties": {
+          "reason": {
+            "maxLength": 10000,
+            "minLength": 1,
+            "title": "Reason",
+            "type": "string"
+          },
+          "action": {
+            "const": "declined",
+            "title": "Action",
+            "type": "string"
+          },
+          "version": {
+            "minimum": 1,
+            "title": "Version",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "reason",
+          "action",
+          "version"
+        ],
+        "title": "ClinicalInput",
+        "type": "object"
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.env
+demo.sqlite3
+check-journey.sqlite3
+.venv/
+
+apps/web/node_modules/
+apps/web/dist/
+apps/web/.test-out/
+
+# Development records, file bytes and local credentials
+var/
+backups/
+*.sqlite3
+*.db
+.env.*
+!.env.example
+.pytest_cache/

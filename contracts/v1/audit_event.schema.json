@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:audit_event",
+  "title": "audit_event",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity": {
+      "type": "string",
+      "minLength": 1
+    },
+    "details": {
+      "type": "string",
+      "description": "JSON serialized details; append-only through service"
+    },
+    "created": {
+      "type": "number"
+    }
+  },
+  "required": [
+    "id",
+    "actor",
+    "event",
+    "entity",
+    "details",
+    "created"
+  ],
+  "additionalProperties": false
+}

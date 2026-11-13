@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:proposal",
+  "title": "proposal",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patient": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encounter": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "action": {
+      "type": "string",
+      "description": "Canonical JSON encoded document_completeness_action object"
+    },
+    "action_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "snapshot": {
+      "type": "string",
+      "description": "Canonical JSON encoded evidence_snapshot object"
+    },
+    "status": {
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "committed"
+      ]
+    },
+    "expires": {
+      "type": "number",
+      "description": "UTC Unix seconds; 900 s lifetime from creation"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "id",
+    "patient",
+    "encounter",
+    "version",
+    "action",
+    "action_hash",
+    "snapshot",
+    "status",
+    "expires",
+    "run_id"
+  ],
+  "additionalProperties": false
+}

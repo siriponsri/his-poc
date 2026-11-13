@@ -1,0 +1,86 @@
+{
+  "started_at": "2026-11-13T12:35:47.562466+00:00",
+  "scope": "actual PostgreSQL + FastAPI TestClient; not browser",
+  "commands": [
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "-c",
+        "backend/alembic.ini",
+        "upgrade",
+        "head"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "-m",
+        "backend.app.seed"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "-c",
+        "backend/alembic.ini",
+        "check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "backend/tests/test_core.py",
+        "-q"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "status": "PASS",
+  "source_sha256": {
+    "backend\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend\\app\\__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend\\app\\admin.py": "aee9e49084ca82f4f356b459d7b0144fb614aa94436b7ecb09addb63a14d26c4",
+    "backend\\app\\ai.py": "ba4a0a514f3a274ca517b369e79121cf7f2fa9c5698b0d55078caec7960c5cab",
+    "backend\\app\\auth.py": "cdf14f2fab1040813c6f8398fbbcd876ffc5c98e161dac64afc932e6435fa97a",
+    "backend\\app\\common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
+    "backend\\app\\core.py": "184bacda02d813c03f1c9a186177883567e499a700f6c75835822883322d726f",
+    "backend\\app\\db.py": "05aade4aea809dd29ef07c6acbb635593093f62ad8513b152c6ca7d7b417e7f4",
+    "backend\\app\\domains\\clinical.py": "5b913e10269de7b714ae12b17281379f2577830b95c1fe7beab70ad85971232e",
+    "backend\\app\\domains\\erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653",
+    "backend\\app\\domains\\operations.py": "0b135d1c5dfd349d694a8a84ae96cdcec88fb68d24070d25200a84b006319447",
+    "backend\\app\\legacy_import.py": "b075c251d7847f95557c2eadf2dd34dcb58a75039f0145445e302f4690b0a6ea",
+    "backend\\app\\main.py": "59e5f52ce6f80d1e9447a08baf99cca713d8f7e6c9ed3f2b4856319e37089518",
+    "backend\\app\\model_registry.py": "3f09946e2e66fe727a05092909505a2994b7a8fa55489cacf41fbbde686aa17f",
+    "backend\\app\\models.py": "277055976e0919b31f2d3cd1cf43e63cccebf93ea02e2f4d70bd266897bdd9d5",
+    "backend\\app\\models_clinical.py": "e1172752510427718e6ee466c680c279c1edd9a6955a758d33fa3b0fb96a5ee5",
+    "backend\\app\\models_erp.py": "2e16a16d4fcd15a7b89f98e1c1c4da2f400a0260c3889a745e6916957b25e913",
+    "backend\\app\\models_legacy.py": "070e52e6a389356e3a2bb3596e4673235fb6b039ab47397f8e2c134f2c6e23cc",
+    "backend\\app\\providers.py": "ec9e00098152cdf3550415475dfd2653d560ac0894a2387b56f731300eb53a7d",
+    "backend\\app\\seed.py": "9066fd69f2bab4a396ca3761719aef75da6c31ee26309aaa6d3ae9556d10047a",
+    "backend\\app\\storage.py": "8a657b09a9dce48d434cdd563b4ae8d4711da35c2f85084817db980e6e7ceec6",
+    "backend\\migrations\\env.py": "a0cb94c5bf732ad7650ac0473e582bb5fb9c25ff96c24637a2fa040a9fe2a9ac",
+    "backend\\migrations\\erp_guards.py": "52845b039e606c95bcee657fccb70ce5e3496c31f55297e4c603d9d359774b44",
+    "backend\\migrations\\schema_0001.py": "9f3d4ad59db2f6f4c4dd574a1b6e441b1289ec0755f2cf2278d9fb829e2f5782",
+    "backend\\migrations\\versions\\0001_fullsystem.py": "3eca931351b4f6953f418547f26bb9a522990b91e0021cc2da0c474cfdacd119",
+    "backend\\tests\\run_core_validation.py": "4ede937b31b206558401b3ae6ec0c715a64359a865cc6f13acec0af7ede32d49",
+    "backend\\tests\\test_browser_cli_unit.py": "4c987160f2551ff2349b70b3a3953b90d79d30461fd55af5aa7a94330fa98941",
+    "backend\\tests\\test_browser_restore_verifier_unit.py": "211f7bf521457f81e7ec1e8164535ba63f2235f2dfbf4a6332c95557aa95c920",
+    "backend\\tests\\test_catalog_encoding_unit.py": "c861b579465f34fd9fe35d6408fc3454bdb8cec795a56f337a76281fa82cfca1",
+    "backend\\tests\\test_contract_export_unit.py": "63a9e98475ebdc36bcfc1c7af91bf35dea9fd5765c3d97350b8a17da1d2de6a2",
+    "backend\\tests\\test_core.py": "04076d8baeadf5903fc62b7820f052241fb274ff4d5922ef101d03bfdb408d7e",
+    "backend\\tests\\test_operations_pg.py": "67850385ee8caeabcac726f536ad58435d2f36f3ac468b94c47e970d83512cdf",
+    "backend\\tests\\test_operations_unit.py": "974806c2f7a436f537163bf3c1072761e9ba1ed0e4dafb5d9aa55feced6a0286",
+    "backend\\tests\\test_release_packaging_unit.py": "83e4cb1df7dc7aac440fa2d9fa200e36a1c26e00c20660e9bad063ca3b92ffc2",
+    "backend\\tests\\test_validation_launcher_unit.py": "9297ee12343b4588de3fffbaed4e15837b47541fb4526f9001865fb3e31af716"
+  },
+  "finished_at": "2026-11-13T12:37:43.416550+00:00"
+}

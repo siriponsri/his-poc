@@ -1,0 +1,15 @@
+# HIS POC — Full System development target
+
+เป้าหมายรอบนี้แทนข้อจำกัด singleton ของ v0.2 โดยชัดเจน: แอป HIS/ERP ที่ login จริง ใช้ PostgreSQL เป็นฐานหลัก มีหลายผู้ป่วย/encounters/tasks และใช้ identity, scope, evidence และ audit ร่วมกันทั้งระบบ สำหรับ solo owner และ synthetic development data
+
+เกณฑ์รับเป้าหมาย: D01–D38 ถึง L2 และ J01–J10 ถึง L3 ตาม `spec/DOMAIN_IMPLEMENTATION_MATRIX.json` และ `spec/ACCEPTANCE_TEST_PLAN_TH.md`. L2 ต้องมี workflow ของ domain นั้นพร้อม PostgreSQL persistence และ evidence; L3 ต้องมี integration/browser evidence ของ journey. เมนู ฟอร์ม schema หรือ tests ของ SQLite ไม่ทดแทนเกณฑ์เหล่านี้
+
+สถานะที่ทำจริงแยกอยู่ `DOMAIN_COVERAGE.json`, `JOURNEY_COVERAGE.md`, `VALIDATION_REPORT.md`. ถ้าส่วนสำคัญยังไม่ผ่าน ผลส่งมอบต้องเรียก checkpoint ไม่ประกาศ full-system acceptance. ไม่ลด target เพื่อให้รายงานผ่าน
+
+ระบบประกอบด้วย React/TypeScript/Vite, FastAPI modular monolith, SQLAlchemy/Alembic, PostgreSQL18, server-backed local development sessions และ domain services. ส่วน application location แยก inference location. AI default เป็น explicit mock; cloud/dr-train/local ไม่เปิดจนมี endpoint/revision/policy/budget ที่ยืนยัน
+
+Champion candidates ยังคง 4 งาน: document completeness/review, DR screening/referral workflow, claim completeness/reconciliation และ CAD specialist review. Shared clinical workflow รองรับ manual documentation/authorization; ไม่มี automatic diagnosis/dose/triage/blood compatibility ที่อ้างผ่าน clinical validation
+
+ผลผลิตที่ต้องการคือเจ้าของเปิด URL เดียวพบ login เลือกผู้ป่วยและ encounter ทำงานข้ามหน่วยงาน แล้ว reload/restart ยังพบผลเดิม. เงินรับและต้นทุนสะท้อน ledger จริง แยก billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost. การเชื่อม endpoint ผ่านไม่ใช่ clinical/product effectiveness
+
+UNKNOWN: โรงพยาบาล/SOPจริง, production IdP, production deployment, external interfaces, hardware, exact Qwen/Typhoon/MedGemma checkpoint, model revision, live budget และ intended clinical use. สิ่งเหล่านี้บล็อกเฉพาะงานที่ต้องใช้ ไม่บล็อก local synthetic implementation

@@ -1,0 +1,1066 @@
+table,column,postgresql_type,nullable,primary_key,foreign_keys,constraints
+audit_events,facility_id,VARCHAR(64),False,False,facilities.id,
+audit_events,organization_id,VARCHAR(64),False,False,organizations.id,
+audit_events,actor_id,VARCHAR(64),False,False,users.id,
+audit_events,domain,VARCHAR(8),False,False,,
+audit_events,entity_id,VARCHAR(64),False,False,,
+audit_events,action,VARCHAR(80),False,False,,
+audit_events,details,JSONB,False,False,,
+audit_events,id,VARCHAR(64),False,True,,
+audit_events,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+budget_versions,department_id,VARCHAR(64),False,False,departments.id,
+budget_versions,period,VARCHAR(30),False,False,,
+budget_versions,amount,"NUMERIC(18, 2)",False,False,,
+budget_versions,method_version,VARCHAR(100),False,False,,
+budget_versions,id,VARCHAR(64),False,True,,
+budget_versions,organization_id,VARCHAR(64),False,False,organizations.id,
+budget_versions,facility_id,VARCHAR(64),False,False,facilities.id,
+budget_versions,version,INTEGER,False,False,,
+budget_versions,status,VARCHAR(40),False,False,,
+budget_versions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+care_assignments,user_id,VARCHAR(64),False,True,users.id,
+care_assignments,patient_id,VARCHAR(64),False,True,patients.id,
+care_assignments,active,BOOLEAN,False,False,,
+charges,encounter_id,VARCHAR(64),False,False,encounters.id,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,invoice_id,VARCHAR(64),True,False,invoices.id,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,price_version_id,VARCHAR(64),True,False,price_versions.id,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,source_id,VARCHAR(200),False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,label,VARCHAR(300),False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,quantity,"NUMERIC(18, 3)",False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,unit_price,"NUMERIC(18, 2)",False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,amount,"NUMERIC(18, 2)",False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,id,VARCHAR(64),False,True,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,organization_id,VARCHAR(64),False,False,organizations.id,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,facility_id,VARCHAR(64),False,False,facilities.id,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,version,INTEGER,False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,status,VARCHAR(40),False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+charges,created_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0 AND unit_price >= 0 AND amount >= 0
+claim_lines,claim_id,VARCHAR(64),False,False,claims.id,
+claim_lines,charge_id,VARCHAR(64),False,False,charges.id,
+claim_lines,billed,"NUMERIC(18, 2)",False,False,,
+claim_lines,id,VARCHAR(64),False,True,,
+claim_lines,organization_id,VARCHAR(64),False,False,organizations.id,
+claim_lines,facility_id,VARCHAR(64),False,False,facilities.id,
+claim_lines,version,INTEGER,False,False,,
+claim_lines,status,VARCHAR(40),False,False,,
+claim_lines,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+claims,invoice_id,VARCHAR(64),False,False,invoices.id,
+claims,patient_id,VARCHAR(64),False,False,patients.id,
+claims,encounter_id,VARCHAR(64),False,False,encounters.id,
+claims,payer_name,VARCHAR(200),False,False,,
+claims,submitted,"NUMERIC(18, 2)",False,False,,
+claims,approved,"NUMERIC(18, 2)",False,False,,
+claims,exported_at,TIMESTAMP WITH TIME ZONE,True,False,,
+claims,id,VARCHAR(64),False,True,,
+claims,organization_id,VARCHAR(64),False,False,organizations.id,
+claims,facility_id,VARCHAR(64),False,False,facilities.id,
+claims,version,INTEGER,False,False,,
+claims,status,VARCHAR(40),False,False,,
+claims,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_administrations,medication_id,VARCHAR(64),False,False,clinical_medications.id,version > 0
+clinical_administrations,scheduled_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_administrations,dose,VARCHAR(150),False,False,,version > 0
+clinical_administrations,route,VARCHAR(80),False,False,,version > 0
+clinical_administrations,actual_at,TIMESTAMP WITH TIME ZONE,True,False,,version > 0
+clinical_administrations,reason,TEXT,True,False,,version > 0
+clinical_administrations,id,VARCHAR(64),False,True,,version > 0
+clinical_administrations,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_administrations,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_administrations,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_administrations,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_administrations,status,VARCHAR(40),False,False,,version > 0
+clinical_administrations,version,INTEGER,False,False,,version > 0
+clinical_administrations,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_administrations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_administrations,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_admissions,admission_reason,TEXT,False,False,,version > 0
+clinical_admissions,current_bed_id,VARCHAR(64),True,False,clinical_beds.id,version > 0
+clinical_admissions,discharge_summary,TEXT,True,False,,version > 0
+clinical_admissions,id,VARCHAR(64),False,True,,version > 0
+clinical_admissions,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_admissions,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_admissions,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_admissions,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_admissions,status,VARCHAR(40),False,False,,version > 0
+clinical_admissions,version,INTEGER,False,False,,version > 0
+clinical_admissions,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_admissions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_admissions,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_appointments,slot_id,VARCHAR(64),False,False,clinical_slots.id,version > 0
+clinical_appointments,reason,TEXT,False,False,,version > 0
+clinical_appointments,ticket_number,VARCHAR(80),True,False,,version > 0
+clinical_appointments,id,VARCHAR(64),False,True,,version > 0
+clinical_appointments,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_appointments,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_appointments,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_appointments,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_appointments,status,VARCHAR(40),False,False,,version > 0
+clinical_appointments,version,INTEGER,False,False,,version > 0
+clinical_appointments,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_appointments,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_appointments,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_bed_assignments,id,VARCHAR(64),False,True,,
+clinical_bed_assignments,admission_id,VARCHAR(64),False,False,clinical_admissions.id,
+clinical_bed_assignments,bed_id,VARCHAR(64),False,False,clinical_beds.id,
+clinical_bed_assignments,started_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_bed_assignments,ended_at,TIMESTAMP WITH TIME ZONE,True,False,,
+clinical_beds,id,VARCHAR(64),False,True,,
+clinical_beds,organization_id,VARCHAR(64),False,False,organizations.id,
+clinical_beds,facility_id,VARCHAR(64),False,False,facilities.id,
+clinical_beds,ward,VARCHAR(100),False,False,,
+clinical_beds,label,VARCHAR(100),False,False,,
+clinical_beds,active,BOOLEAN,False,False,,
+clinical_blood_requests,indication,TEXT,False,False,,version > 0
+clinical_blood_requests,unit_id,VARCHAR(64),True,False,clinical_blood_units.id,version > 0
+clinical_blood_requests,verification_evidence,TEXT,True,False,,version > 0
+clinical_blood_requests,verification_patient_version,INTEGER,True,False,,version > 0
+clinical_blood_requests,verification_evidence_hash,VARCHAR(64),True,False,,version > 0
+clinical_blood_requests,verification_unit_version,INTEGER,True,False,,version > 0
+clinical_blood_requests,verification_request_version,INTEGER,True,False,,version > 0
+clinical_blood_requests,verified_by,VARCHAR(64),True,False,users.id,version > 0
+clinical_blood_requests,administration_note,TEXT,True,False,,version > 0
+clinical_blood_requests,id,VARCHAR(64),False,True,,version > 0
+clinical_blood_requests,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_blood_requests,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_blood_requests,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_blood_requests,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_blood_requests,status,VARCHAR(40),False,False,,version > 0
+clinical_blood_requests,version,INTEGER,False,False,,version > 0
+clinical_blood_requests,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_blood_requests,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_blood_requests,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_blood_units,id,VARCHAR(64),False,True,,
+clinical_blood_units,organization_id,VARCHAR(64),False,False,organizations.id,
+clinical_blood_units,facility_id,VARCHAR(64),False,False,facilities.id,
+clinical_blood_units,identifier,VARCHAR(100),False,False,,
+clinical_blood_units,expiry_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_blood_units,eligibility_status,VARCHAR(40),False,False,,
+clinical_blood_units,version,INTEGER,False,False,,
+clinical_dental,tooth_code,VARCHAR(12),False,False,,version > 0
+clinical_dental,finding,TEXT,False,False,,version > 0
+clinical_dental,procedure_name,VARCHAR(200),False,False,,version > 0
+clinical_dental,id,VARCHAR(64),False,True,,version > 0
+clinical_dental,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_dental,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_dental,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_dental,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_dental,status,VARCHAR(40),False,False,,version > 0
+clinical_dental,version,INTEGER,False,False,,version > 0
+clinical_dental,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_dental,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_dental,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_device_assignments,round_id,VARCHAR(64),False,False,clinical_icu_rounds.id,version > 0
+clinical_device_assignments,admission_id,VARCHAR(64),False,False,clinical_admissions.id,version > 0
+clinical_device_assignments,asset_id,VARCHAR(64),False,False,equipment_assets.id,version > 0
+clinical_device_assignments,started_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_device_assignments,ended_at,TIMESTAMP WITH TIME ZONE,True,False,,version > 0
+clinical_device_assignments,released_by,VARCHAR(64),True,False,users.id,version > 0
+clinical_device_assignments,release_reason,TEXT,True,False,,version > 0
+clinical_device_assignments,id,VARCHAR(64),False,True,,version > 0
+clinical_device_assignments,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,version > 0
+clinical_device_assignments,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,version > 0
+clinical_device_assignments,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,version > 0
+clinical_device_assignments,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_device_assignments,status,VARCHAR(40),False,False,,version > 0
+clinical_device_assignments,version,INTEGER,False,False,,version > 0
+clinical_device_assignments,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_device_assignments,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_device_assignments,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_diets,diet_description,TEXT,False,False,,version > 0
+clinical_diets,allergy_note,TEXT,False,False,,version > 0
+clinical_diets,meal_period,VARCHAR(100),False,False,,version > 0
+clinical_diets,id,VARCHAR(64),False,True,,version > 0
+clinical_diets,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_diets,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_diets,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_diets,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_diets,status,VARCHAR(40),False,False,,version > 0
+clinical_diets,version,INTEGER,False,False,,version > 0
+clinical_diets,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_diets,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_diets,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_emergency,presenting_complaint,TEXT,False,False,,version > 0
+clinical_emergency,triage_level,VARCHAR(40),True,False,,version > 0
+clinical_emergency,assessment,TEXT,True,False,,version > 0
+clinical_emergency,disposition_reason,TEXT,True,False,,version > 0
+clinical_emergency,admission_id,VARCHAR(64),True,False,clinical_admissions.id,version > 0
+clinical_emergency,id,VARCHAR(64),False,True,,version > 0
+clinical_emergency,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_emergency,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_emergency,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_emergency,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_emergency,status,VARCHAR(40),False,False,,version > 0
+clinical_emergency,version,INTEGER,False,False,,version > 0
+clinical_emergency,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_emergency,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_emergency,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_events,id,VARCHAR(64),False,True,,
+clinical_events,organization_id,VARCHAR(64),False,False,organizations.id,
+clinical_events,domain,VARCHAR(3),False,False,,
+clinical_events,record_id,VARCHAR(64),False,False,,
+clinical_events,version,INTEGER,False,False,,
+clinical_events,action,VARCHAR(50),False,False,,
+clinical_events,actor_id,VARCHAR(64),False,False,users.id,
+clinical_events,snapshot,JSONB,False,False,,
+clinical_events,reason,TEXT,True,False,,
+clinical_events,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_handover_tasks,handover_id,VARCHAR(64),False,True,clinical_handovers.id,
+clinical_handover_tasks,task_id,VARCHAR(64),False,True,tasks.id,
+clinical_handover_tasks,task_version,INTEGER,False,False,,
+clinical_handovers,summary,TEXT,False,False,,version > 0
+clinical_handovers,pending_tasks,TEXT,False,False,,version > 0
+clinical_handovers,receiving_staff_id,VARCHAR(64),False,False,users.id,version > 0
+clinical_handovers,signed_by,VARCHAR(64),True,False,users.id,version > 0
+clinical_handovers,acknowledged_by,VARCHAR(64),True,False,users.id,version > 0
+clinical_handovers,id,VARCHAR(64),False,True,,version > 0
+clinical_handovers,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_handovers,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_handovers,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_handovers,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_handovers,status,VARCHAR(40),False,False,,version > 0
+clinical_handovers,version,INTEGER,False,False,,version > 0
+clinical_handovers,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_handovers,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_handovers,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_icu_rounds,asset_id,VARCHAR(64),True,False,equipment_assets.id,version > 0
+clinical_icu_rounds,admission_id,VARCHAR(64),False,False,clinical_admissions.id,version > 0
+clinical_icu_rounds,observation_name,VARCHAR(100),False,False,,version > 0
+clinical_icu_rounds,observation_value,VARCHAR(120),False,False,,version > 0
+clinical_icu_rounds,unit,VARCHAR(40),False,False,,version > 0
+clinical_icu_rounds,observed_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_icu_rounds,round_note,TEXT,False,False,,version > 0
+clinical_icu_rounds,id,VARCHAR(64),False,True,,version > 0
+clinical_icu_rounds,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_icu_rounds,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_icu_rounds,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_icu_rounds,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_icu_rounds,status,VARCHAR(40),False,False,,version > 0
+clinical_icu_rounds,version,INTEGER,False,False,,version > 0
+clinical_icu_rounds,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_icu_rounds,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_icu_rounds,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_imaging,asset_id,VARCHAR(64),True,False,equipment_assets.id,version > 0
+clinical_imaging,order_id,VARCHAR(64),False,False,clinical_orders.id,version > 0
+clinical_imaging,order_version,INTEGER,False,False,,version > 0
+clinical_imaging,modality,VARCHAR(40),False,False,,version > 0
+clinical_imaging,body_site,VARCHAR(120),False,False,,version > 0
+clinical_imaging,report,TEXT,True,False,,version > 0
+clinical_imaging,file_sha256,VARCHAR(64),True,False,,version > 0
+clinical_imaging,file_path,VARCHAR(200),True,False,,version > 0
+clinical_imaging,file_mime,VARCHAR(80),True,False,,version > 0
+clinical_imaging,released_to_portal,BOOLEAN,False,False,,version > 0
+clinical_imaging,id,VARCHAR(64),False,True,,version > 0
+clinical_imaging,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_imaging,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_imaging,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_imaging,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_imaging,status,VARCHAR(40),False,False,,version > 0
+clinical_imaging,version,INTEGER,False,False,,version > 0
+clinical_imaging,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_imaging,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_imaging,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_immunizations,id,VARCHAR(64),False,True,,quantity > 0
+clinical_immunizations,visit_id,VARCHAR(64),False,False,clinical_pediatrics.id,quantity > 0
+clinical_immunizations,item_id,VARCHAR(64),False,False,inventory_items.id,quantity > 0
+clinical_immunizations,lot_id,VARCHAR(64),False,False,inventory_lots.id,quantity > 0
+clinical_immunizations,quantity,"NUMERIC(18, 3)",False,False,,quantity > 0
+clinical_immunizations,unit,VARCHAR(40),False,False,,quantity > 0
+clinical_immunizations,administered_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0
+clinical_immunizations,recorded_by,VARCHAR(64),False,False,users.id,quantity > 0
+clinical_labs,order_id,VARCHAR(64),False,False,clinical_orders.id,version > 0
+clinical_labs,order_version,INTEGER,False,False,,version > 0
+clinical_labs,analyte,VARCHAR(150),False,False,,version > 0
+clinical_labs,specimen_type,VARCHAR(80),False,False,,version > 0
+clinical_labs,accession,VARCHAR(80),True,False,,version > 0
+clinical_labs,result_value,VARCHAR(200),True,False,,version > 0
+clinical_labs,unit,VARCHAR(60),True,False,,version > 0
+clinical_labs,reference_range,VARCHAR(150),True,False,,version > 0
+clinical_labs,critical,BOOLEAN,False,False,,version > 0
+clinical_labs,acknowledged_by,VARCHAR(64),True,False,users.id,version > 0
+clinical_labs,released_to_portal,BOOLEAN,False,False,,version > 0
+clinical_labs,id,VARCHAR(64),False,True,,version > 0
+clinical_labs,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_labs,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_labs,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_labs,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_labs,status,VARCHAR(40),False,False,,version > 0
+clinical_labs,version,INTEGER,False,False,,version > 0
+clinical_labs,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_labs,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_labs,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_medication_returns,id,VARCHAR(64),False,True,,
+clinical_medication_returns,medication_id,VARCHAR(64),False,False,clinical_medications.id,
+clinical_medication_returns,quantity,"NUMERIC(18, 3)",False,False,,
+clinical_medication_returns,reason,TEXT,False,False,,
+clinical_medication_returns,disposition,VARCHAR(30),False,False,,
+clinical_medication_returns,reviewer_id,VARCHAR(64),False,False,users.id,
+clinical_medication_returns,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_medications,order_id,VARCHAR(64),False,False,clinical_orders.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,order_version,INTEGER,False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,item_id,VARCHAR(64),False,False,inventory_items.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,medication_name,VARCHAR(200),False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,prescribed_dose,VARCHAR(150),False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,route,VARCHAR(80),False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,quantity,"NUMERIC(18, 3)",False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,unit,VARCHAR(40),False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,lot_id,VARCHAR(64),True,False,inventory_lots.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,location_id,VARCHAR(64),True,False,stock_locations.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,dispense_movement_id,VARCHAR(64),True,False,stock_movements.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,dispensed_quantity,"NUMERIC(18, 3)",False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,returned_quantity,"NUMERIC(18, 3)",False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,id,VARCHAR(64),False,True,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,status,VARCHAR(40),False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,version,INTEGER,False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,created_by,VARCHAR(64),False,False,users.id,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,created_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_medications,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0; returned_quantity >= 0 AND returned_quantity <= dispensed_quantity; version > 0
+clinical_orders,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,quantity > 0
+clinical_orders,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,quantity > 0
+clinical_orders,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,quantity > 0
+clinical_orders,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,quantity > 0
+clinical_orders,task_id,VARCHAR(64),True,False,tasks.id,quantity > 0
+clinical_orders,requester_id,VARCHAR(64),False,False,users.id,quantity > 0
+clinical_orders,kind,VARCHAR(24),False,False,,quantity > 0
+clinical_orders,code,VARCHAR(80),False,False,,quantity > 0
+clinical_orders,label,VARCHAR(240),False,False,,quantity > 0
+clinical_orders,instructions,TEXT,False,False,,quantity > 0
+clinical_orders,quantity,"NUMERIC(18, 3)",False,False,,quantity > 0
+clinical_orders,unit,VARCHAR(40),False,False,,quantity > 0
+clinical_orders,status,VARCHAR(24),False,False,,quantity > 0
+clinical_orders,version,INTEGER,False,False,,quantity > 0
+clinical_orders,id,VARCHAR(64),False,True,,quantity > 0
+clinical_orders,created_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0
+clinical_pediatrics,measurement_name,VARCHAR(80),False,False,,version > 0
+clinical_pediatrics,measurement_value,"NUMERIC(18, 3)",False,False,,version > 0
+clinical_pediatrics,unit,VARCHAR(40),False,False,,version > 0
+clinical_pediatrics,measured_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_pediatrics,immunization_note,TEXT,False,False,,version > 0
+clinical_pediatrics,id,VARCHAR(64),False,True,,version > 0
+clinical_pediatrics,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_pediatrics,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_pediatrics,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_pediatrics,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_pediatrics,status,VARCHAR(40),False,False,,version > 0
+clinical_pediatrics,version,INTEGER,False,False,,version > 0
+clinical_pediatrics,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_pediatrics,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_pediatrics,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_portal_requests,request_kind,VARCHAR(20),False,False,,version > 0
+clinical_portal_requests,document_revision_id,VARCHAR(64),True,False,document_versions.id,version > 0
+clinical_portal_requests,staff_task_id,VARCHAR(64),True,False,tasks.id,version > 0
+clinical_portal_requests,response_note,TEXT,True,False,,version > 0
+clinical_portal_requests,slot_id,VARCHAR(64),True,False,clinical_slots.id,version > 0
+clinical_portal_requests,reason,TEXT,False,False,,version > 0
+clinical_portal_requests,appointment_id,VARCHAR(64),True,False,clinical_appointments.id,version > 0
+clinical_portal_requests,id,VARCHAR(64),False,True,,version > 0
+clinical_portal_requests,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_portal_requests,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_portal_requests,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_portal_requests,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_portal_requests,status,VARCHAR(40),False,False,,version > 0
+clinical_portal_requests,version,INTEGER,False,False,,version > 0
+clinical_portal_requests,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_portal_requests,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_portal_requests,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_pregnancies,gestation_note,TEXT,False,False,,version > 0
+clinical_pregnancies,delivery_note,TEXT,True,False,,version > 0
+clinical_pregnancies,child_patient_id,VARCHAR(64),True,False,patients.id,version > 0
+clinical_pregnancies,child_identifier,VARCHAR(100),True,False,,version > 0
+clinical_pregnancies,id,VARCHAR(64),False,True,,version > 0
+clinical_pregnancies,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_pregnancies,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_pregnancies,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_pregnancies,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_pregnancies,status,VARCHAR(40),False,False,,version > 0
+clinical_pregnancies,version,INTEGER,False,False,,version > 0
+clinical_pregnancies,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_pregnancies,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_pregnancies,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_procedures,asset_id,VARCHAR(64),True,False,equipment_assets.id,version > 0
+clinical_procedures,cssd_cycle_id,VARCHAR(64),True,False,cssd_cycles.id,version > 0
+clinical_procedures,procedure_name,VARCHAR(200),False,False,,version > 0
+clinical_procedures,room,VARCHAR(80),True,False,,version > 0
+clinical_procedures,starts_at,TIMESTAMP WITH TIME ZONE,True,False,,version > 0
+clinical_procedures,ends_at,TIMESTAMP WITH TIME ZONE,True,False,,version > 0
+clinical_procedures,checklist,TEXT,True,False,,version > 0
+clinical_procedures,checklist_verified_by,VARCHAR(64),True,False,users.id,version > 0
+clinical_procedures,anesthesia_record,TEXT,True,False,,version > 0
+clinical_procedures,id,VARCHAR(64),False,True,,version > 0
+clinical_procedures,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_procedures,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_procedures,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_procedures,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_procedures,status,VARCHAR(40),False,False,,version > 0
+clinical_procedures,version,INTEGER,False,False,,version > 0
+clinical_procedures,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_procedures,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_procedures,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_referrals,destination,VARCHAR(200),False,False,,version > 0
+clinical_referrals,reason,TEXT,False,False,,version > 0
+clinical_referrals,document_revision_id,VARCHAR(64),True,False,document_versions.id,version > 0
+clinical_referrals,packet,TEXT,True,False,,version > 0
+clinical_referrals,response_source,VARCHAR(200),True,False,,version > 0
+clinical_referrals,response_note,TEXT,True,False,,version > 0
+clinical_referrals,id,VARCHAR(64),False,True,,version > 0
+clinical_referrals,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_referrals,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_referrals,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_referrals,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_referrals,status,VARCHAR(40),False,False,,version > 0
+clinical_referrals,version,INTEGER,False,False,,version > 0
+clinical_referrals,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_referrals,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_referrals,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_rehab,order_id,VARCHAR(64),False,False,clinical_orders.id,version > 0
+clinical_rehab,order_version,INTEGER,False,False,,version > 0
+clinical_rehab,goals,TEXT,False,False,,version > 0
+clinical_rehab,assessment,TEXT,True,False,,version > 0
+clinical_rehab,therapist_id,VARCHAR(64),False,False,users.id,version > 0
+clinical_rehab,id,VARCHAR(64),False,True,,version > 0
+clinical_rehab,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id;patients.organization_id,version > 0
+clinical_rehab,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id;patients.facility_id,version > 0
+clinical_rehab,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id;patients.id,version > 0
+clinical_rehab,encounter_id,VARCHAR(64),True,False,encounters.id;encounters.id,version > 0
+clinical_rehab,status,VARCHAR(40),False,False,,version > 0
+clinical_rehab,version,INTEGER,False,False,,version > 0
+clinical_rehab,created_by,VARCHAR(64),False,False,users.id,version > 0
+clinical_rehab,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_rehab,updated_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+clinical_slots,id,VARCHAR(64),False,True,,capacity > 0
+clinical_slots,organization_id,VARCHAR(64),False,False,organizations.id,capacity > 0
+clinical_slots,facility_id,VARCHAR(64),False,False,facilities.id,capacity > 0
+clinical_slots,label,VARCHAR(200),False,False,,capacity > 0
+clinical_slots,starts_at,TIMESTAMP WITH TIME ZONE,False,False,,capacity > 0
+clinical_slots,capacity,INTEGER,False,False,,capacity > 0
+clinical_therapy_progress,id,VARCHAR(64),False,True,,
+clinical_therapy_progress,session_id,VARCHAR(64),False,False,clinical_therapy_sessions.id,
+clinical_therapy_progress,performed_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_therapy_progress,progress,TEXT,False,False,,
+clinical_therapy_progress,author_id,VARCHAR(64),False,False,users.id,
+clinical_therapy_sessions,id,VARCHAR(64),False,True,,
+clinical_therapy_sessions,plan_id,VARCHAR(64),False,False,clinical_rehab.id,
+clinical_therapy_sessions,appointment_id,VARCHAR(64),False,False,clinical_appointments.id,
+clinical_therapy_sessions,scheduled_at,TIMESTAMP WITH TIME ZONE,False,False,,
+clinical_therapy_sessions,author_id,VARCHAR(64),False,False,users.id,
+committed_results,proposal_id,VARCHAR(64),False,False,proposals.id,
+committed_results,task_id,VARCHAR(64),False,False,tasks.id,
+committed_results,actor_id,VARCHAR(64),False,False,users.id,
+committed_results,version,INTEGER,False,False,,
+committed_results,action_hash,VARCHAR(64),False,False,,
+committed_results,action_canonical,TEXT,False,False,,
+committed_results,operation_key,VARCHAR(120),False,False,,
+committed_results,id,VARCHAR(64),False,True,,
+committed_results,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+corrective_actions,incident_id,VARCHAR(64),False,False,incidents.id,
+corrective_actions,owner_id,VARCHAR(64),False,False,users.id,
+corrective_actions,action_plan,TEXT,False,False,,
+corrective_actions,evidence,TEXT,True,False,,
+corrective_actions,reviewer_id,VARCHAR(64),True,False,users.id,
+corrective_actions,id,VARCHAR(64),False,True,,
+corrective_actions,organization_id,VARCHAR(64),False,False,organizations.id,
+corrective_actions,facility_id,VARCHAR(64),False,False,facilities.id,
+corrective_actions,version,INTEGER,False,False,,
+corrective_actions,status,VARCHAR(40),False,False,,
+corrective_actions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+cost_entries,encounter_id,VARCHAR(64),True,False,encounters.id,
+cost_entries,department_id,VARCHAR(64),True,False,departments.id,
+cost_entries,source_movement_id,VARCHAR(64),True,False,stock_movements.id,
+cost_entries,label,VARCHAR(200),False,False,,
+cost_entries,amount,"NUMERIC(18, 2)",False,False,,
+cost_entries,method_version,VARCHAR(100),False,False,,
+cost_entries,original_id,VARCHAR(64),True,False,cost_entries.id,
+cost_entries,id,VARCHAR(64),False,True,,
+cost_entries,organization_id,VARCHAR(64),False,False,organizations.id,
+cost_entries,facility_id,VARCHAR(64),False,False,facilities.id,
+cost_entries,version,INTEGER,False,False,,
+cost_entries,status,VARCHAR(40),False,False,,
+cost_entries,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+coverage_records,patient_id,VARCHAR(64),False,False,patients.id,
+coverage_records,payer_name,VARCHAR(200),False,False,,
+coverage_records,evidence,TEXT,False,False,,
+coverage_records,id,VARCHAR(64),False,True,,
+coverage_records,organization_id,VARCHAR(64),False,False,organizations.id,
+coverage_records,facility_id,VARCHAR(64),False,False,facilities.id,
+coverage_records,version,INTEGER,False,False,,
+coverage_records,status,VARCHAR(40),False,False,,
+coverage_records,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+cssd_cycles,asset_id,VARCHAR(64),False,False,equipment_assets.id,
+cssd_cycles,operator_id,VARCHAR(64),False,False,users.id,
+cssd_cycles,cycle_code,VARCHAR(100),False,False,,
+cssd_cycles,evidence,TEXT,True,False,,
+cssd_cycles,reviewer_id,VARCHAR(64),True,False,users.id,
+cssd_cycles,id,VARCHAR(64),False,True,,
+cssd_cycles,organization_id,VARCHAR(64),False,False,organizations.id,
+cssd_cycles,facility_id,VARCHAR(64),False,False,facilities.id,
+cssd_cycles,version,INTEGER,False,False,,
+cssd_cycles,status,VARCHAR(40),False,False,,
+cssd_cycles,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+dataset_access,dataset_id,VARCHAR(64),False,False,dataset_versions.id,
+dataset_access,user_id,VARCHAR(64),False,False,users.id,
+dataset_access,granted_by,VARCHAR(64),False,False,users.id,
+dataset_access,purpose,TEXT,False,False,,
+dataset_access,id,VARCHAR(64),False,True,,
+dataset_access,organization_id,VARCHAR(64),False,False,organizations.id,
+dataset_access,facility_id,VARCHAR(64),False,False,facilities.id,
+dataset_access,version,INTEGER,False,False,,
+dataset_access,status,VARCHAR(40),False,False,,
+dataset_access,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+dataset_rows,id,VARCHAR(64),False,True,,"partition IN ('train','test')"
+dataset_rows,dataset_id,VARCHAR(64),False,False,dataset_versions.id,"partition IN ('train','test')"
+dataset_rows,patient_id,VARCHAR(64),False,False,patients.id,"partition IN ('train','test')"
+dataset_rows,encounter_id,VARCHAR(64),False,False,encounters.id,"partition IN ('train','test')"
+dataset_rows,source_version,INTEGER,False,False,,"partition IN ('train','test')"
+dataset_rows,partition,VARCHAR(10),False,False,,"partition IN ('train','test')"
+dataset_rows,snapshot,JSONB,False,False,,"partition IN ('train','test')"
+dataset_versions,name,VARCHAR(200),False,False,,
+dataset_versions,encounter_kind,VARCHAR(30),False,False,,
+dataset_versions,definition_version,VARCHAR(50),False,False,,
+dataset_versions,snapshot_hash,VARCHAR(64),True,False,,
+dataset_versions,id,VARCHAR(64),False,True,,
+dataset_versions,organization_id,VARCHAR(64),False,False,organizations.id,
+dataset_versions,facility_id,VARCHAR(64),False,False,facilities.id,
+dataset_versions,version,INTEGER,False,False,,
+dataset_versions,status,VARCHAR(40),False,False,,
+dataset_versions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+delivery_attempts,message_id,VARCHAR(64),False,False,integration_messages.id,
+delivery_attempts,outcome,VARCHAR(40),False,False,,
+delivery_attempts,adapter,VARCHAR(50),False,False,,
+delivery_attempts,id,VARCHAR(64),False,True,,
+delivery_attempts,organization_id,VARCHAR(64),False,False,organizations.id,
+delivery_attempts,facility_id,VARCHAR(64),False,False,facilities.id,
+delivery_attempts,version,INTEGER,False,False,,
+delivery_attempts,status,VARCHAR(40),False,False,,
+delivery_attempts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+departments,organization_id,VARCHAR(64),False,False,organizations.id,
+departments,facility_id,VARCHAR(64),False,False,facilities.id,
+departments,name,VARCHAR(200),False,False,,
+departments,id,VARCHAR(64),False,True,,
+document_attestations,document_version_id,VARCHAR(64),False,False,document_versions.id,
+document_attestations,actor_id,VARCHAR(64),False,False,users.id,
+document_attestations,content_hash,VARCHAR(64),False,False,,
+document_attestations,id,VARCHAR(64),False,True,,
+document_attestations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+document_versions,document_id,VARCHAR(64),False,False,documents.id,
+document_versions,version,INTEGER,False,False,,
+document_versions,content,TEXT,False,False,,
+document_versions,content_hash,VARCHAR(64),False,False,,
+document_versions,created_by,VARCHAR(64),False,False,users.id,
+document_versions,reason,TEXT,True,False,,
+document_versions,id,VARCHAR(64),False,True,,
+document_versions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+documents,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,
+documents,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,
+documents,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,
+documents,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,
+documents,title,VARCHAR(240),False,False,,
+documents,status,VARCHAR(24),False,False,,
+documents,version,INTEGER,False,False,,
+documents,current_version_id,VARCHAR(64),True,False,document_versions.id,
+documents,published,BOOLEAN,False,False,,
+documents,id,VARCHAR(64),False,True,document_versions.document_id,
+documents,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+encounters,organization_id,VARCHAR(64),False,False,organizations.id;patients.organization_id,version > 0
+encounters,facility_id,VARCHAR(64),False,False,facilities.id;patients.facility_id,version > 0
+encounters,patient_id,VARCHAR(64),False,False,patients.id;patients.id,version > 0
+encounters,department_id,VARCHAR(64),True,False,departments.id,version > 0
+encounters,practitioner_id,VARCHAR(64),True,False,users.id,version > 0
+encounters,kind,VARCHAR(24),False,False,,version > 0
+encounters,status,VARCHAR(24),False,False,,version > 0
+encounters,version,INTEGER,False,False,,version > 0
+encounters,disposition,TEXT,True,False,,version > 0
+encounters,published,BOOLEAN,False,False,,version > 0
+encounters,id,VARCHAR(64),False,True,,version > 0
+encounters,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+equipment_assets,name,VARCHAR(200),False,False,,
+equipment_assets,location_id,VARCHAR(64),False,False,locations.id,
+equipment_assets,department_id,VARCHAR(64),True,False,departments.id,
+equipment_assets,maintenance_due,DATE,True,False,,
+equipment_assets,id,VARCHAR(64),False,True,,
+equipment_assets,organization_id,VARCHAR(64),False,False,organizations.id,
+equipment_assets,facility_id,VARCHAR(64),False,False,facilities.id,
+equipment_assets,version,INTEGER,False,False,,
+equipment_assets,status,VARCHAR(40),False,False,,
+equipment_assets,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+facilities,organization_id,VARCHAR(64),False,False,organizations.id,
+facilities,name,VARCHAR(200),False,False,,
+facilities,id,VARCHAR(64),False,True,,
+facility_work_orders,location_id,VARCHAR(64),False,False,locations.id,
+facility_work_orders,description,TEXT,False,False,,
+facility_work_orders,assignee_id,VARCHAR(64),True,False,users.id,
+facility_work_orders,evidence,TEXT,True,False,,
+facility_work_orders,id,VARCHAR(64),False,True,,
+facility_work_orders,organization_id,VARCHAR(64),False,False,organizations.id,
+facility_work_orders,facility_id,VARCHAR(64),False,False,facilities.id,
+facility_work_orders,version,INTEGER,False,False,,
+facility_work_orders,status,VARCHAR(40),False,False,,
+facility_work_orders,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+goods_receipts,purchase_id,VARCHAR(64),False,False,purchases.id,
+goods_receipts,lot_id,VARCHAR(64),False,False,inventory_lots.id,
+goods_receipts,movement_id,VARCHAR(64),False,False,stock_movements.id,
+goods_receipts,quantity,"NUMERIC(18, 3)",False,False,,
+goods_receipts,amount,"NUMERIC(18, 2)",False,False,,
+goods_receipts,receipt_key,VARCHAR(160),False,False,,
+goods_receipts,id,VARCHAR(64),False,True,,
+goods_receipts,organization_id,VARCHAR(64),False,False,organizations.id,
+goods_receipts,facility_id,VARCHAR(64),False,False,facilities.id,
+goods_receipts,version,INTEGER,False,False,,
+goods_receipts,status,VARCHAR(40),False,False,,
+goods_receipts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+human_reviews,proposal_id,VARCHAR(64),False,False,proposals.id,
+human_reviews,actor_id,VARCHAR(64),False,False,users.id,
+human_reviews,version,INTEGER,False,False,,
+human_reviews,action_hash,VARCHAR(64),False,False,,
+human_reviews,decision,VARCHAR(24),False,False,,
+human_reviews,edited_text,TEXT,True,False,,
+human_reviews,id,VARCHAR(64),False,True,,
+human_reviews,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+incidents,encounter_id,VARCHAR(64),True,False,encounters.id,
+incidents,asset_id,VARCHAR(64),True,False,equipment_assets.id,
+incidents,reporter_id,VARCHAR(64),False,False,users.id,
+incidents,description,TEXT,False,False,,
+incidents,classification,VARCHAR(100),True,False,,
+incidents,case_definition_version,VARCHAR(100),True,False,,
+incidents,id,VARCHAR(64),False,True,,
+incidents,organization_id,VARCHAR(64),False,False,organizations.id,
+incidents,facility_id,VARCHAR(64),False,False,facilities.id,
+incidents,version,INTEGER,False,False,,
+incidents,status,VARCHAR(40),False,False,,
+incidents,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+inference_runs,task_id,VARCHAR(64),False,False,tasks.id,
+inference_runs,actor_id,VARCHAR(64),False,False,users.id,
+inference_runs,provider,VARCHAR(64),False,False,,
+inference_runs,outcome,VARCHAR(24),False,False,,
+inference_runs,reason,TEXT,True,False,,
+inference_runs,elapsed_ms,INTEGER,False,False,,
+inference_runs,measured_cost,"NUMERIC(18, 6)",True,False,,
+inference_runs,usage,JSONB,True,False,,
+inference_runs,id,VARCHAR(64),False,True,,
+inference_runs,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+integration_messages,source_id,VARCHAR(160),False,False,,
+integration_messages,sequence,INTEGER,False,False,,
+integration_messages,contract_version,VARCHAR(100),False,False,,
+integration_messages,kind,VARCHAR(40),False,False,,
+integration_messages,source_record_id,VARCHAR(64),False,False,,
+integration_messages,content_hash,VARCHAR(64),False,False,,
+integration_messages,error,VARCHAR(300),True,False,,
+integration_messages,id,VARCHAR(64),False,True,,
+integration_messages,organization_id,VARCHAR(64),False,False,organizations.id,
+integration_messages,facility_id,VARCHAR(64),False,False,facilities.id,
+integration_messages,version,INTEGER,False,False,,
+integration_messages,status,VARCHAR(40),False,False,,
+integration_messages,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+integration_receipts,message_id,VARCHAR(64),False,False,integration_messages.id,
+integration_receipts,source_record_id,VARCHAR(64),False,False,,
+integration_receipts,receipt_kind,VARCHAR(40),False,False,,
+integration_receipts,id,VARCHAR(64),False,True,,
+integration_receipts,organization_id,VARCHAR(64),False,False,organizations.id,
+integration_receipts,facility_id,VARCHAR(64),False,False,facilities.id,
+integration_receipts,version,INTEGER,False,False,,
+integration_receipts,status,VARCHAR(40),False,False,,
+integration_receipts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+inventory_items,name,VARCHAR(200),False,False,,
+inventory_items,unit,VARCHAR(30),False,False,,
+inventory_items,id,VARCHAR(64),False,True,,
+inventory_items,organization_id,VARCHAR(64),False,False,organizations.id,
+inventory_items,facility_id,VARCHAR(64),False,False,facilities.id,
+inventory_items,version,INTEGER,False,False,,
+inventory_items,status,VARCHAR(40),False,False,,
+inventory_items,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+inventory_lots,item_id,VARCHAR(64),False,False,inventory_items.id,unit_cost >= 0
+inventory_lots,lot_number,VARCHAR(100),False,False,,unit_cost >= 0
+inventory_lots,expiry_date,DATE,False,False,,unit_cost >= 0
+inventory_lots,unit_cost,"NUMERIC(18, 2)",False,False,,unit_cost >= 0
+inventory_lots,id,VARCHAR(64),False,True,,unit_cost >= 0
+inventory_lots,organization_id,VARCHAR(64),False,False,organizations.id,unit_cost >= 0
+inventory_lots,facility_id,VARCHAR(64),False,False,facilities.id,unit_cost >= 0
+inventory_lots,version,INTEGER,False,False,,unit_cost >= 0
+inventory_lots,status,VARCHAR(40),False,False,,unit_cost >= 0
+inventory_lots,created_at,TIMESTAMP WITH TIME ZONE,False,False,,unit_cost >= 0
+invoice_adjustments,invoice_id,VARCHAR(64),False,False,invoices.id,
+invoice_adjustments,original_charge_id,VARCHAR(64),False,False,charges.id,
+invoice_adjustments,amount,"NUMERIC(18, 2)",False,False,,
+invoice_adjustments,reason,TEXT,False,False,,
+invoice_adjustments,approver_id,VARCHAR(64),False,False,users.id,
+invoice_adjustments,id,VARCHAR(64),False,True,,
+invoice_adjustments,organization_id,VARCHAR(64),False,False,organizations.id,
+invoice_adjustments,facility_id,VARCHAR(64),False,False,facilities.id,
+invoice_adjustments,version,INTEGER,False,False,,
+invoice_adjustments,status,VARCHAR(40),False,False,,
+invoice_adjustments,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+invoices,encounter_id,VARCHAR(64),False,False,encounters.id,
+invoices,label,VARCHAR(200),False,False,,
+invoices,currency,VARCHAR(3),False,False,,
+invoices,billed,"NUMERIC(18, 2)",False,False,,
+invoices,id,VARCHAR(64),False,True,,
+invoices,organization_id,VARCHAR(64),False,False,organizations.id,
+invoices,facility_id,VARCHAR(64),False,False,facilities.id,
+invoices,version,INTEGER,False,False,,
+invoices,status,VARCHAR(40),False,False,,
+invoices,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+ledger_entries,source_id,VARCHAR(100),False,False,,
+ledger_entries,kind,VARCHAR(30),False,False,,
+ledger_entries,original_entry_id,VARCHAR(64),True,False,ledger_entries.id,
+ledger_entries,id,VARCHAR(64),False,True,,
+ledger_entries,organization_id,VARCHAR(64),False,False,organizations.id,
+ledger_entries,facility_id,VARCHAR(64),False,False,facilities.id,
+ledger_entries,version,INTEGER,False,False,,
+ledger_entries,status,VARCHAR(40),False,False,,
+ledger_entries,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+ledger_lines,id,VARCHAR(64),False,True,,debit >= 0 AND credit >= 0 AND (debit = 0 OR credit = 0)
+ledger_lines,entry_id,VARCHAR(64),False,False,ledger_entries.id,debit >= 0 AND credit >= 0 AND (debit = 0 OR credit = 0)
+ledger_lines,account,VARCHAR(80),False,False,,debit >= 0 AND credit >= 0 AND (debit = 0 OR credit = 0)
+ledger_lines,debit,"NUMERIC(18, 2)",False,False,,debit >= 0 AND credit >= 0 AND (debit = 0 OR credit = 0)
+ledger_lines,credit,"NUMERIC(18, 2)",False,False,,debit >= 0 AND credit >= 0 AND (debit = 0 OR credit = 0)
+legacy_imports,id,VARCHAR(64),False,True,,
+legacy_imports,organization_id,VARCHAR(64),False,False,organizations.id,
+legacy_imports,facility_id,VARCHAR(64),False,False,facilities.id,
+legacy_imports,source_sha256,VARCHAR(64),False,False,,
+legacy_imports,mapping_sha256,VARCHAR(64),False,False,,
+legacy_imports,source_name,VARCHAR(255),False,False,,
+legacy_imports,report_json,TEXT,False,False,,
+legacy_imports,created_by,VARCHAR(64),False,False,users.id,
+legacy_imports,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+legacy_rows,id,VARCHAR(64),False,True,,
+legacy_rows,import_id,VARCHAR(64),False,False,legacy_imports.id,
+legacy_rows,source_table,VARCHAR(40),False,False,,
+legacy_rows,legacy_id,TEXT,False,False,,
+legacy_rows,legacy_patient_id,VARCHAR(255),True,False,,
+legacy_rows,mapped_patient_id,VARCHAR(64),True,False,patients.id,
+legacy_rows,source_row_json,TEXT,False,False,,
+legacy_rows,row_sha256,VARCHAR(64),False,False,,
+legacy_rows,status,VARCHAR(40),False,False,,
+legacy_rows,gap_json,TEXT,False,False,,
+linen_dispatches,location_id,VARCHAR(64),False,False,locations.id,
+linen_dispatches,quantity,"NUMERIC(18, 3)",False,False,,
+linen_dispatches,returned_quantity,"NUMERIC(18, 3)",False,False,,
+linen_dispatches,id,VARCHAR(64),False,True,,
+linen_dispatches,organization_id,VARCHAR(64),False,False,organizations.id,
+linen_dispatches,facility_id,VARCHAR(64),False,False,facilities.id,
+linen_dispatches,version,INTEGER,False,False,,
+linen_dispatches,status,VARCHAR(40),False,False,,
+linen_dispatches,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+locations,organization_id,VARCHAR(64),False,False,organizations.id,
+locations,facility_id,VARCHAR(64),False,False,facilities.id,
+locations,name,VARCHAR(200),False,False,,
+locations,kind,VARCHAR(32),False,False,,
+locations,id,VARCHAR(64),False,True,,
+login_attempts,identity_hash,VARCHAR(64),False,False,,
+login_attempts,successful,BOOLEAN,False,False,,
+login_attempts,id,VARCHAR(64),False,True,,
+login_attempts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+maintenance_work_orders,asset_id,VARCHAR(64),False,False,equipment_assets.id,
+maintenance_work_orders,technician_id,VARCHAR(64),False,False,users.id,
+maintenance_work_orders,evidence,TEXT,True,False,,
+maintenance_work_orders,verifier_id,VARCHAR(64),True,False,users.id,
+maintenance_work_orders,id,VARCHAR(64),False,True,,
+maintenance_work_orders,organization_id,VARCHAR(64),False,False,organizations.id,
+maintenance_work_orders,facility_id,VARCHAR(64),False,False,facilities.id,
+maintenance_work_orders,version,INTEGER,False,False,,
+maintenance_work_orders,status,VARCHAR(40),False,False,,
+maintenance_work_orders,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+memberships,user_id,VARCHAR(64),False,False,users.id,
+memberships,facility_id,VARCHAR(64),False,False,facilities.id,
+memberships,role,VARCHAR(64),False,False,roles.id,
+memberships,active,BOOLEAN,False,False,,
+memberships,id,VARCHAR(64),False,True,,
+operational_jobs,id,VARCHAR,False,True,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,organization_id,VARCHAR(64),False,False,organizations.id,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,facility_id,VARCHAR(64),False,False,facilities.id,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,actor_id,VARCHAR(64),False,False,users.id,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,command_kind,VARCHAR,False,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,status,VARCHAR,False,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,source_backup_id,VARCHAR,True,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,artifact_id,VARCHAR,True,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,result,JSONB,False,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,error_code,VARCHAR,True,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,started_at,TIMESTAMP WITH TIME ZONE,True,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operational_jobs,finished_at,TIMESTAMP WITH TIME ZONE,True,False,,"command_kind IN ('backup','isolated_restore'); status IN ('requested','running','completed','failed','restore_verified','restore_failed')"
+operations,authorization_hash,VARCHAR(64),False,False,,
+operations,organization_id,VARCHAR(64),False,False,organizations.id,
+operations,facility_id,VARCHAR(64),False,False,facilities.id,
+operations,actor_id,VARCHAR(64),False,True,users.id,
+operations,key,VARCHAR(120),False,True,,
+operations,operation,VARCHAR(180),False,False,,
+operations,payload_hash,VARCHAR(64),False,False,,
+operations,response,JSONB,False,False,,
+operations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+order_revisions,order_id,VARCHAR(64),False,False,clinical_orders.id,
+order_revisions,version,INTEGER,False,False,,
+order_revisions,instructions,TEXT,False,False,,
+order_revisions,actor_id,VARCHAR(64),False,False,users.id,
+order_revisions,id,VARCHAR(64),False,True,,
+order_revisions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+organizations,name,VARCHAR(200),False,False,,
+organizations,id,VARCHAR(64),False,True,,
+patient_identifiers,patient_id,VARCHAR(64),False,False,patients.id;patients.id,
+patient_identifiers,organization_id,VARCHAR(64),False,False,organizations.id;patients.organization_id,
+patient_identifiers,issuer,VARCHAR(80),False,False,,
+patient_identifiers,value,VARCHAR(120),False,False,,
+patient_identifiers,id,VARCHAR(64),False,True,,
+patients,organization_id,VARCHAR(64),False,False,facilities.organization_id;organizations.id,version > 0
+patients,facility_id,VARCHAR(64),False,False,facilities.id;facilities.id,version > 0
+patients,display_name,VARCHAR(200),False,False,,version > 0
+patients,birth_date,DATE,True,False,,version > 0
+patients,sex,VARCHAR(16),False,False,,version > 0
+patients,status,VARCHAR(24),False,False,,version > 0
+patients,version,INTEGER,False,False,,version > 0
+patients,id,VARCHAR(64),False,True,,version > 0
+patients,created_at,TIMESTAMP WITH TIME ZONE,False,False,,version > 0
+payment_allocations,receipt_id,VARCHAR(64),False,False,payment_receipts.id,
+payment_allocations,invoice_id,VARCHAR(64),False,False,invoices.id,
+payment_allocations,amount,"NUMERIC(18, 2)",False,False,,
+payment_allocations,id,VARCHAR(64),False,True,,
+payment_allocations,organization_id,VARCHAR(64),False,False,organizations.id,
+payment_allocations,facility_id,VARCHAR(64),False,False,facilities.id,
+payment_allocations,version,INTEGER,False,False,,
+payment_allocations,status,VARCHAR(40),False,False,,
+payment_allocations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+payment_receipts,invoice_id,VARCHAR(64),False,False,invoices.id,amount > 0
+payment_receipts,amount,"NUMERIC(18, 2)",False,False,,amount > 0
+payment_receipts,payer_name,VARCHAR(200),False,False,,amount > 0
+payment_receipts,recorded_by,VARCHAR(64),False,False,users.id,amount > 0
+payment_receipts,id,VARCHAR(64),False,True,,amount > 0
+payment_receipts,organization_id,VARCHAR(64),False,False,organizations.id,amount > 0
+payment_receipts,facility_id,VARCHAR(64),False,False,facilities.id,amount > 0
+payment_receipts,version,INTEGER,False,False,,amount > 0
+payment_receipts,status,VARCHAR(40),False,False,,amount > 0
+payment_receipts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,amount > 0
+permissions,id,VARCHAR(64),False,True,,
+price_versions,name,VARCHAR(200),False,False,,unit_price >= 0
+price_versions,effective_from,DATE,False,False,,unit_price >= 0
+price_versions,unit_price,"NUMERIC(18, 2)",False,False,,unit_price >= 0
+price_versions,currency,VARCHAR(3),False,False,,unit_price >= 0
+price_versions,id,VARCHAR(64),False,True,,unit_price >= 0
+price_versions,organization_id,VARCHAR(64),False,False,organizations.id,unit_price >= 0
+price_versions,facility_id,VARCHAR(64),False,False,facilities.id,unit_price >= 0
+price_versions,version,INTEGER,False,False,,unit_price >= 0
+price_versions,status,VARCHAR(40),False,False,,unit_price >= 0
+price_versions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,unit_price >= 0
+proposal_versions,proposal_id,VARCHAR(64),False,False,proposals.id,
+proposal_versions,version,INTEGER,False,False,,
+proposal_versions,action_canonical,TEXT,False,False,,
+proposal_versions,action_hash,VARCHAR(64),False,False,,
+proposal_versions,id,VARCHAR(64),False,True,,
+proposal_versions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+proposals,task_id,VARCHAR(64),False,False,tasks.id,
+proposals,run_id,VARCHAR(64),False,False,inference_runs.id,
+proposals,document_version_id,VARCHAR(64),False,False,document_versions.id,
+proposals,encounter_version,INTEGER,False,False,,
+proposals,task_version,INTEGER,False,False,,
+proposals,version,INTEGER,False,False,,
+proposals,status,VARCHAR(24),False,False,,
+proposals,action_canonical,TEXT,False,False,,
+proposals,action_hash,VARCHAR(64),False,False,,
+proposals,expires_at,TIMESTAMP WITH TIME ZONE,False,False,,
+proposals,id,VARCHAR(64),False,True,,
+proposals,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+purchases,supplier_id,VARCHAR(64),False,False,suppliers.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,item_id,VARCHAR(64),False,False,inventory_items.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,department_id,VARCHAR(64),True,False,departments.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,quantity,"NUMERIC(18, 3)",False,False,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,received_quantity,"NUMERIC(18, 3)",False,False,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,unit_price,"NUMERIC(18, 2)",False,False,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,requested_by,VARCHAR(64),False,False,users.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,approved_by,VARCHAR(64),True,False,users.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,id,VARCHAR(64),False,True,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,organization_id,VARCHAR(64),False,False,organizations.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,facility_id,VARCHAR(64),False,False,facilities.id,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,version,INTEGER,False,False,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,status,VARCHAR(40),False,False,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+purchases,created_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0 AND received_quantity >= 0 AND received_quantity <= quantity AND unit_price >= 0
+reconciliation_tasks,message_id,VARCHAR(64),False,False,integration_messages.id,
+reconciliation_tasks,integration_receipt_id,VARCHAR(64),False,False,integration_receipts.id,
+reconciliation_tasks,title,VARCHAR(200),False,False,,
+reconciliation_tasks,id,VARCHAR(64),False,True,,
+reconciliation_tasks,organization_id,VARCHAR(64),False,False,organizations.id,
+reconciliation_tasks,facility_id,VARCHAR(64),False,False,facilities.id,
+reconciliation_tasks,version,INTEGER,False,False,,
+reconciliation_tasks,status,VARCHAR(40),False,False,,
+reconciliation_tasks,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+refunds,receipt_id,VARCHAR(64),False,False,payment_receipts.id,amount > 0
+refunds,amount,"NUMERIC(18, 2)",False,False,,amount > 0
+refunds,reason,TEXT,False,False,,amount > 0
+refunds,requested_by,VARCHAR(64),False,False,users.id,amount > 0
+refunds,approved_by,VARCHAR(64),True,False,users.id,amount > 0
+refunds,release_allocation,BOOLEAN,False,False,,amount > 0
+refunds,id,VARCHAR(64),False,True,,amount > 0
+refunds,organization_id,VARCHAR(64),False,False,organizations.id,amount > 0
+refunds,facility_id,VARCHAR(64),False,False,facilities.id,amount > 0
+refunds,version,INTEGER,False,False,,amount > 0
+refunds,status,VARCHAR(40),False,False,,amount > 0
+refunds,created_at,TIMESTAMP WITH TIME ZONE,False,False,,amount > 0
+remittances,claim_id,VARCHAR(64),False,False,claims.id,approved_amount >= 0
+remittances,source_key,VARCHAR(160),False,False,,approved_amount >= 0
+remittances,approved_amount,"NUMERIC(18, 2)",False,False,,approved_amount >= 0
+remittances,synthetic,BOOLEAN,False,False,,approved_amount >= 0
+remittances,id,VARCHAR(64),False,True,,approved_amount >= 0
+remittances,organization_id,VARCHAR(64),False,False,organizations.id,approved_amount >= 0
+remittances,facility_id,VARCHAR(64),False,False,facilities.id,approved_amount >= 0
+remittances,version,INTEGER,False,False,,approved_amount >= 0
+remittances,status,VARCHAR(40),False,False,,approved_amount >= 0
+remittances,created_at,TIMESTAMP WITH TIME ZONE,False,False,,approved_amount >= 0
+report_acknowledgments,batch_id,VARCHAR(64),False,False,report_batches.id,
+report_acknowledgments,source_type,VARCHAR(40),False,False,,
+report_acknowledgments,reference,TEXT,False,False,,
+report_acknowledgments,recorded_by,VARCHAR(64),False,False,users.id,
+report_acknowledgments,id,VARCHAR(64),False,True,,
+report_acknowledgments,organization_id,VARCHAR(64),False,False,organizations.id,
+report_acknowledgments,facility_id,VARCHAR(64),False,False,facilities.id,
+report_acknowledgments,version,INTEGER,False,False,,
+report_acknowledgments,status,VARCHAR(40),False,False,,
+report_acknowledgments,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+report_batches,name,VARCHAR(200),False,False,,
+report_batches,definition_version,VARCHAR(100),False,False,,
+report_batches,period_start,DATE,False,False,,
+report_batches,period_end,DATE,False,False,,
+report_batches,original_id,VARCHAR(64),True,False,report_batches.id,
+report_batches,summary,JSONB,True,False,,
+report_batches,id,VARCHAR(64),False,True,,
+report_batches,organization_id,VARCHAR(64),False,False,organizations.id,
+report_batches,facility_id,VARCHAR(64),False,False,facilities.id,
+report_batches,version,INTEGER,False,False,,
+report_batches,status,VARCHAR(40),False,False,,
+report_batches,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+report_lineage,id,VARCHAR(64),False,True,,
+report_lineage,batch_id,VARCHAR(64),False,False,report_batches.id,
+report_lineage,encounter_id,VARCHAR(64),False,False,encounters.id,
+report_lineage,source_version,INTEGER,False,False,,
+report_lineage,source_status,VARCHAR(40),False,False,,
+role_permissions,role_id,VARCHAR(64),False,True,roles.id,
+role_permissions,permission_id,VARCHAR(64),False,True,permissions.id,
+roles,id,VARCHAR(64),False,True,,
+roles,label,VARCHAR(120),False,False,,
+rosters,staff_id,VARCHAR(64),False,False,staff_members.id,ends_at > starts_at
+rosters,starts_at,TIMESTAMP WITH TIME ZONE,False,False,,ends_at > starts_at
+rosters,ends_at,TIMESTAMP WITH TIME ZONE,False,False,,ends_at > starts_at
+rosters,original_id,VARCHAR(64),True,False,rosters.id,ends_at > starts_at
+rosters,id,VARCHAR(64),False,True,,ends_at > starts_at
+rosters,organization_id,VARCHAR(64),False,False,organizations.id,ends_at > starts_at
+rosters,facility_id,VARCHAR(64),False,False,facilities.id,ends_at > starts_at
+rosters,version,INTEGER,False,False,,ends_at > starts_at
+rosters,status,VARCHAR(40),False,False,,ends_at > starts_at
+rosters,created_at,TIMESTAMP WITH TIME ZONE,False,False,,ends_at > starts_at
+security_events,organization_id,VARCHAR(64),True,False,organizations.id,
+security_events,facility_id,VARCHAR(64),True,False,facilities.id,
+security_events,actor_id,VARCHAR(64),True,False,users.id,
+security_events,method,VARCHAR(8),False,False,,
+security_events,route_template,VARCHAR(200),False,False,,
+security_events,status_code,INTEGER,False,False,,
+security_events,event,VARCHAR(64),False,False,,
+security_events,id,VARCHAR(64),False,True,,
+security_events,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+seed_runs,version,VARCHAR(64),False,True,,
+seed_runs,completed_at,TIMESTAMP WITH TIME ZONE,False,False,,
+sessions,user_id,VARCHAR(64),False,False,users.id,
+sessions,facility_id,VARCHAR(64),False,False,facilities.id,
+sessions,token_hash,VARCHAR(64),False,False,,
+sessions,csrf_hash,VARCHAR(64),False,False,,
+sessions,csrf_token,VARCHAR(100),False,False,,
+sessions,expires_at,TIMESTAMP WITH TIME ZONE,False,False,,
+sessions,revoked_at,TIMESTAMP WITH TIME ZONE,True,False,,
+sessions,id,VARCHAR(64),False,True,,
+sessions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+staff_members,user_id,VARCHAR(64),False,False,users.id,
+staff_members,department_id,VARCHAR(64),False,False,departments.id,
+staff_members,credential_status,VARCHAR(30),False,False,,
+staff_members,credential_valid_until,DATE,False,False,,
+staff_members,privilege,VARCHAR(80),False,False,,
+staff_members,id,VARCHAR(64),False,True,,
+staff_members,organization_id,VARCHAR(64),False,False,organizations.id,
+staff_members,facility_id,VARCHAR(64),False,False,facilities.id,
+staff_members,version,INTEGER,False,False,,
+staff_members,status,VARCHAR(40),False,False,,
+staff_members,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+stock_balances,id,VARCHAR(64),False,True,,available >= 0 AND quarantined >= 0
+stock_balances,lot_id,VARCHAR(64),False,False,inventory_lots.id,available >= 0 AND quarantined >= 0
+stock_balances,location_id,VARCHAR(64),False,False,stock_locations.id,available >= 0 AND quarantined >= 0
+stock_balances,available,"NUMERIC(18, 3)",False,False,,available >= 0 AND quarantined >= 0
+stock_balances,quarantined,"NUMERIC(18, 3)",False,False,,available >= 0 AND quarantined >= 0
+stock_counts,lot_id,VARCHAR(64),False,False,inventory_lots.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,location_id,VARCHAR(64),False,False,stock_locations.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,observed_available,"NUMERIC(18, 3)",False,False,,observed_available >= 0 AND counted_available >= 0
+stock_counts,counted_available,"NUMERIC(18, 3)",False,False,,observed_available >= 0 AND counted_available >= 0
+stock_counts,reason,TEXT,False,False,,observed_available >= 0 AND counted_available >= 0
+stock_counts,counted_by,VARCHAR(64),False,False,users.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,approved_by,VARCHAR(64),True,False,users.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,movement_id,VARCHAR(64),True,False,stock_movements.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,id,VARCHAR(64),False,True,,observed_available >= 0 AND counted_available >= 0
+stock_counts,organization_id,VARCHAR(64),False,False,organizations.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,facility_id,VARCHAR(64),False,False,facilities.id,observed_available >= 0 AND counted_available >= 0
+stock_counts,version,INTEGER,False,False,,observed_available >= 0 AND counted_available >= 0
+stock_counts,status,VARCHAR(40),False,False,,observed_available >= 0 AND counted_available >= 0
+stock_counts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,observed_available >= 0 AND counted_available >= 0
+stock_locations,name,VARCHAR(200),False,False,,
+stock_locations,id,VARCHAR(64),False,True,,
+stock_locations,organization_id,VARCHAR(64),False,False,organizations.id,
+stock_locations,facility_id,VARCHAR(64),False,False,facilities.id,
+stock_locations,version,INTEGER,False,False,,
+stock_locations,status,VARCHAR(40),False,False,,
+stock_locations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+stock_movements,lot_id,VARCHAR(64),False,False,inventory_lots.id,quantity <> 0
+stock_movements,location_id,VARCHAR(64),False,False,stock_locations.id,quantity <> 0
+stock_movements,quantity,"NUMERIC(18, 3)",False,False,,quantity <> 0
+stock_movements,source_id,VARCHAR(200),False,False,,quantity <> 0
+stock_movements,operation_key,VARCHAR(200),False,False,,quantity <> 0
+stock_movements,original_movement_id,VARCHAR(64),True,False,stock_movements.id,quantity <> 0
+stock_movements,disposition,VARCHAR(30),False,False,,quantity <> 0
+stock_movements,id,VARCHAR(64),False,True,,quantity <> 0
+stock_movements,organization_id,VARCHAR(64),False,False,organizations.id,quantity <> 0
+stock_movements,facility_id,VARCHAR(64),False,False,facilities.id,quantity <> 0
+stock_movements,version,INTEGER,False,False,,quantity <> 0
+stock_movements,status,VARCHAR(40),False,False,,quantity <> 0
+stock_movements,created_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity <> 0
+stock_reservations,task_id,VARCHAR(64),False,False,tasks.id,quantity > 0
+stock_reservations,lot_id,VARCHAR(64),False,False,inventory_lots.id,quantity > 0
+stock_reservations,location_id,VARCHAR(64),False,False,stock_locations.id,quantity > 0
+stock_reservations,quantity,"NUMERIC(18, 3)",False,False,,quantity > 0
+stock_reservations,movement_id,VARCHAR(64),True,False,stock_movements.id,quantity > 0
+stock_reservations,id,VARCHAR(64),False,True,,quantity > 0
+stock_reservations,organization_id,VARCHAR(64),False,False,organizations.id,quantity > 0
+stock_reservations,facility_id,VARCHAR(64),False,False,facilities.id,quantity > 0
+stock_reservations,version,INTEGER,False,False,,quantity > 0
+stock_reservations,status,VARCHAR(40),False,False,,quantity > 0
+stock_reservations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,quantity > 0
+supplier_obligations,purchase_id,VARCHAR(64),False,False,purchases.id,
+supplier_obligations,supplier_id,VARCHAR(64),False,False,suppliers.id,
+supplier_obligations,amount,"NUMERIC(18, 2)",False,False,,
+supplier_obligations,id,VARCHAR(64),False,True,,
+supplier_obligations,organization_id,VARCHAR(64),False,False,organizations.id,
+supplier_obligations,facility_id,VARCHAR(64),False,False,facilities.id,
+supplier_obligations,version,INTEGER,False,False,,
+supplier_obligations,status,VARCHAR(40),False,False,,
+supplier_obligations,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+suppliers,name,VARCHAR(200),False,False,,
+suppliers,id,VARCHAR(64),False,True,,
+suppliers,organization_id,VARCHAR(64),False,False,organizations.id,
+suppliers,facility_id,VARCHAR(64),False,False,facilities.id,
+suppliers,version,INTEGER,False,False,,
+suppliers,status,VARCHAR(40),False,False,,
+suppliers,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+tasks,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,
+tasks,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,
+tasks,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,
+tasks,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,
+tasks,domain,VARCHAR(8),False,False,,
+tasks,kind,VARCHAR(64),False,False,,
+tasks,title,VARCHAR(240),False,False,,
+tasks,status,VARCHAR(24),False,False,,
+tasks,version,INTEGER,False,False,,
+tasks,assignee_id,VARCHAR(64),True,False,users.id,
+tasks,id,VARCHAR(64),False,True,,
+tasks,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+user_patient_scopes,user_id,VARCHAR(64),False,True,users.id,
+user_patient_scopes,patient_id,VARCHAR(64),False,True,patients.id,
+users,organization_id,VARCHAR(64),False,False,organizations.id,
+users,username,VARCHAR(100),False,False,,
+users,display_name,VARCHAR(200),False,False,,
+users,password_hash,TEXT,False,False,,
+users,status,VARCHAR(24),False,False,,
+users,version,INTEGER,False,False,,
+users,id,VARCHAR(64),False,True,,
+users,created_at,TIMESTAMP WITH TIME ZONE,False,False,,

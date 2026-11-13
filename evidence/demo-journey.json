@@ -1,0 +1,124 @@
+{
+  "demo": true,
+  "patient": "p-demo",
+  "encounter": {
+    "id": "e-demo",
+    "patient": "p-demo",
+    "version": 1,
+    "status": "open"
+  },
+  "document": {
+    "id": "d-demo",
+    "encounter": "e-demo",
+    "version": 1,
+    "content": "{\"author\":\"demo-author\",\"text\":\"Synthetic encounter document\"}"
+  },
+  "evidence": {
+    "encounter_version": 1,
+    "document_id": "d-demo",
+    "document_version": 1,
+    "document_hash": "7e5e1b340b8b29e843f2144cf132e3e2f4e6f79f8668b8c88f1405a48b270198",
+    "locator": "document.content",
+    "data_class": "synthetic"
+  },
+  "tasks": [
+    {
+      "id": "task-demo",
+      "encounter": "e-demo",
+      "status": "completed"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "b10d9b6b-24c5-49ed-89d2-2a217cccb3fe",
+      "proposal": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "version": 1,
+      "action_hash": "21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784",
+      "reviewer": "reviewer-demo",
+      "decision": "approve",
+      "edits": "null",
+      "created": 1794464450.9446037
+    }
+  ],
+  "proposal_versions": [
+    {
+      "proposal": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "version": 1,
+      "action": "{\"kind\":\"document_completeness\",\"missing_fields\":[\"signed_at\"],\"summary\":\"DEMO: ตรวจทานความครบถ้วนเอกสารเท่านั้น\"}",
+      "action_hash": "21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784"
+    }
+  ],
+  "proposals": [
+    {
+      "id": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "patient": "p-demo",
+      "encounter": "e-demo",
+      "version": 1,
+      "action": "{\"kind\":\"document_completeness\",\"missing_fields\":[\"signed_at\"],\"summary\":\"DEMO: ตรวจทานความครบถ้วนเอกสารเท่านั้น\"}",
+      "action_hash": "21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784",
+      "snapshot": "{\"data_class\":\"synthetic\",\"document_hash\":\"7e5e1b340b8b29e843f2144cf132e3e2f4e6f79f8668b8c88f1405a48b270198\",\"document_id\":\"d-demo\",\"document_version\":1,\"encounter_version\":1,\"locator\":\"document.content\"}",
+      "status": "committed",
+      "expires": 1794465350.94326,
+      "run_id": "daf1672a-fed4-4be7-9a72-42e4f1f018f9"
+    }
+  ],
+  "results": [
+    {
+      "id": "353be191-ee8b-4b00-be8a-4dd3baf5d332",
+      "proposal": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "patient": "p-demo",
+      "encounter": "e-demo",
+      "action": "{\"kind\":\"document_completeness\",\"missing_fields\":[\"signed_at\"],\"summary\":\"DEMO: ตรวจทานความครบถ้วนเอกสารเท่านั้น\"}",
+      "review": "b10d9b6b-24c5-49ed-89d2-2a217cccb3fe",
+      "created": 1794464450.9460807
+    }
+  ],
+  "runs": [
+    {
+      "id": "daf1672a-fed4-4be7-9a72-42e4f1f018f9",
+      "encounter": "e-demo",
+      "outcome": "success",
+      "provider": "mock",
+      "model_revision": "synthetic_fixture_v1",
+      "latency_ms": 0.016694999885658035,
+      "usage": "null",
+      "cost": null,
+      "error": null,
+      "demo": 1
+    }
+  ],
+  "audit": [
+    {
+      "id": "307b399b-e99d-469d-af99-b787ab6b22c7",
+      "actor": "reviewer-demo",
+      "event": "ai_run",
+      "entity": "e-demo",
+      "details": "{\"demo\":true,\"error\":null,\"outcome\":\"success\",\"run_id\":\"daf1672a-fed4-4be7-9a72-42e4f1f018f9\"}",
+      "created": 1794464450.943192
+    },
+    {
+      "id": "af083930-c68a-49be-84f7-3676e8c31e37",
+      "actor": "reviewer-demo",
+      "event": "proposal_created",
+      "entity": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "details": "{\"action_hash\":\"21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784\",\"demo\":true,\"run_id\":\"daf1672a-fed4-4be7-9a72-42e4f1f018f9\",\"version\":1}",
+      "created": 1794464450.9433048
+    },
+    {
+      "id": "39b0535f-ee20-48a3-9ce8-5dabf5423145",
+      "actor": "reviewer-demo",
+      "event": "review_approve",
+      "entity": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "details": "{\"action_hash\":\"21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784\",\"review_id\":\"b10d9b6b-24c5-49ed-89d2-2a217cccb3fe\",\"version\":1}",
+      "created": 1794464450.9446723
+    },
+    {
+      "id": "f3c7021e-0086-4d32-bfe3-3ee5311aefec",
+      "actor": "reviewer-demo",
+      "event": "result_committed",
+      "entity": "256de4d1-94e1-4dc0-be5d-354dfd13deab",
+      "details": "{\"action_hash\":\"21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784\",\"result_id\":\"353be191-ee8b-4b00-be8a-4dd3baf5d332\",\"review_id\":\"b10d9b6b-24c5-49ed-89d2-2a217cccb3fe\"}",
+      "created": 1794464450.946265
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "database": "PostgreSQL 18.6 on x86_64-windows, compiled by msvc-19.44.35229, 64-bit",
+  "kind": "executed_api_postgresql",
+  "browser": "NOT_RUN",
+  "journeys": {
+    "J05": {
+      "actors": [
+        "user-billing",
+        "user-finance",
+        "user-finance_reviewer"
+      ],
+      "invoice_id": "33a2aa59-1115-4c5e-bd5d-d5afd6a46369",
+      "claim_id": "4fdecefa-ef57-49f4-b4d5-1aee1e75879b",
+      "receipt_id": "e9b71806-7722-45f1-adad-0bed32d7567f",
+      "refund_id": "48243abe-1f3c-4015-9016-5d88411131a0",
+      "financials": {
+        "billed": "1000.00",
+        "submitted": "1000.00",
+        "approved": "800.00",
+        "gross_received": "800.00",
+        "refunded": "100.00",
+        "net_received": "700.00",
+        "outstanding": "200.00",
+        "cost": "300.00",
+        "adjustments": "0.00",
+        "allocated": "800.00",
+        "allocation_released": "0.00"
+      },
+      "assertions": "separate billed/submitted/approved/gross/refund/net/outstanding/cost; balanced ledger; independent refund approval; same-key replay"
+    },
+    "J06": {
+      "actors": [
+        "user-inventory",
+        "user-procurement_approver"
+      ],
+      "purchase_id": "093e7a0c-82df-4935-bbbb-939f55efbaba",
+      "receipt_ids": [
+        "15490ab9-ff63-4b1e-af1d-66dd271ea86d",
+        "f0da2488-1e47-446d-a304-f38542015fd9"
+      ],
+      "issue_id": "d8f7f40c-cbf4-4a4e-bd15-6efb68e25386",
+      "assertions": "partial4+6 receipt10; replay stable; obligation200; issue3 quarantine return2; over-return denied"
+    },
+    "J09": {
+      "actors": [
+        "user-inventory",
+        "user-quality",
+        "user-support_reviewer"
+      ],
+      "asset_id": "5d6db87c-51dc-4681-bf17-29f8584a1e1c",
+      "cycle_id": "7340b01c-b1fc-4589-86b4-3549e2411715",
+      "linen_id": "e33356bc-5f14-42ee-9a9d-edf24a66a9f9",
+      "facility_order_id": "172cce27-915c-4eec-84cf-1232508b485b",
+      "incident_id": "afffc94b-104b-4ea6-8c13-6f44acdf3b5c",
+      "report_id": "87ec2560-8657-42b9-b158-c3740bbd40c2",
+      "lineage_count": 4,
+      "assertions": "unverified asset unavailable; separate CSSD/linen/facility states; independent CAPA review; real encounter lineage; exported correction preserved",
+      "D38": "tested separately by operations suite"
+    }
+  }
+}

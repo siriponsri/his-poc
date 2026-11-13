@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-11-13T12:34:31.503+00:00",
+  "completed_at": "2026-11-13T12:44:40.680+00:00",
+  "source_start": "source-start.json",
+  "source_end": "source-end.json",
+  "changed_sources_during_run": [
+    "apps/web/scripts/browser_driver.py",
+    "apps/web/scripts/browser_journeys.py",
+    "apps/web/scripts/browser_support.py",
+    "backend/app/core.py",
+    "backend/tests/test_validation_launcher_unit.py",
+    "scripts/validate_fullsystem.py",
+    "tests/fullsystem/test_security_event_concurrency.py"
+  ],
+  "source_changed_during_run": true,
+  "checks": 16,
+  "status": "PASS",
+  "note": "Each command has UTC timestamps in execution.json; source changes are disclosed and require review before binding acceptance to one candidate."
+}

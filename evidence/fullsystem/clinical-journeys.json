@@ -1,0 +1,429 @@
+{
+  "database": "127.0.0.1:60929/his_test",
+  "type": "EXECUTED_HTTP_POSTGRESQL",
+  "browser": "NOT_RUN",
+  "journeys": [
+    {
+      "journey": "J02",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "laboratory"
+      ],
+      "record_ids": [
+        "dfac2ebe-7bf3-47eb-8d44-cf8dd3f80983",
+        "4932518d-2a78-497d-934f-431e50a39565"
+      ],
+      "assertions": [
+        "signed order linkage",
+        "manual result release",
+        "wrong role denied",
+        "immutable correction history",
+        "clinician acknowledgement"
+      ]
+    },
+    {
+      "journey": "J03",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "pharmacist"
+      ],
+      "record_ids": [
+        "2ac0bbaa-fb7e-4e8c-b4f3-1ba9dc0cf4d9",
+        "b8505528-556b-4fc6-983b-ea35a4e4912c"
+      ],
+      "assertions": [
+        "same-key dispense exactly once",
+        "charge exactly once",
+        "quarantined return",
+        "cumulative excess return rejected",
+        "stock quantity conserved"
+      ]
+    },
+    {
+      "journey": "J04",
+      "status": "PASS",
+      "actors": [
+        "nurse",
+        "registration"
+      ],
+      "record_ids": [
+        "a93558ca-d3b0-4a65-94d7-46169fc35d49",
+        "b3b0a3eb-51ca-4da8-a903-c9ba72c86592",
+        "cd34b96e-7feb-4c2a-810c-b5560a0dc9d8",
+        "2f807d23-6558-4d0b-8b49-927a1d961b4c"
+      ],
+      "assertions": [
+        "occupied bed conflict",
+        "transfer preserves bed history",
+        "handover links real pending task",
+        "discharge releases bed",
+        "followup shares patient"
+      ]
+    },
+    {
+      "journey": "J08",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "imaging"
+      ],
+      "record_ids": [
+        "ca4a62bb-814d-46f1-8da5-c262f086d1fe",
+        "13dffa0b-d44e-4d29-a6bb-8b5019c080e1",
+        "c7f791c2-5137-4fc4-90dd-8064c5048f97",
+        "8cc53d33-b0a7-4829-b629-054dd3d59727",
+        "28b1d593-8405-4f8b-970b-187ca181b3c8",
+        "4cbd4856-5971-4094-ad06-0d0ad66e35bf",
+        "3d010c81-630d-4a63-97f7-58630a7e731b"
+      ],
+      "assertions": [
+        "clinician signed order through HTTP",
+        "file checksum verified",
+        "manual human report release",
+        "explicit mock DR task on same document and encounter",
+        "clinician review/commit",
+        "referral bound document revision",
+        "external receipt explicitly false"
+      ]
+    },
+    {
+      "journey": "J10",
+      "status": "PASS",
+      "actors": [
+        "patient",
+        "registration"
+      ],
+      "record_ids": [
+        "49e7558e-1d64-4d95-b826-b5ead5d7a2e8",
+        "e01d595a-b639-47ac-84f1-a7d540cda002"
+      ],
+      "assertions": [
+        "server linked subject",
+        "patient cannot staff-review",
+        "patient parameter injection rejected",
+        "same appointment staff worklist"
+      ]
+    },
+    {
+      "journey": "D12",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "4975cfe9-a8d6-4ada-8ac6-594cb9cad14f"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D13",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "b30bec5d-2960-4faa-a704-890585fd687b"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D14",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "b15baa6f-e6f4-499c-b551-57fde417309c"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D15",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "c1658fab-abc5-419a-a988-9b8f8daa3c91"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D16",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "c544d27f-edb8-4f32-b5ed-ab161404ac19"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D17",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "84b1c800-1ca7-4df4-9dd9-3d4a8a2a2b0b"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D19",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "d17f3252-e451-471e-a5b4-ae49dc4383c8"
+      ],
+      "assertions": [
+        "domain-specific typed fields",
+        "full manual state sequence",
+        "persisted history"
+      ]
+    },
+    {
+      "journey": "D02",
+      "status": "PASS",
+      "actors": [
+        "registration",
+        "nurse"
+      ],
+      "record_ids": [
+        "3f9c84b6-7c38-4845-bba0-74f25aff93e0",
+        "7ef5d664-4475-47a6-b858-818d269540c6",
+        "307511fe-4fcf-49d1-b12d-0cdd69b97d3c"
+      ],
+      "assertions": [
+        "actual concurrent last-slot requests yield one winner",
+        "checkin replay same encounter",
+        "queue completed"
+      ]
+    },
+    {
+      "journey": "J10_RELEASED_RESULTS",
+      "status": "PASS",
+      "actors": [
+        "patient",
+        "laboratory"
+      ],
+      "record_ids": [
+        "b17f54b8-270d-41bd-89b9-bc2b2de0e0ea",
+        "ee3d142f-ad88-4a16-98a6-2d96eedd4567"
+      ],
+      "assertions": [
+        "positive own released result",
+        "other patient published result excluded",
+        "direct access forbidden"
+      ]
+    },
+    {
+      "journey": "D18",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "50563759-91d1-4c0f-92c3-0c462d2738b7",
+        "bbd1d1ee-b2a2-46f7-8c5d-a2760cc2df47",
+        "a0437595-fddb-4331-8d8b-837aa2552fb1"
+      ],
+      "assertions": [
+        "manual verification trace",
+        "patient revision change blocks release",
+        "expiry change blocks release",
+        "successful release and administration trace"
+      ]
+    },
+    {
+      "journey": "D09",
+      "status": "PASS",
+      "actors": [
+        "nurse",
+        "pharmacist"
+      ],
+      "record_ids": [
+        "64fe73cb-0d86-45d0-a62f-33b230447f05",
+        "fc97196b-3352-4e2e-8e18-caafe3339f65"
+      ],
+      "assertions": [
+        "duplicate give exactly once",
+        "correction preserves original event"
+      ]
+    },
+    {
+      "journey": "D21_CORRECTION",
+      "status": "PASS",
+      "actors": [
+        "patient",
+        "registration"
+      ],
+      "record_ids": [
+        "a924e70c-db0d-4b42-bc2f-0fe82a01436c",
+        "revision-patient-001",
+        "ee4b57d9-726e-436f-948c-79434516fab8"
+      ],
+      "assertions": [
+        "own published revision bound",
+        "staff task shares encounter",
+        "review and response persisted",
+        "original document unchanged"
+      ]
+    },
+    {
+      "journey": "D15_IMMUNIZATION",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "801d3b13-0d50-4f99-9759-b1ea4e5560a4",
+        "b65b0351-d070-4038-8097-0ca18fd0351d"
+      ],
+      "assertions": [
+        "structured manual immunization",
+        "item/lot FK trace",
+        "growth units unchanged",
+        "no inferred dose or stock dispensing"
+      ]
+    },
+    {
+      "journey": "D05_D12_D18_CONCURRENCY",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "nurse"
+      ],
+      "record_ids": [
+        "e63daacd-dfa5-4626-a1eb-84eaa6bdaca2",
+        "fa3cb5ba-8cbb-43ff-877a-cfa682f470b6",
+        "4a1eeeef-4683-4ed5-b154-fbc4039a428c",
+        "dfb8a4a0-d0de-472d-b975-79ebcf865328"
+      ],
+      "assertions": [
+        "room overlap rejected",
+        "simultaneous bed assignment one winner",
+        "simultaneous unit reservation one winner"
+      ]
+    },
+    {
+      "journey": "D14",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "registration"
+      ],
+      "record_ids": [
+        "4914d134-0956-4672-b565-fd232eb02b12",
+        "3bb4a70c-1784-488d-9406-feaba46e03ef"
+      ],
+      "assertions": [
+        "same-key delivery one child",
+        "relational mother child identity retained",
+        "registration reads actual newborn"
+      ]
+    },
+    {
+      "journey": "D13_D15_HISTORY",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "d4ae4b50-b25a-4983-9ec4-fc5832b81bde",
+        "839db9af-faef-4ebc-bbb7-99cd91d1d6ad",
+        "7b83ac86-4232-4293-97ac-3df23f6ca842",
+        "6583487d-6e02-4edd-839d-375299b66eb0",
+        "61be155a-cdb7-47ae-bd7f-be58b7846aab",
+        "2ec8adfb-1f40-44a1-bd68-961da6cd1570"
+      ],
+      "assertions": [
+        "two dates retained",
+        "two patients not mixed",
+        "raw measurement units preserved"
+      ]
+    },
+    {
+      "journey": "D17",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "registration"
+      ],
+      "record_ids": [
+        "241f35f8-c945-4361-9a41-9d8600fc85b6",
+        "2842bb52-8e3c-479a-8c34-c6a93bce2f63",
+        "c2ea38d5-5605-42bb-aed6-c81e29eea8c2"
+      ],
+      "assertions": [
+        "two teeth across two visits retained",
+        "charge links correct procedure and encounter",
+        "duplicate performance does not double charge"
+      ]
+    },
+    {
+      "journey": "D12_CONCURRENCY",
+      "status": "PASS",
+      "actors": [
+        "clinician",
+        "nurse"
+      ],
+      "record_ids": [
+        "79ee9819-3c8f-40c7-9078-e5db67b4f462",
+        "a3bdf078-30a3-4690-9aea-42d0f38ae0fd"
+      ],
+      "assertions": [
+        "simultaneous same-room scheduling yields one winner"
+      ]
+    },
+    {
+      "journey": "D13_DEVICE",
+      "status": "PASS",
+      "actors": [
+        "clinician"
+      ],
+      "record_ids": [
+        "e9a1545e-07bc-4125-8d02-afe63eb9c999",
+        "78e9217e-e8f2-49b9-8de3-c4c4cad6151e",
+        "d312618d-e3f9-4164-b94a-c85d71bba4b3",
+        "c3b018a2-a2a1-4e3b-aaa3-32b01687cc85"
+      ],
+      "assertions": [
+        "explicit manual device assignment",
+        "active overlap blocked",
+        "unavailable asset blocked",
+        "release preserves actor timestamp version",
+        "device reuse after release"
+      ]
+    }
+  ]
+}

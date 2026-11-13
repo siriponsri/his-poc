@@ -1,0 +1,6 @@
+{
+  "patient": "p-demo",
+  "encounter": "e-demo",
+  "scenario": "success",
+  "data_class": "synthetic"
+}

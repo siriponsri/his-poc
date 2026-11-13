@@ -1,0 +1,1104 @@
+{
+  "status": "PASS",
+  "generated_at_utc": "2026-11-13T12:43:42.580243+00:00",
+  "data_profile": "AUTHORED_SYNTHETIC",
+  "method": "Actual per-journey DOM acceptance results; original failed reports retained, no unrun journey upgraded",
+  "journeys": {
+    "J01": {
+      "status": "PASS",
+      "record_ids": {
+        "patient_id": "63e2b02b-c2b6-4108-a4b8-0671893015e3",
+        "appointment_id": "2dc11d78-722e-4f12-80a8-e3a92b3d1c69",
+        "encounter_id": "2d2cdbbd-b8fc-423f-9087-c2e2230a60b5",
+        "document_id": "fed0d29c-a841-4019-a1c2-e9c6699f45e4",
+        "task_id": "36242a17-1c35-47c4-b85a-e843b3d9cf2d",
+        "result_id": "0af88759-8385-4472-bb2c-49625ab24da1"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "registration",
+          "path": "patients",
+          "id": "63e2b02b-c2b6-4108-a4b8-0671893015e3",
+          "status": "draft"
+        },
+        {
+          "actor": "registration",
+          "path": "patients/63e2b02b-c2b6-4108-a4b8-0671893015e3/transition",
+          "id": "63e2b02b-c2b6-4108-a4b8-0671893015e3",
+          "status": "verified"
+        },
+        {
+          "actor": "registration",
+          "path": "patients/63e2b02b-c2b6-4108-a4b8-0671893015e3/transition",
+          "id": "63e2b02b-c2b6-4108-a4b8-0671893015e3",
+          "status": "active"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records",
+          "id": "2dc11d78-722e-4f12-80a8-e3a92b3d1c69",
+          "status": "requested"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/2dc11d78-722e-4f12-80a8-e3a92b3d1c69/actions",
+          "id": "2dc11d78-722e-4f12-80a8-e3a92b3d1c69",
+          "status": "booked"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/2dc11d78-722e-4f12-80a8-e3a92b3d1c69/actions",
+          "id": "2dc11d78-722e-4f12-80a8-e3a92b3d1c69",
+          "status": "checked_in"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/2dc11d78-722e-4f12-80a8-e3a92b3d1c69/actions",
+          "id": "2dc11d78-722e-4f12-80a8-e3a92b3d1c69",
+          "status": "called"
+        },
+        {
+          "actor": "system_admin",
+          "path": "admin/users/user-clinician/care-assignments",
+          "id": null,
+          "status": null
+        },
+        {
+          "actor": "clinician",
+          "path": "encounters/2d2cdbbd-b8fc-423f-9087-c2e2230a60b5/transition",
+          "id": "2d2cdbbd-b8fc-423f-9087-c2e2230a60b5",
+          "status": "in_consult"
+        },
+        {
+          "actor": "clinician",
+          "path": "documents",
+          "id": "fed0d29c-a841-4019-a1c2-e9c6699f45e4",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "tasks",
+          "id": "36242a17-1c35-47c4-b85a-e843b3d9cf2d",
+          "status": "open"
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals",
+          "id": null,
+          "status": null
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals/22e87b2f-c7e9-4541-b4d2-0a0a53b9b451/review",
+          "id": "22e87b2f-c7e9-4541-b4d2-0a0a53b9b451",
+          "status": "pending"
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals/22e87b2f-c7e9-4541-b4d2-0a0a53b9b451/review",
+          "id": "22e87b2f-c7e9-4541-b4d2-0a0a53b9b451",
+          "status": "approved"
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals/22e87b2f-c7e9-4541-b4d2-0a0a53b9b451/commit",
+          "id": "0af88759-8385-4472-bb2c-49625ab24da1",
+          "status": null
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J02": {
+      "status": "PASS",
+      "record_ids": {
+        "order_id": "801b6b48-d837-4740-8bd6-32e0eea7554a",
+        "lab_id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+        "corrected_value": "6",
+        "released_to_portal": true
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "orders",
+          "id": "801b6b48-d837-4740-8bd6-32e0eea7554a",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "orders/801b6b48-d837-4740-8bd6-32e0eea7554a/transition",
+          "id": "801b6b48-d837-4740-8bd6-32e0eea7554a",
+          "status": "signed"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "ordered"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "collected"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "received"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "preliminary"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "verified"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "released"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "released"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "released"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "corrected"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/4fe8a1f3-b1c2-43cf-8232-51af3c70dc89/actions",
+          "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+          "status": "corrected"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J03": {
+      "status": "PASS",
+      "record_ids": {
+        "order_id": "ce3d0084-f5b0-43e5-8afe-81c5ece531b1",
+        "dispense_id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+        "retry": "lost HTTP response then same-key UI retry verified equal result",
+        "return_status": "return_recorded"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "orders",
+          "id": "ce3d0084-f5b0-43e5-8afe-81c5ece531b1",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "orders/ce3d0084-f5b0-43e5-8afe-81c5ece531b1/transition",
+          "id": "ce3d0084-f5b0-43e5-8afe-81c5ece531b1",
+          "status": "signed"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records",
+          "id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+          "status": "received"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records/032d8ec5-f2f7-4f6f-8718-6d598d9cb73f/actions",
+          "id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+          "status": "reviewed"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records/032d8ec5-f2f7-4f6f-8718-6d598d9cb73f/actions",
+          "id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+          "status": "prepared"
+        },
+        {
+          "check": "browser_request_failed",
+          "path": "/api/v2/clinical/D08/records/032d8ec5-f2f7-4f6f-8718-6d598d9cb73f/actions",
+          "method": "POST",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records/032d8ec5-f2f7-4f6f-8718-6d598d9cb73f/actions",
+          "id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+          "status": "dispensed"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "75ff2efd-1aa7-4c42-ab2d-5d641e8560c0"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records/032d8ec5-f2f7-4f6f-8718-6d598d9cb73f/actions",
+          "id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+          "status": "return_recorded"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J04": {
+      "status": "PASS",
+      "record_ids": {
+        "encounter_id": "0a06595d-312f-4e19-b8e9-3576dbe78465",
+        "admission_id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+        "handover_id": "0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf",
+        "task_id": "8b0cf7fd-39e7-42f6-99b3-2d21fb5377de",
+        "followup_id": "ba1ca958-020a-475f-b4e8-b05ac7a082c0"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "nurse",
+          "path": "encounters",
+          "id": "0a06595d-312f-4e19-b8e9-3576dbe78465",
+          "status": "waiting"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D04/records",
+          "id": "b3d007ac-fde1-48a2-b051-effe67b535a0",
+          "status": "arrived"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D04/records/b3d007ac-fde1-48a2-b051-effe67b535a0/actions",
+          "id": "b3d007ac-fde1-48a2-b051-effe67b535a0",
+          "status": "assessed"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D04/records/b3d007ac-fde1-48a2-b051-effe67b535a0/actions",
+          "id": "b3d007ac-fde1-48a2-b051-effe67b535a0",
+          "status": "in_care"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D04/records/b3d007ac-fde1-48a2-b051-effe67b535a0/actions",
+          "id": "b3d007ac-fde1-48a2-b051-effe67b535a0",
+          "status": "admission_requested"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D05/records/9e06ca07-8ed0-4c00-bfbb-2c65a12becba/actions",
+          "id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+          "status": "admitted"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D05/records/9e06ca07-8ed0-4c00-bfbb-2c65a12becba/actions",
+          "id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+          "status": "transfer_requested"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D05/records/9e06ca07-8ed0-4c00-bfbb-2c65a12becba/actions",
+          "id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+          "status": "admitted"
+        },
+        {
+          "actor": "nurse",
+          "path": "tasks",
+          "id": "8b0cf7fd-39e7-42f6-99b3-2d21fb5377de",
+          "status": "open"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D06/records",
+          "id": "0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf",
+          "status": "draft"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D06/records/0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf/actions",
+          "id": "0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf",
+          "status": "signed"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D06/records/0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf/actions",
+          "id": "0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf",
+          "status": "acknowledged"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D05/records/9e06ca07-8ed0-4c00-bfbb-2c65a12becba/actions",
+          "id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+          "status": "discharge_ready"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D05/records/9e06ca07-8ed0-4c00-bfbb-2c65a12becba/actions",
+          "id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+          "status": "discharged"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records",
+          "id": "ba1ca958-020a-475f-b4e8-b05ac7a082c0",
+          "status": "requested"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/ba1ca958-020a-475f-b4e8-b05ac7a082c0/actions",
+          "id": "ba1ca958-020a-475f-b4e8-b05ac7a082c0",
+          "status": "booked"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J05": {
+      "status": "PASS",
+      "record_ids": {
+        "encounter_id": "67fafd2b-291b-4bbe-8982-cf38bd3b05f4",
+        "charge_id": "c602d697-8deb-407a-9251-643719387604",
+        "invoice_id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+        "claim_id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+        "receipt_id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+        "refund_id": "31fda8a9-bcb4-424e-82bb-64b1daf7c1f7",
+        "cost_id": "fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b",
+        "financials": {
+          "billed": "1000.00",
+          "submitted": "1000.00",
+          "approved": "800.00",
+          "gross_received": "800.00",
+          "refunded": "100.00",
+          "net_received": "700.00",
+          "outstanding": "200.00",
+          "cost": "300.00",
+          "adjustments": "0.00",
+          "allocated": "800.00",
+          "allocation_released": "0.00"
+        }
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "registration",
+          "path": "encounters",
+          "id": "67fafd2b-291b-4bbe-8982-cf38bd3b05f4",
+          "status": "waiting"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/prices",
+          "id": "ea4e045f-d7cf-4444-bf06-ee1d81ec24b8",
+          "status": "active"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/charges",
+          "id": "c602d697-8deb-407a-9251-643719387604",
+          "status": "priced"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D23/records",
+          "id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+          "status": "open"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D23/records/d4d93940-a520-43d6-bf45-d7c0c267ef45/actions",
+          "id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+          "status": "priced"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D23/records/d4d93940-a520-43d6-bf45-d7c0c267ef45/actions",
+          "id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+          "status": "reviewed"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D23/records/d4d93940-a520-43d6-bf45-d7c0c267ef45/actions",
+          "id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+          "status": "invoiced"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D24/records",
+          "id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+          "status": "draft"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D24/records/be4f7dda-11c1-462e-812c-d4ee9cac38aa/actions",
+          "id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+          "status": "validated"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D24/records/be4f7dda-11c1-462e-812c-d4ee9cac38aa/actions",
+          "id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+          "status": "exported"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D24/records/be4f7dda-11c1-462e-812c-d4ee9cac38aa/actions",
+          "id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+          "status": "simulated_submitted"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D24/records/be4f7dda-11c1-462e-812c-d4ee9cac38aa/actions",
+          "id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+          "status": "adjudicated"
+        },
+        {
+          "actor": "billing",
+          "path": "erp/D24/records/be4f7dda-11c1-462e-812c-d4ee9cac38aa/actions",
+          "id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+          "status": "reconciliation_reviewed"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D25/records",
+          "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+          "status": "draft"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D25/records/22a7d7d2-57b3-4c37-8dd6-67c169351e0e/actions",
+          "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+          "status": "reviewed"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D25/records/22a7d7d2-57b3-4c37-8dd6-67c169351e0e/actions",
+          "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+          "status": "posted"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D25/records/22a7d7d2-57b3-4c37-8dd6-67c169351e0e/actions",
+          "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+          "status": "refund_requested"
+        },
+        {
+          "actor": "finance_reviewer",
+          "path": "erp/D25/records/22a7d7d2-57b3-4c37-8dd6-67c169351e0e/actions",
+          "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+          "status": "refund_approved"
+        },
+        {
+          "check": "browser_request_failed",
+          "path": "/api/v2/erp/D25/records/22a7d7d2-57b3-4c37-8dd6-67c169351e0e/actions",
+          "method": "POST",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D25/records/22a7d7d2-57b3-4c37-8dd6-67c169351e0e/actions",
+          "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+          "status": "refunded"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "32bb08e4-71e0-42e7-a87b-3732fa562f6d"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D26/records",
+          "id": "fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b",
+          "status": "draft"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D26/records/fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b/actions",
+          "id": "fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b",
+          "status": "reviewed"
+        },
+        {
+          "actor": "finance",
+          "path": "erp/D26/records/fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b/actions",
+          "id": "fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b",
+          "status": "posted"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J06": {
+      "status": "PASS",
+      "record_ids": {
+        "purchase_id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+        "receipts": [
+          "85690136-a7de-4c53-8ec0-6bf0490dd91f",
+          "c71e6239-c3d4-4dcf-be32-c30802b174ce"
+        ],
+        "issue_id": "69a39710-5b18-4157-9d7f-78d974930e1a",
+        "return_id": "69a39710-5b18-4157-9d7f-78d974930e1a"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "inventory",
+          "path": "erp/D27/records",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "draft"
+        },
+        {
+          "actor": "procurement_approver",
+          "path": "erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "approved"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "po_recorded"
+        },
+        {
+          "check": "browser_request_failed",
+          "path": "/api/v2/erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "method": "POST",
+          "failure": "net::ERR_FAILED"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "part_received"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "e8fc3996-3c78-424c-8058-b546fe0feb8f"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "received"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "invoice_verified"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D27/records/815a6af9-28c0-492d-b68d-afbe7bbfd295/actions",
+          "id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+          "status": "closed"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D28/records",
+          "id": "d5a68d74-d7c4-4897-a91e-7f3a61d75ebd",
+          "status": "draft"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D28/records/d5a68d74-d7c4-4897-a91e-7f3a61d75ebd/actions",
+          "id": "d5a68d74-d7c4-4897-a91e-7f3a61d75ebd",
+          "status": "validated"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D28/records/d5a68d74-d7c4-4897-a91e-7f3a61d75ebd/actions",
+          "id": "69a39710-5b18-4157-9d7f-78d974930e1a",
+          "status": "posted"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D28/records/69a39710-5b18-4157-9d7f-78d974930e1a/actions",
+          "id": "69a39710-5b18-4157-9d7f-78d974930e1a",
+          "status": "posted"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J07": {
+      "status": "PASS",
+      "record_ids": {
+        "user_id": "b475f852-a47d-4bf4-a7ae-cdcbb52ad265",
+        "session_id": "8469c79b-061a-418f-8b11-1d6fb8357ab0",
+        "membership_id": "c997bbb2-f5b5-47a6-ae3b-3d3f761469a3"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "system_admin",
+          "path": "admin/users",
+          "id": "b475f852-a47d-4bf4-a7ae-cdcbb52ad265",
+          "status": "active"
+        },
+        {
+          "actor": "system_admin",
+          "path": "admin/users/b475f852-a47d-4bf4-a7ae-cdcbb52ad265/memberships",
+          "id": null,
+          "status": null
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J08": {
+      "status": "PASS",
+      "record_ids": {
+        "study_id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+        "file_sha256": "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23",
+        "document_id": "d13d3c7c-d40b-401e-8fd3-5356b8b45a91",
+        "task_id": "d6ee46d2-d1fd-4537-b4a3-34813b466f0c",
+        "result_id": "c18a1f22-7513-4bd7-a9c2-83e5e96a1795",
+        "referral_id": "af52ccf7-d587-449d-91de-e1b1485e7e21"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "orders",
+          "id": "9ceb3a94-2bd1-4602-b4f1-44c85b3021aa",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "orders/9ceb3a94-2bd1-4602-b4f1-44c85b3021aa/transition",
+          "id": "9ceb3a94-2bd1-4602-b4f1-44c85b3021aa",
+          "status": "signed"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D11/records",
+          "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+          "status": "ordered"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D11/records/0f42d9af-caa1-4192-8a29-4e41528e171f/actions",
+          "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+          "status": "scheduled"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D11/records/0f42d9af-caa1-4192-8a29-4e41528e171f/actions",
+          "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+          "status": "acquired"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D11/records/0f42d9af-caa1-4192-8a29-4e41528e171f/actions",
+          "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+          "status": "report_draft"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D11/records/0f42d9af-caa1-4192-8a29-4e41528e171f/actions",
+          "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+          "status": "verified"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D11/records/0f42d9af-caa1-4192-8a29-4e41528e171f/actions",
+          "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+          "status": "released"
+        },
+        {
+          "check": "browser_request_failed",
+          "path": "/api/v2/clinical/D11/records/0f42d9af-caa1-4192-8a29-4e41528e171f/file",
+          "method": "GET",
+          "failure": "net::ERR_ABORTED"
+        },
+        {
+          "actor": "imaging",
+          "path": "documents",
+          "id": "d13d3c7c-d40b-401e-8fd3-5356b8b45a91",
+          "status": "draft"
+        },
+        {
+          "actor": "imaging",
+          "path": "tasks",
+          "id": "d6ee46d2-d1fd-4537-b4a3-34813b466f0c",
+          "status": "open"
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals",
+          "id": null,
+          "status": null
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals/d7285b1e-8e7c-4843-bca1-a953c5f9617c/review",
+          "id": "d7285b1e-8e7c-4843-bca1-a953c5f9617c",
+          "status": "approved"
+        },
+        {
+          "actor": "clinician",
+          "path": "proposals/d7285b1e-8e7c-4843-bca1-a953c5f9617c/commit",
+          "id": "c18a1f22-7513-4bd7-a9c2-83e5e96a1795",
+          "status": null
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D20/records",
+          "id": "af52ccf7-d587-449d-91de-e1b1485e7e21",
+          "status": "draft"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D20/records/af52ccf7-d587-449d-91de-e1b1485e7e21/actions",
+          "id": "af52ccf7-d587-449d-91de-e1b1485e7e21",
+          "status": "reviewed"
+        },
+        {
+          "actor": "imaging",
+          "path": "clinical/D20/records/af52ccf7-d587-449d-91de-e1b1485e7e21/actions",
+          "id": "af52ccf7-d587-449d-91de-e1b1485e7e21",
+          "status": "exported"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-journeys-accepted/runtime-binding.json"
+    },
+    "J09": {
+      "status": "PASS",
+      "record_ids": {
+        "asset_id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+        "cycle_id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+        "linen_id": "cba0effd-cf7c-4da4-87b7-f9008a8799e8",
+        "facility_id": "fa350583-02f9-4979-8be8-d46d659aac38",
+        "incident_id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+        "report_id": "190069b6-f742-485a-a7fe-fef0a6acd986",
+        "backup_job_id": "7615f34c-836d-4474-a3e0-96975fa813da"
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "inventory",
+          "path": "erp/D29/records",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "registered"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D29/records/09d325d2-0c9d-4ce7-8638-b90a8394cf05/actions",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "in_service"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D29/records/09d325d2-0c9d-4ce7-8638-b90a8394cf05/actions",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "maintenance_due"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D29/records/09d325d2-0c9d-4ce7-8638-b90a8394cf05/actions",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "under_maintenance"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D29/records/09d325d2-0c9d-4ce7-8638-b90a8394cf05/actions",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "under_maintenance"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D29/records/09d325d2-0c9d-4ce7-8638-b90a8394cf05/actions",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "verified"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D29/records/09d325d2-0c9d-4ce7-8638-b90a8394cf05/actions",
+          "id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+          "status": "in_service"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records",
+          "id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+          "status": "received"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/6d1d5587-384b-4cd1-bc4d-0b7fe198d05e/actions",
+          "id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+          "status": "cleaned"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/6d1d5587-384b-4cd1-bc4d-0b7fe198d05e/actions",
+          "id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+          "status": "cycle_recorded"
+        },
+        {
+          "actor": "support_reviewer",
+          "path": "erp/D31/records/6d1d5587-384b-4cd1-bc4d-0b7fe198d05e/actions",
+          "id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+          "status": "release_reviewed"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/6d1d5587-384b-4cd1-bc4d-0b7fe198d05e/actions",
+          "id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+          "status": "released"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records",
+          "id": "cba0effd-cf7c-4da4-87b7-f9008a8799e8",
+          "status": "issued"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/cba0effd-cf7c-4da4-87b7-f9008a8799e8/actions",
+          "id": "cba0effd-cf7c-4da4-87b7-f9008a8799e8",
+          "status": "returned"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/cba0effd-cf7c-4da4-87b7-f9008a8799e8/actions",
+          "id": "cba0effd-cf7c-4da4-87b7-f9008a8799e8",
+          "status": "reconciled"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records",
+          "id": "fa350583-02f9-4979-8be8-d46d659aac38",
+          "status": "opened"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/fa350583-02f9-4979-8be8-d46d659aac38/actions",
+          "id": "fa350583-02f9-4979-8be8-d46d659aac38",
+          "status": "assigned"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/fa350583-02f9-4979-8be8-d46d659aac38/actions",
+          "id": "fa350583-02f9-4979-8be8-d46d659aac38",
+          "status": "verified"
+        },
+        {
+          "actor": "inventory",
+          "path": "erp/D31/records/fa350583-02f9-4979-8be8-d46d659aac38/actions",
+          "id": "fa350583-02f9-4979-8be8-d46d659aac38",
+          "status": "closed"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D32/records",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "reported"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D32/records/f05de35d-6ad4-455a-9fe6-280993b1af01/actions",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "triaged"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D32/records/f05de35d-6ad4-455a-9fe6-280993b1af01/actions",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "investigating"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D32/records/f05de35d-6ad4-455a-9fe6-280993b1af01/actions",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "action_planned"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D32/records/f05de35d-6ad4-455a-9fe6-280993b1af01/actions",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "effectiveness_review"
+        },
+        {
+          "actor": "support_reviewer",
+          "path": "erp/D32/records/f05de35d-6ad4-455a-9fe6-280993b1af01/actions",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "effectiveness_review"
+        },
+        {
+          "actor": "support_reviewer",
+          "path": "erp/D32/records/f05de35d-6ad4-455a-9fe6-280993b1af01/actions",
+          "id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+          "status": "closed"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D33/records",
+          "id": "190069b6-f742-485a-a7fe-fef0a6acd986",
+          "status": "draft"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D33/records/190069b6-f742-485a-a7fe-fef0a6acd986/actions",
+          "id": "190069b6-f742-485a-a7fe-fef0a6acd986",
+          "status": "generated"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D33/records/190069b6-f742-485a-a7fe-fef0a6acd986/actions",
+          "id": "190069b6-f742-485a-a7fe-fef0a6acd986",
+          "status": "reviewed"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D33/records/190069b6-f742-485a-a7fe-fef0a6acd986/actions",
+          "id": "190069b6-f742-485a-a7fe-fef0a6acd986",
+          "status": "exported"
+        },
+        {
+          "actor": "operations_admin",
+          "path": "operations/jobs",
+          "id": "7615f34c-836d-4474-a3e0-96975fa813da",
+          "status": "requested"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+      "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-final-runtime-binding.json"
+    },
+    "J10": {
+      "status": "PASS",
+      "record_ids": {
+        "portal_patient_id": "patient-001",
+        "published_result_id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+        "request_id": "30f272db-b4d2-4522-9a8c-decc39f05aa4",
+        "appointment_id": "25fd6ce6-ff2e-499e-bae1-280a2674da56",
+        "other_subject_request_id": "f0017ab3-0a5d-487b-ab2b-21af9d0655e8",
+        "other_subject_read_status": 404,
+        "other_subject_reason_absent": true
+      },
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "orders",
+          "id": "3b7125b7-9072-47cc-bef1-a6c7885b4986",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "orders/3b7125b7-9072-47cc-bef1-a6c7885b4986/transition",
+          "id": "3b7125b7-9072-47cc-bef1-a6c7885b4986",
+          "status": "signed"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "ordered"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "collected"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "received"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "preliminary"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "verified"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "released"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "released"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "released"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "corrected"
+        },
+        {
+          "actor": "laboratory",
+          "path": "clinical/D10/records/a8b8ec98-277c-4828-a830-ceb341d52ff6/actions",
+          "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+          "status": "corrected"
+        },
+        {
+          "actor": "patient",
+          "path": "clinical/D21/records",
+          "id": "30f272db-b4d2-4522-9a8c-decc39f05aa4",
+          "status": "requested"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D21/records/30f272db-b4d2-4522-9a8c-decc39f05aa4/actions",
+          "id": "30f272db-b4d2-4522-9a8c-decc39f05aa4",
+          "status": "reviewed"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D21/records/30f272db-b4d2-4522-9a8c-decc39f05aa4/actions",
+          "id": "30f272db-b4d2-4522-9a8c-decc39f05aa4",
+          "status": "booked"
+        },
+        {
+          "actor": "patient2",
+          "path": "clinical/D21/records",
+          "id": "f0017ab3-0a5d-487b-ab2b-21af9d0655e8",
+          "status": "requested"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json",
+      "source_report_sha256": "7b27f8a023ce195079b0d787f5a83ae7c37d049df78f43274cc1038ad7f6390c",
+      "runtime_binding": "apps/web/evidence/fullsystem/windows-final-runtime-binding.json"
+    }
+  },
+  "browser_assertions": 10,
+  "full_L3_claim": false,
+  "source_binding_note": "J01-J08 preceded final ERP support audit visibility guard; J09-J10 use final image. Affected support UI and recovery are separately rechecked on final image."
+}

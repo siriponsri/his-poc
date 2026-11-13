@@ -1,0 +1,130 @@
+{
+  "schema_version": "1.0",
+  "template_name": "shadcn/ui sidebar-01 (Base variant)",
+  "checked_on": "2026-11-12",
+  "template_docs_url": "https://ui.shadcn.com/blocks/sidebar",
+  "installation": "Pinned source snapshots fetched through GitHub; manual adaptation, not shadcn CLI execution",
+  "revision": "dd41d19e2f80ff6891951f7ced74c2c9a650b065",
+  "license": {
+    "name": "MIT",
+    "url": "https://github.com/shadcn-ui/ui/blob/dd41d19e2f80ff6891951f7ced74c2c9a650b065/LICENSE.md",
+    "notice_file": "vendor/shadcn-sidebar-01/SHADCN_LICENSE.txt",
+    "notice_sha256": "cbe191a94b1484349d68d02b943bdeae08f3a9a34cc19cbaa7746bee50dd69ac",
+    "redistribution": "permitted with copyright/permission notice retained"
+  },
+  "sources": [
+    {
+      "source_url": "https://github.com/shadcn-ui/ui/blob/dd41d19e2f80ff6891951f7ced74c2c9a650b065/apps/v4/registry/bases/base/blocks/sidebar-01/page.tsx",
+      "source_path": "apps/v4/registry/bases/base/blocks/sidebar-01/page.tsx",
+      "revision": "dd41d19e2f80ff6891951f7ced74c2c9a650b065",
+      "snapshot_path": "vendor/shadcn-sidebar-01/page.tsx",
+      "snapshot_sha256": "ec21b8cba4957c81c5ec7860abee76f41583245b4270d559016366b41af5f718",
+      "usage": "copied-code-adapted",
+      "derived_file": "src/App.tsx",
+      "changes": "Retain sidebar/page and grouped-navigation composition; replace sample data, local primitives, styles and content with Thai HIS workspace and 38 domain inventory."
+    },
+    {
+      "source_url": "https://github.com/shadcn-ui/ui/blob/dd41d19e2f80ff6891951f7ced74c2c9a650b065/apps/v4/registry/bases/base/blocks/sidebar-01/components/app-sidebar.tsx",
+      "source_path": "apps/v4/registry/bases/base/blocks/sidebar-01/components/app-sidebar.tsx",
+      "revision": "dd41d19e2f80ff6891951f7ced74c2c9a650b065",
+      "snapshot_path": "vendor/shadcn-sidebar-01/app-sidebar.tsx",
+      "snapshot_sha256": "c6d8ef39de98b3c0d29c859ce1602fc77d2b02a59b99873d10b16f68090f119f",
+      "usage": "copied-code-adapted",
+      "derived_file": "src/components/app-sidebar.tsx",
+      "changes": "Retain sidebar/page and grouped-navigation composition; replace sample data, local primitives, styles and content with Thai HIS workspace and 38 domain inventory."
+    }
+  ],
+  "newly_authored": [
+    "src/components/sidebar.tsx",
+    "src/styles.css",
+    "src/lib/api.ts",
+    "tests/adapter.test.mjs",
+    "src/lib/client.ts",
+    "src/lib/catalog.ts",
+    "src/components/forms.tsx",
+    "src/components/workspace.tsx",
+    "src/components/core-workspaces.tsx",
+    "src/components/operations.tsx",
+    "src/components/portal.tsx",
+    "src/components/growth.tsx",
+    "tests/workflow.component.test.tsx",
+    "tests/client-v2.test.mjs",
+    "scripts/browser_driver.py",
+    "scripts/browser_journeys.py"
+  ],
+  "reference_only": [
+    {
+      "name": "OpenMRS O3 workspaces",
+      "url": "https://o3-docs.openmrs.org/en-US/docs/workspaces/",
+      "source": "provided audit design brief; no code copied"
+    },
+    {
+      "name": "NHS error summary",
+      "url": "https://service-manual.nhs.uk/design-system/components/error-summary",
+      "source": "provided audit design brief; no code copied"
+    },
+    {
+      "name": "Carbon for AI",
+      "url": "https://www.carbondesignsystem.com/building-blocks/foundations/carbon-for-ai",
+      "source": "provided audit design brief; no code copied"
+    },
+    {
+      "name": "Magic UI",
+      "url": "https://github.com/magicuidesign/magicui",
+      "revision": "1ac985adca3cdfab9b1739253fd14209687c4e9c",
+      "license": "MIT",
+      "usage": "Authorized repository inspected; no code copied in v0.3"
+    },
+    {
+      "name": "shadcn-admin",
+      "url": "https://github.com/satnaing/shadcn-admin",
+      "revision": "e16c87f213a5ba5e45964e9b67c792105ec74d26",
+      "license": "MIT",
+      "usage": "Authorized reference inspected; no backend or component code copied in v0.3"
+    },
+    {
+      "name": "Impeccable",
+      "url": "https://github.com/pbakaus/impeccable",
+      "revision": "b4bff1626c344067788c2679f048a20057c7cc5a",
+      "license": "Apache-2.0",
+      "usage": "Authorized design tooling reference inspected; no tooling installed or source copied in v0.3"
+    }
+  ],
+  "dependencies": {
+    "name": "his-poc-web",
+    "version": "0.3.0",
+    "private": true,
+    "type": "module",
+    "scripts": {
+      "dev": "vite --host 127.0.0.1",
+      "sync-data": "python scripts/sync_data.py",
+      "typecheck": "tsc --noEmit",
+      "build": "python scripts/sync_full_catalog.py && tsc --noEmit && vite build",
+      "test": "node --test tests/*.test.mjs",
+      "preview": "vite preview --host 127.0.0.1",
+      "test:component": "node --import tsx --test tests/*.component.test.tsx",
+      "test:audit": "node scripts/audit_regression.mjs ../..",
+      "sync-full-catalog": "python scripts/sync_full_catalog.py"
+    },
+    "dependencies": {
+      "react": "19.3.1",
+      "react-dom": "19.3.1"
+    },
+    "devDependencies": {
+      "@types/node": "26.6.6",
+      "@types/react": "19.3.0",
+      "@types/react-dom": "19.3.0",
+      "@vitejs/plugin-react": "6.3.0",
+      "jsdom": "31.0.0",
+      "tsx": "4.21.0",
+      "typescript": "7.0.2",
+      "vite": "8.3.8"
+    }
+  },
+  "lockfile": "package-lock.json",
+  "lockfile_sha256": "c077c4335cea2177717ea83d98f1f171462ea4e9aedce82aa7256ed5fa1a0569",
+  "fonts": "system Thai font stack; no font binaries copied",
+  "runtime_external_asset_requests": false,
+  "release_version": "0.3.0",
+  "fullsystem_changes": "Retain the pinned shadcn sidebar composition and MIT snapshots. Replace singleton fixture/API switch with local session login, scoped workspaces and typed backend-authored domain forms. app-sidebar.tsx is retained legacy source; active navigation now lives in App.tsx."
+}

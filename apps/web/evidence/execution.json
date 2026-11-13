@@ -1,0 +1,34 @@
+{
+  "environment": {
+    "node": "v24.22.1",
+    "npm": "11.9.0",
+    "os": "Linux"
+  },
+  "commands": [
+    {
+      "command": "npm ci",
+      "exit_code": 0,
+      "seconds": 9.175,
+      "log": "evidence/npm-ci.txt"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "seconds": 0.466,
+      "log": "evidence/adapter-tests.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "exit_code": 0,
+      "seconds": 0.559,
+      "log": "evidence/typecheck.txt"
+    },
+    {
+      "command": "npm run build",
+      "exit_code": 0,
+      "seconds": 0.993,
+      "log": "evidence/build.txt"
+    }
+  ],
+  "browser": "NOT_RUN launch blocked; see browser-check.json"
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:propose_response",
+  "title": "propose_response",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "demo": {
+          "const": true
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "const": "success"
+        },
+        "proposal": {
+          "$ref": "proposal.schema.json"
+        }
+      },
+      "required": [
+        "demo",
+        "run_id",
+        "outcome",
+        "proposal"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "demo": {
+          "const": true
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "outcome": {
+          "enum": [
+            "failed",
+            "timeout",
+            "abstained"
+          ]
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "demo",
+        "run_id",
+        "outcome",
+        "error",
+        "reason"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

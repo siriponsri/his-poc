@@ -1,0 +1,48 @@
+name: his-poc
+services:
+  db:
+    image: postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5
+    environment:
+      POSTGRES_DB: his_poc
+      POSTGRES_USER: his_owner
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Run python scripts/dev.py init first}
+    volumes:
+      - database:/var/lib/postgresql
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U his_owner -d his_poc']
+      interval: 2s
+      timeout: 3s
+      retries: 30
+    restart: unless-stopped
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql+psycopg://his_owner:${POSTGRES_PASSWORD}@db:5432/his_poc
+      FILE_STORAGE_PROVIDER: local
+      FILE_STORAGE_ROOT: /var/his/files
+      BACKUP_ROOT: /var/his/backups
+      WEB_DIST: /app/apps/web/dist
+      HIS_COOKIE_SECURE: 'false'
+      HIS_ENV: development
+      HIS_ALLOWED_ORIGINS: http://127.0.0.1:${HIS_WEB_PORT:-8000},http://localhost:${HIS_WEB_PORT:-8000}
+      HIS_SEED_PASSWORD: ${HIS_SEED_PASSWORD:?Run python scripts/dev.py init first}
+      HIS_AI_PROVIDER: mock_demo
+      HIS_PLATFORM_OPERATORS: ${HIS_PLATFORM_OPERATORS:-user-operations_admin}
+    ports:
+      - '127.0.0.1:${HIS_WEB_PORT:-8000}:8000'
+    volumes:
+      - files:/var/his/files
+      - backups:/var/his/backups
+    depends_on:
+      db:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, python, -c, "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/ready', timeout=3)"]
+      interval: 5s
+      timeout: 4s
+      retries: 12
+    restart: unless-stopped
+volumes:
+  database:
+  files:
+  backups:

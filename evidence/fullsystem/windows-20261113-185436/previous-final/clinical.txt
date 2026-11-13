@@ -1,0 +1,9 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "/tmp/his-pg-tests-uzi_o28m/files"}
+.........................                                                [100%]
+=============================== warnings summary ===============================
+../../fullsystem-venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+25 passed, 1 warning in 21.32s

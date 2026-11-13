@@ -1,0 +1,297 @@
+{
+  "status": "PASS_FINAL_SCOPES",
+  "compiled_at_utc": "2026-11-13T12:49:06.741051+00:00",
+  "scope": "Browser commands only; per-journey aggregation retains original failures and does not itself certify L2/L3 or clinical effectiveness",
+  "final_results": {
+    "journeys": {
+      "PASS": 10,
+      "report": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json"
+    },
+    "supplemental_domains": {
+      "PASS": 12,
+      "report": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json"
+    },
+    "smoke_assertions": 11,
+    "recovery_assertions": 9,
+    "recovery_report": "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+    "application_ready_http_status": 200,
+    "cli_safety_unittest": {
+      "command": [
+        ".venv/Scripts/python",
+        "-m",
+        "unittest",
+        "backend.tests.test_browser_cli_unit",
+        "-v"
+      ],
+      "exit_code": 0,
+      "tests": 1,
+      "help_subcases": 4
+    }
+  },
+  "runs": [
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_check.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-smoke-initial"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-smoke-initial/browser-smoke.json",
+      "observed_exit_code": 1,
+      "report_sha256": "5767e4240a1bd3188a4e461b50a921b59710a7195afae78267e7a6d27652ad3b",
+      "note": "Default browser fetch binding failure"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-initial"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-initial/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "d136dbc0c8e77e58e643c0db7a7ad5845863362ff3562b6d175d725dab2e8c88",
+      "note": "Default browser fetch binding failure"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_check.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-smoke-fixed"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-smoke-fixed/browser-smoke.json",
+      "observed_exit_code": 0,
+      "report_sha256": "cc9c521a5f58686ae4b4f7ef106effd244903dd91856549bc983a18ac34dd68f",
+      "note": "11 smoke assertions"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-fixed"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-fixed/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "d018008b149fdf2c6f4b5bb0405e88d72f35c2562f64e612fada903041a00d65",
+      "note": "Harness tab bootstrap race"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_domains.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-domains-initial"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "observed_exit_code": 1,
+      "report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e",
+      "note": "11 domain paths passed; D35 integer wire type failed"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-tabs-fixed"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-tabs-fixed/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "7a26b3b9a6320ee18a3226bb84ee2b83da306c3c2d5a67834db1490547420fac",
+      "note": "Harness implicit select label lookup"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-context-fixed"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-context-fixed/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "d2435d2031786bdfc7146713383f16f8d8cd6cf0294a056ff2b47ea63bdb75fa",
+      "note": "D08 stock location catalog mismatch"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-catalog-fixed"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-catalog-fixed/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "9e8146d393c76b124d7c9be1a6c496b48643bb56ccdd5f086825399546fb99c4",
+      "note": "J01-J07 passed; D20 export link absent"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_domains.py",
+        "--domains",
+        "D35",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-domain-D35-fixed"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-domain-D35-fixed/browser-domains.json",
+      "observed_exit_code": 0,
+      "report_sha256": "3f9557d9470427e3c9972983b1effd68cae765585b0309020408d953f418b4d1",
+      "note": "D35 complete DOM workflow and direct denial passed"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-final"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-final/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "4a2b1b3cae8e56e38912fab6da10b94a83030529dc3b83d9d1c85604be4438db",
+      "note": "Harness captured previous navigation response"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_domains.py",
+        "--domains",
+        "D30",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-domain-D30-credential"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-domain-D30-credential/browser-domains.json",
+      "observed_exit_code": 1,
+      "report_sha256": "a8bae117d8e385673f68e3c0ddbdbdf3b7f69eba2846776172e1309a073b79f4",
+      "note": "Harness attempted permission control after re-login already removed it"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-final-retry"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-final-retry/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "6f9b8fa8d4fed8fc10d82348436f485f295e3b58aaece74b60c75bbfbce07c53",
+      "note": "Runtime audit lock stalled browser response"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_domains.py",
+        "--domains",
+        "D30",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-domain-D30-final"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-domain-D30-final/browser-domains.json",
+      "observed_exit_code": 1,
+      "report_sha256": "f46e12f5bba485fd3b00f039fe8e09333258170c55d7b2e5dcb24bba1b1471d2",
+      "note": "Revoked stale action denied403; runtime audit lock blocked cleanup"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "note": "J01-J08 passed; J09 harness omitted required human evidence"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--journeys",
+        "J09",
+        "J10",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+      "observed_exit_code": 1,
+      "report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2",
+      "note": "J09 passed; J10 harness expected403 where scope contract returns404"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_journeys.py",
+        "--journeys",
+        "J10",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-journey-J10-accepted"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json",
+      "observed_exit_code": 0,
+      "report_sha256": "7b27f8a023ce195079b0d787f5a83ae7c37d049df78f43274cc1038ad7f6390c",
+      "note": "J10 passed including cross-subject404 and mobile"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_domains.py",
+        "--domains",
+        "D30",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-domain-D30-accepted"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-domain-D30-accepted/browser-domains.json",
+      "observed_exit_code": 0,
+      "report_sha256": "5186313c43625f8644c7ce14d5a859e73708046e3b209b347b651a8c9560b03f",
+      "note": "Stale credential mutation403, explicit restoration, acknowledgement and persistence"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_check.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-smoke-accepted"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-smoke-accepted/browser-smoke.json",
+      "observed_exit_code": 0,
+      "report_sha256": "4c2b445c2e6ea8fc8861c0af6243078487836cc6a59cfe291691fb52f3c4c4db",
+      "note": "Final image11 smoke assertions"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_recovery.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-recovery-accepted"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-recovery-accepted/browser-recovery.json",
+      "observed_exit_code": 1,
+      "report_sha256": "9a4ca26c8a947f65a04aeafd271e69a465476f5ca2a001c79d16ee2df1154bd5",
+      "note": "Six checks passed; harness checked interception before callback dispatch"
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "apps/web/scripts/browser_recovery.py",
+        "--output-dir",
+        "apps/web/evidence/fullsystem/windows-recovery-final"
+      ],
+      "report": "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "observed_exit_code": 0,
+      "report_sha256": "37e3f7eab7018e73d6d87ca7b2c91d7b832eeaa088fb726d31a293e3f194be70",
+      "note": "Nine checks passed including delayed scope, restart, UI isolated restore"
+    }
+  ],
+  "source_sha256": {
+    "apps/web/scripts/browser_check.py": "a43f372d63290fb3b58518cedf37f9d8c828588bea4a8b6d6c9a8b8deb4fb854",
+    "apps/web/scripts/browser_driver.py": "2cbc330d81f433d5ef9849dfb694738d35f553490810b1e185f789d0d0584f89",
+    "apps/web/scripts/browser_journeys.py": "5206b7b65f6f61aba9d3f1a3f6fa9c0ca03e3d8f09a57994dbe8be19e4040a93",
+    "apps/web/scripts/browser_support.py": "a7fa9316100985711dd5e9115165b2749e873a6d393ce85cf2580c5ae4b7a513",
+    "apps/web/scripts/browser_domains.py": "994cf774a676d32261e10e2bb0edec20ec165b78945e93bd11769a9f742c2504",
+    "apps/web/scripts/browser_recovery.py": "53f672dd5dc2d4773cc40f21f525b9a6a50bbcb0588e5d915a98b115ed6c986c",
+    "backend/tests/test_browser_cli_unit.py": "4c987160f2551ff2349b70b3a3953b90d79d30461fd55af5aa7a94330fa98941"
+  },
+  "credential_policy": "Password loaded privately from local environment; no credential values written",
+  "runner_warning": "Final recovery process exited0 and passed9 assertions; Playwright emitted a Response.finished Target closed background teardown warning after completion"
+}

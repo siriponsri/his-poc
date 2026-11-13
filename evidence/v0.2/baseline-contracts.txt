@@ -1,0 +1,1 @@
+{"status": "PASS", "schema_count": 18, "example_count": 2, "runtime_shapes": ["proposal", "evidence_snapshot", "review_record", "commit_response", "audit_event"], "jsonschema_version": "4.26.0", "live_provider_tested": false}

@@ -1,0 +1,8 @@
+{
+  "version": "1.0",
+  "file": "cases.jsonl",
+  "sha256": "e33d028f6d5094cb336024a341f2958fec82652fbd805f25d58ef3947f727c82",
+  "count": 12,
+  "role": "synthetic scenario specification; runtime tests separate",
+  "model_comparison_status": "NOT_RUN"
+}

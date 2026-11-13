@@ -1,0 +1,9 @@
+{
+  "patient": "p-demo",
+  "encounter": "e-demo",
+  "expected_version": 1,
+  "content": {
+    "text": "Synthetic document only",
+    "author": "demo-author"
+  }
+}

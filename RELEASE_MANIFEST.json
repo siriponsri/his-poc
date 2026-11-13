@@ -1,0 +1,21 @@
+{
+  "version": "0.3.0",
+  "release_type": "Locally validated full-system development prototype",
+  "packaged_on": "2026-11-13",
+  "full_system_acceptance": "PASS_LOCAL_SYNTHETIC",
+  "domains_L2_pass": 38,
+  "journeys_L3_pass": 10,
+  "application_tables": 108,
+  "tables_in_restore_including_alembic": 109,
+  "database": "PostgreSQL18.6",
+  "live_inference": "NOT_RUN",
+  "AI_execution": "MOCK_DEMO",
+  "browser": "PASS",
+  "docker": "PASS",
+  "windows_docker": "PASS",
+  "external_L4": "NOT_CONNECTED",
+  "clinical_product_effectiveness": "NOT_RUN",
+  "validation": "VALIDATION_REPORT.md",
+  "repository": "https://github.com/siriponsri/his-poc",
+  "source_integrity": "SHA256SUMS.json"
+}

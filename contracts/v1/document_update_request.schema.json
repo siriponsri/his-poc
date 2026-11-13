@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:document_update_request",
+  "title": "document_update_request",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "patient": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encounter": {
+      "type": "string",
+      "minLength": 1
+    },
+    "expected_version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Positive integral JSON number; 1.0 is normalized to 1. Boolean values are invalid."
+    },
+    "content": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "author": {
+          "type": "string"
+        },
+        "signed_at": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "patient",
+    "encounter",
+    "expected_version",
+    "content"
+  ],
+  "additionalProperties": false
+}

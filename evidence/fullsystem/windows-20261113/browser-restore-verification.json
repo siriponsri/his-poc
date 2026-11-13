@@ -1,0 +1,83 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-13T12:47:40.541304+00:00",
+  "mode": "READ_ONLY_POSTGRESQL_AND_FILES",
+  "restore_job_id": "c4590bd0-6eaf-40c0-978d-e1cc10303ae2",
+  "backup_id": "d9ae37f525184ec49b6db3b3f99e2308",
+  "isolated_database": "his_restore_023ee48338444e91a116beab132b9e46",
+  "table_inventory_equal_backup": true,
+  "tables_checked": 109,
+  "file_inventory_equal_backup": true,
+  "files_checked": 1,
+  "persisted_file_references_checked": 2,
+  "foreign_keys_validated": true,
+  "browser_records": [
+    {
+      "journey": "J01",
+      "field": "patient_id",
+      "table": "patients",
+      "id": "63e2b02b-c2b6-4108-a4b8-0671893015e3",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J01",
+      "field": "encounter_id",
+      "table": "encounters",
+      "id": "2d2cdbbd-b8fc-423f-9087-c2e2230a60b5",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J01",
+      "field": "document_id",
+      "table": "documents",
+      "id": "fed0d29c-a841-4019-a1c2-e9c6699f45e4",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J01",
+      "field": "result_id",
+      "table": "committed_results",
+      "id": "0af88759-8385-4472-bb2c-49625ab24da1",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J05",
+      "field": "receipt_id",
+      "table": "payment_receipts",
+      "id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J05",
+      "field": "invoice_id",
+      "table": "invoices",
+      "id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J08",
+      "field": "study_id",
+      "table": "clinical_imaging",
+      "id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    },
+    {
+      "journey": "J08",
+      "field": "document_id",
+      "table": "documents",
+      "id": "d13d3c7c-d40b-401e-8fd3-5356b8b45a91",
+      "status": "PASS",
+      "source_restored_row_equal": true
+    }
+  ],
+  "browser_imaging_file_sha256": "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23",
+  "scope": "Restored snapshot compared to its backup; named stable browser rows compared to source. Current source audit/job changes are not treated as restore differences.",
+  "journeys_report_sha256": "698923a98fd2533c92bed966bc6d98ecd2bfb01456debabcf7345685eab492b2"
+}

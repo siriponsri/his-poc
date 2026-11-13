@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "postgresql_tests": 13,
+  "launcher_tests": 6,
+  "details": "../v0.3/operations/execution.json",
+  "docker": "NOT_RUN",
+  "powershell": "NOT_RUN",
+  "cli_boundary": "PASS actual local HTTP login/job/poll/logout"
+}

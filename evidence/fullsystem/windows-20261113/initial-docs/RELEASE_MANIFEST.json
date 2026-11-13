@@ -1,0 +1,15 @@
+{
+  "version": "0.3.0",
+  "release_type": "Full-system development checkpoint",
+  "packaged_on": "2026-11-13",
+  "full_system_acceptance": "PENDING_BROWSER",
+  "domains": 38,
+  "journeys_api_tested": 10,
+  "application_tables": 108,
+  "database": "PostgreSQL18",
+  "live_inference": "NOT_RUN",
+  "browser": "NOT_RUN",
+  "docker": "NOT_RUN",
+  "windows": "NOT_RUN",
+  "validation": "VALIDATION_REPORT.md"
+}

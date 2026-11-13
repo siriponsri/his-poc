@@ -1,0 +1,13 @@
+test_first_start_order (backend.tests.test_operations_unit.LauncherSafety.test_first_start_order) ... ok
+test_initialize_preserves_existing_private_configuration (backend.tests.test_operations_unit.LauncherSafety.test_initialize_preserves_existing_private_configuration) ... ok
+test_migration_failure_prevents_seed_and_app (backend.tests.test_operations_unit.LauncherSafety.test_migration_failure_prevents_seed_and_app) ... ok
+test_native_refuses_sqlite (backend.tests.test_operations_unit.LauncherSafety.test_native_refuses_sqlite) ... ok
+test_no_docker_clear_failure (backend.tests.test_operations_unit.LauncherSafety.test_no_docker_clear_failure) ... ok
+test_restart_does_not_seed (backend.tests.test_operations_unit.LauncherSafety.test_restart_does_not_seed) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.004s
+
+OK
+Created private .env. Read HIS_SEED_PASSWORD locally for synthetic account login; do not share this file.
+.env already exists; retained without changes.

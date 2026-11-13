@@ -1,0 +1,25 @@
+{
+  "command": "python -m src.his_poc.server",
+  "environment": {
+    "HIS_PORT": "0",
+    "HIS_DB_PATH": "temporary isolated DB"
+  },
+  "banner": "DEMO / SYNTHETIC / MOCK ONLY http://127.0.0.1:45031",
+  "health": {
+    "status": "ok",
+    "demo": true,
+    "inference_profile": "mock_demo"
+  },
+  "context_patient": "p-demo",
+  "context_encounter": {
+    "id": "e-demo",
+    "patient": "p-demo",
+    "version": 1,
+    "status": "open"
+  },
+  "assertions": {
+    "demo_banner": true,
+    "synthetic_patient": true,
+    "health_http_200": true
+  }
+}

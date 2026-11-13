@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "active": {
+    "application_location": "local_development",
+    "inference_profile": "mock_demo"
+  },
+  "application_locations": [
+    "local_development",
+    "server",
+    "cloud"
+  ],
+  "inference_profiles": [
+    "mock_demo",
+    "cloud_api",
+    "dr_train",
+    "local_endpoint"
+  ],
+  "verified_pairs": [
+    [
+      "local_development",
+      "mock_demo"
+    ]
+  ],
+  "note": "Only runnable pair is local mock. Other pairs are design inventory; verify network path from actual backend namespace. No deployment performed."
+}

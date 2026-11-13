@@ -1,0 +1,89 @@
+{
+  "python": "3.12.14",
+  "sqlite": "3.53.1",
+  "commands": [
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_status": 0,
+      "evidence": "baseline-tests.txt"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "contracts/check_contracts.py"
+      ],
+      "exit_status": 0,
+      "evidence": "baseline-contracts.txt"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "scripts/verify_hashes.py"
+      ],
+      "exit_status": 0,
+      "evidence": "baseline-hashes.txt"
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "--check",
+        "/workspace/scratch/9ae50286259c/audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/starter-hardening.patch"
+      ],
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "apply",
+        "/workspace/scratch/9ae50286259c/audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/starter-hardening.patch"
+      ],
+      "exit_status": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_status": 0,
+      "evidence": "hardening-tests.txt"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/node/bin/node",
+        "--test",
+        "tests/test_frontend_behavior.js"
+      ],
+      "exit_status": 0,
+      "evidence": "legacy-ui-behavior.txt"
+    },
+    {
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "contracts/check_contracts.py"
+      ],
+      "exit_status": 0,
+      "evidence": "hardening-contracts.txt"
+    }
+  ],
+  "before_after_hash_checks": 18,
+  "patch": "applied after exact baseline hash match",
+  "node": "v24.22.1"
+}

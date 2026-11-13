@@ -1,0 +1,147 @@
+{
+  "started_at_utc": "2026-11-13T12:22:11.592856+00:00",
+  "command": [
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "apps/web/scripts/browser_journeys.py",
+    "--output-dir",
+    "apps/web/evidence/fullsystem/windows-journeys-final"
+  ],
+  "python_version": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "base_url": "http://127.0.0.1:8000",
+  "data_profile": "AUTHORED_SYNTHETIC",
+  "source_sha256": {
+    "apps/web/scripts/browser_check.py": "a43f372d63290fb3b58518cedf37f9d8c828588bea4a8b6d6c9a8b8deb4fb854",
+    "apps/web/scripts/browser_domains.py": "f156e1f435824b57a6db609c55e961ba81434aa0032e9d419995849699e7ce6c",
+    "apps/web/scripts/browser_driver.py": "21916e7db59d2b99ac5521114aacd22fffba52507f5ca3b6afd6ac0034edb970",
+    "apps/web/scripts/browser_journeys.py": "1324e5d1f19a79e1ef363dfc345fdef0968dd4b95b0353094f18dd5b7ab42856",
+    "apps/web/scripts/browser_recovery.py": "f8b2cf52657bee97da66a7294c3a4901d1a33ef384c741ececc74730266dd421",
+    "apps/web/scripts/browser_support.py": "8c8414cffd0a3e34c5630e47bebf80b28520db2c05a871ae8a7f532192f3f683",
+    "apps/web/scripts/sync_data.py": "126e9cb6f4205e679d00193e3649d83e3ebcad09a7ddf13b90168c3e16a6c91d",
+    "apps/web/scripts/sync_full_catalog.py": "3a430d07f6fb6f0a7ce067578201dde82e5561822d082355dfab88660a8ff247",
+    "apps/web/src/App.tsx": "5a05a13773ca233373ba0cf290aae6de22c818b23ec8656904e5e53e67621912",
+    "apps/web/src/components/app-sidebar.tsx": "04e77214c9767cacf0be7804c150a75cb9b22f43afbf77a899cdfd9a91f1ad61",
+    "apps/web/src/components/core-workspaces.tsx": "a4c78a283ae160b896d98bd0e2323e515bda25d36bec7164079c2f4067f016bb",
+    "apps/web/src/components/forms.tsx": "d0b8cbb9369ba789217c284d2c44208a8e7e354271aa5f942d8e2982f5cf9a59",
+    "apps/web/src/components/growth.tsx": "60258427c3a5a07bd8b3fd108e6130bf84242f10ab7887a25a38f02e5b61bbba",
+    "apps/web/src/components/operations.tsx": "d276670b5d06aa8c70311900a4f9d2eeb7cbf66c5f3a86fa8a5480304ee2d9f4",
+    "apps/web/src/components/portal.tsx": "00ebfd9ad798a081c10f69f6775a37fd4a62d0a3809b878c2dbf3ecf984061ca",
+    "apps/web/src/components/sidebar.tsx": "f7284be7419d9be4173e3f84c436d56df7b57e1535c7d2969353e3eb12349ffc",
+    "apps/web/src/components/workspace.tsx": "3db4ac4fb6d3be5a4c0a459326b9eb7393cc268405852a8e6d5a992072378c6e",
+    "apps/web/src/data/domains.json": "f2dbdb1e7c7c783459e34ff70863a0003e63e439d09517e5f0bcb18098cb439a",
+    "apps/web/src/data/full-domains.json": "ebb95be12796cc43bae70b2e4ee7034d98208d95701bff8320b2340cf9489a72",
+    "apps/web/src/data/resource-catalog.json": "d67a7c3b99d61c181219dc9512f2f6cd3e589afa1805336c58c16b5867584655",
+    "apps/web/src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303",
+    "apps/web/src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "apps/web/src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "apps/web/src/lib/catalog.ts": "c924b48539b9828ee6de6e57f09d6e9db7b2e9f603f0013ceb420fbe42ed402d",
+    "apps/web/src/lib/client.ts": "6992d938792223808e2d12929669a5e97ef053539c954eec037ee04523ff99ac",
+    "apps/web/src/main.tsx": "b8dce1127336236105527faf70084839bdea99da921c74b367f50c1a0997a1bf",
+    "apps/web/src/styles.css": "15cc6e0b0aa539e75657ef243d38c5db95aab973243790e6d5befa11e19e26ca",
+    "apps/web/src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/admin.py": "aee9e49084ca82f4f356b459d7b0144fb614aa94436b7ecb09addb63a14d26c4",
+    "backend/app/ai.py": "ba4a0a514f3a274ca517b369e79121cf7f2fa9c5698b0d55078caec7960c5cab",
+    "backend/app/auth.py": "cdf14f2fab1040813c6f8398fbbcd876ffc5c98e161dac64afc932e6435fa97a",
+    "backend/app/common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
+    "backend/app/core.py": "b1ff4d39a1e632bba9a21cbc23ab0d3e72da52d6b852c59e6f0bb83dcc74b41b",
+    "backend/app/db.py": "05aade4aea809dd29ef07c6acbb635593093f62ad8513b152c6ca7d7b417e7f4",
+    "backend/app/domains/clinical.py": "5b913e10269de7b714ae12b17281379f2577830b95c1fe7beab70ad85971232e",
+    "backend/app/domains/clinical_catalog.json": "82a1415c3daf9f25114fd34e25288f4d4b7531b5cdf3d00c70b8492cbab87b38",
+    "backend/app/domains/erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653",
+    "backend/app/domains/erp_catalog.json": "7ca5027559341ed4d5efe3c07e57f089002fa0898b0ef3b0c1c4b169bb2fe56e",
+    "backend/app/domains/operations.py": "0b135d1c5dfd349d694a8a84ae96cdcec88fb68d24070d25200a84b006319447",
+    "backend/app/legacy_import.py": "b075c251d7847f95557c2eadf2dd34dcb58a75039f0145445e302f4690b0a6ea",
+    "backend/app/main.py": "4747aa0a11a883b77399b57b83fa7aeafeec1e4023a660970b8f2f0a97456783",
+    "backend/app/model_registry.py": "3f09946e2e66fe727a05092909505a2994b7a8fa55489cacf41fbbde686aa17f",
+    "backend/app/models.py": "277055976e0919b31f2d3cd1cf43e63cccebf93ea02e2f4d70bd266897bdd9d5",
+    "backend/app/models_clinical.py": "e1172752510427718e6ee466c680c279c1edd9a6955a758d33fa3b0fb96a5ee5",
+    "backend/app/models_erp.py": "2e16a16d4fcd15a7b89f98e1c1c4da2f400a0260c3889a745e6916957b25e913",
+    "backend/app/models_legacy.py": "070e52e6a389356e3a2bb3596e4673235fb6b039ab47397f8e2c134f2c6e23cc",
+    "backend/app/providers.py": "ec9e00098152cdf3550415475dfd2653d560ac0894a2387b56f731300eb53a7d",
+    "backend/app/seed.py": "9066fd69f2bab4a396ca3761719aef75da6c31ee26309aaa6d3ae9556d10047a",
+    "backend/app/storage.py": "8a657b09a9dce48d434cdd563b4ae8d4711da35c2f85084817db980e6e7ceec6"
+  },
+  "status": "FAIL",
+  "browser_assertions": 0,
+  "journeys": {
+    "J01": {
+      "status": "FAIL",
+      "reason": "Response.json: Protocol error (Network.getResponseBody): No resource with given identifier found\nResponse body is not available for a response that was navigated away from. Read response.body() before triggering any navigation.",
+      "executed_dom_mutations": [
+        {
+          "actor": "registration",
+          "path": "patients",
+          "id": "f0c25a3a-c2fb-403f-b490-1e6771357d5a",
+          "status": "draft"
+        },
+        {
+          "actor": "registration",
+          "path": "patients/f0c25a3a-c2fb-403f-b490-1e6771357d5a/transition",
+          "id": "f0c25a3a-c2fb-403f-b490-1e6771357d5a",
+          "status": "verified"
+        },
+        {
+          "actor": "registration",
+          "path": "patients/f0c25a3a-c2fb-403f-b490-1e6771357d5a/transition",
+          "id": "f0c25a3a-c2fb-403f-b490-1e6771357d5a",
+          "status": "active"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records",
+          "id": "6c71ae37-d656-4c49-94aa-1454883716c4",
+          "status": "requested"
+        },
+        {
+          "actor": "registration",
+          "path": "clinical/D02/records/6c71ae37-d656-4c49-94aa-1454883716c4/actions",
+          "id": "6c71ae37-d656-4c49-94aa-1454883716c4",
+          "status": "booked"
+        }
+      ]
+    },
+    "J02": {
+      "status": "NOT_RUN"
+    },
+    "J03": {
+      "status": "NOT_RUN"
+    },
+    "J04": {
+      "status": "NOT_RUN"
+    },
+    "J05": {
+      "status": "NOT_RUN"
+    },
+    "J06": {
+      "status": "NOT_RUN"
+    },
+    "J07": {
+      "status": "NOT_RUN"
+    },
+    "J08": {
+      "status": "NOT_RUN"
+    },
+    "J09": {
+      "status": "NOT_RUN"
+    },
+    "J10": {
+      "status": "NOT_RUN"
+    }
+  },
+  "method": "Playwright DOM forms/actions; response observation for exact IDs, no direct API mutations",
+  "full_L3_claim": false,
+  "requested_journeys": [
+    "J01",
+    "J02",
+    "J03",
+    "J04",
+    "J05",
+    "J06",
+    "J07",
+    "J08",
+    "J09",
+    "J10"
+  ],
+  "scope_note": "Combine executed scenarios with canonical acceptance, negative/concurrency and domain coverage; this script alone does not certify L3"
+}

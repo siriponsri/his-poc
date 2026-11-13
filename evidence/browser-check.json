@@ -1,0 +1,16 @@
+{
+  "status": "NOT_RUN",
+  "attempts": [
+    {
+      "runtime": "Playwright bundled chromium",
+      "outcome": "launch failed; browser executable absent"
+    },
+    {
+      "runtime": "system /usr/bin/chromium",
+      "outcome": "launch failed; socket() Operation not permitted; SIGABRT"
+    }
+  ],
+  "ui_assertions_executed": 0,
+  "next_command": "python scripts/browser_check.py",
+  "optional_prerequisite": "playwright package and compatible installed Chromium; CHROMIUM_PATH optional"
+}

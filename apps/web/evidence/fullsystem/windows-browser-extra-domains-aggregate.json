@@ -1,0 +1,700 @@
+{
+  "status": "PASS",
+  "generated_at_utc": "2026-11-13T12:45:38.113812+00:00",
+  "scope": "12 supplemental domains outside J01-J10; combine with journey and PostgreSQL evidence, no blanket L2 certification",
+  "domains": {
+    "D09": {
+      "status": "PASS",
+      "record_id": "8242635f-f76c-4118-8115-972cbfb24992",
+      "version": 4,
+      "final_status": "corrected",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "orders",
+          "id": "50c9c7c5-58bb-4499-8314-7f107478f043",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "orders/50c9c7c5-58bb-4499-8314-7f107478f043/transition",
+          "id": "50c9c7c5-58bb-4499-8314-7f107478f043",
+          "status": "signed"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records",
+          "id": "6ac6a49e-39d4-461e-9a64-f1fa89a4f34c",
+          "status": "received"
+        },
+        {
+          "actor": "pharmacist",
+          "path": "clinical/D08/records/6ac6a49e-39d4-461e-9a64-f1fa89a4f34c/actions",
+          "id": "6ac6a49e-39d4-461e-9a64-f1fa89a4f34c",
+          "status": "reviewed"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D09/records",
+          "id": "8242635f-f76c-4118-8115-972cbfb24992",
+          "status": "scheduled"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D09/records/8242635f-f76c-4118-8115-972cbfb24992/actions",
+          "id": "8242635f-f76c-4118-8115-972cbfb24992",
+          "status": "verified"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D09/records/8242635f-f76c-4118-8115-972cbfb24992/actions",
+          "id": "8242635f-f76c-4118-8115-972cbfb24992",
+          "status": "administered"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "03e3253d-bad2-4b74-8211-cb50a0f6c92a"
+        },
+        {
+          "actor": "nurse",
+          "path": "clinical/D09/records/8242635f-f76c-4118-8115-972cbfb24992/actions",
+          "id": "8242635f-f76c-4118-8115-972cbfb24992",
+          "status": "corrected"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D12": {
+      "status": "PASS",
+      "record_id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+      "version": 6,
+      "final_status": "closed",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D12/records",
+          "id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+          "status": "requested"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D12/records/20ac5927-9768-4d0e-be7e-a3ef515be99c/actions",
+          "id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+          "status": "scheduled"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D12/records/20ac5927-9768-4d0e-be7e-a3ef515be99c/actions",
+          "id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+          "status": "checklist_verified"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D12/records/20ac5927-9768-4d0e-be7e-a3ef515be99c/actions",
+          "id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+          "status": "in_progress"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D12/records/20ac5927-9768-4d0e-be7e-a3ef515be99c/actions",
+          "id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+          "status": "documented"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D12/records/20ac5927-9768-4d0e-be7e-a3ef515be99c/actions",
+          "id": "20ac5927-9768-4d0e-be7e-a3ef515be99c",
+          "status": "closed"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D13": {
+      "status": "PASS",
+      "record_id": "d00dbcdc-3f3f-4fab-b288-cf5e0785fff1",
+      "version": 5,
+      "final_status": "amended",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D05/records",
+          "id": "5cd44d93-d9f3-4579-a35b-af40db236999",
+          "status": "requested"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D13/records",
+          "id": "d00dbcdc-3f3f-4fab-b288-cf5e0785fff1",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D13/records/d00dbcdc-3f3f-4fab-b288-cf5e0785fff1/actions",
+          "id": "d00dbcdc-3f3f-4fab-b288-cf5e0785fff1",
+          "status": "recorded"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D13/records/d00dbcdc-3f3f-4fab-b288-cf5e0785fff1/actions",
+          "id": "d00dbcdc-3f3f-4fab-b288-cf5e0785fff1",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D13/records/d00dbcdc-3f3f-4fab-b288-cf5e0785fff1/actions",
+          "id": "d00dbcdc-3f3f-4fab-b288-cf5e0785fff1",
+          "status": "signed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D13/records/d00dbcdc-3f3f-4fab-b288-cf5e0785fff1/actions",
+          "id": "d00dbcdc-3f3f-4fab-b288-cf5e0785fff1",
+          "status": "amended"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D14": {
+      "status": "PASS",
+      "record_id": "cff7856f-f04a-4c3b-a738-1178428e687c",
+      "version": 5,
+      "final_status": "closed",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D14/records",
+          "id": "cff7856f-f04a-4c3b-a738-1178428e687c",
+          "status": "registered"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D14/records/cff7856f-f04a-4c3b-a738-1178428e687c/actions",
+          "id": "cff7856f-f04a-4c3b-a738-1178428e687c",
+          "status": "antenatal_active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D14/records/cff7856f-f04a-4c3b-a738-1178428e687c/actions",
+          "id": "cff7856f-f04a-4c3b-a738-1178428e687c",
+          "status": "delivery_documented"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "1998d00e-31f7-468a-b777-99da26bd555e"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D14/records/cff7856f-f04a-4c3b-a738-1178428e687c/actions",
+          "id": "cff7856f-f04a-4c3b-a738-1178428e687c",
+          "status": "verified"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D14/records/cff7856f-f04a-4c3b-a738-1178428e687c/actions",
+          "id": "cff7856f-f04a-4c3b-a738-1178428e687c",
+          "status": "closed"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D15": {
+      "status": "PASS",
+      "record_id": "9c11c9a2-2ce5-4691-816d-e7e9efca8daf",
+      "version": 5,
+      "final_status": "amended",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D15/records",
+          "id": "9c11c9a2-2ce5-4691-816d-e7e9efca8daf",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D15/records/9c11c9a2-2ce5-4691-816d-e7e9efca8daf/actions",
+          "id": "9c11c9a2-2ce5-4691-816d-e7e9efca8daf",
+          "status": "recorded"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D15/records/9c11c9a2-2ce5-4691-816d-e7e9efca8daf/actions",
+          "id": "9c11c9a2-2ce5-4691-816d-e7e9efca8daf",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D15/records/9c11c9a2-2ce5-4691-816d-e7e9efca8daf/actions",
+          "id": "9c11c9a2-2ce5-4691-816d-e7e9efca8daf",
+          "status": "closed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D15/records/9c11c9a2-2ce5-4691-816d-e7e9efca8daf/actions",
+          "id": "9c11c9a2-2ce5-4691-816d-e7e9efca8daf",
+          "status": "amended"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D16": {
+      "status": "PASS",
+      "record_id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+      "version": 11,
+      "final_status": "completed",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "orders",
+          "id": "93c31efc-59d0-4626-87b8-a389e6577e70",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "orders/93c31efc-59d0-4626-87b8-a389e6577e70/transition",
+          "id": "93c31efc-59d0-4626-87b8-a389e6577e70",
+          "status": "signed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "requested"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "assessed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "active"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D16/records/165c9029-c24a-433e-9854-69fc4f596fbb/actions",
+          "id": "165c9029-c24a-433e-9854-69fc4f596fbb",
+          "status": "completed"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D17": {
+      "status": "PASS",
+      "record_id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+      "version": 6,
+      "final_status": "closed",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D17/records",
+          "id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+          "status": "draft"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D17/records/da4ebe50-a5bf-4e8a-a15b-11c43b424f75/actions",
+          "id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D17/records/da4ebe50-a5bf-4e8a-a15b-11c43b424f75/actions",
+          "id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+          "status": "scheduled"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D17/records/da4ebe50-a5bf-4e8a-a15b-11c43b424f75/actions",
+          "id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+          "status": "performed"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "260ce822-8481-4907-882a-3aefc8783344"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D17/records/da4ebe50-a5bf-4e8a-a15b-11c43b424f75/actions",
+          "id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+          "status": "verified"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D17/records/da4ebe50-a5bf-4e8a-a15b-11c43b424f75/actions",
+          "id": "da4ebe50-a5bf-4e8a-a15b-11c43b424f75",
+          "status": "closed"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D18": {
+      "status": "PASS",
+      "record_id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+      "version": 6,
+      "final_status": "administration_recorded",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D18/records",
+          "id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+          "status": "requested"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D18/records/e524dcdf-d540-4b97-8260-2fc10c752057/actions",
+          "id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D18/records/e524dcdf-d540-4b97-8260-2fc10c752057/actions",
+          "id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+          "status": "reserved"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D18/records/e524dcdf-d540-4b97-8260-2fc10c752057/actions",
+          "id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+          "status": "compatibility_verified"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D18/records/e524dcdf-d540-4b97-8260-2fc10c752057/actions",
+          "id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+          "status": "released"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D18/records/e524dcdf-d540-4b97-8260-2fc10c752057/actions",
+          "id": "e524dcdf-d540-4b97-8260-2fc10c752057",
+          "status": "administration_recorded"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D19": {
+      "status": "PASS",
+      "record_id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+      "version": 6,
+      "final_status": "delivered",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "clinician",
+          "path": "clinical/D19/records",
+          "id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+          "status": "ordered"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D19/records/202ba699-6b07-49ec-bcca-65d888ecf63c/actions",
+          "id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D19/records/202ba699-6b07-49ec-bcca-65d888ecf63c/actions",
+          "id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+          "status": "ordered"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D19/records/202ba699-6b07-49ec-bcca-65d888ecf63c/actions",
+          "id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+          "status": "reviewed"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D19/records/202ba699-6b07-49ec-bcca-65d888ecf63c/actions",
+          "id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+          "status": "prepared"
+        },
+        {
+          "actor": "clinician",
+          "path": "clinical/D19/records/202ba699-6b07-49ec-bcca-65d888ecf63c/actions",
+          "id": "202ba699-6b07-49ec-bcca-65d888ecf63c",
+          "status": "delivered"
+        },
+        {
+          "check": "lost_response_retry_same_result_and_key",
+          "operation_key": "66a1a961-e4b5-42f8-bda1-0a4bc162019a"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    },
+    "D30": {
+      "status": "PASS",
+      "record_id": "188a190a-9844-47cf-8c78-a34623fe3169",
+      "version": 4,
+      "final_status": "acknowledged",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "quality",
+          "path": "erp/staff/staff-nurse/credential",
+          "id": "staff-nurse",
+          "status": "active"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D30/records",
+          "id": "88db459d-42c7-4a65-8a46-d22566ceb31d",
+          "status": "draft"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D30/records/88db459d-42c7-4a65-8a46-d22566ceb31d/actions",
+          "id": "88db459d-42c7-4a65-8a46-d22566ceb31d",
+          "status": "reviewed"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D30/records/88db459d-42c7-4a65-8a46-d22566ceb31d/actions",
+          "id": "88db459d-42c7-4a65-8a46-d22566ceb31d",
+          "status": "published"
+        },
+        {
+          "actor": "nurse",
+          "path": "erp/D30/records/88db459d-42c7-4a65-8a46-d22566ceb31d/actions",
+          "id": "88db459d-42c7-4a65-8a46-d22566ceb31d",
+          "status": "acknowledged"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D30/records/88db459d-42c7-4a65-8a46-d22566ceb31d/actions",
+          "id": "188a190a-9844-47cf-8c78-a34623fe3169",
+          "status": "draft"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D30/records/188a190a-9844-47cf-8c78-a34623fe3169/actions",
+          "id": "188a190a-9844-47cf-8c78-a34623fe3169",
+          "status": "reviewed"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D30/records/188a190a-9844-47cf-8c78-a34623fe3169/actions",
+          "id": "188a190a-9844-47cf-8c78-a34623fe3169",
+          "status": "published"
+        },
+        {
+          "check": "credential_revocation_denies_previously_open_rendered_acknowledgement",
+          "http_status": 403,
+          "staff_id": "staff-nurse"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/staff/staff-nurse/credential",
+          "id": "staff-nurse",
+          "status": "active"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/staff/staff-nurse/credential",
+          "id": "staff-nurse",
+          "status": "active"
+        },
+        {
+          "actor": "nurse",
+          "path": "erp/D30/records/188a190a-9844-47cf-8c78-a34623fe3169/actions",
+          "id": "188a190a-9844-47cf-8c78-a34623fe3169",
+          "status": "acknowledged"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domain-D30-accepted/browser-domains.json",
+      "source_report_sha256": "5186313c43625f8644c7ce14d5a859e73708046e3b209b347b651a8c9560b03f"
+    },
+    "D35": {
+      "status": "PASS",
+      "record_id": "bae33ae4-c8fa-431c-a301-568728c47620",
+      "version": 7,
+      "final_status": "acknowledged_local",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "received"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "received"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records/bae33ae4-c8fa-431c-a301-568728c47620/actions",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "validated"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records/bae33ae4-c8fa-431c-a301-568728c47620/actions",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "queued"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records/bae33ae4-c8fa-431c-a301-568728c47620/actions",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "failed"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records/bae33ae4-c8fa-431c-a301-568728c47620/actions",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "queued"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records/bae33ae4-c8fa-431c-a301-568728c47620/actions",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "delivered_local"
+        },
+        {
+          "actor": "system_admin",
+          "path": "erp/D35/records/bae33ae4-c8fa-431c-a301-568728c47620/actions",
+          "id": "bae33ae4-c8fa-431c-a301-568728c47620",
+          "status": "acknowledged_local"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domain-D35-fixed/browser-domains.json",
+      "source_report_sha256": "3f9557d9470427e3c9972983b1effd68cae765585b0309020408d953f418b4d1"
+    },
+    "D36": {
+      "status": "PASS",
+      "record_id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+      "version": 6,
+      "final_status": "revoked",
+      "wrong_role_direct_get_status": 403,
+      "reload_persistence": "PASS",
+      "history_visible": "PASS",
+      "executed_dom_mutations": [
+        {
+          "actor": "quality",
+          "path": "erp/D36/records",
+          "id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+          "status": "draft"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D36/records/7bfdbee0-96aa-4707-80ed-3e713baab040/actions",
+          "id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+          "status": "previewed"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D36/records/7bfdbee0-96aa-4707-80ed-3e713baab040/actions",
+          "id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+          "status": "approved"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D36/records/7bfdbee0-96aa-4707-80ed-3e713baab040/actions",
+          "id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+          "status": "frozen"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D36/records/7bfdbee0-96aa-4707-80ed-3e713baab040/actions",
+          "id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+          "status": "exported"
+        },
+        {
+          "actor": "quality",
+          "path": "erp/D36/records/7bfdbee0-96aa-4707-80ed-3e713baab040/actions",
+          "id": "7bfdbee0-96aa-4707-80ed-3e713baab040",
+          "status": "revoked"
+        }
+      ],
+      "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+      "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+    }
+  }
+}

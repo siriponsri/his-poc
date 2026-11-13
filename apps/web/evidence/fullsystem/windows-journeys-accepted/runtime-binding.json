@@ -1,0 +1,12 @@
+{
+  "observed_at_utc": "2026-11-13T12:37:12.775666+00:00",
+  "image_id": "sha256:0a5e1458283fe2eef39817dda600aa1663802af4b630a9a05979b9e5c46eb321",
+  "exit_code": 0,
+  "served_source_sha256": {
+    "backend/app/main.py": "59e5f52ce6f80d1e9447a08baf99cca713d8f7e6c9ed3f2b4856319e37089518",
+    "backend/app/core.py": "cdbf28f90cef7d833aafa09e9f36c1fbb3ef5b45528353ab166e4f466f115483",
+    "backend/app/domains/clinical.py": "5b913e10269de7b714ae12b17281379f2577830b95c1fe7beab70ad85971232e",
+    "apps/web/dist/assets/index-Bxeuu6gi.css": "55ff825117a8d6480062024bb63a6c118a065073b504c8d22c2a437fbf2fae52",
+    "apps/web/dist/assets/index-pMIUd_Dy.js": "b6593ae2ba0618df620d43515283eaa4b31e6a099b95aa4ea208c10b8f1f9fb8"
+  }
+}

@@ -1,0 +1,828 @@
+[
+  {
+    "path": "upload/01_PROMPT_GPT_WORK_TH.md",
+    "bytes": 17805,
+    "sha256": "961d727000538830d7405d21826219b64bda22a5144db014e7dea5b9e0cb26d3",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "upload/HIS_AI_Knowledge_Library_2026-11-12.zip",
+    "bytes": 43291858,
+    "sha256": "b0a436ce186d499eff488ea4b3d95bb1c10ddd744c5a3083eacab762161c6888",
+    "status": "EXTRACTED_INVENTORIED",
+    "scope": "archive members extracted and hashed; per-member reading recorded separately"
+  },
+  {
+    "path": "upload/HIS_Work_to_Codex_Handoff_2026-11-12.zip",
+    "bytes": 109177,
+    "sha256": "855661665d5f763339f0b82830659c51f215494dd8b0b8b4b1c4e739c6d7bb3a",
+    "status": "EXTRACTED_INVENTORIED",
+    "scope": "archive members extracted and hashed; per-member reading recorded separately"
+  },
+  {
+    "path": "project_sources/01-deep-research-report.md",
+    "bytes": 79132,
+    "sha256": "28c57d80db3480427045baace4b5036e1a004448ecf67a0e57e7b6ba73e3a65b",
+    "status": "PARTIAL_READ",
+    "scope": "lines 1–33 and 795–850; historical context only, citation tokens unresolved"
+  },
+  {
+    "path": "project_sources/02-HIS_AI_Knowledge_Library_2026-11-12.zip",
+    "bytes": 43291858,
+    "sha256": "b0a436ce186d499eff488ea4b3d95bb1c10ddd744c5a3083eacab762161c6888",
+    "status": "EXTRACTED_INVENTORIED",
+    "scope": "archive members extracted and hashed; per-member reading recorded separately"
+  },
+  {
+    "path": "project_sources/03-HIS_Work_to_Codex_Handoff_2026-11-12.zip",
+    "bytes": 109177,
+    "sha256": "855661665d5f763339f0b82830659c51f215494dd8b0b8b4b1c4e739c6d7bb3a",
+    "status": "EXTRACTED_INVENTORIED",
+    "scope": "archive members extracted and hashed; per-member reading recorded separately"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/00_START_HERE_TH.md",
+    "bytes": 5323,
+    "sha256": "bee42fda72252ac5b859237413b0e5eb5cefe84437ce494c411f41c66f6fcb60",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/01_PROMPT_GPT_WORK_TH.md",
+    "bytes": 17805,
+    "sha256": "961d727000538830d7405d21826219b64bda22a5144db014e7dea5b9e0cb26d3",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/02_PROMPT_CODEX_IMPLEMENT_TH.md",
+    "bytes": 7227,
+    "sha256": "92cfee9a458519c9e8fd632674a47abe2de66ffb4967f3afe2224d6eac8ceed9",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/03_PROMPT_CODEX_REVIEW_TH.md",
+    "bytes": 2890,
+    "sha256": "8d6407cbdffd4b07d69f589b12700f4e3bd105ae5725db03c9a3ea49a721a486",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/04_OWNER_BRIEF_PRE_FILLED_TH.md",
+    "bytes": 4790,
+    "sha256": "cbf0c4cb3d6a378143a4ef5fc1201c88a1642ba2a46fbacf46896260961060bb",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/05_RUNTIME_INVENTORY_TEMPLATE.yaml",
+    "bytes": 2418,
+    "sha256": "3e3f6fae3d74275eb4091f3ffba545ed5ecb0ad340324aae69124ce91e0dfe5a",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/06_MODEL_REGISTRY_PROPOSED.yaml",
+    "bytes": 4076,
+    "sha256": "80b871fa328b0c48be5d6dbfe846f0de510dcd682ef8f73c85837a889e2bd0c5",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/07_FILES_TO_SEND_TH.md",
+    "bytes": 4181,
+    "sha256": "61a82b6f70f111a57334dc82e54d2d35b6c39c5f471a6dd490d8b971c88b8bcc",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/08_STARTER_ACCEPTANCE_TH.md",
+    "bytes": 3946,
+    "sha256": "50d838ac3d4f61a50a16ada03fd29b8a0a6f5253289749cedeaa2c0ee9e468d6",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/09_MODEL_SELECTION_TH.md",
+    "bytes": 4254,
+    "sha256": "e128eca792d7c67e9c9298edd1d943723a8fbfceb34a811fdb67d84f4b69e7fb",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/10_RUNTIME_MODEL_NOTES_TH.md",
+    "bytes": 11487,
+    "sha256": "38f6001970c44e39f1d4efdabf2d74a002a5a813d117d558b35537137496dc09",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/11_ARCHITECTURE_BRIEF_TH.md",
+    "bytes": 4717,
+    "sha256": "c3d4989c578e0d9641410a29c50015934bc91b1e649863b3840847adc80ae10e",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/SHA256SUMS.json",
+    "bytes": 4090,
+    "sha256": "7e725f94985df4b03409af5b5f57942972d8a349a9bde82b7cd2debd7ddea606",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/SOURCES.json",
+    "bytes": 3734,
+    "sha256": "cc22372d7efc582e7d3d4215b2960eb479095d600db6daf8ed5ac3d421a9bf8c",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/VALIDATION_REPORT.md",
+    "bytes": 2063,
+    "sha256": "8c278a562883f5184f84f9015072c4fa2b9b241032d0fc78632959b520c1750b",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/00_START_HERE/README_TH.md",
+    "bytes": 5257,
+    "sha256": "89fc8d806474ad8eebf01341c5b064174045e5581186cf32e06508c96caf7bc4",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/01_GUIDES_TH/01_HIS_FULL_SYSTEM_OVERVIEW_TH.md",
+    "bytes": 13217,
+    "sha256": "ddd79eb3edfd91886faf9256e648265cc74660ee3d22cad4af48c4c5d5c8f570",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/01_GUIDES_TH/03_AI_ARCHITECTURE_AND_CONTROLS_TH.md",
+    "bytes": 16330,
+    "sha256": "d329902ced5e21c159420f3a5d59131be7206988ba5d2543116144255b2158e7",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/01_GUIDES_TH/04_DATA_INTEROPERABILITY_AND_LEDGER_TH.md",
+    "bytes": 10004,
+    "sha256": "7b3a54b0c0bed47f7b453cb8850ccf65c5c0ce27c3dfb46b83c31da0df3315d8",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/03_CATALOG/domain_matrix.csv",
+    "bytes": 49905,
+    "sha256": "4fecc34369761662c0c20a2a034980e43bb0ca01d325b68b078ba43d6b40af80",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/03_CATALOG/domain_matrix.json",
+    "bytes": 59489,
+    "sha256": "ac3c33281094ce630d9a8241d5ec28cf75a6f6a9fc635c2a005f9585d423f373",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/03_CATALOG/source_catalog.json",
+    "bytes": 176640,
+    "sha256": "18febbf720dc546da2ac4f161101148cc549484ea0d53817ec7592171d49f740",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/04_TEMPLATES/ai_use_case_card_template.md",
+    "bytes": 1135,
+    "sha256": "a5c91074d4093f6c8e5b748cba280b40f46ebc4d0fbfdb77d6b818570183a8c1",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/04_TEMPLATES/evaluation_protocol_template.md",
+    "bytes": 2821,
+    "sha256": "3a49332a733ae5467e353ca6b3d8b267a7fbb2ea98d579db424e24920cb3ca24",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/04_TEMPLATES/interface_contract_template.md",
+    "bytes": 1661,
+    "sha256": "3824855e67b81b862cc2f5b190b78b30bac0ac56e2bf70835fda6646342d8638",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/handoff/HIS_Work_to_Codex_Handoff_2026-11-12/selected_context/CONTEXT_NOTICE.md",
+    "bytes": 1039,
+    "sha256": "560129eae591e42dd417187ed7d44877d4b2bf1f7d297f26e028fddeec38169a",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/00_START_HERE/README_TH.md",
+    "bytes": 5257,
+    "sha256": "89fc8d806474ad8eebf01341c5b064174045e5581186cf32e06508c96caf7bc4",
+    "status": "READ",
+    "scope": "full"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/00_START_HERE/VALIDATION_REPORT.md",
+    "bytes": 4239,
+    "sha256": "623f119a22462da47aa73b5abf16ac90210fc1d3985387cdd056186935a4eeaa",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/01_HIS_FULL_SYSTEM_OVERVIEW_TH.md",
+    "bytes": 13217,
+    "sha256": "ddd79eb3edfd91886faf9256e648265cc74660ee3d22cad4af48c4c5d5c8f570",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/02_DOMAIN_ATLAS_TH.md",
+    "bytes": 60609,
+    "sha256": "f0ffbdc48e042c1e8a1801bfa77fcd9156cb6a1f9b7f4e06236c66c43d093fe8",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/03_AI_ARCHITECTURE_AND_CONTROLS_TH.md",
+    "bytes": 16330,
+    "sha256": "d329902ced5e21c159420f3a5d59131be7206988ba5d2543116144255b2158e7",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/04_DATA_INTEROPERABILITY_AND_LEDGER_TH.md",
+    "bytes": 10004,
+    "sha256": "7b3a54b0c0bed47f7b453cb8850ccf65c5c0ce27c3dfb46b83c31da0df3315d8",
+    "status": "READ",
+    "scope": "full text"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/05_PLATFORM_SELECTION_TH.md",
+    "bytes": 33231,
+    "sha256": "0dad69307a8cec7f88f393f9c07c28d752455949096ccbe3d40fc5de7d5eb521",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/06_THAILAND_CONTEXT_TH.md",
+    "bytes": 19678,
+    "sha256": "c97aaf057b4eea1f49694c92e4c614b68c9fccd98dc31dd0233667ccf174dedd",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/07_AI_EVALUATION_AND_SAFETY_TH.md",
+    "bytes": 21706,
+    "sha256": "ba441a8191d19c19af90188a3aa5e9993713eaf369b1effe93850c65ae939e5a",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/08_READING_AND_DELIVERY_ROADMAP_TH.md",
+    "bytes": 7139,
+    "sha256": "77e3156d17a9e57af5d42b587142062e74c5634df4e6ed798d935261470938a1",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/01_GUIDES_TH/09_LOCAL_SOP_GAPS_AND_REVIEW_TH.md",
+    "bytes": 12421,
+    "sha256": "a6b4314b554fd50f4a636b312e0bae38f1bab165477386bfe8fae8c3c62a9272",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI01_Ethics_and_governance_of_artificial_intelligence_for_health_WHO_guidance.pdf",
+    "bytes": 1969366,
+    "sha256": "dc5697ab8ba83b0ab42232da6e85f1dd41eb4fab9d112deaedfa97458a8cdfb1",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI02_Regulatory_considerations_on_artificial_intelligence_for_health.pdf",
+    "bytes": 771961,
+    "sha256": "dae95e4836f567a8f67c62302e5ff0a9443429608c3099e3fc3a384ae5b69457",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI03_Ethics_and_governance_of_artificial_intelligence_for_health_Guidance_on_large_multi_modal_.pdf",
+    "bytes": 1219926,
+    "sha256": "b85c025219cc483f1e05427290660f7c6cffc7830bf2e9f5af46e4045e011d41",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI04_Artificial_Intelligence_Risk_Management_Framework_AI_RMF_1_0.pdf",
+    "bytes": 1946127,
+    "sha256": "7576edb531d9848825814ee88e28b1795d3a84b435b4b797d3670eafdc4a89f1",
+    "status": "PARTIAL_READ",
+    "scope": "PDF pages 27–28 and 34–35; text extraction; no visual layout review"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI05_Artificial_Intelligence_Risk_Management_Framework_Generative_Artificial_Intelligence_Profi.pdf",
+    "bytes": 1174643,
+    "sha256": "6e73620ab6b64e90ef2c04bf0e0d6246185a2f4b1b13cab0df494496cff89b6a",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI06_The_NIST_Cybersecurity_Framework_CSF_2_0.pdf",
+    "bytes": 1518858,
+    "sha256": "3c31f46fee98cac0c4323453e5109291a213b4de7fef8c058af9bf67f717433c",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI07_OWASP_Top_10_for_LLM_Applications_2026.pdf",
+    "bytes": 2402520,
+    "sha256": "ef87993a4e50ae9d83b41ff7a3d3e6320a82dfa8d4ec6bf98d0ce264b2e6108e",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI08_OWASP_Application_Security_Verification_Standard_5_0_0.pdf",
+    "bytes": 514062,
+    "sha256": "a2fa1bbe38f12cac86d3a0f0023327e9772201f65a7f741f282f5e785d268fc5",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI11_Reporting_guideline_for_the_early_stage_clinical_evaluation_of_decision_support_systems_dr.pdf",
+    "bytes": 393336,
+    "sha256": "c4136c0d54be5b325874fd9ccc6b3375e74084250f2f675311e06092a416f14a",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/AI14_TRIPOD_AI_statement_updated_guidance_for_reporting_clinical_prediction_models_that_use_reg.pdf",
+    "bytes": 291492,
+    "sha256": "8d3dd38873690eb8d86bb4d4f66a74a78448444013571462543ada35443ab9d5",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/PL01_Digital_health_platform_handbook_building_a_digital_information_infrastructure_infostructu.pdf",
+    "bytes": 7674759,
+    "sha256": "d8ba6822986ef99629bfabfc1bd75f991f6a36d7df58f738fc665f6c45a1e0ca",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA01_SAFER_Guides_High_Priority_Practices.pdf",
+    "bytes": 4126462,
+    "sha256": "452a6d83f5fd1f5a28a06a9b6ae85708cf9a8187c56884fd3ffa7fc23119a316",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA02_SAFER_Guides_Organizational_Responsibilities.pdf",
+    "bytes": 3430161,
+    "sha256": "02b921724d9113477e2a8ade3a0043d5eb46d994c9fd433f3aa5ae3154244ba5",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA03_SAFER_Guides_Contingency_Planning.pdf",
+    "bytes": 2853138,
+    "sha256": "57610d0aadfddda475984dd1b9bd7aef2f60cc5d796e60eb2cc6c88a18f72654",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA04_SAFER_Guides_System_Management.pdf",
+    "bytes": 2777261,
+    "sha256": "02db626b3ce40879f3b5644a983dfbf803120ccf0395ff66d0b83e5d505e01ee",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA05_SAFER_Guides_Patient_Identification.pdf",
+    "bytes": 3091744,
+    "sha256": "765d92e18343eb6ef4cbc33d8870aba01c0280942e163a68f0b9bad84787fdc5",
+    "status": "PARTIAL_READ",
+    "scope": "PDF pages 1–3 and 6–7; text extraction; no visual layout review"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA06_SAFER_Guides_Computerized_Provider_Order_Entry_with_Decision_Support.pdf",
+    "bytes": 2456751,
+    "sha256": "0d8e8adba49a81c4569cdfb84ac596097a5880a5d616dbe1b5b5718d88731726",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA07_SAFER_Guides_Test_Results_Reporting_and_Follow_Up.pdf",
+    "bytes": 3272279,
+    "sha256": "673350e0a5acfe69022be367bdebe3c073665043aab15ee6bcec7ed95b59732d",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/SA08_SAFER_Guides_Clinician_Communication.pdf",
+    "bytes": 2324391,
+    "sha256": "353092f2680e6619746ba6e427d809754a770a0aa304bb3d51df7f8bda54ab38",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/ST11_IHE_Radiology_Technical_Framework_Vol_1.pdf",
+    "bytes": 5477375,
+    "sha256": "4f3d47400e22e0b1d0653e5ae0f74e3fbc843a1ec9646e2b8bb68db64e664f65",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/ST12_IHE_Pathology_and_Laboratory_Medicine_Vol_1.pdf",
+    "bytes": 1971252,
+    "sha256": "bbcd3f6cc5cf121c3c722786aa9183b60be3ffb9c36ed74743e4f17c96f60d06",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/ST14_IHE_Supply_of_Products_for_Healthcare_White_Paper.pdf",
+    "bytes": 5459694,
+    "sha256": "7302ad3cb97c8c094834625e87ff5ded454527f0fa852ec56237ae48fd84b7a9",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/TH12_2562.pdf",
+    "bytes": 344925,
+    "sha256": "c9bf7c44a37c92c04eafa320d5f45ddb514392f1eba9d4675c74aaa066ee216c",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/TH13_2565.pdf",
+    "bytes": 104606,
+    "sha256": "cfe3bfbfd6caa6f5648d997740afdd5620fa7595f831cf4e84787d845186f08d",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/02_ORIGINAL_DOCUMENTS/TH14_2565.pdf",
+    "bytes": 104826,
+    "sha256": "cbf8745a26f2b36cf179f4f98041a341ef2a7fe6eeb7a00b013003aa8c616843",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/SOURCE_CATALOG_TH.md",
+    "bytes": 132936,
+    "sha256": "234d12394de467604881c1e91db9fd91255c500c81e8adf4a64c69ff25c735f3",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/ai_safety_sources.json",
+    "bytes": 43879,
+    "sha256": "936ce4ebc5590f3b8d1c552a02e39a5bda91cc3f4771cd9253613552f7a1aca9",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/domain_matrix.csv",
+    "bytes": 49905,
+    "sha256": "4fecc34369761662c0c20a2a034980e43bb0ca01d325b68b078ba43d6b40af80",
+    "status": "READ",
+    "scope": "parsed full rows; names/groups/acceptance read"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/domain_matrix.json",
+    "bytes": 59489,
+    "sha256": "ac3c33281094ce630d9a8241d5ec28cf75a6f6a9fc635c2a005f9585d423f373",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/knowledge_cards.jsonl",
+    "bytes": 107556,
+    "sha256": "2d22dd3724a37c4492f738f5931a6b5a50826647a19eb201ee3b4f683315bf33",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/pack_statistics.json",
+    "bytes": 307,
+    "sha256": "270823a0f92a6688682bbd6e408b190781b707382e94f8c7e81c7ab0628035fa",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/platform_sources.json",
+    "bytes": 35943,
+    "sha256": "e2d7244d2b0d96f30ef80130e91007b91e331c8a7f2d242cb0e3180485ee0acd",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/repository_index.csv",
+    "bytes": 9250,
+    "sha256": "ef72c0c72f3fef6d1bec6503fe07496c47bb8b8c12bae45baefd59b97fc5ab67",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/safer_sources.json",
+    "bytes": 13276,
+    "sha256": "d9aa8fc3e8277760bb6b3324deacdfb8e593c066e17491d26251a9f5f3f0d711",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/source_catalog.csv",
+    "bytes": 107554,
+    "sha256": "7fcadcf72f75318e5f7652a64983109694ab601da31c5d3da9539cd9fb22b344",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/source_catalog.json",
+    "bytes": 176640,
+    "sha256": "18febbf720dc546da2ac4f161101148cc549484ea0d53817ec7592171d49f740",
+    "status": "PARTIAL_READ",
+    "scope": "parsed all 94 metadata records; reviewed projected ID/title/URL/limitations; this is not reading 94 original sources"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/standards_sources.json",
+    "bytes": 36137,
+    "sha256": "089803b74f9d0f4dedf2fa63e1e89bd5cc8587a1bc1e0379b6d246db344bada8",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/03_CATALOG/thailand_sources.json",
+    "bytes": 47417,
+    "sha256": "dc7c03fe90df549a422050664e22d515cb3c6321fd12281bd8311deb6ed7d676",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/CODEX_HANDOFF_PROMPT_TH.md",
+    "bytes": 4358,
+    "sha256": "78af8ba7d60fe271cc4b21cc78c5721a051a5f6b6026c823a2f0d1cc39117bfc",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/ai_proposal_synthetic_example.json",
+    "bytes": 1411,
+    "sha256": "2aa6e92e0b2001f23722bd803a70a426913bdfc285de366ce33e0b62f99c9f30",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/ai_run_cost_log.csv",
+    "bytes": 247,
+    "sha256": "1cc9c495b5f47e6d89f566ebfddfcf0f4a96c782cef620a877c875c1e27c0e07",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/ai_use_case_card_template.md",
+    "bytes": 1135,
+    "sha256": "a5c91074d4093f6c8e5b748cba280b40f46ebc4d0fbfdb77d6b818570183a8c1",
+    "status": "READ",
+    "scope": "full"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/data_ownership_and_dictionary.csv",
+    "bytes": 3351,
+    "sha256": "5908ac145e6338040201cca650952e208756c4fd72d5652342c9675e425ea70e",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/evaluation_protocol_template.md",
+    "bytes": 2821,
+    "sha256": "3a49332a733ae5467e353ca6b3d8b267a7fbb2ea98d579db424e24920cb3ca24",
+    "status": "READ",
+    "scope": "full"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/fit_gap_scorecard.csv",
+    "bytes": 195,
+    "sha256": "81d1c3b9f45e99b4423703163990ba64990aede8b6220419d9d190c4f0faba04",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/interface_contract_template.md",
+    "bytes": 1661,
+    "sha256": "3824855e67b81b862cc2f5b190b78b30bac0ac56e2bf70835fda6646342d8638",
+    "status": "READ",
+    "scope": "full"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/pilot_and_operations_readiness.md",
+    "bytes": 1659,
+    "sha256": "15b84d045f52b76143001d80058222b9a88412d6a1b03fcf0ec971906eb593bd",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/requirements_catalog.csv",
+    "bytes": 2017,
+    "sha256": "dd1e4b9e1fc65110e4c82362d8bd5e912e7e7d96bd23a1126d6480bf8060b603",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/risk_register.csv",
+    "bytes": 1828,
+    "sha256": "41e2443414b767155ee18375d31a9b8b4bbed02295266c3443f9f049f704b6f1",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/04_TEMPLATES/version_and_change_register.csv",
+    "bytes": 145,
+    "sha256": "4273ed2fa53d6d1fcb65a1fd35eb0e867b2dff40fa3680b698328a0040ded3b7",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/05_TOOLS/README_TH.md",
+    "bytes": 1720,
+    "sha256": "9e7a81d00713fcdf42cb17848db3ba3f1816a7b7e56aec952926d6a7dcc853ab",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/05_TOOLS/download_open_documents.py",
+    "bytes": 3447,
+    "sha256": "ebafa8d005437c137db9646502658a2f09915488fb546cd47ca6c62a73985a67",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/05_TOOLS/verify_pack.py",
+    "bytes": 1068,
+    "sha256": "713e71949df944738bfab400ecc7994f22c0f8186cc7d4161c663bf37b2b50c9",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/06_PROJECT_CONTEXT/CONTEXT_STATUS.md",
+    "bytes": 1184,
+    "sha256": "4eeabb83acde2590b4af3145549d576beba2de8091786943c9d2852bbf8edaff",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/06_PROJECT_CONTEXT/PharmaCore_User_Provided_Report_UNVERIFIED.md",
+    "bytes": 79132,
+    "sha256": "28c57d80db3480427045baace4b5036e1a004448ecf67a0e57e7b6ba73e3a65b",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/07_LICENSES/ATTRIBUTION_AND_REUSE.md",
+    "bytes": 14664,
+    "sha256": "9af540ca6cc25cbafc4701e695a76f5bcb74fabe9981844b48675cf628c4f2c6",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/01_HIS_FULL_SYSTEM_OVERVIEW_TH.html",
+    "bytes": 20196,
+    "sha256": "843b8b118c64efd30fd2075ba88ce1b9db01a41857bf7061969aea4b6c5b8e78",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/02_DOMAIN_ATLAS_TH.html",
+    "bytes": 76487,
+    "sha256": "6177be58a24d52cc95af782ea2416875341ddb073a39112d56b6c817d5ff46c8",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/03_AI_ARCHITECTURE_AND_CONTROLS_TH.html",
+    "bytes": 23063,
+    "sha256": "e82467c2d16e3ebc7867955ca5f59b18cc2e639290844cc8acd0b3345633f03a",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/04_DATA_INTEROPERABILITY_AND_LEDGER_TH.html",
+    "bytes": 16070,
+    "sha256": "e91815c595574f421123600b9566d7a0411c009710c405aa48006d1177545d9f",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/05_PLATFORM_SELECTION_TH.html",
+    "bytes": 43755,
+    "sha256": "0dfd545a54b24b0118e0a906a983a2bb0130ce7ac88705ead281b36d2aed55a7",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/06_THAILAND_CONTEXT_TH.html",
+    "bytes": 28592,
+    "sha256": "5a7b430cc23761b49ea68b8f4ec3faf4dbce3dfe4f2346e462abc107629f39d0",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/07_AI_EVALUATION_AND_SAFETY_TH.html",
+    "bytes": 29898,
+    "sha256": "f4d377fb1f21e18bb9f545c8380800c9053f90b193691b8a28278f64d938550f",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/08_READING_AND_DELIVERY_ROADMAP_TH.html",
+    "bytes": 14137,
+    "sha256": "9a93474fde2a28ea99706df373bb5c66161882216242d31c7971348101550dc1",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/09_LOCAL_SOP_GAPS_AND_REVIEW_TH.html",
+    "bytes": 18150,
+    "sha256": "8a0be639ddc12eb7bdc99ed8ef909442e2f2be04d48c8bc77f01ec702d7288de",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/ATTRIBUTION_AND_REUSE.html",
+    "bytes": 20801,
+    "sha256": "bb18d8a03cfe947c1324350ceed8c5dc7ecfbc26a170eacbd4151cda10099f72",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/CODEX_HANDOFF_PROMPT_TH.html",
+    "bytes": 9393,
+    "sha256": "a5d637c6f6f877871cf49980969fb325ea698290ad5241940ea707644a4f97df",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/README_TH.html",
+    "bytes": 10603,
+    "sha256": "40259b7d18eaa27f03d56397dad7a627cb1b2ae210320da22c203356b1704c43",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/ai_use_case_card_template.html",
+    "bytes": 6128,
+    "sha256": "1700e79ecf11883bda39abf4097458ad40190952eb7fba4d8918e80bba5a54de",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/evaluation_protocol_template.html",
+    "bytes": 8057,
+    "sha256": "0400caaa002c9d63d02c4d26087c2677602e6cc11204af3e9e6738914093854d",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/interface_contract_template.html",
+    "bytes": 6734,
+    "sha256": "703f8d3b56946e7cb1ce864556299e5d483e51417e044450f6ab6ef6e0de33af",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/08_READABLE_HTML/pilot_and_operations_readiness.html",
+    "bytes": 6771,
+    "sha256": "06a7853f8c5c04c6a0506a888a941a280df58f897393b91160c28fe9348159bc",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/HIS_AI_Master_Guide_TH.pdf",
+    "bytes": 296733,
+    "sha256": "f60358a63f2b33d2d0dec97b3c5da6a3c0bbd11d90e43d1d21ffda3faceb9c39",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/SHA256SUMS.json",
+    "bytes": 15138,
+    "sha256": "7f865db787af6b1ef52f92c7fae265cdeb0eaac8c580a2ad73688d2fee0d3e95",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  },
+  {
+    "path": "inputs/knowledge/HIS_AI_Knowledge_Library_2026-11-12/START_HERE.html",
+    "bytes": 264363,
+    "sha256": "fbf07128116159848b590faaf736e13d608d33c42782e8872cf32478bdae94b6",
+    "status": "NOT_READ",
+    "scope": "inventory only; no content review claimed"
+  }
+]

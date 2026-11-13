@@ -1,0 +1,51 @@
+{
+  "observed_at": "2026-11-13T12:54:05.105700+00:00",
+  "scope": "LOCAL_SYNTHETIC_DEVELOPMENT",
+  "status": "PASS",
+  "L2_domains": 38,
+  "L3_journeys": 10,
+  "postgres_workflow_security_tests": 84,
+  "postgres_legacy_import_tests": 10,
+  "frontend_unit_tests": 25,
+  "frontend_component_tests": 53,
+  "launcher_helper_unit_tests": 19,
+  "launcher_subtests": 4,
+  "browser_smoke_assertions": 11,
+  "browser_recovery_assertions": 9,
+  "checks": {
+    "journeys": {
+      "status": "PASS",
+      "source": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "sha256": "698923a98fd2533c92bed966bc6d98ecd2bfb01456debabcf7345685eab492b2"
+    },
+    "extra_domains": {
+      "status": "PASS",
+      "source": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+      "sha256": "a2faaf59b4717a48b5cbd4b5a12284fd102891223b043d06e64fddf41279286b"
+    },
+    "recovery": {
+      "status": "PASS",
+      "source": "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "sha256": "37e3f7eab7018e73d6d87ca7b2c91d7b832eeaa088fb726d31a293e3f194be70"
+    },
+    "restore": {
+      "status": "PASS",
+      "source": "evidence/fullsystem/windows-20261113/browser-restore-verification.json",
+      "sha256": "501db4ac6f267de39c33debb65f2c454be30c1950f26ca552c7dff4df177268e"
+    },
+    "runtime_binding": {
+      "status": "PASS",
+      "source": "evidence/fullsystem/windows-20261113/final-runtime-binding.json",
+      "sha256": "c39751e23e69ce9acc3e702e962375a9c18de3d96b9255d8ca9ec3a9c191c48d"
+    }
+  },
+  "full_validation": "evidence/fullsystem/windows-final/execution.json",
+  "additional_security": "evidence/fullsystem/windows-20261113/security-event-concurrency-records.json",
+  "legacy": "evidence/fullsystem/windows-20261113/legacy-current/execution.json",
+  "independent_review": "evidence/fullsystem/windows-20261113/change-review.md",
+  "AI_execution": "MOCK_DEMO",
+  "external_L4": "NOT_CONNECTED",
+  "live_inference": "NOT_RUN",
+  "clinical_product_effectiveness": "NOT_RUN",
+  "note": "Composed executed evidence with per-run source/runtime bindings; original failures retained. Source publication is authorized; production deployment is not."
+}

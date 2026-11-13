@@ -1,0 +1,17 @@
+{
+  "checked_on": "2026-11-12",
+  "postgres_version": "18.6",
+  "source_url": "https://ftp.postgresql.org/pub/source/v18.6/postgresql-18.6.tar.bz2",
+  "docker_image": "postgres:18.6-bookworm",
+  "docker_index_digest": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+  "digest_source": "Docker Registry v2 GET manifests/18.6-bookworm response Docker-Content-Digest",
+  "version_source": "https://www.postgresql.org/support/versioning/",
+  "docker_execution": "NOT_RUN: docker executable unavailable",
+  "native_execution": "PASS: PostgreSQL18.6 built from verified source and TCP loopback cluster started",
+  "downloaded_source_sha256": "555610c24d53e4316da5b7d3fc25c279d96856d5e0e23ee308c328c5fa881d9f",
+  "source_sha256_verified": true,
+  "postgres_client_apt_version": "18.6-1.pgdg12+2",
+  "apt_version_source": "https://apt.postgresql.org/pub/repos/apt/dists/bookworm-pgdg/main/binary-amd64/Packages.gz",
+  "python_image_digest": "sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e",
+  "node_image_digest": "sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c"
+}

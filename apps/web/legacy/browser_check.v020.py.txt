@@ -1,0 +1,73 @@
+"""Optional real-browser checks. Requires Python Playwright + installed Chromium.
+Starts synthetic backend and Vite on loopback, no provider calls or real data.
+"""
+import json,os,subprocess,sys,tempfile,time,urllib.request,socket
+from pathlib import Path
+from playwright.sync_api import sync_playwright
+APP=Path(__file__).resolve().parents[1];ROOT=APP.parents[1]
+def port():
+ with socket.socket() as s:s.bind(('127.0.0.1',0));return s.getsockname()[1]
+def wait(url):
+ for _ in range(100):
+  try:
+   with urllib.request.urlopen(url,timeout=.5):return
+  except Exception:time.sleep(.1)
+ raise RuntimeError('Local server not ready')
+def post(base,path,body):
+ req=urllib.request.Request(base+'/api/v1/'+path,data=json.dumps(body).encode(),headers={'Authorization':'Bearer demo-reviewer-token','Content-Type':'application/json'})
+ return json.load(urllib.request.urlopen(req))
+def get(base):
+ return json.load(urllib.request.urlopen(urllib.request.Request(base+'/api/v1/context',headers={'Authorization':'Bearer demo-reviewer-token'})))
+results=[];status='NOT_RUN';reason=None;processes=[]
+with tempfile.TemporaryDirectory() as tmp:
+ backend_port=port();frontend_port=port();backend=f'http://127.0.0.1:{backend_port}';front=f'http://127.0.0.1:{frontend_port}'
+ log=open(Path(tmp)/'servers.log','w')
+ try:
+  env={**os.environ,'HIS_PORT':str(backend_port),'HIS_DB_PATH':str(Path(tmp)/'demo.db')}
+  processes.append(subprocess.Popen([sys.executable,'-m','src.his_poc.server'],cwd=ROOT,env=env,stdout=log,stderr=log))
+  processes.append(subprocess.Popen(['node','node_modules/vite/bin/vite.js','--host','127.0.0.1','--port',str(frontend_port)],cwd=APP,env=env,stdout=log,stderr=log))
+  wait(backend+'/health');wait(front)
+  with sync_playwright() as pw:
+   browser=pw.chromium.launch(headless=True,executable_path=os.environ.get('CHROMIUM_PATH'))
+   status='FAIL';page=browser.new_page(viewport={'width':1440,'height':1000});errors=[];writes=[]
+   page.on('pageerror',lambda e:errors.append(str(e)));page.on('request',lambda r:writes.append(r.url) if r.method=='POST' else None)
+   page.goto(front);page.get_by_label('เลือกสถานการณ์').select_option(index=2)
+   assert not writes;results.append('fixture mode emits no POST')
+   page.get_by_role('button',name='เชื่อม HIS API',exact=True).click();page.get_by_label('Demo token',exact=True).fill('demo-viewer-token');page.get_by_role('button',name='เชื่อมต่อ',exact=True).click()
+   page.get_by_role('button',name='✦ สร้างข้อเสนอจากหลักฐานที่บันทึก',exact=True).click();page.get_by_role('alert').filter(has_text='FORBIDDEN_SCOPE').wait_for()
+   results.append('viewer write is forbidden')
+   page.get_by_label('Demo token',exact=True).fill('demo-reviewer-token');page.get_by_role('button',name='เชื่อมต่อ',exact=True).click()
+   page.get_by_label('ข้อความเอกสาร',exact=False).fill('เอกสารสังเคราะห์สำหรับทดสอบ browser\nบรรทัดที่สอง')
+   page.get_by_role('button',name='บันทึกเอกสาร',exact=True).click();page.get_by_role('status').filter(has_text='บันทึกเอกสารรุ่นใหม่').wait_for()
+   assert get(backend)['document']['version']==2
+   page.get_by_label('สถานการณ์ทดสอบ').select_option('timeout');page.get_by_role('button',name='✦ สร้างข้อเสนอจากหลักฐานที่บันทึก',exact=True).click();page.get_by_role('status').filter(has_text='หมดเวลารอ').first.wait_for()
+   page.get_by_label('สถานการณ์ทดสอบ').select_option('success');page.get_by_role('button',name='✦ สร้างข้อเสนอจากหลักฐานที่บันทึก',exact=True).click();page.locator('#review-text').wait_for()
+   page.locator('#review-text').fill('ร่างแก้ไขโดยผู้ตรวจ ข้อมูลจำลองเท่านั้น');assert page.get_by_role('button',name='อนุมัติรุ่นที่แสดง',exact=True).is_disabled()
+   page.get_by_role('button',name='บันทึกการแก้ไขเป็นรุ่นใหม่',exact=True).click();page.get_by_role('status').filter(has_text='บันทึกการแก้ไขเป็นรุ่นใหม่').wait_for()
+   page.get_by_role('button',name='อนุมัติรุ่นที่แสดง',exact=True).click();page.get_by_role('status').filter(has_text='อนุมัติฉบับที่แสดง').wait_for()
+   c=get(backend);post(backend,'documents',{'patient':'p-demo','encounter':'e-demo','expected_version':c['document']['version'],'content':{'text':'concurrent synthetic edit','author':'demo-author'}})
+   page.get_by_role('button',name='ยืนยันบันทึกผล',exact=True).click();page.get_by_role('alert').filter(has_text='STALE_CONTEXT').wait_for();assert not get(backend)['results'];results.append('stale approval cannot commit')
+   # Reconnect explicitly discards known failed pending request and starts a fresh review.
+   page.on('dialog',lambda d:d.accept());page.get_by_role('button',name='เชื่อมต่อใหม่',exact=True).click()
+   page.get_by_role('button',name='✦ สร้างข้อเสนอจากหลักฐานที่บันทึก',exact=True).click();page.get_by_role('button',name='อนุมัติรุ่นที่แสดง',exact=True).click()
+   def lose_response(route):route.fetch();route.abort()
+   page.route('**/api/v1/commits',lose_response,times=1)
+   page.get_by_role('button',name='ยืนยันบันทึกผล',exact=True).click();page.get_by_role('alert').filter(has_text='NETWORK_ERROR').wait_for()
+   assert len(get(backend)['results'])==1
+   page.get_by_role('button',name='Retry commit ด้วย key และ payload เดิม',exact=True).click();page.get_by_role('status').filter(has_text='อ่านผลเดิม').wait_for();assert len(get(backend)['results'])==1
+   results.append('lost-response commit retry is idempotent')
+   page.reload();page.get_by_role('button',name='เชื่อม HIS API',exact=True).click();page.get_by_label('Demo token',exact=True).fill('demo-reviewer-token');page.get_by_role('button',name='เชื่อมต่อ',exact=True).click()
+   page.get_by_role('button',name='ผลการทบทวน',exact=False).first.click();page.get_by_text(get(backend)['results'][0]['id'],exact=True).wait_for();results.append('reload displays persisted result')
+   page.set_viewport_size({'width':390,'height':844});assert page.evaluate('document.documentElement.scrollWidth <= innerWidth')
+   page.get_by_role('button',name='เปิดหรือปิดเมนู',exact=True).click();page.get_by_role('button',name='ประวัติและหลักฐาน',exact=False).first.click();page.get_by_text('Audit trail',exact=True).wait_for();assert page.locator('#app-navigation').get_attribute('inert') is not None
+   results.append('390px layout, menu navigation, closed sidebar inert')
+   assert not errors,errors;status='PASS';browser.close()
+ except Exception as exc:reason=str(exc)
+ finally:
+  for proc in processes:proc.terminate()
+  for proc in processes:
+   try:proc.wait(timeout=5)
+   except subprocess.TimeoutExpired:proc.kill()
+  log.close()
+report={'status':status,'completed_checks':results,'reason':reason,'provider':'explicit mock','screenshots_saved':False,'live_inference':False}
+(APP/'evidence/browser-check.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print(json.dumps(report,ensure_ascii=False));sys.exit(0 if status=='PASS' else 2)

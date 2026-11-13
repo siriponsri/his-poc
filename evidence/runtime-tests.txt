@@ -1,0 +1,27 @@
+test_concurrent_retry_commits_once (test_workflow.WorkflowTests.test_concurrent_retry_commits_once) ... ok
+test_context_change_during_inference_retains_attempt (test_workflow.WorkflowTests.test_context_change_during_inference_retains_attempt) ... ok
+test_different_key_cannot_duplicate (test_workflow.WorkflowTests.test_different_key_cannot_duplicate) ... ok
+test_document_optimistic_update (test_workflow.WorkflowTests.test_document_optimistic_update) ... ok
+test_document_staleness (test_workflow.WorkflowTests.test_document_staleness) ... ok
+test_edit_requires_new_review (test_workflow.WorkflowTests.test_edit_requires_new_review) ... ok
+test_encounter_status_and_version_staleness (test_workflow.WorkflowTests.test_encounter_status_and_version_staleness) ... ok
+test_expiry (test_workflow.WorkflowTests.test_expiry) ... ok
+test_failures_abstention_and_usage_recorded (test_workflow.WorkflowTests.test_failures_abstention_and_usage_recorded) ... ok
+test_http_auth_and_full_journey (test_workflow.WorkflowTests.test_http_auth_and_full_journey) ... ok
+test_journey_persists_review_result_audit (test_workflow.WorkflowTests.test_journey_persists_review_result_audit) ... ok
+test_no_approval_no_commit (test_workflow.WorkflowTests.test_no_approval_no_commit) ... ok
+test_nonobject_provider_response_retains_failed_attempt (test_workflow.WorkflowTests.test_nonobject_provider_response_retains_failed_attempt) ... ok
+test_prior_action_versions_retained (test_workflow.WorkflowTests.test_prior_action_versions_retained) ... ok
+test_provider_unexpected_error_sanitized (test_workflow.WorkflowTests.test_provider_unexpected_error_sanitized) ... ok
+test_rejection (test_workflow.WorkflowTests.test_rejection) ... ok
+test_restricted_and_live_fail_closed (test_workflow.WorkflowTests.test_restricted_and_live_fail_closed) ... ok
+test_retry_is_idempotent (test_workflow.WorkflowTests.test_retry_is_idempotent) ... ok
+test_revocation_during_inference_retains_attempt (test_workflow.WorkflowTests.test_revocation_during_inference_retains_attempt) ... ok
+test_revoked_permission (test_workflow.WorkflowTests.test_revoked_permission) ... ok
+test_schema_rejects_extra_actions_or_nonstring_missing_fields (test_workflow.WorkflowTests.test_schema_rejects_extra_actions_or_nonstring_missing_fields) ... ok
+test_scope_and_tool_boundary (test_workflow.WorkflowTests.test_scope_and_tool_boundary) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.570s
+
+OK

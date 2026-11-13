@@ -1,0 +1,23 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "/tmp/his-pg-tests-t5a6_rs2/files"}
+/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/config.py:604: DeprecationWarning: No path_separator found in configuration; falling back to legacy splitting on spaces, commas, and colons for prepend_sys_path.  Consider adding path_separator=os to Alembic config.
+  util.warn_deprecated(
+test_D30_roster_and_credential (test_erp.ERPTests.test_D30_roster_and_credential) ... ok
+test_D35_message_dedup_order_and_retry (test_erp.ERPTests.test_D35_message_dedup_order_and_retry) ... ok
+test_D36_snapshot_export_and_revoke (test_erp.ERPTests.test_D36_snapshot_export_and_revoke) ... ok
+test_J05_money_separate_and_refund_retry (test_erp.ERPTests.test_J05_money_separate_and_refund_retry) ... ok
+test_J06_procurement_partial_receipt_stock_return (test_erp.ERPTests.test_J06_procurement_partial_receipt_stock_return) ... ok
+test_J09_support_quality_reports (test_erp.ERPTests.test_J09_support_quality_reports) ... ok
+test_adjustment_original_and_cost_reversal (test_erp.ERPTests.test_adjustment_original_and_cost_reversal) ... ok
+test_budget_review_post_and_period_variance (test_erp.ERPTests.test_budget_review_post_and_period_variance) ... ok
+test_database_immutable_financial_and_balanced_journal (test_erp.ERPTests.test_database_immutable_financial_and_balanced_journal) ... ok
+test_local_delivery_creates_single_reconciliation_transaction (test_erp.ERPTests.test_local_delivery_creates_single_reconciliation_transaction) ... ok
+test_reservation_count_and_zero_validation (test_erp.ERPTests.test_reservation_count_and_zero_validation) ... ok
+test_scope_role_stale_and_invalid_transition (test_erp.ERPTests.test_scope_role_stale_and_invalid_transition) ... ok
+test_stock_last_unit_concurrent_and_quarantine (test_erp.ERPTests.test_stock_last_unit_concurrent_and_quarantine) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 8.264s
+
+OK

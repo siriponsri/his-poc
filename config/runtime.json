@@ -1,0 +1,13 @@
+{
+  "schema_version": "2.0",
+  "application_location": "local_development",
+  "inference_profile": "mock_demo",
+  "provider": "mock",
+  "data_class": "synthetic",
+  "application_stack": "FastAPI / React / PostgreSQL",
+  "database_engine": "PostgreSQL",
+  "database_version_target": "18.6",
+  "api_version": "v2",
+  "authentication": "server_session",
+  "legacy_profile_enabled": false
+}

@@ -1,0 +1,117 @@
+{
+  "scope": "executed mock fault paths; no external inference",
+  "responses": [
+    {
+      "demo": true,
+      "run_id": "0c8ef60f-cd8c-4a63-8148-e0e1d0990f70",
+      "outcome": "failed",
+      "error": "simulated provider failure",
+      "reason": null
+    },
+    {
+      "demo": true,
+      "run_id": "2a003b49-f959-416d-87df-5c1db319cd1b",
+      "outcome": "timeout",
+      "error": "PROVIDER_TIMEOUT",
+      "reason": null
+    },
+    {
+      "demo": true,
+      "run_id": "968d32b0-b8f4-480c-b172-ac92d238562e",
+      "outcome": "failed",
+      "error": "INVALID_PROVIDER_OUTPUT",
+      "reason": null
+    },
+    {
+      "demo": true,
+      "run_id": "aca0db3c-f57b-46a6-97e4-9df9f33eb3e3",
+      "outcome": "abstained",
+      "error": null,
+      "reason": "synthetic insufficient evidence"
+    }
+  ],
+  "runs": [
+    {
+      "id": "0c8ef60f-cd8c-4a63-8148-e0e1d0990f70",
+      "encounter": "e-demo",
+      "outcome": "failed",
+      "provider": "mock",
+      "model_revision": "synthetic_fixture_v1",
+      "latency_ms": 0.010004999694501748,
+      "usage": "null",
+      "cost": null,
+      "error": "simulated provider failure",
+      "demo": 1
+    },
+    {
+      "id": "2a003b49-f959-416d-87df-5c1db319cd1b",
+      "encounter": "e-demo",
+      "outcome": "timeout",
+      "provider": "mock",
+      "model_revision": "synthetic_fixture_v1",
+      "latency_ms": 0.007892000212450512,
+      "usage": "null",
+      "cost": null,
+      "error": "PROVIDER_TIMEOUT",
+      "demo": 1
+    },
+    {
+      "id": "968d32b0-b8f4-480c-b172-ac92d238562e",
+      "encounter": "e-demo",
+      "outcome": "failed",
+      "provider": "mock",
+      "model_revision": "synthetic_fixture_v1",
+      "latency_ms": 0.005268000222713454,
+      "usage": "null",
+      "cost": null,
+      "error": "INVALID_PROVIDER_OUTPUT",
+      "demo": 1
+    },
+    {
+      "id": "aca0db3c-f57b-46a6-97e4-9df9f33eb3e3",
+      "encounter": "e-demo",
+      "outcome": "abstained",
+      "provider": "mock",
+      "model_revision": "synthetic_fixture_v1",
+      "latency_ms": 0.005878999672859209,
+      "usage": "null",
+      "cost": null,
+      "error": null,
+      "demo": 1
+    }
+  ],
+  "audit": [
+    {
+      "id": "5c8fc370-eff9-4034-9232-1a390e36ce20",
+      "actor": "reviewer-demo",
+      "event": "ai_run",
+      "entity": "e-demo",
+      "details": "{\"demo\":true,\"error\":\"simulated provider failure\",\"outcome\":\"failed\",\"run_id\":\"0c8ef60f-cd8c-4a63-8148-e0e1d0990f70\"}",
+      "created": 1794464776.4795978
+    },
+    {
+      "id": "d6d830a7-5910-4388-9093-b4d23f83d8ba",
+      "actor": "reviewer-demo",
+      "event": "ai_run",
+      "entity": "e-demo",
+      "details": "{\"demo\":true,\"error\":\"PROVIDER_TIMEOUT\",\"outcome\":\"timeout\",\"run_id\":\"2a003b49-f959-416d-87df-5c1db319cd1b\"}",
+      "created": 1794464776.4799705
+    },
+    {
+      "id": "d2eed21c-4107-4aa6-97a1-eba00dd0f5df",
+      "actor": "reviewer-demo",
+      "event": "ai_run",
+      "entity": "e-demo",
+      "details": "{\"demo\":true,\"error\":\"INVALID_PROVIDER_OUTPUT\",\"outcome\":\"failed\",\"run_id\":\"968d32b0-b8f4-480c-b172-ac92d238562e\"}",
+      "created": 1794464776.480254
+    },
+    {
+      "id": "d29007a2-9497-4c68-816d-c763cfe6fed0",
+      "actor": "reviewer-demo",
+      "event": "ai_run",
+      "entity": "e-demo",
+      "details": "{\"demo\":true,\"error\":null,\"outcome\":\"abstained\",\"run_id\":\"aca0db3c-f57b-46a6-97e4-9df9f33eb3e3\"}",
+      "created": 1794464776.4805622
+    }
+  ]
+}

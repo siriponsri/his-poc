@@ -1,0 +1,240 @@
+[
+  {
+    "journey": "J01",
+    "actors": [
+      "registration",
+      "system_admin",
+      "clinician"
+    ],
+    "patient_id": "cf93998b-2539-4cc6-b62e-ed0f7741e465",
+    "appointment_id": "8daba852-a1e7-4e1f-8aba-ef8816cb75b6",
+    "encounter_id": "ea643b38-5dff-418d-b691-3db8ead38287",
+    "document_id": "34529721-8098-4cc2-878a-3cdf3fcedde7",
+    "task_id": "8012e3a1-a658-4d1d-b5b9-098135f6c48c",
+    "proposal_id": "b7d2f67c-928e-4a40-9e9b-dfc8458524ea",
+    "result_id": "57ab0d27-f173-4a43-9186-7911a779eff8",
+    "operation_key": "ef08b700-4ce2-433e-ab5c-6f16433ee7e3",
+    "assertions": [
+      "appointment_queue_to_encounter",
+      "care_scope",
+      "immutable_edit_binding",
+      "same_key_replay",
+      "persisted_result"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/core-journeys.json"
+  },
+  {
+    "journey": "J02",
+    "status": "PASS",
+    "actors": [
+      "clinician",
+      "laboratory"
+    ],
+    "record_ids": [
+      "ec3af4d6-b770-4e88-bd7f-cba796f82351",
+      "abbfce61-fa0c-4c31-9608-d04d5494c3a5"
+    ],
+    "assertions": [
+      "signed order linkage",
+      "manual result release",
+      "wrong role denied",
+      "immutable correction history",
+      "clinician acknowledgement"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/clinical-journeys.json"
+  },
+  {
+    "journey": "J03",
+    "status": "PASS",
+    "actors": [
+      "clinician",
+      "pharmacist"
+    ],
+    "record_ids": [
+      "61f1366d-ef59-4081-bd64-ee4bea8dd606",
+      "d979e6f8-1d43-417c-aa40-2ea7ea6afaf4"
+    ],
+    "assertions": [
+      "same-key dispense exactly once",
+      "charge exactly once",
+      "quarantined return",
+      "cumulative excess return rejected",
+      "stock quantity conserved"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/clinical-journeys.json"
+  },
+  {
+    "journey": "J04",
+    "status": "PASS",
+    "actors": [
+      "nurse",
+      "registration"
+    ],
+    "record_ids": [
+      "91d3a4ba-8797-4740-998c-4331bb13115f",
+      "41abceda-df73-4c96-89ae-f198680165cc",
+      "c86065cb-2830-4afb-80a6-5d3a5eddb0ab",
+      "a0448d75-f557-41d5-b8b1-ad4ff1c4902c"
+    ],
+    "assertions": [
+      "occupied bed conflict",
+      "transfer preserves bed history",
+      "handover links real pending task",
+      "discharge releases bed",
+      "followup shares patient"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/clinical-journeys.json"
+  },
+  {
+    "journey": "J05",
+    "actors": [
+      "user-billing",
+      "user-finance",
+      "user-finance_reviewer"
+    ],
+    "invoice_id": "3c68fb5f-05e4-4e88-b256-cba9459be82a",
+    "claim_id": "551cf41b-c81c-47f7-b7d8-617e2565fee6",
+    "receipt_id": "ec80e570-0984-4820-b571-371cbdb44091",
+    "refund_id": "ca4c86b0-dbd2-4e0d-81b7-cb9418089b27",
+    "financials": {
+      "billed": "1000.00",
+      "submitted": "1000.00",
+      "approved": "800.00",
+      "gross_received": "800.00",
+      "refunded": "100.00",
+      "net_received": "700.00",
+      "outstanding": "200.00",
+      "cost": "300.00",
+      "adjustments": "0.00",
+      "allocated": "800.00",
+      "allocation_released": "0.00"
+    },
+    "assertions": "separate billed/submitted/approved/gross/refund/net/outstanding/cost; balanced ledger; independent refund approval; same-key replay",
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/erp-journeys.json"
+  },
+  {
+    "journey": "J06",
+    "actors": [
+      "user-inventory",
+      "user-procurement_approver"
+    ],
+    "purchase_id": "544a99a1-b72c-4fed-878f-6840657e3447",
+    "receipt_ids": [
+      "276df569-1f8a-4fe6-8543-1f4ee2188e9e",
+      "c60bbad0-d676-4847-a9b2-293a250d6328"
+    ],
+    "issue_id": "86ef5b97-1ad3-4004-9429-a966d1804fbf",
+    "assertions": "partial4+6 receipt10; replay stable; obligation200; issue3 quarantine return2; over-return denied",
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/erp-journeys.json"
+  },
+  {
+    "journey": "J07",
+    "actors": [
+      "system_admin",
+      "registration_ac7d9d4b"
+    ],
+    "user_id": "732e2853-4312-49f8-ba9f-6fdd7772d7f3",
+    "session_id": "4b4cc842-5d99-4670-8b9b-66ce615a5987",
+    "patient_id": "be600ec3-4fe0-4e93-a5fb-f79238f40abb",
+    "assertions": [
+      "scope_switch",
+      "cross_scope_replay_denied",
+      "revoked_session_denied"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/core-journeys.json"
+  },
+  {
+    "journey": "J08",
+    "status": "PASS",
+    "actors": [
+      "clinician",
+      "imaging"
+    ],
+    "record_ids": [
+      "a517af67-561b-4adf-abed-ee057423ce5f",
+      "600d84f3-d864-4aa9-8ffd-cda016888035",
+      "265921df-ed49-448f-bc00-30f944370523",
+      "cd67f3e9-5046-4630-a199-9ccc99254bca",
+      "aed35a6a-b8b0-4a3c-bda0-9b09436e37be",
+      "204510d4-56fe-40d8-be23-165f4edad228",
+      "3b77a96b-2d84-4afc-96c6-b89a410c75b3"
+    ],
+    "assertions": [
+      "clinician signed order through HTTP",
+      "file checksum verified",
+      "manual human report release",
+      "explicit mock DR task on same document and encounter",
+      "clinician review/commit",
+      "referral bound document revision",
+      "external receipt explicitly false"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/clinical-journeys.json"
+  },
+  {
+    "journey": "J09",
+    "actors": [
+      "user-inventory",
+      "user-quality",
+      "user-support_reviewer"
+    ],
+    "asset_id": "f09b11b5-4f66-4b66-875c-5aa18a2f62c4",
+    "cycle_id": "ad953e56-7f14-4d06-9e42-94d5e4bdae70",
+    "linen_id": "776f98a5-68bb-4793-bc31-04b706621846",
+    "facility_order_id": "1d1b9858-e9b8-4614-915f-abf8a2d0b0f7",
+    "incident_id": "f87bbcf5-f0c4-4944-a9db-9e0b6a4c28e8",
+    "report_id": "1f6a3e86-d809-4475-9434-0ed542cee1ed",
+    "lineage_count": 4,
+    "assertions": "unverified asset unavailable; separate CSSD/linen/facility states; independent CAPA review; real encounter lineage; exported correction preserved",
+    "D38": "tested separately by operations suite",
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/erp-journeys.json"
+  },
+  {
+    "journey": "J10",
+    "status": "PASS",
+    "actors": [
+      "patient",
+      "registration"
+    ],
+    "record_ids": [
+      "8e9ba47a-9773-4bde-a67c-7f77df99e480",
+      "3c677e47-04b6-4f29-92b4-3067d8b707f1"
+    ],
+    "assertions": [
+      "server linked subject",
+      "patient cannot staff-review",
+      "patient parameter injection rejected",
+      "same appointment staff worklist"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "NOT_RUN",
+    "L3_status": "PENDING",
+    "source": "evidence/fullsystem/clinical-journeys.json"
+  }
+]

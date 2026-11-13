@@ -1,0 +1,80 @@
+[
+  {
+    "name": "python",
+    "command": [
+      "python",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-q"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter",
+    "exit_code": 0,
+    "duration_seconds": 1.008
+  },
+  {
+    "name": "legacy-js",
+    "command": [
+      "node",
+      "--test",
+      "tests/test_frontend_behavior.js"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter",
+    "exit_code": 0,
+    "duration_seconds": 0.241
+  },
+  {
+    "name": "contracts",
+    "command": [
+      "python",
+      "contracts/check_contracts.py"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter",
+    "exit_code": 0,
+    "duration_seconds": 0.389
+  },
+  {
+    "name": "data",
+    "command": [
+      "python",
+      "scripts/check_data.py"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter",
+    "exit_code": 0,
+    "duration_seconds": 0.098
+  },
+  {
+    "name": "frontend",
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter/apps/web",
+    "exit_code": 0,
+    "duration_seconds": 0.577
+  },
+  {
+    "name": "typecheck",
+    "command": [
+      "npm",
+      "run",
+      "typecheck"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter/apps/web",
+    "exit_code": 0,
+    "duration_seconds": 0.457
+  },
+  {
+    "name": "build",
+    "command": [
+      "npm",
+      "run",
+      "build"
+    ],
+    "cwd": "/workspace/scratch/9ae50286259c/revision/HIS_POC_Starter/apps/web",
+    "exit_code": 0,
+    "duration_seconds": 0.786
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "path": "upload/WORK_NEXT_PROMPT_TH.md",
+    "bytes": 13567,
+    "sha256": "a06de3e1b2b7fc1ae03cc301125f2617097bebce89bf73a826ef52bcdb6d6587",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "upload/HIS_POC_Audit_and_Work_Brief_2026-11-12.zip",
+    "bytes": 109156,
+    "sha256": "71161e801f4e853d83d44a9c3d53c510ba370f6c8060814e8edbe7f3c0dbe587",
+    "scope": "received/inventoried"
+  },
+  {
+    "path": "HIS_POC_Starter_v0.1.0_2026-11-12.zip",
+    "bytes": 162291,
+    "sha256": "41597ff6accc9951e252221b0b657a55eeae71646fc5501f176e477928da859c",
+    "scope": "received/inventoried"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/AUDIT_REPORT_TH.md",
+    "bytes": 17142,
+    "sha256": "026acb7338688a1da75341466133e87d51506cbda443ac5acfdd09e322190141",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/FRONTEND_REFERENCE_BRIEF_TH.md",
+    "bytes": 19579,
+    "sha256": "08b4fb12bc53e09a05740cc493b6546fc91bed95b28eb446357266f24bf1a4e3",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/OPEN_DATA_MANIFEST.template.json",
+    "bytes": 6437,
+    "sha256": "3cf27ec0b3342f01f5728d2852066dd54650e398a2eead4bd1f762737183b1cb",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/OPEN_DATA_PLAN_TH.md",
+    "bytes": 13276,
+    "sha256": "a27b11c9698623acbf8db235b2efdd092fa0a0fec050124e7df909424313108d",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/SHA256SUMS.json",
+    "bytes": 4447,
+    "sha256": "216e38e412599fe756290d3e5d1b2e91ae0f81cce3c11a625c43ee821bf92748",
+    "scope": "received/inventoried"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/START_HERE_TH.md",
+    "bytes": 5002,
+    "sha256": "7a23eae15b2ffa4cdd17dfcacbbabce27073c3309532fcdb98d6fe88cb3257c4",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/TEMPLATE_PROVENANCE.template.json",
+    "bytes": 1075,
+    "sha256": "e07cbe906868f4653fbf868d6f01ac9a1e7d6c2fb9b74bbde0da5b8ba2067b9a",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/WORK_NEXT_PROMPT_TH.md",
+    "bytes": 13567,
+    "sha256": "a06de3e1b2b7fc1ae03cc301125f2617097bebce89bf73a826ef52bcdb6d6587",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/API_CHANGES.md",
+    "bytes": 4530,
+    "sha256": "1425b36f7044941edd601b6363deb372082b975b117bdb87538b3c122c84bc51",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/README.md",
+    "bytes": 4841,
+    "sha256": "b9831fec52dc22a906b678716a9dc873089a6daf27a29c6eb59ce4923b0a87f4",
+    "scope": "READ by integrator or delegated implementer"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/changed_files.json",
+    "bytes": 5020,
+    "sha256": "3bec3aa1724df982b65a32b66db7b3ff9ab765bdaa90b9654ce4158a26bf0d2a",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/check_contracts.py",
+    "bytes": 11962,
+    "sha256": "92a16b6e8a9fbdfb7f89566e257444b5304b9730bc32b2775eb7d5e181f0fd71",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/commit_request.schema.json",
+    "bytes": 889,
+    "sha256": "b8f6f14ba47c89bd0a0846652ff305abdc1db351ff1aa34af8b8da4647a8b729",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/context_response.schema.json",
+    "bytes": 6620,
+    "sha256": "f596238b2808b48559485fe0c784867323d75ae3a8759efea7b93ba6a1fc0447",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/document_update_request.schema.json",
+    "bytes": 1040,
+    "sha256": "b58534992adbabef7f7cf9e158d7918feea947e82e18a75324a7c5daef40e671",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/document_update_response.schema.json",
+    "bytes": 397,
+    "sha256": "c327e9bdb70e1384f0f33b49d1d23a8a0c7a521e61fff5c1e39df2662caa7040",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/fixtures/workflow.json",
+    "bytes": 69448,
+    "sha256": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/health_response.schema.json",
+    "bytes": 522,
+    "sha256": "d724785c0bd27096976869196833ef3014b0f5fb8751709fa05e42422414ea01",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/openapi.json",
+    "bytes": 12780,
+    "sha256": "85bb783a380742fcbe94b5d654a980530ba60b559a7da36f9ea67bb0e2aafd1f",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/propose_response.schema.json",
+    "bytes": 1421,
+    "sha256": "5d14a7edd6d93c1183e6376d93ebb0577396296fc040e5d8201049a4337acdc6",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/review_request.schema.json",
+    "bytes": 1525,
+    "sha256": "de17f7e1a90a7b154a1249c9c1152489fd87227285b29c97138999718c9a69a1",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/contracts/v1/review_response.schema.json",
+    "bytes": 462,
+    "sha256": "330fcfcca7f0061dee9e6e9689832d8c86475219d3e7e284dde307f72fe4e0ca",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/src/his_poc/request_validation.py",
+    "bytes": 3220,
+    "sha256": "af2bcca5ffe3e5fae8c8d62044d530e5f3bf571caef22689107867a6548a15f5",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/src/his_poc/server.py",
+    "bytes": 4901,
+    "sha256": "d4b3a4507fa8f90aacf76140088d411c9e56e60f6b729e697dbe75245a5c7837",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/src/his_poc/service.py",
+    "bytes": 17121,
+    "sha256": "a2b7971ec7a01dc69a9cfdbf92417d357083f3406ea992448dd8afb2fd7aa8df",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/tests/test_frontend_behavior.js",
+    "bytes": 12964,
+    "sha256": "b3241aa9036c59a00ff87f940f3fe2ede8c164b6c783eef909512deac18e708c",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/tests/test_http_contracts.py",
+    "bytes": 9552,
+    "sha256": "9a051918cc0fa43d0c88a4580d4337d7fefd7d9c1f8d6de19042b505a5d270d0",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/tests/test_service_regressions.py",
+    "bytes": 12519,
+    "sha256": "a481bfb528ffcb4953d43811abd6ef1b1f0235cb88a50d459d4f221f6f52623d",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/overlay/web/index.html",
+    "bytes": 15378,
+    "sha256": "9c701186db9d114dacdfdd769a95a4361cf880b6c0a2a3fec01b3ee0e7017c9a",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/candidate_patch/starter-hardening.patch",
+    "bytes": 188987,
+    "sha256": "a163405a546b73cc06786ee669d7e78fb5de98d6c6e4fd4df8d14c439cba7a28",
+    "scope": "READ/COMPARED by audit implementer; exact hash-verified patch inputs"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/audit_pack_check.json",
+    "bytes": 184,
+    "sha256": "ae7ee457a4603e9b7871e6b466afa84e35b13233ad8c80d08ac575427684c377",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/candidate_contracts.txt",
+    "bytes": 483,
+    "sha256": "336fb6142b3986eb811be8803ca8e0fb89367a26eacbd86754e5c96ae857770e",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/candidate_frontend_behavior.txt",
+    "bytes": 1312,
+    "sha256": "0437235225c16efb83c77d327ae1816a9a56378a40f281239f06c1e0da313f65",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/candidate_unit_tests.txt",
+    "bytes": 6536,
+    "sha256": "2dd706ca53556435d58e62349b01d1236fd9d598491e6bad485f0677b5ae25bc",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/execution_summary.json",
+    "bytes": 4762,
+    "sha256": "f8f3217ce281ceb6a4cb8ff53afba415f66a645b5dc714c3ca3f268482bcfe3e",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/original_contracts.txt",
+    "bytes": 226,
+    "sha256": "c7582bcba98aa0021c4fdb9281fb0d52d8b55dbfefa8143834bad92ae21fa180",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/original_hashes.txt",
+    "bytes": 28,
+    "sha256": "e0ec5ce8c3e4fc93e6eb048eb20b145f5475298760ff1b1d6b76cd4066af7f87",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/original_unit_tests.txt",
+    "bytes": 2483,
+    "sha256": "8362d1a88864ec97fa62d4f9b441f023b989a38cdfafa832504ab2b121cfdcac",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/evidence/patch_application_check.json",
+    "bytes": 1076,
+    "sha256": "efa7000ae3040c5c159d345144f7020ee4f87dbe1732c5808ffae0c3ec9b34fe",
+    "scope": "historical candidate evidence inventoried; new runs recorded separately"
+  }
+]

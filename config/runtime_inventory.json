@@ -1,0 +1,43 @@
+{
+  "schema_version": "1.0",
+  "observed_at": null,
+  "application": {
+    "target": null,
+    "existing_repo": null,
+    "branch": null,
+    "commit": null,
+    "dirty": null,
+    "network_location": null
+  },
+  "dr_train": {
+    "cpu": null,
+    "ram_gib": null,
+    "gpus": null,
+    "vram_gib": null,
+    "disk_free_gib": null,
+    "os": null,
+    "driver": null,
+    "cuda": null,
+    "engine": null,
+    "existing_workloads": null,
+    "allowed_changes": null,
+    "concurrency_budget": null,
+    "endpoint": null,
+    "route_verified": false
+  },
+  "local": {
+    "cpu": null,
+    "ram_gib": null,
+    "gpu": null,
+    "vram_gib": null,
+    "engine": null,
+    "endpoint": null,
+    "route_verified": false
+  },
+  "authorization": {
+    "paid_api_budget": null,
+    "server_compute_allocation": null,
+    "real_data_use": false
+  },
+  "note": "null = UNKNOWN. Scratch execution environment is not evidence about owner local machine or dr-train."
+}

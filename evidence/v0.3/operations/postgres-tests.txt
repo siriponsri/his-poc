@@ -1,0 +1,22 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "/tmp/his-pg-tests-e7ymc0_v/files"}
+Synthetic seed completed; existing records unchanged. Password not printed.
+test_01_backup_restore_rows_files_and_foreign_keys (backend.tests.test_operations_pg.PostgreSQLOperations.test_01_backup_restore_rows_files_and_foreign_keys) ... ok
+test_02_missing_referenced_file_fails_backup (backend.tests.test_operations_pg.PostgreSQLOperations.test_02_missing_referenced_file_fails_backup) ... ok
+test_03_tamper_blocks_restore (backend.tests.test_operations_pg.PostgreSQLOperations.test_03_tamper_blocks_restore) ... ok
+test_04_path_traversal_rejected (backend.tests.test_operations_pg.PostgreSQLOperations.test_04_path_traversal_rejected) ... ok
+test_05_auditor_cannot_schedule_job (backend.tests.test_operations_pg.PostgreSQLOperations.test_05_auditor_cannot_schedule_job) ... /workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+ok
+test_06_real_job_and_idempotent_replay (backend.tests.test_operations_pg.PostgreSQLOperations.test_06_real_job_and_idempotent_replay) ... ok
+test_07_queued_and_interrupted_job_recovery (backend.tests.test_operations_pg.PostgreSQLOperations.test_07_queued_and_interrupted_job_recovery) ... ok
+test_08_row_fingerprints_normalize_session_timezone (backend.tests.test_operations_pg.PostgreSQLOperations.test_08_row_fingerprints_normalize_session_timezone) ... ok
+test_09_worker_rechecks_revoked_permission (backend.tests.test_operations_pg.PostgreSQLOperations.test_09_worker_rechecks_revoked_permission) ... ok
+test_10_scoped_role_cannot_grant_global_backup_access (backend.tests.test_operations_pg.PostgreSQLOperations.test_10_scoped_role_cannot_grant_global_backup_access) ... ok
+test_11_reader_receives_no_global_file_references (backend.tests.test_operations_pg.PostgreSQLOperations.test_11_reader_receives_no_global_file_references) ... ok
+test_12_cli_uses_authenticated_backend_and_revokes_sessions (backend.tests.test_operations_pg.PostgreSQLOperations.test_12_cli_uses_authenticated_backend_and_revokes_sessions) ... ok
+test_13_cli_refuses_external_credential_target (backend.tests.test_operations_pg.PostgreSQLOperations.test_13_cli_refuses_external_credential_target) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 11.028s
+
+OK

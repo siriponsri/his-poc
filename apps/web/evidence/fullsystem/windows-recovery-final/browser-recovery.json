@@ -1,0 +1,553 @@
+{
+  "started_at_utc": "2026-11-13T12:46:06.195833+00:00",
+  "command": [
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "apps/web/scripts/browser_recovery.py",
+    "--output-dir",
+    "apps/web/evidence/fullsystem/windows-recovery-final"
+  ],
+  "python_version": "3.12.10",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "base_url": "http://127.0.0.1:8000",
+  "data_profile": "AUTHORED_SYNTHETIC",
+  "source_sha256": {
+    "apps/web/scripts/browser_check.py": "a43f372d63290fb3b58518cedf37f9d8c828588bea4a8b6d6c9a8b8deb4fb854",
+    "apps/web/scripts/browser_domains.py": "994cf774a676d32261e10e2bb0edec20ec165b78945e93bd11769a9f742c2504",
+    "apps/web/scripts/browser_driver.py": "2cbc330d81f433d5ef9849dfb694738d35f553490810b1e185f789d0d0584f89",
+    "apps/web/scripts/browser_journeys.py": "5206b7b65f6f61aba9d3f1a3f6fa9c0ca03e3d8f09a57994dbe8be19e4040a93",
+    "apps/web/scripts/browser_recovery.py": "53f672dd5dc2d4773cc40f21f525b9a6a50bbcb0588e5d915a98b115ed6c986c",
+    "apps/web/scripts/browser_support.py": "a7fa9316100985711dd5e9115165b2749e873a6d393ce85cf2580c5ae4b7a513",
+    "apps/web/scripts/sync_data.py": "126e9cb6f4205e679d00193e3649d83e3ebcad09a7ddf13b90168c3e16a6c91d",
+    "apps/web/scripts/sync_full_catalog.py": "3a430d07f6fb6f0a7ce067578201dde82e5561822d082355dfab88660a8ff247",
+    "apps/web/src/App.tsx": "5a05a13773ca233373ba0cf290aae6de22c818b23ec8656904e5e53e67621912",
+    "apps/web/src/components/app-sidebar.tsx": "04e77214c9767cacf0be7804c150a75cb9b22f43afbf77a899cdfd9a91f1ad61",
+    "apps/web/src/components/core-workspaces.tsx": "a4c78a283ae160b896d98bd0e2323e515bda25d36bec7164079c2f4067f016bb",
+    "apps/web/src/components/forms.tsx": "d0b8cbb9369ba789217c284d2c44208a8e7e354271aa5f942d8e2982f5cf9a59",
+    "apps/web/src/components/growth.tsx": "60258427c3a5a07bd8b3fd108e6130bf84242f10ab7887a25a38f02e5b61bbba",
+    "apps/web/src/components/operations.tsx": "d276670b5d06aa8c70311900a4f9d2eeb7cbf66c5f3a86fa8a5480304ee2d9f4",
+    "apps/web/src/components/portal.tsx": "00ebfd9ad798a081c10f69f6775a37fd4a62d0a3809b878c2dbf3ecf984061ca",
+    "apps/web/src/components/sidebar.tsx": "f7284be7419d9be4173e3f84c436d56df7b57e1535c7d2969353e3eb12349ffc",
+    "apps/web/src/components/workspace.tsx": "3db4ac4fb6d3be5a4c0a459326b9eb7393cc268405852a8e6d5a992072378c6e",
+    "apps/web/src/data/domains.json": "f2dbdb1e7c7c783459e34ff70863a0003e63e439d09517e5f0bcb18098cb439a",
+    "apps/web/src/data/full-domains.json": "ebb95be12796cc43bae70b2e4ee7034d98208d95701bff8320b2340cf9489a72",
+    "apps/web/src/data/resource-catalog.json": "d67a7c3b99d61c181219dc9512f2f6cd3e589afa1805336c58c16b5867584655",
+    "apps/web/src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303",
+    "apps/web/src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "apps/web/src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "apps/web/src/lib/catalog.ts": "c924b48539b9828ee6de6e57f09d6e9db7b2e9f603f0013ceb420fbe42ed402d",
+    "apps/web/src/lib/client.ts": "6992d938792223808e2d12929669a5e97ef053539c954eec037ee04523ff99ac",
+    "apps/web/src/main.tsx": "b8dce1127336236105527faf70084839bdea99da921c74b367f50c1a0997a1bf",
+    "apps/web/src/styles.css": "15cc6e0b0aa539e75657ef243d38c5db95aab973243790e6d5befa11e19e26ca",
+    "apps/web/src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "backend/app/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "backend/app/admin.py": "aee9e49084ca82f4f356b459d7b0144fb614aa94436b7ecb09addb63a14d26c4",
+    "backend/app/ai.py": "ba4a0a514f3a274ca517b369e79121cf7f2fa9c5698b0d55078caec7960c5cab",
+    "backend/app/auth.py": "cdf14f2fab1040813c6f8398fbbcd876ffc5c98e161dac64afc932e6435fa97a",
+    "backend/app/common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
+    "backend/app/core.py": "184bacda02d813c03f1c9a186177883567e499a700f6c75835822883322d726f",
+    "backend/app/db.py": "05aade4aea809dd29ef07c6acbb635593093f62ad8513b152c6ca7d7b417e7f4",
+    "backend/app/domains/clinical.py": "5b913e10269de7b714ae12b17281379f2577830b95c1fe7beab70ad85971232e",
+    "backend/app/domains/clinical_catalog.json": "82a1415c3daf9f25114fd34e25288f4d4b7531b5cdf3d00c70b8492cbab87b38",
+    "backend/app/domains/erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653",
+    "backend/app/domains/erp_catalog.json": "7ca5027559341ed4d5efe3c07e57f089002fa0898b0ef3b0c1c4b169bb2fe56e",
+    "backend/app/domains/operations.py": "0b135d1c5dfd349d694a8a84ae96cdcec88fb68d24070d25200a84b006319447",
+    "backend/app/legacy_import.py": "b075c251d7847f95557c2eadf2dd34dcb58a75039f0145445e302f4690b0a6ea",
+    "backend/app/main.py": "59e5f52ce6f80d1e9447a08baf99cca713d8f7e6c9ed3f2b4856319e37089518",
+    "backend/app/model_registry.py": "3f09946e2e66fe727a05092909505a2994b7a8fa55489cacf41fbbde686aa17f",
+    "backend/app/models.py": "277055976e0919b31f2d3cd1cf43e63cccebf93ea02e2f4d70bd266897bdd9d5",
+    "backend/app/models_clinical.py": "e1172752510427718e6ee466c680c279c1edd9a6955a758d33fa3b0fb96a5ee5",
+    "backend/app/models_erp.py": "2e16a16d4fcd15a7b89f98e1c1c4da2f400a0260c3889a745e6916957b25e913",
+    "backend/app/models_legacy.py": "070e52e6a389356e3a2bb3596e4673235fb6b039ab47397f8e2c134f2c6e23cc",
+    "backend/app/providers.py": "ec9e00098152cdf3550415475dfd2653d560ac0894a2387b56f731300eb53a7d",
+    "backend/app/seed.py": "9066fd69f2bab4a396ca3761719aef75da6c31ee26309aaa6d3ae9556d10047a",
+    "backend/app/storage.py": "8a657b09a9dce48d434cdd563b4ae8d4711da35c2f85084817db980e6e7ceec6"
+  },
+  "status": "PASS",
+  "assertions": [
+    "stale rendered action receives real 409 and definitive recovery without retaining unknown-outcome retry",
+    "reload latest then authorized next action succeeds without reconnect or resetting application",
+    "server audit history rendered for successful patient mutation",
+    "browser session cookie HttpOnly and no credential keys in frontend storage",
+    "direct finance API read denied to registration browser identity",
+    "auditor inspects actual patient entity ID and transition action in rendered audit without credentials",
+    "patient A detail response arriving after B selection cannot repopulate B detail or action context",
+    "same UI-created patient, version, name and active state survive app restart without seeding",
+    "UI backup then isolated restore verifies table counts, canonical row hashes, FKs and files after browser-created records"
+  ],
+  "method": "Rendered forms, observed responses and explicit non-seeding Docker app restart",
+  "patient_id": "6a8d377b-e0a3-4ed0-a9d9-bf91c0220d22",
+  "patient_version": 3,
+  "audit_event_id": "814b698d-ea62-4fbf-af17-5b110ed5f1e0",
+  "context_document_ids": {
+    "A": "6fb04dcc-c567-46e3-94b4-7049f625b606",
+    "B": "64aab914-386a-4c58-8c42-96df64860081"
+  },
+  "restart_command": [
+    "docker",
+    "compose",
+    "restart",
+    "app"
+  ],
+  "restart_exit_code": 0,
+  "operations": {
+    "ui_created_patient_id": "6a8d377b-e0a3-4ed0-a9d9-bf91c0220d22",
+    "ui_document_ids": [
+      "6fb04dcc-c567-46e3-94b4-7049f625b606",
+      "64aab914-386a-4c58-8c42-96df64860081"
+    ],
+    "backup_job_id": "df61065d-262d-47ba-bc8b-2c40fe377e08",
+    "artifact_id": "d9ae37f525184ec49b6db3b3f99e2308",
+    "restore_job_id": "c4590bd0-6eaf-40c0-978d-e1cc10303ae2",
+    "verification": {
+      "status": "restore_verified",
+      "tables": {
+        "roles": {
+          "rows": 47,
+          "sha256": "888d07be3b4a4da8a960bd6298f4cf90569963e322f78dbdf7bf8a90dfe3630a"
+        },
+        "tasks": {
+          "rows": 27,
+          "sha256": "6150604357668e64ad3f2c65edae9a49fc189596a76f2c01a001e1fa906f7854"
+        },
+        "users": {
+          "rows": 21,
+          "sha256": "2f4310ae629c58954a7cbcd2fb049a353985e1b161456905a99361200ce19460"
+        },
+        "claims": {
+          "rows": 2,
+          "sha256": "8d73aa833be8a352fa9c646e1f1a8371d9bed63efa0534fa706200fee303841b"
+        },
+        "charges": {
+          "rows": 5,
+          "sha256": "f8a394fc6bfc496291f0a91d2e8cb85dc872675d8c64891fe4dcc54cb8613a54"
+        },
+        "refunds": {
+          "rows": 2,
+          "sha256": "fadf32f22d27021ec94c754abb767371a260d94b3036538181df7eb2f10040ff"
+        },
+        "rosters": {
+          "rows": 7,
+          "sha256": "9b1ca38678f69159976cee2b5fe6a72d9ea2dce032b07dc8fb0021de1af5374e"
+        },
+        "invoices": {
+          "rows": 2,
+          "sha256": "e1817159b1a1d09af1dcc17687e7693dbc46e0ccfe55a95578ed21289266fab9"
+        },
+        "patients": {
+          "rows": 18,
+          "sha256": "daba06a421f50b9687e2c09ed8d0323844556f3d8026ceca4bbe346af2c6c473"
+        },
+        "sessions": {
+          "rows": 156,
+          "sha256": "dbc19a85d59ee514985ae0127c6a176bb5d7f151396b6fbe9813c71f3311d071"
+        },
+        "documents": {
+          "rows": 16,
+          "sha256": "6be726ec39e1d47289ab8dfabbb396d8cefe361c9d2a8b1729d32ddbff02a7bb"
+        },
+        "incidents": {
+          "rows": 1,
+          "sha256": "5ea5a1cf2fc001df64d2f787007d459c99b43ee7a19b2e3cac7330f913f85edd"
+        },
+        "locations": {
+          "rows": 2,
+          "sha256": "02760aa65877d0131b33d421d69b5954958e977b6e4a8f01847ecd92c734db88"
+        },
+        "proposals": {
+          "rows": 6,
+          "sha256": "6d55a4cd2f207a7af9fc26da1b496f127c3e7ce24d53a21b91986753adf6c371"
+        },
+        "purchases": {
+          "rows": 2,
+          "sha256": "f57c75318c1851a04ae61d0bd93d2977d200943a12b984f853e2cfc239efd782"
+        },
+        "seed_runs": {
+          "rows": 1,
+          "sha256": "1f4fbcc55036ba612c411b297d948c5076388e0224cbe75029414ee9fa8bd849"
+        },
+        "suppliers": {
+          "rows": 1,
+          "sha256": "1e79d1de36c9f19e27245471927815f433ba486f850b81dc25c1ce05edb0c1f7"
+        },
+        "encounters": {
+          "rows": 14,
+          "sha256": "76f39dd5499ae4f39d97085c781079e38641b02ee7cfb4289a319b8b77d42056"
+        },
+        "facilities": {
+          "rows": 3,
+          "sha256": "e870e035da5def0400a8d863ec7d8891edd6cc11cb0f994743074bce8c5c056d"
+        },
+        "operations": {
+          "rows": 479,
+          "sha256": "04c32f642b76282c98b51bd2ad04ee9237f18947b5912704d58595e2ed8a6108"
+        },
+        "claim_lines": {
+          "rows": 2,
+          "sha256": "d2d9204627b6160d3fde4de06a88a3a4df03b72f880ad02d560a11cd835b3e7f"
+        },
+        "cssd_cycles": {
+          "rows": 1,
+          "sha256": "d3d26b80087ef5aded63f03ad9bc57ba3f7d94df49bc56caa2b604610922202c"
+        },
+        "departments": {
+          "rows": 1,
+          "sha256": "c0efb923ccd492abd3e9cf158f9cb32fc0dfb06f24f96a4d46e3e0b2fab2938e"
+        },
+        "legacy_rows": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "memberships": {
+          "rows": 27,
+          "sha256": "7f4ccd6950269e904fa976aff9672f06dc5ccfd2df4f0af978cb4b9578a0f8e3"
+        },
+        "permissions": {
+          "rows": 126,
+          "sha256": "440f18bd16fb5f803123bcb9fad2f9aeb60e59eccdf364afec087ea8cab8218b"
+        },
+        "remittances": {
+          "rows": 2,
+          "sha256": "986cdda9e6765efe40d4aac023639c8fb5dbddf764d8c0a86375394bac5c0b64"
+        },
+        "audit_events": {
+          "rows": 796,
+          "sha256": "f55af77771ad80ad6a594a3c5d01c40c25ccb3b6e64599da9a45cd5fdd7f964f"
+        },
+        "cost_entries": {
+          "rows": 2,
+          "sha256": "162871c7e26bddd6ec23c64c97ce855b0d54f7f80499a833012df799b9ec388d"
+        },
+        "dataset_rows": {
+          "rows": 6,
+          "sha256": "b2cb9f350ada754aa8bbddfa3082bd4555f0ba57baa3c92c3a6c1e05156ca921"
+        },
+        "ledger_lines": {
+          "rows": 8,
+          "sha256": "0d3a8707dabc00c4c4c100026268c2f8d91d7b4c87565a17c778871d7e39e8e1"
+        },
+        "stock_counts": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "clinical_beds": {
+          "rows": 2,
+          "sha256": "1fd9e9bdd5c63cb0c118446cdd0e606066a1827829de5d8ccf8225db37ddaff4"
+        },
+        "clinical_labs": {
+          "rows": 6,
+          "sha256": "bf4f443f1961513a4653bf6fbafc77d2f39701ff03b78411fd8744359d74dfef"
+        },
+        "human_reviews": {
+          "rows": 10,
+          "sha256": "4773eeb8958079df1e2832181772d272982469f848cc16fdc04aa7e881af5bc7"
+        },
+        "organizations": {
+          "rows": 2,
+          "sha256": "69fd2bdb11f56b99b7b46d94d2f562146a151fb12ebb0d3eec3ecab39490ad52"
+        },
+        "staff_members": {
+          "rows": 4,
+          "sha256": "81740cfbf1aed57f271a96aaa2141a3e65e3012f8c73fe16f420d1478f8afb0b"
+        },
+        "clinical_diets": {
+          "rows": 1,
+          "sha256": "bf642887cde363a065b74de4651e293e21c94e696c05938383f31945310d3897"
+        },
+        "clinical_rehab": {
+          "rows": 1,
+          "sha256": "ddf0e25827ec77acb8542b5ee7944d065005d82d5bc44f34ed917060c764d34a"
+        },
+        "clinical_slots": {
+          "rows": 2,
+          "sha256": "f438855ef0c0f41f03bb255fe928e750bac63efdc3bab5dcc0c1ef59eba0d6a2"
+        },
+        "dataset_access": {
+          "rows": 1,
+          "sha256": "f16f9dd2ee9eb4ce76f31ec49fe5f1a0c417c851c3871d6d35c46a7969935622"
+        },
+        "goods_receipts": {
+          "rows": 4,
+          "sha256": "b2ab0efe984e528c7bf133e33f8ae82e7d5e8bf139012b6465cf33ed1485f43c"
+        },
+        "inference_runs": {
+          "rows": 6,
+          "sha256": "3235acf9ab8586ad5af4b729092e41ef38888a59dafb94ea9ddd45555f08bfbc"
+        },
+        "inventory_lots": {
+          "rows": 1,
+          "sha256": "cb18989c799e66c3f885de1a524f3d51eff7ca5849e5fd2b4f77441d889fcfe2"
+        },
+        "ledger_entries": {
+          "rows": 4,
+          "sha256": "9493df818c0df24e276b1763ecf636bb320082e2f69f31e63bdade02dd550e3a"
+        },
+        "legacy_imports": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "login_attempts": {
+          "rows": 156,
+          "sha256": "9da772c81b899b78e1500837abce0686a3a79a515350aa894e38319b618aef66"
+        },
+        "price_versions": {
+          "rows": 3,
+          "sha256": "90038542e597498d5dce71ad1edc1e99af401c91d6ad79c78b5a8d5048f00a0b"
+        },
+        "report_batches": {
+          "rows": 1,
+          "sha256": "1482ee6f2821d2207d7f6222a83fbdb9ed191f4c60d2ed9a66a609bb2df27b9e"
+        },
+        "report_lineage": {
+          "rows": 12,
+          "sha256": "75c14d6eeb6c30ea45261116c55b7ea8616c87b2db6bc8f75ecb810b3043f706"
+        },
+        "stock_balances": {
+          "rows": 1,
+          "sha256": "d1f82928f04d5575d5512b150a6e9fbc1bf517d1199e6571fabfbd7975a2dfd0"
+        },
+        "alembic_version": {
+          "rows": 1,
+          "sha256": "d5b5a79dfdf09fe21f839e1c443265342400a574c1a4172c64df5922d3896f91"
+        },
+        "budget_versions": {
+          "rows": 1,
+          "sha256": "c385ba0bffe19e1c6f9c2401c8d7da7c6339ae10e6a824ddb913367f10ddb22b"
+        },
+        "clinical_dental": {
+          "rows": 1,
+          "sha256": "02dba3d0c806ae8f708a5c040e04e15ac493b68f1582b3eb8570829f75fb295d"
+        },
+        "clinical_events": {
+          "rows": 221,
+          "sha256": "e30c5dd55983e2e775608aa578fe1dbe1cbb210c3741c6511807116adaae1dfa"
+        },
+        "clinical_orders": {
+          "rows": 14,
+          "sha256": "97cf15336f864cbad4969b5a3bf15a59124655436aa2e64f283c52cf34d5726a"
+        },
+        "inventory_items": {
+          "rows": 1,
+          "sha256": "ad293b54d362059d6f5335964648c80aee9e4e3a5798cad462dbf0e37ccd99f9"
+        },
+        "order_revisions": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "security_events": {
+          "rows": 60,
+          "sha256": "0a6fe3060185b2ae9ff2bb22b7bb0f317db3fc8ab2d0dc9400a0833b52874578"
+        },
+        "stock_locations": {
+          "rows": 2,
+          "sha256": "b01eacd6b1299c623aa2000c1446ccb905047e188177d6ec3bf9b3f49a1932b4"
+        },
+        "stock_movements": {
+          "rows": 15,
+          "sha256": "5eaecfcee33082c499c47e03d413b7b4f7e1287b2a39163597d8391dd9a7086b"
+        },
+        "care_assignments": {
+          "rows": 14,
+          "sha256": "9835fd7bc62f7aaea752d36e8dc03b3afce246f3f731f54df35ffd2a05b341ed"
+        },
+        "clinical_imaging": {
+          "rows": 2,
+          "sha256": "7fd640b4031296bce08280f3fcb216f7b4a54dcdeb803b647fd9fa71f96958e2"
+        },
+        "coverage_records": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "dataset_versions": {
+          "rows": 1,
+          "sha256": "cbfbaca73acde749e0c1d3703452da18a66ce516f93377d60f3892a78c628283"
+        },
+        "equipment_assets": {
+          "rows": 3,
+          "sha256": "b818845004aeb45c58e38ece7f517dcde4efe844d06f1f13358a6e07a371e576"
+        },
+        "linen_dispatches": {
+          "rows": 1,
+          "sha256": "a39a30e2289bd7d9fd0aaf5227884f8585633d5f857b6afcf1d0cec1c4f22bc4"
+        },
+        "operational_jobs": {
+          "rows": 2,
+          "sha256": "3f48b8fb2a0dd32b103f644d3d33aab8c520813bb787c85bb78beebb8e069161"
+        },
+        "payment_receipts": {
+          "rows": 2,
+          "sha256": "f56afac63a7be2d26990911bb95c50db04e4075135b754b09f4923608b6da1bb"
+        },
+        "role_permissions": {
+          "rows": 1114,
+          "sha256": "ef330f4b8556336be2e76dc34665a99d21a21679bc2e641284c53c8a67d3fe4e"
+        },
+        "committed_results": {
+          "rows": 6,
+          "sha256": "364aecff4d0e9b4834cf007b983147c1ec77c6892c0f01c0455cfa48a32cc19d"
+        },
+        "delivery_attempts": {
+          "rows": 2,
+          "sha256": "5c69d98ea37a1af67ac691f11181226266825d88d437acd91d457bf4faf21f31"
+        },
+        "document_versions": {
+          "rows": 16,
+          "sha256": "3d033dd1900a1b974462a7ea9d06cbaca32a72b5b16030d289fa2d6eeb75db6a"
+        },
+        "proposal_versions": {
+          "rows": 10,
+          "sha256": "8f4f42554d99bfc9d8697e3ed79cd33e1860b505d7c9868b82e979af676d086a"
+        },
+        "clinical_emergency": {
+          "rows": 2,
+          "sha256": "7ab2cf460019ec03389236ae9a3529ddd9045a5e02c21559f168b94cadbb611c"
+        },
+        "clinical_handovers": {
+          "rows": 2,
+          "sha256": "3ba804cb2256e56f760370bc0ad5a852d84acb1c93222034f34b3294a2ca8687"
+        },
+        "clinical_referrals": {
+          "rows": 2,
+          "sha256": "5a455081b00a6bd3b723a07babf7bab50e2cd8a6533b47a3f453825260ffa34d"
+        },
+        "corrective_actions": {
+          "rows": 1,
+          "sha256": "c793344733f8d6d63f9f31d28a339b89fb58b7c65ff268e00670756f09cc1db9"
+        },
+        "stock_reservations": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "clinical_admissions": {
+          "rows": 3,
+          "sha256": "d5ccc2b58ac2ed2c1cb34c032eaacfe01746875d3816c7e657b89155b8c7df70"
+        },
+        "clinical_icu_rounds": {
+          "rows": 1,
+          "sha256": "a970456c89220f45ad3ef38e78df18534fdfcf4950f42d066c996da9b3ea5e21"
+        },
+        "clinical_pediatrics": {
+          "rows": 1,
+          "sha256": "9bd16a91614c2eca0cf7c676bb3f15937ec34356442b9719e0b53f498116dd77"
+        },
+        "clinical_procedures": {
+          "rows": 1,
+          "sha256": "6876a6bd6a0584c507c2a6186cae06baee5ddc2f907d8a04560433accbc2dd5f"
+        },
+        "invoice_adjustments": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "patient_identifiers": {
+          "rows": 16,
+          "sha256": "f6cc07c2517fb3846927beeff1e96cb72d751d028f0f6115330601dae600b11b"
+        },
+        "payment_allocations": {
+          "rows": 2,
+          "sha256": "ddefeed99f392895eff6db6fe8d0c534f270c0021958f76747317759688267c9"
+        },
+        "user_patient_scopes": {
+          "rows": 2,
+          "sha256": "90528075f246b56b45197d2fc73f6bee0bb64ebc56ba342f7316d3dbc9c00d34"
+        },
+        "clinical_blood_units": {
+          "rows": 2,
+          "sha256": "30f4eb7987250cc51f49c8a1d135fa35afc3c7ae730b385cf45e7df5eedde92d"
+        },
+        "clinical_medications": {
+          "rows": 5,
+          "sha256": "24dc735cf0891e069aabdc6a5edbde974cd12c13fa014df2ccf38dc5a5f62a4b"
+        },
+        "clinical_pregnancies": {
+          "rows": 1,
+          "sha256": "79473254a08063d7ab41d7eb21624b32226919973aa00852cc346941c89a0371"
+        },
+        "facility_work_orders": {
+          "rows": 1,
+          "sha256": "4bd3c4ee31e9eb9dbeec62701993ebe45dd29cb53b862af28f4704b2c5f45c0a"
+        },
+        "integration_messages": {
+          "rows": 1,
+          "sha256": "3710dab955573467b0d98202b58e70c8a006c6141ca7684cae60d8572bcf3293"
+        },
+        "integration_receipts": {
+          "rows": 1,
+          "sha256": "4294893d39855a2beb1b549aa99e0c57183007b40a8833c436be51a0436a232b"
+        },
+        "reconciliation_tasks": {
+          "rows": 1,
+          "sha256": "dbd7d3c6023beded2842413ad4569e4f826be7dcbaafcfb3ad09107bf57c6f65"
+        },
+        "supplier_obligations": {
+          "rows": 2,
+          "sha256": "4f3d04c3c514b46dd688bcbfb6d011e511248e116e1f17102707b77311e32e42"
+        },
+        "clinical_appointments": {
+          "rows": 14,
+          "sha256": "0c91fa529b455f6ad36fc2a8df257ad70adf1ac41f1e4ad5cf9e3fd975905fd9"
+        },
+        "document_attestations": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "clinical_immunizations": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "report_acknowledgments": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "clinical_blood_requests": {
+          "rows": 1,
+          "sha256": "565e12df5b1984f2ddca96827078e6dd4ed2c564ed72957a5aae9f695a7f5f76"
+        },
+        "clinical_handover_tasks": {
+          "rows": 2,
+          "sha256": "668766aa2a52ebafc7e2ecde2c0a17edf186c1fc5f217aa2cf533c14c2afd203"
+        },
+        "maintenance_work_orders": {
+          "rows": 2,
+          "sha256": "18b427b1154280be84ca32080982007f037553072fc48738d81d773f7089a38b"
+        },
+        "clinical_administrations": {
+          "rows": 1,
+          "sha256": "919fc998e7e482516a223d3361f5b0f604c637bc61f7978dc1b1bc0b55d2d3f7"
+        },
+        "clinical_bed_assignments": {
+          "rows": 4,
+          "sha256": "c915715c723dd6386614e6e57a4d7bf611b6dcf1aa62aa07453479929e7b974b"
+        },
+        "clinical_portal_requests": {
+          "rows": 4,
+          "sha256": "5fdc5ea81e44b465f21e2b3ecefc5188ef6e92dab0e9a3329124353286f3c76b"
+        },
+        "clinical_therapy_progress": {
+          "rows": 3,
+          "sha256": "ab0428f88cead513d96315f0e9c8e09fe9749235df0520c69e265ad2c9786752"
+        },
+        "clinical_therapy_sessions": {
+          "rows": 3,
+          "sha256": "4f4c9dbf3bf3b5f728eeea1d0a7f8434dd382cba42e152708bb2a792aa5dd685"
+        },
+        "clinical_device_assignments": {
+          "rows": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "clinical_medication_returns": {
+          "rows": 2,
+          "sha256": "889515ad978d2b9480e30472457a1b80fd6fc025e6b9b1de5c88c7bbf97f6eb2"
+        }
+      },
+      "backup_id": "d9ae37f525184ec49b6db3b3f99e2308",
+      "file_count": 1,
+      "file_directory": "/var/his/restores/his_restore_023ee48338444e91a116beab132b9e46/files",
+      "verified_checks": [
+        "table row counts",
+        "canonical row hashes",
+        "validated foreign keys",
+        "file checksums"
+      ],
+      "isolated_database": "his_restore_023ee48338444e91a116beab132b9e46"
+    }
+  }
+}

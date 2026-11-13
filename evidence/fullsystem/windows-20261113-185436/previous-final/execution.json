@@ -1,0 +1,201 @@
+[
+  {
+    "check": "seed",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "/workspace/scratch/9ae50286259c/pg-runtime/install/bin",
+      "--",
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/verify_seed.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 8.778,
+    "log": "evidence/fullsystem/final/seed.txt"
+  },
+  {
+    "check": "core",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "/workspace/scratch/9ae50286259c/pg-runtime/install/bin",
+      "--",
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "backend/tests/run_core_validation.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 16.459,
+    "log": "evidence/fullsystem/final/core.txt"
+  },
+  {
+    "check": "clinical",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "/workspace/scratch/9ae50286259c/pg-runtime/install/bin",
+      "--",
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/run_pg_suite.py",
+      "tests/fullsystem/test_clinical.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 24.514,
+    "log": "evidence/fullsystem/final/clinical.txt"
+  },
+  {
+    "check": "erp",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "/workspace/scratch/9ae50286259c/pg-runtime/install/bin",
+      "--",
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "-m",
+      "pytest",
+      "tests/fullsystem/test_erp.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 11.339,
+    "log": "evidence/fullsystem/final/erp.txt"
+  },
+  {
+    "check": "operations",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "/workspace/scratch/9ae50286259c/pg-runtime/install/bin",
+      "--",
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_pg.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 12.24,
+    "log": "evidence/fullsystem/final/operations.txt"
+  },
+  {
+    "check": "launcher",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_unit.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.397,
+    "log": "evidence/fullsystem/final/launcher.txt"
+  },
+  {
+    "check": "same-origin",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "/workspace/scratch/9ae50286259c/pg-runtime/install/bin",
+      "--",
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/verify_same_origin.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 8.429,
+    "log": "evidence/fullsystem/final/same-origin.txt"
+  },
+  {
+    "check": "package",
+    "command": [
+      "/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python",
+      "scripts/check_fullsystem_package.py"
+    ],
+    "exit_code": 1,
+    "status": "FAIL",
+    "duration_seconds": 1.098,
+    "log": "evidence/fullsystem/final/package.txt"
+  },
+  {
+    "check": "frontend-test",
+    "command": [
+      "npm",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.479,
+    "log": "evidence/fullsystem/final/frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "npm",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 3.035,
+    "log": "evidence/fullsystem/final/frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "npm",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.238,
+    "log": "evidence/fullsystem/final/frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "npm",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.448,
+    "log": "evidence/fullsystem/final/frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "npm",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.911,
+    "log": "evidence/fullsystem/final/frontend-build.txt"
+  }
+]

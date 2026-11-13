@@ -1,0 +1,58 @@
+{
+  "checked_date": "2026-11-12",
+  "versions": "requirements-backend.txt exact installed dependency freeze",
+  "sources": [
+    {
+      "url": "https://pypi.org/pypi/fastapi/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/sqlalchemy/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/psycopg/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/alembic/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/argon2-cffi/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/uvicorn/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/pydantic/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/httpx/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://pypi.org/pypi/pytest/json",
+      "checked": "publisher registry metadata and installed package resolution"
+    },
+    {
+      "url": "https://www.sqlalchemy.org/download.html",
+      "checked": "official documentation opened for design verification, not product security certification"
+    },
+    {
+      "url": "https://fastapi.tiangolo.com/tutorial/dependencies/dependencies-with-yield/",
+      "checked": "official documentation opened for design verification, not product security certification"
+    },
+    {
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html",
+      "checked": "official documentation opened for design verification, not product security certification"
+    },
+    {
+      "url": "https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html",
+      "checked": "official documentation opened for design verification, not product security certification"
+    }
+  ]
+}

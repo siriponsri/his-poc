@@ -1,0 +1,114 @@
+{
+  "status": "PASS",
+  "kind": "real_HTTP_not_browser",
+  "assertions": [
+    {
+      "name": "migration readiness",
+      "pass": true,
+      "observed": "{\"ready\":true,\"migration\":\"0001_fullsystem\"}"
+    },
+    {
+      "name": "production login HTML",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "production deep-link SPA",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "unknown API404",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "legacy v1 not mounted",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "public demo token cannot authenticate",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "server login",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "HttpOnly/SameSite cookie",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "me server roles",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "CSRF blocks mutation",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "patient create 0",
+      "pass": true,
+      "observed": "{\"organization_id\":\"org-demo\",\"facility_id\":\"facility-demo\",\"display_name\":\"DEMO HTTP persistence 0\",\"birth_date\":null,\"sex\":\"unknown\",\"status\":\"draft\",\"version\":1,\"id\":\"0ad755f9-f3ef-4fb5-a81f-bbba6d7c1589\",\"created_at\":\"2026-11-13T12:43:06.244093+00:00\"}"
+    },
+    {
+      "name": "idempotent same patient 0",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "patient create 1",
+      "pass": true,
+      "observed": "{\"organization_id\":\"org-demo\",\"facility_id\":\"facility-demo\",\"display_name\":\"DEMO HTTP persistence 1\",\"birth_date\":null,\"sex\":\"unknown\",\"status\":\"draft\",\"version\":1,\"id\":\"11600b6d-0baa-4c83-a657-7def239ba8d9\",\"created_at\":\"2026-11-13T12:43:06.423417+00:00\"}"
+    },
+    {
+      "name": "idempotent same patient 1",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "role denied AI request",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "record survives app restart 0ad755f9-f3ef-4fb5-a81f-bbba6d7c1589",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "record survives app restart 11600b6d-0baa-4c83-a657-7def239ba8d9",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "logout",
+      "pass": true,
+      "observed": null
+    },
+    {
+      "name": "logged-out session denied",
+      "pass": true,
+      "observed": null
+    }
+  ],
+  "records": [
+    {
+      "patient_id": "0ad755f9-f3ef-4fb5-a81f-bbba6d7c1589",
+      "actor": "registration"
+    },
+    {
+      "patient_id": "11600b6d-0baa-4c83-a657-7def239ba8d9",
+      "actor": "registration"
+    }
+  ],
+  "http_assertions": 19,
+  "browser_assertions": 0,
+  "frontend_sha256": "2444a717e59094cce3048808298433b4c574c2536d726eec6004b162360e245b"
+}

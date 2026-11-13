@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:integration_event",
+  "title": "integration_event",
+  "x-implementation-status": "DESIGN_ONLY_NO_OUTBOX_IMPLEMENTED",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "enum": [
+        "AIProposalReviewed",
+        "CompletenessResultCommitted"
+      ]
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "correlation_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "patient_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encounter_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entity_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "payload_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "causation_id": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "occurred_at",
+    "correlation_id",
+    "tenant_id",
+    "patient_id",
+    "encounter_id",
+    "entity_id",
+    "entity_version",
+    "payload_hash",
+    "causation_id"
+  ],
+  "additionalProperties": false
+}

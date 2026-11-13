@@ -1,0 +1,9 @@
+// Local accessible primitives authored for this starter; no shadcn primitive implementation copied.
+import {createContext,useContext,useState,useEffect,type ReactNode} from 'react'
+const SidebarContext=createContext({open:false,toggle:()=>{},close:()=>{}})
+export function SidebarProvider({children}:{children:ReactNode}){const [open,setOpen]=useState(false);return <SidebarContext value={{open,toggle:()=>setOpen(x=>!x),close:()=>setOpen(false)}}><div className={'app-layout '+(open?'sidebar-open':'')}>{children}</div></SidebarContext>}
+export function useSidebar(){return useContext(SidebarContext)}
+export function Sidebar({children}:{children:ReactNode}){const {close,open}=useContext(SidebarContext);const [mobile,setMobile]=useState(()=>window.matchMedia('(max-width:1099px)').matches);useEffect(()=>{const mq=window.matchMedia('(max-width:1099px)');const change=()=>setMobile(mq.matches);mq.addEventListener('change',change);const key=(e:KeyboardEvent)=>{if(e.key==='Escape'&&open){close();document.querySelector<HTMLButtonElement>('[aria-controls=app-navigation]')?.focus()}};window.addEventListener('keydown',key);return()=>{mq.removeEventListener('change',change);window.removeEventListener('keydown',key)}},[open,close]);return <><button className="sidebar-scrim" onClick={close} aria-label="ปิดเมนู"/><aside id="app-navigation" className="sidebar" inert={mobile&&!open} aria-label="เมนูระบบ">{children}</aside></>}
+export function SidebarTrigger(){const {open,toggle}=useContext(SidebarContext);return <button className="icon-button" onClick={toggle} aria-expanded={open} aria-controls="app-navigation" aria-label="เปิดหรือปิดเมนู">☰</button>}
+export function SidebarInset({children}:{children:ReactNode}){return <main id="main-content" className="sidebar-inset" tabIndex={-1}>{children}</main>}
+export function SidebarGroup({title,children}:{title:string;children:ReactNode}){return <div className="sidebar-group"><h2>{title}</h2>{children}</div>}

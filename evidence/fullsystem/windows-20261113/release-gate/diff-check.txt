@@ -1,0 +1,1 @@
+PASS: no source whitespace errors; raw evidence, generated SQL and Markdown hard breaks preserve exact formatting.

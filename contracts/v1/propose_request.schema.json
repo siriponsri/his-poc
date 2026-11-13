@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:propose_request",
+  "title": "propose_request",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "patient": {
+      "type": "string",
+      "minLength": 1
+    },
+    "encounter": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scenario": {
+      "enum": [
+        "success",
+        "timeout",
+        "failure",
+        "invalid",
+        "abstain"
+      ]
+    },
+    "data_class": {
+      "const": "synthetic"
+    }
+  },
+  "required": [
+    "patient",
+    "encounter"
+  ],
+  "additionalProperties": false
+}

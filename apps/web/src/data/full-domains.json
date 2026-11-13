@@ -1,0 +1,192 @@
+[
+  {
+    "id": "D01",
+    "name_th": "ทะเบียนและตัวตนผู้ป่วย",
+    "domain_group": "patient_access"
+  },
+  {
+    "id": "D02",
+    "name_th": "นัดหมาย คิว และความจุบริการ",
+    "domain_group": "patient_access"
+  },
+  {
+    "id": "D03",
+    "name_th": "OPD และเวชระเบียนการตรวจ",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D04",
+    "name_th": "ห้องฉุกเฉิน",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D05",
+    "name_th": "ผู้ป่วยใน เตียง และการปิดการรับบริการ",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D06",
+    "name_th": "งานพยาบาลและการส่งเวร",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D07",
+    "name_th": "คำสั่งแพทย์และการจัดการคำสั่ง",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D08",
+    "name_th": "เภสัชกรรมและการจ่ายยา",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D09",
+    "name_th": "การให้ยา ณ จุดดูแล",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D10",
+    "name_th": "ห้องปฏิบัติการและผลวิกฤต",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D11",
+    "name_th": "รังสี RIS และภาพทางการแพทย์",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D12",
+    "name_th": "ห้องผ่าตัดและวิสัญญี",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D13",
+    "name_th": "ICU และข้อมูลจากอุปกรณ์",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D14",
+    "name_th": "สูติกรรม มารดา และทารกแรกเกิด",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D15",
+    "name_th": "กุมารเวชกรรมและการเติบโต",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D16",
+    "name_th": "เวชศาสตร์ฟื้นฟูและกายภาพบำบัด",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D17",
+    "name_th": "ทันตกรรมและคลินิกเฉพาะทาง",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D18",
+    "name_th": "ธนาคารเลือดและการให้เลือด",
+    "domain_group": "diagnostics_and_treatment"
+  },
+  {
+    "id": "D19",
+    "name_th": "โภชนาการและอาหารผู้ป่วย",
+    "domain_group": "clinical_care"
+  },
+  {
+    "id": "D20",
+    "name_th": "การส่งต่อและการติดตามผล",
+    "domain_group": "coordination_and_records"
+  },
+  {
+    "id": "D21",
+    "name_th": "พอร์ทัลและการเข้าถึงของผู้ป่วย",
+    "domain_group": "coordination_and_records"
+  },
+  {
+    "id": "D22",
+    "name_th": "เวชระเบียน เอกสาร และการลงนาม",
+    "domain_group": "coordination_and_records"
+  },
+  {
+    "id": "D23",
+    "name_th": "ค่าบริการ ราคา และสิทธิการรักษา",
+    "domain_group": "revenue_and_finance"
+  },
+  {
+    "id": "D24",
+    "name_th": "เคลม ลูกหนี้ และการกระทบยอดเงินชดเชย",
+    "domain_group": "revenue_and_finance"
+  },
+  {
+    "id": "D25",
+    "name_th": "บัญชี การเงิน การรับชำระและคืนเงิน",
+    "domain_group": "revenue_and_finance"
+  },
+  {
+    "id": "D26",
+    "name_th": "ต้นทุนบริการ งบประมาณ และการวิเคราะห์ทรัพยากร",
+    "domain_group": "revenue_and_finance"
+  },
+  {
+    "id": "D27",
+    "name_th": "จัดซื้อ สัญญา รับพัสดุ และเจ้าหนี้",
+    "domain_group": "enterprise_operations"
+  },
+  {
+    "id": "D28",
+    "name_th": "คลังยา เวชภัณฑ์ และห่วงโซ่อุปทาน",
+    "domain_group": "enterprise_operations"
+  },
+  {
+    "id": "D29",
+    "name_th": "ครุภัณฑ์และวิศวกรรมการแพทย์",
+    "domain_group": "enterprise_operations"
+  },
+  {
+    "id": "D30",
+    "name_th": "บุคลากร ตารางเวร และสมรรถนะ",
+    "domain_group": "enterprise_operations"
+  },
+  {
+    "id": "D31",
+    "name_th": "CSSD ซักฟอก อาคาร และบริการสนับสนุน",
+    "domain_group": "enterprise_operations"
+  },
+  {
+    "id": "D32",
+    "name_th": "คุณภาพ ความเสี่ยง และการควบคุมการติดเชื้อ",
+    "domain_group": "enterprise_operations"
+  },
+  {
+    "id": "D33",
+    "name_th": "รายงานสาธารณสุขและข้อมูลระดับเครือข่าย",
+    "domain_group": "coordination_and_records"
+  },
+  {
+    "id": "D34",
+    "name_th": "ตัวตนผู้ใช้งาน สิทธิ และการตรวจสอบการเข้าถึง",
+    "domain_group": "governance_and_platform"
+  },
+  {
+    "id": "D35",
+    "name_th": "การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน",
+    "domain_group": "governance_and_platform"
+  },
+  {
+    "id": "D36",
+    "name_th": "คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง",
+    "domain_group": "governance_and_platform"
+  },
+  {
+    "id": "D37",
+    "name_th": "AI และระบบช่วยตัดสินใจ",
+    "domain_group": "governance_and_platform"
+  },
+  {
+    "id": "D38",
+    "name_th": "การเดินระบบ ความต่อเนื่อง และการกู้คืน",
+    "domain_group": "governance_and_platform"
+  }
+]

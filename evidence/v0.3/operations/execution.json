@@ -1,0 +1,70 @@
+{
+  "checked_at": "2026-11-12T09:11:48.457408+00:00",
+  "postgresql": "18.6 actual source-built runtime",
+  "database_tests": {
+    "status": "PASS",
+    "exit_code": 0,
+    "tests": 13,
+    "command": "python scripts/test_with_postgres.py --pg-bin /workspace/scratch/9ae50286259c/pg-runtime/install/bin -- /workspace/scratch/9ae50286259c/fullsystem-venv/bin/python -m unittest backend.tests.test_operations_pg -v",
+    "portable_command": "python scripts/test_with_postgres.py --pg-bin <PG18_BIN> -- <VENV_PYTHON> -m unittest backend.tests.test_operations_pg -v",
+    "evidence": "evidence/v0.3/operations/postgres-tests.txt"
+  },
+  "launcher_tests": {
+    "status": "PASS",
+    "exit_code": 0,
+    "tests": 6,
+    "command": "python -m unittest backend.tests.test_operations_unit -v",
+    "evidence": "evidence/v0.3/operations/launcher-tests.txt"
+  },
+  "docker_compose_execution": {
+    "status": "NOT_RUN",
+    "reason": "Docker executable unavailable; preflight failure tested"
+  },
+  "powershell_execution": {
+    "status": "NOT_RUN",
+    "reason": "No PowerShell runtime"
+  },
+  "browser": "NOT_RUN by operations task",
+  "clinical_effectiveness": "NOT_RUN; synthetic software tests only",
+  "backup_restore": "PASS DB snapshot plus file checksums and persisted file references; isolated target only",
+  "prior_failures_resolved": [
+    "Duplicate FK and unique names fixed by core in actual migration",
+    "SeedRun and report_acknowledgments frozen schema drift resolved; final108tablefreeze tested",
+    "Audit facility_id captured in durable operations job"
+  ],
+  "sha256": {
+    ".env.example": "4f50c5bc5d9a6be3eddd8166f604346808f7b2cbb2dd6b0787da68d43540ad9b",
+    "Dockerfile": "55bafb5c3616b553fbb6106cf281fdf7d5f145425772bb9875380657a1312663",
+    "backend/app/auth.py": "8968141dc4c840c0f2f446217b4c87988558144a9024edc904117e93407261e6",
+    "backend/app/common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
+    "backend/app/domains/operations.py": "0b135d1c5dfd349d694a8a84ae96cdcec88fb68d24070d25200a84b006319447",
+    "backend/app/storage.py": "8a657b09a9dce48d434cdd563b4ae8d4711da35c2f85084817db980e6e7ceec6",
+    "backend/migrations/erp_guards.py": "52845b039e606c95bcee657fccb70ce5e3496c31f55297e4c603d9d359774b44",
+    "backend/migrations/schema_0001.py": "9f3d4ad59db2f6f4c4dd574a1b6e441b1289ec0755f2cf2278d9fb829e2f5782",
+    "backend/tests/test_operations_pg.py": "67850385ee8caeabcac726f536ad58435d2f36f3ac468b94c47e970d83512cdf",
+    "backend/tests/test_operations_unit.py": "974806c2f7a436f537163bf3c1072761e9ba1ed0e4dafb5d9aa55feced6a0286",
+    "compose.debug.yaml": "9526652ac2a073ef8270a7258f8cd2b8677c9c7d946c7893726bb624a6158ef9",
+    "compose.yaml": "9bd6e84ff58ac4cf60d1aaf0948998c31bf9070e1c795e187db054eebe6b82ff",
+    "docs/OPERATIONS_FULLSYSTEM.md": "6364da50799e85dd87f9d38df06037713ae08644cf326492dfc7ea6dc1b05a28",
+    "requirements-backend.txt": "d98887f4bf85bed0ada971e01266d1be73457d59cae569c99e86f0047048d42d",
+    "scripts/backup.py": "90ead1d2b6f352bff03f64396fbcba9f925a2a2d05d6904225787e942e924bc3",
+    "scripts/dev.py": "ad9f93fd5ea95a0d0ecc83d3c794626009fbd24a36b8f4bfa9d9bc2fab4eb312",
+    "scripts/operations_client.py": "8d151d6129dcc6196ca3a3c7d36d945042f5d0f04baac03319c5dac770abdcb1",
+    "scripts/restore.py": "98dd34267875eeed8b8c1e4315b82afa93979fbf1eb656741f099bd7fa8082c9",
+    "scripts/run.ps1": "0cf91024de309108049f57d64289cff316739922f66cd8dd7bafddee72de8a44",
+    "scripts/test_with_postgres.py": "cf41f7f18b0bc779bff964f453e3068cda7e7b02ea8bd391dae37a881c359b5f",
+    "scripts/wait_db.py": "0055a621a44d6110facf3380d0577f2dda9e3ca52c32bc7b7c4293c8772410bf"
+  },
+  "cli_verification": {
+    "status": "PASS",
+    "transport": "Actual uvicorn loopback HTTP",
+    "checks": [
+      "auditor denied and session revoked",
+      "platform operator backup/isolated restore through authenticated API",
+      "same-key CLI replay returns same durable job",
+      "CLI ignores deliberately invalid DATABASE_URL",
+      "all newly opened CLI sessions revoked in finally",
+      "external credential target rejected before login"
+    ]
+  }
+}

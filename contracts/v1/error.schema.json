@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:error",
+  "title": "error",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "error": {
+      "type": "string",
+      "minLength": 1
+    },
+    "demo": {
+      "const": true
+    }
+  },
+  "required": [
+    "error"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,21 @@
+{
+  "command": [
+    "docker",
+    "compose",
+    "exec",
+    "-T",
+    "-e",
+    "PYTHONPATH=/app",
+    "app",
+    "python",
+    "/tmp/verify_browser_restore.py",
+    "--journeys-report",
+    "/tmp/browser-journeys-aggregate.json",
+    "--restore-job-id",
+    "c4590bd0-6eaf-40c0-978d-e1cc10303ae2"
+  ],
+  "started_at": "2026-11-13T12:47:39.272442+00:00",
+  "completed_at": "2026-11-13T12:47:40.937359+00:00",
+  "exit_code": 0,
+  "stderr": ""
+}

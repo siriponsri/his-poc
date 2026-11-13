@@ -1,0 +1,411 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "/tmp/his-pg-tests-kkeu3iq3/files"}
+Synthetic seed completed; existing records unchanged. Password not printed.
+test_01_backup_restore_rows_files_and_foreign_keys (backend.tests.test_operations_pg.PostgreSQLOperations.test_01_backup_restore_rows_files_and_foreign_keys) ... ok
+test_02_missing_referenced_file_fails_backup (backend.tests.test_operations_pg.PostgreSQLOperations.test_02_missing_referenced_file_fails_backup) ... ok
+test_03_tamper_blocks_restore (backend.tests.test_operations_pg.PostgreSQLOperations.test_03_tamper_blocks_restore) ... ok
+test_04_path_traversal_rejected (backend.tests.test_operations_pg.PostgreSQLOperations.test_04_path_traversal_rejected) ... ok
+test_05_auditor_cannot_schedule_job (backend.tests.test_operations_pg.PostgreSQLOperations.test_05_auditor_cannot_schedule_job) ... /workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+ok
+test_06_real_job_and_idempotent_replay (backend.tests.test_operations_pg.PostgreSQLOperations.test_06_real_job_and_idempotent_replay) ... ERROR
+test_07_queued_and_interrupted_job_recovery (backend.tests.test_operations_pg.PostgreSQLOperations.test_07_queued_and_interrupted_job_recovery) ... ERROR
+test_08_row_fingerprints_normalize_session_timezone (backend.tests.test_operations_pg.PostgreSQLOperations.test_08_row_fingerprints_normalize_session_timezone) ... ok
+
+======================================================================
+ERROR: test_06_real_job_and_idempotent_replay (backend.tests.test_operations_pg.PostgreSQLOperations.test_06_real_job_and_idempotent_replay)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "facility_id" of relation "audit_events" violates not-null constraint
+DETAIL:  Failing row contains (null, org-demo, user-operations_admin, D38, a57b1ef6-78b1-4644-816c-3936e62f467f, completed, {"kind": "backup", "error_code": null}, ce6ed49c-70d0-4821-ba0f-629d6575bace, 2026-11-12 15:51:50.592681+07).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 153, in app
+    await response(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/responses.py", line 175, in __call__
+    await self.background()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/background.py", line 67, in __call__
+    await task()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/background.py", line 23, in __call__
+    await run_in_threadpool(self.func, *self.args, **self.kwargs)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2779, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1124, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/app/domains/operations.py", line 185, in execute_job
+    db.commit()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1412, in commit
+    self._prepare_impl()
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+           ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1386, in _prepare_impl
+    self.session.flush()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4626, in flush
+    self._flush(objects)
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4730, in _flush
+    flush_context.execute()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1250, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.IntegrityError: (psycopg.errors.NotNullViolation) null value in column "facility_id" of relation "audit_events" violates not-null constraint
+DETAIL:  Failing row contains (null, org-demo, user-operations_admin, D38, a57b1ef6-78b1-4644-816c-3936e62f467f, completed, {"kind": "backup", "error_code": null}, ce6ed49c-70d0-4821-ba0f-629d6575bace, 2026-11-12 15:51:50.592681+07).
+[SQL: INSERT INTO audit_events (facility_id, organization_id, actor_id, domain, entity_id, action, details, id, created_at) VALUES (%(facility_id)s::VARCHAR, %(organization_id)s::VARCHAR, %(actor_id)s::VARCHAR, %(domain)s::VARCHAR, %(entity_id)s::VARCHAR, %(action)s::VARCHAR, %(details)s::JSONB, %(id)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE)]
+[parameters: {'facility_id': None, 'organization_id': 'org-demo', 'actor_id': 'user-operations_admin', 'domain': 'D38', 'entity_id': 'a57b1ef6-78b1-4644-816c-3936e62f467f', 'action': 'completed', 'details': Jsonb({'kind': 'backup', 'error_code': None}), 'id': 'ce6ed49c-70d0-4821-ba0f-629d6575bace', 'created_at': datetime.datetime(2026, 11, 12, 8, 51, 50, 592681, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/tests/test_operations_pg.py", line 48, in test_06_real_job_and_idempotent_replay
+    response=client.post('/api/v2/operations/jobs',json={'kind':'backup'},headers=headers);self.assertEqual(response.status_code,202,response.text)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 1144, in post
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 518, in request
+    return super().request(
+           ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 928, in send
+    raise exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 922, in send
+    response.read()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 153, in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 384, in iter_body
+    exit_stack.close()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 618, in close
+    self.__exit__(None, None, None)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 399, in close_app
+    raise exception
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/from_thread.py", line 272, in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 366, in run_app
+    await self.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/applications.py", line 1194, in __call__
+    await super().__call__(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 208, in __call__
+    raise app_exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 1839, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 2894, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 1865, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 1328, in handle
+    await effective_context.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 56, in wrapped_app
+    raise RuntimeError("Caught handled exception, but response already started.") from exc
+RuntimeError: Caught handled exception, but response already started.
+
+======================================================================
+ERROR: test_07_queued_and_interrupted_job_recovery (backend.tests.test_operations_pg.PostgreSQLOperations.test_07_queued_and_interrupted_job_recovery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.NotNullViolation: null value in column "facility_id" of relation "audit_events" violates not-null constraint
+DETAIL:  Failing row contains (null, org-demo, user-operations_admin, D38, queued-recovery, completed, {"kind": "backup", "error_code": null}, df3a98aa-a755-4f5b-b979-3830afbfc1dd, 2026-11-12 15:51:50.839046+07).
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 153, in app
+    await response(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/responses.py", line 175, in __call__
+    await self.background()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/background.py", line 67, in __call__
+    await task()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/background.py", line 23, in __call__
+    await run_in_threadpool(self.func, *self.args, **self.kwargs)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/concurrency.py", line 34, in run_in_threadpool
+    return await anyio.to_thread.run_sync(func)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/to_thread.py", line 65, in run_sync
+    return await get_async_backend().run_sync_in_worker_thread(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 2779, in run_sync_in_worker_thread
+    return await future
+           ^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/_backends/_asyncio.py", line 1124, in run
+    result = context.run(func, *args)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/app/domains/operations.py", line 185, in execute_job
+    db.commit()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 2177, in commit
+    trans.commit(_to_root=True)
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction.commit>", line 2, in commit
+    return target(fn, self, _to_root=_to_root)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1412, in commit
+    self._prepare_impl()
+  File "<sqlalchemy generated _go() wrapper for sqlalchemy.orm.session.SessionTransaction._prepare_impl>", line 2, in _prepare_impl
+    return target(fn, self)
+           ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/state_changes.py", line 137, in _go
+    ret_value = fn(self, *arg, **kw)
+                ^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 1386, in _prepare_impl
+    self.session.flush()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4626, in flush
+    self._flush(objects)
+  File "<sqlalchemy generated warned() wrapper for sqlalchemy.orm.session.Session._flush>", line 2, in _flush
+    return target(fn, self, objects=objects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/util/deprecations.py", line 281, in warned
+    return fn(*args, **kwargs)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4769, in _flush
+    with util.safe_reraise():
+         ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 166, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/session.py", line 4730, in _flush
+    flush_context.execute()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 467, in execute
+    rec.execute(self)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/unitofwork.py", line 643, in execute
+    util.preloaded.orm_persistence._save_obj(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 92, in _save_obj
+    _emit_insert_statements(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/orm/persistence.py", line 1250, in _emit_insert_statements
+    result = connection.execute(
+             ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.IntegrityError: (psycopg.errors.NotNullViolation) null value in column "facility_id" of relation "audit_events" violates not-null constraint
+DETAIL:  Failing row contains (null, org-demo, user-operations_admin, D38, queued-recovery, completed, {"kind": "backup", "error_code": null}, df3a98aa-a755-4f5b-b979-3830afbfc1dd, 2026-11-12 15:51:50.839046+07).
+[SQL: INSERT INTO audit_events (facility_id, organization_id, actor_id, domain, entity_id, action, details, id, created_at) VALUES (%(facility_id)s::VARCHAR, %(organization_id)s::VARCHAR, %(actor_id)s::VARCHAR, %(domain)s::VARCHAR, %(entity_id)s::VARCHAR, %(action)s::VARCHAR, %(details)s::JSONB, %(id)s::VARCHAR, %(created_at)s::TIMESTAMP WITH TIME ZONE)]
+[parameters: {'facility_id': None, 'organization_id': 'org-demo', 'actor_id': 'user-operations_admin', 'domain': 'D38', 'entity_id': 'queued-recovery', 'action': 'completed', 'details': Jsonb({'kind': 'backup', 'error_code': None}), 'id': 'df3a98aa-a755-4f5b-b979-3830afbfc1dd', 'created_at': datetime.datetime(2026, 11, 12, 8, 51, 50, 839046, tzinfo=datetime.timezone.utc)}]
+(Background on this error at: https://sqlalche.me/e/21/gkpj)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/tests/test_operations_pg.py", line 68, in test_07_queued_and_interrupted_job_recovery
+    recovered=client.post('/api/v2/operations/jobs/queued-recovery/recover',headers=headers);self.assertEqual(recovered.status_code,200,recovered.text)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 1144, in post
+    return self.request(
+           ^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 518, in request
+    return super().request(
+           ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 928, in send
+    raise exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 922, in send
+    response.read()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_models.py", line 881, in read
+    self._content = b"".join(self.iter_bytes())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_models.py", line 897, in iter_bytes
+    for raw_bytes in self.iter_raw():
+                     ^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_models.py", line 951, in iter_raw
+    for raw_stream_bytes in self.stream:
+                            ^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/httpx/_client.py", line 153, in __iter__
+    for chunk in self._stream:
+                 ^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 384, in iter_body
+    exit_stack.close()
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 618, in close
+    self.__exit__(None, None, None)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 399, in close_app
+    raise exception
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/anyio/from_thread.py", line 272, in _call_func
+    retval = await retval_or_awaitable
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/testclient.py", line 366, in run_app
+    await self.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/applications.py", line 1194, in __call__
+    await super().__call__(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/applications.py", line 96, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/telemetry/_asgi.py", line 151, in __call__
+    await self.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 208, in __call__
+    raise app_exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/middleware/asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/routing.py", line 683, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 2811, in app
+    await route.handle(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 1839, in handle
+    await self.original_router.handle(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 2894, in handle
+    await included_router._handle_selected(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 1865, in _handle_selected
+    await original_route.handle(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 1328, in handle
+    await effective_context.app(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/fastapi/routing.py", line 166, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/starlette/_exception_handler.py", line 56, in wrapped_app
+    raise RuntimeError("Caught handled exception, but response already started.") from exc
+RuntimeError: Caught handled exception, but response already started.
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.124s
+
+FAILED (errors=2)

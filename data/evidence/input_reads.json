@@ -1,0 +1,12 @@
+[
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/OPEN_DATA_PLAN_TH.md",
+    "scope": "full text",
+    "sha256": "a27b11c9698623acbf8db235b2efdd092fa0a0fec050124e7df909424313108d"
+  },
+  {
+    "path": "audit_inputs/HIS_POC_Audit_and_Work_Brief_2026-11-12/OPEN_DATA_MANIFEST.template.json",
+    "scope": "full text",
+    "sha256": "3cf27ec0b3342f01f5728d2852066dd54650e398a2eead4bd1f762737183b1cb"
+  }
+]

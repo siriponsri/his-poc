@@ -1,0 +1,37 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> his-poc-web@0.3.0 test
+> node --test tests/*.test.mjs
+
+✔ typed decoder frozen context_initial (0.980633ms)
+✔ typed decoder frozen context_faults (0.144993ms)
+✔ typed decoder frozen context_pending (1.100139ms)
+✔ typed decoder frozen context_edited (0.145874ms)
+✔ typed decoder frozen context_approved (0.262527ms)
+✔ typed decoder frozen context_committed (0.171683ms)
+✔ HTTP200 timeout/abstention/failure never becomes a proposal (3.39845ms)
+✔ review payload excludes edits for approve and reject, includes edit (0.95162ms)
+✔ document save preserves metadata and original draft version (0.614023ms)
+✔ discard draft intentionally adopts latest server version (0.764114ms)
+✔ dirty edits or document prevents approval (0.222627ms)
+✔ lost response retry retains identical payload/key (1.096503ms)
+✔ pending commit refuses a different proposal version (0.261485ms)
+✔ fixture adapter is read-only and never calls fetch (0.37392ms)
+✔ 403 errors and nonJSON responses remain explicit errors (0.731446ms)
+✔ no provider endpoint call and only singleton API mutation context (0.290518ms)
+✔ dirty review remains bound to old version/hash after concurrent refresh (0.354291ms)
+✔ cookie session client sends CSRF and stable idempotency key only to HIS API (3.09986ms)
+✔ definitive conflict is distinct from network/5xx unknown outcome (3.682579ms)
+✔ successful mutation replaces entire displayed revision atomically (0.791284ms)
+✔ readback reconciles only exact operation/proposal/version/hash (0.273843ms)
+✔ URL router does not consume skip link hashes; explicit unknown route (0.349284ms)
+✔ malformed v2 collections fail explicitly instead of empty fallback (0.3263ms)
+✔ session response requires server identity, permissions and CSRF (0.300061ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 159.925961

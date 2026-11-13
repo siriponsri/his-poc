@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-11-13T12:13:12.251+00:00",
+  "completed_at": "2026-11-13T12:13:29.067+00:00",
+  "source_start": "source-start.json",
+  "source_end": "source-end.json",
+  "changed_sources_during_run": [
+    "apps/web/scripts/browser_journeys.py"
+  ],
+  "source_changed_during_run": true,
+  "checks": 6,
+  "status": "PASS",
+  "note": "Each command has UTC timestamps in execution.json; source changes are disclosed and require review before binding acceptance to one candidate."
+}

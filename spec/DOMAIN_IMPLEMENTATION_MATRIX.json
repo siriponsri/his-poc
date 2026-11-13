@@ -1,0 +1,3241 @@
+{
+  "matrix_version": "1.0.0",
+  "date": "2026-11-12",
+  "project": "HIS POC Full-System Development Application",
+  "source_release": "0.2.0",
+  "source_inventory": "HIS_POC_Starter/docs/DOMAIN_SCOPE.csv",
+  "domain_count": 38,
+  "document_type": "IMPLEMENTATION_SPECIFICATION_NO_INSTANCES_OR_COMPLETION_CLAIMS",
+  "scope_change": "User now requests a coherent full-system development app. Replace the old singleton-only delivery limit in AGENTS/GOAL/BACKLOG while preserving authorization, version/evidence binding, idempotency, audit, explicit mock and no live fallback.",
+  "architecture": "One modular monolith with PostgreSQL, one frontend, local development sessions, shared patient/encounter context, domain services and versioned contracts. Shared UI primitives are allowed; one generic JSON form is not an implementation of all domains.",
+  "levels": {
+    "L0": "Inventory/planning only; domain status and description.",
+    "L1": "Navigable UI or read-only fixtures without domain transactions.",
+    "L2": "Domain-specific list/detail/forms plus actual PostgreSQL workflow, authorized state transitions, validation, audit and meaningful tests; survives reload/restart.",
+    "L3": "Selected cross-module journeys preserve identities, relationships, versions, transaction semantics and authorization, with executed integration/browser evidence.",
+    "L4": "A named real external connector verified against its actual endpoint/artifact/protocol with authorization and execution evidence; separate from L2/L3 and not claimed here."
+  },
+  "completion_policy": {
+    "all_domains_minimum": "All 38 must satisfy L2 before calling the minimum full-system development prototype complete. Do not substitute placeholders, fake success, localStorage-only data or isolated JSON forms.",
+    "coherence_gate": "Execute the canonical J01–J10 from FULL_SYSTEM_SPEC_TH.md. Domain-specific L2 is required for every domain; L3 applies to these selected cross-module journeys. Unfinished work remains INCOMPLETE/NOT_RUN.",
+    "production_limit": "L2/L3 means a functioning development prototype, not production certification, clinical effectiveness, complete national/payer standards or every feature of a hospital domain.",
+    "evidence": "Per domain record actual UI/API/DB/migration/test locations and commands/results. Fields in this matrix are specifications; implementation and acceptance start NOT_IMPLEMENTED/NOT_RUN.",
+    "external_limit": "Unknown external endpoints/credentials block only the named L4 connector. Local manual/export/synthetic-adapter workflows must still work and show actual connection status."
+  },
+  "shared_foundation": [
+    "Organization/Site/Department and user-role-scope model; real local sessions, server checks and portal ownership.",
+    "Patient identifiers, Encounter, Task with persisted domain/record/version binding; support many patients, visits and tasks without reset.",
+    "PostgreSQL foreign keys/unique/check constraints, transactional business services, optimistic versions/idempotency; no trusted IDs solely from browser context.",
+    "DocumentVersion/StorageObject with content hash, immutable attestations/amendments, AuditEvent and operation correlation IDs.",
+    "Decimal amount/currency and price snapshots; distinct billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost; immutable posted ledger and stock movements.",
+    "Versioned OpenAPI/DTOs and migration/reconciliation plan; preserve old tested behavior or explicitly version breaking changes.",
+    "Synthetic multi-entity seeds with source/license/generator manifests; patient/document/model inputs remain untrusted data."
+  ],
+  "common_L2_acceptance": [
+    "List/search/detail/domain-specific form and valid state transitions execute against the backend and PostgreSQL.",
+    "Reload/restart preserves state; create a second patient/encounter/task or non-patient business record without resetting prior evidence.",
+    "Wrong role/scope, stale version, invalid transition and duplicate command are rejected without partial writes; accepted actions create audit.",
+    "Meaningful domain tests plus browser interaction evidence where available; build/fixtures alone do not prove behavior.",
+    "No unvalidated dose, triage, blood-compatibility or diagnosis automation; clinical values and approvals are manual/synthetic for this prototype."
+  ],
+  "cross_module_journeys": [
+    {
+      "id": "J01",
+      "name_th": "Login registration → ลงทะเบียน → นัด/คิว → เปิด OPD → clinician เปิด encounter → document → AI proposal/edit/review → result",
+      "domains": [
+        "D34",
+        "D01",
+        "D02",
+        "D03",
+        "D22",
+        "D37"
+      ],
+      "acceptance": "patient/encounter/document version เดียวกัน; role change และ audit ถูกต้อง"
+    },
+    {
+      "id": "J02",
+      "name_th": "Clinician สร้าง lab order → lab รับงาน/เก็บ specimen → ลงผลสังเคราะห์ → release → clinician acknowledge",
+      "domains": [
+        "D03",
+        "D07",
+        "D10",
+        "D22"
+      ],
+      "acceptance": "order/result linkage และ correction history; ไม่มีการอ้างว่า LIS เชื่อมแล้ว"
+    },
+    {
+      "id": "J03",
+      "name_th": "Medication order → pharmacist review → จ่ายตาม lot → stock movement → charge",
+      "domains": [
+        "D03",
+        "D07",
+        "D08",
+        "D28",
+        "D23"
+      ],
+      "acceptance": "transaction, lot/expiry/status checks, quantity conservation และไม่จ่าย/คิดเงินซ้ำเมื่อ retry"
+    },
+    {
+      "id": "J04",
+      "name_th": "Admit → จัดเตียง → transfer → nursing/handoff → discharge → follow-up",
+      "domains": [
+        "D01",
+        "D04",
+        "D05",
+        "D06",
+        "D02",
+        "D20"
+      ],
+      "acceptance": "ไม่มีเตียงซ้อน, current location/version ตรงกัน, tasks ผูก encounter ถูกต้อง"
+    },
+    {
+      "id": "J05",
+      "name_th": "Charges → invoice/claim draft → completeness review → synthetic remittance → receipt/refund/reconciliation → cost view",
+      "domains": [
+        "D23",
+        "D24",
+        "D25",
+        "D26",
+        "D22",
+        "D35"
+      ],
+      "acceptance": "billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost แยกกัน; ไม่มีการอ้างส่ง payer/รับเงินจริง"
+    },
+    {
+      "id": "J06",
+      "name_th": "Purchase request → approval → PO → goods receipt → lot/stock → issue/return → supplier obligation",
+      "domains": [
+        "D27",
+        "D28",
+        "D25",
+        "D26"
+      ],
+      "acceptance": "trace documents, quantities, duplicate receipt/issue prevention และ authorized posting"
+    },
+    {
+      "id": "J07",
+      "name_th": "User/role administration → login/scope change → prohibited API call → revoked session → audit",
+      "domains": [
+        "D30",
+        "D34",
+        "D01"
+      ],
+      "acceptance": "อ่าน/เขียน/ส่งออกข้ามสิทธิไม่ได้; audit metadata ไม่เปิด secret/body เกินจำเป็น"
+    },
+    {
+      "id": "J08",
+      "name_th": "Imaging request → synthetic file/study → local report/DR task → human review → referral document",
+      "domains": [
+        "D03",
+        "D07",
+        "D11",
+        "D37",
+        "D22",
+        "D20",
+        "D35"
+      ],
+      "acceptance": "file checksum และ patient/encounter linkage; ไม่มีผล DR/CAD ที่แต่งขึ้นเป็น live prediction"
+    },
+    {
+      "id": "J09",
+      "name_th": "Facility/admin tasks → maintenance/quality incident → corrective action → support workflow → operational report",
+      "domains": [
+        "D29",
+        "D30",
+        "D31",
+        "D32",
+        "D33",
+        "D38"
+      ],
+      "acceptance": "shared staff/asset/facility references และผลสรุปจาก records จริง"
+    },
+    {
+      "id": "J10",
+      "name_th": "Login patient portal → ดู encounter/result ที่เผยแพร่ให้ตน → ส่ง appointment/follow-up request",
+      "domains": [
+        "D21",
+        "D34",
+        "D01",
+        "D02",
+        "D10",
+        "D11",
+        "D20"
+      ],
+      "acceptance": "patient user เห็นเฉพาะ subject ที่ได้รับอนุญาต; staff รับคำขอผ่าน worklist เดียวกัน"
+    }
+  ],
+  "domains": [
+    {
+      "id": "D01",
+      "name_th": "ทะเบียนและตัวตนผู้ป่วย",
+      "domain_group": "patient_access",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "Partial synthetic shared-core demo only; see API_IMPLEMENTATION.md and VALIDATION_REPORT.md",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J01",
+          "J04",
+          "J07",
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "ค้นหา/รายชื่อผู้ป่วย",
+        "แฟ้มตัวตนและ identifiers",
+        "ลงทะเบียน/แก้ไข/ตรวจยืนยัน"
+      ],
+      "persisted_workflow": {
+        "name": "ลงทะเบียนผู้ป่วยหลายราย",
+        "states": [
+          "draft",
+          "verified",
+          "active",
+          "inactive"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "active"
+          },
+          {
+            "from": "active",
+            "to": "inactive"
+          }
+        ],
+        "invariants": "Identifier ที่กำหนดเป็น unique ต้องไม่ซ้ำใน issuer; ห้ามลบผู้ป่วยที่มี encounter; ไม่ merge อัตโนมัติ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Patient(id,organization_id)",
+        "PatientIdentifier(patient_id,issuer_id)",
+        "PatientContact(patient_id)"
+      ],
+      "roles": [
+        "registration",
+        "medical_records"
+      ],
+      "minimum_api_capabilities": "GET patients/search/detail; POST patients; PATCH draft/demographics with version; POST verify/activate/inactivate",
+      "acceptance_case": "สร้างผู้ป่วยสองราย ยืนยันและเปิดแฟ้มได้หลัง restart; identifier ซ้ำต้อง conflict และไม่เขียนครึ่งรายการ",
+      "cross_module_link": "D02/D03/D21 ใช้ patient_id เดียวกัน; D34 จำกัดองค์กรและสิทธิ์",
+      "external_dependency": {
+        "connector_or_reference": "MPI/ทะเบียนภายนอกและ assigning-authority mapping; ใช้ identifiers สังเคราะห์ของแอปก่อนได้",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D02",
+      "name_th": "นัดหมาย คิว และความจุบริการ",
+      "domain_group": "patient_access",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J01",
+          "J04",
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "ปฏิทินนัดและคิวบริการ",
+        "รายละเอียด slot/appointment",
+        "จอง/เลื่อน/เช็กอิน/เรียกคิว"
+      ],
+      "persisted_workflow": {
+        "name": "นัดหมายเข้าสู่การรับบริการ",
+        "states": [
+          "requested",
+          "booked",
+          "checked_in",
+          "called",
+          "completed",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "booked"
+          },
+          {
+            "from": "booked",
+            "to": "checked_in"
+          },
+          {
+            "from": "checked_in",
+            "to": "called"
+          },
+          {
+            "from": "called",
+            "to": "completed"
+          },
+          {
+            "from": "booked",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "ตรวจความจุ slot ใน transaction; check-in ซ้ำไม่สร้าง encounter/คิวซ้ำ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "ServiceSlot(department_id,practitioner_id)",
+        "Appointment(patient_id,slot_id)",
+        "QueueTicket(appointment_id,encounter_id)"
+      ],
+      "roles": [
+        "scheduler",
+        "registration",
+        "nurse"
+      ],
+      "minimum_api_capabilities": "GET slots/appointments/queues; POST book/reschedule/check-in/call/complete/cancel",
+      "acceptance_case": "ผู้ใช้สองคนจองที่นั่งสุดท้ายพร้อมกัน สำเร็จได้เพียงคนเดียว; check-in แล้วไป OPD ด้วย encounter เดิม",
+      "cross_module_link": "D01 patient → D03 encounter; D21 ส่งคำขอนัดผ่านสิทธิ์เจ้าของข้อมูล",
+      "external_dependency": {
+        "connector_or_reference": "SMS/ปฏิทิน/คิวภายนอก; เริ่มจาก in-app notification และคิวท้องถิ่น",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D03",
+      "name_th": "OPD และเวชระเบียนการตรวจ",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "Partial synthetic shared-core demo only; see API_IMPLEMENTATION.md and VALIDATION_REPORT.md",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J01",
+          "J02",
+          "J03",
+          "J08"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "รายชื่อ encounter OPD",
+        "หน้าเวชระเบียนและงานค้าง",
+        "บันทึกตรวจ/ปิด encounter"
+      ],
+      "persisted_workflow": {
+        "name": "รับตรวจและสรุปการตรวจ",
+        "states": [
+          "waiting",
+          "in_consult",
+          "reviewed",
+          "completed",
+          "closed"
+        ],
+        "transitions": [
+          {
+            "from": "waiting",
+            "to": "in_consult"
+          },
+          {
+            "from": "in_consult",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "completed"
+          },
+          {
+            "from": "completed",
+            "to": "closed"
+          }
+        ],
+        "invariants": "คำวินิจฉัยและแผนเป็นข้อมูลที่บุคลากรกรอก; context ต้องตรงผู้ป่วย; การปิดมีรายการงานค้างให้ยืนยัน"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Encounter(patient_id,department_id,practitioner_id)",
+        "ConsultationNote(encounter_id,document_version_id)",
+        "EncounterDisposition(encounter_id)"
+      ],
+      "roles": [
+        "clinician",
+        "nurse",
+        "registration"
+      ],
+      "minimum_api_capabilities": "GET encounters/detail/timeline; POST encounter/start/note/review/complete/close",
+      "acceptance_case": "เปิด encounter สองราย บันทึกแยกกัน สั่งตรวจและอ่านผลกลับในแฟ้มที่ถูกต้องหลัง reload",
+      "cross_module_link": "D07 orders, D10/D11 results, D22 documents, D23 charges ใช้ encounter_id ร่วม",
+      "external_dependency": {
+        "connector_or_reference": "EMR/terminology ภายนอก; ใช้ local synthetic codes ที่ระบุแหล่งได้",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D04",
+      "name_th": "ห้องฉุกเฉิน",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J04"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "บอร์ดห้องฉุกเฉิน",
+        "รายละเอียดการประเมินและ disposition",
+        "ลงทะเบียนเหตุ/บันทึก triage/ส่งต่อ"
+      ],
+      "persisted_workflow": {
+        "name": "รับฉุกเฉินและกำหนดปลายทางโดยผู้ใช้",
+        "states": [
+          "arrived",
+          "assessed",
+          "in_care",
+          "discharged",
+          "admission_requested",
+          "referral_requested"
+        ],
+        "transitions": [
+          {
+            "from": "arrived",
+            "to": "assessed"
+          },
+          {
+            "from": "assessed",
+            "to": "in_care"
+          },
+          {
+            "from": "in_care",
+            "to": "discharged"
+          },
+          {
+            "from": "in_care",
+            "to": "admission_requested"
+          },
+          {
+            "from": "in_care",
+            "to": "referral_requested"
+          }
+        ],
+        "invariants": "ระดับ triage และการตัดสินใจเป็น manual; ไม่สร้างคะแนน/diagnosis จาก AI; บันทึกฉบับและผู้ประเมิน"
+      },
+      "principal_entities_and_foreign_keys": [
+        "EmergencyEpisode(encounter_id)",
+        "TriageAssessment(episode_id,assessor_id)",
+        "EmergencyDisposition(episode_id)"
+      ],
+      "roles": [
+        "triage_nurse",
+        "emergency_clinician"
+      ],
+      "minimum_api_capabilities": "GET emergency-board/episode; POST arrival/assessment/update/disposition",
+      "acceptance_case": "บันทึก triage สังเคราะห์แล้วขอ admit สร้างคำขอ D05 ครั้งเดียว พร้อมประวัติเดิมตรวจย้อนหลังได้",
+      "cross_module_link": "D01/D03 identity/encounter → D05 admission หรือ D20 referral",
+      "external_dependency": {
+        "connector_or_reference": "EMS/ambulance และเกณฑ์โรงพยาบาล; endpoint ไม่จำเป็นต่อ manual workflow",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D05",
+      "name_th": "ผู้ป่วยใน เตียง และการปิดการรับบริการ",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J04"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "ผังเตียงและ admission list",
+        "รายละเอียดการนอนโรงพยาบาล",
+        "รับเข้า/ย้ายเตียง/จำหน่าย"
+      ],
+      "persisted_workflow": {
+        "name": "จัดเตียงและปิด admission",
+        "states": [
+          "requested",
+          "admitted",
+          "transfer_requested",
+          "discharge_ready",
+          "discharged"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "admitted"
+          },
+          {
+            "from": "admitted",
+            "to": "transfer_requested"
+          },
+          {
+            "from": "transfer_requested",
+            "to": "admitted"
+          },
+          {
+            "from": "admitted",
+            "to": "discharge_ready"
+          },
+          {
+            "from": "discharge_ready",
+            "to": "discharged"
+          }
+        ],
+        "invariants": "เตียงมี active assignment ได้หนึ่งรายการ; ย้าย/จำหน่ายและคืนเตียงเป็น transaction; ห้ามรีเซ็ต encounter เก่า"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Admission(encounter_id)",
+        "Bed(ward_id)",
+        "BedAssignment(admission_id,bed_id)",
+        "DischargeRecord(admission_id)"
+      ],
+      "roles": [
+        "admission_officer",
+        "ward_nurse",
+        "clinician"
+      ],
+      "minimum_api_capabilities": "GET beds/admissions; POST admit/transfer/discharge-ready/discharge",
+      "acceptance_case": "admit แข่งกันใช้เตียงเดียวต้องสำเร็จหนึ่งราย; ย้ายเตียงแล้วเตียงเก่าว่างและประวัติยังครบ",
+      "cross_module_link": "D04 admission request; D06 handover; D19 meal; D23 inpatient charges",
+      "external_dependency": {
+        "connector_or_reference": "Bed-management ภายนอก; ward/bed catalog สร้างในแอปได้",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D06",
+      "name_th": "งานพยาบาลและการส่งเวร",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J04"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "worklist งานพยาบาล/ส่งเวร",
+        "care plan และ handover detail",
+        "บันทึกกิจกรรม/ลงนาม/รับเวร"
+      ],
+      "persisted_workflow": {
+        "name": "ส่งเวรพร้อมงานค้าง",
+        "states": [
+          "draft",
+          "signed",
+          "acknowledged",
+          "amended"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "signed"
+          },
+          {
+            "from": "signed",
+            "to": "acknowledged"
+          },
+          {
+            "from": "acknowledged",
+            "to": "amended"
+          }
+        ],
+        "invariants": "รับเวรต้องเป็นผู้มีสิทธิ์; ฉบับลงนามคงเดิมและ amendment มีเหตุผล; ไม่ถือ task complete เท่ากับให้ยา"
+      },
+      "principal_entities_and_foreign_keys": [
+        "NursingCarePlan(encounter_id)",
+        "NursingTask(plan_id,assignee_id)",
+        "Handover(encounter_id,document_version_id,receiving_staff_id)"
+      ],
+      "roles": [
+        "nurse",
+        "charge_nurse"
+      ],
+      "minimum_api_capabilities": "GET nursing-worklist/handover; POST care-task/complete/handover/sign/acknowledge/amend",
+      "acceptance_case": "พยาบาลเวรแรกส่งงานค้าง เวรถัดไปรับทราบแล้วเห็นงานเดิม ไม่มี task หายหรือถูกทำซ้ำ",
+      "cross_module_link": "D05 admission, D09 administration, D22 document versions และ D30 roster",
+      "external_dependency": {
+        "connector_or_reference": "Nursing/monitor systems; ใช้ manual entries และ local roster",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D07",
+      "name_th": "คำสั่งแพทย์และการจัดการคำสั่ง",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J02",
+          "J03",
+          "J08"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "รายการคำสั่งแยกประเภท",
+        "order detail/status",
+        "สร้าง/ตรวจยืนยัน/แก้ไขด้วยฉบับใหม่/ยกเลิก"
+      ],
+      "persisted_workflow": {
+        "name": "คำสั่งที่บุคลากรตรวจยืนยัน",
+        "states": [
+          "draft",
+          "signed",
+          "acknowledged",
+          "in_progress",
+          "completed",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "signed"
+          },
+          {
+            "from": "signed",
+            "to": "acknowledged"
+          },
+          {
+            "from": "acknowledged",
+            "to": "in_progress"
+          },
+          {
+            "from": "in_progress",
+            "to": "completed"
+          },
+          {
+            "from": "signed",
+            "to": "cancelled"
+          },
+          {
+            "from": "acknowledged",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "ไม่คำนวณขนาดยา/ข้อบ่งชี้อัตโนมัติ; signed order แก้ด้วย revision; ปลายทางตรวจ cancellation/version"
+      },
+      "principal_entities_and_foreign_keys": [
+        "ClinicalOrder(encounter_id,requester_id,catalog_item_id)",
+        "OrderRevision(order_id)",
+        "OrderTask(order_id,assignee_id)"
+      ],
+      "roles": [
+        "clinician",
+        "authorized_order_receiver"
+      ],
+      "minimum_api_capabilities": "GET orders/catalog/status; POST draft/sign/acknowledge/start/complete/cancel",
+      "acceptance_case": "ลงคำสั่งแล็บและยาแล้วเกิด worklist ที่ถูกประเภท; retry ไม่สร้างคำสั่งซ้ำและยกเลิกตรวจย้อนหลังได้",
+      "cross_module_link": "D08 pharmacy, D10 lab, D11 imaging และ D23 charge source",
+      "external_dependency": {
+        "connector_or_reference": "e-prescription/order interfaces; manual synthetic orders ทำงานได้ในแอป",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D08",
+      "name_th": "เภสัชกรรมและการจ่ายยา",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J03"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "คิวเภสัช/stock ที่จ่ายได้",
+        "prescription และ dispense detail",
+        "ตรวจทาน/จัดยา/ยืนยันจ่าย/คืน"
+      ],
+      "persisted_workflow": {
+        "name": "จ่ายยาตามคำสั่งที่ตรวจโดยคน",
+        "states": [
+          "received",
+          "reviewed",
+          "prepared",
+          "dispensed",
+          "rejected",
+          "return_recorded"
+        ],
+        "transitions": [
+          {
+            "from": "received",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "prepared"
+          },
+          {
+            "from": "prepared",
+            "to": "dispensed"
+          },
+          {
+            "from": "received",
+            "to": "rejected"
+          },
+          {
+            "from": "dispensed",
+            "to": "return_recorded"
+          }
+        ],
+        "invariants": "ตรวจยาด้วยผู้มีสิทธิ์; ไม่แนะนำ dose; quantity/lot/stock/charge ผูก transaction และห้ามติดลบ; การคืนสร้างรายการใหม่ผูก dispense line เดิม โดยยอดคืนสะสมไม่เกินยอดจ่ายที่ยังคืนได้; disposition ของยาคืนต้องมีผู้ตรวจและไม่เพิ่ม available stock อัตโนมัติ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "MedicationOrder(order_id)",
+        "Dispense(medication_order_id,encounter_id)",
+        "DispenseLine(item_id,lot_id,quantity)",
+        "ReturnLine(dispense_line_id)"
+      ],
+      "roles": [
+        "pharmacist",
+        "pharmacy_technician"
+      ],
+      "minimum_api_capabilities": "GET pharmacy-queue/dispense/eligible-lots; POST review/prepare/dispense/return",
+      "acceptance_case": "จ่ายจาก lot สังเคราะห์แล้ว stock ลด/charge เพิ่มครั้งเดียว; คืนอ้างอิงรายการเดิมและมี audit; ส่งคืนซ้ำหรือเกินยอดต้องถูกปฏิเสธ และของที่ยังไม่ผ่าน disposition ไม่กลับเข้า available stock",
+      "cross_module_link": "D07 order → D28 inventory movement → D23 charge; D09 อ่านรายการที่อนุมัติ",
+      "external_dependency": {
+        "connector_or_reference": "Drug catalog/barcode/robot; ใช้ synthetic formulary พร้อมหน่วยที่ระบุชัด",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D09",
+      "name_th": "การให้ยา ณ จุดดูแล",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "MAR/worklist ตามเวลา",
+        "administration history",
+        "ยืนยันผู้ป่วย/บันทึกให้ยา/งด/แก้ไขเหตุการณ์"
+      ],
+      "persisted_workflow": {
+        "name": "บันทึกการให้ยาที่ผู้ปฏิบัติยืนยัน",
+        "states": [
+          "scheduled",
+          "verified",
+          "administered",
+          "held",
+          "not_given",
+          "corrected"
+        ],
+        "transitions": [
+          {
+            "from": "scheduled",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "administered"
+          },
+          {
+            "from": "verified",
+            "to": "held"
+          },
+          {
+            "from": "verified",
+            "to": "not_given"
+          },
+          {
+            "from": "administered",
+            "to": "corrected"
+          }
+        ],
+        "invariants": "กรอก dose/time/route ตามคำสั่งด้วยคน; ไม่แปลงหน่วยหรือคำนวณยาอัตโนมัติ; event ซ้ำต้องป้องกัน"
+      },
+      "principal_entities_and_foreign_keys": [
+        "AdministrationTask(medication_order_id,encounter_id)",
+        "AdministrationEvent(task_id,nurse_id)",
+        "AdministrationCorrection(original_event_id)"
+      ],
+      "roles": [
+        "nurse",
+        "authorized_witness"
+      ],
+      "minimum_api_capabilities": "GET mar/tasks/history; POST verify/administer/hold/not-given/correct",
+      "acceptance_case": "บันทึกให้ยาหนึ่งครั้งแล้วส่งซ้ำไม่เพิ่ม event; รายการงดต้องมีเหตุผลและไม่แสดงว่า administered",
+      "cross_module_link": "D07 signed order, D08 dispense และ D06 nursing timeline",
+      "external_dependency": {
+        "connector_or_reference": "BCMA/pump; manual identity verification ใช้ได้โดยไม่เชื่อมอุปกรณ์",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D10",
+      "name_th": "ห้องปฏิบัติการและผลวิกฤต",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "integration-planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J02",
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "lab worklist/specimen list",
+        "accession และผลตรวจ",
+        "รับสิ่งส่งตรวจ/กรอกผล/ตรวจรับรอง/แก้ผล"
+      ],
+      "persisted_workflow": {
+        "name": "manual laboratory result",
+        "states": [
+          "ordered",
+          "collected",
+          "received",
+          "preliminary",
+          "verified",
+          "released",
+          "corrected"
+        ],
+        "transitions": [
+          {
+            "from": "ordered",
+            "to": "collected"
+          },
+          {
+            "from": "collected",
+            "to": "received"
+          },
+          {
+            "from": "received",
+            "to": "preliminary"
+          },
+          {
+            "from": "preliminary",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "released"
+          },
+          {
+            "from": "released",
+            "to": "corrected"
+          }
+        ],
+        "invariants": "ผล/หน่วย/reference เป็นข้อมูล manual; release ต้องตรวจสิทธิ์และ version; corrected result เก็บฉบับเดิม"
+      },
+      "principal_entities_and_foreign_keys": [
+        "LabRequest(order_id)",
+        "Specimen(patient_id,encounter_id)",
+        "Accession(specimen_id)",
+        "LabResult(accession_id,analyte_id,unit_id,version)"
+      ],
+      "roles": [
+        "specimen_collector",
+        "lab_technologist",
+        "lab_verifier"
+      ],
+      "minimum_api_capabilities": "GET lab-worklist/specimens/results; POST collect/receive/enter-result/verify/release/correct",
+      "acceptance_case": "กรอกผล synthetic และ release แล้ว OPD เห็นผลของ encounter นั้น; correction แสดงทั้งฉบับเก่าและใหม่",
+      "cross_module_link": "D07 request → D03/D05 results → D22 report/D23 charge",
+      "external_dependency": {
+        "connector_or_reference": "LIS/analyzer/LOINC mapping; manual entry/release ไม่รอ endpoint",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D11",
+      "name_th": "รังสี RIS และภาพทางการแพทย์",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "integration-planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J08",
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "imaging worklist/ตารางนัด",
+        "study/files/report detail",
+        "อัปโหลดไฟล์สังเคราะห์/ร่างและรับรองรายงาน"
+      ],
+      "persisted_workflow": {
+        "name": "รับภาพไฟล์และเผยแพร่รายงานโดยคน",
+        "states": [
+          "ordered",
+          "scheduled",
+          "acquired",
+          "report_draft",
+          "verified",
+          "released",
+          "amended"
+        ],
+        "transitions": [
+          {
+            "from": "ordered",
+            "to": "scheduled"
+          },
+          {
+            "from": "scheduled",
+            "to": "acquired"
+          },
+          {
+            "from": "acquired",
+            "to": "report_draft"
+          },
+          {
+            "from": "report_draft",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "released"
+          },
+          {
+            "from": "released",
+            "to": "amended"
+          }
+        ],
+        "invariants": "ไฟล์ allowlist/size/hash และ ownership ตรวจจริง; ไม่อ้าง PACS/DICOM conformance หรือวินิจฉัยจากภาพ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "ImagingRequest(order_id)",
+        "ImagingStudy(encounter_id)",
+        "ImageAsset(study_id,storage_object_id,sha256)",
+        "ImagingReport(study_id,document_version_id)"
+      ],
+      "roles": [
+        "radiology_scheduler",
+        "radiographer",
+        "radiologist"
+      ],
+      "minimum_api_capabilities": "GET imaging-worklist/studies/files; POST schedule/upload/report/verify/release/amend",
+      "acceptance_case": "แนบภาพสังเคราะห์กับ study แล้วเปิดจากแฟ้มถูกคน; release report ตามสิทธิ์และเข้าถึงไฟล์ข้ามคนไม่ได้",
+      "cross_module_link": "D07 request, D03/D05 chart, D22 documents และ D29 equipment availability",
+      "external_dependency": {
+        "connector_or_reference": "RIS/PACS/DICOM; L2 ใช้ local file storage พร้อม metadata ใน PostgreSQL",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D12",
+      "name_th": "ห้องผ่าตัดและวิสัญญี",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "OR schedule/รายการผ่าตัด",
+        "case/checklist/บันทึกวิสัญญี",
+        "จองห้อง/ตรวจ checklist/บันทึกและปิด case"
+      ],
+      "persisted_workflow": {
+        "name": "การจัดตารางและบันทึกหัตถการ",
+        "states": [
+          "requested",
+          "scheduled",
+          "checklist_verified",
+          "in_progress",
+          "documented",
+          "closed",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "scheduled"
+          },
+          {
+            "from": "scheduled",
+            "to": "checklist_verified"
+          },
+          {
+            "from": "checklist_verified",
+            "to": "in_progress"
+          },
+          {
+            "from": "in_progress",
+            "to": "documented"
+          },
+          {
+            "from": "documented",
+            "to": "closed"
+          },
+          {
+            "from": "scheduled",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "ไม่ให้ dose/วิสัญญี recommendation; ห้อง/เวลาไม่ชน; checklist verification ต้องมี actor จริง"
+      },
+      "principal_entities_and_foreign_keys": [
+        "ProcedureCase(encounter_id,order_id)",
+        "RoomReservation(room_id,case_id)",
+        "ProcedureChecklist(case_id)",
+        "AnesthesiaRecord(case_id,document_version_id)"
+      ],
+      "roles": [
+        "or_scheduler",
+        "surgeon",
+        "anesthesia_clinician",
+        "or_nurse"
+      ],
+      "minimum_api_capabilities": "GET or-calendar/cases/checklists; POST schedule/check/record/close/cancel",
+      "acceptance_case": "จองห้องแล้วตรวจ checklist และปิด case เก็บเอกสารครบ; การจองชนกันถูกปฏิเสธ",
+      "cross_module_link": "D05 admission, D18 blood request, D31 instruments และ D23 charges",
+      "external_dependency": {
+        "connector_or_reference": "OR/anesthesia devices; manual documentation ไม่รอ device integration",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D13",
+      "name_th": "ICU และข้อมูลจากอุปกรณ์",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "ICU patient/rounds worklist",
+        "observation timeline",
+        "กรอก observation/round note/ตรวจและส่งเวร"
+      ],
+      "persisted_workflow": {
+        "name": "round และข้อมูลสังเกตแบบ manual",
+        "states": [
+          "draft",
+          "recorded",
+          "reviewed",
+          "signed",
+          "amended"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "recorded"
+          },
+          {
+            "from": "recorded",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "signed"
+          },
+          {
+            "from": "signed",
+            "to": "amended"
+          }
+        ],
+        "invariants": "บันทึกค่าและหน่วยที่คนกรอก; ไม่สร้าง alarm/คะแนนวิกฤต/ตั้งอุปกรณ์อัตโนมัติ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "ICUEpisode(admission_id)",
+        "Observation(encounter_id,unit_id,observed_at)",
+        "ICURound(episode_id,document_version_id)",
+        "DeviceAssignment(episode_id,asset_id)"
+      ],
+      "roles": [
+        "icu_nurse",
+        "intensivist"
+      ],
+      "minimum_api_capabilities": "GET icu-board/observations/rounds; POST observation/round/review/sign/amend",
+      "acceptance_case": "บันทึกหลายเวลาของผู้ป่วยสองคนแล้ว timeline ไม่ปน; แก้ค่าที่ลงนามต้องเป็นฉบับใหม่",
+      "cross_module_link": "D05 admission, D06 handover, D29 equipment และ D22 signed notes",
+      "external_dependency": {
+        "connector_or_reference": "Monitor/ventilator streams; manual observations เป็น workflow ท้องถิ่น",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D14",
+      "name_th": "สูติกรรม มารดา และทารกแรกเกิด",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "ทะเบียน pregnancy/ตารางคลอด",
+        "maternal episode และ mother–child links",
+        "บันทึกครรภ์/คลอด/ยืนยันทารก"
+      ],
+      "persisted_workflow": {
+        "name": "บันทึกการคลอดและเชื่อมตัวตนโดยผู้ใช้",
+        "states": [
+          "registered",
+          "antenatal_active",
+          "delivery_documented",
+          "verified",
+          "closed"
+        ],
+        "transitions": [
+          {
+            "from": "registered",
+            "to": "antenatal_active"
+          },
+          {
+            "from": "antenatal_active",
+            "to": "delivery_documented"
+          },
+          {
+            "from": "delivery_documented",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "closed"
+          }
+        ],
+        "invariants": "อายุครรภ์/ผลการคลอดเป็น manual; การสร้างทารกและ link ต้อง atomic และ retry ไม่เพิ่มตัวตนซ้ำ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "PregnancyEpisode(mother_patient_id)",
+        "DeliveryRecord(episode_id,encounter_id)",
+        "ParentChildLink(mother_patient_id,child_patient_id)",
+        "BirthRecord(child_patient_id)"
+      ],
+      "roles": [
+        "obstetric_clinician",
+        "midwife",
+        "registration"
+      ],
+      "minimum_api_capabilities": "GET pregnancies/deliveries/links; POST episode/delivery/verify-link/close",
+      "acceptance_case": "บันทึกคลอดสังเคราะห์แล้วลงทะเบียนทารกหนึ่งราย ลิงก์แม่–ลูกคงอยู่หลัง restart และส่งซ้ำไม่สร้างลูกซ้ำ",
+      "cross_module_link": "D01 identities, D05 admission, D15 child follow-up และ D22 records",
+      "external_dependency": {
+        "connector_or_reference": "Birth registry/maternal reporting; บันทึกภายในได้ก่อนเชื่อมทะเบียน",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D15",
+      "name_th": "กุมารเวชกรรมและการเติบโต",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "pediatric visit list",
+        "growth/immunization history",
+        "กรอก measurement/วัคซีนที่บันทึกด้วยคน/ทบทวน"
+      ],
+      "persisted_workflow": {
+        "name": "ทบทวนข้อมูลเด็กตามครั้งรับบริการ",
+        "states": [
+          "draft",
+          "recorded",
+          "reviewed",
+          "closed",
+          "amended"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "recorded"
+          },
+          {
+            "from": "recorded",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "closed"
+          },
+          {
+            "from": "closed",
+            "to": "amended"
+          }
+        ],
+        "invariants": "เก็บค่าดิบ/หน่วยและแสดงกราฟตามเวลา; ไม่คำนวณ dose/percentile หรือแนะนำวัคซีนโดยโมเดล"
+      },
+      "principal_entities_and_foreign_keys": [
+        "PediatricVisit(encounter_id)",
+        "GrowthMeasurement(patient_id,unit_id,measured_at)",
+        "ImmunizationRecord(patient_id,encounter_id,item_id,lot_id)"
+      ],
+      "roles": [
+        "pediatric_clinician",
+        "nurse"
+      ],
+      "minimum_api_capabilities": "GET child-history/growth/immunizations; POST measurements/records/review/close/amend",
+      "acceptance_case": "เพิ่ม measurement ต่างวันแล้วกราฟ/history ใช้ค่าจริงจากฐาน; ฉบับแก้และผู้แก้ตรวจย้อนหลังได้",
+      "cross_module_link": "D14 parent-child link, D03 visit, D28 lot reference และ D22 note",
+      "external_dependency": {
+        "connector_or_reference": "Immunization registry/growth references; เริ่มด้วย raw measurement และ manual records",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D16",
+      "name_th": "เวชศาสตร์ฟื้นฟูและกายภาพบำบัด",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "rehab referral/session calendar",
+        "แผนและ progress history",
+        "รับประเมิน/จัดแผน/นัดและบันทึก session"
+      ],
+      "persisted_workflow": {
+        "name": "แผนฟื้นฟูและการติดตาม",
+        "states": [
+          "requested",
+          "assessed",
+          "active",
+          "reviewed",
+          "completed",
+          "discontinued"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "assessed"
+          },
+          {
+            "from": "assessed",
+            "to": "active"
+          },
+          {
+            "from": "active",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "active"
+          },
+          {
+            "from": "reviewed",
+            "to": "completed"
+          },
+          {
+            "from": "active",
+            "to": "discontinued"
+          }
+        ],
+        "invariants": "เป้าหมาย/แบบประเมินกรอกโดยคน; แผนมีรุ่นและผู้รับผิดชอบ; ไม่อ้างผลการรักษาจาก mock"
+      },
+      "principal_entities_and_foreign_keys": [
+        "RehabReferral(order_id,encounter_id)",
+        "RehabPlan(patient_id,therapist_id)",
+        "TherapySession(plan_id,appointment_id)",
+        "FunctionalAssessment(session_id)"
+      ],
+      "roles": [
+        "rehab_clinician",
+        "physiotherapist",
+        "scheduler"
+      ],
+      "minimum_api_capabilities": "GET referrals/plans/sessions; POST assess/plan/schedule/session/review/complete",
+      "acceptance_case": "รับ referral จัดสาม session บันทึกผลแต่ละครั้งแล้วปิดแผนโดยไม่ลบ progress เดิม",
+      "cross_module_link": "D07 referral/order, D02 scheduling, D03 chart และ D23 session charges",
+      "external_dependency": {
+        "connector_or_reference": "Rehab devices/assessment instruments; เลือกแบบ manual ที่สิทธิใช้งานยืนยันแล้ว",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D17",
+      "name_th": "ทันตกรรมและคลินิกเฉพาะทาง",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "dental/specialty appointment list",
+        "tooth chart/แผนหัตถการ",
+        "บันทึกตำแหน่ง/เสนอแผน/ยืนยันทำ"
+      ],
+      "persisted_workflow": {
+        "name": "หัตถการตามแผนที่บุคลากรเลือก",
+        "states": [
+          "draft",
+          "reviewed",
+          "scheduled",
+          "performed",
+          "verified",
+          "closed",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "scheduled"
+          },
+          {
+            "from": "scheduled",
+            "to": "performed"
+          },
+          {
+            "from": "performed",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "closed"
+          },
+          {
+            "from": "scheduled",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "ตำแหน่งและหัตถการเลือกด้วยคน; ไม่ทำ diagnosis/plan อัตโนมัติ; chart edits มี version"
+      },
+      "principal_entities_and_foreign_keys": [
+        "SpecialtyVisit(encounter_id)",
+        "DentalChart(patient_id,version)",
+        "ToothFinding(chart_id,tooth_code)",
+        "DentalProcedure(order_id,tooth_code)"
+      ],
+      "roles": [
+        "dentist",
+        "specialty_clinician",
+        "dental_assistant"
+      ],
+      "minimum_api_capabilities": "GET specialty-visits/charts/plans; POST finding/plan/schedule/perform/verify/close",
+      "acceptance_case": "บันทึกคนละตำแหน่งในสอง visit แล้วเปิด chart ย้อนหลังถูกฉบับ และค่าบริการผูก procedure ถูกตัว",
+      "cross_module_link": "D01/D03 identity/encounter, D02 appointments และ D23 charges",
+      "external_dependency": {
+        "connector_or_reference": "Dental imaging/terminology; ใช้ manual chart และรหัส synthetic ที่ประกาศชัด",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D18",
+      "name_th": "ธนาคารเลือดและการให้เลือด",
+      "domain_group": "diagnostics_and_treatment",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "blood requests/unit inventory",
+        "unit trace และการตรวจโดยผู้มีสิทธิ์",
+        "ร้องขอ/จอง/บันทึกผลตรวจ/อนุมัติปล่อย"
+      ],
+      "persisted_workflow": {
+        "name": "ติดตามถุงเลือดโดยยืนยัน compatibility ด้วยคน",
+        "states": [
+          "requested",
+          "reviewed",
+          "reserved",
+          "compatibility_verified",
+          "released",
+          "administration_recorded",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "reserved"
+          },
+          {
+            "from": "reserved",
+            "to": "compatibility_verified"
+          },
+          {
+            "from": "compatibility_verified",
+            "to": "released"
+          },
+          {
+            "from": "released",
+            "to": "administration_recorded"
+          },
+          {
+            "from": "reserved",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "ห้ามคำนวณ blood compatibility หรือปล่อยจาก AI; unit จองซ้อนไม่ได้; verification ผูก patient/request/unit revision และหลักฐานของผู้ตรวจ; ก่อน release ตรวจ expiry/quarantine/recall flags ที่บันทึกไว้และ eligibility ตาม policy โดย transaction เดียวกัน; ถ้าข้อมูลที่ใช้ยืนยันเปลี่ยนต้องตรวจใหม่"
+      },
+      "principal_entities_and_foreign_keys": [
+        "BloodRequest(order_id,encounter_id)",
+        "BloodUnit(unit_identifier,lot_id,expiry_at,eligibility_status,version)",
+        "UnitReservation(request_id,unit_id)",
+        "CompatibilityVerification(reservation_id,verifier_id,patient_id,request_version,unit_version,evidence_ref)",
+        "TransfusionEvent(unit_id,encounter_id)"
+      ],
+      "roles": [
+        "blood_bank_staff",
+        "authorized_verifier",
+        "transfusion_nurse"
+      ],
+      "minimum_api_capabilities": "GET requests/units/trace; POST review/reserve/manual-verification/release/record-event",
+      "acceptance_case": "จอง unit เดียวพร้อมกันต้องได้หนึ่งคำขอ; ผู้ตรวจยืนยันแล้วปล่อยและตามกลับผู้รับ/lot ได้; ถ้า unit หมดอายุ ถูก quarantine/recall หรือ revision เปลี่ยนหลัง verification ต้อง release ไม่ได้และไม่มี partial write",
+      "cross_module_link": "D07 request, D12 procedure, D05 admission และ D28 lot trace",
+      "external_dependency": {
+        "connector_or_reference": "Blood-bank/analyzer/hemovigilance; local synthetic unit trace ไม่อ้าง clinical compatibility validation",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D19",
+      "name_th": "โภชนาการและอาหารผู้ป่วย",
+      "domain_group": "clinical_care",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "diet/meal worklist",
+        "diet order และรอบส่งอาหาร",
+        "กรอกแผนโดยคน/ตรวจ/เตรียม/ยืนยันส่ง"
+      ],
+      "persisted_workflow": {
+        "name": "อาหารตามคำสั่งที่ตรวจแล้ว",
+        "states": [
+          "ordered",
+          "reviewed",
+          "prepared",
+          "delivered",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "ordered",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "prepared"
+          },
+          {
+            "from": "prepared",
+            "to": "delivered"
+          },
+          {
+            "from": "ordered",
+            "to": "cancelled"
+          },
+          {
+            "from": "reviewed",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "ข้อจำกัดและอาหารเป็น manual; แสดงข้อมูลแพ้ที่บันทึกไว้โดยไม่แนะนำอาหารเอง; รอบส่งมี unique key"
+      },
+      "principal_entities_and_foreign_keys": [
+        "DietOrder(encounter_id,author_id)",
+        "NutritionReview(order_id,dietitian_id)",
+        "MealDispatch(order_id,meal_period,ward_id)"
+      ],
+      "roles": [
+        "dietitian",
+        "ward_nurse",
+        "kitchen_staff"
+      ],
+      "minimum_api_capabilities": "GET diet-orders/meal-rounds; POST order/review/prepare/deliver/cancel",
+      "acceptance_case": "เปลี่ยน diet ก่อนรอบเตรียมแล้วครัวเห็นฉบับล่าสุด; ยืนยันส่งซ้ำไม่เพิ่มมื้อและรายการยกเลิกไม่ถูกเตรียม",
+      "cross_module_link": "D05 ward/bed, D03 clinical context และ D06 nursing acknowledgement",
+      "external_dependency": {
+        "connector_or_reference": "Nutrition/food vendors; local preparation/delivery log ทำงานได้เอง",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D20",
+      "name_th": "การส่งต่อและการติดตามผล",
+      "domain_group": "coordination_and_records",
+      "current_v020": {
+        "status": "integration-planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J04",
+          "J08",
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "referral worklist",
+        "ปลายทาง/เอกสาร/response history",
+        "ร่าง/ตรวจ/สร้างไฟล์ส่งออก/บันทึกตอบกลับ"
+      ],
+      "persisted_workflow": {
+        "name": "เตรียมส่งต่อและติดตามหลักฐาน",
+        "states": [
+          "draft",
+          "reviewed",
+          "exported",
+          "response_recorded",
+          "closed",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "exported"
+          },
+          {
+            "from": "exported",
+            "to": "response_recorded"
+          },
+          {
+            "from": "response_recorded",
+            "to": "closed"
+          },
+          {
+            "from": "draft",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "exported ไม่เท่ากับ remote received; response manual ต้องมีแหล่ง/ผู้บันทึก; ไม่ส่งข้อความนอกระบบเอง"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Referral(encounter_id,destination_org_id)",
+        "ReferralDocument(referral_id,document_version_id)",
+        "ReferralResponse(referral_id,source_type,attachment_id)"
+      ],
+      "roles": [
+        "clinician",
+        "referral_coordinator"
+      ],
+      "minimum_api_capabilities": "GET referrals/detail/export-status; POST draft/review/export/record-response/close",
+      "acceptance_case": "สร้าง referral packet จากฉบับเอกสารที่เลือก ดาวน์โหลดได้และสถานะยังแสดงว่ายังไม่ยืนยันการรับจากภายนอก",
+      "cross_module_link": "D04/D03 disposition, D22 versioned documents และ D35 connector status",
+      "external_dependency": {
+        "connector_or_reference": "Referral network/FHIR/transport; local export และ manual response ใช้งานได้โดยไม่รอ endpoint",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D21",
+      "name_th": "พอร์ทัลและการเข้าถึงของผู้ป่วย",
+      "domain_group": "coordination_and_records",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "portal login/รายการนัดและผลของตน",
+        "encounter/result ที่อนุญาตเผยแพร่",
+        "ขอนัด/ขอแก้ข้อมูล/ติดตามคำขอ"
+      ],
+      "persisted_workflow": {
+        "name": "ผู้ป่วยส่งคำขอนัดของตน",
+        "states": [
+          "requested",
+          "reviewed",
+          "booked",
+          "completed",
+          "cancelled",
+          "declined"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "booked"
+          },
+          {
+            "from": "booked",
+            "to": "completed"
+          },
+          {
+            "from": "requested",
+            "to": "cancelled"
+          },
+          {
+            "from": "reviewed",
+            "to": "declined"
+          }
+        ],
+        "invariants": "patient_id มาจาก session/link ที่เจ้าหน้าที่รับรอง ไม่เชื่อ request parameter; อ่านเฉพาะของตนและข้อมูลที่ release แล้ว"
+      },
+      "principal_entities_and_foreign_keys": [
+        "PortalIdentity(user_id,patient_id)",
+        "PortalAppointmentRequest(patient_id,slot_id)",
+        "PortalCorrectionRequest(patient_id,document_id)",
+        "PatientReleasePolicy(document_version_id)"
+      ],
+      "roles": [
+        "portal_patient",
+        "portal_support"
+      ],
+      "minimum_api_capabilities": "GET portal/me/own-records/released-results/appointments; POST own-request/cancel/correction",
+      "acceptance_case": "portal user A เห็นผลของ A และขอนัดได้; เปลี่ยน URL/id เป็นผู้ป่วย B ต้อง 403/404 โดยไม่เปิดข้อมูล",
+      "cross_module_link": "D34 local sessions, D01 verified identity, D02 booking และ D10/D11 released results",
+      "external_dependency": {
+        "connector_or_reference": "eID/SMS/email; development login และ in-app requests ทำงานได้ก่อนเชื่อม",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D22",
+      "name_th": "เวชระเบียน เอกสาร และการลงนาม",
+      "domain_group": "coordination_and_records",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "Partial synthetic shared-core demo only; see API_IMPLEMENTATION.md and VALIDATION_REPORT.md",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J01",
+          "J02",
+          "J05",
+          "J08"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "document list/เวอร์ชัน/ไฟล์แนบ",
+        "document timeline และผู้ลงนาม",
+        "ร่าง/ตรวจ/attest/สร้าง amendment"
+      ],
+      "persisted_workflow": {
+        "name": "เอกสารที่มีฉบับและการรับรองโดยคน",
+        "states": [
+          "draft",
+          "in_review",
+          "attested",
+          "returned",
+          "amended"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "in_review"
+          },
+          {
+            "from": "in_review",
+            "to": "attested"
+          },
+          {
+            "from": "in_review",
+            "to": "returned"
+          },
+          {
+            "from": "returned",
+            "to": "draft"
+          },
+          {
+            "from": "attested",
+            "to": "amended"
+          }
+        ],
+        "invariants": "ฉบับรับรองห้าม overwrite; actor/version/hash binding; attestation ภายในไม่อ้าง qualified digital signature"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Document(patient_id,encounter_id)",
+        "DocumentVersion(document_id,content_hash)",
+        "DocumentAttestation(version_id,user_id)",
+        "DocumentAmendment(original_version_id,new_version_id)"
+      ],
+      "roles": [
+        "clinical_author",
+        "reviewer",
+        "medical_records"
+      ],
+      "minimum_api_capabilities": "GET documents/versions/attachments; POST draft/review/return/attest/amend",
+      "acceptance_case": "รับรอง v1 แล้วแก้ไขต้องเกิด amendment/v2; อ่าน hash/ผู้รับรอง/เหตุผลย้อนหลังได้ครบ",
+      "cross_module_link": "D03/D06/D10/D11 documents, D20 referral packet และ D37 evidence",
+      "external_dependency": {
+        "connector_or_reference": "PKI/signing/document repositories; local authenticated attestation ไม่รอ certificate service",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D23",
+      "name_th": "ค่าบริการ ราคา และสิทธิการรักษา",
+      "domain_group": "revenue_and_finance",
+      "current_v020": {
+        "status": "integration-planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J03",
+          "J05"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "price/coverage catalog และ open bills",
+        "charge breakdown/price snapshot",
+        "กำหนดราคามีผล/เพิ่มรายการ/ตรวจและออกบิล"
+      ],
+      "persisted_workflow": {
+        "name": "ค่าบริการจากราคาฉบับที่ใช้จริง",
+        "states": [
+          "open",
+          "priced",
+          "reviewed",
+          "invoiced",
+          "adjusted",
+          "cancelled"
+        ],
+        "transitions": [
+          {
+            "from": "open",
+            "to": "priced"
+          },
+          {
+            "from": "priced",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "invoiced"
+          },
+          {
+            "from": "invoiced",
+            "to": "adjusted"
+          },
+          {
+            "from": "open",
+            "to": "cancelled"
+          }
+        ],
+        "invariants": "Decimal amount/currency; issued bill ไม่ถูกเปลี่ยนย้อนหลังจากราคาใหม่; source charge/idempotency ป้องกันซ้ำ; adjustment/credit เป็น record ใหม่อ้าง invoice/charge เดิมพร้อมเหตุผล ผู้อนุมัติ และผลต่อ receivable โดยไม่ overwrite posted lines"
+      },
+      "principal_entities_and_foreign_keys": [
+        "PriceListVersion(organization_id,effective_from)",
+        "PriceItem(catalog_item_id,price_version_id)",
+        "CoverageRecord(patient_id)",
+        "Charge(encounter_id,source_record_id,price_snapshot)",
+        "Invoice(encounter_id)",
+        "InvoiceAdjustment(invoice_id,original_charge_id,reason,amount,approver_id)"
+      ],
+      "roles": [
+        "billing_officer",
+        "pricing_admin",
+        "coverage_officer"
+      ],
+      "minimum_api_capabilities": "GET prices/coverage/charges/bills; POST price-version/charge/reprice-draft/review/invoice/adjust",
+      "acceptance_case": "ออกบิลด้วยราคา v1 แล้วเปิดราคา v2 บิลเก่ายังยอดเดิม; source event ซ้ำไม่เพิ่ม charge; credit/adjustment มี reference และยอดของตน โดยต้นฉบับยังอ่านได้และ retry ไม่ลงซ้ำ",
+      "cross_module_link": "D07/D08/D10 services → D24 claim หรือ D25 receipt; D26 แยก cost",
+      "external_dependency": {
+        "connector_or_reference": "Payer eligibility/fee schedules; local synthetic price/coverage catalog ไม่รอ payer",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D24",
+      "name_th": "เคลม ลูกหนี้ และการกระทบยอดเงินชดเชย",
+      "domain_group": "revenue_and_finance",
+      "current_v020": {
+        "status": "integration-planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J05"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "claim draft/validation/remittance worklist",
+        "claim lines และ adjudication history",
+        "ร่าง/ตรวจ/ส่งออก/นำเข้า synthetic remittance"
+      ],
+      "persisted_workflow": {
+        "name": "เคลมท้องถิ่นและการพิจารณาจำลอง",
+        "states": [
+          "draft",
+          "validated",
+          "exported",
+          "simulated_submitted",
+          "adjudicated",
+          "reconciliation_reviewed"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "validated"
+          },
+          {
+            "from": "validated",
+            "to": "exported"
+          },
+          {
+            "from": "exported",
+            "to": "simulated_submitted"
+          },
+          {
+            "from": "simulated_submitted",
+            "to": "adjudicated"
+          },
+          {
+            "from": "adjudicated",
+            "to": "reconciliation_reviewed"
+          }
+        ],
+        "invariants": "billed/submitted/approved/gross_received/refunded/net_received เป็นคนละค่าและหลักฐาน; imported approval ไม่ลง cash received; external acknowledgement ห้ามปลอม"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Claim(invoice_id,patient_id,encounter_id)",
+        "ClaimLine(charge_id)",
+        "ClaimSubmission(claim_id,mode,external_ack_id)",
+        "RemittanceBatch(source,synthetic)",
+        "Adjudication(claim_line_id,approved_amount,decision)"
+      ],
+      "roles": [
+        "claim_officer",
+        "claim_reviewer",
+        "receivable_officer"
+      ],
+      "minimum_api_capabilities": "GET claims/validation/adjudications; POST draft/validate/export/simulate-submit/import-remittance/reconcile",
+      "acceptance_case": "บิล 1000 ส่งเคลมจำลองแล้ว remittance อนุมัติ 800: แสดง billed=1000/approved=800/gross_received=0/refunded=0/net_received=0 จนมี D25 receipt; import ซ้ำไม่เพิ่มยอด",
+      "cross_module_link": "D23 invoice → D35 local adapter → D25 receivable/receipt; D26 cost แยก",
+      "external_dependency": {
+        "connector_or_reference": "Real payer formats/rules/ack; local claim draft/export และ synthetic remittance ทำงานได้เอง",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D25",
+      "name_th": "บัญชี การเงิน การรับชำระและคืนเงิน",
+      "domain_group": "revenue_and_finance",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J05",
+          "J06"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "receivable/payable/cash journal list",
+        "invoice allocations/ledger detail",
+        "รับเงิน/จ่าย/จัดสรร/ขอคืนและอนุมัติ"
+      ],
+      "persisted_workflow": {
+        "name": "รับชำระและปรับปรุงด้วยรายการกลับบัญชี",
+        "states": [
+          "draft",
+          "reviewed",
+          "posted",
+          "reversed",
+          "refund_requested",
+          "refund_approved",
+          "refunded"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "posted"
+          },
+          {
+            "from": "posted",
+            "to": "reversed"
+          },
+          {
+            "from": "posted",
+            "to": "refund_requested"
+          },
+          {
+            "from": "refund_requested",
+            "to": "refund_approved"
+          },
+          {
+            "from": "refund_approved",
+            "to": "refunded"
+          }
+        ],
+        "invariants": "balanced Decimal journal; posted rows immutable; refund/reversal เป็น record แยกอ้างต้นทางและยอดคืนสะสมไม่เกินยอดที่คืนได้; retry ไม่รับหรือคืนเงินซ้ำ; แยก gross_received, refunded และ net_received พร้อม payment allocations"
+      },
+      "principal_entities_and_foreign_keys": [
+        "PaymentReceipt(payer_id,currency)",
+        "PaymentAllocation(receipt_id,invoice_id,claim_id)",
+        "LedgerEntry(source_record_id)",
+        "LedgerLine(entry_id,account_id,debit,credit)",
+        "Refund(original_receipt_id)"
+      ],
+      "roles": [
+        "cashier",
+        "accountant",
+        "refund_approver"
+      ],
+      "minimum_api_capabilities": "GET balances/receipts/ledger; POST receive/allocate/review/post/refund-request/approve/refund/reverse",
+      "acceptance_case": "รับ 800 ผูกเคลมเดิม แล้วคืน 100 ผ่านผู้อนุมัติ: gross_received=800, refunded=100, net_received=700 พร้อม journal สมดุลและ refund record อ้าง receipt เดิม; retry ไม่ลงซ้ำ",
+      "cross_module_link": "D23 invoices, D24 adjudication, D27 payables และ D26 reporting",
+      "external_dependency": {
+        "connector_or_reference": "Bank/payment gateway/accounting export; local synthetic receipt/ledger ไม่รอเงินจริง",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D26",
+      "name_th": "ต้นทุนบริการ งบประมาณ และการวิเคราะห์ทรัพยากร",
+      "domain_group": "revenue_and_finance",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J05",
+          "J06"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "cost-center/budget/variance dashboard",
+        "ต้นทุนบริการและวิธีจัดสรร",
+        "กรอก/นำเข้าต้นทุนภายใน/ตรวจและ post"
+      ],
+      "persisted_workflow": {
+        "name": "ต้นทุนและงบที่ตรวจที่มาได้",
+        "states": [
+          "draft",
+          "reviewed",
+          "posted",
+          "reversed"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "posted"
+          },
+          {
+            "from": "posted",
+            "to": "reversed"
+          }
+        ],
+        "invariants": "billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost แยกคอลัมน์; allocation มีวิธี/รุ่น; ไม่ตีความยอดอนุมัติเป็นเงินรับหรือกำไร"
+      },
+      "principal_entities_and_foreign_keys": [
+        "CostCenter(department_id)",
+        "BudgetVersion(cost_center_id,period)",
+        "CostEntry(source_movement_id,ledger_line_id,encounter_id)",
+        "CostAllocation(entry_id,method_version)"
+      ],
+      "roles": [
+        "cost_accountant",
+        "budget_owner"
+      ],
+      "minimum_api_capabilities": "GET budgets/cost-lines/variance; POST budget-version/cost-entry/allocation/review/post/reverse",
+      "acceptance_case": "ใช้วัสดุต้นทุน 200 และค่าแรงที่กรอก 100: cost=300 แยกจาก billed=1000, approved=800, gross_received=800, refunded=100 และ net_received=700 พร้อม source links; outstanding อิง receivable allocations/adjustments ที่กำหนด ไม่อนุมานจาก refund เพียงค่าเดียว",
+      "cross_module_link": "D28 stock cost, D25 ledger, D23 billing และ D24 remittance",
+      "external_dependency": {
+        "connector_or_reference": "Payroll/ERP/costing policy; local recorded costs และ versioned allocation เริ่มได้",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D27",
+      "name_th": "จัดซื้อ สัญญา รับพัสดุ และเจ้าหนี้",
+      "domain_group": "enterprise_operations",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J06"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "purchase request/PO/receipt list",
+        "supplier/contract/PO detail",
+        "ขอซื้อ/อนุมัติ/รับของ/ตรวจ invoice"
+      ],
+      "persisted_workflow": {
+        "name": "ซื้อและรับเข้าคลัง",
+        "states": [
+          "draft",
+          "approved",
+          "po_recorded",
+          "part_received",
+          "received",
+          "invoice_verified",
+          "closed"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "approved"
+          },
+          {
+            "from": "approved",
+            "to": "po_recorded"
+          },
+          {
+            "from": "po_recorded",
+            "to": "part_received"
+          },
+          {
+            "from": "part_received",
+            "to": "received"
+          },
+          {
+            "from": "po_recorded",
+            "to": "received"
+          },
+          {
+            "from": "received",
+            "to": "invoice_verified"
+          },
+          {
+            "from": "invoice_verified",
+            "to": "closed"
+          }
+        ],
+        "invariants": "quantity/price snapshot; รับซ้ำตาม receipt key ไม่ได้; inventory receipt และ payable ผูกกันโดยไม่สร้างเงินจริงหรือส่ง PO ภายนอกเอง; การแก้ receipt ที่ post แล้วใช้ correction/return record อ้างต้นทางและกติกาปริมาณสะสมของ D28 ไม่เขียนทับจำนวนรับเดิม"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Supplier(organization_id)",
+        "PurchaseRequest(department_id)",
+        "PurchaseOrder(supplier_id,contract_id)",
+        "GoodsReceipt(po_id)",
+        "SupplierInvoice(receipt_id)"
+      ],
+      "roles": [
+        "requester",
+        "procurement_officer",
+        "purchase_approver",
+        "receiving_officer"
+      ],
+      "minimum_api_capabilities": "GET suppliers/requests/orders/receipts; POST request/approve/po/receive/verify-invoice/close",
+      "acceptance_case": "รับของบางส่วนแล้วครบ สต็อกเพิ่มตามรับจริงและ AP ตรง invoice; replay receipt ไม่เพิ่มของซ้ำ",
+      "cross_module_link": "D28 goods movements, D25 payables และ D26 budget/cost center",
+      "external_dependency": {
+        "connector_or_reference": "Supplier/e-procurement/accounting connectors; PO ท้องถิ่นระบุยังไม่ส่งภายนอก",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D28",
+      "name_th": "คลังยา เวชภัณฑ์ และห่วงโซ่อุปทาน",
+      "domain_group": "enterprise_operations",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J03",
+          "J06"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "stock/lot/location/count worklist",
+        "movement ledger และ reservations",
+        "รับ/จ่าย/โอน/คืน/ตรวจนับปรับยอด"
+      ],
+      "persisted_workflow": {
+        "name": "เคลื่อนไหว stock แบบ transactional",
+        "states": [
+          "draft",
+          "validated",
+          "posted",
+          "reversed"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "validated"
+          },
+          {
+            "from": "validated",
+            "to": "posted"
+          },
+          {
+            "from": "posted",
+            "to": "reversed"
+          }
+        ],
+        "invariants": "ledger/ยอดคงเหลือตรงกัน; no negative stock; หน่วย/ต้นทุน/lot ชัดเจน; lock/version ป้องกัน concurrent issue; posted movement immutable; return/reversal สร้างรายการใหม่อ้าง movement เดิม จำกัดยอดสะสมตามจำนวนที่ยังคืน/กลับรายการได้ และตรวจ disposition ก่อนกลับเป็น available"
+      },
+      "principal_entities_and_foreign_keys": [
+        "InventoryItem(unit_id)",
+        "InventoryLot(item_id,expiry_date)",
+        "StockLocation(department_id)",
+        "StockMovement(lot_id,from_location_id,to_location_id,source_record_id,original_movement_id,disposition)",
+        "StockReservation(source_task_id)"
+      ],
+      "roles": [
+        "storekeeper",
+        "stock_approver",
+        "pharmacist"
+      ],
+      "minimum_api_capabilities": "GET stock/lots/movements/counts; POST receive/reserve/issue/transfer/return/count/approve-adjustment/reverse",
+      "acceptance_case": "จ่ายของชิ้นสุดท้ายพร้อมกันสำเร็จหนึ่งคำสั่ง; โอนระหว่างคลังแล้วผลรวมคงเดิมและตาม lot ได้; return/reversal ซ้ำหรือเกินยอดเดิมถูกปฏิเสธโดย posted movement เดิมคงอยู่",
+      "cross_module_link": "D27 receipts, D08 dispense, D18 blood lot และ D26 cost entries",
+      "external_dependency": {
+        "connector_or_reference": "Warehouse/robot/GS1 external catalog; local lots/locations ทำงานได้เอง",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D29",
+      "name_th": "ครุภัณฑ์และวิศวกรรมการแพทย์",
+      "domain_group": "enterprise_operations",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J09"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "asset register/maintenance calendar",
+        "asset history/work order",
+        "ลงทะเบียน/นัดซ่อม/ตรวจปล่อยใช้งาน"
+      ],
+      "persisted_workflow": {
+        "name": "ครุภัณฑ์และ maintenance",
+        "states": [
+          "registered",
+          "in_service",
+          "maintenance_due",
+          "under_maintenance",
+          "verified",
+          "retired"
+        ],
+        "transitions": [
+          {
+            "from": "registered",
+            "to": "in_service"
+          },
+          {
+            "from": "in_service",
+            "to": "maintenance_due"
+          },
+          {
+            "from": "maintenance_due",
+            "to": "under_maintenance"
+          },
+          {
+            "from": "under_maintenance",
+            "to": "verified"
+          },
+          {
+            "from": "verified",
+            "to": "in_service"
+          },
+          {
+            "from": "in_service",
+            "to": "retired"
+          }
+        ],
+        "invariants": "งานซ่อมยังไม่ verify ห้ามกลับ in_service; user มีสิทธิ์ปล่อย; ไม่ควบคุมเครื่องมือแพทย์จริง"
+      },
+      "principal_entities_and_foreign_keys": [
+        "EquipmentAsset(department_id,location_id)",
+        "MaintenancePlan(asset_id)",
+        "MaintenanceWorkOrder(asset_id,technician_id)",
+        "ReleaseVerification(work_order_id,verifier_id)"
+      ],
+      "roles": [
+        "biomedical_engineer",
+        "technician",
+        "asset_custodian"
+      ],
+      "minimum_api_capabilities": "GET assets/maintenance/history; POST asset/schedule/start/record/verify/release/retire",
+      "acceptance_case": "เปิดซ่อมเครื่องสังเคราะห์แล้วห้องตรวจเห็น unavailable; ผู้ตรวจปล่อยแล้วจึงจองใช้งานได้",
+      "cross_module_link": "D11/D12 resource scheduling, D27 procurement และ D26 depreciation/cost inputs",
+      "external_dependency": {
+        "connector_or_reference": "Vendor telemetry/CMMS/calibration services; local maintenance evidence ไม่รออุปกรณ์",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D30",
+      "name_th": "บุคลากร ตารางเวร และสมรรถนะ",
+      "domain_group": "enterprise_operations",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J07",
+          "J09"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "staff/credential list/roster calendar",
+        "staff privileges และ roster version",
+        "สร้างเวร/ตรวจชน/เผยแพร่/รับทราบ"
+      ],
+      "persisted_workflow": {
+        "name": "ตารางเวรและ credential ที่มีผู้ตรวจ",
+        "states": [
+          "draft",
+          "reviewed",
+          "published",
+          "acknowledged",
+          "revised"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "published"
+          },
+          {
+            "from": "published",
+            "to": "acknowledged"
+          },
+          {
+            "from": "published",
+            "to": "revised"
+          }
+        ],
+        "invariants": "ไม่ลงเวรชนเวลาตามกติกาที่ตั้ง; published roster มี version; credential ระงับต้องมีผลต่อ privilege ที่ผูกไว้"
+      },
+      "principal_entities_and_foreign_keys": [
+        "StaffMember(user_id,department_id)",
+        "Credential(staff_id,status,valid_until)",
+        "RosterVersion(department_id)",
+        "RosterShift(roster_version_id,staff_id)",
+        "PrivilegeGrant(staff_id,permission_id)"
+      ],
+      "roles": [
+        "hr_officer",
+        "roster_manager",
+        "credential_reviewer",
+        "staff"
+      ],
+      "minimum_api_capabilities": "GET staff/credentials/rosters; POST staff/credential-review/roster/validate/publish/acknowledge/revise",
+      "acceptance_case": "เผยแพร่เวรและพนักงานรับทราบ; ระงับ credential แล้วคำสั่งที่ต้องใช้ privilege นั้นถูกปฏิเสธและ audit",
+      "cross_module_link": "D34 identity/permissions, D06 handover, D02/D12 practitioner schedule",
+      "external_dependency": {
+        "connector_or_reference": "HR/payroll/licensing registries; local staff/roster/manual credential verification เริ่มได้",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D31",
+      "name_th": "CSSD ซักฟอก อาคาร และบริการสนับสนุน",
+      "domain_group": "enterprise_operations",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J09"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "CSSD cycle/linen dispatch/facility work-order lists",
+        "เครื่องมือ/ผ้า/พื้นที่และประวัติ",
+        "ฟอร์ม cycle, ส่งผ้า, งานซ่อมแยกกัน"
+      ],
+      "persisted_workflow": {
+        "name": "CSSD release พร้อมหลักฐาน; ผ้าและงานอาคารใช้ state คนละชุด",
+        "states": [
+          "received",
+          "cleaned",
+          "cycle_recorded",
+          "quarantined",
+          "release_reviewed",
+          "released"
+        ],
+        "transitions": [
+          {
+            "from": "received",
+            "to": "cleaned"
+          },
+          {
+            "from": "cleaned",
+            "to": "cycle_recorded"
+          },
+          {
+            "from": "cycle_recorded",
+            "to": "quarantined"
+          },
+          {
+            "from": "cycle_recorded",
+            "to": "release_reviewed"
+          },
+          {
+            "from": "release_reviewed",
+            "to": "released"
+          }
+        ],
+        "invariants": "ไม่ตัดสิน sterility อัตโนมัติ; release โดยคนมีหลักฐาน; linen issued→returned→reconciled และ facility opened→assigned→verified→closed ต้องแยก state"
+      },
+      "principal_entities_and_foreign_keys": [
+        "InstrumentSet(asset_id)",
+        "SterilizationCycle(set_id,operator_id)",
+        "CycleRelease(cycle_id,reviewer_id)",
+        "LinenDispatch(ward_id)",
+        "FacilityWorkOrder(location_id,assignee_id)"
+      ],
+      "roles": [
+        "cssd_operator",
+        "cssd_release_reviewer",
+        "linen_staff",
+        "facility_technician"
+      ],
+      "minimum_api_capabilities": "GET cycles/sets/linen/work-orders; POST cycle/evidence/quarantine/release; POST linen-issue/return; POST facility-assign/verify-close",
+      "acceptance_case": "cycle ที่ถูก quarantine ห้ามส่งชุดให้ห้องผ่าตัด; ชุด released ตามกลับ cycle ได้ และการคืนผ้าไม่เปลี่ยนสถานะเครื่องมือ",
+      "cross_module_link": "D12 instrument demand, D05 linen/ward และ D29 asset/location",
+      "external_dependency": {
+        "connector_or_reference": "Sterilizer/laundry/facility systems; manual recorded evidence และงานท้องถิ่นไม่รอ connector",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D32",
+      "name_th": "คุณภาพ ความเสี่ยง และการควบคุมการติดเชื้อ",
+      "domain_group": "enterprise_operations",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J09"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "incident/CAPA/surveillance worklist",
+        "investigation และ action evidence",
+        "รายงาน/ประเมิน/มอบหมาย/ตรวจประสิทธิผล"
+      ],
+      "persisted_workflow": {
+        "name": "เหตุการณ์และการปิด corrective action",
+        "states": [
+          "reported",
+          "triaged",
+          "investigating",
+          "action_planned",
+          "effectiveness_review",
+          "closed"
+        ],
+        "transitions": [
+          {
+            "from": "reported",
+            "to": "triaged"
+          },
+          {
+            "from": "triaged",
+            "to": "investigating"
+          },
+          {
+            "from": "investigating",
+            "to": "action_planned"
+          },
+          {
+            "from": "action_planned",
+            "to": "effectiveness_review"
+          },
+          {
+            "from": "effectiveness_review",
+            "to": "closed"
+          }
+        ],
+        "invariants": "reporter identity จำกัดสิทธิ์; classification/ติดเชื้อยืนยันด้วยคน; ปิด CAPA ต้องมีผู้ตรวจและ evidence"
+      },
+      "principal_entities_and_foreign_keys": [
+        "Incident(organization_id,encounter_id_optional,reporter_id)",
+        "RiskReview(incident_id)",
+        "CAPA(incident_id,owner_id)",
+        "EffectivenessCheck(capa_id,reviewer_id)",
+        "SurveillanceCase(case_definition_version_id)"
+      ],
+      "roles": [
+        "quality_officer",
+        "risk_reviewer",
+        "infection_control_officer"
+      ],
+      "minimum_api_capabilities": "GET incidents/capa/restricted-detail; POST report/triage/investigate/assign/evidence/review/close",
+      "acceptance_case": "รายงานเหตุแล้วส่ง CAPA ผู้รับผิดชอบแนบหลักฐาน ผู้ตรวจปิด; ผู้ไม่มีสิทธิ์อ่านชื่อผู้รายงานไม่ได้",
+      "cross_module_link": "D03/D05 encounter reference, D22 evidence และ D33 aggregate reports",
+      "external_dependency": {
+        "connector_or_reference": "Incident/public-health systems และ case definitions; local workflow ไม่รอหน่วยภายนอก",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D33",
+      "name_th": "รายงานสาธารณสุขและข้อมูลระดับเครือข่าย",
+      "domain_group": "coordination_and_records",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J09"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "report definitions/period/submission list",
+        "source lineage และ quality errors",
+        "สร้างชุดรายงาน/ตรวจ/ส่งออก/ออกฉบับแก้"
+      ],
+      "persisted_workflow": {
+        "name": "รายงานจากข้อมูลจริงในแอป",
+        "states": [
+          "draft",
+          "generated",
+          "reviewed",
+          "exported",
+          "corrected"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "generated"
+          },
+          {
+            "from": "generated",
+            "to": "reviewed"
+          },
+          {
+            "from": "reviewed",
+            "to": "exported"
+          },
+          {
+            "from": "exported",
+            "to": "corrected"
+          }
+        ],
+        "invariants": "missing≠zero; นิยามและ sourceversion ต้องตามได้; exported ไม่แปลว่าหน่วยรับยอมรับ; ไม่อ้างมาตรฐานไทยที่ยังไม่ตรวจ"
+      },
+      "principal_entities_and_foreign_keys": [
+        "ReportDefinition(version,field_mapping)",
+        "ReportingPeriod(organization_id)",
+        "ReportBatch(definition_id,period_id)",
+        "ReportLineage(batch_id,source_record_id)",
+        "SubmissionEvidence(batch_id,source_type)"
+      ],
+      "roles": [
+        "reporting_officer",
+        "report_reviewer"
+      ],
+      "minimum_api_capabilities": "GET reports/definitions/lineage/errors; POST generate/review/export/correction/record-ack",
+      "acceptance_case": "สร้างรายงานยอดจาก encounters แล้วตามทุกรายการกลับต้นทางได้; correction สร้าง batch ใหม่ไม่เขียนทับที่ export แล้ว",
+      "cross_module_link": "D10/D32 source data, D36 cohorts และ D35 external acknowledgement",
+      "external_dependency": {
+        "connector_or_reference": "Public-health/network submission formats; local defined export ทำได้ก่อนเชื่อม",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D34",
+      "name_th": "ตัวตนผู้ใช้งาน สิทธิ และการตรวจสอบการเข้าถึง",
+      "domain_group": "governance_and_platform",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "Partial synthetic shared-core demo only; see API_IMPLEMENTATION.md and VALIDATION_REPORT.md",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J01",
+          "J07",
+          "J10"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "login/logout/current-user",
+        "user/role/scope/session administration",
+        "สร้างบัญชี/ให้สิทธิ์/ปิดบัญชี/ถอน session"
+      ],
+      "persisted_workflow": {
+        "name": "local development account/session lifecycle",
+        "states": [
+          "created",
+          "active",
+          "suspended",
+          "disabled"
+        ],
+        "transitions": [
+          {
+            "from": "created",
+            "to": "active"
+          },
+          {
+            "from": "active",
+            "to": "suspended"
+          },
+          {
+            "from": "suspended",
+            "to": "active"
+          },
+          {
+            "from": "active",
+            "to": "disabled"
+          }
+        ],
+        "invariants": "session จริงไม่ใช่ public demo token; password hash/secure cookie/CSRF ตามวิธี auth; scope enforcement ฝั่ง server; session state active→revoked/expired แยกบัญชี"
+      },
+      "principal_entities_and_foreign_keys": [
+        "UserIdentity(organization_id,password_hash)",
+        "Role",
+        "Permission",
+        "UserRole(user_id,role_id,department_scope)",
+        "UserPatientScope(user_id,patient_id)",
+        "Session(user_id,expires_at,revoked_at)"
+      ],
+      "roles": [
+        "identity_admin",
+        "all_authenticated_roles"
+      ],
+      "minimum_api_capabilities": "POST auth/login/logout/revoke; GET auth/me/users/roles/sessions; POST user/role-grant/suspend; server authorization ทุก write/read",
+      "acceptance_case": "login ถูก/ผิด,logout,หมดอายุและถอนสิทธิ์ต้องมีผลจริง; ผู้ใช้ต่าง patient/organization อ่านหรือเขียนข้าม scope ไม่ได้",
+      "cross_module_link": "ทุก domain ใช้ actor/scope เดียวกัน; D21 ผูก portaluser กับ patient; D30 ผูก staff privileges",
+      "external_dependency": {
+        "connector_or_reference": "Production IdP/OIDC/SSO/MFA; local development authentication ไม่ต้องรอ auth server ภายนอก",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D35",
+      "name_th": "การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน",
+      "domain_group": "governance_and_platform",
+      "current_v020": {
+        "status": "integration-planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J05",
+          "J08"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "inbox/outbox/adapter monitor",
+        "message validation/retries/ack trace",
+        "ตั้ง localstub/รับข้อความ/ตรวจ/ส่งต่อ/กระทบยอด"
+      ],
+      "persisted_workflow": {
+        "name": "ข้อความและ local adapter ที่มีผลตรวจจริง",
+        "states": [
+          "received",
+          "validated",
+          "rejected",
+          "queued",
+          "delivered_local",
+          "failed",
+          "acknowledged_local"
+        ],
+        "transitions": [
+          {
+            "from": "received",
+            "to": "validated"
+          },
+          {
+            "from": "received",
+            "to": "rejected"
+          },
+          {
+            "from": "validated",
+            "to": "queued"
+          },
+          {
+            "from": "queued",
+            "to": "delivered_local"
+          },
+          {
+            "from": "queued",
+            "to": "failed"
+          },
+          {
+            "from": "failed",
+            "to": "queued"
+          },
+          {
+            "from": "delivered_local",
+            "to": "acknowledged_local"
+          }
+        ],
+        "invariants": "duplicate/out-of-order ตรวจจริง; local/simulated ack แยก external verified; ไม่เปลี่ยนเป็น sent/received ภายนอกเมื่อไม่มี endpoint"
+      },
+      "principal_entities_and_foreign_keys": [
+        "IntegrationMessage(organization_id,contract_version,source_id)",
+        "InboxReceipt(message_id,idempotency_key)",
+        "OutboxEvent(source_record_id,message_id)",
+        "DeliveryAttempt(message_id,adapter_id)",
+        "ReconciliationTask(message_id)"
+      ],
+      "roles": [
+        "integration_operator",
+        "integration_admin"
+      ],
+      "minimum_api_capabilities": "GET inbox/outbox/errors/attempts; POST validate/accept/enqueue/local-deliver/retry/reconcile",
+      "acceptance_case": "ส่ง synthetic message ซ้ำสองครั้งเกิด domain transaction ครั้งเดียว; schema ผิดเข้าคิว error และ retry เก็บ attempt เดิมครบ",
+      "cross_module_link": "D10 result messages, D20 referrals, D24 syntheticremittance และ D33 exports",
+      "external_dependency": {
+        "connector_or_reference": "FHIR/HL7/DICOM/payer adapters; แยก protocol และเปิด L4 ทีละ connector หลัง verify",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D36",
+      "name_th": "คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง",
+      "domain_group": "governance_and_platform",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "None in starter",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "dataset/cohort catalog",
+        "preview/lineage/version/split summary",
+        "กำหนด cohort แบบ allowlist/อนุมัติ/freeze/export"
+      ],
+      "persisted_workflow": {
+        "name": "dataset snapshot ที่ทำซ้ำได้",
+        "states": [
+          "draft",
+          "previewed",
+          "approved",
+          "frozen",
+          "exported",
+          "revoked"
+        ],
+        "transitions": [
+          {
+            "from": "draft",
+            "to": "previewed"
+          },
+          {
+            "from": "previewed",
+            "to": "approved"
+          },
+          {
+            "from": "approved",
+            "to": "frozen"
+          },
+          {
+            "from": "frozen",
+            "to": "exported"
+          },
+          {
+            "from": "frozen",
+            "to": "revoked"
+          }
+        ],
+        "invariants": "ไม่รัน SQL อิสระจาก LLM; scope และ export permissions; patient ไม่ข้าม train/test; revoked ไม่อ้างว่าเรียกคืนไฟล์ที่ download ไปแล้ว"
+      },
+      "principal_entities_and_foreign_keys": [
+        "CohortDefinition(version,allowed_filters)",
+        "DatasetVersion(cohort_id,source_snapshot_id)",
+        "DatasetRowLineage(dataset_id,source_record_id)",
+        "DatasetAccess(user_id,dataset_id)",
+        "DatasetSplit(patient_id,partition)"
+      ],
+      "roles": [
+        "data_steward",
+        "authorized_analyst",
+        "dataset_reviewer"
+      ],
+      "minimum_api_capabilities": "GET datasets/preview/lineage/access; POST cohort/approve/freeze/export/revoke",
+      "acceptance_case": "freeze cohort แล้วเปลี่ยน source ข้อมูล snapshot เดิมยังทำซ้ำได้; split ไม่มี patient ซ้ำข้ามชุดและ unauthorized export ถูกปฏิเสธ",
+      "cross_module_link": "D01/D03/D10 sources, D33 reporting และ D37 evaluation inputs",
+      "external_dependency": {
+        "connector_or_reference": "Research warehouse/external cohorts; ใช้ syntheticPGsnapshot ภายในก่อน",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D37",
+      "name_th": "AI และระบบช่วยตัดสินใจ",
+      "domain_group": "governance_and_platform",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "Partial synthetic shared-core demo only; see API_IMPLEMENTATION.md and VALIDATION_REPORT.md",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J01",
+          "J08"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "AI workbench/run/evaluation list",
+        "evidence/proposal/review/version history",
+        "เลือกงาน/สร้าง proposal/แก้/อนุมัติ/commit"
+      ],
+      "persisted_workflow": {
+        "name": "ข้อเสนอ AI ที่มี human review และ policy",
+        "states": [
+          "pending",
+          "approved",
+          "rejected",
+          "committed"
+        ],
+        "transitions": [
+          {
+            "from": "pending",
+            "to": "pending",
+            "event": "edit_new_version"
+          },
+          {
+            "from": "pending",
+            "to": "approved",
+            "event": "approve"
+          },
+          {
+            "from": "pending",
+            "to": "rejected",
+            "event": "reject"
+          },
+          {
+            "from": "approved",
+            "to": "committed",
+            "event": "commit"
+          }
+        ],
+        "invariants": "แก้ไขสร้าง version ใหม่ใน pending ไม่ใช้ approval เดิม; approval ผูก version/hash/evidence; fail/timeout/abstain อยู่ denominator; explicit mock และ no live fallback; ไม่มี autonomous clinical write"
+      },
+      "principal_entities_and_foreign_keys": [
+        "AIUseCase",
+        "ModelRegistration(provider_id,artifact_revision)",
+        "InferenceRun(task_id,outcome)",
+        "Proposal(task_id,evidence_snapshot_id,version,action_hash)",
+        "HumanReview(proposal_id,user_id)",
+        "EvaluationRun(dataset_version_id)"
+      ],
+      "roles": [
+        "authorized_requester",
+        "reviewer",
+        "ai_operator"
+      ],
+      "minimum_api_capabilities": "GET tasks/runs/evidence/proposals/models; POST propose/edit/review/commit; GET policy/capability/evaluation status",
+      "acceptance_case": "แก้ proposal แล้ว approval เดิมใช้ไม่ได้; retry commit ไม่ซ้ำ; failed attempt ไม่มี proposal สำเร็จแอบแทรกและตรวจ reason ได้",
+      "cross_module_link": "D22 documentevidence, D07 scopedtasks, D34permissions และ D36evaluationdataset",
+      "external_dependency": {
+        "connector_or_reference": "Qwen/Typhoon/MedGemma/cloud endpoints; exactrevision/capabilities ต้อง verify ก่อน L4 แต่ mockL2 ทำต่อได้",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    },
+    {
+      "id": "D38",
+      "name_th": "การเดินระบบ ความต่อเนื่อง และการกู้คืน",
+      "domain_group": "governance_and_platform",
+      "current_v020": {
+        "status": "planned",
+        "implemented_subset": "Partial synthetic shared-core demo only; see API_IMPLEMENTATION.md and VALIDATION_REPORT.md",
+        "domain_page": "PLACEHOLDER",
+        "full_domain_implemented": false
+      },
+      "target": {
+        "required_level": "L2",
+        "cross_module_journeys": [
+          "J09"
+        ],
+        "external_level": "L4_SEPARATE_NOT_VERIFIED"
+      },
+      "screens": [
+        "health/readiness/jobs/migration/backup dashboard",
+        "run logs/checksums/restore verification",
+        "สั่ง localbackup/restore-to-isolated-target/ตรวจผล"
+      ],
+      "persisted_workflow": {
+        "name": "backup และ restore ที่รันจริง",
+        "states": [
+          "requested",
+          "running",
+          "completed",
+          "failed",
+          "restore_started",
+          "restore_verified",
+          "restore_failed"
+        ],
+        "transitions": [
+          {
+            "from": "requested",
+            "to": "running"
+          },
+          {
+            "from": "running",
+            "to": "completed"
+          },
+          {
+            "from": "running",
+            "to": "failed"
+          },
+          {
+            "from": "completed",
+            "to": "restore_started"
+          },
+          {
+            "from": "restore_started",
+            "to": "restore_verified"
+          },
+          {
+            "from": "restore_started",
+            "to": "restore_failed"
+          }
+        ],
+        "invariants": "ห้ามปุ่ม success ปลอม; command allowlist และ admin permission; restore เฉพาะ isolated DB ไม่ทับฐานใช้งาน; ครอบคลุม DB+files+manifest"
+      },
+      "principal_entities_and_foreign_keys": [
+        "SchemaMigration(version,checksum)",
+        "OperationalJob(actor_id,command_kind)",
+        "BackupArtifact(storage_object_id,sha256,db_version)",
+        "RestoreRun(backup_id,isolated_target,verification_result)",
+        "ServiceHealthCheck(component,observed_at)"
+      ],
+      "roles": [
+        "operations_admin",
+        "backup_operator",
+        "read_only_auditor"
+      ],
+      "minimum_api_capabilities": "GET health/ready/jobs/migrations/backups; POST local-backup/isolated-restore/verify via allowlisted job runner; CLI migration จริง",
+      "acceptance_case": "สร้าง backup จาก PostgreSQL จริงแล้ว restore ลงฐานทดสอบแยก ตรวจ row counts/FKs/hashes/เอกสารและ audit ผ่านก่อนแสดง verified",
+      "cross_module_link": "D34 admin/audit; ตรวจข้อมูล D01/D22/D24/D25/D28/D35 หลัง restore",
+      "external_dependency": {
+        "connector_or_reference": "Productionstorage/monitoring/KMS/HA; localpgbackup/restore/readiness ไม่ต้องรอ cloud",
+        "status": "NOT_VERIFIED",
+        "blocks_local_L2": false
+      },
+      "implementation_status": "PLANNED",
+      "verified_level": "L0",
+      "verification_status": "NOT_RUN",
+      "external_integration_status": "NOT_CONNECTED",
+      "status_scope": "New full-system PostgreSQL workflow target; v0.2 partial shared-core evidence is retained in current_v020."
+    }
+  ],
+  "status_field_definitions": {
+    "implementation_status": "PLANNED/IN_PROGRESS/IMPLEMENTED for the new PostgreSQL domain workflow; independent of test results.",
+    "verified_level": "Highest L0–L4 actually evidenced. Current domain pages are L0 scope placeholders; the separate old shared-core demo does not raise every domain to L2.",
+    "verification_status": "NOT_RUN/PASS/FAIL/BLOCKED with per-check evidence; this specification does not execute the new targets.",
+    "external_integration_status": "NOT_CONNECTED/STUB_ONLY/VERIFIED_EXTERNAL, scoped to a named connector and actual endpoint evidence. Local workflows can pass while external status remains NOT_CONNECTED."
+  }
+}

@@ -1,0 +1,102 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "/tmp/his-pg-tests-z44xqhmz/files"}
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+psycopg.errors.UndefinedTable: relation "report_acknowledgments" does not exist
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/__main__.py", line 4, in <module>
+    main(prog="alembic")
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/config.py", line 1039, in main
+    CommandLine(prog=prog).main(argv=argv)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/config.py", line 1029, in main
+    self.run_cmd(cfg, options)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/config.py", line 963, in run_cmd
+    fn(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/command.py", line 487, in upgrade
+    script.run_env()
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/script/base.py", line 550, in run_env
+    util.load_python_file(self.dir, "env.py")
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 114, in load_python_file
+    module = load_module_py(module_id, path)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/util/pyfiles.py", line 132, in load_module_py
+    spec.loader.exec_module(module)  # type: ignore
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/migrations/env.py", line 11, in <module>
+    with context.begin_transaction():context.run_migrations()
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in run_migrations
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/runtime/environment.py", line 970, in run_migrations
+    self.get_context().run_migrations(**kw)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/runtime/migration.py", line 616, in run_migrations
+    step.migration_fn(**kw)
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/migrations/versions/0001_fullsystem.py", line 18, in upgrade
+    for statement in erp_guards:op.execute(statement)
+                                ^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 8, in execute
+  File "<string>", line 3, in execute
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/operations/ops.py", line 2645, in execute
+    return operations.invoke(op)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/operations/base.py", line 448, in invoke
+    return fn(self, operation)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/operations/toimpl.py", line 256, in execute_sql
+    operations.migration_context.impl.execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 259, in execute
+    self._exec(sql, execution_options)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/alembic/ddl/impl.py", line 252, in _exec
+    return conn.execute(construct, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1494, in execute
+    return meth(
+           ^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 534, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1714, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1868, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1996, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2351, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1977, in _exec_single_context
+    self.dialect.do_execute(
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 1192, in do_execute
+    cursor.execute(statement, parameters)
+  File "/workspace/scratch/9ae50286259c/fullsystem-venv/lib/python3.12/site-packages/psycopg/cursor.py", line 117, in execute
+    raise ex.with_traceback(None)
+sqlalchemy.exc.ProgrammingError: (psycopg.errors.UndefinedTable) relation "report_acknowledgments" does not exist
+[SQL: CREATE TRIGGER report_acknowledgments_immutable BEFORE UPDATE OR DELETE ON report_acknowledgments FOR EACH ROW EXECUTE FUNCTION his_deny_immutable_change()]
+(Background on this error at: https://sqlalche.me/e/21/f405)
+setUpClass (backend.tests.test_operations_pg.PostgreSQLOperations) ... ERROR
+
+======================================================================
+ERROR: setUpClass (backend.tests.test_operations_pg.PostgreSQLOperations)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/backend/tests/test_operations_pg.py", line 11, in setUpClass
+    subprocess.run([sys.executable,'-m','alembic','-c','backend/alembic.ini','upgrade','head'],check=True)
+  File "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/workspace/scratch/9ae50286259c/fullsystem-venv/bin/python', '-m', 'alembic', '-c', 'backend/alembic.ini', 'upgrade', 'head']' returned non-zero exit status 1.
+
+----------------------------------------------------------------------
+Ran 0 tests in 1.428s
+
+FAILED (errors=1)

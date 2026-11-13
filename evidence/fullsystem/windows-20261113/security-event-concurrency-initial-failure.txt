@@ -1,0 +1,36 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "C:\\Users\\User\\AppData\\Local\\Temp\\his-pg-tests-7poh_mzs\\files"}
+F.                                                                       [100%]
+================================== FAILURES ===================================
+_________ test_security_event_fk_wait_does_not_freeze_live_event_loop _________
+
+live_server = 'http://127.0.0.1:55975'
+
+    def test_security_event_fk_wait_does_not_freeze_live_event_loop(live_server):
+     client,_csrf=login(live_server,'quality')
+     try:
+      with psycopg.connect(pg_url(os.environ['DATABASE_URL'])) as held,psycopg.connect(pg_url(os.environ['DATABASE_URL']),autocommit=True) as observer,ThreadPoolExecutor(max_workers=1) as pool:
+       held.execute('SELECT id FROM users WHERE id=%s FOR UPDATE',('user-quality',))
+       pending=pool.submit(client.get,'/api/v2/admin/users')
+       try:
+        deadline=time.monotonic()+10;waiting=False
+        while time.monotonic()<deadline:
+         waiting=observer.execute("SELECT EXISTS(SELECT 1 FROM pg_stat_activity WHERE datname=current_database() AND wait_event_type='Lock' AND query ILIKE '%INSERT INTO security_events%')").fetchone()[0]
+         if waiting:break
+         time.sleep(.05)
+        assert waiting,'SecurityEvent insert did not reach the controlled FK lock wait'
+        assert not pending.done(),'Denial must still be waiting for its atomic security-event insert'
+        start=time.monotonic();health=httpx.get(live_server+'/health',timeout=2);latency=time.monotonic()-start
+        assert health.status_code==200 and latency<2
+       finally:held.rollback()
+       denied=pending.result(timeout=10)
+       assert denied.status_code==403 and denied.headers.get('x-security-event-persisted')!='false'
+      with SessionLocal() as db:
+       events=list(db.scalars(select(m.SecurityEvent).where(m.SecurityEvent.actor_id=='user-quality',m.SecurityEvent.route_template=='/api/v2/admin/users',m.SecurityEvent.status_code==403)))
+>      assert len(events)==1 and events[0].method=='GET' and events[0].event=='request_denied_or_rejected'
+E      assert (0 == 1)
+E       +  where 0 = len([])
+
+tests\fullsystem\test_security_event_concurrency.py:73: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/fullsystem/test_security_event_concurrency.py::test_security_event_fk_wait_does_not_freeze_live_event_loop
+1 failed, 1 passed in 52.60s

@@ -1,0 +1,44 @@
+{
+  "schema_version": "1.0",
+  "implementation_status": "design policy; runtime enforces synthetic mock-only subset",
+  "strategy": "deterministic",
+  "routes": {
+    "document_completeness": {
+      "provider": "mock",
+      "model_alias": "synthetic_fixture_v1",
+      "required_capabilities": [
+        "json"
+      ],
+      "data_classes": [
+        "synthetic"
+      ],
+      "fallbacks": []
+    },
+    "general_text": {
+      "provider": null,
+      "model_alias": "qwen_8b",
+      "fallbacks": []
+    },
+    "thai_text": {
+      "provider": null,
+      "model_alias": "typhoon",
+      "fallbacks": []
+    },
+    "medical_task": {
+      "provider": null,
+      "model_alias": "medgemma",
+      "fallbacks": []
+    }
+  },
+  "decision_order": [
+    "authorize user/tenant/patient/encounter and purpose",
+    "classify data; reject unknown class",
+    "resolve enabled route and provider allowlist",
+    "require observed model/runtime identity and verified requested capabilities",
+    "reserve authorized budget and capacity",
+    "invoke bounded adapter; validate schema and evidence",
+    "record outcome including failure/timeout/abstention; never silently reroute"
+  ],
+  "cloud_fallback_enabled": false,
+  "live_to_mock_fallback_enabled": false
+}

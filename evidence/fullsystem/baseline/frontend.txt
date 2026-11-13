@@ -1,0 +1,30 @@
+
+> his-poc-web@0.2.0 test
+> node --test tests/*.test.mjs
+
+✔ typed decoder frozen context_initial (1.393421ms)
+✔ typed decoder frozen context_faults (0.162369ms)
+✔ typed decoder frozen context_pending (1.28436ms)
+✔ typed decoder frozen context_edited (0.171923ms)
+✔ typed decoder frozen context_approved (0.142239ms)
+✔ typed decoder frozen context_committed (0.152625ms)
+✔ HTTP200 timeout/abstention/failure never becomes a proposal (3.35622ms)
+✔ review payload excludes edits for approve and reject, includes edit (0.76748ms)
+✔ document save preserves metadata and original draft version (0.493116ms)
+✔ discard draft intentionally adopts latest server version (0.807498ms)
+✔ dirty edits or document prevents approval (0.193766ms)
+✔ lost response retry retains identical payload/key (1.111656ms)
+✔ pending commit refuses a different proposal version (0.159856ms)
+✔ fixture adapter is read-only and never calls fetch (0.307853ms)
+✔ 403 errors and nonJSON responses remain explicit errors (0.679611ms)
+✔ no provider endpoint call and only singleton API mutation context (0.287964ms)
+✔ dirty review remains bound to old version/hash after concurrent refresh (0.281194ms)
+ℹ tests 17
+ℹ suites 0
+ℹ pass 17
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 168.457165
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.

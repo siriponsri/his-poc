@@ -1,0 +1,119 @@
+{
+  "release": "0.3.0",
+  "generated_at": "2026-11-12T09:14:52.942843+00:00",
+  "working_directory": "apps/web",
+  "node": "v24.22.1",
+  "commands": [
+    {
+      "command": "npm ci --ignore-scripts",
+      "status": "PASS",
+      "exit_code": 0,
+      "assertion_count": null,
+      "log": "npm-ci.txt"
+    },
+    {
+      "command": "npm test",
+      "status": "PASS",
+      "exit_code": 0,
+      "assertion_count": 24,
+      "log": "unit-tests.txt"
+    },
+    {
+      "command": "npm run test:component",
+      "status": "PASS",
+      "exit_code": 0,
+      "assertion_count": 49,
+      "log": "component-tests.txt"
+    },
+    {
+      "command": "npm run test:audit",
+      "status": "PASS",
+      "exit_code": 0,
+      "assertion_count": 3,
+      "log": "audit-regression.txt"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "PASS",
+      "exit_code": 0,
+      "assertion_count": null,
+      "log": "typecheck.txt"
+    },
+    {
+      "command": "npm run build",
+      "status": "PASS",
+      "exit_code": 0,
+      "assertion_count": null,
+      "log": "build.txt"
+    }
+  ],
+  "audit_baseline": {
+    "defects_reproduced": 3,
+    "fixed_defects_reproduced": 0,
+    "method": "actual historical App pre-render function probes"
+  },
+  "component_method": "49 actual React/jsdom mount tests, controlled HTTP doubles, 38 domain controls, no real browser or DB claim",
+  "browser": {
+    "status": "NOT_RUN",
+    "assertions_executed": 0,
+    "reason": "Root evidence/fullsystem/browser-preflight.json: Chromium socket permission failure",
+    "authored_syntax_checked": [
+      "scripts/browser_check.py",
+      "scripts/browser_driver.py",
+      "scripts/browser_journeys.py"
+    ],
+    "authored_journeys": [
+      "J01",
+      "J02",
+      "J03",
+      "J04",
+      "J05",
+      "J06",
+      "J07",
+      "J08",
+      "J09",
+      "J10"
+    ]
+  },
+  "visual_accessibility_browser": "NOT_RUN",
+  "source_sha256": {
+    "src/App.tsx": "e08815736b9a7de6826a8cf2d9126ae29590d8f9d01f854a584b0e01a912eacf",
+    "src/components/app-sidebar.tsx": "04e77214c9767cacf0be7804c150a75cb9b22f43afbf77a899cdfd9a91f1ad61",
+    "src/components/core-workspaces.tsx": "a4c78a283ae160b896d98bd0e2323e515bda25d36bec7164079c2f4067f016bb",
+    "src/components/forms.tsx": "fca4e035b5868a7c5113b86e831618cd1dfb27f978b4d0c017a49f224c195980",
+    "src/components/growth.tsx": "60258427c3a5a07bd8b3fd108e6130bf84242f10ab7887a25a38f02e5b61bbba",
+    "src/components/operations.tsx": "d276670b5d06aa8c70311900a4f9d2eeb7cbf66c5f3a86fa8a5480304ee2d9f4",
+    "src/components/portal.tsx": "00ebfd9ad798a081c10f69f6775a37fd4a62d0a3809b878c2dbf3ecf984061ca",
+    "src/components/sidebar.tsx": "f7284be7419d9be4173e3f84c436d56df7b57e1535c7d2969353e3eb12349ffc",
+    "src/components/workspace.tsx": "2bb59e648581c07490fac34cddc3ec21f3999676af361755c421b68a97f2b594",
+    "src/data/domains.json": "f2dbdb1e7c7c783459e34ff70863a0003e63e439d09517e5f0bcb18098cb439a",
+    "src/data/full-domains.json": "ebb95be12796cc43bae70b2e4ee7034d98208d95701bff8320b2340cf9489a72",
+    "src/data/resource-catalog.json": "e4ebf0c1d4949168b49e1718d90257fd90d8b96e4d2f80116c40fe8f947dde6e",
+    "src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303",
+    "src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "src/lib/catalog.ts": "c924b48539b9828ee6de6e57f09d6e9db7b2e9f603f0013ceb420fbe42ed402d",
+    "src/lib/client.ts": "42c2e6d12fd1dc5290f411092bdddb9602c201092f5c0697a4d0ce723662dba7",
+    "src/main.tsx": "b8dce1127336236105527faf70084839bdea99da921c74b367f50c1a0997a1bf",
+    "src/styles.css": "15cc6e0b0aa539e75657ef243d38c5db95aab973243790e6d5befa11e19e26ca",
+    "src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "tests/adapter.test.mjs": "7640415c19b7492362f3f3470a8773ac5aeba897c36c54e84980dab674aed0b8",
+    "tests/client-v2.test.mjs": "7624b6ed3c773e8335d913db739cf81ee9671c708024090f98249bdfafe9b1b4",
+    "tests/workflow.component.test.tsx": "7ff35e6d3a23982113690c8912726b388262a3fe4fa48c1912188d372fdb5b84",
+    "scripts/audit_regression.mjs": "5ccdcf15fe955c3de942f5b7a2ef0a51e46897d8ae9ac8c09b53c2a1ba68890d",
+    "scripts/browser_check.py": "7c85198afef969c6012fb79acf3608c59c9ffade1b156a103c6d9b2169eff2d8",
+    "scripts/browser_driver.py": "f2442329af50f34ccec861aea47a981de218c0fab9e6bc506613a82bfe95b136",
+    "scripts/browser_journeys.py": "4e3d7b48cfa932e8a2199f0d37079cf0dceff483ebc1bd39391aafedf2a825d0",
+    "scripts/sync_data.py": "126e9cb6f4205e679d00193e3649d83e3ebcad09a7ddf13b90168c3e16a6c91d",
+    "scripts/sync_full_catalog.py": "7eb45872a1e91a81e791f92eafc013f4149732b0af5008c4e280d7d24080be03"
+  },
+  "artifact_sha256": {
+    "dist/assets/index-Bxeuu6gi.css": "55ff825117a8d6480062024bb63a6c118a065073b504c8d22c2a437fbf2fae52",
+    "dist/assets/index-DrCueuwr.js": "97fd65faa0a9fcff629441e236d68a7955e6ee5d7355831a2a34c802c39a851c",
+    "dist/index.html": "fb78fac38fcf75bdc31bb9a913a9877cc9ce06ba932013911e540cb0fd7a029c",
+    "dist/licenses/REACT_DOM_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "dist/licenses/REACT_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "dist/licenses/SCHEDULER_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "dist/licenses/SHADCN_LICENSE.txt": "cbe191a94b1484349d68d02b943bdeae08f3a9a34cc19cbaa7746bee50dd69ac"
+  }
+}

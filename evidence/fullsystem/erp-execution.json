@@ -1,0 +1,27 @@
+{
+  "timestamp_utc": "2026-11-12T09:04:09.422585+00:00",
+  "status": "PASS",
+  "exit_code": 0,
+  "tests": 13,
+  "database": "PostgreSQL 18.6",
+  "profile": "isolated disposable synthetic database",
+  "command": "python scripts/test_with_postgres.py --pg-bin /path/to/postgresql18/bin -- python -m unittest discover -s tests/fullsystem -p test_erp.py -v",
+  "observed_duration_seconds": 8.264,
+  "evidence": [
+    "evidence/fullsystem/erp-tests.txt",
+    "evidence/fullsystem/erp-journeys.json"
+  ],
+  "browser": "NOT_RUN",
+  "external_integrations": "NOT_RUN",
+  "sha256": {
+    "backend/app/domains/erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653",
+    "backend/app/domains/erp_catalog.json": "8a487b5b2754bb48ccaaa1dec7be95001d81a00777232a6114260c1d4c140d76",
+    "backend/app/models_erp.py": "2e16a16d4fcd15a7b89f98e1c1c4da2f400a0260c3889a745e6916957b25e913",
+    "backend/migrations/erp_guards.py": "52845b039e606c95bcee657fccb70ce5e3496c31f55297e4c603d9d359774b44",
+    "backend/migrations/schema_0001.py": "472cbd2e5f7abb2fa56feabe3adeb818fdb407a40ea61fd80a649dbe4f5cae3c",
+    "tests/fullsystem/test_erp.py": "1679545e8777217e5f9188f88e28f7e2ce8deb119132bf62f7bb973a0545fc35",
+    "contracts/v2/erp-inputs.json": "293faffdd75400a84070c3dafe84b2baf76bc6f06bb9602f9fb8a7532ba7e1bd",
+    "evidence/fullsystem/erp-tests.txt": "32ed36120537db42958339a579b2ac4e3299511bee86b025b97ad49f98696fec",
+    "evidence/fullsystem/erp-journeys.json": "431d9aee22ef9e81d29c44b995ca5483df3f560346d512a500b8079891ff5125"
+  }
+}

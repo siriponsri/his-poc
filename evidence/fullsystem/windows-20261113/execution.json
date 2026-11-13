@@ -1,0 +1,202 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.171,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 16.371,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 3.132,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 6.844,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 5.223,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-build.txt"
+  },
+  {
+    "check": "seed",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/verify_seed.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 76.521,
+    "log": "evidence\\fullsystem\\windows-20261113\\seed.txt"
+  },
+  {
+    "check": "core",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "backend/tests/run_core_validation.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 104.63,
+    "log": "evidence\\fullsystem\\windows-20261113\\core.txt"
+  },
+  {
+    "check": "clinical",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/run_pg_suite.py",
+      "tests/fullsystem/test_clinical.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 148.381,
+    "log": "evidence\\fullsystem\\windows-20261113\\clinical.txt"
+  },
+  {
+    "check": "erp",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "tests/fullsystem/test_erp.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 83.568,
+    "log": "evidence\\fullsystem\\windows-20261113\\erp.txt"
+  },
+  {
+    "check": "operations",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_pg.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 134.198,
+    "log": "evidence\\fullsystem\\windows-20261113\\operations.txt"
+  },
+  {
+    "check": "launcher",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_unit.py",
+      "backend/tests/test_validation_launcher_unit.py",
+      "-q"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.061,
+    "log": "evidence\\fullsystem\\windows-20261113\\launcher.txt"
+  },
+  {
+    "check": "same-origin",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/verify_same_origin.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 77.192,
+    "log": "evidence\\fullsystem\\windows-20261113\\same-origin.txt"
+  },
+  {
+    "check": "package",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/check_fullsystem_package.py"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 5.557,
+    "log": "evidence\\fullsystem\\windows-20261113\\package.txt"
+  }
+]

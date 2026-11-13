@@ -1,0 +1,24 @@
+[
+  {
+    "check": "launcher",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_unit.py",
+      "backend/tests/test_validation_launcher_unit.py",
+      "backend/tests/test_catalog_encoding_unit.py",
+      "backend/tests/test_release_packaging_unit.py",
+      "backend/tests/test_contract_export_unit.py",
+      "backend/tests/test_browser_restore_verifier_unit.py",
+      "backend/tests/test_browser_cli_unit.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T12:43:59.824+00:00",
+    "completed_at": "2026-11-13T12:44:06.284+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 6.459,
+    "log": "evidence\\fullsystem\\windows-20261113\\launcher-final\\launcher.txt"
+  }
+]

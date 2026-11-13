@@ -1,0 +1,20 @@
+✔ loading hydrates the editor; saving preserves document metadata and uses its version (7.426241ms)
+✔ refresh preserves a dirty draft and its old write version; explicit discard loads latest (1.667845ms)
+✔ a network failure replaces old success output with a visible error (2.430482ms)
+✔ non-JSON responses are visible and do not leave controls busy (1.248748ms)
+✔ commit reconciles displayed status; same-page replay keeps its original key; reload reads persistence (3.416408ms)
+✔ lost commit response retains an immutable retry payload and does not permit a new proposal (1.258152ms)
+✔ reading a persisted result resolves an unknown commit without writing again (1.340893ms)
+✔ double-clicking while commit is in flight sends only one mutation (1.352531ms)
+✔ unsaved reviewer text cannot approve the old proposal; edit creates a pending version before approval (4.917147ms)
+✔ HTTP 200 with a failed inference shows failure and does not reuse the previous proposal (1.515741ms)
+✔ known commit success survives a failed follow-up refresh with a visible warning (0.987053ms)
+✔ changing the demo session clears previous context, draft, proposal and retry state (2.773372ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 154.639516

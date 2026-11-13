@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:dr_task_result",
+  "title": "dr_task_result",
+  "x-implementation-status": "DESIGN_ONLY_SPECIALIST_NOT_CONNECTED",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcome": {
+      "enum": [
+        "success",
+        "abstained",
+        "failed",
+        "timeout"
+      ]
+    },
+    "model_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preprocessing_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_hashes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "image_quality": {
+      "enum": [
+        "gradable",
+        "ungradable",
+        "unknown"
+      ]
+    },
+    "grade": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 4
+    },
+    "score": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "score_definition": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "threshold_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "evaluator_protocol": {
+      "const": "DR_PROTOCOL_V1"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "human_review_required": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "outcome",
+    "model_revision",
+    "preprocessing_version",
+    "input_hashes",
+    "image_quality",
+    "grade",
+    "score",
+    "score_definition",
+    "threshold_version",
+    "evaluator_protocol",
+    "limitations",
+    "human_review_required"
+  ],
+  "additionalProperties": false
+}

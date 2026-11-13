@@ -1,0 +1,820 @@
+{
+  "schema_version": "1.0",
+  "status": "PASS",
+  "data_class": "AUTHORED_SYNTHETIC",
+  "external_data_imported": false,
+  "source": "backend/app/seed.py + domain seed helpers",
+  "postgres_version": "18.6",
+  "repeat_seed_unchanged": true,
+  "table_inventory": {
+    "alembic_version": {
+      "rows": 1,
+      "sha256": "d5b5a79dfdf09fe21f839e1c443265342400a574c1a4172c64df5922d3896f91"
+    },
+    "audit_events": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "budget_versions": {
+      "rows": 1,
+      "sha256": "be1e693cd433c1c7e8d963075c679b43707db21f9695a8fd81399524e16eb649"
+    },
+    "care_assignments": {
+      "rows": 8,
+      "sha256": "5aaa1fd98ec1e98dde5374db3d1196d058e5874d04c891408b2bf04351728a54"
+    },
+    "charges": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "claim_lines": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "claims": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_administrations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_admissions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_appointments": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_bed_assignments": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_beds": {
+      "rows": 2,
+      "sha256": "1fd9e9bdd5c63cb0c118446cdd0e606066a1827829de5d8ccf8225db37ddaff4"
+    },
+    "clinical_blood_requests": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_blood_units": {
+      "rows": 2,
+      "sha256": "d0385b94b171aac8c0c0ffa030f233079a9c71e86a6cb0018341f98713ed270c"
+    },
+    "clinical_dental": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_device_assignments": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_diets": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_emergency": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_events": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_handover_tasks": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_handovers": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_icu_rounds": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_imaging": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_immunizations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_labs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_medication_returns": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_medications": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_orders": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_pediatrics": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_portal_requests": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_pregnancies": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_procedures": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_referrals": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_rehab": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_slots": {
+      "rows": 2,
+      "sha256": "f438855ef0c0f41f03bb255fe928e750bac63efdc3bab5dcc0c1ef59eba0d6a2"
+    },
+    "clinical_therapy_progress": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clinical_therapy_sessions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "committed_results": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "corrective_actions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cost_entries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "coverage_records": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "cssd_cycles": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dataset_access": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dataset_rows": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dataset_versions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "delivery_attempts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "departments": {
+      "rows": 1,
+      "sha256": "c0efb923ccd492abd3e9cf158f9cb32fc0dfb06f24f96a4d46e3e0b2fab2938e"
+    },
+    "document_attestations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "document_versions": {
+      "rows": 4,
+      "sha256": "8a2a3fea0bd759199e6da2294573a2e5ef77928511ac17a01827f00d7e534f19"
+    },
+    "documents": {
+      "rows": 4,
+      "sha256": "58b8cbca3a08a2780a572eccf627750a9ec66ea79819e5832788ee4164840af6"
+    },
+    "encounters": {
+      "rows": 6,
+      "sha256": "72f22aee65de19c186fceaa24e48c055bd58c2f2012daa94a0561457dd53d44c"
+    },
+    "equipment_assets": {
+      "rows": 1,
+      "sha256": "48059e6b0bf29867aaa43b71dd11b27603c80b04f8fe51ea32e53a9c21d33c4a"
+    },
+    "facilities": {
+      "rows": 3,
+      "sha256": "e870e035da5def0400a8d863ec7d8891edd6cc11cb0f994743074bce8c5c056d"
+    },
+    "facility_work_orders": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "goods_receipts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "human_reviews": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "incidents": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "inference_runs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "integration_messages": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "integration_receipts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "inventory_items": {
+      "rows": 1,
+      "sha256": "41c3f574eeb6718d8dd70844f7746f92874749c64350fbeb40868a2fb0c98d0e"
+    },
+    "inventory_lots": {
+      "rows": 1,
+      "sha256": "5881bfd70aecd6aca1d07a6048428425ecfb477b23160df1ffff94e1541f53ad"
+    },
+    "invoice_adjustments": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "invoices": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ledger_entries": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ledger_lines": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "legacy_imports": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "legacy_rows": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "linen_dispatches": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "locations": {
+      "rows": 2,
+      "sha256": "02760aa65877d0131b33d421d69b5954958e977b6e4a8f01847ecd92c734db88"
+    },
+    "login_attempts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "maintenance_work_orders": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memberships": {
+      "rows": 23,
+      "sha256": "f99896b5a2eea6ebfa1f1ffc443df6b0dbb9837ec9c56b3b76e15a52de8a59de"
+    },
+    "operational_jobs": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "operations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "order_revisions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "organizations": {
+      "rows": 2,
+      "sha256": "69fd2bdb11f56b99b7b46d94d2f562146a151fb12ebb0d3eec3ecab39490ad52"
+    },
+    "patient_identifiers": {
+      "rows": 4,
+      "sha256": "eb3a7631f84199e2bc8735acf9e13649bfefc430ffc18c5d28c306edb832d26b"
+    },
+    "patients": {
+      "rows": 6,
+      "sha256": "dc6399f9d1cbec996f880c3f25d4b6bfdd00caf91f7b954c36b7b66ff3e103b3"
+    },
+    "payment_allocations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "payment_receipts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "permissions": {
+      "rows": 126,
+      "sha256": "440f18bd16fb5f803123bcb9fad2f9aeb60e59eccdf364afec087ea8cab8218b"
+    },
+    "price_versions": {
+      "rows": 1,
+      "sha256": "105d0a07c9a2bd28cb6dfefaff361dbd97dea133a9dec4bb895d4e0d5936053d"
+    },
+    "proposal_versions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "proposals": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "purchases": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "reconciliation_tasks": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "refunds": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "remittances": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "report_acknowledgments": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "report_batches": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "report_lineage": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "role_permissions": {
+      "rows": 1114,
+      "sha256": "ef330f4b8556336be2e76dc34665a99d21a21679bc2e641284c53c8a67d3fe4e"
+    },
+    "roles": {
+      "rows": 47,
+      "sha256": "888d07be3b4a4da8a960bd6298f4cf90569963e322f78dbdf7bf8a90dfe3630a"
+    },
+    "rosters": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "security_events": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "seed_runs": {
+      "rows": 1,
+      "sha256": "25341fb15578ddb345e194fcdc6db90eb11b14d7c7981ce55943ba3ca246bd2b"
+    },
+    "sessions": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "staff_members": {
+      "rows": 4,
+      "sha256": "474f8be33c6869a3ca6acee42e4f8d76593115df88867d7cf7e2f6e6db653928"
+    },
+    "stock_balances": {
+      "rows": 1,
+      "sha256": "23844fb385837998ab7d715a56bf9d51e13817b7fef419cbcdc8c846b703e288"
+    },
+    "stock_counts": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stock_locations": {
+      "rows": 2,
+      "sha256": "2eefd9c7dcb727919bd560e67bef3d5ba264d38ddd4d91202fd13041ce12837b"
+    },
+    "stock_movements": {
+      "rows": 1,
+      "sha256": "548c70ad598780e3cf2b5102b522d0ff380bda3140c55ec24cf21a23997b900e"
+    },
+    "stock_reservations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "supplier_obligations": {
+      "rows": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "suppliers": {
+      "rows": 1,
+      "sha256": "35029e09bde34585a1caa47d0e9d8ebd53fa3ef7a579a3ee1e8e202037c7b708"
+    },
+    "tasks": {
+      "rows": 4,
+      "sha256": "4724041c78facb3e2e9ebab6ac12a31b0a17cf7b321cbd20fdf6137439a3ea25"
+    },
+    "user_patient_scopes": {
+      "rows": 2,
+      "sha256": "90528075f246b56b45197d2fc73f6bee0bb64ebc56ba342f7316d3dbc9c00d34"
+    },
+    "users": {
+      "rows": 19,
+      "sha256": "541036a0972b41a914e694ace547ccf54e2213528c4d38e1c0cfdc2d12dcecbc"
+    }
+  },
+  "records": {
+    "patients": [
+      {
+        "id": "patient-001",
+        "organization_id": "org-demo",
+        "facility_id": "facility-demo",
+        "display_name": "ผู้ป่วยสังเคราะห์ 001"
+      },
+      {
+        "id": "patient-002",
+        "organization_id": "org-demo",
+        "facility_id": "facility-demo",
+        "display_name": "ผู้ป่วยสังเคราะห์ 002"
+      },
+      {
+        "id": "patient-003",
+        "organization_id": "org-demo",
+        "facility_id": "facility-demo",
+        "display_name": "ผู้ป่วยสังเคราะห์ 003"
+      },
+      {
+        "id": "patient-004",
+        "organization_id": "org-demo",
+        "facility_id": "facility-demo",
+        "display_name": "ผู้ป่วยสังเคราะห์ 004"
+      },
+      {
+        "id": "patient-other",
+        "organization_id": "org-other",
+        "facility_id": "facility-other",
+        "display_name": "ต่างองค์กร"
+      },
+      {
+        "id": "patient-second",
+        "organization_id": "org-demo",
+        "facility_id": "facility-second",
+        "display_name": "ต่างสาขา"
+      }
+    ],
+    "encounters": [
+      {
+        "id": "encounter-001",
+        "patient_id": "patient-001",
+        "status": "in_consult"
+      },
+      {
+        "id": "encounter-002",
+        "patient_id": "patient-002",
+        "status": "in_consult"
+      },
+      {
+        "id": "encounter-003",
+        "patient_id": "patient-003",
+        "status": "in_consult"
+      },
+      {
+        "id": "encounter-004",
+        "patient_id": "patient-004",
+        "status": "in_consult"
+      },
+      {
+        "id": "encounter-other",
+        "patient_id": "patient-other",
+        "status": "in_consult"
+      },
+      {
+        "id": "encounter-second",
+        "patient_id": "patient-second",
+        "status": "in_consult"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "task-patient-001",
+        "encounter_id": "encounter-001",
+        "domain": "D37",
+        "kind": "document_review",
+        "status": "open"
+      },
+      {
+        "id": "task-patient-002",
+        "encounter_id": "encounter-002",
+        "domain": "D37",
+        "kind": "document_review",
+        "status": "open"
+      },
+      {
+        "id": "task-patient-003",
+        "encounter_id": "encounter-003",
+        "domain": "D37",
+        "kind": "document_review",
+        "status": "open"
+      },
+      {
+        "id": "task-patient-004",
+        "encounter_id": "encounter-004",
+        "domain": "D37",
+        "kind": "document_review",
+        "status": "open"
+      }
+    ],
+    "users": [
+      {
+        "id": "user-auditor",
+        "username": "auditor",
+        "status": "active"
+      },
+      {
+        "id": "user-billing",
+        "username": "billing",
+        "status": "active"
+      },
+      {
+        "id": "user-clinician",
+        "username": "clinician",
+        "status": "active"
+      },
+      {
+        "id": "user-finance",
+        "username": "finance",
+        "status": "active"
+      },
+      {
+        "id": "user-finance_reviewer",
+        "username": "finance_reviewer",
+        "status": "active"
+      },
+      {
+        "id": "user-imaging",
+        "username": "imaging",
+        "status": "active"
+      },
+      {
+        "id": "user-inventory",
+        "username": "inventory",
+        "status": "active"
+      },
+      {
+        "id": "user-laboratory",
+        "username": "laboratory",
+        "status": "active"
+      },
+      {
+        "id": "user-nurse",
+        "username": "nurse",
+        "status": "active"
+      },
+      {
+        "id": "user-operations_admin",
+        "username": "operations_admin",
+        "status": "active"
+      },
+      {
+        "id": "user-other",
+        "username": "other_registration",
+        "status": "active"
+      },
+      {
+        "id": "user-patient",
+        "username": "patient",
+        "status": "active"
+      },
+      {
+        "id": "user-patient2",
+        "username": "patient2",
+        "status": "active"
+      },
+      {
+        "id": "user-pharmacist",
+        "username": "pharmacist",
+        "status": "active"
+      },
+      {
+        "id": "user-procurement_approver",
+        "username": "procurement_approver",
+        "status": "active"
+      },
+      {
+        "id": "user-quality",
+        "username": "quality",
+        "status": "active"
+      },
+      {
+        "id": "user-registration",
+        "username": "registration",
+        "status": "active"
+      },
+      {
+        "id": "user-support_reviewer",
+        "username": "support_reviewer",
+        "status": "active"
+      },
+      {
+        "id": "user-system_admin",
+        "username": "system_admin",
+        "status": "active"
+      }
+    ],
+    "memberships": [
+      {
+        "id": "membership-auditor",
+        "user_id": "user-auditor",
+        "facility_id": "facility-demo",
+        "role": "auditor",
+        "active": true
+      },
+      {
+        "id": "membership-billing",
+        "user_id": "user-billing",
+        "facility_id": "facility-demo",
+        "role": "billing",
+        "active": true
+      },
+      {
+        "id": "membership-clinician",
+        "user_id": "user-clinician",
+        "facility_id": "facility-demo",
+        "role": "clinician",
+        "active": true
+      },
+      {
+        "id": "membership-finance",
+        "user_id": "user-finance",
+        "facility_id": "facility-demo",
+        "role": "finance",
+        "active": true
+      },
+      {
+        "id": "membership-finance_reviewer-accountant",
+        "user_id": "user-finance_reviewer",
+        "facility_id": "facility-demo",
+        "role": "accountant",
+        "active": true
+      },
+      {
+        "id": "membership-finance_reviewer-finance",
+        "user_id": "user-finance_reviewer",
+        "facility_id": "facility-demo",
+        "role": "finance",
+        "active": true
+      },
+      {
+        "id": "membership-finance_reviewer-refund_approver",
+        "user_id": "user-finance_reviewer",
+        "facility_id": "facility-demo",
+        "role": "refund_approver",
+        "active": true
+      },
+      {
+        "id": "membership-imaging",
+        "user_id": "user-imaging",
+        "facility_id": "facility-demo",
+        "role": "imaging",
+        "active": true
+      },
+      {
+        "id": "membership-inventory",
+        "user_id": "user-inventory",
+        "facility_id": "facility-demo",
+        "role": "inventory",
+        "active": true
+      },
+      {
+        "id": "membership-laboratory",
+        "user_id": "user-laboratory",
+        "facility_id": "facility-demo",
+        "role": "laboratory",
+        "active": true
+      },
+      {
+        "id": "membership-nurse",
+        "user_id": "user-nurse",
+        "facility_id": "facility-demo",
+        "role": "nurse",
+        "active": true
+      },
+      {
+        "id": "membership-operations_admin",
+        "user_id": "user-operations_admin",
+        "facility_id": "facility-demo",
+        "role": "operations_admin",
+        "active": true
+      },
+      {
+        "id": "membership-other",
+        "user_id": "user-other",
+        "facility_id": "facility-other",
+        "role": "registration",
+        "active": true
+      },
+      {
+        "id": "membership-patient",
+        "user_id": "user-patient",
+        "facility_id": "facility-demo",
+        "role": "patient",
+        "active": true
+      },
+      {
+        "id": "membership-patient2-patient",
+        "user_id": "user-patient2",
+        "facility_id": "facility-demo",
+        "role": "patient",
+        "active": true
+      },
+      {
+        "id": "membership-pharmacist",
+        "user_id": "user-pharmacist",
+        "facility_id": "facility-demo",
+        "role": "pharmacist",
+        "active": true
+      },
+      {
+        "id": "membership-procurement_approver-inventory",
+        "user_id": "user-procurement_approver",
+        "facility_id": "facility-demo",
+        "role": "inventory",
+        "active": true
+      },
+      {
+        "id": "membership-procurement_approver-purchase_approver",
+        "user_id": "user-procurement_approver",
+        "facility_id": "facility-demo",
+        "role": "purchase_approver",
+        "active": true
+      },
+      {
+        "id": "membership-quality",
+        "user_id": "user-quality",
+        "facility_id": "facility-demo",
+        "role": "quality",
+        "active": true
+      },
+      {
+        "id": "membership-registration",
+        "user_id": "user-registration",
+        "facility_id": "facility-demo",
+        "role": "registration",
+        "active": true
+      },
+      {
+        "id": "membership-support_reviewer-cssd_release_reviewer",
+        "user_id": "user-support_reviewer",
+        "facility_id": "facility-demo",
+        "role": "cssd_release_reviewer",
+        "active": true
+      },
+      {
+        "id": "membership-support_reviewer-quality",
+        "user_id": "user-support_reviewer",
+        "facility_id": "facility-demo",
+        "role": "quality",
+        "active": true
+      },
+      {
+        "id": "membership-system_admin",
+        "user_id": "user-system_admin",
+        "facility_id": "facility-demo",
+        "role": "system_admin",
+        "active": true
+      }
+    ]
+  },
+  "generator_sha256": {
+    "backend\\app\\seed.py": "9066fd69f2bab4a396ca3761719aef75da6c31ee26309aaa6d3ae9556d10047a",
+    "backend\\app\\domains\\clinical.py": "5b913e10269de7b714ae12b17281379f2577830b95c1fe7beab70ad85971232e",
+    "backend\\app\\domains\\erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653"
+  },
+  "limitations": [
+    "No actual patient data; not a clinical benchmark",
+    "Role credentials are local environment inputs; not bundled",
+    "Read-only historical18 ThaiUI fixtures remain separate; not counted as PGseed patients",
+    "Synthea external artifact NOT_DOWNLOADED/NOT_IMPORTED/NOT_BUNDLED"
+  ]
+}

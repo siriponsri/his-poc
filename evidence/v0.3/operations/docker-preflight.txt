@@ -1,0 +1,1 @@
+Docker executable is unavailable. Install/start Docker Desktop with Linux containers, or choose native-up with PostgreSQL 18 and DATABASE_URL.

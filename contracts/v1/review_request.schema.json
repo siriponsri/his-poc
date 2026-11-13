@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:review_request",
+  "title": "review_request",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "proposal_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Positive integral JSON number; 1.0 is normalized to 1 before service validation and hashing. Boolean values are invalid."
+    },
+    "action_hash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$",
+      "minLength": 64,
+      "maxLength": 64
+    },
+    "decision": {
+      "enum": [
+        "approve",
+        "reject",
+        "edit"
+      ]
+    },
+    "edits": {
+      "type": "string",
+      "maxLength": 4000
+    }
+  },
+  "required": [
+    "proposal_id",
+    "version",
+    "action_hash",
+    "decision"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "decision": {
+            "const": "edit"
+          }
+        },
+        "required": [
+          "decision"
+        ]
+      },
+      "then": {
+        "required": [
+          "edits"
+        ],
+        "properties": {
+          "edits": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000,
+            "pattern": "\\S"
+          }
+        }
+      },
+      "else": {
+        "not": {
+          "required": [
+            "edits"
+          ]
+        }
+      }
+    }
+  ]
+}

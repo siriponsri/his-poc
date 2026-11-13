@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:ai_request",
+  "title": "ai_request",
+  "x-implementation-status": "DESIGN_TARGET_NOT_RUNTIME_ENVELOPE",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "use_case": {
+      "const": "document_completeness"
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "tenant_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "user_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "patient_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "encounter_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "purpose_of_use": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "tenant_id",
+        "user_id",
+        "patient_id",
+        "encounter_id",
+        "purpose_of_use"
+      ],
+      "additionalProperties": false
+    },
+    "data_class": {
+      "enum": [
+        "synthetic",
+        "deidentified",
+        "restricted"
+      ]
+    },
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "source_id",
+          "version",
+          "sha256",
+          "locator"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "deadline_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "prompt_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "use_case",
+    "context",
+    "data_class",
+    "input_refs",
+    "required_capabilities",
+    "deadline_utc",
+    "prompt_revision",
+    "config_sha256"
+  ],
+  "additionalProperties": false
+}

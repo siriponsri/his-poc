@@ -1,0 +1,468 @@
+{
+  "backup_id": "ed1f259f67ce4478affb1e50a02fc68c",
+  "postgres_version": "18.6",
+  "dump_sha256": "d9f3e3fe4e2d20ac44da8185e72c0c17238fe6bff739e956f27ecf037a07b61d",
+  "file_references": [
+    {
+      "table": "ops_test_files",
+      "id": "ops-file",
+      "path": "9e794228136a9e51ba26f2971cff2025744a64c7e10efdb5a30a7511e8d3174e.bin",
+      "sha256": "9e794228136a9e51ba26f2971cff2025744a64c7e10efdb5a30a7511e8d3174e"
+    }
+  ],
+  "result": {
+    "status": "restore_verified",
+    "isolated_database": "his_restore_f646991fe24f40ebbd5a2378dfb2d0c5",
+    "file_directory": "C:\\Users\\User\\AppData\\Local\\Temp\\his-pg-tests-c_4gy5q0\\restores\\his_restore_f646991fe24f40ebbd5a2378dfb2d0c5\\files",
+    "tables": {
+      "alembic_version": {
+        "rows": 1,
+        "sha256": "d5b5a79dfdf09fe21f839e1c443265342400a574c1a4172c64df5922d3896f91"
+      },
+      "audit_events": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "budget_versions": {
+        "rows": 1,
+        "sha256": "59b93e87e7d66080779d18f719ca3b1a21fa9e9e9739b44416abc666bb52615c"
+      },
+      "care_assignments": {
+        "rows": 8,
+        "sha256": "5aaa1fd98ec1e98dde5374db3d1196d058e5874d04c891408b2bf04351728a54"
+      },
+      "charges": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "claim_lines": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "claims": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_administrations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_admissions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_appointments": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_bed_assignments": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_beds": {
+        "rows": 2,
+        "sha256": "1fd9e9bdd5c63cb0c118446cdd0e606066a1827829de5d8ccf8225db37ddaff4"
+      },
+      "clinical_blood_requests": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_blood_units": {
+        "rows": 2,
+        "sha256": "d0385b94b171aac8c0c0ffa030f233079a9c71e86a6cb0018341f98713ed270c"
+      },
+      "clinical_dental": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_device_assignments": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_diets": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_emergency": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_events": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_handover_tasks": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_handovers": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_icu_rounds": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_imaging": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_immunizations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_labs": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_medication_returns": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_medications": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_orders": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_pediatrics": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_portal_requests": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_pregnancies": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_procedures": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_referrals": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_rehab": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_slots": {
+        "rows": 2,
+        "sha256": "f438855ef0c0f41f03bb255fe928e750bac63efdc3bab5dcc0c1ef59eba0d6a2"
+      },
+      "clinical_therapy_progress": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "clinical_therapy_sessions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "committed_results": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "corrective_actions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cost_entries": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "coverage_records": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "cssd_cycles": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "dataset_access": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "dataset_rows": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "dataset_versions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "delivery_attempts": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "departments": {
+        "rows": 1,
+        "sha256": "c0efb923ccd492abd3e9cf158f9cb32fc0dfb06f24f96a4d46e3e0b2fab2938e"
+      },
+      "document_attestations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "document_versions": {
+        "rows": 4,
+        "sha256": "f62a685b206f2997b20e0ec044c871d1e95e08d7cf784bd425ee811b80e9f630"
+      },
+      "documents": {
+        "rows": 4,
+        "sha256": "c0a1890125896f04419ac7851adbbb881c72c77c063ac9942f15185e4a8cd1a3"
+      },
+      "encounters": {
+        "rows": 6,
+        "sha256": "dd91987bb49091263d0732348b1ddbf3fcdaef72cf75ee322fc58f1ec7ed310f"
+      },
+      "equipment_assets": {
+        "rows": 1,
+        "sha256": "8babf653ec3d0e11e8e255ac1da9be825c5811fbcdf792d4a67c48db470a5a32"
+      },
+      "facilities": {
+        "rows": 3,
+        "sha256": "e870e035da5def0400a8d863ec7d8891edd6cc11cb0f994743074bce8c5c056d"
+      },
+      "facility_work_orders": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "goods_receipts": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "human_reviews": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "incidents": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "inference_runs": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "integration_messages": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "integration_receipts": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "inventory_items": {
+        "rows": 1,
+        "sha256": "721704104bd1e63b130b696ca771ffec0deb87f9e69b47ea45a39a10eef8971c"
+      },
+      "inventory_lots": {
+        "rows": 1,
+        "sha256": "4d6293d968bf1f6b5bdb1ff2436a5a23c1e1abd3d34d119122ee96f4feb159d5"
+      },
+      "invoice_adjustments": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "invoices": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ledger_entries": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ledger_lines": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "legacy_imports": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "legacy_rows": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "linen_dispatches": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "locations": {
+        "rows": 2,
+        "sha256": "02760aa65877d0131b33d421d69b5954958e977b6e4a8f01847ecd92c734db88"
+      },
+      "login_attempts": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "maintenance_work_orders": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "memberships": {
+        "rows": 23,
+        "sha256": "f99896b5a2eea6ebfa1f1ffc443df6b0dbb9837ec9c56b3b76e15a52de8a59de"
+      },
+      "operational_jobs": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "operations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ops_test_files": {
+        "rows": 1,
+        "sha256": "9aae4ff2124f1927ea44e821d47adcb5edc550d61ce4dc52173fe404a9f967cd"
+      },
+      "order_revisions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "organizations": {
+        "rows": 2,
+        "sha256": "69fd2bdb11f56b99b7b46d94d2f562146a151fb12ebb0d3eec3ecab39490ad52"
+      },
+      "patient_identifiers": {
+        "rows": 4,
+        "sha256": "eb3a7631f84199e2bc8735acf9e13649bfefc430ffc18c5d28c306edb832d26b"
+      },
+      "patients": {
+        "rows": 6,
+        "sha256": "a6707aa1280a7a6fccf9272158d133c7c4bc1a4972a7d0d2046ebf70e33c26cf"
+      },
+      "payment_allocations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "payment_receipts": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "permissions": {
+        "rows": 126,
+        "sha256": "440f18bd16fb5f803123bcb9fad2f9aeb60e59eccdf364afec087ea8cab8218b"
+      },
+      "price_versions": {
+        "rows": 1,
+        "sha256": "c2f43f13fb103b24b64464b54522ee1e1d9fa38c4d1a07f983d96fe1eda75041"
+      },
+      "proposal_versions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "proposals": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "purchases": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "reconciliation_tasks": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "refunds": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "remittances": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "report_acknowledgments": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "report_batches": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "report_lineage": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "role_permissions": {
+        "rows": 1114,
+        "sha256": "ef330f4b8556336be2e76dc34665a99d21a21679bc2e641284c53c8a67d3fe4e"
+      },
+      "roles": {
+        "rows": 47,
+        "sha256": "888d07be3b4a4da8a960bd6298f4cf90569963e322f78dbdf7bf8a90dfe3630a"
+      },
+      "rosters": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "security_events": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "seed_runs": {
+        "rows": 1,
+        "sha256": "0e93b41b0a1568c43825af9b0ee5ba5e0a96525f0e286cba9579b7fa414583a1"
+      },
+      "sessions": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "staff_members": {
+        "rows": 4,
+        "sha256": "4916cf33ae80bb6bd84fa6186e566066e685622ff9f2e9d0609339923d03fc06"
+      },
+      "stock_balances": {
+        "rows": 1,
+        "sha256": "23844fb385837998ab7d715a56bf9d51e13817b7fef419cbcdc8c846b703e288"
+      },
+      "stock_counts": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stock_locations": {
+        "rows": 2,
+        "sha256": "70875c6d7f1a3484963a990cef82ef3e38b191c58b5fe144bfecb4aa2f6b176e"
+      },
+      "stock_movements": {
+        "rows": 1,
+        "sha256": "7a33b47d767acec3a3db1415cb374573bb9331425a642f3035a6935651dfd2c7"
+      },
+      "stock_reservations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "supplier_obligations": {
+        "rows": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "suppliers": {
+        "rows": 1,
+        "sha256": "9e60c4631290bc0be392d3ec798ce4cbd5887f5eedc8f536a8d72e59339ab7ef"
+      },
+      "tasks": {
+        "rows": 4,
+        "sha256": "953e7ae91037f1b2b9dbeaabc7e7b6af45ac5fb78f2fa705c982486c24a39e08"
+      },
+      "user_patient_scopes": {
+        "rows": 2,
+        "sha256": "90528075f246b56b45197d2fc73f6bee0bb64ebc56ba342f7316d3dbc9c00d34"
+      },
+      "users": {
+        "rows": 19,
+        "sha256": "a11554b6d625333a24315aff23e1fd6f754eeb51e64d113045ae4630cf5780ad"
+      }
+    },
+    "file_count": 1,
+    "backup_id": "ed1f259f67ce4478affb1e50a02fc68c",
+    "verified_checks": [
+      "table row counts",
+      "canonical row hashes",
+      "validated foreign keys",
+      "file checksums"
+    ]
+  }
+}

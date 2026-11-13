@@ -1,0 +1,19 @@
+{
+  "started_at": "2026-11-13T12:22:23.133+00:00",
+  "completed_at": "2026-11-13T12:26:51.626+00:00",
+  "source_start": "source-start.json",
+  "source_end": "source-end.json",
+  "changed_sources_during_run": [
+    "apps/web/scripts/browser_domains.py",
+    "apps/web/scripts/browser_driver.py",
+    "apps/web/scripts/browser_recovery.py",
+    "backend/tests/test_validation_launcher_unit.py",
+    "scripts/validate_fullsystem.py",
+    "tests/fullsystem/test_clinical_acceptance.py",
+    "tests/fullsystem/test_erp_acceptance.py"
+  ],
+  "source_changed_during_run": true,
+  "checks": 7,
+  "status": "PASS",
+  "note": "Each command has UTC timestamps in execution.json; source changes are disclosed and require review before binding acceptance to one candidate."
+}

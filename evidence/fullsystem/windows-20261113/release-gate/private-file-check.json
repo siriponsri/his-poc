@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-11-13T12:56:25.946216+00:00",
+  "status": "PASS",
+  "tracked_files_checked": 576,
+  "private_secret_matches": [],
+  "forbidden_paths": [],
+  "method": "Exact private environment password/secret values scanned locally without printing them; tracked runtime/credential path checks."
+}

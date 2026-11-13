@@ -1,0 +1,64 @@
+{
+  "observed_at": "2026-11-13T12:23:26.081237+00:00",
+  "method": "EXECUTED_HTTP_POSTGRESQL_SYNTHETIC",
+  "browser": "NOT_RUN",
+  "records": [
+    {
+      "domain": "D04",
+      "emergency_id": "c44b9d4a-9abe-4314-95c4-eff4f8969909",
+      "admission_id": "ddc9efb9-c4bf-4845-8993-7910341b1eca",
+      "assertions": [
+        "lost-response same-key replay equal",
+        "one Admission",
+        "one admission history event"
+      ]
+    },
+    {
+      "domain": "D05",
+      "admission_id": "d2f43ba5-a937-4710-bccb-0cf2442f14d0",
+      "bed_assignment_ids": [
+        "9284cbb6-875a-4b8b-8b7d-efba76cda80a",
+        "9abd94bc-8f03-4391-9d78-e1c7c6cd600a"
+      ],
+      "other_admission_id": "6a734092-e6a5-4077-a1ab-0ec076a587d4",
+      "assertions": [
+        "original assignment retained with end time",
+        "one active new bed",
+        "old bed reusable",
+        "detail history matches persisted IDs"
+      ]
+    },
+    {
+      "domain": "D06",
+      "handover_id": "1161f4bb-b232-48ab-b280-26486667e52e",
+      "task_id": "17e80283-6be0-4080-a9a3-ed0e406bd7e3",
+      "sender_id": "user-nurse",
+      "recipient_id": "1b75b074-5a1d-416e-baf5-e9c08c14ded8",
+      "denied_user_id": "06336e4e-0cd6-4f75-bb1f-100cc963de0f",
+      "assertions": [
+        "same-facility wrong recipient denied without partial history/version",
+        "distinct designated recipient acknowledged",
+        "same pending task/version retained"
+      ]
+    },
+    {
+      "domain": "D19",
+      "diet_order_id": "f4435975-035e-4071-9aab-6fd5a268fef9",
+      "assertions": [
+        "cancelled preparation rejected",
+        "version/history/record count unchanged"
+      ]
+    },
+    {
+      "domain": "D11",
+      "study_id": "b5d3c96f-b70c-48c7-a13f-91637943a1ba",
+      "file_sha256": "7933246b52235b380a63971e70c10de1efa25a698af5b6c28a3a221e8d063700",
+      "limited_clinician_id": "a5462080-1d3d-4c31-b29b-c05ef785e2a2",
+      "assertions": [
+        "authorized checksum verified",
+        "actual file GET denied across patient care scope",
+        "auditor and registration raw-file denied without bytes"
+      ]
+    }
+  ]
+}

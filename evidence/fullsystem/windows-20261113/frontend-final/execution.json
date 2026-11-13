@@ -1,0 +1,101 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T12:13:12.970+00:00",
+    "completed_at": "2026-11-13T12:13:14.370+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.399,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-final\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T12:13:14.371+00:00",
+    "completed_at": "2026-11-13T12:13:23.464+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 9.093,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-final\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T12:13:23.469+00:00",
+    "completed_at": "2026-11-13T12:13:24.258+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.789,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-final\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T12:13:24.260+00:00",
+    "completed_at": "2026-11-13T12:13:25.260+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.999,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-final\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T12:13:25.261+00:00",
+    "completed_at": "2026-11-13T12:13:26.873+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.612,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-final\\frontend-build.txt"
+  },
+  {
+    "check": "launcher",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_unit.py",
+      "backend/tests/test_validation_launcher_unit.py",
+      "backend/tests/test_catalog_encoding_unit.py",
+      "backend/tests/test_release_packaging_unit.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T12:13:26.879+00:00",
+    "completed_at": "2026-11-13T12:13:28.661+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.782,
+    "log": "evidence\\fullsystem\\windows-20261113\\frontend-final\\launcher.txt"
+  }
+]

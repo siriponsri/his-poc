@@ -1,0 +1,11 @@
+{
+  "started_at": "2026-11-13T12:43:59.252+00:00",
+  "completed_at": "2026-11-13T12:44:06.412+00:00",
+  "source_start": "source-start.json",
+  "source_end": "source-end.json",
+  "changed_sources_during_run": [],
+  "source_changed_during_run": false,
+  "checks": 1,
+  "status": "PASS",
+  "note": "Each command has UTC timestamps in execution.json; source changes are disclosed and require review before binding acceptance to one candidate."
+}

@@ -1,0 +1,1 @@
+No external raw dataset is bundled. Synthea candidate is NOT_DOWNLOADED pending artifact-specific rights confirmation; metadata only in ../OPEN_DATA_MANIFEST.json. Authored Thai fixtures are in ../fixtures/.

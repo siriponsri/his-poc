@@ -1,0 +1,454 @@
+[
+  {
+    "journey": "J01",
+    "actors": [
+      "registration",
+      "system_admin",
+      "clinician"
+    ],
+    "patient_id": "906f28a4-6269-4706-9db6-8396d66dcad4",
+    "appointment_id": "9bd7fe4e-e9af-4a59-bbe2-be0f1f12d1f8",
+    "encounter_id": "8045d17d-d6fb-4b9f-b7bf-dcdcf0cf52d1",
+    "document_id": "02350e97-a85d-480e-8f34-7b09439daab1",
+    "task_id": "a43b3fbd-6577-4cac-8b36-9d67c04377a7",
+    "proposal_id": "a314737c-e3c9-4c75-bbb3-bdd6395e8ee6",
+    "result_id": "ad7395e6-d6e4-428b-a920-1801066f8610",
+    "operation_key": "5e6bd4d1-a774-47f9-b9af-0a3c67e0bd53",
+    "assertions": [
+      "appointment_queue_to_encounter",
+      "care_scope",
+      "immutable_edit_binding",
+      "same_key_replay",
+      "persisted_result"
+    ],
+    "status": "PASS",
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/core-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "patient_id": "63e2b02b-c2b6-4108-a4b8-0671893015e3",
+        "appointment_id": "2dc11d78-722e-4f12-80a8-e3a92b3d1c69",
+        "encounter_id": "2d2cdbbd-b8fc-423f-9087-c2e2230a60b5",
+        "document_id": "fed0d29c-a841-4019-a1c2-e9c6699f45e4",
+        "task_id": "36242a17-1c35-47c4-b85a-e843b3d9cf2d",
+        "result_id": "0af88759-8385-4472-bb2c-49625ab24da1"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "journey": "J02",
+    "status": "PASS",
+    "actors": [
+      "clinician",
+      "laboratory"
+    ],
+    "record_ids": [
+      "dfac2ebe-7bf3-47eb-8d44-cf8dd3f80983",
+      "4932518d-2a78-497d-934f-431e50a39565"
+    ],
+    "assertions": [
+      "signed order linkage",
+      "manual result release",
+      "wrong role denied",
+      "immutable correction history",
+      "clinician acknowledgement"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/clinical-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "order_id": "801b6b48-d837-4740-8bd6-32e0eea7554a",
+        "lab_id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+        "corrected_value": "6",
+        "released_to_portal": true
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "journey": "J03",
+    "status": "PASS",
+    "actors": [
+      "clinician",
+      "pharmacist"
+    ],
+    "record_ids": [
+      "2ac0bbaa-fb7e-4e8c-b4f3-1ba9dc0cf4d9",
+      "b8505528-556b-4fc6-983b-ea35a4e4912c"
+    ],
+    "assertions": [
+      "same-key dispense exactly once",
+      "charge exactly once",
+      "quarantined return",
+      "cumulative excess return rejected",
+      "stock quantity conserved"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/clinical-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "order_id": "ce3d0084-f5b0-43e5-8afe-81c5ece531b1",
+        "dispense_id": "032d8ec5-f2f7-4f6f-8718-6d598d9cb73f",
+        "retry": "lost HTTP response then same-key UI retry verified equal result",
+        "return_status": "return_recorded"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "journey": "J04",
+    "status": "PASS",
+    "actors": [
+      "nurse",
+      "registration"
+    ],
+    "record_ids": [
+      "a93558ca-d3b0-4a65-94d7-46169fc35d49",
+      "b3b0a3eb-51ca-4da8-a903-c9ba72c86592",
+      "cd34b96e-7feb-4c2a-810c-b5560a0dc9d8",
+      "2f807d23-6558-4d0b-8b49-927a1d961b4c"
+    ],
+    "assertions": [
+      "occupied bed conflict",
+      "transfer preserves bed history",
+      "handover links real pending task",
+      "discharge releases bed",
+      "followup shares patient"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/clinical-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "encounter_id": "0a06595d-312f-4e19-b8e9-3576dbe78465",
+        "admission_id": "9e06ca07-8ed0-4c00-bfbb-2c65a12becba",
+        "handover_id": "0d9b9378-8f28-4e7c-beb5-4edcb2fc0cbf",
+        "task_id": "8b0cf7fd-39e7-42f6-99b3-2d21fb5377de",
+        "followup_id": "ba1ca958-020a-475f-b4e8-b05ac7a082c0"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "actors": [
+      "user-billing",
+      "user-finance",
+      "user-finance_reviewer"
+    ],
+    "invoice_id": "33a2aa59-1115-4c5e-bd5d-d5afd6a46369",
+    "claim_id": "4fdecefa-ef57-49f4-b4d5-1aee1e75879b",
+    "receipt_id": "e9b71806-7722-45f1-adad-0bed32d7567f",
+    "refund_id": "48243abe-1f3c-4015-9016-5d88411131a0",
+    "financials": {
+      "billed": "1000.00",
+      "submitted": "1000.00",
+      "approved": "800.00",
+      "gross_received": "800.00",
+      "refunded": "100.00",
+      "net_received": "700.00",
+      "outstanding": "200.00",
+      "cost": "300.00",
+      "adjustments": "0.00",
+      "allocated": "800.00",
+      "allocation_released": "0.00"
+    },
+    "assertions": "separate billed/submitted/approved/gross/refund/net/outstanding/cost; balanced ledger; independent refund approval; same-key replay",
+    "journey": "J05",
+    "status": "PASS",
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/erp-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "encounter_id": "67fafd2b-291b-4bbe-8982-cf38bd3b05f4",
+        "charge_id": "c602d697-8deb-407a-9251-643719387604",
+        "invoice_id": "d4d93940-a520-43d6-bf45-d7c0c267ef45",
+        "claim_id": "be4f7dda-11c1-462e-812c-d4ee9cac38aa",
+        "receipt_id": "22a7d7d2-57b3-4c37-8dd6-67c169351e0e",
+        "refund_id": "31fda8a9-bcb4-424e-82bb-64b1daf7c1f7",
+        "cost_id": "fa6a0fde-7641-4b39-8dd8-1f3cd07b1d1b",
+        "financials": {
+          "billed": "1000.00",
+          "submitted": "1000.00",
+          "approved": "800.00",
+          "gross_received": "800.00",
+          "refunded": "100.00",
+          "net_received": "700.00",
+          "outstanding": "200.00",
+          "cost": "300.00",
+          "adjustments": "0.00",
+          "allocated": "800.00",
+          "allocation_released": "0.00"
+        }
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "actors": [
+      "user-inventory",
+      "user-procurement_approver"
+    ],
+    "purchase_id": "093e7a0c-82df-4935-bbbb-939f55efbaba",
+    "receipt_ids": [
+      "15490ab9-ff63-4b1e-af1d-66dd271ea86d",
+      "f0da2488-1e47-446d-a304-f38542015fd9"
+    ],
+    "issue_id": "d8f7f40c-cbf4-4a4e-bd15-6efb68e25386",
+    "assertions": "partial4+6 receipt10; replay stable; obligation200; issue3 quarantine return2; over-return denied",
+    "journey": "J06",
+    "status": "PASS",
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/erp-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "purchase_id": "815a6af9-28c0-492d-b68d-afbe7bbfd295",
+        "receipts": [
+          "85690136-a7de-4c53-8ec0-6bf0490dd91f",
+          "c71e6239-c3d4-4dcf-be32-c30802b174ce"
+        ],
+        "issue_id": "69a39710-5b18-4157-9d7f-78d974930e1a",
+        "return_id": "69a39710-5b18-4157-9d7f-78d974930e1a"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "journey": "J07",
+    "actors": [
+      "system_admin",
+      "registration_0945f78b"
+    ],
+    "user_id": "d459dea3-aa1e-4901-b678-04ad224dad58",
+    "session_id": "49a2ca91-dd56-4830-b5a2-77f137f43a2c",
+    "patient_id": "255122b1-689e-418c-94f9-802e26d483fa",
+    "assertions": [
+      "scope_switch",
+      "cross_scope_replay_denied",
+      "revoked_session_denied"
+    ],
+    "status": "PASS",
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/core-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "user_id": "b475f852-a47d-4bf4-a7ae-cdcbb52ad265",
+        "session_id": "8469c79b-061a-418f-8b11-1d6fb8357ab0",
+        "membership_id": "c997bbb2-f5b5-47a6-ae3b-3d3f761469a3"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "journey": "J08",
+    "status": "PASS",
+    "actors": [
+      "clinician",
+      "imaging"
+    ],
+    "record_ids": [
+      "ca4a62bb-814d-46f1-8da5-c262f086d1fe",
+      "13dffa0b-d44e-4d29-a6bb-8b5019c080e1",
+      "c7f791c2-5137-4fc4-90dd-8064c5048f97",
+      "8cc53d33-b0a7-4829-b629-054dd3d59727",
+      "28b1d593-8405-4f8b-970b-187ca181b3c8",
+      "4cbd4856-5971-4094-ad06-0d0ad66e35bf",
+      "3d010c81-630d-4a63-97f7-58630a7e731b"
+    ],
+    "assertions": [
+      "clinician signed order through HTTP",
+      "file checksum verified",
+      "manual human report release",
+      "explicit mock DR task on same document and encounter",
+      "clinician review/commit",
+      "referral bound document revision",
+      "external receipt explicitly false"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/clinical-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+      "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640",
+      "record_ids": {
+        "study_id": "0f42d9af-caa1-4192-8a29-4e41528e171f",
+        "file_sha256": "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23",
+        "document_id": "d13d3c7c-d40b-401e-8fd3-5356b8b45a91",
+        "task_id": "d6ee46d2-d1fd-4537-b4a3-34813b466f0c",
+        "result_id": "c18a1f22-7513-4bd7-a9c2-83e5e96a1795",
+        "referral_id": "af52ccf7-d587-449d-91de-e1b1485e7e21"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "actors": [
+      "user-inventory",
+      "user-quality",
+      "user-support_reviewer"
+    ],
+    "asset_id": "5d6db87c-51dc-4681-bf17-29f8584a1e1c",
+    "cycle_id": "7340b01c-b1fc-4589-86b4-3549e2411715",
+    "linen_id": "e33356bc-5f14-42ee-9a9d-edf24a66a9f9",
+    "facility_order_id": "172cce27-915c-4eec-84cf-1232508b485b",
+    "incident_id": "afffc94b-104b-4ea6-8c13-6f44acdf3b5c",
+    "report_id": "87ec2560-8657-42b9-b158-c3740bbd40c2",
+    "lineage_count": 4,
+    "assertions": "unverified asset unavailable; separate CSSD/linen/facility states; independent CAPA review; real encounter lineage; exported correction preserved",
+    "D38": "tested separately by operations suite",
+    "journey": "J09",
+    "status": "PASS",
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/erp-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+      "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2",
+      "record_ids": {
+        "asset_id": "09d325d2-0c9d-4ce7-8638-b90a8394cf05",
+        "cycle_id": "6d1d5587-384b-4cd1-bc4d-0b7fe198d05e",
+        "linen_id": "cba0effd-cf7c-4da4-87b7-f9008a8799e8",
+        "facility_id": "fa350583-02f9-4979-8be8-d46d659aac38",
+        "incident_id": "f05de35d-6ad4-455a-9fe6-280993b1af01",
+        "report_id": "190069b6-f742-485a-a7fe-fef0a6acd986",
+        "backup_job_id": "7615f34c-836d-4474-a3e0-96975fa813da"
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  },
+  {
+    "journey": "J10",
+    "status": "PASS",
+    "actors": [
+      "patient",
+      "registration"
+    ],
+    "record_ids": [
+      "49e7558e-1d64-4d95-b826-b5ead5d7a2e8",
+      "e01d595a-b639-47ac-84f1-a7d540cda002"
+    ],
+    "assertions": [
+      "server linked subject",
+      "patient cannot staff-review",
+      "patient parameter injection rejected",
+      "same appointment staff worklist"
+    ],
+    "api_postgresql_status": "PASS",
+    "browser_status": "PASS",
+    "L3_status": "PASS",
+    "verified_level": "L3",
+    "source": "evidence/fullsystem/clinical-journeys.json",
+    "browser_evidence": {
+      "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+      "source_report": "apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json",
+      "source_report_sha256": "7b27f8a023ce195079b0d787f5a83ae7c37d049df78f43274cc1038ad7f6390c",
+      "record_ids": {
+        "portal_patient_id": "patient-001",
+        "published_result_id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+        "request_id": "30f272db-b4d2-4522-9a8c-decc39f05aa4",
+        "appointment_id": "25fd6ce6-ff2e-499e-bae1-280a2674da56",
+        "other_subject_request_id": "f0017ab3-0a5d-487b-ab2b-21af9d0655e8",
+        "other_subject_read_status": 404,
+        "other_subject_reason_absent": true
+      }
+    },
+    "supporting_evidence": [
+      "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+      "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+    ],
+    "external_integration_status": "NOT_CONNECTED",
+    "data_profile": "AUTHORED_SYNTHETIC"
+  }
+]

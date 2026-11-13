@@ -1,0 +1,193 @@
+{
+  "schema_version": "1.0",
+  "null_means": "UNKNOWN, not false or unsupported",
+  "providers": [
+    {
+      "id": "mock",
+      "enabled": true,
+      "adapter": "deterministic_fixture",
+      "location": "in_process",
+      "endpoint": null,
+      "endpoint_env": null,
+      "secret_env": null,
+      "network_verified": null,
+      "declared_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": true,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verified_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": true,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verification_record": {
+        "observed_at": "2026-11-12",
+        "model_revision": "synthetic_fixture_v1",
+        "scope": "deterministic dict output only, not LLM JSON generation or JSON Schema constrained decoding",
+        "test_command": "python contracts/check_contracts.py",
+        "result": "PASS",
+        "capabilities_not_exercised": "image, tool calling, streaming, cancellation, context limits and token usage"
+      },
+      "status": "EXPLICIT_MOCK"
+    },
+    {
+      "id": "cloud",
+      "enabled": false,
+      "adapter": "native_protocol_PENDING",
+      "location": "cloud_api",
+      "endpoint": null,
+      "endpoint_env": "CLOUD_BASE_URL",
+      "secret_env": "CLOUD_API_KEY",
+      "network_verified": false,
+      "declared_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verified_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verification_record": null,
+      "status": "NOT_IMPLEMENTED_FAIL_CLOSED"
+    },
+    {
+      "id": "dr_train",
+      "enabled": false,
+      "adapter": "protocol_PENDING",
+      "location": "private_server",
+      "endpoint": null,
+      "endpoint_env": "DR_TRAIN_BASE_URL",
+      "secret_env": "DR_TRAIN_API_KEY",
+      "network_verified": false,
+      "declared_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verified_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verification_record": null,
+      "status": "NOT_IMPLEMENTED_FAIL_CLOSED"
+    },
+    {
+      "id": "local",
+      "enabled": false,
+      "adapter": "protocol_PENDING",
+      "location": "local_endpoint",
+      "endpoint": null,
+      "endpoint_env": "LOCAL_BASE_URL",
+      "secret_env": "LOCAL_API_KEY",
+      "network_verified": false,
+      "declared_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verified_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verification_record": null,
+      "status": "NOT_IMPLEMENTED_FAIL_CLOSED"
+    },
+    {
+      "id": "specialist",
+      "enabled": false,
+      "adapter": "task_protocol_PENDING",
+      "location": "service",
+      "endpoint": null,
+      "endpoint_env": "SPECIALIST_BASE_URL",
+      "secret_env": "SPECIALIST_API_KEY",
+      "network_verified": false,
+      "declared_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verified_capabilities": {
+        "text": null,
+        "image": null,
+        "tool_calling": null,
+        "json": null,
+        "json_schema": null,
+        "streaming": null,
+        "cancellation": null,
+        "limits": null,
+        "timeouts": null,
+        "usage": null
+      },
+      "verification_record": null,
+      "status": "NOT_IMPLEMENTED_FAIL_CLOSED"
+    }
+  ]
+}

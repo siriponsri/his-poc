@@ -1,0 +1,46 @@
+# Domain coverage — 38 local L2 workflows
+
+All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 describes this prototype scope; external L4 and clinical/production effectiveness remain unverified. Per-domain scenarios, source reports and hashes are retained in [DOMAIN_COVERAGE.json](DOMAIN_COVERAGE.json).
+
+| Domain | Name | Implementation | Verified | External |
+|---|---|---|---|---|
+| D01 | ทะเบียนและตัวตนผู้ป่วย | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D02 | นัดหมาย คิว และความจุบริการ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D03 | OPD และเวชระเบียนการตรวจ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D04 | ห้องฉุกเฉิน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D05 | ผู้ป่วยใน เตียง และการปิดการรับบริการ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D06 | งานพยาบาลและการส่งเวร | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D07 | คำสั่งแพทย์และการจัดการคำสั่ง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D08 | เภสัชกรรมและการจ่ายยา | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D09 | การให้ยา ณ จุดดูแล | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D10 | ห้องปฏิบัติการและผลวิกฤต | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D11 | รังสี RIS และภาพทางการแพทย์ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D12 | ห้องผ่าตัดและวิสัญญี | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D13 | ICU และข้อมูลจากอุปกรณ์ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D14 | สูติกรรม มารดา และทารกแรกเกิด | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D15 | กุมารเวชกรรมและการเติบโต | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D16 | เวชศาสตร์ฟื้นฟูและกายภาพบำบัด | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D17 | ทันตกรรมและคลินิกเฉพาะทาง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D18 | ธนาคารเลือดและการให้เลือด | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D19 | โภชนาการและอาหารผู้ป่วย | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D20 | การส่งต่อและการติดตามผล | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D21 | พอร์ทัลและการเข้าถึงของผู้ป่วย | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D22 | เวชระเบียน เอกสาร และการลงนาม | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D23 | ค่าบริการ ราคา และสิทธิการรักษา | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D24 | เคลม ลูกหนี้ และการกระทบยอดเงินชดเชย | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D25 | บัญชี การเงิน การรับชำระและคืนเงิน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D26 | ต้นทุนบริการ งบประมาณ และการวิเคราะห์ทรัพยากร | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D27 | จัดซื้อ สัญญา รับพัสดุ และเจ้าหนี้ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D28 | คลังยา เวชภัณฑ์ และห่วงโซ่อุปทาน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D29 | ครุภัณฑ์และวิศวกรรมการแพทย์ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D30 | บุคลากร ตารางเวร และสมรรถนะ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D31 | CSSD ซักฟอก อาคาร และบริการสนับสนุน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D32 | คุณภาพ ความเสี่ยง และการควบคุมการติดเชื้อ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D33 | รายงานสาธารณสุขและข้อมูลระดับเครือข่าย | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D34 | ตัวตนผู้ใช้งาน สิทธิ และการตรวจสอบการเข้าถึง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D35 | การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D36 | คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D37 | AI และระบบช่วยตัดสินใจ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D38 | การเดินระบบ ความต่อเนื่อง และการกู้คืน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+
+D37 executes explicit DEMO mock. UI conflict/scope/audit/restart and real backup/isolated restore are supported by the recovery and read-only restore evidence. Initial failures remain in the evidence history.

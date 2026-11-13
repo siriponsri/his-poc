@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter/scripts/check_fullsystem_package.py", line 16, in <module>
+    paths={r.path for r in app.routes}
+           ^^^^^^
+AttributeError: '_IncludedRouter' object has no attribute 'path'

@@ -1,0 +1,4 @@
+ Container his-poc-app-1 Recreate 
+ Container his-poc-app-1 Recreated 
+ Container his-poc-app-1 Starting 
+ Container his-poc-app-1 Started 

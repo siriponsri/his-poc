@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:cad_task_result",
+  "title": "cad_task_result",
+  "x-implementation-status": "DESIGN_ONLY_SPECIALIST_NOT_CONNECTED",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "task_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcome": {
+      "enum": [
+        "success",
+        "abstained",
+        "failed",
+        "timeout"
+      ]
+    },
+    "model_revision": {
+      "type": "string",
+      "minLength": 1
+    },
+    "preprocessing_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "population_definition_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "prediction_horizon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "risk_probability": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 1
+    },
+    "calibration_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "threshold_version": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "missing_features": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evaluator_protocol": {
+      "const": "CAD_PROTOCOL_V1"
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "human_review_required": {
+      "const": true
+    }
+  },
+  "required": [
+    "schema_version",
+    "task_id",
+    "outcome",
+    "model_revision",
+    "preprocessing_version",
+    "population_definition_version",
+    "prediction_horizon",
+    "risk_probability",
+    "calibration_version",
+    "threshold_version",
+    "missing_features",
+    "evaluator_protocol",
+    "limitations",
+    "human_review_required"
+  ],
+  "additionalProperties": false
+}

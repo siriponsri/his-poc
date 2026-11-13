@@ -1,0 +1,331 @@
+{
+  "schema_version": "1.0",
+  "mode": "READ_ONLY_FIXTURE",
+  "generator": {
+    "name": "generate_fixtures.py",
+    "version": "1.0.0",
+    "seed": 20261112
+  },
+  "records": [
+    {
+      "fixture_id": "TH-001",
+      "label": "เอกสารครบ",
+      "patient_id": "fixture-p-001",
+      "encounter_id": "fixture-e-001",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 01\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 37617 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "complete",
+      "description": "ตรวจการแสดงเอกสารที่มีผู้จัดทำและเวลาลงนามสังเคราะห์",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-002",
+      "label": "ขาดผู้จัดทำ",
+      "patient_id": "fixture-p-002",
+      "encounter_id": "fixture-e-002",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 02\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 76228 ไม่ได้เชื่อมกับบุคคลจริง",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "missing_author",
+      "description": "แสดงช่องข้อมูลผู้จัดทำที่ยังไม่มี",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-003",
+      "label": "ขาดเวลาลงนาม",
+      "patient_id": "fixture-p-003",
+      "encounter_id": "fixture-e-003",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 03\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 36930 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์"
+      },
+      "expected_state": "missing_signature",
+      "description": "แสดง signed_at ที่ไม่มี โดยไม่ถือเป็น clinical signing",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-004",
+      "label": "ข้อความว่าง",
+      "patient_id": "fixture-p-004",
+      "encounter_id": "fixture-e-004",
+      "document": {
+        "text": "",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "empty",
+      "description": "รับรู้เอกสารว่าง; ไม่สร้างผลทางคลินิกจากข้อความว่าง",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-005",
+      "label": "ข้อความไทยหลายบรรทัด",
+      "patient_id": "fixture-p-005",
+      "encounter_id": "fixture-e-005",
+      "document": {
+        "text": "บรรทัดที่ 1: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 2: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 3: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 4: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 5: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 6: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 7: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 8: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 9: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 10: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 11: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 12: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 13: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 14: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 15: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 16: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 17: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 18: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 19: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง\nบรรทัดที่ 20: ข้อมูลสมมติสำหรับทดสอบการอ่านและแก้ไขข้อความภาษาไทย ไม่มีผลตรวจทางคลินิกจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "multiline",
+      "description": "ตรวจการตัดบรรทัดภาษาไทยและการรักษาข้อความยาว",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-006",
+      "label": "ข้อเสนอรอตรวจ",
+      "patient_id": "fixture-p-006",
+      "encounter_id": "fixture-e-006",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 06\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 89174 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์"
+      },
+      "expected_state": "pending",
+      "description": "แสดงข้อเสนอจำลอง pending แบบอ่านอย่างเดียว",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-007",
+      "label": "แก้ไขแล้วรออนุมัติใหม่",
+      "patient_id": "fixture-p-007",
+      "encounter_id": "fixture-e-007",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 07\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 25182 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์"
+      },
+      "expected_state": "edited",
+      "description": "แสดงเหตุที่การแก้ summary ต้องสร้าง version/hash ใหม่",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-008",
+      "label": "ผู้ตรวจปฏิเสธ",
+      "patient_id": "fixture-p-008",
+      "encounter_id": "fixture-e-008",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 08\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 41912 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "rejected",
+      "description": "แสดงสถานะ rejected; ไม่ใช่ผลยืนยัน",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-009",
+      "label": "บันทึกผลแล้ว",
+      "patient_id": "fixture-p-009",
+      "encounter_id": "fixture-e-009",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 09\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 67064 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "committed",
+      "description": "แสดงผลยืนยันและ audit ใน snapshot; ไม่มีการเขียน backend",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-010",
+      "label": "หลักฐานเปลี่ยน",
+      "patient_id": "fixture-p-010",
+      "encounter_id": "fixture-e-010",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 10\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 56414 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "stale",
+      "description": "อธิบาย 409 stale context และการทบทวนฉบับใหม่",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-011",
+      "label": "ข้อเสนอหมดอายุ",
+      "patient_id": "fixture-p-011",
+      "encounter_id": "fixture-e-011",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 11\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 33055 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "expired",
+      "description": "อธิบาย expiry โดยไม่เปลี่ยน backend enum",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-012",
+      "label": "ไม่มีสิทธิ์เขียน",
+      "patient_id": "fixture-p-012",
+      "encounter_id": "fixture-e-012",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 12\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 72164 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "forbidden",
+      "description": "แสดง 403 เป็นสถานะการตอบกลับ ไม่ใช่คุณสมบัติผู้ป่วย",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-013",
+      "label": "งานปิดแล้ว",
+      "patient_id": "fixture-p-013",
+      "encounter_id": "fixture-e-013",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 13\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 81161 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "task_closed",
+      "description": "อธิบาย TASK_NOT_OPEN และการไม่เปิดงานกลับเอง",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-014",
+      "label": "provider ล้มเหลว",
+      "patient_id": "fixture-p-014",
+      "encounter_id": "fixture-e-014",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 14\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 37199 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "failed",
+      "description": "แสดง failed แม้ HTTP เป็น 200",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-015",
+      "label": "provider หมดเวลารอ",
+      "patient_id": "fixture-p-015",
+      "encounter_id": "fixture-e-015",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 15\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 40338 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "timeout",
+      "description": "แสดง timeout จำลองและไม่สร้าง proposal สำเร็จ",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-016",
+      "label": "provider งดให้ข้อเสนอ",
+      "patient_id": "fixture-p-016",
+      "encounter_id": "fixture-e-016",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 16\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 74705 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "abstained",
+      "description": "แสดงเหตุผลการงดให้ข้อเสนอที่อ่านกลับได้",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-017",
+      "label": "ส่งคำสั่งเดิมซ้ำ",
+      "patient_id": "fixture-p-017",
+      "encounter_id": "fixture-e-017",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 17\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 66484 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "replayed",
+      "description": "แสดง replay ของผลเดิม ไม่เกิดธุรกรรมใหม่",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    },
+    {
+      "fixture_id": "TH-018",
+      "label": "ไม่ทราบผลจากเครือข่าย",
+      "patient_id": "fixture-p-018",
+      "encounter_id": "fixture-e-018",
+      "document": {
+        "text": "เอกสารสังเคราะห์กรณี 18\nบันทึกเพื่อทดสอบความครบถ้วนของเอกสารเท่านั้น\nรหัสตัวอย่าง 67334 ไม่ได้เชื่อมกับบุคคลจริง",
+        "author": "ผู้จัดทำสังเคราะห์",
+        "signed_at": "2026-11-12T08:00:00Z"
+      },
+      "expected_state": "network_error",
+      "description": "แสดงการเก็บ key/payload สำหรับ retry โดยไม่สมมติว่าสำเร็จหรือล้มเหลวแน่ชัด",
+      "source_id": "SRC-OWN-THAI-SYNTHETIC",
+      "asset_id": "ASSET-THAI-RECORDS-001",
+      "data_classification": "WHOLLY_SYNTHETIC",
+      "contains_real_patient_source_data": false,
+      "api_response_fixture_ref": null
+    }
+  ]
+}

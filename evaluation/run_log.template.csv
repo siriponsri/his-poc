@@ -1,0 +1,1 @@
+run_id,case_id,attempt,arm,actor_ref,patient_ref,encounter_ref,input_snapshot_hash,model_revision,config_revision,tool_revision,outcome,error_code,abstain_reason,latency_ms,input_tokens,output_tokens,cost,currency,cost_source,review_decision,review_edit_count,review_duration_ms,result_id,notes

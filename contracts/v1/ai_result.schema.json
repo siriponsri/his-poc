@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:ai_result",
+  "title": "ai_result",
+  "x-implementation-status": "DESIGN_TARGET_NOT_RUNTIME_ENVELOPE",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "request_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "outcome": {
+      "enum": [
+        "success",
+        "failed",
+        "timeout",
+        "abstained",
+        "cancelled"
+      ]
+    },
+    "output": {
+      "oneOf": [
+        {
+          "$ref": "document_completeness_action.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "source_id",
+          "version",
+          "sha256",
+          "locator"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "provider_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "model_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "engine_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "config_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "validation": {
+      "type": "object",
+      "properties": {
+        "schema_valid": {
+          "type": "boolean"
+        },
+        "evidence_valid": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "schema_valid",
+        "evidence_valid"
+      ],
+      "additionalProperties": false
+    },
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "abstain_reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "error_code": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "latency_ms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "input_tokens": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "output_tokens": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "cost_amount": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "cost_currency": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "demo": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "schema_version",
+    "request_id",
+    "run_id",
+    "outcome",
+    "output",
+    "evidence",
+    "provider_id",
+    "model_id",
+    "model_revision",
+    "engine_revision",
+    "config_sha256",
+    "validation",
+    "warnings",
+    "abstain_reason",
+    "error_code",
+    "latency_ms",
+    "input_tokens",
+    "output_tokens",
+    "cost_amount",
+    "cost_currency",
+    "demo"
+  ],
+  "additionalProperties": false
+}

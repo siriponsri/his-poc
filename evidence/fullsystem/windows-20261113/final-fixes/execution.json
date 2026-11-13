@@ -1,0 +1,121 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T12:22:23.665+00:00",
+    "completed_at": "2026-11-13T12:22:26.458+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.794,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T12:22:26.462+00:00",
+    "completed_at": "2026-11-13T12:22:52.845+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 26.383,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T12:22:52.850+00:00",
+    "completed_at": "2026-11-13T12:22:53.868+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.019,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T12:22:53.873+00:00",
+    "completed_at": "2026-11-13T12:22:55.534+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.661,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T12:22:55.543+00:00",
+    "completed_at": "2026-11-13T12:22:58.915+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 3.372,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\frontend-build.txt"
+  },
+  {
+    "check": "clinical",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/test_with_postgres.py",
+      "--pg-bin",
+      "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+      "--",
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/run_pg_suite.py",
+      "tests/fullsystem/test_clinical.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T12:22:58.923+00:00",
+    "completed_at": "2026-11-13T12:26:49.423+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 230.5,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\clinical.txt"
+  },
+  {
+    "check": "launcher",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_operations_unit.py",
+      "backend/tests/test_validation_launcher_unit.py",
+      "backend/tests/test_catalog_encoding_unit.py",
+      "backend/tests/test_release_packaging_unit.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T12:26:49.425+00:00",
+    "completed_at": "2026-11-13T12:26:51.122+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.697,
+    "log": "evidence\\fullsystem\\windows-20261113\\final-fixes\\launcher.txt"
+  }
+]

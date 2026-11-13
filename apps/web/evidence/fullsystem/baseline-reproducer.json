@@ -1,0 +1,75 @@
+{
+  "report_version": "1.0",
+  "generated_at": "2026-11-12T08:34:24.015Z",
+  "node_version": "v24.22.1",
+  "starter_root": "/workspace/scratch/9ae50286259c/fullsystem/HIS_POC_Starter",
+  "method": "Actual App.tsx pre-render functions + actual HisApi/decoders + minimal state-hook and HTTP doubles; no React renderer/browser.",
+  "source_sha256": {
+    "apps/web/src/App.tsx": "8144f61d006b8ce4b31fd5215dc08e39394a7f6b3a1e852fa0f090e8dc25b92c",
+    "apps/web/src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "apps/web/src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "apps/web/src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303"
+  },
+  "fixture_transform": "Proposal expires set to current time +900 seconds in memory to isolate revision/recovery behavior; original files unchanged.",
+  "source_files_modified": false,
+  "real_network_calls": false,
+  "real_database_writes": false,
+  "browser_assertions": 0,
+  "visual_qa": "NOT_RUN",
+  "cases": [
+    {
+      "id": "F20-02",
+      "name": "Definitive commit rejection remains pending after refresh",
+      "stimulus": "POST /commits returns HTTP409 STALE_CONTEXT; subsequent GET /context succeeds.",
+      "expected": "Definitive rejection should lead to a recovery state that allows a fresh proposal/review, without describing the write as unknown.",
+      "observed": {
+        "pending_after_409": true,
+        "pending_after_refresh": true,
+        "error": "หลักฐานเปลี่ยนแล้ว กรุณาโหลดข้อมูลล่าสุดและสร้างข้อเสนอใหม่ · STALE_CONTEXT",
+        "notice": "ยังไม่ยืนยันผลการบันทึก เก็บ key และ payload เดิมไว้แล้ว อ่านผลล่าสุดหรือ retry เดิมได้",
+        "commits_sent": 1
+      },
+      "defect_reproduced": true
+    },
+    {
+      "id": "F20-03",
+      "name": "Committed read-back does not resolve pending state",
+      "stimulus": "Commit response is lost; GET /context then supplies the matching committed proposal/result from frozen fixture data.",
+      "expected": "A verified matching result should reconcile the pending operation and be reflected as confirmed.",
+      "observed": {
+        "readback_results": 1,
+        "displayed_status": "committed",
+        "pending_still_unresolved": true,
+        "confirmed": null,
+        "commits_sent": 1
+      },
+      "defect_reproduced": true
+    },
+    {
+      "id": "F20-01",
+      "name": "Successful edit plus failed refresh splits displayed and actionable revisions",
+      "stimulus": "POST /reviews edit returns a new pending version; the immediately following GET /context fails.",
+      "expected": "Displayed version/hash and the review action binding must stay consistent; otherwise approval must be unavailable.",
+      "observed": {
+        "displayed_proposal_version": 1,
+        "displayed_hash": "21d139e766368bae995afc85c9baddffbf3fa1a98f450d78c7ba9a6ad9cb6784",
+        "binding_version": 2,
+        "binding_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "review_draft": "New reviewed summary — synthetic state reproduction",
+        "review_dirty": false,
+        "approval_ready": true,
+        "next_approve_binding": {
+          "version": 2,
+          "action_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "error": "เชื่อมต่อไม่สำเร็จ ผลรายการอาจยังไม่แน่นอน กรุณาอ่านข้อมูลล่าสุดหรือ retry รายการเดิม · NETWORK_ERROR"
+      },
+      "defect_reproduced": true
+    }
+  ],
+  "summary": {
+    "cases_executed": 3,
+    "defects_reproduced": 3,
+    "exit_zero_meaning": "Probe completed; this is not an application acceptance PASS."
+  }
+}

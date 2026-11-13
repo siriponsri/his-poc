@@ -1,0 +1,34 @@
+npm notice run his-poc-web@0.3.0 test
+npm notice run node --test tests/*.test.mjs
+✔ typed decoder frozen context_initial (2.0762ms)
+✔ typed decoder frozen context_faults (0.5016ms)
+✔ typed decoder frozen context_pending (0.4804ms)
+✔ typed decoder frozen context_edited (0.2885ms)
+✔ typed decoder frozen context_approved (1.242ms)
+✔ typed decoder frozen context_committed (0.4897ms)
+✔ HTTP200 timeout/abstention/failure never becomes a proposal (70.1795ms)
+✔ review payload excludes edits for approve and reject, includes edit (4.1227ms)
+✔ document save preserves metadata and original draft version (2.1605ms)
+✔ discard draft intentionally adopts latest server version (1.5255ms)
+✔ dirty edits or document prevents approval (0.3589ms)
+✔ lost response retry retains identical payload/key (1.6936ms)
+✔ pending commit refuses a different proposal version (0.3975ms)
+✔ fixture adapter is read-only and never calls fetch (0.4051ms)
+✔ 403 errors and nonJSON responses remain explicit errors (1.2735ms)
+✔ no provider endpoint call and only singleton API mutation context (0.7722ms)
+✔ dirty review remains bound to old version/hash after concurrent refresh (1.0851ms)
+✔ cookie session client sends CSRF and stable idempotency key only to HIS API (60.2098ms)
+✔ definitive conflict is distinct from network/5xx unknown outcome (11.6985ms)
+✔ successful mutation replaces entire displayed revision atomically (7.2573ms)
+✔ readback reconciles only exact operation/proposal/version/hash (2.1334ms)
+✔ URL router does not consume skip link hashes; explicit unknown route (0.7686ms)
+✔ malformed v2 collections fail explicitly instead of empty fallback (1.5805ms)
+✔ session response requires server identity, permissions and CSRF (1.1583ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 652.6573

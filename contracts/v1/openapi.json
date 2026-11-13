@@ -1,0 +1,471 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "HIS POC synthetic demo API",
+    "version": "1.0.1",
+    "description": "Local mock only. Internal contract, no FHIR conformance claim."
+  },
+  "servers": [
+    {
+      "url": "http://127.0.0.1:8080"
+    }
+  ],
+  "paths": {
+    "/api/v1/proposals": {
+      "post": {
+        "operationId": "proposals",
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "propose_request.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Completed attempt. Inspect outcome: success has proposal; failed, timeout or abstained has error/reason and no proposal.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "propose_response.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON, content type, request shape or body size. No workflow side effects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Demo authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User, tenant, patient or encounter scope denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, state, expiry, context or idempotency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Requested proposal or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Sanitized internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/reviews": {
+      "post": {
+        "operationId": "reviews",
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "review_request.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persisted review and current proposal version. An edit leaves a new pending version requiring a fresh review.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "review_response.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON, content type, request shape or body size. No workflow side effects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Demo authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User, tenant, patient or encounter scope denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, state, expiry, context or idempotency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Requested proposal or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Sanitized internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/commits": {
+      "post": {
+        "operationId": "commits",
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "commit_request.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Persisted result, or replay of the same idempotent action. This response action is an object; context stored results retain an encoded string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "commit_response.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON, content type, request shape or body size. No workflow side effects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Demo authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User, tenant, patient or encounter scope denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, state, expiry, context or idempotency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Requested proposal or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Sanitized internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/documents": {
+      "post": {
+        "operationId": "documents",
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "document_update_request.schema.json"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "New persisted document version.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "document_update_response.schema.json"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid JSON, content type, request shape or body size. No workflow side effects.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Demo authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User, tenant, patient or encounter scope denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Version, state, expiry, context or idempotency conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Requested proposal or route not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Sanitized internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/context": {
+      "get": {
+        "operationId": "context",
+        "security": [
+          {
+            "DemoBearer": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Scoped synthetic context with serialized JSON DB columns",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "context_response.schema.json"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Demo authentication required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "User, tenant, patient or encounter scope denied",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Sanitized internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "operationId": "health",
+        "responses": {
+          "200": {
+            "description": "Process liveness only; no live provider readiness",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "health_response.schema.json"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Sanitized internal error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "error.schema.json"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "DemoBearer": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Public synthetic fixture, not production identity"
+      }
+    }
+  }
+}

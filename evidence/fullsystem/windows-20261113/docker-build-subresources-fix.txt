@@ -1,0 +1,108 @@
+ Image his-poc-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 529B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.68kB 0.0s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#3 DONE 0.1s
+
+#4 [internal] load metadata for docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c
+#4 DONE 0.1s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 175B 0.0s done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-1 1/8] FROM docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#7 resolve docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e 0.1s done
+#7 DONE 0.1s
+
+#8 [web 1/8] FROM docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c
+#8 resolve docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c
+#8 resolve docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c 0.1s done
+#8 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 771.42kB 0.5s done
+#6 DONE 0.5s
+
+#9 [web 4/8] COPY apps/web/package.json apps/web/package-lock.json ./
+#9 CACHED
+
+#10 [web 3/8] WORKDIR /app/apps/web
+#10 CACHED
+
+#11 [web 2/8] RUN apt-get update && apt-get install -y --no-install-recommends python3 python-is-python3  && rm -rf /var/lib/apt/lists/*
+#11 CACHED
+
+#12 [web 5/8] RUN npm ci
+#12 CACHED
+
+#13 [stage-1 2/8] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl gnupg  && install -d /usr/share/postgresql-common/pgdg  && curl --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc  && echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt bookworm-pgdg main' > /etc/apt/sources.list.d/pgdg.list  && apt-get update && apt-get install -y --no-install-recommends postgresql-client-18=18.6-1.pgdg12+2  && rm -rf /var/lib/apt/lists/*
+#13 CACHED
+
+#14 [stage-1 3/8] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 4/8] COPY requirements-backend.txt ./
+#15 CACHED
+
+#16 [stage-1 5/8] RUN pip install --no-cache-dir -r requirements-backend.txt
+#16 CACHED
+
+#17 [web 6/8] COPY apps/web ./
+#17 DONE 1.0s
+
+#18 [stage-1 6/8] COPY . .
+#18 DONE 1.0s
+
+#19 [web 7/8] COPY backend/app/domains/clinical_catalog.json backend/app/domains/erp_catalog.json /app/backend/app/domains/
+#19 DONE 0.3s
+
+#20 [web 8/8] RUN npm run build
+#20 0.636 
+#20 0.636 > his-poc-web@0.3.0 build
+#20 0.636 > python scripts/sync_full_catalog.py && tsc --noEmit && vite build
+#20 0.636 
+#20 0.702 Synced 18 clinical + 13 ERP domain contracts; core screens authored separately.
+#20 1.520 vite v8.3.8 building client environment for production...
+#20 1.543 transforming...
+#20 1.667 ✓ 27 modules transformed.
+#20 1.744 rendering chunks...
+#20 1.821 computing gzip size...
+#20 1.831 dist/index.html                   0.48 kB │ gzip:  0.35 kB
+#20 1.831 dist/assets/index-Bxeuu6gi.css   17.87 kB │ gzip:  4.87 kB
+#20 1.831 dist/assets/index-DqHjCGer.js   355.92 kB │ gzip: 95.54 kB
+#20 1.831 
+#20 1.832 ✓ built in 310ms
+#20 DONE 2.0s
+
+#21 [stage-1 7/8] COPY --from=web /app/apps/web/dist /app/apps/web/dist
+#21 DONE 0.1s
+
+#22 [stage-1 8/8] RUN useradd --uid 10001 --create-home his && mkdir -p /var/his/files /var/his/backups && chown -R his:his /var/his
+#22 DONE 0.3s
+
+#23 exporting to image
+#23 exporting layers
+#23 exporting layers 0.5s done
+#23 exporting manifest sha256:24872a6ceaed26c65702db035052ba181bb7358fc2f32605c9bb49d796e9251e 0.0s done
+#23 exporting config sha256:506ceea045e5630caa5e4eded27a16f1879a020d09dbaca52968be8d153d5da6 0.1s done
+#23 exporting attestation manifest sha256:e477272ebd246b29b69690b583eafd7805ef4f62b461bbc57d669eb87a8c822a
+#23 exporting attestation manifest sha256:e477272ebd246b29b69690b583eafd7805ef4f62b461bbc57d669eb87a8c822a 0.0s done
+#23 exporting manifest list sha256:054799baa72d6b99b956e1b8692ffd519d0137948dfe5a05c187437deead85a7 0.0s done
+#23 naming to docker.io/library/his-poc-app:latest done
+#23 unpacking to docker.io/library/his-poc-app:latest
+#23 unpacking to docker.io/library/his-poc-app:latest 0.3s done
+#23 DONE 1.0s
+
+#24 resolving provenance for metadata file
+#24 DONE 0.3s
+ Image his-poc-app Built 

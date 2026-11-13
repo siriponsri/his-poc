@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:contracts:v1:document_completeness_action",
+  "title": "document_completeness_action",
+  "x-implementation-status": "IMPLEMENTED_API_SHAPE",
+  "type": "object",
+  "properties": {
+    "kind": {
+      "const": "document_completeness"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "missing_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "kind",
+    "summary",
+    "missing_fields"
+  ],
+  "additionalProperties": false
+}

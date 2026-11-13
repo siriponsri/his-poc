@@ -1,0 +1,14 @@
+{
+  "command": [
+    ".venv/Scripts/python",
+    "scripts/check_fullsystem_package.py"
+  ],
+  "exit_code": 0,
+  "output": {
+    "check": "static_package_consistency_not_acceptance",
+    "status": "PASS",
+    "domain_route_inventory": 38,
+    "failures": []
+  },
+  "observed_at": "2026-11-13T12:54:04.654555+00:00"
+}

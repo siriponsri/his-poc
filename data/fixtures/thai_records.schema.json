@@ -1,0 +1,142 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:his-poc:thai-record-fixtures:1.0",
+  "title": "Read-only authored Thai fixture records, not an HTTP API DTO",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "mode",
+    "generator",
+    "records"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "mode": {
+      "const": "READ_ONLY_FIXTURE"
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "name",
+        "version",
+        "seed"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "const": "generate_fixtures.py"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "seed": {
+          "const": 20261112
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "items": {
+        "type": "object",
+        "required": [
+          "fixture_id",
+          "label",
+          "patient_id",
+          "encounter_id",
+          "document",
+          "expected_state",
+          "description",
+          "source_id",
+          "asset_id",
+          "data_classification",
+          "contains_real_patient_source_data",
+          "api_response_fixture_ref"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "fixture_id": {
+            "type": "string",
+            "pattern": "^TH-[0-9]{3}$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "patient_id": {
+            "type": "string",
+            "pattern": "^fixture-p-[0-9]{3}$"
+          },
+          "encounter_id": {
+            "type": "string",
+            "pattern": "^fixture-e-[0-9]{3}$"
+          },
+          "document": {
+            "type": "object",
+            "required": [
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "text": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string"
+              },
+              "signed_at": {
+                "type": "string"
+              }
+            }
+          },
+          "expected_state": {
+            "enum": [
+              "complete",
+              "missing_author",
+              "missing_signature",
+              "empty",
+              "multiline",
+              "pending",
+              "edited",
+              "rejected",
+              "committed",
+              "stale",
+              "expired",
+              "forbidden",
+              "task_closed",
+              "failed",
+              "timeout",
+              "abstained",
+              "replayed",
+              "network_error"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "source_id": {
+            "const": "SRC-OWN-THAI-SYNTHETIC"
+          },
+          "asset_id": {
+            "const": "ASSET-THAI-RECORDS-001"
+          },
+          "data_classification": {
+            "const": "WHOLLY_SYNTHETIC"
+          },
+          "contains_real_patient_source_data": {
+            "const": false
+          },
+          "api_response_fixture_ref": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

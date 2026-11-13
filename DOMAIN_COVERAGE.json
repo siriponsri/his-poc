@@ -1,0 +1,1721 @@
+{
+  "release": "0.3.0-local-accepted",
+  "policy": "Executed local synthetic PostgreSQL workflows plus rendered browser evidence support all38 L2 and all10 L3. Per-run failures and source/runtime bindings are retained. MOCK is not live/clinical effectiveness; external L4 remains separate.",
+  "domains": [
+    {
+      "id": "D01",
+      "name_th": "ทะเบียนและตัวตนผู้ป่วย",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Multi-patient registration/search/detail, unique identifiers, versioned demographics and verify/activate/inactivate; UI now exposes demographic PATCH.",
+      "required_invariants": "Identifier ที่กำหนดเป็น unique ต้องไม่ซ้ำใน issuer; ห้ามลบผู้ป่วยที่มี encounter; ไม่ merge อัตโนมัติ",
+      "acceptance_case": "สร้างผู้ป่วยสองราย ยืนยันและเปิดแฟ้มได้หลัง restart; identifier ซ้ำต้อง conflict และไม่เขียนครึ่งรายการ",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_03_unique_context_and_immutable_history",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/core.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J01",
+        "J04",
+        "J07",
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/core.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J01",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D02",
+      "name_th": "นัดหมาย คิว และความจุบริการ",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Persisted slots, reservation capacity lock, appointment states, atomic check-in encounter/queue and reschedule/cancel forms.",
+      "required_invariants": "ตรวจความจุ slot ใน transaction; check-in ซ้ำไม่สร้าง encounter/คิวซ้ำ",
+      "acceptance_case": "ผู้ใช้สองคนจองที่นั่งสุดท้ายพร้อมกัน สำเร็จได้เพียงคนเดียว; check-in แล้วไป OPD ด้วย encounter เดิม",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_slot_capacity_race_and_idempotent_checkin",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J01",
+        "J04",
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J01",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D03",
+      "name_th": "OPD และเวชระเบียนการตรวจ",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Multi-encounter context, manual document/plan and tasks, versioned status transitions and close guard.",
+      "required_invariants": "คำวินิจฉัยและแผนเป็นข้อมูลที่บุคลากรกรอก; context ต้องตรงผู้ป่วย; การปิดมีรายการงานค้างให้ยืนยัน",
+      "acceptance_case": "เปิด encounter สองราย บันทึกแยกกัน สั่งตรวจและอ่านผลกลับในแฟ้มที่ถูกต้องหลัง reload",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_03_unique_context_and_immutable_history",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_09_stale_task_and_document_and_provider_config",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/core.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J01",
+        "J02",
+        "J03",
+        "J08"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/core.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J01",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D04",
+      "name_th": "ห้องฉุกเฉิน",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Manual versioned triage/ER record, actor history and admission-request workflow.",
+      "required_invariants": "ระดับ triage และการตัดสินใจเป็น manual; ไม่สร้างคะแนน/diagnosis จาก AI; บันทึกฉบับและผู้ประเมิน",
+      "acceptance_case": "บันทึก triage สังเคราะห์แล้วขอ admit สร้างคำขอ D05 ครั้งเดียว พร้อมประวัติเดิมตรวจย้อนหลังได้",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/clinical-additional.txt"
+      ],
+      "journeys": [
+        "J04"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J04",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D05",
+      "name_th": "ผู้ป่วยใน เตียง และการปิดการรับบริการ",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Admission, active bed allocation, transactional transfer/release and discharge follow-up linkage.",
+      "required_invariants": "เตียงมี active assignment ได้หนึ่งรายการ; ย้าย/จำหน่ายและคืนเตียงเป็น transaction; ห้ามรีเซ็ต encounter เก่า",
+      "acceptance_case": "admit แข่งกันใช้เตียงเดียวต้องสำเร็จหนึ่งราย; ย้ายเตียงแล้วเตียงเก่าว่างและประวัติยังครบ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j04_admission_transfer_handover_discharge_followup",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/clinical-additional.txt"
+      ],
+      "journeys": [
+        "J04"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J04",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D06",
+      "name_th": "งานพยาบาลและการส่งเวร",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Assigned recipient nursing handover with real shared task references, signatures, acknowledgement and amendment history.",
+      "required_invariants": "รับเวรต้องเป็นผู้มีสิทธิ์; ฉบับลงนามคงเดิมและ amendment มีเหตุผล; ไม่ถือ task complete เท่ากับให้ยา",
+      "acceptance_case": "พยาบาลเวรแรกส่งงานค้าง เวรถัดไปรับทราบแล้วเห็นงานเดิม ไม่มี task หายหรือถูกทำซ้ำ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j04_admission_transfer_handover_discharge_followup",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/clinical-additional.txt"
+      ],
+      "journeys": [
+        "J04"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J04",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D07",
+      "name_th": "คำสั่งแพทย์และการจัดการคำสั่ง",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Signed manual orders, versioned revision/cancellation, type-specific downstream task and state guards; rehab kind added.",
+      "required_invariants": "ไม่คำนวณขนาดยา/ข้อบ่งชี้อัตโนมัติ; signed order แก้ด้วย revision; ปลายทางตรวจ cancellation/version",
+      "acceptance_case": "ลงคำสั่งแล็บและยาแล้วเกิด worklist ที่ถูกประเภท; retry ไม่สร้างคำสั่งซ้ำและยกเลิกตรวจย้อนหลังได้",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_08_order_lifecycle_and_versioned_revision",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_order_cancel_blocks_downstream_action",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/core.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J02",
+        "J03",
+        "J08"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/core.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J01",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D08",
+      "name_th": "เภสัชกรรมและการจ่ายยา",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Pharmacist review, explicit item/lot/order version, atomic dispense stock/charge, retry replay and bounded quarantined return.",
+      "required_invariants": "ตรวจยาด้วยผู้มีสิทธิ์; ไม่แนะนำ dose; quantity/lot/stock/charge ผูก transaction และห้ามติดลบ; การคืนสร้างรายการใหม่ผูก dispense line เดิม โดยยอดคืนสะสมไม่เกินยอดจ่ายที่ยังคืนได้; disposition ของยาคืนต้องมีผู้ตรวจและไม่เพิ่ม available stock อัตโนมัติ",
+      "acceptance_case": "จ่ายจาก lot สังเคราะห์แล้ว stock ลด/charge เพิ่มครั้งเดียว; คืนอ้างอิงรายการเดิมและมี audit; ส่งคืนซ้ำหรือเกินยอดต้องถูกปฏิเสธ และของที่ยังไม่ผ่าน disposition ไม่กลับเข้า available stock",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j03_dispense_retry_return_and_conservation",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_wrong_lot_item_and_stale_order_refuse_dispense",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J03"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J03",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D09",
+      "name_th": "การให้ยา ณ จุดดูแล",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Manual dose/route/time matched to reviewed medication; scheduled/verified/held/not-given/administered events and immutable correction.",
+      "required_invariants": "กรอก dose/time/route ตามคำสั่งด้วยคน; ไม่แปลงหน่วยหรือคำนวณยาอัตโนมัติ; event ซ้ำต้องป้องกัน",
+      "acceptance_case": "บันทึกให้ยาหนึ่งครั้งแล้วส่งซ้ำไม่เพิ่ม event; รายการงดต้องมีเหตุผลและไม่แสดงว่า administered",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_mar_duplicate_hold_and_invalid_transition",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_mar_administration_exactly_once_then_immutable_correction",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D10",
+      "name_th": "ห้องปฏิบัติการและผลวิกฤต",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Lab order/worklist, manual result/unit/reference, human release, retained correction history and clinician acknowledgement.",
+      "required_invariants": "ผล/หน่วย/reference เป็นข้อมูล manual; release ต้องตรวจสิทธิ์และ version; corrected result เก็บฉบับเดิม",
+      "acceptance_case": "กรอกผล synthetic และ release แล้ว OPD เห็นผลของ encounter นั้น; correction แสดงทั้งฉบับเก่าและใหม่",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j02_lab_revisions_authority_and_acknowledgement",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J02",
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J02",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D11",
+      "name_th": "รังสี RIS และภาพทางการแพทย์",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Imaging order, synthetic allowlisted file/checksum, asset link, human report verification/release, portal publication and amendment.",
+      "required_invariants": "ไฟล์ allowlist/size/hash และ ownership ตรวจจริง; ไม่อ้าง PACS/DICOM conformance หรือวินิจฉัยจากภาพ",
+      "acceptance_case": "แนบภาพสังเคราะห์กับ study แล้วเปิดจากแฟ้มถูกคน; release report ตามสิทธิ์และเข้าถึงไฟล์ข้ามคนไม่ได้",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j08_imaging_file_report_referral_and_cross_patient_denial",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/clinical-additional.txt"
+      ],
+      "journeys": [
+        "J08",
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J08",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D12",
+      "name_th": "ห้องผ่าตัดและวิสัญญี",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Procedure room/time scheduling, explicit checklist actor, manual anesthesia record, asset/CSSD links and availability recheck.",
+      "required_invariants": "ไม่ให้ dose/วิสัญญี recommendation; ห้อง/เวลาไม่ชน; checklist verification ต้องมี actor จริง",
+      "acceptance_case": "จองห้องแล้วตรวจ checklist และปิด case เก็บเอกสารครบ; การจองชนกันถูกปฏิเสธ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D13",
+      "name_th": "ICU และข้อมูลจากอุปกรณ์",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Manual ICU observations linked admission/encounter, timestamp/value/unit, round review/sign/amendment and optional asset reference.",
+      "required_invariants": "บันทึกค่าและหน่วยที่คนกรอก; ไม่สร้าง alarm/คะแนนวิกฤต/ตั้งอุปกรณ์อัตโนมัติ",
+      "acceptance_case": "บันทึกหลายเวลาของผู้ป่วยสองคนแล้ว timeline ไม่ปน; แก้ค่าที่ลงนามต้องเป็นฉบับใหม่",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D14",
+      "name_th": "สูติกรรม มารดา และทารกแรกเกิด",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Pregnancy episode, human delivery documentation, atomic linked newborn Patient/identifier and event history.",
+      "required_invariants": "อายุครรภ์/ผลการคลอดเป็น manual; การสร้างทารกและ link ต้อง atomic และ retry ไม่เพิ่มตัวตนซ้ำ",
+      "acceptance_case": "บันทึกคลอดสังเคราะห์แล้วลงทะเบียนทารกหนึ่งราย ลิงก์แม่–ลูกคงอยู่หลัง restart และส่งซ้ำไม่สร้างลูกซ้ำ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D15",
+      "name_th": "กุมารเวชกรรมและการเติบโต",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Persisted growth observations, patient/time/unit-based UI plot and immutable amendment; manual vaccine item/lot records newly added.",
+      "required_invariants": "เก็บค่าดิบ/หน่วยและแสดงกราฟตามเวลา; ไม่คำนวณ dose/percentile หรือแนะนำวัคซีนโดยโมเดล",
+      "acceptance_case": "เพิ่ม measurement ต่างวันแล้วกราฟ/history ใช้ค่าจริงจากฐาน; ฉบับแก้และผู้แก้ตรวจย้อนหลังได้",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D16",
+      "name_th": "เวชศาสตร์ฟื้นฟูและกายภาพบำบัด",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Signed rehab order, human assessment/plan, slot-backed appointments and scheduled sessions, separate unique progress, completion guard.",
+      "required_invariants": "เป้าหมาย/แบบประเมินกรอกโดยคน; แผนมีรุ่นและผู้รับผิดชอบ; ไม่อ้างผลการรักษาจาก mock",
+      "acceptance_case": "รับ referral จัดสาม session บันทึกผลแต่ละครั้งแล้วปิดแผนโดยไม่ลบ progress เดิม",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D17",
+      "name_th": "ทันตกรรมและคลินิกเฉพาะทาง",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Patient/encounter/tooth-specific findings and manual procedure lifecycle; performed action creates linked charge.",
+      "required_invariants": "ตำแหน่งและหัตถการเลือกด้วยคน; ไม่ทำ diagnosis/plan อัตโนมัติ; chart edits มี version",
+      "acceptance_case": "บันทึกคนละตำแหน่งในสอง visit แล้วเปิด chart ย้อนหลังถูกฉบับ และค่าบริการผูก procedure ถูกตัว",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D18",
+      "name_th": "ธนาคารเลือดและการให้เลือด",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Locked single-unit reservation, manual compatibility evidence hash bound patient/request/unit revisions, rechecked expiry/eligibility and human release.",
+      "required_invariants": "ห้ามคำนวณ blood compatibility หรือปล่อยจาก AI; unit จองซ้อนไม่ได้; verification ผูก patient/request/unit revision และหลักฐานของผู้ตรวจ; ก่อน release ตรวจ expiry/quarantine/recall flags ที่บันทึกไว้และ eligibility ตาม policy โดย transaction เดียวกัน; ถ้าข้อมูลที่ใช้ยืนยันเปลี่ยนต้องตรวจใหม่",
+      "acceptance_case": "จอง unit เดียวพร้อมกันต้องได้หนึ่งคำขอ; ผู้ตรวจยืนยันแล้วปล่อยและตามกลับผู้รับ/lot ได้; ถ้า unit หมดอายุ ถูก quarantine/recall หรือ revision เปลี่ยนหลัง verification ต้อง release ไม่ได้และไม่มี partial write",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_blood_revision_and_eligibility_binding",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_blood_success_patient_revision_and_expiry_guards",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D19",
+      "name_th": "โภชนาการและอาหารผู้ป่วย",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Manual diet/allergy order, preparation/delivery states, versioned revision and meal-period uniqueness.",
+      "required_invariants": "ข้อจำกัดและอาหารเป็น manual; แสดงข้อมูลแพ้ที่บันทึกไว้โดยไม่แนะนำอาหารเอง; รอบส่งมี unique key",
+      "acceptance_case": "เปลี่ยน diet ก่อนรอบเตรียมแล้วครัวเห็นฉบับล่าสุด; ยืนยันส่งซ้ำไม่เพิ่มมื้อและรายการยกเลิกไม่ถูกเตรียม",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_specialist_domain_workflows",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/clinical-additional.txt"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D20",
+      "name_th": "การส่งต่อและการติดตามผล",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Referral packet binds selected document revision; download and response evidence distinguish local/manual from external receipt.",
+      "required_invariants": "exported ไม่เท่ากับ remote received; response manual ต้องมีแหล่ง/ผู้บันทึก; ไม่ส่งข้อความนอกระบบเอง",
+      "acceptance_case": "สร้าง referral packet จากฉบับเอกสารที่เลือก ดาวน์โหลดได้และสถานะยังแสดงว่ายังไม่ยืนยันการรับจากภายนอก",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j08_imaging_file_report_referral_and_cross_patient_denial",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J04",
+        "J08",
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J08",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D21",
+      "name_th": "พอร์ทัลและการเข้าถึงของผู้ป่วย",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Server-linked patient identity, own published encounters/results, appointment requests/cancel; document correction requests now link released revision and staff task.",
+      "required_invariants": "patient_id มาจาก session/link ที่เจ้าหน้าที่รับรอง ไม่เชื่อ request parameter; อ่านเฉพาะของตนและข้อมูลที่ release แล้ว",
+      "acceptance_case": "portal user A เห็นผลของ A และขอนัดได้; เปลี่ยน URL/id เป็นผู้ป่วย B ต้อง 403/404 โดยไม่เปิดข้อมูล",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_j10_portal_owner_request_staff_booking_and_release",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_clinical.py",
+          "test_name": "test_portal_results_never_leak_other_patient_or_unreleased",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/clinical.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/clinical.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J10",
+        "source_report": "apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json",
+        "source_report_sha256": "7b27f8a023ce195079b0d787f5a83ae7c37d049df78f43274cc1038ad7f6390c"
+      }
+    },
+    {
+      "id": "D22",
+      "name_th": "เวชระเบียน เอกสาร และการลงนาม",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Versioned document content/hash, explicit attestation and amendment reason; UI now fetches and displays historical versions.",
+      "required_invariants": "ฉบับรับรองห้าม overwrite; actor/version/hash binding; attestation ภายในไม่อ้าง qualified digital signature",
+      "acceptance_case": "รับรอง v1 แล้วแก้ไขต้องเกิด amendment/v2; อ่าน hash/ผู้รับรอง/เหตุผลย้อนหลังได้ครบ",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_03_unique_context_and_immutable_history",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_11_sensitive_document_content_and_denials_audited",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/core.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J01",
+        "J02",
+        "J05",
+        "J08"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/core.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J01",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D23",
+      "name_th": "ค่าบริการ ราคา และสิทธิการรักษา",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Price-version snapshots, deduplicated source charges, decimal invoices/adjustments and distinct amounts.",
+      "required_invariants": "Decimal amount/currency; issued bill ไม่ถูกเปลี่ยนย้อนหลังจากราคาใหม่; source charge/idempotency ป้องกันซ้ำ; adjustment/credit เป็น record ใหม่อ้าง invoice/charge เดิมพร้อมเหตุผล ผู้อนุมัติ และผลต่อ receivable โดยไม่ overwrite posted lines",
+      "acceptance_case": "ออกบิลด้วยราคา v1 แล้วเปิดราคา v2 บิลเก่ายังยอดเดิม; source event ซ้ำไม่เพิ่ม charge; credit/adjustment มี reference และยอดของตน โดยต้นฉบับยังอ่านได้และ retry ไม่ลงซ้ำ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_adjustment_original_and_cost_reversal",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/erp-additional.txt"
+      ],
+      "journeys": [
+        "J03",
+        "J05"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J05",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D24",
+      "name_th": "เคลม ลูกหนี้ และการกระทบยอดเงินชดเชย",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Claim lines/export/local submission/adjudication/reconciliation with billed/submitted/approved separate from receipts.",
+      "required_invariants": "billed/submitted/approved/gross_received/refunded/net_received เป็นคนละค่าและหลักฐาน; imported approval ไม่ลง cash received; external acknowledgement ห้ามปลอม",
+      "acceptance_case": "บิล 1000 ส่งเคลมจำลองแล้ว remittance อนุมัติ 800: แสดง billed=1000/approved=800/gross_received=0/refunded=0/net_received=0 จนมี D25 receipt; import ซ้ำไม่เพิ่มยอด",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/erp-additional.txt"
+      ],
+      "journeys": [
+        "J05"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J05",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D25",
+      "name_th": "บัญชี การเงิน การรับชำระและคืนเงิน",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Receipt allocation, balanced append-only journal, independent bounded refund/reversal and exactly-once command replay.",
+      "required_invariants": "balanced Decimal journal; posted rows immutable; refund/reversal เป็น record แยกอ้างต้นทางและยอดคืนสะสมไม่เกินยอดที่คืนได้; retry ไม่รับหรือคืนเงินซ้ำ; แยก gross_received, refunded และ net_received พร้อม payment allocations",
+      "acceptance_case": "รับ 800 ผูกเคลมเดิม แล้วคืน 100 ผ่านผู้อนุมัติ: gross_received=800, refunded=100, net_received=700 พร้อม journal สมดุลและ refund record อ้าง receipt เดิม; retry ไม่ลงซ้ำ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_database_immutable_financial_and_balanced_journal",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J05",
+        "J06"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J05",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D26",
+      "name_th": "ต้นทุนบริการ งบประมาณ และการวิเคราะห์ทรัพยากร",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Cost entries/method version and reversal; departmental budget review/post/reverse and period variance endpoint newly added.",
+      "required_invariants": "billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost แยกคอลัมน์; allocation มีวิธี/รุ่น; ไม่ตีความยอดอนุมัติเป็นเงินรับหรือกำไร",
+      "acceptance_case": "ใช้วัสดุต้นทุน 200 และค่าแรงที่กรอก 100: cost=300 แยกจาก billed=1000, approved=800, gross_received=800, refunded=100 และ net_received=700 พร้อม source links; outstanding อิง receivable allocations/adjustments ที่กำหนด ไม่อนุมานจาก refund เพียงค่าเดียว",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J05_money_separate_and_refund_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_budget_review_post_and_period_variance",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_adjustment_original_and_cost_reversal",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J05",
+        "J06"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J05",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D27",
+      "name_th": "จัดซื้อ สัญญา รับพัสดุ และเจ้าหนี้",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Purchase requests/independent approval, versioned lines, partial goods receipt and linked stock/obligation, supplier return.",
+      "required_invariants": "quantity/price snapshot; รับซ้ำตาม receipt key ไม่ได้; inventory receipt และ payable ผูกกันโดยไม่สร้างเงินจริงหรือส่ง PO ภายนอกเอง; การแก้ receipt ที่ post แล้วใช้ correction/return record อ้างต้นทางและกติกาปริมาณสะสมของ D28 ไม่เขียนทับจำนวนรับเดิม",
+      "acceptance_case": "รับของบางส่วนแล้วครบ สต็อกเพิ่มตามรับจริงและ AP ตรง invoice; replay receipt ไม่เพิ่มของซ้ำ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J06_procurement_partial_receipt_stock_return",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J06"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J06",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D28",
+      "name_th": "คลังยา เวชภัณฑ์ และห่วงโซ่อุปทาน",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Stock ledger/location/lot balance, atomic issue/transfer/quarantine return, reservations/counts and independently approved count adjustment.",
+      "required_invariants": "ledger/ยอดคงเหลือตรงกัน; no negative stock; หน่วย/ต้นทุน/lot ชัดเจน; lock/version ป้องกัน concurrent issue; posted movement immutable; return/reversal สร้างรายการใหม่อ้าง movement เดิม จำกัดยอดสะสมตามจำนวนที่ยังคืน/กลับรายการได้ และตรวจ disposition ก่อนกลับเป็น available",
+      "acceptance_case": "จ่ายของชิ้นสุดท้ายพร้อมกันสำเร็จหนึ่งคำสั่ง; โอนระหว่างคลังแล้วผลรวมคงเดิมและตาม lot ได้; return/reversal ซ้ำหรือเกินยอดเดิมถูกปฏิเสธโดย posted movement เดิมคงอยู่",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J06_procurement_partial_receipt_stock_return",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_stock_last_unit_concurrent_and_quarantine",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_reservation_count_and_zero_validation",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/erp-additional.txt"
+      ],
+      "journeys": [
+        "J03",
+        "J06"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J06",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D29",
+      "name_th": "ครุภัณฑ์และวิศวกรรมการแพทย์",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Asset record and maintenance/verification workflow, in-service gating; downstream imaging/procedure/ICU use now rechecks availability.",
+      "required_invariants": "งานซ่อมยังไม่ verify ห้ามกลับ in_service; user มีสิทธิ์ปล่อย; ไม่ควบคุมเครื่องมือแพทย์จริง",
+      "acceptance_case": "เปิดซ่อมเครื่องสังเคราะห์แล้วห้องตรวจเห็น unavailable; ผู้ตรวจปล่อยแล้วจึงจองใช้งานได้",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J09"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J09",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2"
+      }
+    },
+    {
+      "id": "D30",
+      "name_th": "บุคลากร ตารางเวร และสมรรถนะ",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Staff credential/roster versions and acknowledgements, time clash checks and suspension filtering; nurse/staff limited to own roster acknowledgement.",
+      "required_invariants": "ไม่ลงเวรชนเวลาตามกติกาที่ตั้ง; published roster มี version; credential ระงับต้องมีผลต่อ privilege ที่ผูกไว้",
+      "acceptance_case": "เผยแพร่เวรและพนักงานรับทราบ; ระงับ credential แล้วคำสั่งที่ต้องใช้ privilege นั้นถูกปฏิเสธและ audit",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_D30_roster_and_credential",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domain-D30-accepted/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/erp-additional.txt",
+        "evidence/fullsystem/windows-20261113/security-event-concurrency.txt"
+      ],
+      "journeys": [
+        "J07",
+        "J09"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domain-D30-accepted/browser-domains.json",
+        "source_report_sha256": "5186313c43625f8644c7ce14d5a859e73708046e3b209b347b651a8c9560b03f"
+      }
+    },
+    {
+      "id": "D31",
+      "name_th": "CSSD ซักฟอก อาคาร และบริการสนับสนุน",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Separate CSSD, linen and facility maintenance state machines, manual release/verification; procedure links released CSSD cycle.",
+      "required_invariants": "ไม่ตัดสิน sterility อัตโนมัติ; release โดยคนมีหลักฐาน; linen issued→returned→reconciled และ facility opened→assigned→verified→closed ต้องแยก state",
+      "acceptance_case": "cycle ที่ถูก quarantine ห้ามส่งชุดให้ห้องผ่าตัด; ชุด released ตามกลับ cycle ได้ และการคืนผ้าไม่เปลี่ยนสถานะเครื่องมือ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J09"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J09",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2"
+      }
+    },
+    {
+      "id": "D32",
+      "name_th": "คุณภาพ ความเสี่ยง และการควบคุมการติดเชื้อ",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Restricted incident report, human classification, CAPA owner/evidence and independent closure.",
+      "required_invariants": "reporter identity จำกัดสิทธิ์; classification/ติดเชื้อยืนยันด้วยคน; ปิด CAPA ต้องมีผู้ตรวจและ evidence",
+      "acceptance_case": "รายงานเหตุแล้วส่ง CAPA ผู้รับผิดชอบแนบหลักฐาน ผู้ตรวจปิด; ผู้ไม่มีสิทธิ์อ่านชื่อผู้รายงานไม่ได้",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J09"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J09",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2"
+      }
+    },
+    {
+      "id": "D33",
+      "name_th": "รายงานสาธารณสุขและข้อมูลระดับเครือข่าย",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Versioned local report definition, period actual-encounter aggregation, lineage and correction/export; manual/local acknowledgement records newly added.",
+      "required_invariants": "missing≠zero; นิยามและ sourceversion ต้องตามได้; exported ไม่แปลว่าหน่วยรับยอมรับ; ไม่อ้างมาตรฐานไทยที่ยังไม่ตรวจ",
+      "acceptance_case": "สร้างรายงานยอดจาก encounters แล้วตามทุกรายการกลับต้นทางได้; correction สร้าง batch ใหม่ไม่เขียนทับที่ export แล้ว",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_J09_support_quality_reports",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-final/erp-additional.txt"
+      ],
+      "journeys": [
+        "J09"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J09",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2"
+      }
+    },
+    {
+      "id": "D34",
+      "name_th": "ตัวตนผู้ใช้งาน สิทธิ และการตรวจสอบการเข้าถึง",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Database users/roles/memberships, password hash, server cookie sessions/CSRF/logout/expiry/revocation, care/portal/org/facility scope and server audit.",
+      "required_invariants": "session จริงไม่ใช่ public demo token; password hash/secure cookie/CSRF ตามวิธี auth; scope enforcement ฝั่ง server; session state active→revoked/expired แยกบัญชี",
+      "acceptance_case": "login ถูก/ผิด,logout,หมดอายุและถอนสิทธิ์ต้องมีผลจริง; ผู้ใช้ต่าง patient/organization อ่านหรือเขียนข้าม scope ไม่ได้",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_02_auth_and_scope",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_05_j07_revocation_scope_switch_and_replay",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_10_seed_does_not_restore_revoked_permissions",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_11_sensitive_document_content_and_denials_audited",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_12_commit_failure_never_returns_success",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_13_cached_session_revocation_revalidated",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_15_expiry_and_foreign_keys",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/core.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-20261113/security-event-concurrency.txt",
+        "evidence/fullsystem/windows-final/auth-additional.txt"
+      ],
+      "journeys": [
+        "J01",
+        "J07",
+        "J10"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/core.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J07",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D35",
+      "name_th": "การเชื่อมต่อระบบ คำศัพท์ และคุณภาพการแลกเปลี่ยน",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Contract/schema validation, dedup/out-of-order guard, durable attempts/retry; local delivery now creates unique receipt and reconciliation task atomically.",
+      "required_invariants": "duplicate/out-of-order ตรวจจริง; local/simulated ack แยก external verified; ไม่เปลี่ยนเป็น sent/received ภายนอกเมื่อไม่มี endpoint",
+      "acceptance_case": "ส่ง synthetic message ซ้ำสองครั้งเกิด domain transaction ครั้งเดียว; schema ผิดเข้าคิว error และ retry เก็บ attempt เดิมครบ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_D35_message_dedup_order_and_retry",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_local_delivery_creates_single_reconciliation_transaction",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domain-D35-fixed/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J05",
+        "J08"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domain-D35-fixed/browser-domains.json",
+        "source_report_sha256": "3f9557d9470427e3c9972983b1effd68cae765585b0309020408d953f418b4d1"
+      }
+    },
+    {
+      "id": "D36",
+      "name_th": "คลังวิเคราะห์ ข้อมูลวิจัย และการใช้ข้อมูลรอง",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Allowlisted cohort, frozen version/snapshot and lineage/patient split; metadata-only GET, explicit export and revocation; per-user dataset access newly added.",
+      "required_invariants": "ไม่รัน SQL อิสระจาก LLM; scope และ export permissions; patient ไม่ข้าม train/test; revoked ไม่อ้างว่าเรียกคืนไฟล์ที่ download ไปแล้ว",
+      "acceptance_case": "freeze cohort แล้วเปลี่ยน source ข้อมูล snapshot เดิมยังทำซ้ำได้; split ไม่มี patient ซ้ำข้ามชุดและ unauthorized export ถูกปฏิเสธ",
+      "test_definitions": [
+        {
+          "source_file": "tests/fullsystem/test_erp.py",
+          "test_name": "test_D36_snapshot_export_and_revoke",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/erp.txt",
+        "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/erp.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-extra-domains-aggregate.json",
+        "source_report": "apps/web/evidence/fullsystem/windows-domains-initial/browser-domains.json",
+        "source_report_sha256": "c5a96c5110a261000fb9758499162ba3e26269ced9bb792c56e12df1f74bec9e"
+      }
+    },
+    {
+      "id": "D37",
+      "name_th": "AI และระบบช่วยตัดสินใจ",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation.",
+        "Executed inference profile is explicit DEMO mock; external hardware/endpoints/model revisions remain UNKNOWN."
+      ],
+      "implemented_subset": "Explicit mock proposal/evidence with editable immutable revisions, bound human approval, stale/context checks, atomic commit/result/audit and idempotency; failure/timeout/abstention retention.",
+      "required_invariants": "แก้ไขสร้าง version ใหม่ใน pending ไม่ใช้ approval เดิม; approval ผูก version/hash/evidence; fail/timeout/abstain อยู่ denominator; explicit mock และ no live fallback; ไม่มี autonomous clinical write",
+      "acceptance_case": "แก้ proposal แล้ว approval เดิมใช้ไม่ได้; retry commit ไม่ซ้ำ; failed attempt ไม่มี proposal สำเร็จแอบแทรกและตรวจ reason ได้",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_01_journey_registration_document_ai",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_04_failure_denominators_and_task_boundary",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_06_concurrent_commit_atomicity",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_09_stale_task_and_document_and_provider_config",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_core.py",
+          "test_name": "test_14_different_keys_commit_once",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/core.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+      ],
+      "journeys": [
+        "J01",
+        "J08"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/core.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J01",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
+        "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      }
+    },
+    {
+      "id": "D38",
+      "name_th": "การเดินระบบ ความต่อเนื่อง และการกู้คืน",
+      "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
+      "verified_level": "L2",
+      "verification_status": "PASS",
+      "external_integration_status": "NOT_CONNECTED",
+      "limitations": [
+        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+      ],
+      "implemented_subset": "Real PostgreSQL dump plus referenced file/hash manifests, isolated restore and FK/row/file verification, durable jobs/recovery; server-only platform allowlist guards global snapshot and redacts ordinary scoped readers.",
+      "required_invariants": "ห้ามปุ่ม success ปลอม; command allowlist และ admin permission; restore เฉพาะ isolated DB ไม่ทับฐานใช้งาน; ครอบคลุม DB+files+manifest",
+      "acceptance_case": "สร้าง backup จาก PostgreSQL จริงแล้ว restore ลงฐานทดสอบแยก ตรวจ row counts/FKs/hashes/เอกสารและ audit ผ่านก่อนแสดง verified",
+      "test_definitions": [
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_01_backup_restore_rows_files_and_foreign_keys",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_02_missing_referenced_file_fails_backup",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_03_tamper_blocks_restore",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_04_path_traversal_rejected",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_05_auditor_cannot_schedule_job",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_06_real_job_and_idempotent_replay",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_07_queued_and_interrupted_job_recovery",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_08_row_fingerprints_normalize_session_timezone",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_09_worker_rechecks_revoked_permission",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_10_scoped_role_cannot_grant_global_backup_access",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        },
+        {
+          "source_file": "backend/tests/test_operations_pg.py",
+          "test_name": "test_11_reader_receives_no_global_file_references",
+          "meaning": "Test definition observed; runtime evidence is tracked separately, not inferred from this definition."
+        }
+      ],
+      "evidence": [
+        "evidence/fullsystem/windows-final/operations.txt",
+        "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/fullsystem/windows-20261113/browser-restore-verification.json"
+      ],
+      "journeys": [
+        "J09"
+      ],
+      "historical_evidence": [
+        "evidence/fullsystem/matrix-review.json",
+        "evidence/fullsystem/final/operations.txt"
+      ],
+      "browser_evidence": {
+        "aggregate": "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
+        "journey": "J09",
+        "source_report": "apps/web/evidence/fullsystem/windows-journeys-J09-J10-accepted/browser-journeys.json",
+        "source_report_sha256": "fc6dfb58d6bb3b5c15b02e4b52f5e434d4174691f524cd37901ce4a0ff20fde2"
+      }
+    }
+  ],
+  "local_acceptance_status": "PASS"
+}

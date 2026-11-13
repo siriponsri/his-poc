@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "implementation_status": "runtime synthetic mock only; external outbound absent",
+  "default": "deny",
+  "classes": [
+    "synthetic",
+    "deidentified",
+    "restricted"
+  ],
+  "mock_allowed_classes": [
+    "synthetic"
+  ],
+  "cloud_allowed_classes": [],
+  "endpoint_allowlist": [],
+  "paid_api_enabled": false,
+  "approved_budget": null,
+  "secrets": "server environment only; never patient records, browser or logs",
+  "retention_days": null,
+  "real_data_allowed": false,
+  "unknown_data_class": "deny",
+  "policy_change_requires": "versioned config and targeted regression; data/budget authorization for real outbound"
+}
