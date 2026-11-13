@@ -1,0 +1,16 @@
+[
+  {
+    "check": "docker-themed-start",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "scripts/dev.py",
+      "start"
+    ],
+    "started_at": "2026-11-13T14:40:10.833+00:00",
+    "completed_at": "2026-11-13T14:40:27.222+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 16.389,
+    "log": "evidence\\frontend-refresh\\docker-themed\\docker-themed-start.txt"
+  }
+]

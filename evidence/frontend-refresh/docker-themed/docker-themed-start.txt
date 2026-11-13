@@ -1,0 +1,129 @@
+ Container his-poc-db-1 Running 
+ Container his-poc-db-1 Waiting 
+ Container his-poc-db-1 Healthy 
+ Image his-poc-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 529B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 1.68kB 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c
+#3 DONE 0.0s
+
+#4 [internal] load metadata for docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#4 DONE 0.0s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 175B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [web 1/8] FROM docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c
+#7 resolve docker.io/library/node:24.22.1-bookworm-slim@sha256:be8204d4bd327363357f532187b752ff62759c31bedf98e9e18fc08c9cbd605c 0.0s done
+#7 DONE 0.0s
+
+#8 [stage-1 1/8] FROM docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e
+#8 resolve docker.io/library/python:3.12.14-slim-bookworm@sha256:392307d22300de8b5986851a12d9176dfc0fc073e65bf6523ebd7dcbeb23564e 0.0s done
+#8 DONE 0.0s
+
+#6 [internal] load build context
+#6 transferring context: 392.61kB 0.1s done
+#6 DONE 0.2s
+
+#9 [web 4/8] COPY apps/web/package.json apps/web/package-lock.json ./
+#9 CACHED
+
+#10 [web 3/8] WORKDIR /app/apps/web
+#10 CACHED
+
+#11 [web 2/8] RUN apt-get update && apt-get install -y --no-install-recommends python3 python-is-python3  && rm -rf /var/lib/apt/lists/*
+#11 CACHED
+
+#12 [web 5/8] RUN npm ci
+#12 CACHED
+
+#13 [stage-1 4/8] COPY requirements-backend.txt ./
+#13 CACHED
+
+#14 [stage-1 2/8] RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl gnupg  && install -d /usr/share/postgresql-common/pgdg  && curl --fail https://www.postgresql.org/media/keys/ACCC4CF8.asc -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc  && echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt bookworm-pgdg main' > /etc/apt/sources.list.d/pgdg.list  && apt-get update && apt-get install -y --no-install-recommends postgresql-client-18=18.6-1.pgdg12+2  && rm -rf /var/lib/apt/lists/*
+#14 CACHED
+
+#15 [stage-1 3/8] WORKDIR /app
+#15 CACHED
+
+#16 [stage-1 5/8] RUN pip install --no-cache-dir -r requirements-backend.txt
+#16 CACHED
+
+#17 [web 6/8] COPY apps/web ./
+#17 DONE 0.1s
+
+#18 [stage-1 6/8] COPY . .
+#18 DONE 0.2s
+
+#19 [web 7/8] COPY backend/app/domains/clinical_catalog.json backend/app/domains/erp_catalog.json /app/backend/app/domains/
+#19 DONE 0.1s
+
+#20 [web 8/8] RUN npm run build
+#20 0.439 
+#20 0.439 > his-poc-web@0.3.0 build
+#20 0.439 > python scripts/sync_full_catalog.py && tsc --noEmit && vite build
+#20 0.439 
+#20 0.499 Synced 18 clinical + 13 ERP domain contracts; core screens authored separately.
+#20 1.322 vite v8.3.8 building client environment for production...
+#20 1.350 transforming...
+#20 1.473 ✓ 35 modules transformed.
+#20 1.571 rendering chunks...
+#20 1.655 computing gzip size...
+#20 1.664 dist/index.html                                                   0.48 kB │ gzip:   0.35 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-thai-500-normal-BoHUoq0p.woff     10.35 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-thai-400-normal-DKc8V4lk.woff     10.41 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-thai-600-normal-BOwfviun.woff     10.48 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-thai-500-normal-BrMc1XKn.woff2    11.71 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-thai-400-normal-Bt1rR4gi.woff2    11.80 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-thai-600-normal-DvfsyWAn.woff2    11.80 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-latin-400-normal-YXrLwNa7.woff    16.22 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-latin-500-normal-h5t7erDE.woff    17.34 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-latin-600-normal-P_JjY83V.woff    17.55 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-latin-400-normal-CwmoKdEh.woff2   17.73 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-latin-500-normal-DQcnnbdd.woff2   18.52 kB
+#20 1.664 dist/assets/ibm-plex-sans-thai-latin-600-normal-BR-dhaTH.woff2   18.99 kB
+#20 1.664 dist/assets/index-P96TOBWO.css                                   40.70 kB │ gzip:   8.67 kB
+#20 1.664 dist/assets/index-HdvY8rZO.js                                   397.26 kB │ gzip: 108.14 kB
+#20 1.664 
+#20 1.665 ✓ built in 340ms
+#20 DONE 1.7s
+
+#21 [stage-1 7/8] COPY --from=web /app/apps/web/dist /app/apps/web/dist
+#21 DONE 0.1s
+
+#22 [stage-1 8/8] RUN useradd --uid 10001 --create-home his && mkdir -p /var/his/files /var/his/backups && chown -R his:his /var/his
+#22 DONE 0.3s
+
+#23 exporting to image
+#23 exporting layers
+#23 exporting layers 0.8s done
+#23 exporting manifest sha256:907c0f5bcac6cb2d14db73320e23143b5e333b00b64ad316e977dc0d6f7787e1 0.0s done
+#23 exporting config sha256:642c3a9c9ef10d572c42eb3bb868e688b5a2e76a73f762fb5613eb05a758b840 0.0s done
+#23 exporting attestation manifest sha256:1f08b13aea1ceb093fa75f010e8595a620ed3073ca5e614d491d9f709b65b652 0.0s done
+#23 exporting manifest list sha256:d67e0e8cac35fd4b3c7cc937c189c5e07dcd73f6d92fa6ca0ebd8955d06050a5 0.0s done
+#23 naming to docker.io/library/his-poc-app:latest done
+#23 unpacking to docker.io/library/his-poc-app:latest
+#23 unpacking to docker.io/library/his-poc-app:latest 0.3s done
+#23 DONE 1.2s
+
+#24 resolving provenance for metadata file
+#24 DONE 0.0s
+ Image his-poc-app Built 
+ Container his-poc-app-run-4466a0ac6765 Creating 
+ Container his-poc-app-run-4466a0ac6765 Created 
+ Container his-poc-app-1 Recreate 
+ Container his-poc-app-1 Recreated 
+ Container his-poc-app-1 Starting 
+ Container his-poc-app-1 Started 
+Private AI connection verified against the configured engine and model digest.
+Ready: http://127.0.0.1:8000/login

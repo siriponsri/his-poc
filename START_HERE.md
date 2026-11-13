@@ -97,3 +97,9 @@ python scripts/dev.py start
 เปลี่ยนชื่อ script เป็น browser_journeys.py, browser_domains.py หรือ browser_recovery.py และใช้ output directory ใหม่ของแต่ละรอบ Recovery ตรวจ restart และสร้าง backup/restore ลงฐานทดสอบแยกจริง ใช้กับข้อมูลสังเคราะห์ที่แยกไว้เท่านั้น
 
 เก็บผลเดิมไว้เสมอ ใช้ --output-dir ใหม่กับ scripts/validate_fullsystem.py เช่นกัน สร้าง ZIP หลังงานนิ่งด้วย python scripts/package_release.py --output ../his-poc-v0.3.0-local.zip แล้วตรวจด้วย scripts/verify_hashes.py
+
+## ธีมใหม่และงาน Cloudflare ที่รอเจ้าของตั้งค่า
+
+หน้าเว็บรอบนี้ใช้ม่วง เหลือง เทาอุ่น และส้ม เปิดแอปจริงที่ http://127.0.0.1:8000/login ใช้บัญชีและรหัสผ่านส่วนตัวเดิม ผ่าน25 unit/63 component tests และ browser desktop/mobile รวมถึงการอ่าน checklist/ผล AI เดิม ห้ามนำตัวเลขนี้ไปแทนผลทดสอบครบทุก domain รอบเดิม
+
+ชื่อเว็บที่เลือกคือ his.ai-cie.com เจ้าของมีบัญชี Cloudflare แล้ว แต่ยังไม่ได้สร้าง Tunnel/Access อ่าน [คู่มือตั้ง Tunnel](docs/CLOUDFLARE_SETUP_TH.md) ทำข้อ1–5 แล้ว resume goal ได้ ยังไม่มีการเปลี่ยน DNS หรือเปิดเว็บสาธารณะในรอบนี้

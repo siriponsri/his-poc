@@ -1,0 +1,66 @@
+{
+  "observed_at": "2026-11-13T14:31:32.597874+00:00",
+  "status": "PASS",
+  "method": "Actual Chromium UI login, readonly navigation and persisted live-AI readback; zero inference/domain mutations",
+  "checks": [
+    {
+      "screen": "desktop-login",
+      "no_horizontal_overflow": true,
+      "width": 1440,
+      "content": 1440
+    },
+    {
+      "screen": "desktop-home",
+      "no_horizontal_overflow": true,
+      "width": 1440,
+      "content": 1440
+    },
+    {
+      "screen": "desktop-patients",
+      "no_horizontal_overflow": true,
+      "width": 1440,
+      "content": 1440
+    },
+    {
+      "screen": "desktop-documents",
+      "no_horizontal_overflow": true,
+      "width": 1440,
+      "content": 1440
+    },
+    {
+      "screen": "desktop-ai",
+      "no_horizontal_overflow": true,
+      "width": 1440,
+      "content": 1440
+    },
+    {
+      "screen": "mobile-home",
+      "no_horizontal_overflow": true,
+      "width": 390,
+      "content": 390
+    },
+    {
+      "screen": "mobile-navigation",
+      "no_horizontal_overflow": true,
+      "width": 390,
+      "content": 390
+    },
+    {
+      "screen": "mobile-menu-escape",
+      "closed": true
+    },
+    {
+      "screen": "mobile-ai",
+      "no_horizontal_overflow": true,
+      "width": 390,
+      "content": 390
+    },
+    {
+      "screen": "mobile-login",
+      "no_horizontal_overflow": true,
+      "width": 390,
+      "content": 390
+    }
+  ],
+  "page_errors": []
+}

@@ -1,0 +1,99 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T14:33:41.460+00:00",
+    "completed_at": "2026-11-13T14:33:42.598+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.137,
+    "log": "evidence\\frontend-refresh\\final-checks\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T14:33:42.600+00:00",
+    "completed_at": "2026-11-13T14:33:52.388+00:00",
+    "exit_code": 1,
+    "status": "FAIL",
+    "duration_seconds": 9.788,
+    "log": "evidence\\frontend-refresh\\final-checks\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T14:33:52.389+00:00",
+    "completed_at": "2026-11-13T14:33:53.413+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.024,
+    "log": "evidence\\frontend-refresh\\final-checks\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T14:33:53.414+00:00",
+    "completed_at": "2026-11-13T14:33:55.147+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.733,
+    "log": "evidence\\frontend-refresh\\final-checks\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T14:33:55.149+00:00",
+    "completed_at": "2026-11-13T14:33:59.814+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 4.666,
+    "log": "evidence\\frontend-refresh\\final-checks\\frontend-build.txt"
+  },
+  {
+    "check": "runtime-dependency-audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "audit",
+      "--omit=dev",
+      "--json"
+    ],
+    "started_at": "2026-11-13T14:33:59.816+00:00",
+    "completed_at": "2026-11-13T14:34:06.767+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 6.951,
+    "log": "evidence\\frontend-refresh\\final-checks\\runtime-dependency-audit.txt"
+  }
+]

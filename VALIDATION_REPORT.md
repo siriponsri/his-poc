@@ -86,3 +86,25 @@ Follow START_HERE.md. The validation runner accepts --output-dir to preserve ear
 Regenerate contracts with scripts/export_contracts_v2.py, check consistency with scripts/check_fullsystem_package.py, and package reviewed tracked files with scripts/package_release.py. SHA256SUMS.json excludes itself; ZIP CRC and every included source hash are verified. .gitattributes preserves exact bytes across Git checkouts.
 
 Initial checkpoint documents are retained under evidence/fullsystem/windows-20261113/initial-docs/. The dated matrix review remains historical; current coverage and executed evidence control local acceptance.
+
+## Frontend refresh and Cloudflare preparation — 13 November 2026
+
+This extension preserves the backend and the historical real-model evidence. The new interface uses the user's yellow/gray/purple/orange palette, self-hosted OFL Thai fonts, compact navigation and progressive details. References are documented in docs/design/REFERENCE_REVIEW.md; no competitor code or assets were copied.
+
+| Executed check | Result | Evidence |
+|---|---|---|
+| Incoming Claude frontend baseline |25 unit/60 component, audit/typecheck PASS |evidence/frontend-refresh/baseline/ |
+| Initial refresh run |Unit/audit/type/build PASS; one obsolete greeting assertion FAIL retained |evidence/frontend-refresh/final-checks/ |
+| Final themed frontend |25 unit/63 component, audit/typecheck/build/runtime dependency audit PASS |evidence/frontend-refresh/final-themed/ |
+| Cloudflare helper and existing launcher/CLI |16 tests/28subtests PASS, including12 new helper tests |evidence/frontend-refresh/deployment-checks/ |
+| Offline ingress + resolved Compose fixture |PASS; private bindings, Securecookie, exactHTTPS origin,90s deadline |deploy/cloudflare/local-readiness.json |
+| Themed Docker start |PASS; existing DB migration0002, no seed/reset |evidence/frontend-refresh/docker-themed/ |
+| Actual production-browser |13 observations PASS: desktop/mobile, no horizontal page overflow/pageerrors, menuEscape, five recorded findings, disabled historic approval and exact11205ms provenance |evidence/frontend-refresh/production-browser/execution.json |
+| Current runtime binding |45 backend/frontend/build/font/license files PASS |evidence/frontend-refresh/production-browser/runtime-binding.json |
+| Independent source review |3 findings repaired with component regressions; no remaining actionable blocker in reviewed scope; reviewer didnot independently rerun tests |evidence/frontend-refresh/production-browser/review.json |
+
+No new model inference or domain record mutation was made by this browser refresh test; login/logout and readonly historical result inspection were used. The reported11205ms belongs to the earlier pinned Typhoon run and is not a new latency measurement. The full38/10 baseline and PostgreSQL suites were not rerun for this frontend-only extension.
+
+A local dist comparison first found stale output from before final stylesheet comments; rebuilding local assets produced the exact Docker build hashes. No runtime mismatch remains. The mechanical style scan flagged a2px history divider; it was reduced to1px. Visual confirmation was bounded to preview inspection and final production desktop/mobile checks.
+
+Owner selected his.ai-cie.com and confirmed a Cloudflare account without a Tunnel. Read-only browser inspection found the domain in that account; no account/DNS/security/tunnel settings were modified. Actual owner credentials, Tunnel and Access policy remain pending. This release is locally prepared for that setup; public deployment/external browser remains NOT_RUN. Thai setup/resume steps: docs/CLOUDFLARE_SETUP_TH.md.

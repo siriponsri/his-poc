@@ -1,7 +1,9 @@
 import {useEffect,useRef,useState} from 'react'
 import {Client,HttpError,rows,normalizeMutation,reconcileOperation,errorText,type Row,type ProposalV2,type PendingOperation} from '../lib/client'
 import {DataForm} from './forms'
-import {ResourceWorkspace,Status,DetailValues} from './workspace'
+import {ResourceWorkspace,Status,DetailValues,Alert,EmptyState,formatMoment,shortId,statusLabel} from './workspace'
+import {Icon} from './icons'
+import {useLang} from '../lib/i18n'
 import {field,type Resource} from '../lib/catalog'
 const patientFields=[field('display_name','ชื่อผู้ป่วยสังเคราะห์'),field('identifier','เลขประจำตัวผู้ป่วย'),{...field('issuer','หน่วยออกเลข'),default:'LOCAL'},field('birth_date','วันเกิด','date',false),{...field('sex','เพศ','select'),options:['unknown','female','male','other']}]
 const versionTransition=(name:string,label:string,from:string[])=>({name,label,from,path:'patients/{id}/transition',target:name})
@@ -13,6 +15,7 @@ export function DocumentWorkspace({client,context,canEdit=true}:{client:Client;c
 type AIProfile={active_provider:string;demo:boolean;live_routes_enabled:boolean;model?:string|null;model_digest?:string|null;supported_task_kinds:string[]}
 const completenessKeys=['chief_complaint','history','assessment','plan','author']
 const completenessLabels:Record<string,string>={chief_complaint:'อาการสำคัญ / เหตุผลที่มารับบริการ',history:'ประวัติที่เกี่ยวข้อง',assessment:'ผลประเมินโดยผู้บันทึก',plan:'แผนการดูแล',author:'ผู้บันทึกเอกสาร'}
+const completenessLabelsEn:Record<string,string>={chief_complaint:'Chief complaint / reason for visit',history:'Relevant history',assessment:'Assessment recorded by the author',plan:'Care plan',author:'Document author'}
 function parseAIProfile(value:unknown):AIProfile{
  const p=value as AIProfile
  if(!p||typeof p.active_provider!=='string'||typeof p.demo!=='boolean'||typeof p.live_routes_enabled!=='boolean'||p.demo===p.live_routes_enabled)throw new HttpError('INVALID_AI_CONFIGURATION')
@@ -23,9 +26,29 @@ function validCompleteness(value:unknown){
  const c=value as ProposalV2['action']['completeness']
  return !!c&&c.checklist_id==='SYNTHETIC_DOCUMENT_COMPLETENESS_V1'&&c.requires_human_review===true&&typeof c.summary==='string'&&Array.isArray(c.items)&&c.items.length===completenessKeys.length&&c.items.every(i=>!!i&&typeof i==='object'&&completenessKeys.includes(i.key)&&['present','missing','unclear'].includes(i.status)&&typeof i.evidence_quote==='string')&&new Set(c.items.map(i=>i.key)).size===completenessKeys.length
 }
+// Each finding state has its own word, symbol and colour so it never depends on colour alone.
+const findingStates={present:{icon:'check',th:'พบหลักฐาน',en:'Evidence found'},missing:{icon:'missing',th:'ไม่พบหลักฐาน',en:'No evidence found'},unclear:{icon:'unclear',th:'ยังไม่ชัดเจน',en:'Unclear'}} as const
 function CompletenessReview({report}:{report:NonNullable<ProposalV2['action']['completeness']>}){
- const statusLabels={present:'พบในเอกสาร',missing:'ยังไม่พบในเอกสาร',unclear:'ยังไม่ชัดเจน'}
- return <section aria-label="ผลตรวจความครบถ้วนเอกสาร"><h4>รายการตรวจจากโมเดล</h4><p>{report.summary}</p><ul className="history">{report.items.map(item=><li key={item.key}><strong>{completenessLabels[item.key]||item.label}</strong> <span className={'status status-'+(item.status==='present'?'verified':item.status==='missing'?'returned':'pending')}>{statusLabels[item.status]}</span>{item.evidence_quote?<blockquote>{item.evidence_quote}</blockquote>:<p className="muted">ไม่มีข้อความอ้างอิงสำหรับรายการนี้</p>}</li>)}</ul><p className="muted">รายการนี้เป็นการตรวจข้อความตามแบบตรวจสังเคราะห์ ผู้ตรวจต้องเทียบกับเอกสารต้นฉบับก่อนอนุมัติ</p></section>
+ const {lang,t}=useLang()
+ const order=['present','missing','unclear'] as const
+ return <section className="findings" aria-label="ผลตรวจความครบถ้วนเอกสาร">
+  <div className="findings-head"><h4>{t('รายการตรวจจากโมเดล','Model checklist')}</h4><p className="finding-tally">{order.map(state=><span key={state} className={'finding-state '+state}><Icon name={findingStates[state].icon} size={17}/>{findingStates[state][lang]} <b>{report.items.filter(i=>i.status===state).length}</b></span>)}</p></div>
+  <p className="findings-summary">{report.summary}</p>
+  <ul className="checklist">{report.items.map(item=><li key={item.key} className={'finding '+item.status}>
+   <span className={'finding-state '+item.status}><Icon name={findingStates[item.status].icon} size={20}/></span>
+   <div><p className="finding-title"><strong>{(lang==='en'?completenessLabelsEn[item.key]:completenessLabels[item.key])||item.label}</strong> <span className={'finding-label '+item.status}>{findingStates[item.status][lang]}</span></p>
+   {item.evidence_quote?<blockquote>{item.evidence_quote}</blockquote>:<p className="muted">{item.status==='missing'?t('ยังไม่พบในเอกสาร','Not found in the document'):t('โมเดลยังระบุไม่ได้ชัดเจน','The model could not determine this')} · {t('ไม่มีข้อความอ้างอิงสำหรับรายการนี้','no source quote for this item')}</p>}</div>
+  </li>)}</ul>
+  <p className="muted findings-note">{t('รายการนี้เป็นการตรวจข้อความตามแบบตรวจสังเคราะห์ ผู้ตรวจต้องเทียบกับเอกสารต้นฉบับก่อนอนุมัติ','This checks wording against a synthetic checklist. The reviewer must compare it with the source document before approving.')}</p>
+ </section>
+}
+/** Source text with the model's exact quotes marked; unmatched quotes are simply not marked. */
+function SourceDocument({content,quotes}:{content:string;quotes:string[]}){
+ const marks=quotes.filter(Boolean).map(q=>({start:content.indexOf(q),end:content.indexOf(q)+q.length})).filter(m=>m.start>=0).sort((a,b)=>a.start-b.start)
+ const parts:{text:string;mark:boolean}[]=[];let cursor=0
+ for(const m of marks){if(m.start<cursor)continue;if(m.start>cursor)parts.push({text:content.slice(cursor,m.start),mark:false});parts.push({text:content.slice(m.start,m.end),mark:true});cursor=m.end}
+ if(cursor<content.length)parts.push({text:content.slice(cursor),mark:false})
+ return <p className="document-content">{parts.map((part,i)=>part.mark?<mark key={i}>{part.text}</mark>:<span key={i}>{part.text}</span>)}</p>
 }
 function runModel(run:Row){
  const p=run.provenance as Record<string,unknown>|undefined
@@ -36,13 +59,23 @@ function runTokens(run:Row){
  const usage=run.usage as Record<string,unknown>|null
  const input=usage?.input_tokens??usage?.prompt_eval_count
  const output=usage?.output_tokens??usage?.eval_count
- return typeof input==='number'&&typeof output==='number'?'โทเคนเข้า '+input+' · ออก '+output:'จำนวนโทเคน UNKNOWN'
+ return typeof input==='number'&&typeof output==='number'?'เข้า '+input+' · ออก '+output:null
+}
+/** Long registry identifiers: readable name first, exact identifier kept beneath and allowed to wrap. */
+function ModelName({model}:{model:string}){
+ const last=model.split('/').pop()||model;const [name,tag]=last.split(':')
+ return <span className="model-name"><strong>{name}</strong>{tag&&<span className="model-tag">{tag}</span>}{last!==model||tag?<code className="model-id">{model}</code>:null}</span>
+}
+function SourceBadge({demo}:{demo:boolean|undefined}){
+ const {t}=useLang()
+ return demo===false?<span className="source-badge live"><Icon name="spark" size={14}/>{t('AI จริง','Real AI')}</span>:demo===true?<span className="source-badge mock">DEMO mock</span>:<span className="source-badge unknown">{t('แหล่งที่มายังไม่ระบุ','Source not recorded')}</span>
 }
 export function AIWorkspace({client,context,canReview=true,canWrite=true}:{client:Client;context:{patient_id:string;encounter_id:string};canReview?:boolean;canWrite?:boolean}){
+ const {lang,t}=useLang()
  const requestGeneration=useRef(0)
  const [profile,setProfile]=useState<AIProfile|null>(null)
  const [pendingCreate,setPendingCreate]=useState<(PendingOperation&{binding:string})|null>(null)
- const [tasks,setTasks]=useState<Row[]>([]);const [docs,setDocs]=useState<Row[]>([]);const [proposals,setProposals]=useState<ProposalV2[]>([]);const [runs,setRuns]=useState<Row[]>([]);const [results,setResults]=useState<Row[]>([]);const [task,setTask]=useState('');const [doc,setDoc]=useState('');const [selected,setSelected]=useState<ProposalV2|null>(null);const [draft,setDraft]=useState('');const [scenario,setScenario]=useState('success');const [busy,setBusy]=useState(false);const [error,setError]=useState('');const [notice,setNotice]=useState('');const [pending,setPending]=useState<PendingOperation|null>(null);const [confirmed,setConfirmed]=useState<Row|null>(null)
+ const [tasks,setTasks]=useState<Row[]>([]);const [docs,setDocs]=useState<Row[]>([]);const [proposals,setProposals]=useState<ProposalV2[]>([]);const [runs,setRuns]=useState<Row[]>([]);const [results,setResults]=useState<Row[]>([]);const [task,setTask]=useState('');const [doc,setDoc]=useState('');const [selected,setSelected]=useState<ProposalV2|null>(null);const [draft,setDraft]=useState('');const [scenario,setScenario]=useState('success');const [busy,setBusy]=useState(false);const [error,setError]=useState('');const [notice,setNotice]=useState('');const [pending,setPending]=useState<PendingOperation|null>(null);const [confirmed,setConfirmed]=useState<Row|null>(null);const [creating,setCreating]=useState(false)
  const contextBinding=useRef('');contextBinding.current=[context.patient_id,context.encounter_id,task,doc].join('|')
  useEffect(()=>{window.dispatchEvent(new CustomEvent('his-pending',{detail:!!pending||!!pendingCreate}));return()=>{window.dispatchEvent(new CustomEvent('his-pending',{detail:false}))}},[pending,pendingCreate])
  async function refresh(syncSelection=true){
@@ -58,6 +91,7 @@ export function AIWorkspace({client,context,canReview=true,canWrite=true}:{clien
  async function propose(retry=false){
   if(!profile)return
   const operation=retry&&pendingCreate?pendingCreate:{path:'proposals',body:{task_id:task,document_id:doc,scenario:profile.demo?scenario:'success'},key:crypto.randomUUID(),binding:contextBinding.current}
+  setCreating(true)
   await execute(async()=>{
    setPendingCreate(operation)
    try{
@@ -76,37 +110,66 @@ export function AIWorkspace({client,context,canReview=true,canWrite=true}:{clien
     throw e
    }
   })
+  setCreating(false)
  }
  async function review(decision:string){if(!selected)return;const binding={id:selected.id,version:selected.version,action_hash:selected.action_hash};await execute(async()=>{const response=await client.mutate(`proposals/${binding.id}/review`,{version:binding.version,action_hash:binding.action_hash,decision,...(decision==='edit'?{edited_text:draft}:{})});const incoming=(response.proposal||response) as ProposalV2;setProposals(old=>normalizeMutation(old,incoming) as ProposalV2[]);setSelected(incoming);setDraft(incoming.action.text);setNotice('บันทึกการทบทวนรุ่น '+incoming.version+' แล้ว');try{const fresh=rows(await client.get('proposals'+(task?'?task_id='+task:''))) as ProposalV2[];setProposals(fresh)}catch(e){setError('บันทึกแล้ว รุ่นที่แสดงตรงกับ response แต่โหลดรายการล่าสุดไม่สำเร็จ: '+errorText(e))}})}
  async function commit(retry=false){if(!selected&&!pending)return;const op=retry&&pending?pending:{path:`proposals/${selected!.id}/commit`,body:{version:selected!.version,action_hash:selected!.action_hash},key:crypto.randomUUID(),proposal_id:selected!.id,version:selected!.version,action_hash:selected!.action_hash};await execute(async()=>{setPending(op);try{const response=await client.mutate(op.path,op.body,op.key);setConfirmed(response.result||response);setPending(null);setSelected(p=>p?{...p,status:'committed'}:null);setNotice('บันทึกผลสำเร็จแล้ว');try{await refresh()}catch(e){setError('ผลบันทึกยืนยันแล้ว แต่โหลดรายการล่าสุดไม่สำเร็จ: '+errorText(e))}}catch(e){if(e instanceof HttpError&&e.definitive){setPending(null);setNotice('เซิร์ฟเวอร์ปฏิเสธคำสั่ง สามารถโหลดข้อมูลและสร้างข้อเสนอใหม่ได้')}else setNotice('ผล commit ยังไม่แน่นอน อ่านผลล่าสุดหรือ retry ด้วย key เดิม');throw e}})}
  const dirty=!!selected&&draft!==selected.action.text
  const visibleTasks=profile&&!profile.demo?tasks.filter(t=>profile.supported_task_kinds.includes(String(t.kind))):tasks
  const invalidLiveReport=selected?.demo===false&&!validCompleteness(selected.action.completeness)
- return <div className="workspace-stack">
-  <div className="section-toolbar"><div><h2>AI workbench</h2><p>หลักฐาน → ข้อเสนอ → ทบทวน → บันทึกผล</p></div><span className="demo-pill">{profile?(profile.demo?'EXPLICIT MOCK · ไม่มี live fallback':'AI จริง · dr-train'):'กำลังตรวจการตั้งค่า AI'}</span></div>
-  {profile&&!profile.demo&&<section className="card"><strong>โมเดล {profile.model||'ยังไม่ระบุ'}</strong><p>ตรวจความครบถ้วนเอกสารสังเคราะห์ ผลจากโมเดลต้องผ่านผู้ตรวจอนุมัติก่อนบันทึก</p></section>}
-  {error&&<div role="alert" className="alert error">{error}</div>}{notice&&<div role="status" className="alert info">{notice}</div>}
-  <button className="secondary" disabled={busy} onClick={()=>refresh().catch(e=>setError(errorText(e)))}>โหลดและยืนยันผลล่าสุด</button>
-  {pendingCreate&&!busy&&<div className="pending-banner"><p>คำขอ AI รอยืนยัน · <code>{pendingCreate.key}</code></p><button className="secondary" onClick={()=>propose(true)}>Retry สร้างข้อเสนอเดิม</button></div>}
-  <div className="record-layout"><section className="card"><h3>เลือกงานและหลักฐาน</h3>
-   <label className="field"><span>งานที่ผูกผู้ป่วย / encounter</span><select value={task} onChange={e=>setTask(e.target.value)} disabled={busy||!!pending||!!pendingCreate}><option value="">เลือกงาน</option>{visibleTasks.map(t=><option key={t.id} value={t.id}>{String(t.title)} · {t.status}</option>)}</select></label>
-   <label className="field"><span>เอกสารหลักฐาน</span><select value={doc} onChange={e=>setDoc(e.target.value)} disabled={busy||!!pending||!!pendingCreate}><option value="">เลือกเอกสาร</option>{docs.map(d=><option value={d.id} key={d.id}>{String(d.title)} · v{d.version}</option>)}</select></label>
+ const locked=busy||!!pending||!!pendingCreate
+ const report=selected&&validCompleteness(selected.action.completeness)?selected.action.completeness!:null
+ const evidence=(selected?.evidence||{}) as Record<string,unknown>
+ const sourceText=typeof evidence.content==='string'?evidence.content:''
+ // Where the reviewer is in the six-step path; derived only from recorded state.
+ const stage=!selected?(busy&&creating?2:1):selected.status==='committed'?7:selected.status==='approved'?6:selected.status==='pending'?(dirty?4:3):5
+ const steps=[t('เลือกงานและเอกสาร','Choose task and document'),t('ตรวจด้วย AI','Run the AI check'),t('อ่านข้อค้นพบและหลักฐาน','Read findings and evidence'),t('ผู้ตรวจแก้ไข','Reviewer edits'),t('อนุมัติ','Approve'),t('บันทึกผล','Record result')]
+ const hint=!selected?'':selected.status==='committed'?t('บันทึกผลแล้ว ข้อเสนอนี้แก้ไขหรืออนุมัติซ้ำไม่ได้','The result is recorded. This proposal can no longer be edited or approved.'):selected.status==='rejected'?t('ข้อเสนอนี้ถูกปฏิเสธ หากต้องการผลใหม่ให้สร้างข้อเสนออีกครั้ง','This proposal was rejected. Create a new proposal if another result is needed.'):!canReview?t('บัญชีนี้ไม่มีสิทธิ์อนุมัติหรือบันทึกผล','This account is not permitted to approve or record results.'):invalidLiveReport?'':selected.status==='approved'?t('อนุมัติรุ่นนี้แล้ว กดยืนยันบันทึกผลเพื่อเขียนผลลงระบบ','This version is approved. Confirm to write the result.'):dirty?t('มีการแก้ไขที่ยังไม่บันทึก บันทึกเป็นรุ่นใหม่ก่อน แล้วจึงอนุมัติรุ่นนั้น','You have unsaved edits. Save them as a new version, then approve that version.'):t('อ่านข้อค้นพบเทียบกับเอกสารต้นฉบับ แล้วอนุมัติรุ่นที่แสดง หรือแก้ข้อความสรุปก่อน','Compare the findings with the source document, then approve this version or edit the summary first.')
+ return <div className="workspace-stack ai-workbench">
+  <div className="section-toolbar"><div><h2>{t('ตรวจความครบถ้วนเอกสาร','Document completeness')}</h2><p>{profile&&!profile.demo?t('ตรวจความครบถ้วนเอกสารสังเคราะห์ ผลจากโมเดลต้องผ่านผู้ตรวจอนุมัติก่อนบันทึก','Checks synthetic documents for completeness. A reviewer must approve model output before it is recorded.'):t('หลักฐาน → ข้อเสนอ → ทบทวน → บันทึกผล','Evidence → proposal → review → recorded result')}</p></div>
+   <div className="button-row"><span className={'demo-pill mode-pill '+(profile?(profile.demo?'mock':'live'):'checking')}>{profile?(profile.demo?'EXPLICIT MOCK · ไม่มี live fallback':'AI จริง · dr-train'):t('กำลังตรวจการตั้งค่า AI','Checking AI configuration')}</span><button className="secondary" disabled={busy} onClick={()=>refresh().catch(e=>setError(errorText(e)))}>โหลดและยืนยันผลล่าสุด</button></div>
+  </div>
+  {profile&&!profile.demo&&<p className="model-line"><span>{t('โมเดลที่ใช้งาน','Active model')}</span>{profile.model?<ModelName model={profile.model}/>:<strong>{t('ยังไม่ระบุ','Not specified')}</strong>}</p>}
+  <ol className="stepper" aria-label={t('ขั้นตอนการทบทวน','Review steps')}>{steps.map((label,index)=>{const n=index+1;const state=stage>n?'done':stage===n?'current':'todo';return <li key={n} className={'step '+state} aria-current={state==='current'?'step':undefined}><span className="step-mark">{state==='done'?<Icon name="check" size={18}/>:n}</span><span className="step-label">{label}</span></li>})}</ol>
+  {error&&<Alert kind="error">{error}</Alert>}{notice&&<Alert kind="info">{notice}</Alert>}
+  {busy&&creating&&profile?.demo===false&&<Alert kind="info">{t('กำลังส่งเอกสารให้โมเดลตรวจ อาจใช้เวลาถึง 3 นาที กรุณาอย่าปิดหรือเปลี่ยนหน้า','The document is with the model. This can take up to 3 minutes; please keep this page open.')}</Alert>}
+  {pendingCreate&&!busy&&<div className="pending-banner"><Icon name="clock" size={18}/><p>{t('คำขอ AI รอยืนยัน','AI request awaiting confirmation')} · <code>{pendingCreate.key}</code></p><button className="secondary" onClick={()=>propose(true)}>Retry สร้างข้อเสนอเดิม</button></div>}
+  <div className="record-layout ai-layout"><section className="card">
+   <h3>{t('เลือกงานและหลักฐาน','Choose task and evidence')}</h3>
+   <label className="field"><span>งานที่ผูกผู้ป่วย / encounter</span><select value={task} onChange={e=>setTask(e.target.value)} disabled={locked}><option value="">{t('เลือกงาน','Select a task')}</option>{visibleTasks.map(row=><option key={row.id} value={row.id}>{String(row.title)} · {statusLabel(String(row.status),lang)}</option>)}</select></label>
+   <label className="field"><span>เอกสารหลักฐาน</span><select value={doc} onChange={e=>setDoc(e.target.value)} disabled={locked}><option value="">{t('เลือกเอกสาร','Select a document')}</option>{docs.map(d=><option value={d.id} key={d.id}>{String(d.title)} · v{d.version}</option>)}</select></label>
    {profile?.demo&&<label className="field"><span>สถานการณ์ mock</span><select value={scenario} onChange={e=>setScenario(e.target.value)}>{['success','failure','timeout','abstain','invalid'].map(s=><option key={s}>{s}</option>)}</select></label>}
-   <button className="primary full" disabled={!canWrite||busy||!!pending||!!pendingCreate||!profile||!visibleTasks.some(t=>t.id===task)||!doc} onClick={()=>propose()}>{busy&&profile?.demo===false?'กำลังตรวจเอกสารกับ dr-train…':'สร้างข้อเสนอจากเอกสารที่บันทึก'}</button>
-   <h3>ข้อเสนอของงาน</h3>{proposals.map(p=><button className="record-button" key={p.id} disabled={busy||!!pending||!!pendingCreate} onClick={()=>{setSelected(p);setDraft(p.action.text)}}><div><strong>{p.action.text}</strong><small>v{p.version} · {p.id} · {p.demo===false?'AI จริง':p.demo===true?'DEMO mock':'แหล่งที่มายังไม่ระบุ'}</small></div><Status value={p.status}/></button>)}
-  </section><section className="card">{selected?<>
-   <div className="section-heading"><h3>ทบทวนรุ่น {selected.version}</h3><Status value={selected.status}/></div>
-   <p className="hash">Action hash: {selected.action_hash}</p><p>{selected.demo===false?'ข้อเสนอจาก AI จริง':selected.demo===true?'ข้อเสนอ DEMO mock':'ข้อเสนอที่บันทึกไว้'}</p>
-   <DetailValues record={{id:'evidence',...selected.evidence}}/>
-   {validCompleteness(selected.action.completeness)&&<CompletenessReview report={selected.action.completeness!}/>}
+   {!context.encounter_id&&<p className="field-hint">{t('เลือกผู้ป่วยและการรับบริการที่แถบด้านบน เพื่อจำกัดงานและเอกสารให้ตรงบริบท','Pick a patient and encounter in the bar above to narrow tasks and documents to that context.')}</p>}
+   <button className="primary full" disabled={!canWrite||locked||!profile||!visibleTasks.some(t=>t.id===task)||!doc} onClick={()=>propose()}>{busy&&profile?.demo===false?'กำลังตรวจเอกสารกับ dr-train…':'สร้างข้อเสนอจากเอกสารที่บันทึก'}</button>
+   <h3 className="subheading">{t('ข้อเสนอของงาน','Proposals for this task')} <span className="count">{proposals.length}</span></h3>
+   {proposals.length?<div className="proposal-list">{proposals.map(p=><button className={'record-button '+(selected?.id===p.id?'selected':'')} key={p.id} aria-current={selected?.id===p.id?'true':undefined} disabled={locked} onClick={()=>{setSelected(p);setDraft(p.action.text)}}><div><strong>{p.action.text}</strong><small className="record-meta"><span>v{p.version}</span><SourceBadge demo={p.demo}/><span className="record-id" title={p.id}>{p.id}</span></small></div><Status value={p.status}/></button>)}</div>:<p className="muted">{task?t('งานนี้ยังไม่มีข้อเสนอ','No proposals for this task yet'):t('เลือกงานเพื่อดูข้อเสนอของงานนั้น หรือดูรายการทั้งหมดที่คุณเข้าถึงได้','Select a task to see its proposals')}</p>}
+  </section><section className="card review-card">{selected?<>
+   <div className="detail-header"><div><h3>ทบทวนรุ่น {selected.version}</h3><p className="record-ref"><SourceBadge demo={selected.demo}/><span>{selected.demo===false?'ข้อเสนอจาก AI จริง':selected.demo===true?'ข้อเสนอ DEMO mock':'ข้อเสนอที่บันทึกไว้'}</span></p></div><Status value={selected.status}/></div>
+   {report&&<CompletenessReview report={report}/>}
    {invalidLiveReport&&<p role="alert" className="alert error">รายการตรวจของข้อเสนอ AI ไม่ครบตามแบบตรวจ กรุณาโหลดข้อมูลล่าสุดก่อนอนุมัติ</p>}
-   <label className="field"><span>ข้อเสนอที่ตรวจจริง</span><textarea rows={6} value={draft} disabled={busy||!!pending||!!pendingCreate||selected.status!=='pending'} onChange={e=>setDraft(e.target.value)}/></label>
-   <div className="button-row"><button className="secondary" disabled={!canReview||busy||!!pending||!!pendingCreate||!dirty||selected.status!=='pending'} onClick={()=>review('edit')}>บันทึกเป็นรุ่นใหม่</button><button className="primary" disabled={!canReview||busy||!!pending||!!pendingCreate||dirty||!!invalidLiveReport||selected.status!=='pending'} onClick={()=>review('approve')}>อนุมัติรุ่นที่แสดง</button><button className="danger-button" disabled={!canReview||busy||!!pending||!!pendingCreate||dirty||selected.status!=='pending'} onClick={()=>review('reject')}>ปฏิเสธ</button></div>
-   <button className="primary full" disabled={!canReview||busy||!!pending||!!pendingCreate||dirty||!!invalidLiveReport||selected.status!=='approved'} onClick={()=>commit()}>ยืนยันบันทึกผล</button>
-   </>:<div className="empty"><h3>ยังไม่ได้เลือกข้อเสนอ</h3><p>เลือกงานและเอกสารเพื่อสร้างข้อเสนอ หรือเปิดรายการเดิม</p></div>}
-   {pending&&<div className="pending-banner"><p>เก็บ key {pending.key}</p><button className="secondary" disabled={busy} onClick={()=>commit(true)}>Retry commit เดิม</button></div>}
-   {confirmed&&<div className="confirmed"><strong>ยืนยันผลที่บันทึกแล้ว</strong><code>{confirmed.id}</code></div>}
+   {sourceText&&<details className="source-document" open={!!report}><summary>{t('เอกสารต้นฉบับที่ใช้ตรวจ','Source document that was checked')}{report&&<span className="muted"> · {t('ข้อความที่โมเดลอ้างถึงถูกเน้นไว้','quoted passages are highlighted')}</span>}</summary><SourceDocument content={sourceText} quotes={report?report.items.map(i=>i.evidence_quote):[]}/></details>}
+   <label className="field"><span>ข้อเสนอที่ตรวจจริง</span><textarea rows={5} value={draft} disabled={locked||selected.status!=='pending'} onChange={e=>setDraft(e.target.value)}/></label>
+   {hint&&<p className={'field-hint'+(dirty?' attention':'')}>{hint}</p>}
+   <div className="button-row review-actions"><button className="secondary" disabled={!canReview||locked||!dirty||selected.status!=='pending'} onClick={()=>review('edit')}>บันทึกเป็นรุ่นใหม่</button><button className="primary" disabled={!canReview||locked||dirty||!!invalidLiveReport||selected.status!=='pending'} onClick={()=>review('approve')}>อนุมัติรุ่นที่แสดง</button><button className="danger-button" disabled={!canReview||locked||dirty||selected.status!=='pending'} onClick={()=>review('reject')}>ปฏิเสธ</button></div>
+   <button className="primary full commit" disabled={!canReview||locked||dirty||!!invalidLiveReport||selected.status!=='approved'} onClick={()=>commit()}>ยืนยันบันทึกผล</button>
+   <details className="technical"><summary>{t('หลักฐานและรหัสผูกรุ่น','Evidence binding and identifiers')}</summary><p className="hash">Action hash: {selected.action_hash}</p><DetailValues record={{id:selected.id,...Object.fromEntries(Object.entries(evidence).filter(([key])=>key!=='content'))}}/></details>
+   </>:<EmptyState icon="spark" title={t('ยังไม่ได้เลือกข้อเสนอ','No proposal selected')}>{t('เลือกงานและเอกสารเพื่อสร้างข้อเสนอ หรือเปิดรายการเดิม','Choose a task and document to create a proposal, or open an existing one')}</EmptyState>}
+   {pending&&<div className="pending-banner"><Icon name="clock" size={18}/><p>{t('เก็บ key','Kept key')} {pending.key}</p><button className="secondary" disabled={busy} onClick={()=>commit(true)}>Retry commit เดิม</button></div>}
+   {confirmed&&<div className="confirmed"><Icon name="check" size={20}/><div><strong>ยืนยันผลที่บันทึกแล้ว</strong><code>{confirmed.id}</code></div></div>}
   </section></div>
-  <div className="record-layout"><section className="card"><h3>Provider attempts ({runs.length})</h3>{runs.map(r=><div className="run-row" key={r.id}><Status value={r.outcome}/><span>{r.provider==='mock_demo'?'DEMO mock':String(r.provider||'ไม่ระบุ provider')}{runModel(r)?' · '+runModel(r):''}</span><span>{String(r.error||r.reason||r.abstain_reason||'—')}</span><small>เวลา {typeof r.elapsed_ms==='number'?r.elapsed_ms+' ms':'UNKNOWN'} · {runTokens(r)} · ต้นทุน {String(r.measured_cost??r.cost??'UNKNOWN')}</small></div>)}</section><section className="card"><h3>ผลที่บันทึก ({results.length})</h3>{results.map(r=><details key={r.id}><summary>{r.id}</summary><DetailValues record={r}/></details>)}</section></div>
+  <details className="card ai-run-history"><summary>{t('ประวัติการเรียก AI','AI call history')} <span className="count">{runs.length}</span></summary>
+   {runs.length?<div className="run-list">{runs.map(r=>{const model=runModel(r);const tokens=runTokens(r);const note=r.error||r.reason||r.abstain_reason;return <div className="run-row" key={r.id}>
+    <div className="run-outcome"><Status value={r.outcome}/><SourceBadge demo={r.provider==='mock_demo'?true:r.provider==='dr_train_ollama'?false:undefined}/></div>
+    <div className="run-source">{model?<ModelName model={model}/>:<strong>{r.provider==='mock_demo'?'DEMO mock':t('ไม่ระบุโมเดล','Model not recorded')}</strong>}<small>provider: {String(r.provider||t('ไม่ระบุ provider','not recorded'))}{typeof r.created_at==='string'?' · '+formatMoment(r.created_at,lang):''}</small>{note?<p className="run-note">{String(note)}</p>:null}</div>
+    <dl className="run-metrics">
+     <div><dt>{t('เวลา','Time')}</dt><dd>{typeof r.elapsed_ms==='number'?<>{(r.elapsed_ms/1000).toFixed(1)} {t('วินาที','s')} <small>({r.elapsed_ms} ms)</small></>:'UNKNOWN'}</dd></div>
+     <div><dt>โทเคน</dt><dd>{tokens||<>{' '}UNKNOWN <small>{t('ไม่ทราบจำนวน','not reported')}</small></>}</dd></div>
+     <div><dt>{'ต้นทุน '}</dt><dd>{(r.measured_cost??r.cost)!=null?String(r.measured_cost??r.cost):<>UNKNOWN <small>{t('ไม่ทราบ ยังไม่ได้วัด','not measured')}</small></>}</dd></div>
+    </dl>
+   </div>})}</div>:<p className="muted">{task?t('งานนี้ยังไม่มีการเรียก AI','No AI calls for this task yet'):t('เลือกงานเพื่อดูประวัติการเรียก AI ของงานนั้น','Select a task to see its AI call history')}</p>}
+  </details>
+  <details className="card ai-results"><summary>{t('ผลที่บันทึก','Recorded results')} <span className="count">{results.length}</span></summary>
+   {results.length?results.map(r=>{const text=(r.action as {text?:string}|undefined)?.text;return <details className="result-row" key={r.id}><summary><span>{text||r.id}</span><small>{typeof r.created_at==='string'?formatMoment(r.created_at,lang)+' · ':''}<span title={r.id}>{shortId(r.id)}</span></small></summary><DetailValues record={r}/></details>}):<p className="muted">{t('ยังไม่มีผลที่บันทึกในบริบทนี้','No results recorded in this context yet')}</p>}
+  </details>
  </div>
 }

@@ -1,0 +1,11 @@
+{
+  "hostname": "his.ai-cie.com",
+  "selection": "explicit user selection on 2026-11-13",
+  "readiness": "LOCAL_PREPARATION_TESTED_OWNER_SETUP_PENDING",
+  "tunnel_created": false,
+  "dns_changed": false,
+  "public_deployment": "NOT_RUN",
+  "guide": "docs/CLOUDFLARE_SETUP_TH.md",
+  "private_settings": "var/cloudflare/settings.json",
+  "credentials": "not included"
+}

@@ -19,3 +19,10 @@ First action for a receiving Codex: read current validation/coverage, run FS-01,
 FS-01 PASS on Windows Docker Linux engine; the native application launcher remains an alternative not executed in this session. FS-02 PASS: all38 local synthetic domain minimums have PostgreSQL and rendered UI evidence. FS-03 PASS: J01–J10 actual DOM workflows, linked IDs, role/scope denial, conflict/retry, reload/restart and audit. FS-04 PASS: concurrency/atomicity and same-app UI backup/isolated restore, with read-only comparison of records/files/hashes. FS-05 PASS: scoped permissions, credential/session revocation, immutable approvals and current-source browser recovery checks.
 
 See VALIDATION_REPORT.md, DOMAIN_COVERAGE.json and JOURNEY_COVERAGE.json for exact proof and retained failures. No known internal acceptance blocker remains in the reviewed local scope. FS-06 PASS for the named synthetic document-completeness route on the existing pinned Typhoon/Ollama dr-train service, including actual inference and human-reviewed browser persistence. Evaluator scope is three authored examples, not a clinical benchmark. FS-07 and other connectors/models remain NOT_RUN; hospital/SOP/payer/clinical/product evaluation needs its own resources and evidence. No model was installed or shared service restarted.
+
+## Frontend / Cloudflare extension
+
+- UI refresh PASS:25 unit/63 component; desktop/mobile production-browser13 observations; real prior model report remains readable.
+- Cloudflare local preparation PASS:12 helper tests (23subtests), offline installed ingress parser and resolved private Compose profile. Additional launcher/CLI regressions passed.
+- Owner pending: locally managed tunnelUUID/privatecredentials and Access team/AUD/allow policy for his.ai-cie.com.
+- Resume pending: real profile validation, backup, HTTPS origin/cookies, DNS/connector and external Access/HIS/AI browser acceptance. No public deployment has been run.

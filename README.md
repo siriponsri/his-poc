@@ -200,3 +200,9 @@ Production deployment, hospital interfaces, payer certification, other live mode
 ## Licensing and provenance
 
 A repository-wide license has not yet been selected. Review the applicable permissions before redistributing project code. Third-party notices and UI reference provenance are recorded in [`apps/web/LICENSE_NOTICES.md`](apps/web/LICENSE_NOTICES.md) and [`apps/web/TEMPLATE_PROVENANCE.json`](apps/web/TEMPLATE_PROVENANCE.json). Referencing a library does not mean it is a runtime dependency or that its license covers the entire project.
+
+## Frontend refresh and Cloudflare preparation
+
+The current interface uses the owner's yellow / warm gray / purple / orange theme. Compact navigation and progressive details retain the existing workflows and real document-review connection. Updated checks passed25 unit/63 component tests plus audit/typecheck/build, with actual desktop/mobile browser readback.
+
+The selected deployment target is **his.ai-cie.com**. Cloudflare preparation is locally tested; owner Tunnel/Access setup and public deployment are still pending. Follow the [Thai Tunnel setup guide](docs/CLOUDFLARE_SETUP_TH.md), then resume the paused delivery for external acceptance. See [deployment details](docs/CLOUDFLARE_DEPLOYMENT.md) and [design references](docs/design/REFERENCE_REVIEW.md).

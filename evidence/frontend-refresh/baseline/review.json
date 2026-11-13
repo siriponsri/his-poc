@@ -1,0 +1,36 @@
+{
+  "observed_at": "2026-11-13T14:28:21.181166+00:00",
+  "scope": "Readonly baseline frontend regression review of incoming Claude changes before parent redesign; no browser or live AI invocation",
+  "checks": {
+    "unit": 25,
+    "component": 60,
+    "audit": "PASS",
+    "typecheck": "PASS"
+  },
+  "execution": "evidence/frontend-refresh/baseline/execution.json",
+  "source_frozen_during_test": true,
+  "functional_blockers_identified": [],
+  "findings": [
+    {
+      "kind": "documentation/provenance",
+      "file": "apps/web/LICENSE_NOTICES.md",
+      "issue": "Notice still states only system Thai fonts/no font binaries while main.tsx imports two new pinned @fontsource IBM Plex Thai packages. Update notice and redistribute applicable font license notices with shipped assets."
+    }
+  ],
+  "i18n_review": "React context + display-only localStorage preference. No DOM text rewriting or mutation observer found. Identity/scope does not depend on language preference.",
+  "not_run": [
+    "rendered browser regression",
+    "live model inference",
+    "production/deployment verification"
+  ],
+  "sha256": {
+    "apps/web/src/App.tsx": "8f03fb9db0ad82b14138086e31860a5fd42752d4a80517e6a58a15b21a30a8c5",
+    "apps/web/src/components/core-workspaces.tsx": "812b017493edc5fd87d6e7ee134fe1cd91702cd2e643f4e8640cfee5984309c9",
+    "apps/web/src/components/workspace.tsx": "cfae180426814c2358ef45be2c02612d6b46edcf286d6650846b63c101046735",
+    "apps/web/src/components/forms.tsx": "5fbd6ac457bfd71d448db2da86a9ce03fdd4f6b0432744feee52ec98d6756821",
+    "apps/web/src/lib/i18n.tsx": "6254e5e5b6b1fc6727ce813e2de894e067d944cbd492a11d44025b60987f5cb0",
+    "apps/web/src/main.tsx": "9bc74621ba9d6feaed117bfcff29ce1320c75ec3942ce1cb463b2e934c62f736",
+    "apps/web/package.json": "5cbb665841b14883b5918d3bff900eee0902c9e5a4c684ca61a922e8a363ccda",
+    "apps/web/LICENSE_NOTICES.md": "6e72c97a2c3148a068104251a54c2234555b130d8dd56d58fdc20e9fd9ac8551"
+  }
+}

@@ -17,3 +17,6 @@ backups/
 .env.*
 !.env.example
 .pytest_cache/
+
+# Local design-preview helper retained outside the release profile
+apps/web/vite.design.config.mts

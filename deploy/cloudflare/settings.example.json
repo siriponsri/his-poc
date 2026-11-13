@@ -1,0 +1,8 @@
+{
+  "hostname": "his.example.com",
+  "tunnel_id": "00000000-0000-0000-0000-000000000000",
+  "credentials_file": "REPLACE_WITH_ABSOLUTE_PRIVATE_TUNNEL_JSON_PATH",
+  "access_team_name": "your-team",
+  "access_audience_tag": "REPLACE_WITH_ACCESS_APPLICATION_AUDIENCE_TAG",
+  "origin_port": 8000
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "check": "baseline-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T14:26:49.406+00:00",
+    "completed_at": "2026-11-13T14:26:50.914+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.508,
+    "log": "evidence\\frontend-refresh\\baseline\\baseline-test.txt"
+  },
+  {
+    "check": "baseline-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T14:26:50.917+00:00",
+    "completed_at": "2026-11-13T14:26:59.207+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 8.291,
+    "log": "evidence\\frontend-refresh\\baseline\\baseline-test-component.txt"
+  },
+  {
+    "check": "baseline-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T14:26:59.207+00:00",
+    "completed_at": "2026-11-13T14:27:00.131+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 0.924,
+    "log": "evidence\\frontend-refresh\\baseline\\baseline-test-audit.txt"
+  },
+  {
+    "check": "baseline-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T14:27:00.132+00:00",
+    "completed_at": "2026-11-13T14:27:01.351+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.219,
+    "log": "evidence\\frontend-refresh\\baseline\\baseline-typecheck.txt"
+  }
+]

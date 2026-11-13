@@ -1,0 +1,89 @@
+npm notice run his-poc-web@0.3.0 test:component
+npm notice run node --import tsx --test tests/*.component.test.tsx
+✔ live provider has accurate model/mode labels and offers only supported document tasks (140.941ms)
+✔ live response renders five typed checks and evidence while human approval remains explicit (100.4747ms)
+✔ unknown proposal response and pending replay retain exact request body/key until confirmed (107.1633ms)
+✔ malformed provider configuration fails closed without silently displaying mock mode (20.124ms)
+✔ a failed profile refresh cannot leave stale live configuration enabled (56.0444ms)
+✔ a live proposal with a malformed checklist cannot be approved or committed (46.6505ms)
+✔ live result from an old patient context cannot repopulate a newly selected context (113.6934ms)
+✔ actual mounted AI: edit response + refresh failure keeps displayed revision and approval binding aligned (216.8786ms)
+✔ actual mounted AI: definitive commit409 clears unknown state without reconnect (66.7242ms)
+✔ actual mounted AI: lost response matches readback identity and clears pending (117.1349ms)
+✔ actual mounted patient form sends typed fields and displays server-created record (92.6052ms)
+✔ exported referral exposes scoped download without embedding its packet in detail JSON (47.7766ms)
+✔ typed message sequence submits JSON integer while money retains Decimal text (19.1126ms)
+✔ integer form rejects fractional, unsafe and below-minimum sequence without sending (16.0246ms)
+✔ actual audit route inspects authorized list snapshot without nonexistent detail request (83.9629ms)
+✖ actual mounted app: login backend session, scoped home counters, logout clears prior records (148.0801ms)
+✔ actual mounted app: skip focus retains route and unknown route shows404 (63.6415ms)
+✔ actual mounted app: unauthorized deep link shows denied and never mutates (44.5263ms)
+✔ actual mounted route has functional controls D01 (109.8795ms)
+✔ actual mounted route has functional controls D02 (115.0702ms)
+✔ actual mounted route has functional controls D03 (95.5729ms)
+✔ actual mounted route has functional controls D04 (92.1914ms)
+✔ actual mounted route has functional controls D05 (87.4919ms)
+✔ actual mounted route has functional controls D06 (111.6459ms)
+✔ actual mounted route has functional controls D07 (162.162ms)
+✔ actual mounted route has functional controls D08 (131.4551ms)
+✔ actual mounted route has functional controls D09 (124.4449ms)
+✔ actual mounted route has functional controls D10 (120.8723ms)
+✔ actual mounted route has functional controls D11 (107.7074ms)
+✔ actual mounted route has functional controls D12 (221.7984ms)
+✔ actual mounted route has functional controls D13 (131.2377ms)
+✔ actual mounted route has functional controls D14 (148.0063ms)
+✔ actual mounted route has functional controls D15 (139.3851ms)
+✔ actual mounted route has functional controls D16 (109.2764ms)
+✔ actual mounted route has functional controls D17 (82.073ms)
+✔ actual mounted route has functional controls D18 (94.562ms)
+✔ actual mounted route has functional controls D19 (112.8675ms)
+✔ actual mounted route has functional controls D20 (76.8595ms)
+✔ actual mounted route has functional controls D21 (84.1524ms)
+✔ actual mounted route has functional controls D22 (93.2741ms)
+✔ actual mounted route has functional controls D23 (64.9725ms)
+✔ actual mounted route has functional controls D24 (68.6809ms)
+✔ actual mounted route has functional controls D25 (61.661ms)
+✔ actual mounted route has functional controls D26 (56.0022ms)
+✔ actual mounted route has functional controls D27 (54.0158ms)
+✔ actual mounted route has functional controls D28 (48.2477ms)
+✔ actual mounted route has functional controls D29 (31.6574ms)
+✔ actual mounted route has functional controls D30 (24.6387ms)
+✔ actual mounted route has functional controls D31 (30.8338ms)
+✔ actual mounted route has functional controls D32 (20.1264ms)
+✔ actual mounted route has functional controls D33 (20.9233ms)
+✔ actual mounted route has functional controls D34 (24.0873ms)
+✔ actual mounted route has functional controls D35 (20.6898ms)
+✔ actual mounted route has functional controls D36 (22.4685ms)
+✔ actual mounted route has functional controls D37 (17.1745ms)
+✔ actual mounted route has functional controls D38 (35.2311ms)
+✔ actual form preserves Decimal strings and serializes local datetime as aware ISO (9.4946ms)
+✔ actual record detail ignores delayed result for previous selection (26.963ms)
+✔ actual file form hides encoding and submits only internally derived file bytes/MIME (11.4132ms)
+✔ actual metadata-only document role has no content editing controls (20.8621ms)
+ℹ tests 60
+ℹ suites 0
+ℹ pass 59
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8952.5021
+
+✖ failing tests:
+
+test at tests\workflow.component.test.tsx:1:12018
+✖ actual mounted app: login backend session, scoped home counters, logout clears prior records (148.0801ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /สวัสดี เจ้าหน้าที่ทดสอบ/. Input:
+  
+  'ข้ามไปยังเนื้อหาCareBalanceHOSPITAL WORKSPACECtrl Kงานของฉันภาพรวมงานรายการงานทะเบียนและการเข้าถึง1D01ทะเบียนผู้ป่วยการดูแลผู้ป่วย1D03เวชระเบียนผู้ป่วยนอกเจเจ้าหน้าที่ทดสอบregistration · f1งานของฉัน/ภาพรวมงานSYNTHETICไทยENออกจากระบบภาพรวมงานเจ้าหน้าที่ทดสอบ / f1งานที่เปิด3ทะเบียนผู้ป่วยเวชระเบียนผู้ป่วยนอกงานที่เกี่ยวข้องเปิดรายการงาน →งานของผู้ใช้เดิมD03 OPD และเวชระเบียนการตรวจพื้นที่ทำงานทั้งหมด 2เปิดพื้นที่ทำงานแสดงตามสิทธิ์จากเซิร์ฟเวอร์ทะเบียนและการเข้าถึงD01ทะเบียนและตัวตนผู้ป่วยการดูแลผู้ป่วยD03OPD และเวชระเบียนการตรวจCareBalance · HIS POC · Development prototypeข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา'
+  
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:62:1050)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'ข้ามไปยังเนื้อหาCareBalanceHOSPITAL WORKSPACECtrl Kงานของฉันภาพรวมงานรายการงานทะเบียนและการเข้าถึง1D01ทะเบียนผู้ป่วยการดูแลผู้ป่วย1D03เวชระเบียนผู้ป่วยนอกเจเจ้าหน้าที่ทดสอบregistration · f1งานของฉัน/ภาพรวมงานSYNTHETICไทยENออกจากระบบภาพรวมงานเจ้าหน้าที่ทดสอบ / f1งานที่เปิด3ทะเบียนผู้ป่วยเวชระเบียนผู้ป่วยนอกงานที่เกี่ยวข้องเปิดรายการงาน →งานของผู้ใช้เดิมD03 OPD และเวชระเบียนการตรวจพื้นที่ทำงานทั้งหมด 2เปิดพื้นที่ทำงานแสดงตามสิทธิ์จากเซิร์ฟเวอร์ทะเบียนและการเข้าถึงD01ทะเบียนและตัวตนผู้ป่วยการดูแลผู้ป่วยD03OPD และเวชระเบียนการตรวจCareBalance · HIS POC · Development prototypeข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา',
+    expected: /สวัสดี เจ้าหน้าที่ทดสอบ/,
+    operator: 'match',
+    diff: 'simple'
+  }

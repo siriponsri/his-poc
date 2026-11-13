@@ -13,3 +13,7 @@ Champion candidates ยังคง 4 งาน: document completeness/review, D
 ผลผลิตที่ต้องการคือเจ้าของเปิด URL เดียวพบ login เลือกผู้ป่วยและ encounter ทำงานข้ามหน่วยงาน แล้ว reload/restart ยังพบผลเดิม. เงินรับและต้นทุนสะท้อน ledger จริง แยก billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost. การเชื่อม endpoint ผ่านไม่ใช่ clinical/product effectiveness
 
 ยืนยันแล้วเฉพาะ dr-train Ollama0.12.6 และ Typhoon2.1-Gemma3-12B ที่ผูก manifest digest สำหรับ document completeness; GPU V10032GB และ RTX2080Ti11GB ตรวจพบจริง ส่วน UNKNOWN ยังรวมโรงพยาบาล/SOPจริง, production IdP/deployment, external hospital interfaces, Qwen checkpoint, Hugging Face revision ของ GGUF ที่มีอยู่, paid budget และ intended clinical use. สิ่งเหล่านี้บล็อกเฉพาะงานที่ต้องใช้ ไม่บล็อก local synthetic implementation
+
+## Current owner steering
+
+Frontend refinement now follows the user's yellow/gray/purple/orange brief and supplied reference screens. Deployment readiness targets his.ai-cie.com through a named Cloudflare Tunnel to the existing full app. The user will create Tunnel/Access following docs/CLOUDFLARE_SETUP_TH.md, then resume the goal. This preparation does not claim public deployment, remote policy verification or clinical readiness.

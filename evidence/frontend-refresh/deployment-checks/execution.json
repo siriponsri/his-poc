@@ -1,0 +1,20 @@
+[
+  {
+    "check": "cloudflare-launcher-cli",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_cloudflare_prepare_unit.py",
+      "backend/tests/test_validation_launcher_unit.py",
+      "backend/tests/test_browser_cli_unit.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T14:42:56.728+00:00",
+    "completed_at": "2026-11-13T14:42:59.282+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.554,
+    "log": "evidence\\frontend-refresh\\deployment-checks\\cloudflare-launcher-cli.txt"
+  }
+]

@@ -24,3 +24,7 @@ F0–F4 local synthetic acceptance passed, including38 L2 domains,10 L3 journeys
 ## Named live document route — 13 November 2026
 
 Discover existing service/model digests → strict native Ollama adapter → transaction-free reservation/inference/final authorization checks → source-quoted five-item checklist → human edit/approve/commit. Completed: 3 real authored Thai cases, browser PASS7 and readback PASS2, 17 PostgreSQL orchestration tests with injected providers, mock core18 regression, provider/tunnel units and frontend checks. Default remains explicit mock; local private .env opts into the real route. See docs/DR_TRAIN_AI.md and the named evidence section in VALIDATION_REPORT.md.
+
+## Frontend and named-host delivery extension
+
+Refine existing server-backed workspaces in the owner's purple/yellow/gray/orange palette, preserve Claude's incoming work and validate current browser behavior. This local phase passed with separate evidence under evidence/frontend-refresh. Prepare one-origin Cloudflare Tunnel to his.ai-cie.com with Access and private model/DB placement. Owner setup is pending; the user requested a pause with a manual guide before resuming public deployment work.
