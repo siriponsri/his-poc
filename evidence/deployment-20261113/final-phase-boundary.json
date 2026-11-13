@@ -1,0 +1,15 @@
+{
+  "phase": "triadic_candidate_activated",
+  "status": "PASS",
+  "image": "his-poc-server:triadic-778ba97bf46f",
+  "final_ui_deployed": true,
+  "source_files": 201,
+  "runtime_source_hashes_match": 48,
+  "dist_assets_match": 21,
+  "fresh_backup_tables": 109,
+  "prior_sessions_preserved": 178,
+  "test_account_unchanged": true,
+  "database_restored_or_seeded": false,
+  "connector_restarted": false,
+  "external_browser_acceptance_owner": "root integrator; separate evidence"
+}

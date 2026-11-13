@@ -1,0 +1,43 @@
+{
+  "observed_at": "2026-11-13T16:32:00.715278+00:00",
+  "status": "PASS",
+  "scope": "Release documentation, metadata, public workflow and source integrity before packaging",
+  "independent_cold_review": {
+    "status": "PASS",
+    "role": "interface-reviewer",
+    "method": "Read-only source/docs/evidence review; no test/browser/server rerun",
+    "candidate_files_scanned": 137,
+    "findings": []
+  },
+  "root_checks": {
+    "package_consistency": {
+      "status": "PASS",
+      "command": "python scripts/check_fullsystem_package.py",
+      "domains": 38
+    },
+    "diff_whitespace": {
+      "status": "PASS",
+      "command": "git diff --check"
+    },
+    "deployment_static_contract": {
+      "status": "PASS",
+      "command": "python scripts/dr_train_deploy.py validate"
+    },
+    "source_binding": {
+      "status": "PASS",
+      "runtime_source_files": 48,
+      "built_assets": 21,
+      "mismatches": []
+    },
+    "private_material_scan": {
+      "status": "PASS",
+      "files_scanned": 891,
+      "known_secret_matches": [],
+      "new_account_password_matches": [],
+      "private_key_matches": []
+    }
+  },
+  "historical_evidence_preserved": true,
+  "clinical_validation": "NOT_RUN",
+  "git_publication": "separate subsequent commit/push; no automatic deployment"
+}

@@ -52,6 +52,15 @@
       "scope": "separate document-review extension, not a rerun of the original J01 IDs",
       "evidence": "apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json",
       "readback": "apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json"
+    },
+    "additional_public_document_ai_scope": {
+      "status": "PASS",
+      "note": "Document through real AI/edited approval/commit/reload subset; not a full J01 registration rerun.",
+      "evidence": [
+        "evidence/triadic-release/public-final/browser-acceptance.json",
+        "evidence/deployment-20261113/public-workflow-readback.json"
+      ],
+      "run_id": "63506882-333c-479c-992e-027b991c836a"
     }
   },
   {

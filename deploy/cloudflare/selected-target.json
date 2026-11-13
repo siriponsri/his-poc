@@ -1,11 +1,17 @@
 {
   "hostname": "his.ai-cie.com",
-  "selection": "explicit user selection on 2026-11-13",
-  "readiness": "LOCAL_PREPARATION_TESTED_OWNER_SETUP_PENDING",
-  "tunnel_created": false,
-  "dns_changed": false,
-  "public_deployment": "NOT_RUN",
-  "guide": "docs/CLOUDFLARE_SETUP_TH.md",
-  "private_settings": "var/cloudflare/settings.json",
-  "credentials": "not included"
+  "selection": "explicit owner selection and resumed deployment on 2026-11-13",
+  "readiness": "PROTECTED_DEPLOYMENT_AND_PUBLIC_WORKFLOW_VERIFIED",
+  "tunnel_created": true,
+  "dns_changed": true,
+  "public_deployment": "PASS_NAMED_SYNTHETIC_SCOPE",
+  "runtime": "dr-train /home/chaw/his-poc",
+  "guide": "docs/DEPLOY_DR_TRAIN.md",
+  "private_settings": "server var/server.env and private connector credential; original Windows preparation profile is historical",
+  "credentials": "not included",
+  "evidence": [
+    "evidence/triadic-release/public-final/browser-acceptance.json",
+    "evidence/deployment-20261113/public-workflow-readback.json",
+    "evidence/triadic-release/public-final/access-boundary.json"
+  ]
 }

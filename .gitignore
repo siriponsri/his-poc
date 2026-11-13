@@ -20,3 +20,6 @@ backups/
 
 # Local design-preview helper retained outside the release profile
 apps/web/vite.design.config.mts
+
+# Local design-skill generated render/cache state
+.hallmark/

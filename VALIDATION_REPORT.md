@@ -1,4 +1,6 @@
-# Validation report — v0.3.0 local development acceptance
+# Validation report — local baseline and protected deployment
+
+Latest named deployment/public workflow passed; see the final triadic section below. Historical local/pause observations retain their original dates and scope.
 
 Date: 13 November 2026. Data: authored synthetic only.
 
@@ -75,7 +77,7 @@ The original live browser harness failed on selector/helper usage before its fir
 
 - Default committed configuration: explicit DEMO mock; the owner's private local .env explicitly selects real synthetic dr_train_ollama.
 - Verified named external scope: document_review completeness only. DR/CAD live prediction, other model inference and clinical/semantic accuracy are NOT_RUN.
-- NOT_RUN / NOT_CONNECTED: payer/national/HIS/LIS/PACS connectors, production IdP, training, deployment, hospital SOP acceptance and clinical/product effectiveness.
+- NOT_RUN / NOT_CONNECTED: payer/national/HIS/LIS/PACS connectors, production IdP, training, clinical deployment, hospital SOP acceptance and clinical/product effectiveness.
 - UNKNOWN: original GGUF Hugging Face revisions, general real-world model quality, engine-side cancellation and live cost. Unknown values remain null.
 - The native application launcher alternative was not needed; the Windows Docker app and native disposable PostgreSQL tests were executed.
 
@@ -87,7 +89,7 @@ Regenerate contracts with scripts/export_contracts_v2.py, check consistency with
 
 Initial checkpoint documents are retained under evidence/fullsystem/windows-20261113/initial-docs/. The dated matrix review remains historical; current coverage and executed evidence control local acceptance.
 
-## Frontend refresh and Cloudflare preparation — 13 November 2026
+## Historical frontend refresh and Cloudflare preparation — 13 November 2026
 
 This extension preserves the backend and the historical real-model evidence. The new interface uses the user's yellow/gray/purple/orange palette, self-hosted OFL Thai fonts, compact navigation and progressive details. References are documented in docs/design/REFERENCE_REVIEW.md; no competitor code or assets were copied.
 
@@ -108,3 +110,34 @@ No new model inference or domain record mutation was made by this browser refres
 A local dist comparison first found stale output from before final stylesheet comments; rebuilding local assets produced the exact Docker build hashes. No runtime mismatch remains. The mechanical style scan flagged a2px history divider; it was reduced to1px. Visual confirmation was bounded to preview inspection and final production desktop/mobile checks.
 
 Owner selected his.ai-cie.com and confirmed a Cloudflare account without a Tunnel. Read-only browser inspection found the domain in that account; no account/DNS/security/tunnel settings were modified. Actual owner credentials, Tunnel and Access policy remain pending. This release is locally prepared for that setup; public deployment/external browser remains NOT_RUN. Thai setup/resume steps: docs/CLOUDFLARE_SETUP_TH.md.
+
+## Triadic redesign and protected dr-train deployment — 13 November 2026
+
+This owner-resumed scope supersedes the previous preparation/pause and yellow/gray/purple/orange theme. Exact anchors now #1C4286/#861C42/#42861C. Existing backend runtime code remains unchanged; scoped frontend and new isolated deployment helpers are separately evidenced.
+
+| Executed gate | Observed result |
+|---|---|
+| Frontend release-checks |25 unit/69 component, audit, typecheck and build PASS |
+| Final Escape timing repair |69 component/typecheck/build PASS after repair; frozen source hashes recorded |
+| Actual local responsive confirmation |13 observations PASS on loaded desktop1440/tablet1024/mobile390 screens; drawer focus/inert/Escape and persisted live findings; no new inference |
+| Hallmark static/login render |0 FAIL/0 REFLEX/2 retained documented WARN; authenticated app inspected separately |
+| Independent no-slop review |Six sections PASS; source/regression reports/screenshots reviewed, tests not independently rerun |
+| New deployment contract units |3 tests with3 subtests PASS |
+| Initial Windows→server copy |109 table counts including Alembic and one file checksum exact; old live result preserved, no source reset |
+| Final server replacement |Fresh backup; only app recreated;48 runtime source hashes and21 built assets match reviewed checkout/build; test01 and178 prior sessions preserved |
+| Dedicated service placement |App/DB/connector healthy, restart unless-stopped; selected18080/15432/11434/20331 listeners loopback-only;4 connector HA connections observed |
+| Public unauthenticated boundary |5/5 HTTPS requests302 to ai-cie.cloudflareaccess.com, including invalid assertion; no token stored |
+| Actual public Chrome workflow |11 recorded observations PASS: saved synthetic source, exact Home context, one real AI call, human editv2/approve/commit/reload and completed-task Home update |
+| Read-only server workflow receipt |One run/proposal/result; exact source/approval/result hashes and6 audit records; no inference/writes during readback |
+
+Evidence: evidence/triadic-ui/release-checks, final-freeze and confirmation; evidence/triadic-release/independent-ui-review.json; evidence/triadic-release/public-final/browser-acceptance.json and access-boundary.json; evidence/deployment-20261113/final-deployment-verification.json, final-resource-verification.json and public-workflow-readback.json.
+
+Public run63506882-333c-479c-992e-027b991c836a used real dr_train_ollama/Ollama0.12.6 with model manifest ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b. Elapsed10414ms,422 input/136 output tokens, measured_cost null. One authored source yielded4 present/plan missing/0 unclear, all quotes contained in exact saved source. Proposal b6cc13f6-fa9e-4985-96a2-4646e113c180 changed action hash fromv1 tov2 after human edit; test01 approvedv2 and result ef4e9f7e-e0b2-473e-ab55-79ea383ffb72 stores that hash. Reload retained reviewed content and disabled repeated mutation controls.
+
+Private server credentials/session/passwords are excluded. The owner requested the dedicated test01 account; actual login, allowed D22/D37/clinical approval, patient001-only scope, admin403 and other-patient404 were verified. Global account policy and existing users remain unchanged. Public Access allows only the owner's three configured emails; no Bypass observed. Exact recipient addresses are not published.
+
+Retained harness issues: default browser clicks without an explicit mouse button initially did not activate; explicit left-click worked. Required-label/disclosure selectors were corrected using observed roles/AX. Full-page screenshot timed out; normal screenshots were saved after resetting viewport. These issues caused no duplicate domain writes or additional inference. Original local loading-only Home image and initial failed create-label regression remain clearly marked in the UI report. Initial deployment SQL/header probe corrections remain in deployment receipts.
+
+The deployed image is his-poc-server:triadic-778ba97bf46f, IDsha256:6144c7744b6976c8f0c142486acc4baaa283f0515f1d36c3a951337e53773935. Snapshot201files SHA778ba97bf46f714b0b9290555549a6aeab09d5228e279204d28a53a1f8d8f7d4. Documentation/metadata/evidence were reconciled after this runtime snapshot; exact frontend/backend/assets are bound by the48/21 receipt, not an assertion that every later documentation byte is inside the image.
+
+This is one protected synthetic workflow and bounded software deployment, not a full rerun of38 domains/10 journeys, a clinical/semantic benchmark, production certification or throughput/SLA test. Original local L2/L3 evidence is retained. HF revision and engine-side cancellation remain UNKNOWN; MedGemma inference and other external integrations remain NOT_RUN. Windows and server data diverge after the initial copy. A Git push does not automatically deploy.

@@ -16,3 +16,7 @@ All ten local synthetic journeys have executed PostgreSQL and rendered-browser e
 | J10 | PASS | PASS | L3 | apps/web/evidence/fullsystem/windows-journey-J10-accepted/browser-journeys.json |
 
 Supporting gates: browser recovery PASS9; final-image smoke PASS11; read-only verification of the actual UI restore PASS109 tables/1 file/8 exact browser records. Baseline D37 is MOCK. A subsequent J01 document-review extension uses real pinned Typhoon on dr-train: browser PASS7 + read-only PASS2, with separate IDs/evidence in JOURNEY_COVERAGE.json. Other live interfaces, clinical validation and production deployment remain separate.
+
+## Additional public document/AI subset
+
+The protected dr-train deployment passed the document→real-AI→human editv2→approve→commit→reload subset associated with J01. This is not a complete repeat of registration or all10 journeys. Original local L3 evidence is retained. See evidence/triadic-release/public-final/browser-acceptance.json and evidence/deployment-20261113/public-workflow-readback.json.

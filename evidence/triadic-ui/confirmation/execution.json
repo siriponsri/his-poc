@@ -1,0 +1,73 @@
+{
+  "observed_at": "2026-11-13T16:09:00.378922+00:00",
+  "status": "PASS",
+  "method": "ActualChromiumUI on explicitcontext; waits for loaded records, zero inference/domain mutations",
+  "checks": [
+    {
+      "screen": "desktop-login",
+      "no_horizontal_overflow": true
+    },
+    {
+      "screen": "desktop-home-loaded",
+      "no_horizontal_overflow": true
+    },
+    {
+      "check": "home wait",
+      "loaded_task_rows": 8,
+      "skeleton_visible": false
+    },
+    {
+      "screen": "desktop-patients",
+      "no_horizontal_overflow": true
+    },
+    {
+      "screen": "desktop-documents",
+      "no_horizontal_overflow": true
+    },
+    {
+      "check": "recorded live proposal",
+      "global_patient": "patient-001",
+      "global_encounter": "encounter-001",
+      "five_findings": true,
+      "historic_approval_disabled": true
+    },
+    {
+      "screen": "desktop-ai-reviewed",
+      "no_horizontal_overflow": true
+    },
+    {
+      "check": "prior real model provenance",
+      "elapsed_ms": 11205,
+      "new_inference": false
+    },
+    {
+      "screen": "tablet-ai-reviewed",
+      "no_horizontal_overflow": true
+    },
+    {
+      "screen": "mobile-ai-reviewed",
+      "no_horizontal_overflow": true
+    },
+    {
+      "screen": "mobile-home-loaded",
+      "no_horizontal_overflow": true
+    },
+    {
+      "screen": "mobile-navigation",
+      "no_horizontal_overflow": true
+    },
+    {
+      "check": "mobile navigation",
+      "focus_contained": true,
+      "main_inert": true,
+      "escape_returns_trigger": true
+    }
+  ],
+  "page_errors": [],
+  "source_sha256": {
+    "apps\\web\\src\\App.tsx": "8bfa2f0621494b5ec4a14a53f6780e6004eab929bfce7816524c55306fd02192",
+    "apps\\web\\src\\styles.css": "cb0603e9eb1a224c97762ce7a4f56f8a764a9fdc14925a7baed33430a06f9fec",
+    "apps\\web\\src\\components\\core-workspaces.tsx": "cfb5f50a7dcebb76b470f777251655055926fa35712c689050b5a301db25e66b",
+    "apps\\web\\src\\components\\sidebar.tsx": "03f1b2134a74924fa1ef6c895439139a5b7ce450022625aaf056d97d662dfdef"
+  }
+}

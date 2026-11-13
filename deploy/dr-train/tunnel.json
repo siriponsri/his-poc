@@ -1,0 +1,22 @@
+{
+  "tunnel": "b675e400-5731-47ba-9b4b-ce4d4056a3b2",
+  "credentials-file": "/etc/cloudflared/credentials.json",
+  "ingress": [
+    {
+      "hostname": "his.ai-cie.com",
+      "service": "http://127.0.0.1:18080",
+      "originRequest": {
+        "access": {
+          "required": true,
+          "teamName": "ai-cie",
+          "audTag": [
+            "eabe9c9519847005480c723a7d4c306a8204ffe1e30905f60460298f85441cd2"
+          ]
+        }
+      }
+    },
+    {
+      "service": "http_status:404"
+    }
+  ]
+}

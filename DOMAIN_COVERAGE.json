@@ -908,7 +908,9 @@
         "evidence/fullsystem/windows-final/core.txt",
         "apps/web/evidence/fullsystem/windows-browser-journeys-aggregate.json",
         "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
-        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json"
+        "apps/web/evidence/fullsystem/windows-recovery-final/browser-recovery.json",
+        "evidence/triadic-release/public-final/browser-acceptance.json",
+        "evidence/deployment-20261113/public-workflow-readback.json"
       ],
       "journeys": [
         "J01",
@@ -925,6 +927,14 @@
         "journey": "J01",
         "source_report": "apps/web/evidence/fullsystem/windows-journeys-accepted/browser-journeys.json",
         "source_report_sha256": "2a9a9e0fa70c143b3d5dc7c9d186cc4a2b420042cd736e24214005b10fcbf640"
+      },
+      "protected_public_verification": {
+        "status": "PASS_NAMED_SYNTHETIC_SCOPE",
+        "hostname": "his.ai-cie.com",
+        "date": "2026-11-13",
+        "document_id": "72de8a50-dc96-4be9-a094-b9ef7ca9a383",
+        "result_id": "ef4e9f7e-e0b2-473e-ab55-79ea383ffb72",
+        "note": "Additional named document/AI workflow only; original verified level and baseline evidence retained."
       }
     },
     {
@@ -1613,7 +1623,9 @@
         "evidence/fullsystem/live-ai/real-provider-cases.json",
         "evidence/fullsystem/live-ai/final/execution.json",
         "apps/web/evidence/fullsystem/live-dr-train-final/browser-live-ai.json",
-        "apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json"
+        "apps/web/evidence/fullsystem/live-dr-train-readback/browser-live-ai-readback.json",
+        "evidence/triadic-release/public-final/browser-acceptance.json",
+        "evidence/deployment-20261113/public-workflow-readback.json"
       ],
       "journeys": [
         "J01",
@@ -1638,6 +1650,14 @@
         "browser_assertions": 7,
         "read_only_assertions": 2,
         "clinical_validation": "NOT_RUN"
+      },
+      "protected_public_verification": {
+        "status": "PASS_NAMED_SYNTHETIC_SCOPE",
+        "hostname": "his.ai-cie.com",
+        "date": "2026-11-13",
+        "document_id": "72de8a50-dc96-4be9-a094-b9ef7ca9a383",
+        "result_id": "ef4e9f7e-e0b2-473e-ab55-79ea383ffb72",
+        "note": "Additional named document/AI workflow only; original verified level and baseline evidence retained."
       }
     },
     {

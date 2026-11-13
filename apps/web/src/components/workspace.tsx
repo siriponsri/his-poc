@@ -19,7 +19,7 @@ export const statusLabel=(state:string,lang:string)=>(lang==='en'?statusNamesEn[
 export function Status({value}:{value:unknown}){
  const {lang}=useLang();const state=String(value||'')
  const label=statusLabel(state,lang)
- return <span title={state} className={'status status-'+state+' tone-'+toneOf(state)}><span className="status-dot" aria-hidden="true"/>{label}</span>
+ return <span title={state} className={'status status-'+state+' tone-'+toneOf(state)}><Icon name={toneOf(state)==='done'?'check':toneOf(state)==='stop'?'missing':'clock'} size={13}/>{label}</span>
 }
 
 const fieldNames:Record<string,[string,string]>={display_name:['ชื่อ','Name'],title:['ชื่อเรื่อง','Title'],status:['สถานะ','Status'],kind:['ประเภท','Type'],birth_date:['วันเกิด','Date of birth'],sex:['เพศ','Sex'],created_at:['สร้างเมื่อ','Created'],updated_at:['แก้ไขล่าสุด','Updated'],content:['เนื้อหา','Content'],reason:['เหตุผล','Reason'],published:['เผยแพร่ให้ผู้ป่วย','Published to patient'],disposition:['การจำหน่าย','Disposition'],domain:['พื้นที่งาน','Workspace'],username:['ชื่อบัญชี','Username'],roles:['บทบาท','Roles'],permissions:['สิทธิ์','Permissions'],instructions:['คำสั่ง','Instructions'],quantity:['จำนวน','Quantity'],unit:['หน่วย','Unit'],label:['รายการ','Item'],code:['รหัสรายการ','Code'],action:['การดำเนินการ','Action'],content_access:['การเข้าถึงเนื้อหา','Content access'],identifier:['เลขประจำตัว','Identifier'],expires_at:['หมดอายุ','Expires'],version:['รุ่นข้อมูล','Record version'],id:['รหัสรายการ','Record ID']}
@@ -90,7 +90,7 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,readO
  const loadingLabel=t('กำลังโหลดข้อมูล…','Loading records…')
  return <div className="workspace-stack">
   <section className="section-toolbar">
-   <div><h2>{resource.label}</h2><p>{resource.description||t('ข้อมูลจริงจากฐานพัฒนาขององค์กรที่คุณมีสิทธิ์','Live records from the development database, within your permissions')}</p></div>
+   <div><h2>{resource.label}</h2>{resource.description&&<p>{resource.description}</p>}</div>
    <div className="button-row">
     <button className="secondary" disabled={busy} onClick={()=>refresh().catch(e=>setError(errorText(e)))}>{t('โหลดล่าสุด','Refresh')}</button>
     {resource.fields.length>0&&!readOnly&&<button className="primary" disabled={busy||!!pending} aria-expanded={create} onClick={()=>{setCreate(!create);setAction(null)}}>{t('＋ เพิ่ม','＋ Add ')}{resource.label}</button>}
@@ -99,10 +99,10 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,readO
   {error&&<Alert kind="error">{error}</Alert>}
   {notice&&<Alert kind={noticeKind}>{notice}</Alert>}
   {pending&&!busy&&<div className="pending-banner"><Icon name="clock" size={18}/><span>{t('คำสั่งรอยืนยัน','Request awaiting confirmation')} · <code>{pending.key}</code></span><button className="secondary" onClick={()=>run(pending)}>{t('Retry ด้วยคำสั่งเดิม','Retry the same request')}</button></div>}
-  {create&&<section className="card form-card"><div className="section-heading"><h3>{t('เพิ่ม','Add ')}{resource.label}</h3><button className="text-button" onClick={()=>setCreate(false)}>{t('ปิด','Close')}</button></div><DataForm fields={resource.fields} initial={context} onSubmit={createRecord} busy={busy||!!pending} client={client}/></section>}
+  {create&&<section className="form-card"><div className="section-heading"><h3>{t('＋ เพิ่ม','＋ Add ')}{resource.label}</h3><button className="text-button" onClick={()=>setCreate(false)}>{t('ปิด','Close')}</button></div><DataForm fields={resource.fields} initial={context} onSubmit={createRecord} busy={busy||!!pending} client={client}/></section>}
   {resource.path==='clinical/D15/records'&&<GrowthTimeline records={items}/>}
   <div className="record-layout">
-   <section className="card list-card">
+   <section className="list-card">
     <div className="list-header">
      <label className="search-field"><span>{t('ค้นหาในรายการ','Search this list')}</span><Icon name="search" size={18}/><input value={query} onChange={e=>setQuery(e.target.value)} placeholder={t('รหัส ชื่อ หรือสถานะ…','ID, name or status…')}/></label>
      <span className="count-chip">{filtered.length} {t('รายการ','records')}</span>
@@ -112,7 +112,7 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,readO
      <Status value={row.status}/><span className="chevron"><Icon name="chevron" size={18}/></span>
     </button>})}</div>:<EmptyState title={query?t('ไม่พบรายการที่ตรงกับคำค้น','No records match your search'):t('ยังไม่มีรายการที่ตรงเงื่อนไข','No records yet')}>{query?t('ลองคำค้นอื่น หรือล้างช่องค้นหา','Try another term or clear the search'):t('เพิ่มข้อมูลหรือปรับบริบทผู้ป่วยเพื่อเริ่มงาน','Add a record or change the patient context to begin')}</EmptyState>}
    </section>
-   <section className="card detail-card" ref={detailRef}>{selected?<>
+   <section className="detail-card" ref={detailRef}>{selected?<>
     <div className="detail-header">
      <div><h3>{String(selected.display_name||selected.title||selected.name||selected.id)}</h3><p className="record-ref"><span title={selected.id}>{t('รหัส','ID')} {selected.id}</span>{selected.version!==undefined&&<span>{t('รุ่น','v')} {selected.version}</span>}</p></div>
      <Status value={selected.status}/>

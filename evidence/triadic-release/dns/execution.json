@@ -1,0 +1,19 @@
+[
+  {
+    "check": "named-dns-route",
+    "command": [
+      "cloudflared",
+      "tunnel",
+      "route",
+      "dns",
+      "b675e400-5731-47ba-9b4b-ce4d4056a3b2",
+      "his.ai-cie.com"
+    ],
+    "started_at": "2026-11-13T15:55:01.761+00:00",
+    "completed_at": "2026-11-13T15:55:03.269+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.508,
+    "log": "evidence\\triadic-release\\dns\\named-dns-route.txt"
+  }
+]

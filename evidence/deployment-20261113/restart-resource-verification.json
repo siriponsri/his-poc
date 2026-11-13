@@ -1,0 +1,104 @@
+{
+  "status": "PASS",
+  "scope": "Controlled restart of only isolated HIS app; database/files retained",
+  "prior_started_at": "2026-11-13T15:53:42.532933198Z",
+  "ready": {
+    "ready": true,
+    "migration": "0002_live_inference"
+  },
+  "preserved_result": {
+    "id": "8d61f05f-6b07-45d6-8d76-dc3296693dbb",
+    "version": 2,
+    "action_hash": "31d59896c5eb19892ac2b48e203d602cdc197684a3082ced7f7fde7e1d3ac00f",
+    "canonical_sha256": "31d59896c5eb19892ac2b48e203d602cdc197684a3082ced7f7fde7e1d3ac00f",
+    "files": {
+      "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23.bin": "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23"
+    }
+  },
+  "resources": [
+    {
+      "service": "his-poc-server-app-1",
+      "image": "his-poc-server:base-39f788f",
+      "image_id": "sha256:a56d9ed08e434935924613a4d946f49bf3b5ec74cf5158099c734f4a8f151d1f",
+      "started_at": "2026-11-13T15:57:07.243887978Z",
+      "running": true,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "network_mode": "host",
+      "memory_bytes": 2147483648,
+      "nano_cpus": 2000000000,
+      "readonly_rootfs": true,
+      "user": "his",
+      "port_bindings": {},
+      "mounts": [
+        {
+          "destination": "/var/his/backups",
+          "rw": true,
+          "type": "volume"
+        },
+        {
+          "destination": "/var/his/files",
+          "rw": true,
+          "type": "volume"
+        }
+      ]
+    },
+    {
+      "service": "his-poc-server-db-1",
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "image_id": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "started_at": "2026-11-13T15:52:47.836664331Z",
+      "running": true,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "network_mode": "his-poc-server_default",
+      "memory_bytes": 2147483648,
+      "nano_cpus": 1000000000,
+      "readonly_rootfs": false,
+      "user": "",
+      "port_bindings": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "15432"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "destination": "/var/lib/postgresql",
+          "rw": true,
+          "type": "volume"
+        }
+      ]
+    },
+    {
+      "service": "his-poc-server-connector-1",
+      "image": "cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "image_id": "sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "started_at": "2026-11-13T15:55:15.592080983Z",
+      "running": true,
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "network_mode": "host",
+      "memory_bytes": 268435456,
+      "nano_cpus": 500000000,
+      "readonly_rootfs": true,
+      "user": "1000:1000",
+      "port_bindings": {},
+      "mounts": [
+        {
+          "destination": "/etc/cloudflared/config.json",
+          "rw": false,
+          "type": "bind"
+        },
+        {
+          "destination": "/etc/cloudflared/credentials.json",
+          "rw": false,
+          "type": "bind"
+        }
+      ]
+    }
+  ],
+  "collected_at": "2026-11-13T15:58:01.762849+00:00"
+}

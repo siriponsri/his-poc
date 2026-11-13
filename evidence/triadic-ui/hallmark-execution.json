@@ -1,0 +1,18 @@
+{
+  "command": [
+    "node",
+    "var/references/hallmark/skills/hallmark/scripts/sloplint.mjs",
+    "apps/web/src",
+    "--scope",
+    "app",
+    "--genre",
+    "modern-minimal",
+    "--render",
+    "--url",
+    "http://127.0.0.1:5173/login"
+  ],
+  "exit_code": 1,
+  "duration_seconds": 9.679,
+  "render_route": "login only; authenticated workspaces separately checked with Playwright",
+  "runtime_dependency": "puppeteer-core25.17.0 in ignored var only"
+}

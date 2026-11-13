@@ -19,7 +19,23 @@
     [
       "local_development",
       "mock_demo"
+    ],
+    [
+      "local_development",
+      "dr_train"
+    ],
+    [
+      "server",
+      "dr_train"
     ]
   ],
-  "note": "Only runnable pair is local mock. Other pairs are design inventory; verify network path from actual backend namespace. No deployment performed."
+  "note": "Metadata only. Runtime authority remains private environment. Cloud API/local endpoint and clinical effectiveness remain NOT_RUN.",
+  "active_scope": "Committed default profile; private operator environment selects the separately verified deployment.",
+  "observed_deployment": {
+    "hostname": "his.ai-cie.com",
+    "application_location": "server",
+    "inference_profile": "dr_train",
+    "status": "PASS_NAMED_SYNTHETIC_SCOPE",
+    "evidence": "evidence/triadic-release/public-final/browser-acceptance.json"
+  }
 }

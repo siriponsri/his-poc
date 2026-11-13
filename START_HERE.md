@@ -1,6 +1,14 @@
-# HIS POC v0.3 — ผ่าน local development acceptance
+# HIS POC v0.3 — เว็บทดสอบพร้อมใช้งาน
 
 ผลรอบ 13 พฤศจิกายน 2026: 38 domains ที่ L2 และ J01–J10 ที่ L3 ผ่านบนข้อมูลสังเคราะห์ พร้อม Windows Docker, PostgreSQL, browser และ isolated restore ที่รันจริง อ่าน VALIDATION_REPORT.md และ coverage เพื่อดูขอบเขต หลักฐาน MOCK และ external L4 ที่ยังไม่ได้ตรวจ
+
+## เปิดเว็บที่ deploy แล้ว
+
+เข้า **[his.ai-cie.com](https://his.ai-cie.com)** → ยืนยันอีเมลที่ได้รับอนุญาตผ่าน Cloudflare Access → ล็อกอิน HIS ด้วย **test01** และรหัสผ่านที่เจ้าของระบุไว้ในแชต บัญชีนี้ใช้ข้อมูลสังเคราะห์ patient-001 และงานเอกสาร/AI เท่านั้น ไม่มีสิทธิ์ผู้ดูแลหรือการเงิน รหัสผ่านไม่ถูกเก็บใน repository
+
+หน้าใหม่ใช้สีน้ำเงิน #1C4286 แดงม่วง #861C42 และเขียว #42861C เป็นแกน เปิดงานจากตารางภาพรวม เลือกเอกสารใน D37 แล้วเทียบต้นฉบับกับข้อค้นพบด้านข้าง แก้ข้อความเป็นรุ่นใหม่ก่อนอนุมัติและยืนยันบันทึกผล
+
+ระบบอยู่บน dr-train จึงไม่ต้องเปิดเครื่อง Windows เพื่อให้เว็บทำงาน ข้อมูลที่เขียนบนเว็บแยกจากฐาน Windows หลังคัดลอกครั้งแรก ไม่มีการซิงก์กลับอัตโนมัติ วิธีดูแล อัปเดต สำรองและย้อนรุ่นอยู่ใน [DEPLOY_DR_TRAIN.md](docs/DEPLOY_DR_TRAIN.md) ส่วน [ผลตรวจ URL จริง](evidence/triadic-release/public-final/browser-acceptance.json) แยกจาก baseline ทุก domain ด้านล่าง
 
 ## เปิดบน Windows ด้วย Docker Desktop
 
@@ -98,8 +106,8 @@ python scripts/dev.py start
 
 เก็บผลเดิมไว้เสมอ ใช้ --output-dir ใหม่กับ scripts/validate_fullsystem.py เช่นกัน สร้าง ZIP หลังงานนิ่งด้วย python scripts/package_release.py --output ../his-poc-v0.3.0-local.zip แล้วตรวจด้วย scripts/verify_hashes.py
 
-## ธีมใหม่และงาน Cloudflare ที่รอเจ้าของตั้งค่า
+## ผลตรวจธีมและ deployment ล่าสุด
 
-หน้าเว็บรอบนี้ใช้ม่วง เหลือง เทาอุ่น และส้ม เปิดแอปจริงที่ http://127.0.0.1:8000/login ใช้บัญชีและรหัสผ่านส่วนตัวเดิม ผ่าน25 unit/63 component tests และ browser desktop/mobile รวมถึงการอ่าน checklist/ผล AI เดิม ห้ามนำตัวเลขนี้ไปแทนผลทดสอบครบทุก domain รอบเดิม
+ผ่าน25 unit/69 component พร้อม audit/typecheck/build และตรวจจริง desktop/tablet/mobile13ข้อ ผ่าน URL จริงตั้งแต่บันทึกเอกสาร เรียก Typhoon แก้รุ่น อนุมัติ บันทึกผลและโหลดใหม่ มีผลอ่านกลับจาก PostgreSQL ยืนยันหนึ่ง inference/หนึ่งผลและ hash ตรงกัน ทั้งหมดใช้ข้อมูลสังเคราะห์ ไม่ใช่การประเมินทางคลินิก
 
-ชื่อเว็บที่เลือกคือ his.ai-cie.com เจ้าของมีบัญชี Cloudflare แล้ว แต่ยังไม่ได้สร้าง Tunnel/Access อ่าน [คู่มือตั้ง Tunnel](docs/CLOUDFLARE_SETUP_TH.md) ทำข้อ1–5 แล้ว resume goal ได้ ยังไม่มีการเปลี่ยน DNS หรือเปิดเว็บสาธารณะในรอบนี้
+Tunnel/Access และ DNS ตั้งแล้ว ไม่ต้องสร้าง Tunnel ซ้ำ อ่าน [คู่มือปัจจุบัน](docs/DEPLOY_DR_TRAIN.md) ก่อนเปลี่ยนระบบ ส่วน [คู่มือตั้งครั้งแรก](docs/CLOUDFLARE_SETUP_TH.md) เก็บไว้เป็นประวัติ

@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-11-13T15:55:27.886633+00:00",
+  "status": "PASS",
+  "method": "Unauthenticated HTTPS GETs; certificate verification enabled; redirects not followed; no cookies or tokens stored",
+  "checks": [
+    {
+      "path": "/login",
+      "invalid_assertion_sent": false,
+      "status_code": 302,
+      "redirect_hostname": "ai-cie.cloudflareaccess.com",
+      "redirect_path": "/cdn-cgi/access/login/his.ai-cie.com",
+      "access_gate_observed": true
+    },
+    {
+      "path": "/api/v2/auth/me",
+      "invalid_assertion_sent": false,
+      "status_code": 302,
+      "redirect_hostname": "ai-cie.cloudflareaccess.com",
+      "redirect_path": "/cdn-cgi/access/login/his.ai-cie.com",
+      "access_gate_observed": true
+    },
+    {
+      "path": "/ready",
+      "invalid_assertion_sent": false,
+      "status_code": 302,
+      "redirect_hostname": "ai-cie.cloudflareaccess.com",
+      "redirect_path": "/cdn-cgi/access/login/his.ai-cie.com",
+      "access_gate_observed": true
+    },
+    {
+      "path": "/domains/D37",
+      "invalid_assertion_sent": false,
+      "status_code": 302,
+      "redirect_hostname": "ai-cie.cloudflareaccess.com",
+      "redirect_path": "/cdn-cgi/access/login/his.ai-cie.com",
+      "access_gate_observed": true
+    },
+    {
+      "path": "/api/v2/patients",
+      "invalid_assertion_sent": true,
+      "status_code": 302,
+      "redirect_hostname": "ai-cie.cloudflareaccess.com",
+      "redirect_path": "/cdn-cgi/access/login/his.ai-cie.com",
+      "access_gate_observed": true
+    }
+  ],
+  "authenticated_acceptance": "separate browser evidence required"
+}

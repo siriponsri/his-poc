@@ -1,0 +1,18 @@
+{
+  "observed_at": "2026-11-13T15:58:01.763972+00:00",
+  "remote_hostname": "dr-train",
+  "deployment_root": "/home/chaw/his-poc",
+  "server_new_app": true,
+  "source_data": "Cloned authored synthetic Windows PostgreSQL/files; source untouched",
+  "ollama_existing_service": "left unchanged, private host loopback11434",
+  "app_origin": "http://127.0.0.1:18080",
+  "database_binding": "127.0.0.1:15432",
+  "connector_metrics": "127.0.0.1:20331",
+  "tunnel_credential_mode": "0600",
+  "server_env_mode": "0600",
+  "connector_readonly_credential_mount": true,
+  "cloudflared_image": "cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+  "source_candidate": "base-39f788f, not final redesigned UI",
+  "connector_ha_connections": 4,
+  "unrelated_services_changed": false
+}

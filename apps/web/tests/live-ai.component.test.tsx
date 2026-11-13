@@ -15,15 +15,15 @@ let root:Root,calls:any[],config:any,proposals:any[],runs:any[],mutate:(path:str
 const model='hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M'
 const keys=['chief_complaint','history','assessment','plan','author']
 const completeness=()=>({checklist_id:'SYNTHETIC_DOCUMENT_COMPLETENESS_V1',items:keys.map((key,index)=>({key,label:key,status:index===0?'present':'missing',evidence_quote:index===0?'อาการสำคัญ: มาทบทวนเอกสาร':''})),summary:'พบ 1 รายการ ยังไม่พบ 4 รายการ',requires_human_review:true})
-const proposal=()=>({id:'live-proposal',version:1,status:'pending',task_id:'task-doc',demo:false,provider:'dr_train_ollama',action_hash:'a'.repeat(64),action:{text:'AI ตรวจข้อความสังเคราะห์แล้ว',completeness:completeness()},evidence:{document_version_id:'dv1',content_hash:'b'.repeat(64),encounter_version:1}})
+const proposal=()=>({id:'live-proposal',version:1,status:'pending',task_id:'task-doc',patient_id:'p1',encounter_id:'e1',demo:false,provider:'dr_train_ollama',action_hash:'a'.repeat(64),action:{text:'AI ตรวจข้อความสังเคราะห์แล้ว',completeness:completeness()},evidence:{document_version_id:'dv1',content_hash:'b'.repeat(64),encounter_version:1}})
 const client=new Client(async(url,init)=>{
  const path=String(url).replace('/api/v2/','');const body=init?.body?JSON.parse(String(init.body)):undefined
  calls.push({path,body,init})
  let result:any
  if(body)result=await mutate(path,body,init)
  else if(path==='ai/config')result=config
- else if(path.startsWith('tasks'))result={items:[{id:'task-doc',title:'งานตรวจเอกสาร',kind:'document_review',status:'open'},{id:'task-dr',title:'งาน DR ที่ยังไม่เปิดใช้',kind:'dr_review',status:'open'}]}
- else if(path.startsWith('documents'))result={items:[{id:'doc1',title:'เอกสารสังเคราะห์',version:1}]}
+ else if(path.startsWith('tasks'))result={items:[{id:'task-doc',patient_id:'p1',encounter_id:'e1',title:'งานตรวจเอกสาร',kind:'document_review',status:'open'},{id:'task-dr',patient_id:'p1',encounter_id:'e1',title:'งาน DR ที่ยังไม่เปิดใช้',kind:'dr_review',status:'open'}]}
+ else if(path.startsWith('documents'))result={items:[{id:'doc1',patient_id:'p1',encounter_id:'e1',title:'เอกสารสังเคราะห์',version:1}]}
  else if(path.startsWith('proposals'))result={items:proposals}
  else if(path.startsWith('runs'))result={items:runs}
  else result={items:[]}
@@ -43,7 +43,7 @@ async function selectContext(){await select('งานที่ผูกผู�
 
 test('live provider has accurate model/mode labels and offers only supported document tasks',async()=>{
  proposals=[{...proposal(),id:'historical-mock',demo:true,action:{text:'ข้อเสนอ mock เดิม'}}]
- runs=[{id:'run-live',outcome:'success',provider:'dr_train_ollama',elapsed_ms:4200,provenance:{model},usage:{input_tokens:111,output_tokens:22},measured_cost:null}]
+ runs=[{id:'run-live',task_id:'task-doc',outcome:'success',provider:'dr_train_ollama',elapsed_ms:4200,provenance:{model},usage:{input_tokens:111,output_tokens:22},measured_cost:null}]
  await mount();assert.match(document.body.textContent!,/AI จริง · dr-train/);assert.match(document.body.textContent!,new RegExp('typhoon2.1'))
  assert.doesNotMatch(document.body.textContent!,/EXPLICIT MOCK|สถานการณ์ mock/)
  const taskSelect=[...document.querySelectorAll('select')][0];assert.deepEqual([...taskSelect.options].map(o=>o.value),['','task-doc'])
@@ -95,4 +95,27 @@ test('live result from an old patient context cannot repopulate a newly selected
  await act(async()=>{await new Promise(resolve=>setTimeout(resolve,0));root.render(<AIWorkspace client={client} context={{patient_id:'p2',encounter_id:'e2'}}/>)})
  await act(async()=>complete({run:{outcome:'success',provider:'dr_train_ollama'},proposal:proposal(),demo:false}))
  assert.doesNotMatch(document.body.textContent!,/AI ตรวจข้อความสังเคราะห์แล้ว/);assert.equal(document.querySelector('[aria-label="ผลตรวจความครบถ้วนเอกสาร"]'),null)
+})
+
+test('proposal from another subject or missing subject metadata is not exposed under a selected context',async()=>{
+ proposals=[{...proposal(),patient_id:'p2',encounter_id:'e2',action:{text:'WRONG SUBJECT'}},{...proposal(),id:'unknown',patient_id:undefined,encounter_id:undefined,action:{text:'UNKNOWN SUBJECT'}}]
+ await mount();assert.doesNotMatch(document.body.textContent!,/WRONG SUBJECT|UNKNOWN SUBJECT/)
+ assert.equal(document.querySelector('textarea'),null);assert.equal(calls.some(c=>c.body),false)
+})
+
+test('unscoped historical proposal can be read but cannot be approved without matching global context',async()=>{
+ proposals=[proposal()]
+ await act(async()=>root.render(<AIWorkspace client={client} context={{patient_id:'',encounter_id:''}}/>))
+ await act(async()=>{const row=document.querySelector<HTMLButtonElement>('.proposal-list .record-button');assert.ok(row);assert.match(row.textContent!,/AI ตรวจข้อความสังเคราะห์แล้ว/);row.click()})
+ const approve=button('อนุมัติรุ่นที่แสดง');assert.equal(approve.disabled,true)
+ assert.match(document.body.textContent!,/เลือกผู้ป่วยและการรับบริการที่ตรงกับข้อเสนอนี้/)
+ assert.match(document.body.textContent!,/ผู้ป่วย: p1/);assert.equal(calls.some(c=>c.body),false)
+})
+
+test('changing patient context clears prior proposal and cannot retain actionable previous-subject review',async()=>{
+ proposals=[proposal()];await mount();await act(async()=>{const row=document.querySelector<HTMLButtonElement>('.proposal-list .record-button');assert.ok(row);assert.match(row.textContent!,/AI ตรวจข้อความสังเคราะห์แล้ว/);row.click()})
+ assert.equal(button('อนุมัติรุ่นที่แสดง').disabled,false)
+ await act(async()=>root.render(<AIWorkspace client={client} context={{patient_id:'p2',encounter_id:'e2'}}/>))
+ assert.equal(document.querySelector('textarea'),null);assert.doesNotMatch(document.body.textContent!,/AI ตรวจข้อความสังเคราะห์แล้ว/)
+ assert.equal(calls.some(c=>c.body),false)
 })

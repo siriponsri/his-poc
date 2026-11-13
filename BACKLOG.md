@@ -20,9 +20,17 @@ FS-01 PASS on Windows Docker Linux engine; the native application launcher remai
 
 See VALIDATION_REPORT.md, DOMAIN_COVERAGE.json and JOURNEY_COVERAGE.json for exact proof and retained failures. No known internal acceptance blocker remains in the reviewed local scope. FS-06 PASS for the named synthetic document-completeness route on the existing pinned Typhoon/Ollama dr-train service, including actual inference and human-reviewed browser persistence. Evaluator scope is three authored examples, not a clinical benchmark. FS-07 and other connectors/models remain NOT_RUN; hospital/SOP/payer/clinical/product evaluation needs its own resources and evidence. No model was installed or shared service restarted.
 
-## Frontend / Cloudflare extension
+## Historical frontend / Cloudflare preparation
 
 - UI refresh PASS:25 unit/63 component; desktop/mobile production-browser13 observations; real prior model report remains readable.
 - Cloudflare local preparation PASS:12 helper tests (23subtests), offline installed ingress parser and resolved private Compose profile. Additional launcher/CLI regressions passed.
 - Owner pending: locally managed tunnelUUID/privatecredentials and Access team/AUD/allow policy for his.ai-cie.com.
 - Resume pending: real profile validation, backup, HTTPS origin/cookies, DNS/connector and external Access/HIS/AI browser acceptance. No public deployment has been run.
+
+## Completed current owner extension
+
+- Triadic UX/UI: PASS25 unit/69 component/audit/typecheck/build,13 actual responsive observations, independent six-section no-slop review.
+- Dedicated dr-train deployment: PASS backup/isolated restore109 tables+one file; final48 runtime-source/21 asset hashes; prior data and sessions preserved.
+- Named Cloudflare DNS/Access/connector: active; final unauthenticated HTTPS boundary5/5 gated, including invalid assertion.
+- Public test01 flow: document creation, real Typhoon, human v2 edit/approve/commit and reload PASS; one attempt/result and bound audit confirmed read-only.
+- Owner setup/public deployment are completed, superseding the historical pending bullets above. Future clinical/product/interface evaluation remains separate FS-07 scope; pushing source does not deploy later changes.

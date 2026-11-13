@@ -1,0 +1,193 @@
+{
+  "name": "his-poc-server",
+  "services": {
+    "db": {
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "environment": {
+        "POSTGRES_DB": "his_poc",
+        "POSTGRES_USER": "his_owner",
+        "POSTGRES_PASSWORD": "${POSTGRES_PASSWORD:?Private server.env required}"
+      },
+      "ports": [
+        "127.0.0.1:15432:5432"
+      ],
+      "volumes": [
+        "database:/var/lib/postgresql"
+      ],
+      "healthcheck": {
+        "test": [
+          "CMD-SHELL",
+          "pg_isready -U his_owner -d his_poc"
+        ],
+        "interval": "2s",
+        "timeout": "3s",
+        "retries": 30
+      },
+      "restart": "unless-stopped",
+      "cpus": 1,
+      "mem_limit": "2g",
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "app": {
+      "image": "${HIS_DEPLOY_IMAGE:?Immutable candidate image required}",
+      "network_mode": "host",
+      "command": [
+        "python",
+        "-m",
+        "uvicorn",
+        "backend.app.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "18080"
+      ],
+      "environment": {
+        "DATABASE_URL": "postgresql+psycopg://his_owner:${POSTGRES_PASSWORD}@127.0.0.1:15432/his_poc",
+        "FILE_STORAGE_PROVIDER": "local",
+        "FILE_STORAGE_ROOT": "/var/his/files",
+        "BACKUP_ROOT": "/var/his/backups",
+        "WEB_DIST": "/app/apps/web/dist",
+        "HIS_COOKIE_SECURE": "true",
+        "HIS_ENV": "cloudflare_synthetic",
+        "HIS_ALLOWED_ORIGINS": "https://his.ai-cie.com",
+        "HIS_SEED_PASSWORD": "${HIS_SEED_PASSWORD:?Private server.env required}",
+        "HIS_AI_PROVIDER": "dr_train_ollama",
+        "HIS_LIVE_SYNTHETIC_ENABLED": "true",
+        "DR_TRAIN_BASE_URL": "http://127.0.0.1:11434",
+        "DR_TRAIN_MODEL": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "DR_TRAIN_MODEL_DIGEST": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+        "DR_TRAIN_OLLAMA_VERSION": "0.12.6",
+        "DR_TRAIN_TIMEOUT_SECONDS": "90",
+        "DR_TRAIN_MAX_OUTPUT_TOKENS": "1024",
+        "DR_TRAIN_CONTEXT_TOKENS": "8192",
+        "DR_TRAIN_MAX_DOCUMENT_CHARS": "6000",
+        "DR_TRAIN_KEEP_ALIVE_SECONDS": "0",
+        "HIS_PLATFORM_OPERATORS": "user-operations_admin",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "volumes": [
+        "files:/var/his/files",
+        "backups:/var/his/backups"
+      ],
+      "depends_on": {
+        "db": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "python",
+          "-c",
+          "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18080/ready',timeout=3)"
+        ],
+        "interval": "5s",
+        "timeout": "4s",
+        "retries": 12
+      },
+      "restart": "unless-stopped",
+      "cpus": 2,
+      "mem_limit": "2g",
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=128m"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    },
+    "connector": {
+      "image": "cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "profiles": [
+        "public"
+      ],
+      "network_mode": "host",
+      "user": "${HIS_RUNTIME_UID:?}:${HIS_RUNTIME_GID:?}",
+      "command": [
+        "tunnel",
+        "--config",
+        "/etc/cloudflared/config.json",
+        "--no-autoupdate",
+        "--disable-path-normalization=false",
+        "--metrics",
+        "127.0.0.1:20331",
+        "--management-diagnostics=false",
+        "run",
+        "b675e400-5731-47ba-9b4b-ce4d4056a3b2"
+      ],
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "${HIS_TUNNEL_CONFIG_FILE:?}",
+          "target": "/etc/cloudflared/config.json",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "${HIS_TUNNEL_CREDENTIALS_FILE:?}",
+          "target": "/etc/cloudflared/credentials.json",
+          "read_only": true
+        }
+      ],
+      "depends_on": {
+        "app": {
+          "condition": "service_healthy"
+        }
+      },
+      "healthcheck": {
+        "test": [
+          "CMD",
+          "cloudflared",
+          "tunnel",
+          "--metrics",
+          "127.0.0.1:20331",
+          "ready"
+        ],
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 6
+      },
+      "restart": "unless-stopped",
+      "cpus": 0.5,
+      "mem_limit": "256m",
+      "read_only": true,
+      "tmpfs": [
+        "/tmp:rw,noexec,nosuid,size=16m"
+      ],
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_opt": [
+        "no-new-privileges:true"
+      ],
+      "logging": {
+        "driver": "json-file",
+        "options": {
+          "max-size": "10m",
+          "max-file": "3"
+        }
+      }
+    }
+  },
+  "volumes": {
+    "database": {},
+    "files": {},
+    "backups": {}
+  }
+}

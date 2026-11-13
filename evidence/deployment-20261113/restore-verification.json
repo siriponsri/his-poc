@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "tables": 109,
+  "files": 1,
+  "exact_counts_match": true,
+  "file_sha256_match": true,
+  "prior_live_result_id": "8d61f05f-6b07-45d6-8d76-dc3296693dbb",
+  "initial_probe_note": "First readonly query used nonexistent results table; corrected to actual committed_results. Restore was not repeated.",
+  "collected_at": "2026-11-13T15:58:01.760812+00:00"
+}

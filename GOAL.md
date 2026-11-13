@@ -12,8 +12,10 @@ Champion candidates ยังคง 4 งาน: document completeness/review, D
 
 ผลผลิตที่ต้องการคือเจ้าของเปิด URL เดียวพบ login เลือกผู้ป่วยและ encounter ทำงานข้ามหน่วยงาน แล้ว reload/restart ยังพบผลเดิม. เงินรับและต้นทุนสะท้อน ledger จริง แยก billed/submitted/approved/gross_received/refunded/net_received/outstanding/cost. การเชื่อม endpoint ผ่านไม่ใช่ clinical/product effectiveness
 
-ยืนยันแล้วเฉพาะ dr-train Ollama0.12.6 และ Typhoon2.1-Gemma3-12B ที่ผูก manifest digest สำหรับ document completeness; GPU V10032GB และ RTX2080Ti11GB ตรวจพบจริง ส่วน UNKNOWN ยังรวมโรงพยาบาล/SOPจริง, production IdP/deployment, external hospital interfaces, Qwen checkpoint, Hugging Face revision ของ GGUF ที่มีอยู่, paid budget และ intended clinical use. สิ่งเหล่านี้บล็อกเฉพาะงานที่ต้องใช้ ไม่บล็อก local synthetic implementation
+ยืนยันแล้วเฉพาะ dr-train Ollama0.12.6 และ Typhoon2.1-Gemma3-12B ที่ผูก manifest digest สำหรับ document completeness; GPU V10032GB และ RTX2080Ti11GB ตรวจพบจริง ส่วน UNKNOWN ยังรวมโรงพยาบาล/SOPจริง, production IdP/clinical deployment, external hospital interfaces, Qwen checkpoint, Hugging Face revision ของ GGUF ที่มีอยู่, paid budget และ intended clinical use. สิ่งเหล่านี้บล็อกเฉพาะงานที่ต้องใช้ ไม่บล็อก local synthetic implementation
 
-## Current owner steering
+## Completed owner extension — 13 November 2026
 
-Frontend refinement now follows the user's yellow/gray/purple/orange brief and supplied reference screens. Deployment readiness targets his.ai-cie.com through a named Cloudflare Tunnel to the existing full app. The user will create Tunnel/Access following docs/CLOUDFLARE_SETUP_TH.md, then resume the goal. This preparation does not claim public deployment, remote policy verification or clinical readiness.
+เจ้าของเปลี่ยนโจทย์เป็น UX/UI ใหม่ตาม no-slop-ui/Hallmark และสามสี #1C4286 / #861C42 / #42861C พร้อมอนุญาต deploy ระบบสังเคราะห์บน dr-train ผ่าน his.ai-cie.com แล้ว งานนี้เสร็จตามขอบเขต: frontend25unit/69component และตรวจdesktop/tablet/mobile13ข้อผ่าน; imageที่ขึ้นจริงผูก source48ไฟล์/build21assetsตรงกัน; สำรองและคัดลอกDB109ตาราง/หนึ่งไฟล์เข้าสภาพแวดล้อมแยก; Tunnel/Access/DNSทำงาน; บัญชีtest01แบบจำกัดสิทธิ์ล็อกอินได้; งานเอกสาร→AIจริง→แก้v2→อนุมัติ→commit→reloadผ่าน URL จริง
+
+หลักฐานล่าสุด: evidence/triadic-release/public-final/browser-acceptance.json และ evidence/deployment-20261113/public-workflow-readback.json วิธีดูแล: docs/DEPLOY_DR_TRAIN.md ข้อมูล Windows เดิมยังอยู่แยกกัน การส่ง sourceเข้า mainไม่ได้ deployอัตโนมัติ งานเชื่อมภายนอกอื่น/clinical/product evaluationยังไม่อยู่ในผลผ่านนี้

@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-11-13T16:09:07.710582+00:00",
+  "method": "Actual owner Chrome DOM via CUA through https://his.ai-cie.com",
+  "status": "PASS",
+  "access_owner_authentication": "completed by owner",
+  "his_login": "test01",
+  "public_path": "/home",
+  "observed_identity": "ผู้ทดสอบ HIS POC",
+  "facility": "facility-demo",
+  "role": "clinician",
+  "open_tasks_observed": 2,
+  "deployment_phase": "baseline39 source; finaltriadicUI pending",
+  "password_or_tokens_recorded": false
+}

@@ -1,0 +1,14 @@
+{
+  "phase": "protected_baseline_ready_for_final_candidate",
+  "source_candidate": "base-39f788f",
+  "public_dns_owner": "root integrator",
+  "final_ui_deployed": false,
+  "server_path": "/home/chaw/his-poc",
+  "source_checkout": "Windows working checkout retained; server uses separately verified releases",
+  "backup_restore": "PASS:109 tables exact initial counts,1 file exact checksum, prior live result retained",
+  "services": "his-poc-server app/db/connector only",
+  "shared_services_modified": false,
+  "credentials_in_source": false,
+  "rollback": "Retain base image and all DB/file volumes; change only private HIS_DEPLOY_IMAGE for UI-only rollback",
+  "next_required": "Root freezes/tests current UI -> source-only working snapshot -> immutable build -> private backup -> recreate app -> final source binding and public browser acceptance"
+}

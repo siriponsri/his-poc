@@ -2,13 +2,15 @@
   "schema_version": "1.0",
   "observed_at": "2026-11-13T13:18:30.669599+00:00",
   "application": {
-    "target": "local Docker HIS POC development",
+    "target": "protected synthetic POC on dr-train; local Windows copy preserved",
     "existing_repo": "https://github.com/siriponsri/his-poc",
     "branch": "main",
     "commit": null,
     "dirty": null,
-    "network_location": "single-origin loopback app with private SSH inference route",
-    "commit_binding": "Current source/commit binding is recorded by execution evidence, not inferred from this inventory metadata."
+    "network_location": "Cloudflare Access/Tunnel -> private server app -> dedicated loopback PostgreSQL and existing loopback Ollama",
+    "commit_binding": "Current source/commit binding is recorded by execution evidence, not inferred from this inventory metadata.",
+    "deployment_evidence": "evidence/deployment-20261113/final-deployment-verification.json",
+    "public_acceptance": "evidence/triadic-release/public-final/browser-acceptance.json"
   },
   "dr_train": {
     "cpu": null,
@@ -39,7 +41,7 @@
       "container_runtime": "nvidia"
     },
     "existing_workloads": "Shared existing services were left unchanged; unrelated workload identities are not published here.",
-    "allowed_changes": "Session-authorized existing-model inspection/inference only; no remote service restart, model download, training or server configuration changes performed.",
+    "allowed_changes": "Owner authorized dedicated HIS app/DB/files/connector deployment and named DNS route; shared Ollama and unrelated workloads unchanged. No model installation/training.",
     "concurrency_budget": {
       "HIS_global_live_calls": 1,
       "scope": "HIS admission limit, not server-wide capacity or an evaluated throughput claim"
@@ -83,7 +85,7 @@
   "authorization": {
     "paid_api_budget": null,
     "server_compute_allocation": {
-      "scope": "Existing Ollama dr-train synthetic-document requests authorized by user in session",
+      "scope": "Dedicated bounded HIS app/DB/connector plus existing Ollama synthetic inference, explicitly owner-authorized",
       "HIS_admission_limit": 1,
       "new_hardware_or_paid_resources": false
     },
@@ -94,5 +96,6 @@
     "inventory": "2026-11-13T13:08:38.146809+00:00",
     "protocol_probe": "2026-11-13T13:09:13.363368+00:00",
     "provider_cases": "2026-11-13T13:18:30.669599+00:00"
-  }
+  },
+  "observed_deployment_at": "2026-11-13T16:29:36.995323+00:00"
 }

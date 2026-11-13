@@ -44,3 +44,7 @@ All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 
 | D38 | การเดินระบบ ความต่อเนื่อง และการกู้คืน | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 
 D37 defaults to explicit DEMO mock. An opt-in Typhoon/Ollama dr-train route passed three authored Thai document cases, seven live-browser assertions and two read-only assertions. This named scope does not promote DR/CAD or the whole domain to clinical/L4 acceptance. See docs/DR_TRAIN_AI.md. UI conflict/scope/audit/restart and real backup/isolated restore are supported by the recovery and read-only restore evidence. Initial failures remain in the evidence history.
+
+## Additional protected deployment check
+
+D22 and D37 have a separately executed synthetic public document/real-AI/edit/approval/commit/reload flow on his.ai-cie.com. Original38-domain local L2 levels and baseline evidence remain unchanged. Exact receipt: evidence/triadic-release/public-final/browser-acceptance.json and evidence/deployment-20261113/public-workflow-readback.json. No other external adapter or clinical claim is promoted by this check.

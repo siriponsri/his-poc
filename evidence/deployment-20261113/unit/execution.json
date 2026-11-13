@@ -1,0 +1,18 @@
+[
+  {
+    "check": "linux-deployment-boundaries",
+    "command": [
+      "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "backend/tests/test_dr_train_deploy_unit.py",
+      "-q"
+    ],
+    "started_at": "2026-11-13T15:58:04.157+00:00",
+    "completed_at": "2026-11-13T15:58:05.934+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.778,
+    "log": "evidence\\deployment-20261113\\unit\\linux-deployment-boundaries.txt"
+  }
+]

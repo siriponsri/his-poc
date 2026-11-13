@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "engine_version": "0.12.6",
+  "selected_model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+  "manifest_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+  "inference_requested": false,
+  "observed_at": "2026-11-13T15:59:46.097714+00:00"
+}

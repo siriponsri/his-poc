@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-11-13T15:47:54.783465+00:00",
+  "method": "Read-only owner Cloudflare browser UI inspection",
+  "hostname": "his.ai-cie.com",
+  "path_restriction": null,
+  "application": "HIS POC",
+  "policy": "HIS POC testers",
+  "policies_assigned": 1,
+  "action": "Allow",
+  "included_email_count": 3,
+  "bypass_or_service_auth_policies_observed": 0,
+  "audience": "eabe9c9519847005480c723a7d4c306a8204ffe1e30905f60460298f85441cd2",
+  "account_settings_changed": false,
+  "external_access_denial_and_allowed_browser": "NOT_RUN pending deployment"
+}

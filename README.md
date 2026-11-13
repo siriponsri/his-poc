@@ -10,8 +10,8 @@
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/status-local%20validation%20passed-0f766e" alt="Status: local validation passed" />
-  <img src="https://img.shields.io/badge/data-synthetic%20only-0f766e" alt="Synthetic data only" />
+  <img src="https://img.shields.io/badge/status-protected%20POC%20deployed-1c4286" alt="Status: protected POC deployed" />
+  <img src="https://img.shields.io/badge/data-synthetic%20only-42861c" alt="Synthetic data only" />
   <img src="https://img.shields.io/badge/PostgreSQL-18-4169e1" alt="PostgreSQL 18" />
   <img src="https://img.shields.io/badge/AI-mock%20default%20%7C%20optional%20Typhoon-64748b" alt="AI: mock default, optional Typhoon" />
 </p>
@@ -24,13 +24,25 @@
   <a href="VALIDATION_REPORT.md">Validation evidence</a>
 </p>
 
+## Open the protected POC
+
+**[his.ai-cie.com](https://his.ai-cie.com)** now serves the redesigned application on dr-train behind Cloudflare Access. Use an allowed Access email, then sign in to HIS as **test01** with the password supplied privately by the owner. This limited synthetic account can work with patient-001 and the document/AI review flow.
+
+The interface uses the owner's blue **#1C4286**, burgundy **#861C42** and green **#42861C** anchors: one searchable task register, shared record workspaces and source beside human review. No-slop-ui and Hallmark guidance informed the redesign; [design decisions and provenance](docs/design/TRIADIC_REDESIGN.md) describe what was actually used.
+
+![Public task workspace](evidence/triadic-release/public-final/home-loaded.jpg)
+
+The real HTTPS flow passed document save → Typhoon findings → human edit v2 → approval → commit → reload. Server readback confirms one inference and one result, source/approval hash binding, **10.414 seconds**, **422 input / 136 output tokens**, and cost unmeasured. These are one synthetic integration observation, not clinical accuracy or a performance guarantee. See [public acceptance](evidence/triadic-release/public-final/browser-acceptance.json) and the [deployment runbook](docs/DEPLOY_DR_TRAIN.md).
+
+Frontend checks passed **25 unit / 69 component tests**, audit, typecheck and build. Actual local desktop/tablet/mobile confirmation passed 13 observations. Public app source and all 21 built assets match the reviewed candidate. The earlier full-system baseline below retains its original scope.
+
 ## Overview
 
 HIS POC explores how clinical, administrative, and financial teams can work with the same patient, encounter, document, and task records. It combines a Thai-language React workspace with a FastAPI modular monolith and PostgreSQL persistence. Local accounts and permissions are verified by the server; changing a label or selection in the browser does not grant access.
 
 The development scope covers **38 domains** and **10 cross-module journeys**, from registration and laboratory results to dispensing, stock movements, claims, refunds, and patient follow-up. Each domain has its own forms and state transitions, while identity, clinical context, evidence, and audit records remain shared.
 
-**Current release: v0.3.0 locally validated development prototype.** All **38 domains at L2** and **10 journeys at L3** have executed local synthetic PostgreSQL and rendered-browser evidence. The [validation report](VALIDATION_REPORT.md) records exact commands, source/runtime hashes, retained failures, and the boundary between local workflow acceptance and external or clinical verification.
+**Release baseline: v0.3.0 locally validated development prototype, now with a separately verified protected deployment.** All **38 domains at L2** and **10 journeys at L3** have executed local synthetic PostgreSQL and rendered-browser evidence. The [validation report](VALIDATION_REPORT.md) records exact commands, source/runtime hashes, retained failures, and the boundary between local workflow acceptance and external or clinical verification.
 
 ## What the prototype includes
 
@@ -201,8 +213,8 @@ Production deployment, hospital interfaces, payer certification, other live mode
 
 A repository-wide license has not yet been selected. Review the applicable permissions before redistributing project code. Third-party notices and UI reference provenance are recorded in [`apps/web/LICENSE_NOTICES.md`](apps/web/LICENSE_NOTICES.md) and [`apps/web/TEMPLATE_PROVENANCE.json`](apps/web/TEMPLATE_PROVENANCE.json). Referencing a library does not mean it is a runtime dependency or that its license covers the entire project.
 
-## Frontend refresh and Cloudflare preparation
+## Deployment and updates
 
-The current interface uses the owner's yellow / warm gray / purple / orange theme. Compact navigation and progressive details retain the existing workflows and real document-review connection. Updated checks passed25 unit/63 component tests plus audit/typecheck/build, with actual desktop/mobile browser readback.
+Cloudflare Access and the connector are active for the exact hostname. The app, its dedicated PostgreSQL database and file storage run on dr-train; Cloudflare carries HTTPS traffic and access checks. Existing shared Ollama remains private. The Windows database is preserved as a separate copy, with no bidirectional synchronization.
 
-The selected deployment target is **his.ai-cie.com**. Cloudflare preparation is locally tested; owner Tunnel/Access setup and public deployment are still pending. Follow the [Thai Tunnel setup guide](docs/CLOUDFLARE_SETUP_TH.md), then resume the paused delivery for external acceptance. See [deployment details](docs/CLOUDFLARE_DEPLOYMENT.md) and [design references](docs/design/REFERENCE_REVIEW.md).
+A push to main **does not automatically deploy**. Future updates require a verified source snapshot, backup, image build and app replacement as described in [DEPLOY_DR_TRAIN.md](docs/DEPLOY_DR_TRAIN.md). Keep credentials private. Historical preparation evidence and the previous palette remain under their dated reports.

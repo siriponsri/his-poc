@@ -1,6 +1,6 @@
 # HIS POC full-system engineering instructions
 
-Read START_HERE → GOAL → PLAN → BACKLOG → CODEX_HANDOFF → VALIDATION_REPORT → DOMAIN_COVERAGE/JOURNEY_COVERAGE → spec matrix and relevant contracts. Inspect actual repo/branch/status and preserve user edits. This project began as an isolated copy from v0.2. The user authorized source publication to https://github.com/siriponsri/his-poc on main on 2026-11-13; that authorization does not extend to deployment or production changes.
+Read START_HERE → GOAL → PLAN → BACKLOG → CODEX_HANDOFF → VALIDATION_REPORT → DOMAIN_COVERAGE/JOURNEY_COVERAGE → spec matrix and relevant contracts. Inspect actual repo/branch/status and preserve user edits. This project began as an isolated copy from v0.2. The user authorized source publication to https://github.com/siriponsri/his-poc on main on 2026-11-13; The user subsequently authorized deploying the synthetic POC to his.ai-cie.com on dr-train on 2026-11-13. This covers a dedicated HIS app/database/connector and the named DNS route, not unrelated services, paid resources, real patient data or clinical use.
 
 ## Authorized scope
 

@@ -1,0 +1,82 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T16:07:16.464+00:00",
+    "completed_at": "2026-11-13T16:07:18.019+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.555,
+    "log": "evidence\\triadic-ui\\release-checks\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T16:07:18.020+00:00",
+    "completed_at": "2026-11-13T16:07:27.805+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 9.785,
+    "log": "evidence\\triadic-ui\\release-checks\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T16:07:27.806+00:00",
+    "completed_at": "2026-11-13T16:07:28.946+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.14,
+    "log": "evidence\\triadic-ui\\release-checks\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T16:07:28.948+00:00",
+    "completed_at": "2026-11-13T16:07:30.481+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.533,
+    "log": "evidence\\triadic-ui\\release-checks\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T16:07:30.483+00:00",
+    "completed_at": "2026-11-13T16:07:33.387+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.905,
+    "log": "evidence\\triadic-ui\\release-checks\\frontend-build.txt"
+  }
+]

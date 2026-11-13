@@ -1,6 +1,18 @@
-# Codex handoff — v0.3.0 locally validated development prototype
+# Codex handoff — triadic UI and protected POC deployed
 
 Local synthetic acceptance: 38 domains L2 and 10 journeys L3 PASS. Read VALIDATION_REPORT.md, DOMAIN_COVERAGE.json and JOURNEY_COVERAGE.json for the exact scope and evidence. The subsequent named real dr-train document route is recorded separately below; production and clinical acceptance remain NOT_RUN.
+
+## Current deployed state — 13 November 2026
+
+The owner resumed and authorized the named synthetic deployment. https://his.ai-cie.com is active behind exact-host Cloudflare Access. dr-train root /home/chaw/his-poc is a snapshot runtime, not a Git checkout. Dedicated Compose project his-poc-server uses app127.0.0.1:18080, DB127.0.0.1:15432 and connector metrics127.0.0.1:20331; existing private Ollama11434 is unchanged. The Windows source database/files remain independent.
+
+Final image his-poc-server:triadic-778ba97bf46f has48 runtime-source and21 built-asset hashes matching the reviewed frontend/backend. Original109 table counts/one file and prior real result were preserved; final replacement retained test01 and178 prior sessions. Source publication does not automatically deploy.
+
+Latest frontend25 unit/69 component, audit/typecheck/build,13 actual responsive observations and independent review PASS. Public browser test01→D22synthetic document→D37real Typhoon→human editv2→approve→commit→reload PASS; read-only server verification confirms one attempt/result. Run63506882-333c-479c-992e-027b991c836a took10414ms,422input/136outputtokens,costnull. Result ef4e9f7e-e0b2-473e-ab55-79ea383ffb72. These are integration checks, not clinical or throughput evidence.
+
+Use docs/DEPLOY_DR_TRAIN.md and docs/RELEASE_TRIADIC_DEPLOYMENT.md before updates. Private server.env, source backups and tunnel credential stay outside Git. The owner-requested test01 password is not in artifacts; its account is clinician/patient-001 only, no admin/finance/wildcard. Global account policy and existing users were unchanged.
+
+The dated local/pause sections below are historical; their palette/setup-pending statements were superseded by this deployment. Latest evidence: evidence/triadic-release/public-final and evidence/deployment-20261113.
 
 ## Application
 
@@ -9,7 +21,7 @@ Local synthetic acceptance: 38 domains L2 and 10 journeys L3 PASS. Read VALIDATI
 - Windows Docker app remains available at http://127.0.0.1:8000/login.
 - Use synthetic account registration or another seeded role; obtain its private password from local .env. No credential is included in this repository.
 - Restart with python scripts/dev.py start; no automatic seed or reset. Data and backup volumes are retained.
-- Source repository: https://github.com/siriponsri/his-poc. The user authorized pushing main; source publication does not authorize deployment.
+- Source repository: https://github.com/siriponsri/his-poc. The user authorized pushing main; the later explicit named-host authorization covers the deployed POC above.
 
 ## Executed evidence
 
@@ -37,7 +49,7 @@ Contracts/data dictionary were exported from runtime definitions, including all 
 
 Reproduce on a new isolated synthetic environment before changing code. Use a fresh validation output directory and inspect every exit code. Browser scenarios now use fresh encounter records where repeat runs require them; retained failures must not be erased to improve status.
 
-No internal acceptance blocker remains in the reviewed local scope. Future external work requires named resources and session authorization. Hospital interfaces, production IdP, deployment, payer certification and clinical/product evaluation remain NOT_RUN/UNKNOWN/NOT_CONNECTED as applicable. Baseline AI evidence is explicit DEMO mock; the named live document route below has actual inference evidence.
+No internal acceptance blocker remains in the reviewed local scope. Future external work requires named resources and session authorization. Hospital interfaces, production IdP, clinical deployment, payer certification and clinical/product evaluation remain NOT_RUN/UNKNOWN/NOT_CONNECTED as applicable. Baseline AI evidence is explicit DEMO mock; the named live document route below has actual inference evidence.
 
 A repository-wide software license has not been selected. Third-party notices and generated-logo provenance are recorded separately.
 
@@ -49,7 +61,7 @@ Actual Typhoon inference: three authored Thai cases PASS; browser document → t
 
 Never hold a database transaction across inference. Keep durable started/outcome rows, actor+key replay, one active inference across users/workers, absolute HTTP deadline, post-call permission/session/scope/source checks, and version-bound human approval. A client deadline closes transport; cancellation inside the remote engine is UNKNOWN. Exact quote checks do not prove semantic correctness. DR/CAD remain unconnected to live prediction. MedGemma is installed but not inference-tested. No model download, Cloudflare deployment or remote service restart was performed.
 
-## Frontend refresh / Cloudflare pause handoff — 13 November 2026
+## Historical frontend refresh / Cloudflare pause handoff — 13 November 2026
 
 The user superseded the green identity with yellow/gray/purple/orange using four supplied visual references and four inspected URLs. Incoming Claude working files were copied to ignored var/frontend-before-refresh before refinement. Preserve that backup; a local Vite design config remains ignored and is not the production deployment path.
 

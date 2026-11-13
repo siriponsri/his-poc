@@ -1,0 +1,90 @@
+{
+  "observed_at": "2026-11-13T16:14:03.794924+00:00",
+  "status": "PASS",
+  "resources": [
+    {
+      "service": "his-poc-server-app-1",
+      "image": "his-poc-server:triadic-778ba97bf46f",
+      "image_id": "sha256:6144c7744b6976c8f0c142486acc4baaa283f0515f1d36c3a951337e53773935",
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "network_mode": "host",
+      "memory_bytes": 2147483648,
+      "nano_cpus": 2000000000,
+      "readonly_rootfs": true,
+      "user": "his",
+      "port_bindings": {},
+      "mounts": [
+        {
+          "destination": "/var/his/backups",
+          "rw": true,
+          "type": "volume"
+        },
+        {
+          "destination": "/var/his/files",
+          "rw": true,
+          "type": "volume"
+        }
+      ]
+    },
+    {
+      "service": "his-poc-server-db-1",
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "image_id": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "network_mode": "his-poc-server_default",
+      "memory_bytes": 2147483648,
+      "nano_cpus": 1000000000,
+      "readonly_rootfs": false,
+      "user": "",
+      "port_bindings": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "15432"
+          }
+        ]
+      },
+      "mounts": [
+        {
+          "destination": "/var/lib/postgresql",
+          "rw": true,
+          "type": "volume"
+        }
+      ]
+    },
+    {
+      "service": "his-poc-server-connector-1",
+      "image": "cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "image_id": "sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "health": "healthy",
+      "restart": "unless-stopped",
+      "network_mode": "host",
+      "memory_bytes": 268435456,
+      "nano_cpus": 500000000,
+      "readonly_rootfs": true,
+      "user": "1000:1000",
+      "port_bindings": {},
+      "mounts": [
+        {
+          "destination": "/etc/cloudflared/config.json",
+          "rw": false,
+          "type": "bind"
+        },
+        {
+          "destination": "/etc/cloudflared/credentials.json",
+          "rw": false,
+          "type": "bind"
+        }
+      ]
+    }
+  ],
+  "private_listener_bindings": [
+    "127.0.0.1:18080",
+    "127.0.0.1:20331",
+    "127.0.0.1:11434",
+    "127.0.0.1:15432"
+  ],
+  "connector_ha_connections": 4.0
+}

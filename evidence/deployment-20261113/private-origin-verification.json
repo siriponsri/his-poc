@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "ready": {
+    "ready": true,
+    "migration": "0002_live_inference"
+  },
+  "cookie_flags": {
+    "Secure": true,
+    "HttpOnly": true,
+    "SameSite": "strict"
+  },
+  "cache_control": "no-store",
+  "profile": {
+    "active_provider": "dr_train_ollama",
+    "demo": false,
+    "live_routes_enabled": true,
+    "use_case": "document_completeness",
+    "data_class": "synthetic",
+    "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+    "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+    "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+    "engine": "ollama",
+    "engine_version": "0.12.6",
+    "max_document_chars": 6000,
+    "max_output_tokens": 1024,
+    "context_tokens": 8192,
+    "input_budget_policy": "conservative_utf8_bytes",
+    "supported_task_kinds": [
+      "document_review"
+    ],
+    "verification_status": "CONFIGURED_NOT_PROBED",
+    "requires_human_review": true,
+    "cost_measured": null,
+    "verified_capabilities": [],
+    "verification_evidence": "evidence/fullsystem/live-ai; individual runs retain exact provenance",
+    "external_integration_status": "CONFIGURED_REQUIRES_EXECUTED_EVIDENCE"
+  },
+  "candidate_image": "his-poc-server:base-39f788f",
+  "public_connector_started": false,
+  "header_check_note": "Case-insensitive urllib header lookup confirms no-store; initial dict lookup used wrong case.",
+  "collected_at": "2026-11-13T15:58:01.761407+00:00"
+}

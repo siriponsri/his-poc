@@ -1,0 +1,13 @@
+{
+  "status": "PASS",
+  "connector_ready_status": 200,
+  "health": "healthy",
+  "image": "cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+  "restart_policy": "unless-stopped",
+  "origin_candidate": "his-poc-server:base-39f788f",
+  "metrics_bind": "127.0.0.1:20331",
+  "access_jwt_required": true,
+  "cache_control": "no-store",
+  "dns_changed_by_this_agent": false,
+  "collected_at": "2026-11-13T15:58:01.761747+00:00"
+}

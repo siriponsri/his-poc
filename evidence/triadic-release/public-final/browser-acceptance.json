@@ -1,0 +1,90 @@
+{
+  "observed_at": "2026-11-13T16:28:27.850614+00:00",
+  "status": "PASS",
+  "method": "Actual Chrome UI on HTTPS hostname through CUA; manual semantic/AX actions, no direct API mutations or exported browser tokens",
+  "url": "https://his.ai-cie.com",
+  "data_profile": "AUTHORED_SYNTHETIC",
+  "actor_id": "user-test01-poc",
+  "checks": [
+    {
+      "check": "Existing owner-authorized Access session and dedicated HIS test01 login",
+      "status": "PASS",
+      "note": "HIS login was verified in public-baseline; same session survived final app replacement and reload."
+    },
+    {
+      "check": "Final public Home renders populated flat task register and exact three anchor tokens",
+      "status": "PASS",
+      "anchors": [
+        "#1C4286",
+        "#861C42",
+        "#42861C"
+      ]
+    },
+    {
+      "check": "Public D22 saves one new synthetic document revision under patient001/encounter001",
+      "status": "PASS"
+    },
+    {
+      "check": "Home task navigation restores exact task/patient/encounter in D37 URL",
+      "status": "PASS"
+    },
+    {
+      "check": "One real dr-train call returns typed source-quoted checklist",
+      "status": "PASS",
+      "present": 4,
+      "missing": 1,
+      "unclear": 0,
+      "missing_section": "plan"
+    },
+    {
+      "check": "Human edit creates version2 and changes action hash",
+      "status": "PASS"
+    },
+    {
+      "check": "Human approval of displayed version2 enables commit",
+      "status": "PASS"
+    },
+    {
+      "check": "Commit completes task and persists one result",
+      "status": "PASS"
+    },
+    {
+      "check": "Reload and reopen retain version2, source, findings and disabled mutation controls",
+      "status": "PASS"
+    },
+    {
+      "check": "Model disclosure identifies installed Typhoon model",
+      "status": "PASS"
+    },
+    {
+      "check": "Return Home reflects one remaining open task after completed task leaves open register",
+      "status": "PASS"
+    }
+  ],
+  "document_id": "72de8a50-dc96-4be9-a094-b9ef7ca9a383",
+  "task_id": "task-patient-001",
+  "run_id": "63506882-333c-479c-992e-027b991c836a",
+  "proposal_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+  "result_id": "ef4e9f7e-e0b2-473e-ab55-79ea383ffb72",
+  "server_readback": "evidence/deployment-20261113/public-workflow-readback.json",
+  "boundary": "access-boundary.json",
+  "screenshots": [
+    "home-loaded.jpg",
+    "ai-committed-reloaded.jpg"
+  ],
+  "harness_notes": [
+    "Default click without an explicit mouse button initially hovered without activation; explicit left-click was verified and used. No duplicate domain writes.",
+    "Required field lookup was corrected from an exact label to the observed textbox role/name.",
+    "Full-page screenshot timed out; normal screenshot saved after resetting viewport. No application failure inferred from that capture.",
+    "Disclosure locator did not match the native summary; observed AX control expanded successfully."
+  ],
+  "limitations": [
+    "This is one named public workflow, not a rerun of all38 domains or10 journeys.",
+    "Desktop public flow; separate actual local desktop/tablet/mobile13 observations.",
+    "Authored test only, no clinical accuracy/capacity/SLA claim."
+  ],
+  "screenshot_sha256": {
+    "home-loaded.jpg": "5cf70b187b42cbe90ec1d5396b70955f4e53878cd79f00bb738454ddb483262e",
+    "ai-committed-reloaded.jpg": "1206667fcb18766ad64b7f7bc49c3a0938160d1737f5f441957b6e11ee576090"
+  }
+}

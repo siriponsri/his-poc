@@ -1,0 +1,82 @@
+[
+  {
+    "check": "frontend-test",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test"
+    ],
+    "started_at": "2026-11-13T15:55:03.138+00:00",
+    "completed_at": "2026-11-13T15:55:04.206+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.068,
+    "log": "evidence\\triadic-ui\\checks\\frontend-test.txt"
+  },
+  {
+    "check": "frontend-test:component",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:component"
+    ],
+    "started_at": "2026-11-13T15:55:04.208+00:00",
+    "completed_at": "2026-11-13T15:55:13.165+00:00",
+    "exit_code": 1,
+    "status": "FAIL",
+    "duration_seconds": 8.957,
+    "log": "evidence\\triadic-ui\\checks\\frontend-test-component.txt"
+  },
+  {
+    "check": "frontend-test:audit",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "test:audit"
+    ],
+    "started_at": "2026-11-13T15:55:13.167+00:00",
+    "completed_at": "2026-11-13T15:55:14.385+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.219,
+    "log": "evidence\\triadic-ui\\checks\\frontend-test-audit.txt"
+  },
+  {
+    "check": "frontend-typecheck",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "typecheck"
+    ],
+    "started_at": "2026-11-13T15:55:14.387+00:00",
+    "completed_at": "2026-11-13T15:55:15.854+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 1.466,
+    "log": "evidence\\triadic-ui\\checks\\frontend-typecheck.txt"
+  },
+  {
+    "check": "frontend-build",
+    "command": [
+      "C:\\Program Files\\nodejs\\npm.cmd",
+      "--prefix",
+      "apps/web",
+      "run",
+      "build"
+    ],
+    "started_at": "2026-11-13T15:55:15.855+00:00",
+    "completed_at": "2026-11-13T15:55:18.615+00:00",
+    "exit_code": 0,
+    "status": "PASS",
+    "duration_seconds": 2.76,
+    "log": "evidence\\triadic-ui\\checks\\frontend-build.txt"
+  }
+]

@@ -1,0 +1,579 @@
+npm notice run his-poc-web@0.3.0 test:component
+npm notice run node --import tsx --test tests/*.component.test.tsx
+✔ live provider has accurate model/mode labels and offers only supported document tasks (169.6537ms)
+✔ live response renders five typed checks and evidence while human approval remains explicit (168.3761ms)
+✔ unknown proposal response and pending replay retain exact request body/key until confirmed (161.6101ms)
+✔ malformed provider configuration fails closed without silently displaying mock mode (30.1365ms)
+✔ a failed profile refresh cannot leave stale live configuration enabled (52.0149ms)
+✔ a live proposal with a malformed checklist cannot be approved or committed (36.6208ms)
+✔ live result from an old patient context cannot repopulate a newly selected context (82.3988ms)
+✔ six-workspace workload exposes its omitted sixth row and can collapse again (347.8858ms)
+✔ D07 arrow keys select and focus the next tab without scrolling or losing the event target (231.8415ms)
+✔ home IDs are unique and workspace directory accessible name resolves to one heading (114.0852ms)
+✔ actual mounted AI: edit response + refresh failure keeps displayed revision and approval binding aligned (289.6413ms)
+✔ actual mounted AI: definitive commit409 clears unknown state without reconnect (108.2718ms)
+✔ actual mounted AI: lost response matches readback identity and clears pending (92.5446ms)
+✔ actual mounted patient form sends typed fields and displays server-created record (67.4429ms)
+✔ exported referral exposes scoped download without embedding its packet in detail JSON (35.9958ms)
+✔ typed message sequence submits JSON integer while money retains Decimal text (18.139ms)
+✔ integer form rejects fractional, unsafe and below-minimum sequence without sending (23.4175ms)
+✔ actual audit route inspects authorized list snapshot without nonexistent detail request (107.7105ms)
+✔ actual mounted app: login backend session, scoped home counters, logout clears prior records (163.4837ms)
+✔ actual mounted app: skip focus retains route and unknown route shows404 (58.1413ms)
+✔ actual mounted app: unauthorized deep link shows denied and never mutates (23.0044ms)
+✖ actual mounted route has functional controls D01 (66.485ms)
+✖ actual mounted route has functional controls D02 (78.6505ms)
+✖ actual mounted route has functional controls D03 (50.5936ms)
+✖ actual mounted route has functional controls D04 (54.392ms)
+✖ actual mounted route has functional controls D05 (62.0346ms)
+✖ actual mounted route has functional controls D06 (55.2079ms)
+✖ actual mounted route has functional controls D07 (61.7756ms)
+✖ actual mounted route has functional controls D08 (48.0752ms)
+✖ actual mounted route has functional controls D09 (47.7177ms)
+✖ actual mounted route has functional controls D10 (52.8873ms)
+✖ actual mounted route has functional controls D11 (51.332ms)
+✖ actual mounted route has functional controls D12 (34.9266ms)
+✖ actual mounted route has functional controls D13 (22.559ms)
+✖ actual mounted route has functional controls D14 (22.3908ms)
+✖ actual mounted route has functional controls D15 (28.2838ms)
+✖ actual mounted route has functional controls D16 (19.7507ms)
+✖ actual mounted route has functional controls D17 (23.949ms)
+✖ actual mounted route has functional controls D18 (22.0586ms)
+✖ actual mounted route has functional controls D19 (19.2911ms)
+✖ actual mounted route has functional controls D20 (21.541ms)
+✖ actual mounted route has functional controls D21 (19.3324ms)
+✖ actual mounted route has functional controls D22 (23.2826ms)
+✖ actual mounted route has functional controls D23 (21.0414ms)
+✖ actual mounted route has functional controls D24 (19.0188ms)
+✖ actual mounted route has functional controls D25 (19.7988ms)
+✖ actual mounted route has functional controls D26 (23.901ms)
+✖ actual mounted route has functional controls D27 (18.314ms)
+✖ actual mounted route has functional controls D28 (20.3846ms)
+✖ actual mounted route has functional controls D29 (37.2101ms)
+✖ actual mounted route has functional controls D30 (73.3555ms)
+✖ actual mounted route has functional controls D31 (71.1334ms)
+✖ actual mounted route has functional controls D32 (66.5611ms)
+✖ actual mounted route has functional controls D33 (55.8755ms)
+✖ actual mounted route has functional controls D34 (91.737ms)
+✖ actual mounted route has functional controls D35 (65.9772ms)
+✖ actual mounted route has functional controls D36 (62.9007ms)
+✔ actual mounted route has functional controls D37 (64.5352ms)
+✔ actual mounted route has functional controls D38 (46.7836ms)
+✔ actual form preserves Decimal strings and serializes local datetime as aware ISO (11.507ms)
+✔ actual record detail ignores delayed result for previous selection (36.4994ms)
+✔ actual file form hides encoding and submits only internally derived file bytes/MIME (9.1369ms)
+✔ actual metadata-only document role has no content editing controls (33.4518ms)
+ℹ tests 63
+ℹ suites 0
+ℹ pass 27
+ℹ fail 36
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 8052.5238
+
+✖ failing tests:
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D01 (66.485ms)
+  AssertionError [ERR_ASSERTION]: domain create control D01
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D02 (78.6505ms)
+  AssertionError [ERR_ASSERTION]: domain create control D02
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D03 (50.5936ms)
+  AssertionError [ERR_ASSERTION]: domain create control D03
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D04 (54.392ms)
+  AssertionError [ERR_ASSERTION]: domain create control D04
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D05 (62.0346ms)
+  AssertionError [ERR_ASSERTION]: domain create control D05
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D06 (55.2079ms)
+  AssertionError [ERR_ASSERTION]: domain create control D06
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D07 (61.7756ms)
+  AssertionError [ERR_ASSERTION]: domain create control D07
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D08 (48.0752ms)
+  AssertionError [ERR_ASSERTION]: domain create control D08
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D09 (47.7177ms)
+  AssertionError [ERR_ASSERTION]: domain create control D09
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D10 (52.8873ms)
+  AssertionError [ERR_ASSERTION]: domain create control D10
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D11 (51.332ms)
+  AssertionError [ERR_ASSERTION]: domain create control D11
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D12 (34.9266ms)
+  AssertionError [ERR_ASSERTION]: domain create control D12
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D13 (22.559ms)
+  AssertionError [ERR_ASSERTION]: domain create control D13
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D14 (22.3908ms)
+  AssertionError [ERR_ASSERTION]: domain create control D14
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D15 (28.2838ms)
+  AssertionError [ERR_ASSERTION]: domain create control D15
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D16 (19.7507ms)
+  AssertionError [ERR_ASSERTION]: domain create control D16
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D17 (23.949ms)
+  AssertionError [ERR_ASSERTION]: domain create control D17
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D18 (22.0586ms)
+  AssertionError [ERR_ASSERTION]: domain create control D18
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D19 (19.2911ms)
+  AssertionError [ERR_ASSERTION]: domain create control D19
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D20 (21.541ms)
+  AssertionError [ERR_ASSERTION]: domain create control D20
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D21 (19.3324ms)
+  AssertionError [ERR_ASSERTION]: domain create control D21
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D22 (23.2826ms)
+  AssertionError [ERR_ASSERTION]: domain create control D22
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D23 (21.0414ms)
+  AssertionError [ERR_ASSERTION]: domain create control D23
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D24 (19.0188ms)
+  AssertionError [ERR_ASSERTION]: domain create control D24
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D25 (19.7988ms)
+  AssertionError [ERR_ASSERTION]: domain create control D25
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D26 (23.901ms)
+  AssertionError [ERR_ASSERTION]: domain create control D26
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D27 (18.314ms)
+  AssertionError [ERR_ASSERTION]: domain create control D27
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D28 (20.3846ms)
+  AssertionError [ERR_ASSERTION]: domain create control D28
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D29 (37.2101ms)
+  AssertionError [ERR_ASSERTION]: domain create control D29
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D30 (73.3555ms)
+  AssertionError [ERR_ASSERTION]: domain create control D30
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D31 (71.1334ms)
+  AssertionError [ERR_ASSERTION]: domain create control D31
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D32 (66.5611ms)
+  AssertionError [ERR_ASSERTION]: domain create control D32
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D33 (55.8755ms)
+  AssertionError [ERR_ASSERTION]: domain create control D33
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D34 (91.737ms)
+  AssertionError [ERR_ASSERTION]: domain create control D34
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D35 (65.9772ms)
+  AssertionError [ERR_ASSERTION]: domain create control D35
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\workflow.component.test.tsx:1:15476
+✖ actual mounted route has functional controls D36 (62.9007ms)
+  AssertionError [ERR_ASSERTION]: domain create control D36
+      at TestContext.<anonymous> (C:\Users\User\Desktop\myProject\his-poc\apps\web\tests\workflow.component.test.tsx:67:911)
+      at async Test.run (node:internal/test_runner/test:1389:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
