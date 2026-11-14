@@ -1,0 +1,61 @@
+{
+  "status": "RECONCILED_ORIGINAL_ATTEMPTS_RETAINED",
+  "at": "2026-11-14T13:09:08.167196+00:00",
+  "events": [
+    {
+      "phase": "private provisioning first attempt",
+      "status": "FAIL_RECONCILED",
+      "failure_kind": "operator_program_parse_error_before_execution",
+      "server_statements_executed": 0
+    },
+    {
+      "phase": "qualification first attempt",
+      "status": "FAIL_RECONCILED",
+      "failure_kind": "missing_private_auth_prerequisite_after_incorrect_operator_sequencing",
+      "qualification_containers_started": 0,
+      "production_login_or_clinical_dispatch": false,
+      "original_historical_markers_retained": {
+        "server": "RUNNING",
+        "local": "PENDING"
+      },
+      "resolution": "Readonly proof confirmed no qualification execution; a separately reviewed named continuation passed. These retained historical markers do not represent an in-flight operation."
+    },
+    {
+      "phase": "readonly inventory reconciliation",
+      "status": "REVIEWED_EXACT_EXTERNAL_LIFECYCLE_EXCEPTION",
+      "details": {
+        "policy": "Original58 non-app entries must remain exact. Only this observed external job may remain with the exact same ID/image or naturally disappear; any other inventory difference stops the release. No action targets the research job.",
+        "observed_at": "2026-11-14T12:55:32.642978+00:00",
+        "observed_external_container": {
+          "ptp-auto-native-sacr-fulldev-b2-20261114-v1": {
+            "id": "e7e162ca4ff12689e644806a114818e4e01326b9350cdc65a1ab8f78e9e19bea",
+            "image": "sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2",
+            "image_id": "sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2",
+            "created_at": "2026-11-14T12:51:54.089276006Z",
+            "started_at": "2026-11-14T12:51:54.141105365Z",
+            "status": "running",
+            "health": null
+          }
+        },
+        "first_snapshot_at": "2026-11-14T12:50:11.558313+00:00"
+      }
+    },
+    {
+      "phase": "qualify-continuation",
+      "status": "PASS",
+      "at": "2026-11-14T13:00:58.044840+00:00"
+    },
+    {
+      "phase": "activate",
+      "status": "PASS",
+      "at": "2026-11-14T13:06:44.945526+00:00"
+    },
+    {
+      "phase": "verify",
+      "status": "PASS",
+      "at": "2026-11-14T13:07:35.563110+00:00"
+    }
+  ],
+  "original_failure_records_deleted_or_overwritten": false,
+  "production_restore_seed_migration_model_or_permission_change": false
+}

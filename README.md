@@ -28,7 +28,9 @@
 
 **[his.ai-cie.com](https://his.ai-cie.com)** serves CareBalance on dr-train behind Cloudflare Access. Verify an allowed email, then sign in as **test01** with the password supplied privately by the owner. This limited demo account can work with patient-001 and six newly authored fictional patients, with document/AI review and explicit LabClear/DR workflows.
 
-[Demo patients and evidence](docs/DEMO_PATIENTS_TH.md): six realistic Thai names, DOB/sex, numeric demo HNs, six consultation notes and eleven released lab values. All data are invented; the global Demo notice remains. The new HN/age/sex display is qualified in main and awaiting the separately verified app rollout at this checkpoint.
+[Demo patients and evidence](docs/DEMO_PATIENTS_TH.md): six realistic Thai names, DOB/sex, numeric demo HNs, six consultation notes and eleven released lab values. All data are invented; the global Demo notice remains. The HN/age/sex display is deployed and verified through the protected URL. See the [current release](docs/RELEASE_REALISTIC_PATIENTS.md).
+
+**Active next extension:** AI-driven preparation across clinical/nursing, records/admin and laboratory teams, powered by dr-train, with an optional 3D operations view of real scoped work. This is being implemented; the current deployed live AI route remains document completeness.
 
 The selected design combines **Clinical Workspace** for Home and Login, **Patient Record** for patient work, and the original **Operations Desk logo**. English headings accompany Thai records; neutral surfaces use blue **#1C4286**, burgundy **#861C42** and green **#42861C** accents. [Design contract and research](docs/design/CLINICAL_WORKSPACE.md).
 

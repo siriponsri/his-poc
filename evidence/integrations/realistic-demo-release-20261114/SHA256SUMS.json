@@ -1,0 +1,10 @@
+{
+  "app-activation.json": "4b24ceae15b036ce35ba74ab0b1dd11ae60e4de9d4745cba42644c5fe6e02c56",
+  "backup-restore.json": "0f6085690d0d50a6023ec9f17e6ca91bb65a0a34aef8e71677b9168c4c09ba82",
+  "isolated-qualification.json": "a1d4c925aad99483fb54b5cc3b681b0ad540429d008ad8d800d2e1a1695aa02b",
+  "origin-verification.json": "b70dc1378146823ee14f067281b8fecb3ed6470f3037a09cfc85e10339c72143",
+  "preserved-state.json": "7bf4a192b85e345d7ecdaf1dc1995d5b2a5f743c642d8a0b28347876ffa348db",
+  "README.md": "c5b7dd67260e20d66b89e1bfa0c2b70b79f74a6de1c99a6799f3958a76ccd4ac",
+  "resolution-history.json": "0330fd3a4d5ffe2e10f9f71d7bcd221f5464cb1b18d31654748d916834477e7f",
+  "source-build.json": "2edd6ea4e8b3c14fe9727c1a5e1f890e81a1cc08f78e96c7641173f540d3da39"
+}

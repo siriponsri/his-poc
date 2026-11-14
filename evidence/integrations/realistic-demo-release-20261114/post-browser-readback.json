@@ -1,0 +1,64 @@
+{
+  "status": "PASS_READ_ONLY_POST_BROWSER_PRESERVATION",
+  "at": "2026-11-14T13:28:03.002503+00:00",
+  "all_old_post_cohort_rows_preserved": true,
+  "exact_patients_identities_permissions_care_scope": true,
+  "files_exact": true,
+  "labclear_database_exact": true,
+  "dr_labclear_receiver_identities_exact": true,
+  "live_his_image_id": "sha256:8b9815ab4da16a458a17048b5e805706739e11f1724eac23a1a5fc9b2a2d444f",
+  "row_additions_from_explicit_browser_dr_launch": {
+    "his": {
+      "audit_events": {
+        "removed_or_changed_old_rows": 0,
+        "new_rows": 12
+      },
+      "dr_attempts": {
+        "removed_or_changed_old_rows": 0,
+        "new_rows": 6
+      },
+      "dr_bindings": {
+        "removed_or_changed_old_rows": 0,
+        "new_rows": 1
+      },
+      "dr_exchanges": {
+        "removed_or_changed_old_rows": 0,
+        "new_rows": 6
+      }
+    },
+    "dr": {
+      "carebalance_dr.cb_commands": {
+        "removed_or_changed_old_rows": 0,
+        "new_rows": 1
+      },
+      "carebalance_dr.cb_nonces": {
+        "removed_or_changed_old_rows": 0,
+        "new_rows": 6
+      }
+    }
+  },
+  "inference_counts": [
+    {
+      "provider": "dr_train_ollama",
+      "outcome": "success",
+      "count": 3
+    },
+    {
+      "provider": "mock_demo",
+      "outcome": "success",
+      "count": 6
+    }
+  ],
+  "browser_binding": {
+    "id": "8b04ca2c-5c8d-415f-af3e-772cef39f291",
+    "actor_id": "user-test01-poc",
+    "patient_id": "patient-001",
+    "encounter_id": "encounter-001",
+    "source_set_id": "c2186190-b0d6-477c-92c4-37f6fa631b3f",
+    "state": "imported"
+  },
+  "unresolved_dr_attempts": 0,
+  "model_calls_in_browser_check": 0,
+  "clinical_effectiveness": "NOT_EVALUATED",
+  "mmrdr_images": "HELD_FOR_LATERALITY; no registered/transferred real CFP images"
+}

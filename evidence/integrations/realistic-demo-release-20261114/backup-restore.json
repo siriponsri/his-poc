@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "phase": "backup",
+  "at": "2026-11-14T12:50:27.772638+00:00",
+  "restored": {
+    "his": {
+      "database": "cb_demo_demo_ui_20261114_v1_his",
+      "tables": 121,
+      "row_hashes_match": true
+    },
+    "lc": {
+      "database": "cb_demo_demo_ui_20261114_v1_lc",
+      "tables": 2,
+      "row_hashes_match": true
+    },
+    "dr": {
+      "database": "cb_demo_demo_ui_20261114_v1_dr",
+      "tables": 10,
+      "row_hashes_match": true
+    }
+  },
+  "source_files_verified": 3,
+  "all_three_databases_preserved": true,
+  "dumps_consistent_individually": true,
+  "cross_database_atomic_snapshot": false,
+  "production_restore": false
+}

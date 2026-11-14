@@ -1,14 +1,29 @@
 # Executable backlog — full-system scope
 
-## Latest realistic-patient checkpoint
+## Current deployed milestone and active AI-driven extension
 
-The long goal is ACTIVE. The production fictional cohort/API batch PASSED: 146 normal mutations once; six new patients/OPD visits/notes, eleven released labs, twelve OPEN reviews (23 total new tasks includes eleven completed acquisition tasks). Four legacy Patient display names changed with audited version1→2; old DOB/sex/HN and every old nonpatient row/file remain. All9 prior inference runs/results remain; DR/LabClear rows and credentials/roles are unchanged.
+Patient/UI release PASS: source d4f0bca / image8b9815ab / schema0004 is deployed.
+Actual authenticated public browser and read-only PostgreSQL checks passed the
+six fictional identities/HN/age/sex, wide patient reading, retained AI proposalv2,
+released laboratory data/LabClear launcher and latest DR Draft-label/readback
+subset. All old post-cohort rows/files remain; explicit DR-launch append-only
+audit/binding records are recorded. Historical inference9 comprises3 REAL
+dr_train_ollama successes and6 mock successes; all9 results are retained.
+No new inference was performed by this browser verification.
+[Current release](docs/RELEASE_REALISTIC_PATIENTS.md) and
+[exact receipts](evidence/integrations/realistic-demo-release-20261114/ROOT_RECEIPTS.json).
 
-The independently reviewed UI source5a26ed6 is integrated into main: actual scoped identifiers, completed age, sex and readable visit context. PASS31 unit/139 mounted, typecheck/build; six PostgreSQL privacy cases and an overlapping nine-case scoped regression. The initial outdated Home fixture failure is retained. The live app is still HISa30 on migration04: this new UI is NOT_YET_DEPLOYED at this source checkpoint.
-
-Pending: fresh current04 backup/isolated restore, candidate/rollback qualification, app-only activation, final authenticated rendered UI/DR label and retained workflow checks, then final publication/handoff. Current protected browser displayed all six new names and twelve review tasks on the prior app; this does not establish the new age/HN UI acceptance.
-
-[Authored cohort and evidence](evidence/integrations/realistic-demo-data-20261114/DEMO_DATA.md). Earlier sections below are retained checkpoints with their original states and preservation scope; their NOT_IMPLEMENTED data status predates this completed batch.
+The LONG GOAL REMAINS ACTIVE. Latest owner steering expands the product to
+AI-driven workload relief across ALL clinical/nursing, records/admin and lab
+personas, using dr-train first, plus a useful optional genuine 3D hospital or
+agent-office view linked to actual authorized work. This NEW extension is
+NOT_IMPLEMENTED: research, role/source permission mapping and dedicated GPU0
+service preparation are underway; no new inference/service was started.
+Installed Typhoon matches the earlier3 real runs; MedGemma27B is installed but
+unqualified. Shared GPU1 has an unrelated research workload; isolation/capacity,
+bounded real-profile qualification, source-grounded outputs, normal reviewed
+effects and protected live browser tests remain required before goal closure.
+Never relabel manual DR/LabClear work or mock history as real AI-agent activity.
 
 ## Earlier DR checkpoint at 12:04 UTC
 

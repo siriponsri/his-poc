@@ -1,0 +1,35 @@
+{
+  "status": "PASS_WITH_EXPLICIT_EXTERNAL_INVENTORY_EXCEPTION",
+  "last_direct_counts_observed_at": "2026-11-14T13:02:18.356363+00:00",
+  "exact_three_database_hash_preservation_verified_at": "2026-11-14T13:07:35.563110+00:00",
+  "migration": "0004_dr_screening_bridge",
+  "his_tables": 121,
+  "labclear_tables": 2,
+  "dr_tables": 10,
+  "source_files": 3,
+  "inference_runs": 9,
+  "committed_results": 9,
+  "grade_sign_grants": 0,
+  "dr_static_manifest_sha256": "34fd361069b3af61c789c7398a49a052feef736dc49303fd5866794f9752d079",
+  "configs_registry_static_unchanged": true,
+  "intentional_configuration_change": [
+    "One existing HIS_DEPLOY_IMAGE value in dr.env"
+  ],
+  "external_inventory_exception": {
+    "policy": "Original58 non-app entries must remain exact. Only this observed external job may remain with the exact same ID/image or naturally disappear; any other inventory difference stops the release. No action targets the research job.",
+    "observed_at": "2026-11-14T12:55:32.642978+00:00",
+    "observed_external_container": {
+      "ptp-auto-native-sacr-fulldev-b2-20261114-v1": {
+        "id": "e7e162ca4ff12689e644806a114818e4e01326b9350cdc65a1ab8f78e9e19bea",
+        "image": "sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2",
+        "image_id": "sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2",
+        "created_at": "2026-11-14T12:51:54.089276006Z",
+        "started_at": "2026-11-14T12:51:54.141105365Z",
+        "status": "running",
+        "health": null
+      }
+    },
+    "first_snapshot_at": "2026-11-14T12:50:11.558313+00:00"
+  },
+  "scope": "Counts and immutable rows include the completed fictional-cohort batch. The four earlier name/version amendments are intentional dataset changes and precede this release snapshot."
+}

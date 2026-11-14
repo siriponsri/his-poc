@@ -1,0 +1,32 @@
+{
+  "status": "PASS",
+  "phase": "verify",
+  "at": "2026-11-14T13:07:35.563110+00:00",
+  "candidate_image_id": "sha256:8b9815ab4da16a458a17048b5e805706739e11f1724eac23a1a5fc9b2a2d444f",
+  "ready": {
+    "ready": true,
+    "migration": "0004_dr_screening_bridge"
+  },
+  "origin_assets": 17,
+  "all_three_databases_and_files_unchanged": true,
+  "public_authenticated_browser": "NOT_RUN",
+  "origin_asset_verification": "All17 built assets matched SHA256; Login/Home/Patient SPA entry responses matched built index.html.",
+  "original_frozen_nonapp_ids_preserved": 58,
+  "external_inventory_exception": {
+    "policy": "Original58 non-app entries must remain exact. Only this observed external job may remain with the exact same ID/image or naturally disappear; any other inventory difference stops the release. No action targets the research job.",
+    "observed_at": "2026-11-14T12:55:32.642978+00:00",
+    "observed_external_container": {
+      "ptp-auto-native-sacr-fulldev-b2-20261114-v1": {
+        "id": "e7e162ca4ff12689e644806a114818e4e01326b9350cdc65a1ab8f78e9e19bea",
+        "image": "sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2",
+        "image_id": "sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2",
+        "created_at": "2026-11-14T12:51:54.089276006Z",
+        "started_at": "2026-11-14T12:51:54.141105365Z",
+        "status": "running",
+        "health": null
+      }
+    },
+    "first_snapshot_at": "2026-11-14T12:50:11.558313+00:00"
+  },
+  "limits": "Origin verification is separate from authenticated public-browser acceptance, which remains NOT_RUN by this release agent."
+}

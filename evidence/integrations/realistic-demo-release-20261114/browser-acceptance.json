@@ -1,0 +1,63 @@
+{
+  "status": "PASS_BOUNDED_AUTHENTICATED_PUBLIC_BROWSER",
+  "recorded_at": "2026-11-14T13:44:33.573473+00:00",
+  "surface": "Authenticated in-app browser; native Chrome final UI was not rerun",
+  "origin": "https://his.ai-cie.com",
+  "live_image_id": "sha256:8b9815ab4da16a458a17048b5e805706739e11f1724eac23a1a5fc9b2a2d444f",
+  "source_main": "d4f0bca4ff87b82e9be159eb5d13959d0f3a83fc",
+  "patient_display": {
+    "all_six_names_hn_age_sex_rendered": true,
+    "hn_search_two_matching_tasks": true,
+    "opened_patient": "12cbfae5-7549-4be6-87a5-6819b6570172",
+    "hn": "6901425",
+    "name": "สุเมธ ภัทรกุล",
+    "age": 58,
+    "sex": "male",
+    "wide_panel_source_note_and_vitals_read": true,
+    "desktop_css_width": 1366,
+    "desktop_dialog_width": 1120,
+    "desktop_source_width": 790.4,
+    "mobile_css_width": 390,
+    "mobile_body_width": 390,
+    "mobile_source_width": 346.4,
+    "mobile_text_size": "15px",
+    "mobile_document_selector_observed_in_accessibility_tree": true,
+    "temporary_viewport_reset_called": true
+  },
+  "workflow": {
+    "new_case_review_opens_exact_document_and_task": true,
+    "real_dr_train_route_displayed": true,
+    "retained_real_proposal": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+    "retained_proposal_version": 2,
+    "retained_committed_summary_and_source_checklist_read": true,
+    "committed_edit_approve_commit_actions_disabled": true,
+    "released_fpg_value": "152",
+    "released_fpg_unit": "mg/dL",
+    "released_fpg_reference": "70-99",
+    "released_fpg_source_version": 6,
+    "labclear_launcher_correct_patient_source_and_existing_review_task": true,
+    "new_labclear_import_or_confirmation": false
+  },
+  "dr": {
+    "binding": "8b04ca2c-5c8d-415f-af3e-772cef39f291",
+    "source_set": "c2186190-b0d6-477c-92c4-37f6fa631b3f",
+    "explicit_synthetic_manual_only_consent": true,
+    "one_send_confirmed": true,
+    "left_right_human_eye_labels": true,
+    "live_patient_name": "ณัฐพล จันทร์ธารา",
+    "original_left_image_loaded": true,
+    "report_status": "Draft",
+    "fixed_readonly_patient_key": "CB0-0965C0C74CB08508193696D06DA6",
+    "retained_notes": "CareBalance public browser DR integration check 2026-11-14; authored synthetic draft.",
+    "sign_report_disabled": true,
+    "new_quality_grade_report_save_or_sign": false,
+    "full_new_grade_annotation_step_navigation": "NOT_RUN; covered by bounded component tests, not this browser subset"
+  },
+  "model_calls": 0,
+  "clinical_effectiveness": "NOT_EVALUATED",
+  "screenshot_files_saved": "NONE; screenshots inspected inline",
+  "automation_notes": [
+    "An indexed Home action navigated to the source document; opening the current patient-name button then verified the wide panel. Subsequent actions used observed semantic locators.",
+    "The DR target-blank action did not immediately produce an observed new tab; the observed exact workspace href was opened in the controlled tab, without resending its command."
+  ]
+}
