@@ -118,10 +118,13 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
     except Exception:
         generated={'outcome':'failed','reason':'PROVIDER_UNEXPECTED_ERROR','action':None,'provenance':{},'usage':None}
     elapsed=int((time.perf_counter_ns()-started)/1_000_000)
+    provider_observation=generated
+    from .assistant_reconciliation import record_positive_terminal
     # No reads or ORM access occur between close() above and provider return.
     try:
         revalidate_actor(db,actor);require_domain(actor,'D37',True);require(actor,'documents.content')
         run=db.get(InferenceRun,run_id,with_for_update=True)
+        record_positive_terminal(db,run,'legacy',actor,provider_observation)
         if run.outcome!='running':
             response={'run':serialize(run),'proposal':None,'demo':False}
             old=begin_operation(db,actor,key,op,payload)
@@ -161,6 +164,7 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
             run.outcome='permission_revoked' if rejection.status_code in (401,403,404) else 'stale_context'
             run.reason='AUTHORIZATION_OR_SCOPE_CHANGED';run.elapsed_ms=elapsed;run.completed_at=utcnow()
             run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed'),'provider_reason':generated.get('reason')}
+            record_positive_terminal(db,run,'legacy',actor,provider_observation)
             run.usage=generated.get('usage')
             audit(db,actor,'D37',run.id,'inference_'+run.outcome,{'task_id':run.task_id,'provider':run.provider})
             db.commit()
@@ -210,7 +214,8 @@ def results(encounter_id:str|None=None,actor=Depends(current_actor),db=Depends(g
 def runs(task_id:str|None=None,actor=Depends(current_actor),db=Depends(get_db,scope="function")):
     require_domain(actor,'D37');ids=[t.id for t in db.scalars(scope_query(Task,actor)) if t.domain+'.read' in actor.permissions]
     if task_id:ids=[task_id] if task_id in ids else []
-    return {'items':[serialize(r) for r in db.scalars(select(InferenceRun).where(InferenceRun.task_id.in_(ids)).order_by(InferenceRun.created_at.desc()))]}
+    from .assistant_reconciliation import admission_status
+    return {'items':[{**serialize(r),'admission':admission_status(db,r,'legacy')} for r in db.scalars(select(InferenceRun).where(InferenceRun.task_id.in_(ids)).order_by(InferenceRun.created_at.desc()))]}
 @router.get('/ai/config')
 def ai_config(actor=Depends(current_actor)):
     require_domain(actor,'D37')

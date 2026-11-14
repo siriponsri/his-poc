@@ -28,6 +28,7 @@ from backend.app.assistant_worker import run_once, scan_watches_once
 from backend.app.assistant_admission import admission_busy
 from backend.app.assistant_effects import apply_run
 from backend.app.assistant_api import ApplyInput
+from backend.app.assistant_reconciliation import reconcile_unknown_inference,ACKNOWLEDGEMENT
 
 CONFIG={'enabled':True,'configured':True,'qualified':True,'profiles_qualified':list(PROFILES),'route':'offline_test_double','timeout_seconds':2}
 
@@ -76,6 +77,9 @@ def provider(profile,locale,view):
 
 def dispatch(prepare=provider,validate=lambda p,a,v:a,config=CONFIG):
     return run_once(prepare=prepare,validate=validate,config=lambda:config)
+
+def reconcile_fixture(db,kind,run_id):
+    return reconcile_unknown_inference(db,actor(db,'system_admin'),kind=kind,run_id=run_id,acknowledgement=ACKNOWLEDGEMENT,evidence_reference='offline-test-double-drained; no live remote work',workers_quiesced=True,provider_drained=True)
 
 def apply_body(db,a,run_id,edited=None,actions=None):
     dto=run_dto(db,a,db.get(AssistantRun,run_id));r=dto['revision']
@@ -241,8 +245,7 @@ def test_timeout_retained_deduplicated_and_holds_shared_slot():
     with SessionLocal.begin() as db:
         same,reused=enqueue(db,a,'visit_preparation',pid,eid,'en',uid());assert reused and same.id==rid
         assert admission_busy(db)
-    # Move other tests past the timeout hold without deleting its immutable record.
-    with SessionLocal.begin() as db:db.get(AssistantRun,rid).hold_until=utcnow()-timedelta(seconds=1)
+    with SessionLocal.begin() as db:reconcile_fixture(db,'assistant',rid)
 
 def test_timed_out_remote_call_retains_hold_even_when_source_becomes_stale():
     a,rid,pid,eid,did=fixture_run()
@@ -252,7 +255,7 @@ def test_timed_out_remote_call_retains_hold_even_when_source_becomes_stale():
     assert dispatch(timed)['state']=='stale_context'
     with SessionLocal.begin() as db:
         assert admission_busy(db)
-        db.get(AssistantRun,rid).hold_until=utcnow()-timedelta(seconds=1)
+        reconcile_fixture(db,'assistant',rid)
 
 @pytest.mark.parametrize('outcome',['failed','invalid_output','abstained'])
 def test_failures_retained_without_revision(outcome):
@@ -610,7 +613,7 @@ def test_unknown_transport_after_dispatch_retains_hold_and_original_reason(reaso
     assert dispatch(dropped)['dispatched']==0 and calls==['dispatched']
     with SessionLocal.begin() as db:
         assert db.get(AssistantRun,second_id).execution_state=='waiting_for_capacity'
-        db.get(AssistantRun,rid).hold_until=utcnow()-timedelta(seconds=1)
+        reconcile_fixture(db,'assistant',rid)
     assert dispatch()['run_id']==second_id
 
 @pytest.mark.parametrize('reason,stale',[('PROVIDER_CONNECTION_FAILED',False),('PROVIDER_CONNECTION_FAILED',True),('PROVIDER_UNEXPECTED_ERROR',False)])
@@ -651,4 +654,7 @@ def test_legacy_unknown_transport_reason_holds_shared_admission_after_failed_or_
         assert run_once(prepare=provider,validate=lambda p,a,v:a,config=lambda:CONFIG,now=logical_time)['dispatched']==0
         assert calls==['dispatched']
     finally:event.remove(Session,'before_flush',stamp)
+    with SessionLocal.begin() as db:
+        legacy=db.scalar(select(M.InferenceRun).where(M.InferenceRun.operation_key==key))
+        reconcile_fixture(db,'legacy',legacy.id)
     assert dispatch()['run_id']==queued_id

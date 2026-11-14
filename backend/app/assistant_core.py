@@ -37,6 +37,8 @@ def run_dto(db,actor,run,packet=None):
     result.update(patient_label=run.source_manifest['patient_label'],source_freshness='current' if fresh else 'stale',coverage=run.inference_view['coverage'],sources=sources,revision=None,effects=[effect_dto(e) for e in db.scalars(select(AssistantEffect).where(AssistantEffect.run_id==run.id))],created_at=run.created_at.isoformat(),completed_at=run.completed_at.isoformat() if run.completed_at else None)
     if not fresh:result['review_state']='stale'
     if revision:result['revision']={'id':revision.id,'version':revision.version,'content_hash':revision.content_hash,'origin':revision.origin,**revision.artifact}
+    from .assistant_reconciliation import admission_status
+    result['admission']=admission_status(db,run,'assistant')
     return result
 
 def effect_dto(effect):

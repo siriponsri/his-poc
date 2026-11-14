@@ -18,8 +18,12 @@ Executed on an isolated, loopback-only PostgreSQL 18.6 database named `his_test`
   timeout, legacy, authorization, terminal-visit and feature-flag tests PASS
   (37 unrelated assistant cases deselected). This includes three new clock-order
   regressions and nine disconnected-transport cases. The full baseline was not
-  repeated after these narrowly scoped changes. `lease-fence-execution.json` pins the final source hashes and
+  repeated after these narrowly scoped changes. `lease-fence-execution.json` pins that phase's source hashes and
   `lease-fence-pytest.xml` names the executed cases.
+- Final sticky quarantine extension: 38 targeted tests PASS, 46 deselected.
+  `quarantine-execution.json` pins the latest source hashes and command;
+  `quarantine-pytest.xml` records the executed cases. This is a targeted delta,
+  not a claim that the historical full baseline was repeated.
 - Existing document review and provider tests are included in that total.
 - Full canonical compact inference view is bounded to 2000 UTF-8 bytes. Notes
   are included whole or explicitly omitted; all eligible source evidence remains
@@ -60,12 +64,19 @@ after the shared admission lock returns, so its created-at lease also starts
 after the wait. Existing legacy records are unchanged.
 
 Failed connection/unexpected-provider errors are treated as potentially still
-running remotely. The assistant retains its original hold even when source or
-session revalidation changes the final state. Both paths persist the original
-`provider_reason` beside `provider_outcome`; legacy admission recognizes those
-failed transport attempts until their original lease expires. No automatic retry
-or second call is issued during the hold. These are conservative bounded holds,
-including connection errors that may have happened before remote generation.
+running remotely. Both paths now quarantine UNKNOWN regardless of elapsed TTL,
+including timeout, interrupted and expired-running attempts. Source/session
+staleness cannot release that quarantine. Original errors and `provider_reason`
+remain; late provider observations are stored separately. No automatic retry or
+second call occurs while any unreconciled UNKNOWN exists. This deliberately
+includes connection errors that may have happened before remote generation.
+
+Only an audited, attempt-bound positive terminal observation from the trusted
+adapter (success/abstained) or explicit private operator reconciliation clears
+UNKNOWN. Failed/invalid-output observations, TTL expiry, fake JSON markers and
+`ps[]` alone do not. See [OPERATOR-RECOVERY.md](OPERATOR-RECOVERY.md). No HTTP
+clear/reconcile mutation exists; the marker and admission state are read-only
+API metadata. Operator functions were exercised only against disposable fixtures.
 
 `backend/tests/export_assistant_qualification_packets.py` separately exported
 four authored synthetic packets from a disposable database for the root's

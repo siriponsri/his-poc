@@ -16,6 +16,7 @@ from .assistant_core import actor_fence, enqueue, QUEUED
 from .assistant_collectors import collect_packet
 from .assistant_profiles import PROFILES
 from .assistant_admission import admission_busy
+from .assistant_reconciliation import record_positive_terminal
 from .auth import actor_for
 from .common import utcnow, authorization_hash, digest, uid, audit
 
@@ -148,13 +149,16 @@ def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None
                 run=db.get(AssistantRun,run_id,with_for_update=True)
                 if run.execution_state!='running' or run.lease_id!=lease_id:
                     if run.lease_id==lease_id:
-                        run.provider={**(run.provider or {}),'late_provider_outcome':result.get('outcome'),'provider_outcome':result.get('outcome'),'provider_reason':result.get('reason'),'provenance':result.get('provenance',{}),'elapsed_ms':elapsed}
+                        old=run.provider or {}
+                        run.provider={**old,'late_provider_outcome':result.get('outcome'),'late_provider_reason':result.get('reason'),'provider_outcome':old.get('provider_outcome') or result.get('outcome'),'provider_reason':old.get('provider_reason') or result.get('reason'),'provenance':result.get('provenance',{}),'elapsed_ms':elapsed}
                         run.usage=result.get('usage')
+                        record_positive_terminal(db,run,'assistant',actor,result)
                     return {'dispatched':1,'run_id':run_id,'state':run.execution_state}
                 packet=collect_packet(db,actor,profile,run.patient_id,run.encounter_id,locale)
                 outcome=result.get('outcome','invalid_output')
                 if outcome not in ('success','failed','timeout','invalid_output','abstained'):outcome='invalid_output'
                 run.provider={**(run.provider or {}),'provenance':result.get('provenance',{}),'elapsed_ms':result.get('elapsed_ms',elapsed),'provider_outcome':outcome,'provider_reason':result.get('reason')}
+                record_positive_terminal(db,run,'assistant',actor,result)
                 run.usage=result.get('usage');run.measured_cost=None
                 run.error=result.get('reason');run.completed_at=utcnow()
                 if authorization_hash(actor)!=run.authorization_hash or packet['source_digest']!=run.source_digest:
@@ -177,6 +181,7 @@ def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None
                 if run and run.execution_state=='running':
                     run.execution_state='stale_context';run.review_state='unavailable';run.error='AUTHORIZATION_OR_SCOPE_CHANGED';run.completed_at=utcnow()
                     run.provider={**(run.provider or {}),'provenance':result.get('provenance',{}),'provider_outcome':result.get('outcome'),'provider_reason':result.get('reason'),'elapsed_ms':elapsed};run.usage=result.get('usage')
+                    record_positive_terminal(db,run,'assistant',_receipt_actor(run),result)
                     if not remote_execution_unknown(result):run.hold_until=None
                     audit(db,_receipt_actor(run),PROFILES[profile]['domains'][0],run.id,'assistant_revoked',{})
         with session_factory() as db:return {'dispatched':1,'run_id':run_id,'state':db.get(AssistantRun,run_id).execution_state}
