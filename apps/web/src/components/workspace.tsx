@@ -6,6 +6,7 @@ import {DataForm,type FormValues} from './forms'
 import {GrowthTimeline} from './growth'
 import {Icon} from './icons'
 import {LabClearReviewPanel} from './labclear-review-panel'
+import {DRReviewPanel} from './dr-review-panel'
 
 const statusNames:Record<string,string>={draft:'ร่าง',pending:'รอตรวจทาน',verified:'ตรวจยืนยันแล้ว',active:'ใช้งาน',inactive:'ปิดใช้',open:'เปิดงาน',in_progress:'กำลังดำเนินงาน',completed:'เสร็จสิ้น',cancelled:'ยกเลิก',requested:'รอดำเนินการ',booked:'จองแล้ว',checked_in:'เช็กอินแล้ว',called:'เรียกคิวแล้ว',waiting:'รอรับบริการ',in_consult:'กำลังตรวจ',reviewed:'ทบทวนแล้ว',closed:'ปิดงาน',approved:'อนุมัติ',rejected:'ปฏิเสธ',committed:'บันทึกผลแล้ว',posted:'ลงรายการแล้ว',released:'เผยแพร่แล้ว',attested:'รับรองแล้ว',returned:'ส่งคืน',in_review:'รอตรวจทาน',amended:'ฉบับแก้ไข',failed:'ไม่สำเร็จ',timeout:'หมดเวลารอ',abstained:'งดให้ข้อเสนอ',success:'สำเร็จ',requested_restore:'ขอกู้คืน',restore_verified:'ตรวจผลกู้คืนแล้ว'}
 // Tone carries meaning together with the label; unknown states stay neutral rather than guessing.
@@ -73,6 +74,7 @@ const rowTitle=(row:Row)=>String(row.display_name||row.title||row.name||row.labe
 export function ResourceWorkspace({resource,client,context,onSelectContext,onOpenPatientRecord,readOnly=false}:{resource:Resource;client:Client;context:{patient_id:string;encounter_id:string};onSelectContext?:(row:Row)=>void;onOpenPatientRecord?:(patientId:string)=>void;readOnly?:boolean}){
  const {lang,t}=useLang()
  const [labClearSource,setLabClearSource]=useState<Row|null>(null)
+ const [drSource,setDrSource]=useState<Row|null>(null)
  const detailGeneration=useRef(0);const detailRef=useRef<HTMLElement>(null);const [versions,setVersions]=useState<Row[]>([]);
  const [items,setItems]=useState<Row[]>([]);const [selected,setSelected]=useState<Row|null>(null);const [history,setHistory]=useState<Row[]>([]);const [error,setError]=useState('');const [notice,setNotice]=useState('');const [noticeKind,setNoticeKind]=useState<'success'|'warning'>('success');const [busy,setBusy]=useState(false);const [create,setCreate]=useState(false);const [query,setQuery]=useState('');const [action,setAction]=useState<ActionDef|null>(null);const [pending,setPending]=useState<PendingOperation|null>(null);const [loaded,setLoaded]=useState(false)
  useEffect(()=>{window.dispatchEvent(new CustomEvent('his-pending',{detail:!!pending}));const warn=(event:BeforeUnloadEvent)=>{if(pending){event.preventDefault();event.returnValue=''}};window.addEventListener('beforeunload',warn);return()=>{window.removeEventListener('beforeunload',warn);window.dispatchEvent(new CustomEvent('his-pending',{detail:false}))}},[pending])
@@ -90,10 +92,12 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,onOpe
  async function applyAction(values:FormValues){if(!selected||!action)return;await run({path:action.path? action.path.replace('{id}',selected.id):`${resource.path}/${selected.id}/actions`,body:{...(!action.omitVersion?{version:selected.version}:{}),...(!action.path?{action:action.name}:{}),...(action.target?{target:action.target}:{}),...values},key:crypto.randomUUID(),method:action.method})}
  const available=selected&&!readOnly?resource.actions.filter(a=>!a.from||a.from.includes(String(selected.status))):[]
  const canLabClear=selected&&!readOnly&&resource.path==='clinical/D10/records'&&['released','corrected'].includes(String(selected.status))&&selected.patient_id===context.patient_id&&selected.encounter_id===context.encounter_id
+ const canDR=selected&&resource.path==='clinical/D11/records'&&!!selected.file_sha256&&['released','corrected'].includes(String(selected.status))&&selected.patient_id===context.patient_id&&selected.encounter_id===context.encounter_id
  const filtered=items.filter(row=>Object.values(row).some(v=>typeof v!=='object'&&String(v).toLocaleLowerCase().includes(query.toLocaleLowerCase())))
  const loadingLabel=t('กำลังโหลดข้อมูล…','Loading records…')
  return <div className="workspace-stack">
   {labClearSource&&<LabClearReviewPanel client={client} source={labClearSource} context={context} onClose={()=>setLabClearSource(null)}/>}
+  {drSource&&<DRReviewPanel client={client} source={drSource} context={context} readOnly={readOnly} onClose={()=>setDrSource(null)}/>}
   <section className="section-toolbar">
    <div><h2>{resource.label}</h2>{resource.description&&<p>{resource.description}</p>}</div>
    <div className="button-row">
@@ -122,15 +126,16 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,onOpe
      <div><h3>{rowTitle(selected)}</h3><p className="record-ref"><span title={selected.id}>{t('รหัส','ID')} {selected.id}</span>{selected.version!==undefined&&<span>{t('รุ่น','v')} {selected.version}</span>}</p></div>
      <Status value={selected.status}/>
     </div>
-    {(onSelectContext||onOpenPatientRecord||available.length>0||canLabClear)&&<div className="actions-bar">
+    {(onSelectContext||onOpenPatientRecord||available.length>0||canLabClear||canDR)&&<div className="actions-bar">
      {canLabClear&&<button className="secondary" disabled={busy||!!pending} onClick={()=>setLabClearSource(selected)}>Review with LabClear</button>}
+     {canDR&&<button className="secondary" disabled={busy||!!pending} onClick={()=>setDrSource(selected)}>DR screening</button>}
      {onOpenPatientRecord&&<button className="secondary" disabled={busy||!!pending} onClick={()=>onOpenPatientRecord(selected.id)}>Open patient record</button>}
      {onSelectContext&&<button className="primary" onClick={()=>onSelectContext(selected)}>{t('ใช้รายการนี้เป็นบริบท','Use as working context')}</button>}
      {available.map(a=><button key={a.name} className={'secondary'+(action?.name===a.name?' pressed':'')} aria-pressed={action?.name===a.name} disabled={busy||!!pending} onClick={()=>setAction(a)}>{a.label}</button>)}
     </div>}
     {action&&<div className="action-form"><div className="section-heading"><h3>{action.label}</h3><button className="text-button" onClick={()=>setAction(null)}>{t('ยกเลิก','Cancel')}</button></div><p>{t('รายการ','Record')} {selected.id} · {t('รุ่น','version')} {selected.version}</p><DataForm key={action.name+selected.id+selected.version} fields={action.fields||[]} initial={{...selected,content_hash:selected.content_hash||(selected.current_version as Row|undefined)?.content_hash}} submitLabel={t('ยืนยัน','Confirm ')+action.label} client={client} busy={busy||!!pending} onSubmit={applyAction}/></div>}
     {resource.path==='documents'?<section className="document-reader" aria-label="Source document"><div className="document-reader-heading"><h4>Source document</h4>{versions.find(v=>v.id===selected.current_version_id)&&<span>Revision {String(versions.find(v=>v.id===selected.current_version_id)?.version)}</span>}</div>{versions.filter(v=>v.id===selected.current_version_id).map(v=><p className="document-author" key={v.id}>{String(v.created_by)} · {formatMoment(v.created_at,lang)}</p>)}{typeof selected.content==='string'?<p className="document-content">{selected.content}</p>:<p className="muted">{t('บัญชีนี้อ่านได้เฉพาะข้อมูลเอกสาร ไม่มีสิทธิ์อ่านเนื้อหา','This account can view document metadata; source content is restricted.')}</p>}<details className="technical document-metadata"><summary>Record details</summary><DetailValues record={Object.fromEntries(Object.entries(selected).filter(([key])=>key!=='content'&&key!=='title'&&key!=='status')) as Row}/></details></section>:<DetailValues record={selected}/>}
-    {resource.path==='clinical/D11/records'&&!!selected.file_sha256&&<a className="download-link" href={'/api/v2/clinical/D11/records/'+selected.id+'/file'}>ดาวน์โหลดไฟล์สังเคราะห์ที่ตรวจ checksum แล้ว</a>}
+    {resource.path==='clinical/D11/records'&&!!selected.file_sha256&&<a className="download-link" href={'/api/v2/clinical/D11/records/'+selected.id+'/file'}>ดาวน์โหลดไฟล์ต้นฉบับ</a>}
     {resource.path==='clinical/D20/records'&&['exported','response_recorded','closed'].includes(String(selected.status))&&<a className="download-link" href={'/api/v2/clinical/D20/records/'+selected.id+'/export'} download>ดาวน์โหลดเอกสารส่งต่อ</a>}
     {resource.path==='erp/D36/records'&&selected.status==='exported'&&<a className="download-link" href={'/api/v2/erp/datasets/'+selected.id+'/export'} download>ดาวน์โหลดชุดข้อมูลที่อนุมัติ</a>}
     <div className="document-versions">{versions.length>0&&<details><summary>{t('ประวัติเนื้อหาเอกสาร','Document revisions')} ({versions.length} {t('ฉบับ','revisions')})</summary>{versions.map(v=><article key={v.id}><h4>{t('ฉบับ','Revision')} {v.version} · {String(v.created_by)}</h4><p className="document-content">{String(v.content)}</p><small>{formatMoment(v.created_at,lang)} · {String(v.reason||t('ต้นฉบับ','Original'))}</small><p className="hash" title="content hash">{String(v.content_hash)}</p></article>)}</details>}</div>

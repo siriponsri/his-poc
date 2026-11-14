@@ -929,20 +929,20 @@
           },
           {
             "name": "acquired",
-            "label": "รับไฟล์สังเคราะห์",
+            "label": "รับไฟล์ภาพหรือข้อความ",
             "from": [
               "scheduled"
             ],
             "fields": [
               {
                 "name": "file_base64",
-                "label": "ไฟล์ภาพหรือเอกสารสังเคราะห์ (PNG/TXT ไม่เกิน 1 MB)",
+                "label": "ไฟล์ภาพหรือข้อความ (PNG/JPEG/TXT ไม่เกิน 1 MB)",
                 "type": "file",
                 "required": true
               },
               {
                 "name": "file_mime",
-                "label": "ชนิดไฟล์ image/png หรือ text/plain",
+                "label": "ชนิดไฟล์ image/png, image/jpeg หรือ text/plain",
                 "type": "hidden",
                 "required": true
               }

@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "started_at": "2026-11-14T10:27:11.056602+00:00",
+  "completed_at": "2026-11-14T10:27:44.712343+00:00",
+  "command": [
+    "rtk",
+    "proxy",
+    "C:\\Users\\User\\Desktop\\myProject\\carebalance-dr-screening\\local-state\\carebalance-venv\\Scripts\\python.exe",
+    "-B",
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\scripts\\test_with_postgres.py",
+    "--pg-bin",
+    "C:\\Users\\User\\.cache\\his-poc-tools\\pg18\\pgsql\\bin",
+    "--",
+    "rtk",
+    "proxy",
+    "C:\\Users\\User\\Desktop\\myProject\\carebalance-dr-screening\\local-state\\carebalance-venv\\Scripts\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/carebalance/test_bound_receiver.py::test_confirm_image_never_accepts_quality_and_inspection_remains_immutable",
+    "tests/carebalance/test_bound_receiver.py::test_same_value_quality_review_invalidates_signed_freshness_until_new_milestones",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--junitxml=C:\\Users\\User\\AppData\\Local\\Temp\\carebalance-quality-independent-c3qmkj7f\\qualification.xml"
+  ],
+  "exit_code": 0,
+  "source_drift": [],
+  "legacy_files": 191,
+  "legacy_drift": [],
+  "limits": [
+    "isolated PostgreSQL and authenticated ASGI, no actual browser acceptance",
+    "authored synthetic images only, no model calls",
+    "original repository and runtime not accessed"
+  ]
+}

@@ -1,0 +1,6 @@
+[
+  {
+    "directory": "/home/chaw/his-poc/var/rollback-0004-2c88b48dca31",
+    "build_log_tail": "#0 building with \"default\" instance using docker driver\n\n#1 [internal] load build definition from Dockerfile\n#1 transferring dockerfile: 185B done\n#1 DONE 0.0s\n\n#2 [internal] load metadata for docker.io/library/sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6\n#2 ERROR: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed\n------\n > [internal] load metadata for docker.io/library/sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6:\n------\nDockerfile:1\n--------------------\n   1 | >>> FROM sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6\n   2 |     COPY --chown=10001:10001 main.py /app/backend/app/main.py\n   3 |     USER 10001\n--------------------\nERROR: failed to build: failed to solve: sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6: failed to resolve source metadata for docker.io/library/sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed\n"
+  }
+]

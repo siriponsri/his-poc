@@ -1,0 +1,69 @@
+{
+  "observed_at": "2026-11-14T09:51:05.694233+00:00",
+  "method": "EXECUTED_HTTP_POSTGRESQL_SYNTHETIC",
+  "browser": "NOT_RUN",
+  "records": [
+    {
+      "domain": "D04",
+      "emergency_id": "1c7e953b-e40c-4b11-9406-fe50f08962e6",
+      "admission_id": "0a3d958d-b515-464d-a43c-1f81b53bf125",
+      "assertions": [
+        "lost-response same-key replay equal",
+        "one Admission",
+        "one admission history event"
+      ]
+    },
+    {
+      "domain": "D05",
+      "admission_id": "6dd182fd-4442-4c3a-8ee5-2ccd9249fc2e",
+      "bed_assignment_ids": [
+        "ece5076c-5721-41b2-b154-20352e2fd861",
+        "1e7f4b6f-fb7c-48ea-922a-ce0b2862b4da"
+      ],
+      "other_admission_id": "2e768663-893c-4b0d-a617-9b5a57fd0437",
+      "assertions": [
+        "original assignment retained with end time",
+        "one active new bed",
+        "old bed reusable",
+        "detail history matches persisted IDs"
+      ]
+    },
+    {
+      "domain": "D06",
+      "handover_id": "e3437225-dfce-4cb5-a34c-72b646d0aadd",
+      "task_id": "e1f02ee2-ee83-4ccf-9cca-f3595d18070e",
+      "sender_id": "user-nurse",
+      "recipient_id": "7188c924-82f2-46c0-9444-ac73ea969f9c",
+      "denied_user_id": "7e9ae848-8ce4-40bd-93e6-87b01a0fb704",
+      "assertions": [
+        "same-facility wrong recipient denied without partial history/version",
+        "distinct designated recipient acknowledged",
+        "same pending task/version retained"
+      ]
+    },
+    {
+      "domain": "D19",
+      "diet_order_id": "3c921eac-9f23-4e12-b4bf-68354fb55364",
+      "assertions": [
+        "cancelled preparation rejected",
+        "version/history/record count unchanged"
+      ]
+    },
+    {
+      "domain": "D11",
+      "study_id": "eb13fac2-97b8-467a-8a88-042e8851d3c3",
+      "file_sha256": "7933246b52235b380a63971e70c10de1efa25a698af5b6c28a3a221e8d063700",
+      "limited_clinician_id": "e41c9189-e0b1-405f-a394-7c250d8afb12",
+      "download_audit_ids": [
+        "63cc1a96-4273-4792-94ed-ab3a87c49407",
+        "489b69f1-5908-41f9-b267-f1ad13da2851"
+      ],
+      "assertions": [
+        "authorized imaging and clinician bytes/checksum verified",
+        "file audit stores hash only",
+        "actual file GET denied across patient care scope",
+        "auditor and registration raw-file denied without bytes or success audit"
+      ]
+    }
+  ]
+}

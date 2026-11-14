@@ -131,7 +131,7 @@ def confirm_body(result):
 
 def test_migration_ready_import_review_read_and_his_unchanged(receiver):
     client, body = logged_in(), source_fixture()
-    assert client.get("/ready").json()["migration"] == "0003_carebalance_integrations"
+    assert client.get("/ready").json()["migration"] == "0004_dr_screening_bridge"
     result, key = imported(client, body)
     id = result["binding"]["id"]
     assert len(result["binding"]["external_report_id"]) == 74

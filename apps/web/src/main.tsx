@@ -5,4 +5,5 @@ import App from './App'
 import './styles.css'
 import './selected-theme.css'
 import './labclear-review.css'
+import './dr-review.css'
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>)

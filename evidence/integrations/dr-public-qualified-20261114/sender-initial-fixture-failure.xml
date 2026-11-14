@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="4" skipped="0" tests="56" time="0.409" timestamp="2026-11-14T16:38:44.662527+07:00" hostname="DESKTOP-C8EHASQ"><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[http://localhost:19001]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[http://10.0.0.1:19001]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[http://127.0.0.1]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[http://user:password@127.0.0.1:19001]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[http://127.0.0.1:19001/]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[http://127.0.0.1:19001?x=1]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_destination_rejects_unpinned_authority[https://127.0.0.1:19001]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_signed_transport_exact_raw_bytes_and_no_cookie_or_proxy" time="0.002" /><testcase classname="backend.tests.test_dr_client_unit" name="test_unsigned_unavailable_and_signed_current_are_distinct" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;0]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;1]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;2]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;3]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;4]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;5]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;6]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_wrong_scope_reader_manifest_and_unproved_current_denied[&lt;lambda&gt;7]" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_even_selfconsistent_report_hash_cannot_forge_clinical_witness[&lt;lambda&gt;0]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_even_selfconsistent_report_hash_cannot_forge_clinical_witness[&lt;lambda&gt;1]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_even_selfconsistent_report_hash_cannot_forge_clinical_witness[&lt;lambda&gt;2]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_even_selfconsistent_report_hash_cannot_forge_clinical_witness[&lt;lambda&gt;3]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_even_selfconsistent_report_hash_cannot_forge_clinical_witness[&lt;lambda&gt;4]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_changed_review_preserves_historical_signed_snapshot" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_expired_context_rejected_before_network" time="0.000" /><testcase classname="backend.tests.test_dr_client_unit" name="test_transport_rejection_stays_definitive_and_duplicate_json_unknown" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;0]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;1]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;2]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;3]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;4]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;5]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;6]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;7]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;8]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;9]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;10]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;11]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;12]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_selfconsistent_current_requires_positive_milestones_form_and_signer[&lt;lambda&gt;13]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/images/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-image/png-\x89PNG\r\n\x1a\nwrong-original-bytes]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/images/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-application/json-{}]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-text/html-&lt;html&gt;wrong route&lt;/html&gt;]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-application/json-{&quot;image_id&quot;:&quot;dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd&quot;,&quot;revision&quot;:0}]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-application/json-data4]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-application/json-data5]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases-application/json-[{&quot;image_id&quot;:&quot;dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd&quot;,&quot;revision&quot;:0}]]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-application/json-{&quot;image_id&quot;:&quot;bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb&quot;}]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb-application/json-{&quot;image_id&quot;:&quot;bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb&quot;,&quot;revision&quot;:true}]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_matching_envelope_cannot_change_requested_resource_identity[/v1/cases/bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb/screening-report-application/json-{&quot;revision&quot;:1,&quot;screening_report&quot;:{&quot;form&quot;:{&quot;hn&quot;:&quot;foreign-patient&quot;}}}]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_unconfirmed_case_is_valid_without_inventing_patient_identity" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_case_and_admission_cannot_relabel_registered_source[PUBLIC-SYNTHETIC-None]" time="0.001"><failure message="backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch">origin = 'PUBLIC', returned = 'SYNTHETIC', admission = None
+
+    @pytest.mark.parametrize('origin,returned,admission',[
+        ('PUBLIC','SYNTHETIC',None),('PUBLIC','HOSPITAL',None),('SYNTHETIC','PUBLIC',None),
+        ('PUBLIC','PUBLIC',{'source_origin':'HOSPITAL'}),('SYNTHETIC','SYNTHETIC',{'source_origin':'PUBLIC'}),
+        ('PUBLIC','PUBLIC',{'source_origin':'PUBLIC','retinal_modality':'UWF'}),
+    ])
+    def test_case_and_admission_cannot_relabel_registered_source(origin,returned,admission):
+        manifest,scope,destination,read=fixture();manifest[0]['source_origin']=origin
+        case={'image_id':'b'*64,'revision':0,'source_origin':returned,'admission':admission}
+        operation=Dispatch(protocol=read.protocol,request_id=read.request_id,context=read.context,method='GET',path='/v1/cases/'+'b'*64,query={},body=None)
+        data=canonical(case)
+        envelope={'protocol':operation.protocol,'request_id':operation.request_id,'binding_id':operation.context.binding_id,
+            'workspace_id':destination.workspace_id,'outcome':'succeeded','status_code':200,'content_type':'application/json',
+            'body_base64':base64.b64encode(data).decode(),'response_sha256':hashlib.sha256(data).hexdigest()}
+&gt;       with pytest.raises(DRUnknown):DRClient(destination,httpx.MockTransport(lambda request:httpx.Response(200,json=envelope)),source_manifest=manifest).exchange(operation)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_dr_client_unit.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;backend.app.dr_client.DRClient object at 0x0000028BD2FDE870&gt;
+destination = Destination(id='dest1', origin='http://127.0.0.1:19001', scope=WorkspaceScope(organization_id='org1', facility_id='fac...a356b093114133285d3554a6c465563d6e0507faa69e76709b65d1c76da52809'), workspace_id='cb-c867fca54d6ab8a1e4ffc72312a38434')
+transport = &lt;httpx.MockTransport object at 0x0000028BD2FDE8A0&gt;
+source_manifest = [{'source_id': 'source1', 'source_version': 1, 'source_sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'image_sha256': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', ...}]
+
+    def __init__(self, destination: Destination, transport=None,source_manifest=None):
+        self.destination = destination
+        self.transport = transport
+        self.source_manifest=tuple(source_manifest) if source_manifest is not None else None
+        if self.source_manifest is not None:
+            parsed=[SourceManifest.model_validate_json(canonical(m)).model_dump(mode='json') for m in self.source_manifest]
+            if not 1&lt;=len(parsed)&lt;=8 or digest(parsed)!=destination.scope.source_set_sha256:
+&gt;               raise DRUnavailable('Frozen source manifest mismatch')
+E               backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch
+
+backend\app\dr_client.py:116: DRUnavailable</failure></testcase><testcase classname="backend.tests.test_dr_client_unit" name="test_case_and_admission_cannot_relabel_registered_source[PUBLIC-HOSPITAL-None]" time="0.001"><failure message="backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch">origin = 'PUBLIC', returned = 'HOSPITAL', admission = None
+
+    @pytest.mark.parametrize('origin,returned,admission',[
+        ('PUBLIC','SYNTHETIC',None),('PUBLIC','HOSPITAL',None),('SYNTHETIC','PUBLIC',None),
+        ('PUBLIC','PUBLIC',{'source_origin':'HOSPITAL'}),('SYNTHETIC','SYNTHETIC',{'source_origin':'PUBLIC'}),
+        ('PUBLIC','PUBLIC',{'source_origin':'PUBLIC','retinal_modality':'UWF'}),
+    ])
+    def test_case_and_admission_cannot_relabel_registered_source(origin,returned,admission):
+        manifest,scope,destination,read=fixture();manifest[0]['source_origin']=origin
+        case={'image_id':'b'*64,'revision':0,'source_origin':returned,'admission':admission}
+        operation=Dispatch(protocol=read.protocol,request_id=read.request_id,context=read.context,method='GET',path='/v1/cases/'+'b'*64,query={},body=None)
+        data=canonical(case)
+        envelope={'protocol':operation.protocol,'request_id':operation.request_id,'binding_id':operation.context.binding_id,
+            'workspace_id':destination.workspace_id,'outcome':'succeeded','status_code':200,'content_type':'application/json',
+            'body_base64':base64.b64encode(data).decode(),'response_sha256':hashlib.sha256(data).hexdigest()}
+&gt;       with pytest.raises(DRUnknown):DRClient(destination,httpx.MockTransport(lambda request:httpx.Response(200,json=envelope)),source_manifest=manifest).exchange(operation)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_dr_client_unit.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;backend.app.dr_client.DRClient object at 0x0000028BD29CF860&gt;
+destination = Destination(id='dest1', origin='http://127.0.0.1:19001', scope=WorkspaceScope(organization_id='org1', facility_id='fac...a356b093114133285d3554a6c465563d6e0507faa69e76709b65d1c76da52809'), workspace_id='cb-c867fca54d6ab8a1e4ffc72312a38434')
+transport = &lt;httpx.MockTransport object at 0x0000028BD29CFB60&gt;
+source_manifest = [{'source_id': 'source1', 'source_version': 1, 'source_sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'image_sha256': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', ...}]
+
+    def __init__(self, destination: Destination, transport=None,source_manifest=None):
+        self.destination = destination
+        self.transport = transport
+        self.source_manifest=tuple(source_manifest) if source_manifest is not None else None
+        if self.source_manifest is not None:
+            parsed=[SourceManifest.model_validate_json(canonical(m)).model_dump(mode='json') for m in self.source_manifest]
+            if not 1&lt;=len(parsed)&lt;=8 or digest(parsed)!=destination.scope.source_set_sha256:
+&gt;               raise DRUnavailable('Frozen source manifest mismatch')
+E               backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch
+
+backend\app\dr_client.py:116: DRUnavailable</failure></testcase><testcase classname="backend.tests.test_dr_client_unit" name="test_case_and_admission_cannot_relabel_registered_source[SYNTHETIC-PUBLIC-None]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_case_and_admission_cannot_relabel_registered_source[PUBLIC-PUBLIC-admission3]" time="0.001"><failure message="backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch">origin = 'PUBLIC', returned = 'PUBLIC'
+admission = {'source_origin': 'HOSPITAL'}
+
+    @pytest.mark.parametrize('origin,returned,admission',[
+        ('PUBLIC','SYNTHETIC',None),('PUBLIC','HOSPITAL',None),('SYNTHETIC','PUBLIC',None),
+        ('PUBLIC','PUBLIC',{'source_origin':'HOSPITAL'}),('SYNTHETIC','SYNTHETIC',{'source_origin':'PUBLIC'}),
+        ('PUBLIC','PUBLIC',{'source_origin':'PUBLIC','retinal_modality':'UWF'}),
+    ])
+    def test_case_and_admission_cannot_relabel_registered_source(origin,returned,admission):
+        manifest,scope,destination,read=fixture();manifest[0]['source_origin']=origin
+        case={'image_id':'b'*64,'revision':0,'source_origin':returned,'admission':admission}
+        operation=Dispatch(protocol=read.protocol,request_id=read.request_id,context=read.context,method='GET',path='/v1/cases/'+'b'*64,query={},body=None)
+        data=canonical(case)
+        envelope={'protocol':operation.protocol,'request_id':operation.request_id,'binding_id':operation.context.binding_id,
+            'workspace_id':destination.workspace_id,'outcome':'succeeded','status_code':200,'content_type':'application/json',
+            'body_base64':base64.b64encode(data).decode(),'response_sha256':hashlib.sha256(data).hexdigest()}
+&gt;       with pytest.raises(DRUnknown):DRClient(destination,httpx.MockTransport(lambda request:httpx.Response(200,json=envelope)),source_manifest=manifest).exchange(operation)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_dr_client_unit.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;backend.app.dr_client.DRClient object at 0x0000028BD2FDED20&gt;
+destination = Destination(id='dest1', origin='http://127.0.0.1:19001', scope=WorkspaceScope(organization_id='org1', facility_id='fac...a356b093114133285d3554a6c465563d6e0507faa69e76709b65d1c76da52809'), workspace_id='cb-c867fca54d6ab8a1e4ffc72312a38434')
+transport = &lt;httpx.MockTransport object at 0x0000028BD2FDE0F0&gt;
+source_manifest = [{'source_id': 'source1', 'source_version': 1, 'source_sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'image_sha256': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', ...}]
+
+    def __init__(self, destination: Destination, transport=None,source_manifest=None):
+        self.destination = destination
+        self.transport = transport
+        self.source_manifest=tuple(source_manifest) if source_manifest is not None else None
+        if self.source_manifest is not None:
+            parsed=[SourceManifest.model_validate_json(canonical(m)).model_dump(mode='json') for m in self.source_manifest]
+            if not 1&lt;=len(parsed)&lt;=8 or digest(parsed)!=destination.scope.source_set_sha256:
+&gt;               raise DRUnavailable('Frozen source manifest mismatch')
+E               backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch
+
+backend\app\dr_client.py:116: DRUnavailable</failure></testcase><testcase classname="backend.tests.test_dr_client_unit" name="test_case_and_admission_cannot_relabel_registered_source[SYNTHETIC-SYNTHETIC-admission4]" time="0.001" /><testcase classname="backend.tests.test_dr_client_unit" name="test_case_and_admission_cannot_relabel_registered_source[PUBLIC-PUBLIC-admission5]" time="0.001"><failure message="backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch">origin = 'PUBLIC', returned = 'PUBLIC'
+admission = {'source_origin': 'PUBLIC', 'retinal_modality': 'UWF'}
+
+    @pytest.mark.parametrize('origin,returned,admission',[
+        ('PUBLIC','SYNTHETIC',None),('PUBLIC','HOSPITAL',None),('SYNTHETIC','PUBLIC',None),
+        ('PUBLIC','PUBLIC',{'source_origin':'HOSPITAL'}),('SYNTHETIC','SYNTHETIC',{'source_origin':'PUBLIC'}),
+        ('PUBLIC','PUBLIC',{'source_origin':'PUBLIC','retinal_modality':'UWF'}),
+    ])
+    def test_case_and_admission_cannot_relabel_registered_source(origin,returned,admission):
+        manifest,scope,destination,read=fixture();manifest[0]['source_origin']=origin
+        case={'image_id':'b'*64,'revision':0,'source_origin':returned,'admission':admission}
+        operation=Dispatch(protocol=read.protocol,request_id=read.request_id,context=read.context,method='GET',path='/v1/cases/'+'b'*64,query={},body=None)
+        data=canonical(case)
+        envelope={'protocol':operation.protocol,'request_id':operation.request_id,'binding_id':operation.context.binding_id,
+            'workspace_id':destination.workspace_id,'outcome':'succeeded','status_code':200,'content_type':'application/json',
+            'body_base64':base64.b64encode(data).decode(),'response_sha256':hashlib.sha256(data).hexdigest()}
+&gt;       with pytest.raises(DRUnknown):DRClient(destination,httpx.MockTransport(lambda request:httpx.Response(200,json=envelope)),source_manifest=manifest).exchange(operation)
+                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+backend\tests\test_dr_client_unit.py:207: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;backend.app.dr_client.DRClient object at 0x0000028BD2FDE2D0&gt;
+destination = Destination(id='dest1', origin='http://127.0.0.1:19001', scope=WorkspaceScope(organization_id='org1', facility_id='fac...a356b093114133285d3554a6c465563d6e0507faa69e76709b65d1c76da52809'), workspace_id='cb-c867fca54d6ab8a1e4ffc72312a38434')
+transport = &lt;httpx.MockTransport object at 0x0000028BD2FDD760&gt;
+source_manifest = [{'source_id': 'source1', 'source_version': 1, 'source_sha256': 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa', 'image_sha256': 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb', ...}]
+
+    def __init__(self, destination: Destination, transport=None,source_manifest=None):
+        self.destination = destination
+        self.transport = transport
+        self.source_manifest=tuple(source_manifest) if source_manifest is not None else None
+        if self.source_manifest is not None:
+            parsed=[SourceManifest.model_validate_json(canonical(m)).model_dump(mode='json') for m in self.source_manifest]
+            if not 1&lt;=len(parsed)&lt;=8 or digest(parsed)!=destination.scope.source_set_sha256:
+&gt;               raise DRUnavailable('Frozen source manifest mismatch')
+E               backend.app.dr_client.DRUnavailable: Frozen source manifest mismatch
+
+backend\app\dr_client.py:116: DRUnavailable</failure></testcase></testsuite></testsuites>

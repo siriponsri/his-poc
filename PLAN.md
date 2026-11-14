@@ -2,6 +2,13 @@
 
 ## Active long goal and UI checkpoint — 14 November 2026
 
+Current DR gate: source/software images, private Linux workflow, same-DB rollback
+and manual-quality upgrade pass. Private browser draft persistence, disabled
+grade/signing, mobile390 and exact HIS return were observed by the coordinator.
+Finish the scoped frontend UX qualification, main integration/rebuild, fresh
+production backup/isolated restore, activation and protected public DR readback.
+Preserve existing LabClear and document-AI evidence. [Checkpoint](docs/integrations/DR_RELEASE_20261114.md).
+
 1. Selected Clinical1 Home/Login + Patient2 workspace + logo3, then wide read-only
    Patient panel and explicit route/auth scroll/focus repair: implemented/deployed.
 2. Final frontend25 unit/91 component/3 audit cases/typecheck/build: PASS. Component
@@ -17,9 +24,11 @@
    PASS at the bounded [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md). Final25/117/3
    frontend checks/build pass. Final5328 public activation and authenticated
    source6 to reviewed7, refresh/read-only reopen/mobile journey now pass.
-7. Independent DR theme main qualified; fixed source-set/manual receiver ACTIVE.
-   Continue HIS BFF, bound frontend, real PostgreSQL and public synthetic journey.
-   No original DR mutation, live retinal inference or real-source transfer.
+7. Fixed source-set/manual receiver: HIS77, receiver37 plus2 independent quality
+   checks, prior full DR frontend514, current HIS25/135/3 and private Linux/browser
+   scope pass. Final small frontend UX refinement remains under qualification;
+   protected public DR journey and controlled main release remain ACTIVE.
+   No original DR mutation, live retinal inference or owner MMRDR transfer.
 
 See [release phases and limits](docs/RELEASE_PATIENT_PANEL.md) and
 [user journey](docs/USER_JOURNEY_TH.md). These checks do not rerun the original

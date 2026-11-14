@@ -1,0 +1,26 @@
+{
+  "at": "2026-11-14T09:46:22.196434+00:00",
+  "status": "HELD_FOR_LATERALITY",
+  "owner_confirmed_dataset": "MMRDR",
+  "membership_evidence_basis": "owner_attestation",
+  "owner_confirmed_renamed_files": true,
+  "owner_response": "No original filename mapping or FP.csv; keep images pending laterality.",
+  "files": {
+    "IDRiD_01.jpg": "05bf31a076f4ff03875eb5050e6116db9d7b2dd8a8bdb356c60a3fc94343a304",
+    "IDRiD_02.jpg": "2a5d305ab8414ec0c23316ff3d2eb8d82c02292d1ea1b7a8ebc4bd8080d47483",
+    "IDRiD_03.jpg": "092d05e8bb47568b511d896dd8ec79dccf9f5dd53bcb8d3ce5ec1a6c38d3e1b3",
+    "IDRiD_04.jpg": "53b09237d1451c5d1723912fe3dc4f3e0dd7a641075cde8d239c161544afa2e4",
+    "IDRiD_05.jpg": "2eab1ecded5db3def808c5ffa3af427e999b21c146b6e001c3bf76d10be2bd9f",
+    "IDRiD_06.jpg": "c37758a3ed81029a8c7ff778d96b3c6f030909588e08885c3f6b3b0ff8f3049f",
+    "IDRiD_07.jpg": "631f421fc77803cc3195d68a0a877e3b9c014ad5a786cd8170f1e7dda898b247",
+    "IDRiD_08.jpg": "bf6b34890e56ec370d4f9629a18aff71e8827f0f516713c3e21e46dbb446ed40",
+    "IDRiD_09.jpg": "98868c89d6433381475d249f0604e66d1d5384855ab08682687b747aa337dc15",
+    "IDRiD_10.jpg": "b4bc1b1242fd9c24c3c1ffa228b0b0811dd43d72bf56be08e16b58f80ded59f3"
+  },
+  "original_local_bytes_unchanged": true,
+  "clinical_registration": "NOT_RUN",
+  "patient_or_eye_pair_assignment": "NOT_RUN",
+  "image_transfer": "NOT_RUN",
+  "model_inference": "NOT_RUN",
+  "continuation": "Qualify integration using authored fixtures with explicit eye and synthetic patient context."
+}

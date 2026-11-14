@@ -1,0 +1,13 @@
+npm notice run his-poc-web@0.3.0 build
+npm notice run python scripts/sync_full_catalog.py && tsc --noEmit && vite build
+Synced 18 clinical + 13 ERP domain contracts; core screens authored separately.
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 37 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.47 kB │ gzip:   0.32 kB
+dist/assets/index-D70mCYFH.css   79.14 kB │ gzip:  15.69 kB
+dist/assets/index-BbguEBOM.js   465.04 kB │ gzip: 124.28 kB
+
+✓ built in 344ms

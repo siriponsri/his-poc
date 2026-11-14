@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T09:59:18.316175+00:00",
+  "phase": "smoke-continue",
+  "production_unchanged": true,
+  "checks": [
+    "explicit_import_same_key_replay",
+    "current_limited_actor_no_grade_or_signing_capability",
+    "authenticated_bound_html_exact_context_and_return_record",
+    "all_10_authenticated_assets_exact_bytes",
+    "both_original_png_bytes_geometry_and_unconfirmed_context_preserved",
+    "actual_nested_read_report_receipt_unsigned_unavailable",
+    "anonymous_page_asset_api_image_print_and_context_denied",
+    "foreign_image_and_model_workspace_account_routes_denied",
+    "unverified_sign_request_denied_by_his",
+    "missing_csrf_mutation_denied",
+    "other_patient_scope_denied",
+    "postgres_original_source_task_and_zero_inference_readback"
+  ],
+  "check_count": 12,
+  "binding_id": "01139e66-4b71-4178-9881-d0638a5d062d",
+  "source_set_id": "bedfa932-300f-4e36-b2bf-633239d856ab",
+  "persisted": {
+    "review_task": "open",
+    "original_sources_unchanged": true,
+    "acquisition_orders_tasks": "completed",
+    "inference_runs": 0,
+    "dr_grants": 0,
+    "ai_provider": "mock_demo",
+    "live_inference": "false"
+  },
+  "public_acceptance": "NOT_RUN",
+  "browser_acceptance": "NOT_RUN",
+  "clinical_accuracy": "NOT_RUN"
+}

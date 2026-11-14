@@ -1,0 +1,18 @@
+{
+  "status": "PASS_RESTORE_OWN_TEST_OUTPUTS",
+  "reason": "Two legacy modules use different fixed seed passwords and fixed historical output paths; run independently on copied source.",
+  "files": [
+    {
+      "path": "evidence/fullsystem/clinical-journeys.json",
+      "restored_head_sha256": "c662977e248d8e53d0185a7497806c8b7ddcf20b2fb01e0fe8837501d0e7dd04",
+      "retained_new_output": "initial-mixed-suite-clinical-journeys.json",
+      "new_output_sha256": "c083342292002d3c68a316b523784643a749d249e9a162489ee75868c164d4d9"
+    },
+    {
+      "path": "evidence/fullsystem/windows-20261113/clinical-additional-records.json",
+      "restored_head_sha256": "01a5e304e77e1285e0ba55726dd845d55e140717144e65ee2d2206fa6c604684",
+      "retained_new_output": "initial-mixed-suite-clinical-additional-records.json",
+      "new_output_sha256": "0baae551d1018df013c9c898436054884ab0a3b29ae7455a7d61bd8c52c8e160"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T09:49:21.668342+00:00",
+  "phase": "images",
+  "production_unchanged": true,
+  "image_ids": {
+    "his-poc-server:workspace-d72838615e3d": "sha256:e53525f17f40416fbed8437b7144a28668f1320b080433bd83237e99a5abc95e",
+    "his-poc-dr:source-90d4b78ec73f": "sha256:9b1d1f105f61f750afa8ff1b84354c96e907429cf4729a560eb79a5ad969c93c",
+    "his-poc-labclear:source-c1944c772e87": "sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f"
+  },
+  "image_smoke": {
+    "his": {
+      "runtime_source_files": 245,
+      "uid": 10001,
+      "drift": []
+    },
+    "dr": {
+      "runtime_source_files": 200,
+      "uid": 10001,
+      "drift": [],
+      "unconfigured_startup_denied": true,
+      "model_modules_loaded": false
+    }
+  },
+  "network": "none",
+  "activation": false
+}

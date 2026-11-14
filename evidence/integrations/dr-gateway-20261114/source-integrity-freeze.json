@@ -1,0 +1,34 @@
+{
+  "recorded_at": "2026-11-14T06:51:47.270782+00:00",
+  "branch": "feat/carebalance-dr-bridge",
+  "base": "0c003e753a5e93520780beca55e16078c1e34229",
+  "runtime_source_freeze": "FROZEN for final qualification and independent review",
+  "source_sha256": {
+    "backend/app/dr_protocol.py": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391",
+    "backend/app/dr_client.py": "333654ca5625a762ae670514b82c481087d62cdb2b2fcded9e6b85f96fffeb0c",
+    "backend/app/dr_core.py": "012ccb88c670c23211facf2f7cb6c8dd4d773dae3a29df2fd1a4317b4ae75d3e",
+    "backend/app/dr_gateway.py": "674b6e9815729a420e7cc3e351f0b32156af1c5de47134a0e9b04deafe08cb29",
+    "backend/app/models_dr.py": "1ce17ead3afa62ac8569857a8baebfc6e9cfb1347c997ad9fe41aa499d199d92",
+    "backend/app/main.py": "49138351c5726e76d535564318cce28bc63016515644fa23dacfabd7eb3b82fb",
+    "backend/app/model_registry.py": "f642bb0575475a9687ff22702d2c959592caa4fe324098f3b02fe64de713a37c",
+    "backend/migrations/versions/0004_dr_screening_bridge.py": "7e1d28902fd4274b2dc7b2181debce6a63cdf718ef4950397cab158d066b489b",
+    "backend/tests/test_dr_gateway_pg.py": "88e70fa5990198c46124d9eb535cd9db7531e6017fb426a38ed971327661fe2e",
+    "backend/tests/test_dr_client_unit.py": "5ef398dc98743c19502ac749762c8a98bddec3dd03e452f03b133460924331e8",
+    "backend/tests/test_dr_receiver_http_pg.py": "ed0fcff0a2b57ddd90f31e9613ad31c25ae555a155ba6c98b9730e19e9b0ab79"
+  },
+  "protected_source_drift": [],
+  "protocol_provenance": {
+    "origin": "Independent CareBalance-authored strict DTO module; no191 licensed legacy DR backend files copied into HIS",
+    "derivative_protocol_sha256": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391"
+  },
+  "historical_phase_receipts": {
+    "early_37_tests": "qualified.xml",
+    "integrity_63_tests": "qualified-integrity.xml",
+    "input_64_tests": "qualified-final.xml",
+    "revision_66_tests": "qualified-final-revision.xml"
+  },
+  "limits": [
+    "Exact source qualified-frozen.xml rerun pending at capture; source is frozen",
+    "No original DR/LabClear source changes, service or model calls, deployment or publication by this worker"
+  ]
+}

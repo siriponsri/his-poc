@@ -2,6 +2,18 @@
 
 ## Current checkpoint and active work — 14 November 2026
 
+- PASS: DR bridge/PUBLIC-JPEG provenance and explicit manual-quality guard,
+  77 HIS tests,37 receiver tests plus2 independent quality checks, prior full
+  514 DR frontend tests,135 HIS components, builds and schema drift check.
+- PASS: private Linux workflow, same-DB compatibility rollback and manual-quality
+  image upgrade. Coordinator browser observations cover draft persistence after
+  reload, denied grade/signing, mobile390 and exact HIS record return.
+- ACTIVE: final scoped frontend UX qualification, main integration/rebuild,
+  fresh production backup/isolated restore and protected public DR activation,
+  browser/persistence/preservation. Current production remains migration03.
+- HELD BY OWNER:10 renamed MMRDR JPEGs await eye metadata; no pairing,
+  clinical registration, transfer or model call.
+
 - PASS: selected Clinical1 Home/Login, Patient2 full workspace and logo3; wide
   read-only Patient panel with document selection and exact-context navigation.
 - PASS: final25 unit/91 component/3 audit cases/typecheck/build; separate local

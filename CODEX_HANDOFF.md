@@ -2,8 +2,25 @@
 
 ## Current integration continuation
 
-Long goal ACTIVE. Work in C:/Users/User/Desktop/myProject/his-poc on
-feat/carebalance-labclear; base main f535040. Final candidate5328 verifies231
+Latest exact resume point: [DR_BROWSER_CHECKPOINT_20261114.md](docs/integrations/DR_BROWSER_CHECKPOINT_20261114.md).
+Private Linux12 checks, same-DB compatibility rollback/candidate restore and the
+manual-quality image upgrade pass. The coordinator recovered the native Chrome
+surface in a later continuation and verified authenticated public Home. This
+does not establish public DR acceptance. Private browser draft persistence after
+reload, limited permissions, mobile390 and exact return were executed. Final
+small frontend UX refinement is under qualification. Long goal stays ACTIVE.
+
+DR checkpoint: [DR_RELEASE_20261114.md](docs/integrations/DR_RELEASE_20261114.md).
+HIS77/receiver37 plus2 independent quality checks/prior full DRfrontend514/
+HIScomponents135/schema121 pass; LC44 plus62 subtests and native legacy DR79
+pass. Current private images are HIS074aa8f8a0b2 and DR05476e8f5ebb; exact IDs
+are in the release checkpoint. LC UI rollback0004-2c88 is rehearsed on the same
+shadow DB. No public04 migration/DR activation yet. Main integration/rebuild,
+fresh production backup/restore and public acceptance remain required.
+Ten owner-renamed MMRDR JPEGs are held for laterality per explicit owner choice;
+no pairing, registration, transfer or model call. Exact local bytes are retained.
+
+Historical LabClear deployment milestone: candidate5328 verifies231
 source files/17 assets with25 unit/117 component/3 audit cases/build PASS.
 Private LabClear two-DB and actual browser round trip passed. Final5328 is now
 active on migration0003 with a separate ready receiver:109 legacy counts,

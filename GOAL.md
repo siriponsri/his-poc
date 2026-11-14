@@ -2,12 +2,23 @@
 
 ## Active owner extension — 14 November 2026
 
+Latest DR gate: HIS77, receiver37 plus2 independent quality-guard checks, and
+the prior complete DR frontend514 qualification pass. Private Linux workflow,
+same-DB rollback and the manual-quality image upgrade pass. The coordinator
+executed the private browser draft/reload, limited-permission, mobile390 and
+exact-return journey; a final small frontend UX refinement is being qualified.
+Fresh production backup/restore, public DR activation, main integration and
+protected public DR acceptance remain open. Existing public LabClear remains
+active on migration03. Ten owner-renamed MMRDR images are held for laterality;
+no new model call or grade/signing grant. See [DR release checkpoint](docs/integrations/DR_RELEASE_20261114.md).
+
 The long goal remains ACTIVE: improve the patient reading journey, create a
 separate CareBalance derivative based on dr-support-screening-poc while preserving
 the original project, and connect LabClear with authorized source/theme changes.
 The LabClear gateway/isolated receiver and actual private browser round trip are
-qualified; final25 unit/117 component/3 audit cases and build pass. Separate DR
-theme main is qualified and its bounded receiver is being implemented.
+qualified; the current HIS frontend passes25 unit/135 component/3 audit cases
+and build. Separate DR theme main and the bounded manual receiver are qualified
+within the explicitly recorded software/private-runtime scope.
 LabClear activation and authenticated public synthetic journey now pass. DR
 integration acceptance remains ongoing. See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
 

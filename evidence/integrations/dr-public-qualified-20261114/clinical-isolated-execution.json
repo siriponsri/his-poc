@@ -1,0 +1,30 @@
+{
+  "at": "2026-11-14T09:51:09.310193+00:00",
+  "status": "PASS",
+  "candidate_source_files": 245,
+  "test_sha256": {
+    "tests/fullsystem/test_auth_acceptance.py": "15657de0e74822b89a5583dac7699bf6843eabfdf79893a95bb9cc6b4d0f0642",
+    "tests/fullsystem/test_clinical.py": "49bf2e6c7d53e85224cc370aa04ab2543917a86b8bd271bbdbfa84214561e388",
+    "tests/fullsystem/test_clinical_acceptance.py": "e23ca25e4723917d90c2ca7c34f475b7f60c91ba04bb63972099d6b268227228",
+    "tests/fullsystem/test_erp.py": "1679545e8777217e5f9188f88e28f7e2ce8deb119132bf62f7bb973a0545fc35",
+    "tests/fullsystem/test_erp_acceptance.py": "19335a7f3a102555c704f6b8688ef8b3aef6f4eb56291b074d354c0d9b3af060",
+    "tests/fullsystem/test_legacy_import.py": "4c8dcd724aaef3ddd8cfbe531a4244556a30be78bb154b9fd2daee0a3af35487",
+    "tests/fullsystem/test_live_ai.py": "0b877e49d79ac7cbda9a6e141f2afe1fe42b33fd87d84f412edb42f43b42ae3d",
+    "tests/fullsystem/test_security_event_concurrency.py": "e586e45a4d901904a0a0f4db49960b170bf56446e3095f1d40581d6725cd780a"
+  },
+  "checks": [
+    {
+      "suite": "test_clinical.py",
+      "exit_code": 0,
+      "log": "clinical-isolated.log",
+      "xml": "clinical-isolated.xml"
+    },
+    {
+      "suite": "test_clinical_acceptance.py",
+      "exit_code": 0,
+      "log": "clinical_acceptance-isolated.log",
+      "xml": "clinical_acceptance-isolated.xml"
+    }
+  ],
+  "copy_path": "C:\\Users\\User\\AppData\\Local\\Temp\\carebalance-clinical-independent-urfysdy7"
+}

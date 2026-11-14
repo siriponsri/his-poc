@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="1" skipped="0" tests="6" time="23.939" timestamp="2026-11-14T13:10:49.678875+07:00" hostname="DESKTOP-C8EHASQ"><testcase classname="backend.tests.test_dr_gateway_pg" name="test_registered_source_set_scope_and_explicit_consent" time="8.285" /><testcase classname="backend.tests.test_dr_gateway_pg" name="test_current_binding_defaults_no_signer_and_reads_real_bytes" time="4.969" /><testcase classname="backend.tests.test_dr_gateway_pg" name="test_unknown_response_requires_same_command_recovery" time="2.764" /><testcase classname="backend.tests.test_dr_gateway_pg" name="test_source_revocation_in_flight_quarantines_actual_receipt" time="1.496" /><testcase classname="backend.tests.test_dr_gateway_pg" name="test_manifest_assets_and_print_are_authorized_each_request" time="3.517"><failure message="AttributeError: 'CareAssignment' object has no attribute 'id'">prepared = (&lt;starlette.testclient.TestClient object at 0x000001848287C6B0&gt;, {'id': 'c386359b-83f9-4f68-bc7c-a147bd5960a9', 'patie... 'encounter_id': 'encounter-001', 'task_id': '587236ae-07fe-43eb-a7ff-b157df2bb93d', 'destination_id': 'fixture', ...})
+tmp_path = WindowsPath('C:/Users/User/AppData/Local/Temp/pytest-of-User/pytest-2660/test_manifest_assets_and_print0')
+monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x000001848287F020&gt;
+
+    def test_manifest_assets_and_print_are_authorized_each_request(prepared,tmp_path,monkeypatch):
+        client,source_set,binding,receiver,body=prepared
+        root=tmp_path/'dist';(root/'assets').mkdir(parents=True)
+        (root/'index.html').write_text('&lt;html&gt;&lt;head&gt;&lt;script src="./assets/test.js"&gt;&lt;/script&gt;&lt;/head&gt;&lt;body&gt;DR&lt;/body&gt;&lt;/html&gt;')
+        (root/'assets/test.js').write_text('/* authored test bundle */')
+        manifest=tmp_path/'web.json';manifest.write_text(json.dumps({'schema':'carebalance.dr.web.v1','root':str(root),
+            'assets':{p.relative_to(root).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in root.rglob('*') if p.is_file()}}))
+        monkeypatch.setenv('HIS_DR_WEB_MANIFEST',str(manifest))
+        prefix=f'/integrations/dr/{binding}'
+        page=client.get(prefix+'/app/');assert page.status_code==200,page.text
+        assert 'id="carebalance-dr-context"' in page.text and prefix+'/assets/assets/test.js' in page.text
+        assert KEY.decode() not in page.text and '127.0.0.1:19899' not in page.text
+        asset=client.get(prefix+'/assets/assets/test.js');assert asset.status_code==200 and 'no-store' in asset.headers['cache-control']
+        assert client.get(prefix+'/assets/unknown.js').status_code==404
+        assert client.get(prefix+'/app/unknown.js').status_code==404
+        image=source_set['sources'][0]['image_sha256']
+        printed=client.get(prefix+'/print/'+image);assert printed.status_code==200
+        assert 'current review freshness is not assessed' in printed.text
+        anonymous=TestClient(app)
+        for path in ['/app/','/assets/assets/test.js','/api/v1/cases','/print/'+image]:assert anonymous.get(prefix+path).status_code==401
+        with SessionLocal.begin() as db:
+            assignment=db.scalar(select(CareAssignment).where(CareAssignment.user_id=='user-clinician',CareAssignment.patient_id=='patient-001'))
+            assignment.active=False
+        try:
+            for path in ['/app/','/assets/assets/test.js','/api/v1/cases','/print/'+image]:assert client.get(prefix+path).status_code==404
+        finally:
+&gt;           with SessionLocal.begin() as db:db.get(CareAssignment,assignment.id).active=True
+                                                                  ^^^^^^^^^^^^^
+E           AttributeError: 'CareAssignment' object has no attribute 'id'
+
+backend\tests\test_dr_gateway_pg.py:242: AttributeError</failure></testcase><testcase classname="backend.tests.test_dr_gateway_pg" name="test_database_source_and_completed_evidence_immutable" time="0.477"><error message="failed on setup with &quot;AssertionError: {&quot;detail&quot;:{&quot;code&quot;:&quot;NOT_FOUND&quot;}}&#10;assert 404 == 200&#10; +  where 404 = &lt;Response [404 Not Found]&gt;.status_code&quot;">monkeypatch = &lt;_pytest.monkeypatch.MonkeyPatch object at 0x00000184828C3D10&gt;
+tmp_path = WindowsPath('C:/Users/User/AppData/Local/Temp/pytest-of-User/pytest-2660/test_database_source_and_compl0')
+
+    @pytest.fixture()
+    def prepared(monkeypatch,tmp_path):
+        client=login();body=fixture_sources(2)
+        created=client.post(BASE+'/source-sets',json=body,headers={'Idempotency-Key':uid()})
+&gt;       assert created.status_code==200,created.text
+E       AssertionError: {"detail":{"code":"NOT_FOUND"}}
+E       assert 404 == 200
+E        +  where 404 = &lt;Response [404 Not Found]&gt;.status_code
+
+backend\tests\test_dr_gateway_pg.py:127: AssertionError</error></testcase></testsuite></testsuites>

@@ -1,0 +1,33 @@
+{
+  "recorded_at": "2026-11-14T06:23:59.301205+00:00",
+  "branch": "feat/carebalance-dr-bridge",
+  "base": "0c003e753a5e93520780beca55e16078c1e34229",
+  "runtime_source_freeze": "PENDING final combined qualification; reviewer may inspect exact hashes",
+  "source_sha256": {
+    "backend/app/dr_protocol.py": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391",
+    "backend/app/dr_client.py": "6a86ecab071afb5ebe0f7f88b491942dad9f260c0d6a3180e6e1994b6f2081e9",
+    "backend/app/dr_core.py": "3acec0c69536c13036a312d61ab5fdb3aba602c0fb0198f4810f9c70c7ad2482",
+    "backend/app/dr_gateway.py": "777931a16c16f6f1727a2b494318be81299c3d32596a8bf6198105aa6068ec0f",
+    "backend/app/models_dr.py": "607abbd99bd2df6d194ce9d3ac6ce8c29542cc9f932d74d6af99b21adcb48f25",
+    "backend/app/main.py": "49138351c5726e76d535564318cce28bc63016515644fa23dacfabd7eb3b82fb",
+    "backend/app/model_registry.py": "f642bb0575475a9687ff22702d2c959592caa4fe324098f3b02fe64de713a37c",
+    "backend/migrations/versions/0004_dr_screening_bridge.py": "6864d471c2b8192918a803fc67c3c8e429fdf7a80610d361b36a73157d6c9932",
+    "backend/tests/test_dr_gateway_pg.py": "22bc303531c0267bbad5d55be19ce5ee2aa9c9f00e3613d47f368d5165b2b615",
+    "backend/tests/test_dr_client_unit.py": "6c9c57a5e6202745e762716585f54a92e2d35dac11a7044a837828e2ca055863",
+    "backend/tests/test_dr_receiver_http_pg.py": "ed0fcff0a2b57ddd90f31e9613ad31c25ae555a155ba6c98b9730e19e9b0ab79"
+  },
+  "protected_source_drift": [],
+  "protocol_provenance": {
+    "origin": "Independent CareBalance-authored strict DTO module; no191 licensed legacy DR backend files copied into HIS",
+    "derivative_protocol_sha256": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391"
+  },
+  "actual_earlier_results": {
+    "client_unit": 24,
+    "gateway_pg": 9,
+    "two_process_two_database_bilateral_http_interop": 1
+  },
+  "limits": [
+    "Current combined qualification adds concurrency/rejected-command replay tests; result pending",
+    "No original DR/LabClear source changes, service or model calls, deployment or publication by this worker"
+  ]
+}

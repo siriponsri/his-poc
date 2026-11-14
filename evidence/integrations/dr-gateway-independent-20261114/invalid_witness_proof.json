@@ -1,0 +1,10 @@
+{
+  "observation": "SIGNED_CURRENT_WITHOUT_IMAGE_OR_GRADE_CONFIRMATION_ACCEPTED",
+  "method": "Direct sender strict-receipt validator, self-consistent canonical hashes; no service/model call",
+  "source_before": "6a86ecab071afb5ebe0f7f88b491942dad9f260c0d6a3180e6e1994b6f2081e9",
+  "source_after": "6a86ecab071afb5ebe0f7f88b491942dad9f260c0d6a3180e6e1994b6f2081e9",
+  "grade_status": "NOT_REVIEWED",
+  "confirm_revision": null,
+  "grade_review_revision": null,
+  "freshness": "CURRENT"
+}

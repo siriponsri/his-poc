@@ -1,0 +1,13 @@
+{
+  "status": "PASS_BUILD_ONLY",
+  "at": "2026-11-14T09:49:10.991695+00:00",
+  "image": "his-poc-server:rollback-0004-2c88b48dca31",
+  "image_id": "sha256:e6e336a6f9515710dbe3c37a3e0af80daed57f9e0788e65d8553fdac58f966d0",
+  "base_image_id": "sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6",
+  "old_main_sha256": "bb241b3a93305ba82e02403391bf4eeb62d5bc16ca593202b9fabaced5c9bc79",
+  "compat_main_sha256": "2c88b48dca31a72f952fb60f8874314a06e931c1a028a78d4fb4eb5322b387e5",
+  "change": "Only readiness allows actual migration03 or04; reports actual revision.",
+  "production_container_ids_unchanged": true,
+  "activated": false,
+  "shadow_rehearsal": "NOT_RUN"
+}

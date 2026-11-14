@@ -1,0 +1,49 @@
+{
+  "at": "2026-11-14T10:30:51.650015+00:00",
+  "status": "PASS_BACKEND_AND_INDEPENDENT_QUALITY_GUARD",
+  "evidence": {
+    "his-interop.xml": {
+      "sha256": "bfff5c27cdddf8ad239c9cf099499fb4a19cb96fe628796ea25cf73f170ec41d",
+      "tests": {
+        "tests": 77,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "receiver.xml": {
+      "sha256": "6a3257c9ce27666a51786c6f2b8a8dfda1be37ea6c73a82e1604a6ad2d7e6b04",
+      "tests": {
+        "tests": 37,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "independent.xml": {
+      "sha256": "1973895f52d5e325586ab370ef09d68541c9c591bcc9f7e4b810830bc59d2c6b",
+      "tests": {
+        "tests": 2,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "independent.log": {
+      "sha256": "32b141e531f90d6a8a36e3bae55b55fd0b899b1ef49a1d630b311a5ab5a191c4"
+    },
+    "independent-execution.json": {
+      "sha256": "41e7e7971d2301b5eedb5b079096c92bdadac86ae9b8bf5eed46d20dfdd6b4b7"
+    }
+  },
+  "his_source_files": 245,
+  "his_source_drift": [],
+  "receiver_clinical_sha256": "c8f2b99f6d37c25f971644c75154db0602594c285c81cb903596594e3e6bb733",
+  "legacy_backend_unchanged": 191,
+  "browser_finding": "Native readiness dialogue did not expose manual quality for NOT_EVALUATED; bound Confirm Image could promote NEEDS_REVIEW.",
+  "repair": "Explicit manual quality decisions, quality-preserving confirmation, verified evidence guard, stale-confirmation witness.",
+  "frontend_full": "RUNNING_SEPARATELY",
+  "image_runtime_browser_recheck": "NOT_RUN",
+  "actual_mmrdr_images": "HELD_FOR_LATERALITY",
+  "model_calls": 0
+}

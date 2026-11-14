@@ -846,20 +846,20 @@
         },
         {
           "name": "acquired",
-          "label": "รับไฟล์สังเคราะห์",
+          "label": "รับไฟล์ภาพหรือข้อความ",
           "from": [
             "scheduled"
           ],
           "fields": [
             {
               "name": "file_base64",
-              "label": "ไฟล์ PNG/TXT สังเคราะห์แบบ Base64",
+              "label": "ไฟล์ PNG/JPEG/TXT แบบ Base64",
               "type": "textarea",
               "required": true
             },
             {
               "name": "file_mime",
-              "label": "ชนิดไฟล์ image/png หรือ text/plain",
+              "label": "ชนิดไฟล์ image/png, image/jpeg หรือ text/plain",
               "type": "text",
               "required": true
             }

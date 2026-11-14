@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-14T10:52:02Z",
+  "status": "PASS",
+  "scope": "Private Linux shadow actual browser manual review; not public DR acceptance",
+  "his_image_id": "sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0",
+  "dr_image_id": "sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5",
+  "frontend_receipt": "C:/Users/User/Desktop/myProject/carebalance-dr-screening/frontend/evidence/carebalance-manual-quality-qualified-20261114/checks.json",
+  "binding_id": "d276b4c0-338a-47eb-9377-b0597941ba08",
+  "workspace_id": "cb-6f2f5a019f950f55fa4d9f07ec6f65b3",
+  "source_set_id": "bedfa932-300f-4e36-b2bf-633239d856ab",
+  "source_manifest_sha256": "fadbab12495764484388812758d6d33824f9a018c68e8375cb9c4a40a832235c",
+  "left_case_id": "5a2d64fa5282f3774ad7c12da3ba81fedbec899514c9fdce25832f55250d6346",
+  "observations": [
+    "Normal test01 login retained the exact patient, encounter and D11 source URL.",
+    "Explicit transfer consent created this browser session's own binding; both original authored images displayed.",
+    "Manual quality dialog offered acceptable and inadequate decisions without an automated-analysis readiness claim.",
+    "Explicit acceptable-quality decision and subsequent patient/visit/eye confirmation each returned success; confirmation checkbox reset.",
+    "Report pseudonymous patient key was read-only; free patient-name field absent.",
+    "Observed dirty remarks were saved, exact request and response matched, and full reload retained the text.",
+    "Explicit current-review read returned an unsigned report with freshness UNAVAILABLE.",
+    "Grade radio controls, grade confirmation and report signing were disabled for the unverified test account.",
+    "Desktop viewport and document widths were both 1440.",
+    "Actual emulated mobile viewport and document widths were both 390; native window resize minimum 504 was not counted as mobile proof.",
+    "Back to CareBalance returned to /domains/D11?patient_id=patient-001&encounter_id=encounter-001&record=37466db3-1e68-4ed1-9857-aa513e914e62.",
+    "DR launcher focused its close control, made two outside surfaces inert, and Escape restored focus to the DR screening trigger."
+  ],
+  "persisted_remarks": "CareBalance private browser persistence check 2026-11-14; authored fixture draft.",
+  "harness_corrections": [
+    "The first immediate automated save submitted empty remarks; captured request and response agreed. A second fill with observed dirty state saved the intended text and survived reload. No server data-loss claim is made.",
+    "Screenshot file output was rejected by the browser service path guard. Native inline screenshots were viewed; no repository screenshot file is claimed.",
+    "Independent review agent could not access root's browser context; its review was source-only."
+  ],
+  "limits": [
+    "This browser run used the 514-test pre-UX-cleanup frontend bundle; the subsequent small frontend cleanup requires its own exact-bundle smoke.",
+    "Public DR activation and public DR browser acceptance remain NOT_RUN.",
+    "No grade/signature, model call, clinical effectiveness result or owner MMRDR image transfer is claimed."
+  ]
+}

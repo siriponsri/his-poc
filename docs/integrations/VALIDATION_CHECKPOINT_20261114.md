@@ -1,5 +1,10 @@
 # CareBalance integration validation checkpoint
 
+Latest DR software/image qualification and remaining Linux/public gates:
+[DR_RELEASE_20261114.md](DR_RELEASE_20261114.md). The owner explicitly holds the
+ten renamed MMRDR images pending laterality; tests use authored fixtures.
+Existing public LabClear remains unchanged while the new DR shadow is rehearsed.
+
 The long goal remains ACTIVE. This checkpoint distinguishes the qualified
 LabClear connector from ongoing DR receiver work. Synthetic software validation
 does not establish clinical effectiveness or authorize real-source transfer.

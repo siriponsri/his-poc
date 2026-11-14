@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T09:56:26.675147+00:00",
+  "phase": "receiver",
+  "production_unchanged": true,
+  "ready": {
+    "ready": true,
+    "schema": 1,
+    "service": "carebalance-dr-receiver"
+  },
+  "workspace_id": "cb-6f2f5a019f950f55fa4d9f07ec6f65b3",
+  "source_set_id": "bedfa932-300f-4e36-b2bf-633239d856ab",
+  "registered_destination_count": 1,
+  "app_recreated": false,
+  "scope_from_actual_his_source_set": true,
+  "expected_database": "carebalance_dr_test_release_shadow",
+  "six_new_services": true
+}

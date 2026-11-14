@@ -1,0 +1,12 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "C:\\Users\\User\\AppData\\Local\\Temp\\his-pg-tests-0vgvp70b\\files"}
+{"finding": "WRONG_ORIGINAL_FRAME_ACCEPTED", "status": 200, "selected_image_sha256": "a81a73409383dad7deae59b4677d4cbda61902d337cbda12683722b7d9069a7a", "returned_image_sha256": "645ee30241af902cf82c0c302c7023825a7fbf96c261934e8e6328207cf5837a", "attempt_status": "succeeded"}
+.{"observation": "GRANT_REVOKED_AFTER_FINAL_AUTH_READ_BEFORE_COMMIT", "status": 200, "grant_status": "revoked", "attempt_status": "succeeded", "receiver": "signed MockTransport, not real clinical receiver"}
+.{"observation": "EXPIRED_UNREPLACED_LEASE_FINALIZED", "status": 200, "attempt_status": "succeeded", "lease_expired": true}
+.
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\User\Desktop\myProject\his-poc\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+3 passed, 1 warning in 16.65s

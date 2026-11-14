@@ -1,0 +1,57 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T10:05:18.168653+00:00",
+  "phase": "compatibility",
+  "production_unchanged": true,
+  "rollback_image": "his-poc-server:rollback-0004-2c88b48dca31",
+  "rollback_image_id": "sha256:e6e336a6f9515710dbe3c37a3e0af80daed57f9e0788e65d8553fdac58f966d0",
+  "compatibility_checks": {
+    "existing_session_valid": true,
+    "new_normal_login_works": true,
+    "core_reads": true,
+    "labclear_confirmed_read": "43",
+    "his_source_value": "42",
+    "dr_gateway_unavailable_in_prior_ui": true,
+    "old_ui_assets": 17
+  },
+  "candidate_restored_image_id": "sha256:e53525f17f40416fbed8437b7144a28668f1320b080433bd83237e99a5abc95e",
+  "restored_ready": {
+    "ready": true,
+    "migration": "0004_dr_screening_bridge"
+  },
+  "restored_dr_assets": {
+    "binding_id": "96dbaf2d-13a5-4fc2-b9db-818bcba33302",
+    "assets": 10,
+    "actual_authenticated_http": true
+  },
+  "preserved_existing_database_row_hashes": {
+    "his": true,
+    "lc": true,
+    "dr": true
+  },
+  "preserved_nonapp_shadow_services": {
+    "db": {
+      "id": "2a1b111c846b44500e031f9bea41a1955729f8adf2fdb056c14ee50512c64b9c",
+      "image": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5"
+    },
+    "dr": {
+      "id": "14fc23a50edb4abfe4110be4d6602b4323e12a37f3bf268cdfe125b35af27e12",
+      "image": "sha256:9b1d1f105f61f750afa8ff1b84354c96e907429cf4729a560eb79a5ad969c93c"
+    },
+    "dr_db": {
+      "id": "404c9d61f51c6d568f1627631103b100241274561bba0d9919e5981e5400bd01",
+      "image": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5"
+    },
+    "labclear": {
+      "id": "7115e2e020874a6ed5658ea73ca6fda044aa6adfec691e41a5d42a0f14f165d9",
+      "image": "sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f"
+    },
+    "labclear_db": {
+      "id": "7a1a89616bfccaa73a1cccb710efabaa37247cd041102e91d62a48eac15fde58",
+      "image": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5"
+    }
+  },
+  "inference_runs": 0,
+  "schema_downgrade": false,
+  "production_activation": false
+}

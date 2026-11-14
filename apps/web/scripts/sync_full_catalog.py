@@ -14,7 +14,7 @@ def fix_fields(fields,domain):
   if source=='orders':f['source']='orders';f['order_kind']={'D08':'medication','D09':'medication','D10':'lab','D11':'imaging','D12':'procedure'}.get(domain.split('/')[-1])
   if f['name']=='document_revision_id' and not source:f['source']='document-revisions';f['label']='เอกสารฉบับที่ใช้เป็นหลักฐาน'
   if f['name']=='cssd_cycle_id' and not source:f['source']='clinical/catalog/cssd-cycles';f['label']='ชุดเครื่องมือที่ตรวจปล่อยแล้ว'
-  if f['name']=='file_base64':f['type']='file';f['label']='ไฟล์ภาพหรือเอกสารสังเคราะห์ (PNG/TXT ไม่เกิน 1 MB)'
+  if f['name']=='file_base64':f['type']='file';f['label']='ไฟล์ภาพหรือข้อความ (PNG/JPEG/TXT ไม่เกิน 1 MB)'
   if f['name']=='file_mime':f['type']='hidden'
   if f['name']=='task_ids':f['type']='multi-select';f['source']='tasks';f['label']='งานค้างที่ส่งต่อ'
   result.append(f)

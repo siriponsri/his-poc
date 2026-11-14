@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="30" time="74.728" timestamp="2026-11-14T16:45:11.014490+07:00" hostname="DESKTOP-C8EHASQ"><testcase classname="tests.fullsystem.test_clinical" name="test_j02_lab_revisions_authority_and_acknowledgement" time="7.294" /><testcase classname="tests.fullsystem.test_clinical" name="test_j03_dispense_retry_return_and_conservation" time="1.798" /><testcase classname="tests.fullsystem.test_clinical" name="test_j04_admission_transfer_handover_discharge_followup" time="4.035" /><testcase classname="tests.fullsystem.test_clinical" name="test_j08_imaging_file_report_referral_and_cross_patient_denial" time="4.244" /><testcase classname="tests.fullsystem.test_clinical" name="test_j10_portal_owner_request_staff_booking_and_release" time="1.366" /><testcase classname="tests.fullsystem.test_clinical" name="test_order_cancel_blocks_downstream_action" time="1.234" /><testcase classname="tests.fullsystem.test_clinical" name="test_blood_revision_and_eligibility_binding" time="2.050" /><testcase classname="tests.fullsystem.test_clinical" name="test_specialist_domain_workflows" time="13.036" /><testcase classname="tests.fullsystem.test_clinical" name="test_mar_duplicate_hold_and_invalid_transition" time="2.466" /><testcase classname="tests.fullsystem.test_clinical" name="test_slot_capacity_race_and_idempotent_checkin" time="1.941" /><testcase classname="tests.fullsystem.test_clinical" name="test_portal_results_never_leak_other_patient_or_unreleased" time="3.308" /><testcase classname="tests.fullsystem.test_clinical" name="test_wrong_lot_item_and_stale_order_refuse_dispense" time="1.499" /><testcase classname="tests.fullsystem.test_clinical" name="test_care_scope_filters_list_and_linked_user_facility" time="1.134" /><testcase classname="tests.fullsystem.test_clinical" name="test_blood_success_patient_revision_and_expiry_guards" time="3.586" /><testcase classname="tests.fullsystem.test_clinical" name="test_mar_administration_exactly_once_then_immutable_correction" time="2.288" /><testcase classname="tests.fullsystem.test_clinical" name="test_portal_correction_creates_staff_task_preserves_document" time="0.829" /><testcase classname="tests.fullsystem.test_clinical" name="test_immunization_lot_trace_does_not_change_growth_measurement" time="0.719" /><testcase classname="tests.fullsystem.test_clinical" name="test_equipment_and_cssd_rechecked_before_procedure" time="1.260" /><testcase classname="tests.fullsystem.test_clinical" name="test_room_overlap_bed_race_and_blood_reservation_race" time="3.477" /><testcase classname="tests.fullsystem.test_clinical" name="test_birth_replay_preserves_single_child_identity" time="1.263" /><testcase classname="tests.fullsystem.test_clinical" name="test_observation_and_growth_history_separate_patients_and_dates" time="3.400" /><testcase classname="tests.fullsystem.test_clinical" name="test_dental_two_teeth_two_visits_and_charge_identity" time="3.614" /><testcase classname="tests.fullsystem.test_clinical" name="test_concurrent_room_reservation_one_winner" time="1.374" /><testcase classname="tests.fullsystem.test_clinical" name="test_d16_only_permission_reads_schedule_catalog" time="0.443" /><testcase classname="tests.fullsystem.test_clinical" name="test_icu_device_assignment_release_unavailable_and_overlap" time="2.344" /><testcase classname="tests.fullsystem.test_clinical_acceptance" name="test_d04_lost_response_admission_request_replay_creates_exactly_one_admission" time="2.195"><failure message="AssertionError: {&quot;detail&quot;:{&quot;code&quot;:&quot;INVALID_CREDENTIALS&quot;}}&#10;assert 401 == 200&#10; +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code">def test_d04_lost_response_admission_request_replay_creates_exactly_one_admission():
+&gt;    nurse=Actor('nurse')
+           ^^^^^^^^^^^^^^
+
+tests\fullsystem\test_clinical_acceptance.py:58: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_clinical_acceptance.Actor object at 0x000001F5A7518D10&gt;
+username = 'nurse'
+
+    def __init__(self,username):
+     self.client=TestClient(app)
+     response=self.client.post('/api/v2/auth/login',json={'username':username,'password':PASSWORD})
+&gt;    assert response.status_code==200,response.text
+E    AssertionError: {"detail":{"code":"INVALID_CREDENTIALS"}}
+E    assert 401 == 200
+E     +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code
+
+tests\fullsystem\test_clinical_acceptance.py:34: AssertionError</failure></testcase><testcase classname="tests.fullsystem.test_clinical_acceptance" name="test_d05_transfer_releases_old_bed_and_preserves_assignments" time="0.189"><failure message="AssertionError: {&quot;detail&quot;:{&quot;code&quot;:&quot;INVALID_CREDENTIALS&quot;}}&#10;assert 401 == 200&#10; +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code">def test_d05_transfer_releases_old_bed_and_preserves_assignments():
+&gt;    nurse=Actor('nurse');admission=nurse.create('D05',**context(2),admission_reason='Synthetic bed transfer')
+           ^^^^^^^^^^^^^^
+
+tests\fullsystem\test_clinical_acceptance.py:75: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_clinical_acceptance.Actor object at 0x000001F5A73DB860&gt;
+username = 'nurse'
+
+    def __init__(self,username):
+     self.client=TestClient(app)
+     response=self.client.post('/api/v2/auth/login',json={'username':username,'password':PASSWORD})
+&gt;    assert response.status_code==200,response.text
+E    AssertionError: {"detail":{"code":"INVALID_CREDENTIALS"}}
+E    assert 401 == 200
+E     +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code
+
+tests\fullsystem\test_clinical_acceptance.py:34: AssertionError</failure></testcase><testcase classname="tests.fullsystem.test_clinical_acceptance" name="test_d06_distinct_recipient_only_acknowledges_without_losing_linked_task" time="0.169"><failure message="AssertionError: {&quot;detail&quot;:{&quot;code&quot;:&quot;INVALID_CREDENTIALS&quot;}}&#10;assert 401 == 200&#10; +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code">def test_d06_distinct_recipient_only_acknowledges_without_losing_linked_task():
+&gt;    sender=Actor('nurse');recipient,recipient_id=synthetic_actor('nurse');wrong,wrong_id=synthetic_actor('nurse')
+            ^^^^^^^^^^^^^^
+
+tests\fullsystem\test_clinical_acceptance.py:92: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_clinical_acceptance.Actor object at 0x000001F5A8592DB0&gt;
+username = 'nurse'
+
+    def __init__(self,username):
+     self.client=TestClient(app)
+     response=self.client.post('/api/v2/auth/login',json={'username':username,'password':PASSWORD})
+&gt;    assert response.status_code==200,response.text
+E    AssertionError: {"detail":{"code":"INVALID_CREDENTIALS"}}
+E    assert 401 == 200
+E     +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code
+
+tests\fullsystem\test_clinical_acceptance.py:34: AssertionError</failure></testcase><testcase classname="tests.fullsystem.test_clinical_acceptance" name="test_d19_cancelled_meal_cannot_prepare_or_leave_partial_history" time="0.150"><failure message="AssertionError: {&quot;detail&quot;:{&quot;code&quot;:&quot;INVALID_CREDENTIALS&quot;}}&#10;assert 401 == 200&#10; +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code">def test_d19_cancelled_meal_cannot_prepare_or_leave_partial_history():
+&gt;    nurse=Actor('nurse');row=nurse.create('D19',**context(),diet_description='Manual synthetic diet',allergy_note='Manual synthetic allergy',meal_period=uid())
+           ^^^^^^^^^^^^^^
+
+tests\fullsystem\test_clinical_acceptance.py:110: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_clinical_acceptance.Actor object at 0x000001F5A85934D0&gt;
+username = 'nurse'
+
+    def __init__(self,username):
+     self.client=TestClient(app)
+     response=self.client.post('/api/v2/auth/login',json={'username':username,'password':PASSWORD})
+&gt;    assert response.status_code==200,response.text
+E    AssertionError: {"detail":{"code":"INVALID_CREDENTIALS"}}
+E    assert 401 == 200
+E     +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code
+
+tests\fullsystem\test_clinical_acceptance.py:34: AssertionError</failure></testcase><testcase classname="tests.fullsystem.test_clinical_acceptance" name="test_d11_actual_file_get_denies_wrong_patient_and_noncontent_roles" time="0.154"><failure message="AssertionError: {&quot;detail&quot;:{&quot;code&quot;:&quot;INVALID_CREDENTIALS&quot;}}&#10;assert 401 == 200&#10; +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code">def test_d11_actual_file_get_denies_wrong_patient_and_noncontent_roles():
+&gt;    clinician=Actor('clinician');imaging=Actor('imaging')
+               ^^^^^^^^^^^^^^^^^^
+
+tests\fullsystem\test_clinical_acceptance.py:121: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_clinical_acceptance.Actor object at 0x000001F5A856AF60&gt;
+username = 'clinician'
+
+    def __init__(self,username):
+     self.client=TestClient(app)
+     response=self.client.post('/api/v2/auth/login',json={'username':username,'password':PASSWORD})
+&gt;    assert response.status_code==200,response.text
+E    AssertionError: {"detail":{"code":"INVALID_CREDENTIALS"}}
+E    assert 401 == 200
+E     +  where 401 = &lt;Response [401 Unauthorized]&gt;.status_code
+
+tests\fullsystem\test_clinical_acceptance.py:34: AssertionError</failure></testcase></testsuite></testsuites>

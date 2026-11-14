@@ -1,0 +1,36 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T10:01:57.279120+00:00",
+  "phase": "labclear",
+  "production_unchanged": true,
+  "actual_http_journey": {
+    "status": "PASS",
+    "method": "Actual candidate Linux images + HIS PostgreSQL + real loopback HTTP + separate LabClear PostgreSQL",
+    "checks": {
+      "role_based_lab_release": true,
+      "wrong_verifier_denied": true,
+      "explicit_review_task": true,
+      "source_import": true,
+      "human_correction_43": true,
+      "confirmation_hash_readback": true,
+      "same_key_retry": true,
+      "cross_actor_and_session_denied": true,
+      "cross_patient_denied": true,
+      "csrf_required": true,
+      "his_source_unchanged": true,
+      "review_task_not_completed": true,
+      "his_database_has_no_receiver_tables": true,
+      "no_model_calls": true
+    },
+    "source_id": "1d301f43-b0cf-4b11-86c3-6acf40e0aaa7",
+    "source_version": 6,
+    "task_id": "6743618b-59fc-4248-86a6-877bcc934b4c",
+    "binding_id": "8cf4240f-af9f-497f-b745-2a48720c0e5a",
+    "external_report_id": "cb_report_0c8c7f22c1944e369ba40074c1911ba5595e95bc40c73d67f0afa88d6362481a",
+    "model_calls": 0,
+    "public_activation": false
+  },
+  "separate_db_role_and_cluster": true,
+  "credentials_exported": false,
+  "his_migration": "0004_dr_screening_bridge"
+}

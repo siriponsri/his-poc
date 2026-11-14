@@ -1,0 +1,41 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "-c",
+        "backend/alembic.ini",
+        "upgrade",
+        "head"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+        "-m",
+        "alembic",
+        "-c",
+        "backend/alembic.ini",
+        "check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "tables": 121,
+  "revision": "0004_dr_screening_bridge",
+  "dr_tables": [
+    "dr_attempts",
+    "dr_bindings",
+    "dr_capability_grant_events",
+    "dr_capability_grants",
+    "dr_exchanges",
+    "dr_report_receipts",
+    "dr_source_provenance",
+    "dr_source_set_items",
+    "dr_source_sets"
+  ]
+}

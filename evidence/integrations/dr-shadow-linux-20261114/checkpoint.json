@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-14T10:07:28.762993+00:00",
+  "status": "PASS_PRIVATE_LINUX_HTTP_AND_ROLLBACK",
+  "receipts": {
+    "images-20261114T094921Z.json": "72757720f56d096afc20d9759bce106649854c613f2416f258325a84754de779",
+    "his-20261114T095121Z.json": "c40cabfa7f41892fc7267089b2a3bf481361510b70a3495e2b52f2a16e889698",
+    "receiver-20261114T095626Z.json": "353bd6d77519ce6b7b4436af1ad2b340752747eec5e3dbf0d84261c107d927f3",
+    "smoke-continue-20261114T095918Z.json": "9a2576b419fa9baa5312548e2d43914bb797c6d53327fa4eff18b8ae1f140297",
+    "labclear-20261114T100157Z.json": "0f5b145e002f23d1f2d8941bc465f37b1f346b4b2d4ad30e09522adb69ac44e5",
+    "compatibility-20261114T100518Z.json": "d2f253bb63ee47674cd13ed8375579d2a380edb28e417f0405eda7b30299d76e"
+  },
+  "production_changed": false,
+  "browser_acceptance": "NOT_RUN",
+  "public_dr_acceptance": "NOT_RUN",
+  "model_calls": 0,
+  "actual_mmrdr_images": "HELD_FOR_LATERALITY",
+  "browser_stop": "Windows Computer Use could not verify current browser URL; no further Windows UI actions in that turn.",
+  "next": "Actual private browser workflow before fresh production backup/isolated restore and activation."
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T09:51:21.815501+00:00",
+  "phase": "his",
+  "production_unchanged": true,
+  "his_ready": {
+    "ready": true,
+    "migration": "0004_dr_screening_bridge"
+  },
+  "lc_ready": {
+    "ready": true,
+    "service": "carebalance-labclear",
+    "inference_enabled": false
+  },
+  "his_seed_explicit": true,
+  "dr_receiver_started": false,
+  "live_inference_enabled": false
+}

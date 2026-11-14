@@ -1,0 +1,10 @@
+{
+  "backend/app/dr_client.py": "6a86ecab071afb5ebe0f7f88b491942dad9f260c0d6a3180e6e1994b6f2081e9",
+  "backend/app/dr_core.py": "3acec0c69536c13036a312d61ab5fdb3aba602c0fb0198f4810f9c70c7ad2482",
+  "backend/app/dr_gateway.py": "777931a16c16f6f1727a2b494318be81299c3d32596a8bf6198105aa6068ec0f",
+  "backend/app/dr_protocol.py": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391",
+  "backend/app/models_dr.py": "607abbd99bd2df6d194ce9d3ac6ce8c29542cc9f932d74d6af99b21adcb48f25",
+  "backend/app/main.py": "49138351c5726e76d535564318cce28bc63016515644fa23dacfabd7eb3b82fb",
+  "backend/app/model_registry.py": "f642bb0575475a9687ff22702d2c959592caa4fe324098f3b02fe64de713a37c",
+  "backend/migrations/versions/0004_dr_screening_bridge.py": "6864d471c2b8192918a803fc67c3c8e429fdf7a80610d361b36a73157d6c9932"
+}

@@ -1,0 +1,21 @@
+{
+  "backend/app/dr_client.py": "333654ca5625a762ae670514b82c481087d62cdb2b2fcded9e6b85f96fffeb0c",
+  "backend/app/dr_core.py": "012ccb88c670c23211facf2f7cb6c8dd4d773dae3a29df2fd1a4317b4ae75d3e",
+  "backend/app/dr_gateway.py": "89213ade653cad829a221b0432792274aa5cc60f9278370c5656d0224f6833c5",
+  "backend/app/dr_protocol.py": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391",
+  "backend/app/models_dr.py": "1ce17ead3afa62ac8569857a8baebfc6e9cfb1347c997ad9fe41aa499d199d92",
+  "backend/app/main.py": "49138351c5726e76d535564318cce28bc63016515644fa23dacfabd7eb3b82fb",
+  "backend/app/model_registry.py": "f642bb0575475a9687ff22702d2c959592caa4fe324098f3b02fe64de713a37c",
+  "backend/migrations/versions/0004_dr_screening_bridge.py": "7e1d28902fd4274b2dc7b2181debce6a63cdf718ef4950397cab158d066b489b",
+  "backend/tests/test_dr_client_unit.py": "5ef398dc98743c19502ac749762c8a98bddec3dd03e452f03b133460924331e8",
+  "backend/tests/test_dr_gateway_pg.py": "88e70fa5990198c46124d9eb535cd9db7531e6017fb426a38ed971327661fe2e",
+  "backend/tests/test_dr_receiver_http_pg.py": "ed0fcff0a2b57ddd90f31e9613ad31c25ae555a155ba6c98b9730e19e9b0ab79",
+  "backend/app/auth.py": "cdf14f2fab1040813c6f8398fbbcd876ffc5c98e161dac64afc932e6435fa97a",
+  "backend/app/ai.py": "9493573037aa051ddbe3e7d7585bcae05c0787465cfe8520700748471b49bd3f",
+  "backend/app/integrations.py": "e1911c6c9671f92411bad017f4a74596b58df204a29257733bb86aa994a51d7f",
+  "backend/app/integration_clients.py": "fb3949852c3dbc32814b6f23b9ec3c53b7e27f48fa70a2bad9be3f0e1d295da3",
+  "backend/app/models_integrations.py": "94b5fdfba2d17e488cef2faf244ba4cd1f6d773181223c093769070411f9cc55",
+  "backend/migrations/versions/0003_carebalance_integrations.py": "b987799709ce479bf9b61fd0c00a31a7bf975378aab6a66c0ff73832d4f7548f",
+  "backend/app/domains/clinical.py": "5b913e10269de7b714ae12b17281379f2577830b95c1fe7beab70ad85971232e",
+  "backend/app/domains/erp.py": "08ff54c70134a9552b2a69e9523c456f4f55ec3de9b8ce03877d90a8c0d44653"
+}

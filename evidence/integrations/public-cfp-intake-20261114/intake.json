@@ -1,0 +1,230 @@
+{
+  "schema": "carebalance.public-cfp-intake.v1",
+  "dataset_title": "MMRDR",
+  "dataset_doi": "10.6084/m9.figshare.29423747.v2",
+  "dataset_url": "https://figshare.com/articles/dataset/MMRDR/29423747",
+  "license": {
+    "value": 1,
+    "name": "CC BY 4.0",
+    "url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "authors": [
+    {
+      "id": 21612635,
+      "full_name": "Zhenyu Tang",
+      "first_name": "Zhenyu",
+      "last_name": "Tang",
+      "is_active": true,
+      "url_name": "Zhenyu_Tang",
+      "orcid_id": "0009-0008-2319-3067"
+    },
+    {
+      "id": 21620529,
+      "full_name": "Lilong Wang",
+      "first_name": "Lilong",
+      "last_name": "Wang",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21629003,
+      "full_name": "Qianqian Liang",
+      "first_name": "Qianqian",
+      "last_name": "Liang",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21629004,
+      "full_name": "Shuyue Xue",
+      "first_name": "Shuyue",
+      "last_name": "Xue",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21629007,
+      "full_name": "Chengcheng Feng",
+      "first_name": "Chengcheng",
+      "last_name": "Feng",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21629021,
+      "full_name": "Lili Ran",
+      "first_name": "Lili",
+      "last_name": "Ran",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21629024,
+      "full_name": "Lingzhi Chen",
+      "first_name": "Lingzhi",
+      "last_name": "Chen",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21629027,
+      "full_name": "Zhen Guo",
+      "first_name": "Zhen",
+      "last_name": "Guo",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21624932,
+      "full_name": "Xiaosong Wang",
+      "first_name": "Xiaosong",
+      "last_name": "Wang",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    },
+    {
+      "id": 21624934,
+      "full_name": "Jun Li",
+      "first_name": "Jun",
+      "last_name": "Li",
+      "is_active": false,
+      "url_name": "_",
+      "orcid_id": ""
+    }
+  ],
+  "upstream_metadata_sha256": "44b15f23b1bd8c586e7b8701b81b7d9e74eab38eefb1fbf802468745ca5004fb",
+  "upstream_readme_sha256": "697bd6c1967dbd9f45330b868becddb384a156f14df1a3c445123c61495b9051",
+  "membership_evidence_basis": "owner_attestation",
+  "owner_statement": "Owner identifies these images as MMRDR and confirms locally renaming the files on 2026-11-14.",
+  "exact_upstream_hash_matching": "NOT_RUN",
+  "laterality_metadata": "NOT_SUPPLIED",
+  "patient_grouping": "UNKNOWN",
+  "capture_time": "UNKNOWN",
+  "clinical_binding": "NOT_RUN",
+  "inference": "NOT_RUN",
+  "local_files": [
+    {
+      "filename": "IDRiD_01.jpg",
+      "bytes": 389787,
+      "sha256": "05bf31a076f4ff03875eb5050e6116db9d7b2dd8a8bdb356c60a3fc94343a304",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 9
+    },
+    {
+      "filename": "IDRiD_02.jpg",
+      "bytes": 278533,
+      "sha256": "2a5d305ab8414ec0c23316ff3d2eb8d82c02292d1ea1b7a8ebc4bd8080d47483",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 9
+    },
+    {
+      "filename": "IDRiD_03.jpg",
+      "bytes": 419356,
+      "sha256": "092d05e8bb47568b511d896dd8ec79dccf9f5dd53bcb8d3ce5ec1a6c38d3e1b3",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 9
+    },
+    {
+      "filename": "IDRiD_04.jpg",
+      "bytes": 370383,
+      "sha256": "53b09237d1451c5d1723912fe3dc4f3e0dd7a641075cde8d239c161544afa2e4",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    },
+    {
+      "filename": "IDRiD_05.jpg",
+      "bytes": 358513,
+      "sha256": "2eab1ecded5db3def808c5ffa3af427e999b21c146b6e001c3bf76d10be2bd9f",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    },
+    {
+      "filename": "IDRiD_06.jpg",
+      "bytes": 342639,
+      "sha256": "c37758a3ed81029a8c7ff778d96b3c6f030909588e08885c3f6b3b0ff8f3049f",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    },
+    {
+      "filename": "IDRiD_07.jpg",
+      "bytes": 385945,
+      "sha256": "631f421fc77803cc3195d68a0a877e3b9c014ad5a786cd8170f1e7dda898b247",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    },
+    {
+      "filename": "IDRiD_08.jpg",
+      "bytes": 347948,
+      "sha256": "bf6b34890e56ec370d4f9629a18aff71e8827f0f516713c3e21e46dbb446ed40",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    },
+    {
+      "filename": "IDRiD_09.jpg",
+      "bytes": 337196,
+      "sha256": "98868c89d6433381475d249f0604e66d1d5384855ab08682687b747aa337dc15",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    },
+    {
+      "filename": "IDRiD_10.jpg",
+      "bytes": 373942,
+      "sha256": "b4bc1b1242fd9c24c3c1ffa228b0b0811dd43d72bf56be08e16b58f80ded59f3",
+      "size": [
+        4288,
+        2848
+      ],
+      "format": "JPEG",
+      "exif_fields": 0
+    }
+  ],
+  "limits": [
+    "Filenames were owner-renamed; do not infer dataset identity from those filenames.",
+    "No eye, grade, patient pairing or source date inferred from image appearance.",
+    "Original local bytes were read only; no images published in Git or transferred."
+  ]
+}

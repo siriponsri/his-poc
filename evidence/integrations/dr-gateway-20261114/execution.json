@@ -1,0 +1,122 @@
+{
+  "recorded_at": "2026-11-14T07:00:33.956400+00:00",
+  "status": "PASS_IMPLEMENTER_QUALIFICATION",
+  "base_revision": "0c003e753a5e93520780beca55e16078c1e34229",
+  "branch": "feat/carebalance-dr-bridge",
+  "checks": {
+    "exact_frozen_source": true,
+    "protected_LC_auth_AI_runtime_unchanged": true,
+    "dr_qualified": {
+      "tests": 66,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0
+    },
+    "dr_test_breakdown": {
+      "postgres_gateway": 15,
+      "sender_unit": 50,
+      "real_http_bilateral": 1
+    },
+    "labclear_regression": {
+      "ordinary_tests": 44,
+      "subtests": 62,
+      "xml": {
+        "tests": 106,
+        "errors": 0,
+        "failures": 0,
+        "skipped": 0
+      },
+      "exit_code": 0
+    },
+    "alembic": {
+      "status": "PASS",
+      "checks": [
+        {
+          "command": [
+            "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+            "-m",
+            "alembic",
+            "-c",
+            "backend/alembic.ini",
+            "upgrade",
+            "head"
+          ],
+          "exit_code": 0
+        },
+        {
+          "command": [
+            "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+            "-m",
+            "alembic",
+            "-c",
+            "backend/alembic.ini",
+            "check"
+          ],
+          "exit_code": 0
+        }
+      ],
+      "tables": 121,
+      "revision": "0004_dr_screening_bridge",
+      "dr_tables": [
+        "dr_attempts",
+        "dr_bindings",
+        "dr_capability_grant_events",
+        "dr_capability_grants",
+        "dr_exchanges",
+        "dr_report_receipts",
+        "dr_source_provenance",
+        "dr_source_set_items",
+        "dr_source_sets"
+      ]
+    },
+    "authorized_existing_test_patch": "Only expected migration head0003\u21920004, normalized full file otherwise identical"
+  },
+  "source_sha256": {
+    "backend/app/dr_protocol.py": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391",
+    "backend/app/dr_client.py": "333654ca5625a762ae670514b82c481087d62cdb2b2fcded9e6b85f96fffeb0c",
+    "backend/app/dr_core.py": "012ccb88c670c23211facf2f7cb6c8dd4d773dae3a29df2fd1a4317b4ae75d3e",
+    "backend/app/dr_gateway.py": "674b6e9815729a420e7cc3e351f0b32156af1c5de47134a0e9b04deafe08cb29",
+    "backend/app/models_dr.py": "1ce17ead3afa62ac8569857a8baebfc6e9cfb1347c997ad9fe41aa499d199d92",
+    "backend/app/main.py": "49138351c5726e76d535564318cce28bc63016515644fa23dacfabd7eb3b82fb",
+    "backend/app/model_registry.py": "f642bb0575475a9687ff22702d2c959592caa4fe324098f3b02fe64de713a37c",
+    "backend/migrations/versions/0004_dr_screening_bridge.py": "7e1d28902fd4274b2dc7b2181debce6a63cdf718ef4950397cab158d066b489b",
+    "backend/tests/test_dr_gateway_pg.py": "88e70fa5990198c46124d9eb535cd9db7531e6017fb426a38ed971327661fe2e",
+    "backend/tests/test_dr_client_unit.py": "5ef398dc98743c19502ac749762c8a98bddec3dd03e452f03b133460924331e8",
+    "backend/tests/test_dr_receiver_http_pg.py": "ed0fcff0a2b57ddd90f31e9613ad31c25ae555a155ba6c98b9730e19e9b0ab79"
+  },
+  "source_drift": [],
+  "actual_commands": [
+    "rtk proxy .venv\\Scripts\\python.exe scripts/test_with_postgres.py --pg-bin C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin -- .venv\\Scripts\\python.exe scripts/run_pg_suite.py backend/tests/test_dr_gateway_pg.py backend/tests/test_dr_client_unit.py backend/tests/test_dr_receiver_http_pg.py -q --junitxml=evidence/integrations/dr-gateway-20261114/qualified-frozen.xml",
+    "rtk proxy .venv\\Scripts\\python.exe scripts/test_with_postgres.py --pg-bin C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin -- .venv\\Scripts\\python.exe scripts/run_pg_suite.py backend/tests/test_labclear_gateway_pg.py backend/tests/test_labclear_gateway_unit.py backend/tests/test_integration_clients_unit.py backend/tests/test_integration_protocol_unit.py -q --junitxml=evidence/integrations/dr-gateway-20261114/labclear-regression-integrity.xml"
+  ],
+  "receiver_protocol_sha256": "9601d4798163721f60fdf301ffbe3873a42ebfd1382cf323bc14e310beed0391",
+  "limits": [
+    "Actual HTTP uses a separate local derivative interpreter/process and second database in disposable PostgreSQL cluster; not a deployed Linux image or public browser test",
+    "Synthetic verified grants exist only in the disposable test fixture; no public signing privilege created",
+    "Zero model calls, no original DR runtime/source edits or existing LabClear runtime changes",
+    "Independent reviewer decision and parent deployment/public acceptance remain separate"
+  ],
+  "evidence_sha256": {
+    "actual-http-initial.xml": "067137468e540dfd2102cadf772bc844da7d872b880605fe3d1f24a578305fbc",
+    "client-integrity-corrected.xml": "3f6f1b76fb396f2e203305aa82497fc2764bc2960da0a4637cf009430271f5b8",
+    "client-request-association.xml": "9bf8e7e76cdb3acc1fe63a9990888bd6094e1f579e2dee25b56b94531038892f",
+    "client-unit.xml": "b68c9e63e04efaf00e02b8046942f25ded250ca00fc7084a6292efe7170dd3ca",
+    "labclear-regression-head4.xml": "cc693e1f7a5f63fbc1a3aada65e6552579679e1f1dd5f4f3f9fc53744a8a04b4",
+    "labclear-regression-integrity.xml": "d5c15b1d4b0770587963545b5b105b91d0ffb4938e55c44a2c365aea9e3cc67d",
+    "labclear-regression.xml": "3f217808bce5826f9911123443fabe3b1cf3a1af0ecdf74d8198795ff746eb5b",
+    "pg-corrected.xml": "1a4b64d138d8784469fba8b20fc7a3a4c8c32cb0700f05bfbecd119ea3c04ad9",
+    "pg-expanded.xml": "da60312923e394fc8a713c2b81257c3ea047f14d4cfa4457f2c786b23c8bbe5e",
+    "pg-initial.xml": "31c03859ea04cfc1132fae2610134610edf180b7d8da568f003ca107db3d6994",
+    "qualified-final-revision.xml": "b1b97637a304a6e1d9ef8f3321732807decc2efc1f6a92bab7d542b4096a7d2f",
+    "qualified-final.xml": "53bf1d9228c586cbd550242478bd54c68a11ce47de96cd4a5de35c99a92606f0",
+    "qualified-frozen-output.txt": "a6f3cf55d2b7f1d4b6e3a1141ac7261d4ef7afa71addaaf8a1d18afb25b5241e",
+    "qualified-frozen.xml": "baecf612e763840ba29d3114212d76c8f61fe1be38161a2af549573d6167b9d6",
+    "qualified-integrity.xml": "d3c7bb92a5f83f2e785e7539f4eebc631b6c5937173b35b8b8128f2379f087df",
+    "qualified.xml": "60b1ca25a09b38897ed0371c4ad06b5a894a3955f472902830bee8afa580374d",
+    "README.md": "5ee2e74b600e39649b4f8c2a01d8ecaf35c63bebb97f1d59fa0b017a42b841be",
+    "schema-check.json": "a3f48716dfe1b75c081d9ed98762a91c27edab80b7c0b5f97c35a3e50a90ee23",
+    "schema-check.log": "adfdf8c417ef31380a4dd8a695b7d2707cdf16a67225a06157898f271b6421e1",
+    "source-freeze.json": "3a0f4fa7610df8dbf83a15cb34f9f4189cda1ffed1c61a1c29a932ec4d173587",
+    "source-integrity-freeze.json": "61d25f8435c35338ca89f754433cc031af83e368980e77f5d2c0b6b7d6a85e0f"
+  }
+}
