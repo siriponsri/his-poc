@@ -1,0 +1,61 @@
+{
+  "status": "PASS_PREDEPLOYMENT_READINESS_ONLY",
+  "scope": "Actual source-fidelity fixtures, local software, nonroot image source/assets, fresh isolated restore and 004/005 compatibility; deployment and staff application acceptance remain separate",
+  "source_commit": "286f391aba8fb5e589d43e171c14d2dfabe037a5",
+  "candidate_image_id": "sha256:9afd73f2595e35b46cb796f1836eb15c0885d33fb4c4a636c73b41104da72338",
+  "archive_sha256": "6bed11a513f0fbd37ecfdbcb5ba9a6d9e79f18e4ddacf295ce8451540ba9a66a",
+  "runtime_source_files": 280,
+  "static": {
+    "status": "PASS",
+    "uid": 10001,
+    "gid": 10001,
+    "assets": 20,
+    "receipt_sha256": "aeb5dc0f5abb946f92996ffdc0d20e027461948b1b25fa5587a6d5683f624da8",
+    "asset_manifest_sha256": "1e661732a1d7b0e779a784814c47c16b70409baed36b0a8b247f86a6bac18951",
+    "runtime_database_or_model_calls": 0
+  },
+  "compatibility": {
+    "status": "PASS_ISOLATED_COMPATIBILITY_004_005",
+    "compat_image_id": "sha256:a7fb9aa18b09c37e529903812a79aec9fa3fa2f9e1188fb74f2203b0f68a3059",
+    "receipt_sha256": "2542fd743fe4cb9ffff1e60b9a4d20c471123c4363f5b3145782e4ca9fc8e4ae",
+    "stages": [
+      "auth004 PASS",
+      "isolated migration005 PASS",
+      "compat005 PASS",
+      "candidate005 PASS"
+    ],
+    "old_his_tables_preserved": 121,
+    "new_empty_assistant_tables": 5,
+    "resulting_his_tables": 126,
+    "labclear_tables": 2,
+    "dr_tables": 10,
+    "restored_files": 3,
+    "production_databases_files_configs_and_containers_preserved": true,
+    "model_calls": 0
+  },
+  "retained_failures": {
+    "earlier_nonroot_static_failures": 2,
+    "symptom": "EACCES on nested /app directories",
+    "confirmed_cause": "0700 root-owned directories retained by cached Docker COPY layers despite build-context mode correction",
+    "supported_fix": "One networkless derived image layer changes directories only to0755; all file content/mode/ownership fingerprints and inherited image config unchanged",
+    "old_images_and_failed_ledgers_retained": true,
+    "derived_recipe_sha256": "99948cb205355c57137cf5740101186446e6a8dfb74fc43f4a9e1a77b25b1594",
+    "base_layers_retained": 11,
+    "new_metadata_layer_count": 1
+  },
+  "host_worker": {
+    "installed_configuration": "DISABLED_UNBOUND_PAUSED",
+    "cron_zero_call_verification": "PASS at2026-11-14T16:34:01Z",
+    "actual_parent_cgroup": "/system.slice/cron.service",
+    "existing_crontab_bytes_preserved": true,
+    "oneoff_verification_line_removed": true,
+    "permanent_reboot_entry_retained": true,
+    "enabled_worker_persistence": "NOT_RUN",
+    "own_engine_restart_policy": "unless-stopped",
+    "engine_recreated": false,
+    "host_reboot_acceptance": "NOT_RUN"
+  },
+  "source_fidelity": "See live-source-fidelity.json: four single authored fixtures passed; one earlier invalid output retained; not application or clinical acceptance",
+  "production_rollout": "NOT_ASSERTED_BY_THIS_PREFLIGHT",
+  "protected_public_staff_ai_journeys": "NOT_ASSERTED_BY_THIS_PREFLIGHT"
+}
