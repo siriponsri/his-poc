@@ -1,0 +1,16 @@
+{
+  "status": "PASS_SOURCE_CONTRACT_EXPORT",
+  "source_commit": "286f391aba8fb5e589d43e171c14d2dfabe037a5",
+  "migration": "0005_assistant_workspaces",
+  "modeled_tables": 125,
+  "expected_database_tables_including_alembic": 126,
+  "api_paths": 151,
+  "database_connections": 0,
+  "model_calls": 0,
+  "runtime_acceptance": "NOT_ASSERTED_BY_THIS_EXPORT",
+  "files": {
+    "data-dictionary.csv": "3bb7369db5fdc29a0330dc5fcd781ec4a6cb39526959bdd85c7b92ee52aef4fd",
+    "openapi.json": "7f221353a01b83347104c8985be3eb65c191e60fe784e76e0cb59098127d0fd5",
+    "schema-reference.sql": "d3b1449a060e5c0562d2945e509d55c46ae68ca02f09c7797cf1eba35f35d598"
+  }
+}
