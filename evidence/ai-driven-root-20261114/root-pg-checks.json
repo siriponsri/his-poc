@@ -1,0 +1,61 @@
+{
+  "at": "2026-11-14T14:41:01.451583+00:00",
+  "checks": [
+    {
+      "run": "full-pg",
+      "xml_sha256": "f214a35cb458ab1be00cf778c2c08ed31b6290e50b2d30bdf71686df382dd41e",
+      "tests": 405,
+      "failures": 3,
+      "errors": 0,
+      "skipped": 1,
+      "seconds": 193.318,
+      "status": "FAIL",
+      "failed_cases": [
+        "test_migration_ready_import_review_read_and_his_unchanged",
+        "test_01_backup_restore_rows_files_and_foreign_keys",
+        "test_full_patient_list_returns_actual_identifier_values_without_renaming_ids"
+      ]
+    },
+    {
+      "run": "labclear-isolated",
+      "xml_sha256": "5c0b25ec8450fffd84f4fb986bca263baeb53a551176c6c5185963bdd7ffb24e",
+      "tests": 15,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 13.85,
+      "status": "PASS",
+      "failed_cases": []
+    },
+    {
+      "run": "ops-isolated",
+      "xml_sha256": "7698f295126926258d599cdafd6bdb5a5179d88487c28c412a19f16ed24e27a8",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 31.782,
+      "status": "PASS",
+      "failed_cases": []
+    },
+    {
+      "run": "presentation-isolated",
+      "xml_sha256": "27829cb0668829a54632cbecbe41b6bd81166a2b20aaa43cedb732165a5a8a83",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 8.786,
+      "status": "PASS",
+      "failed_cases": []
+    }
+  ],
+  "scope": "Disposable PostgreSQL18.6; no production DB or live model calls",
+  "resolution": {
+    "labclear": "Update stale readiness expectation0004 to0005; isolated15PASS",
+    "operations": "Unchanged strong assertion; fresh DB/files isolated13PASS",
+    "patient_presentation": "Unchanged strong assertion; fresh DB/files isolated6PASS"
+  },
+  "whole_shared_database_run": "FAIL_RETAINED_THREE_FAILURES",
+  "subsequent_evidence": "Composite isolated module results, not a single all-green full run"
+}

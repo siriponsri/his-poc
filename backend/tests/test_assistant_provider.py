@@ -132,6 +132,7 @@ def responder(
             body = json.loads(request.content)
             assert (
                 body["keep_alive"] == 0
+                and body["options"]["num_thread"] == 6
                 and body["options"]["num_ctx"] == 4096
                 and body["stream"] is False
             )
