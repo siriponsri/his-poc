@@ -1,0 +1,20 @@
+{
+  "status": "PASS_SOURCE_REVIEW",
+  "candidate": "5a26ed6f5b8d29bd07309fe020424cb0e1d584c6",
+  "reviewer": "root; separate from frontend implementer",
+  "source_files": 10,
+  "source_drift": [],
+  "checks": [
+    "D01 projection remains patient/facility/organization scoped",
+    "minimum reference endpoint unchanged",
+    "real identifiers only; truthful fallback",
+    "completed calendar age; no guessed sex",
+    "actual visit metadata; IDs and navigation preserved",
+    "narrow meaningful scope/privacy regressions",
+    "legacy privileged Home fixture corrected; retained failed receipt"
+  ],
+  "limits": [
+    "Public final UI browser not yet run",
+    "Not clinical or model validation"
+  ]
+}

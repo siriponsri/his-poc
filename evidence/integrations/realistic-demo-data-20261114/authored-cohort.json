@@ -1,0 +1,406 @@
+{
+  "schema": "carebalance.fictional-cohort.v1",
+  "dataset_id": "realistic-demo-20261114",
+  "as_of": "2026-11-14",
+  "provenance": {
+    "classification": "WHOLLY_INVENTED_DEMONSTRATION",
+    "statement": "All new names, dates, demographics, histories, measurements and lab values were authored for this POC. No record represents a real person. Reference intervals are illustrative authored text, not a validated clinical rule set.",
+    "source_images": "NONE; owner-held MMRDR images remain untouched",
+    "global_demo_notice": "RETAIN",
+    "real_identifiers": "NONE; no national ID, address, telephone or email"
+  },
+  "legacy_name_amendments": [
+    {
+      "patient_id": "patient-001",
+      "new_display_name": "ณัฐพล จันทร์ธารา",
+      "preserve": [
+        "id",
+        "birth_date",
+        "sex",
+        "status",
+        "identifiers",
+        "all clinical rows and source snapshots"
+      ]
+    },
+    {
+      "patient_id": "patient-002",
+      "new_display_name": "พิมพ์ชนก วรานันท์",
+      "preserve": [
+        "id",
+        "birth_date",
+        "sex",
+        "status",
+        "identifiers",
+        "all clinical rows and source snapshots"
+      ]
+    },
+    {
+      "patient_id": "patient-003",
+      "new_display_name": "ธีรภัทร เมธาวรรณ",
+      "preserve": [
+        "id",
+        "birth_date",
+        "sex",
+        "status",
+        "identifiers",
+        "all clinical rows and source snapshots"
+      ]
+    },
+    {
+      "patient_id": "patient-004",
+      "new_display_name": "กัญญารัตน์ ศิริธารา",
+      "preserve": [
+        "id",
+        "birth_date",
+        "sex",
+        "status",
+        "identifiers",
+        "all clinical rows and source snapshots"
+      ]
+    }
+  ],
+  "new_patients": [
+    {
+      "cohort_key": "6901425",
+      "patient": {
+        "display_name": "สุเมธ ภัทรกุล",
+        "birth_date": "1968-04-12",
+        "sex": "male",
+        "identifier": "6901425",
+        "issuer": "CAREBALANCE_DEMO"
+      },
+      "vitals_text_source": {
+        "weight_kg": 76,
+        "height_cm": 172,
+        "bmi": 25.7,
+        "bp_mmHg": "138/84",
+        "pulse_per_min": 78,
+        "temperature_c": 36.7,
+        "rr_per_min": 16,
+        "spo2_percent": 98
+      },
+      "encounter": {
+        "kind": "OPD",
+        "department_id": "department-demo"
+      },
+      "document": {
+        "title": "ติดตามเบาหวาน",
+        "content": "Chief complaint\nติดตามเบาหวาน\n\nHistory\nมาติดตามโรคเบาหวานตามนัด ไม่มีหน้ามืด เหงื่อออกผิดปกติ หรือแผลที่เท้า รับประทานอาหารได้ตามปกติ\n\nVital signs\nBP 138/84 mmHg; pulse 78/min; temperature 36.7 °C; respiratory rate 16/min; SpO₂ 98% on room air\nWeight 76 kg; height 172 cm; BMI 25.7 kg/m²\n\nEncounter note\nผู้รับบริการรู้สึกตัวดี สื่อสารได้ ไม่พบอาการไม่สบายเฉียบพลันตามประวัติที่บันทึก รายการยาและประวัติแพ้ยายังรอทบทวนโดยผู้ตรวจ\n\nFollow-up\nรอผู้รับผิดชอบทบทวนผลตรวจและความครบถ้วนของเอกสารก่อนสรุปการตรวจครั้งนี้ ยังไม่มีบันทึกการเปลี่ยนยาในเอกสารฉบับนี้"
+      },
+      "labs": [
+        {
+          "code": "FPG",
+          "label": "Fasting plasma glucose",
+          "result_value": "152",
+          "unit": "mg/dL",
+          "reference_range": "70-99",
+          "specimen_type": "plasma"
+        },
+        {
+          "code": "HBA1C",
+          "label": "HbA1c",
+          "result_value": "7.4",
+          "unit": "%",
+          "reference_range": "4.0-5.6",
+          "specimen_type": "whole blood"
+        }
+      ],
+      "tasks": [
+        {
+          "domain": "D37",
+          "kind": "document_review",
+          "title": "ทบทวนความครบถ้วน: ติดตามเบาหวาน"
+        },
+        {
+          "domain": "D10",
+          "kind": "labclear_review",
+          "title": "ทบทวนผลตรวจ: ติดตามเบาหวาน"
+        }
+      ]
+    },
+    {
+      "cohort_key": "6901426",
+      "patient": {
+        "display_name": "อรอนงค์ วัฒนธารา",
+        "birth_date": "1965-08-26",
+        "sex": "female",
+        "identifier": "6901426",
+        "issuer": "CAREBALANCE_DEMO"
+      },
+      "vitals_text_source": {
+        "weight_kg": 62,
+        "height_cm": 158,
+        "bmi": 24.8,
+        "bp_mmHg": "146/86",
+        "pulse_per_min": 74,
+        "temperature_c": 36.6,
+        "rr_per_min": 16,
+        "spo2_percent": 98
+      },
+      "encounter": {
+        "kind": "OPD",
+        "department_id": "department-demo"
+      },
+      "document": {
+        "title": "ติดตามความดันโลหิต",
+        "content": "Chief complaint\nติดตามความดันโลหิต\n\nHistory\nมาตามนัดติดตามความดันโลหิต บันทึกที่บ้านช่วงเช้าใกล้เคียง 140/85 mmHg ไม่มีเจ็บหน้าอก หอบเหนื่อย หรืออ่อนแรง\n\nVital signs\nBP 146/86 mmHg; pulse 74/min; temperature 36.6 °C; respiratory rate 16/min; SpO₂ 98% on room air\nWeight 62 kg; height 158 cm; BMI 24.8 kg/m²\n\nEncounter note\nผู้รับบริการรู้สึกตัวดี สื่อสารได้ ไม่พบอาการไม่สบายเฉียบพลันตามประวัติที่บันทึก รายการยาและประวัติแพ้ยายังรอทบทวนโดยผู้ตรวจ\n\nFollow-up\nรอผู้รับผิดชอบทบทวนผลตรวจและความครบถ้วนของเอกสารก่อนสรุปการตรวจครั้งนี้ ยังไม่มีบันทึกการเปลี่ยนยาในเอกสารฉบับนี้"
+      },
+      "labs": [
+        {
+          "code": "CREAT",
+          "label": "Creatinine",
+          "result_value": "0.82",
+          "unit": "mg/dL",
+          "reference_range": "0.50-1.10",
+          "specimen_type": "serum"
+        },
+        {
+          "code": "K",
+          "label": "Potassium",
+          "result_value": "4.2",
+          "unit": "mmol/L",
+          "reference_range": "3.5-5.1",
+          "specimen_type": "serum"
+        }
+      ],
+      "tasks": [
+        {
+          "domain": "D37",
+          "kind": "document_review",
+          "title": "ทบทวนความครบถ้วน: ติดตามความดันโลหิต"
+        },
+        {
+          "domain": "D10",
+          "kind": "labclear_review",
+          "title": "ทบทวนผลตรวจ: ติดตามความดันโลหิต"
+        }
+      ]
+    },
+    {
+      "cohort_key": "6901427",
+      "patient": {
+        "display_name": "ภาคิน พงศ์ธนกิจ",
+        "birth_date": "1990-02-18",
+        "sex": "male",
+        "identifier": "6901427",
+        "issuer": "CAREBALANCE_DEMO"
+      },
+      "vitals_text_source": {
+        "weight_kg": 84,
+        "height_cm": 176,
+        "bmi": 27.1,
+        "bp_mmHg": "128/80",
+        "pulse_per_min": 80,
+        "temperature_c": 36.5,
+        "rr_per_min": 16,
+        "spo2_percent": 98
+      },
+      "encounter": {
+        "kind": "OPD",
+        "department_id": "department-demo"
+      },
+      "document": {
+        "title": "ทบทวนผลตรวจสุขภาพ",
+        "content": "Chief complaint\nทบทวนผลตรวจสุขภาพ\n\nHistory\nมาทบทวนผลตรวจสุขภาพประจำปี ทำงานสำนักงาน ออกกำลังกายประมาณสัปดาห์ละครั้ง ไม่มีอาการผิดปกติในวันนี้\n\nVital signs\nBP 128/80 mmHg; pulse 80/min; temperature 36.5 °C; respiratory rate 16/min; SpO₂ 98% on room air\nWeight 84 kg; height 176 cm; BMI 27.1 kg/m²\n\nEncounter note\nผู้รับบริการรู้สึกตัวดี สื่อสารได้ ไม่พบอาการไม่สบายเฉียบพลันตามประวัติที่บันทึก รายการยาและประวัติแพ้ยายังรอทบทวนโดยผู้ตรวจ\n\nFollow-up\nรอผู้รับผิดชอบทบทวนผลตรวจและความครบถ้วนของเอกสารก่อนสรุปการตรวจครั้งนี้ ยังไม่มีบันทึกการเปลี่ยนยาในเอกสารฉบับนี้"
+      },
+      "labs": [
+        {
+          "code": "CHOL",
+          "label": "Total cholesterol",
+          "result_value": "224",
+          "unit": "mg/dL",
+          "reference_range": "<200",
+          "specimen_type": "serum"
+        },
+        {
+          "code": "TG",
+          "label": "Triglycerides",
+          "result_value": "168",
+          "unit": "mg/dL",
+          "reference_range": "<150",
+          "specimen_type": "serum"
+        }
+      ],
+      "tasks": [
+        {
+          "domain": "D37",
+          "kind": "document_review",
+          "title": "ทบทวนความครบถ้วน: ทบทวนผลตรวจสุขภาพ"
+        },
+        {
+          "domain": "D10",
+          "kind": "labclear_review",
+          "title": "ทบทวนผลตรวจ: ทบทวนผลตรวจสุขภาพ"
+        }
+      ]
+    },
+    {
+      "cohort_key": "6901428",
+      "patient": {
+        "display_name": "ปาริฉัตร กิตติธารา",
+        "birth_date": "1979-07-04",
+        "sex": "female",
+        "identifier": "6901428",
+        "issuer": "CAREBALANCE_DEMO"
+      },
+      "vitals_text_source": {
+        "weight_kg": 55,
+        "height_cm": 160,
+        "bmi": 21.5,
+        "bp_mmHg": "116/74",
+        "pulse_per_min": 82,
+        "temperature_c": 36.7,
+        "rr_per_min": 16,
+        "spo2_percent": 98
+      },
+      "encounter": {
+        "kind": "OPD",
+        "department_id": "department-demo"
+      },
+      "document": {
+        "title": "ติดตามอาการอ่อนเพลีย",
+        "content": "Chief complaint\nติดตามอาการอ่อนเพลีย\n\nHistory\nอ่อนเพลียเป็นพัก ๆ ประมาณสองสัปดาห์ นอนเฉลี่ยคืนละห้าถึงหกชั่วโมง ไม่มีไข้ ถ่ายดำ หรือเลือดออกผิดปกติ มาทบทวนผลเลือด\n\nVital signs\nBP 116/74 mmHg; pulse 82/min; temperature 36.7 °C; respiratory rate 16/min; SpO₂ 98% on room air\nWeight 55 kg; height 160 cm; BMI 21.5 kg/m²\n\nEncounter note\nผู้รับบริการรู้สึกตัวดี สื่อสารได้ ไม่พบอาการไม่สบายเฉียบพลันตามประวัติที่บันทึก รายการยาและประวัติแพ้ยายังรอทบทวนโดยผู้ตรวจ\n\nFollow-up\nรอผู้รับผิดชอบทบทวนผลตรวจและความครบถ้วนของเอกสารก่อนสรุปการตรวจครั้งนี้ ยังไม่มีบันทึกการเปลี่ยนยาในเอกสารฉบับนี้"
+      },
+      "labs": [
+        {
+          "code": "HB",
+          "label": "Hemoglobin",
+          "result_value": "12.6",
+          "unit": "g/dL",
+          "reference_range": "12.0-16.0",
+          "specimen_type": "whole blood"
+        },
+        {
+          "code": "TSH",
+          "label": "TSH",
+          "result_value": "2.1",
+          "unit": "mIU/L",
+          "reference_range": "0.4-4.0",
+          "specimen_type": "serum"
+        }
+      ],
+      "tasks": [
+        {
+          "domain": "D37",
+          "kind": "document_review",
+          "title": "ทบทวนความครบถ้วน: ติดตามอาการอ่อนเพลีย"
+        },
+        {
+          "domain": "D10",
+          "kind": "labclear_review",
+          "title": "ทบทวนผลตรวจ: ติดตามอาการอ่อนเพลีย"
+        }
+      ]
+    },
+    {
+      "cohort_key": "6901429",
+      "patient": {
+        "display_name": "สมภพ ธีรวัฒน์",
+        "birth_date": "1958-02-11",
+        "sex": "male",
+        "identifier": "6901429",
+        "issuer": "CAREBALANCE_DEMO"
+      },
+      "vitals_text_source": {
+        "weight_kg": 69,
+        "height_cm": 168,
+        "bmi": 24.4,
+        "bp_mmHg": "132/78",
+        "pulse_per_min": 72,
+        "temperature_c": 36.4,
+        "rr_per_min": 16,
+        "spo2_percent": 98
+      },
+      "encounter": {
+        "kind": "OPD",
+        "department_id": "department-demo"
+      },
+      "document": {
+        "title": "ติดตามเบาหวานและการทำงานของไต",
+        "content": "Chief complaint\nติดตามเบาหวานและการทำงานของไต\n\nHistory\nติดตามเบาหวานและผลการทำงานของไตตามนัด ไม่มีขาบวม หอบเหนื่อย หรือปัสสาวะแสบขัด รับประทานอาหารได้ตามปกติ\n\nVital signs\nBP 132/78 mmHg; pulse 72/min; temperature 36.4 °C; respiratory rate 16/min; SpO₂ 98% on room air\nWeight 69 kg; height 168 cm; BMI 24.4 kg/m²\n\nEncounter note\nผู้รับบริการรู้สึกตัวดี สื่อสารได้ ไม่พบอาการไม่สบายเฉียบพลันตามประวัติที่บันทึก รายการยาและประวัติแพ้ยายังรอทบทวนโดยผู้ตรวจ\n\nFollow-up\nรอผู้รับผิดชอบทบทวนผลตรวจและความครบถ้วนของเอกสารก่อนสรุปการตรวจครั้งนี้ ยังไม่มีบันทึกการเปลี่ยนยาในเอกสารฉบับนี้"
+      },
+      "labs": [
+        {
+          "code": "HBA1C",
+          "label": "HbA1c",
+          "result_value": "6.8",
+          "unit": "%",
+          "reference_range": "4.0-5.6",
+          "specimen_type": "whole blood"
+        },
+        {
+          "code": "CREAT",
+          "label": "Creatinine",
+          "result_value": "1.30",
+          "unit": "mg/dL",
+          "reference_range": "0.70-1.30",
+          "specimen_type": "serum"
+        }
+      ],
+      "tasks": [
+        {
+          "domain": "D37",
+          "kind": "document_review",
+          "title": "ทบทวนความครบถ้วน: ติดตามเบาหวานและการทำงานของไต"
+        },
+        {
+          "domain": "D10",
+          "kind": "labclear_review",
+          "title": "ทบทวนผลตรวจ: ติดตามเบาหวานและการทำงานของไต"
+        }
+      ]
+    },
+    {
+      "cohort_key": "6901430",
+      "patient": {
+        "display_name": "รินรดา สุวรรณเมธา",
+        "birth_date": "1997-09-23",
+        "sex": "female",
+        "identifier": "6901430",
+        "issuer": "CAREBALANCE_DEMO"
+      },
+      "vitals_text_source": {
+        "weight_kg": 52,
+        "height_cm": 163,
+        "bmi": 19.6,
+        "bp_mmHg": "108/68",
+        "pulse_per_min": 76,
+        "temperature_c": 36.6,
+        "rr_per_min": 16,
+        "spo2_percent": 98
+      },
+      "encounter": {
+        "kind": "OPD",
+        "department_id": "department-demo"
+      },
+      "document": {
+        "title": "ทบทวนผลเลือดหลังอาการอ่อนเพลียดีขึ้น",
+        "content": "Chief complaint\nทบทวนผลเลือดหลังอาการอ่อนเพลียดีขึ้น\n\nHistory\nมาติดตามอาการอ่อนเพลียซึ่งลดลงหลังพักผ่อนมากขึ้น ไม่มีไข้ ใจสั่น หรือเลือดออกผิดปกติ ต้องการทบทวนผลตรวจเลือดที่ได้รับ\n\nVital signs\nBP 108/68 mmHg; pulse 76/min; temperature 36.6 °C; respiratory rate 16/min; SpO₂ 98% on room air\nWeight 52 kg; height 163 cm; BMI 19.6 kg/m²\n\nEncounter note\nผู้รับบริการรู้สึกตัวดี สื่อสารได้ ไม่พบอาการไม่สบายเฉียบพลันตามประวัติที่บันทึก รายการยาและประวัติแพ้ยายังรอทบทวนโดยผู้ตรวจ\n\nFollow-up\nรอผู้รับผิดชอบทบทวนผลตรวจและความครบถ้วนของเอกสารก่อนสรุปการตรวจครั้งนี้ ยังไม่มีบันทึกการเปลี่ยนยาในเอกสารฉบับนี้"
+      },
+      "labs": [
+        {
+          "code": "HB",
+          "label": "Hemoglobin",
+          "result_value": "13.2",
+          "unit": "g/dL",
+          "reference_range": "12.0-16.0",
+          "specimen_type": "whole blood"
+        }
+      ],
+      "tasks": [
+        {
+          "domain": "D37",
+          "kind": "document_review",
+          "title": "ทบทวนความครบถ้วน: ทบทวนผลเลือดหลังอาการอ่อนเพลียดีขึ้น"
+        },
+        {
+          "domain": "D10",
+          "kind": "labclear_review",
+          "title": "ทบทวนผลตรวจ: ทบทวนผลเลือดหลังอาการอ่อนเพลียดีขึ้น"
+        }
+      ]
+    }
+  ],
+  "classification": "WHOLLY_INVENTED_DEMONSTRATION_DATA",
+  "artifact_purpose": "Authored example data only. Not an executable seed, migration, startup loader, or assertion of automated runtime creation."
+}

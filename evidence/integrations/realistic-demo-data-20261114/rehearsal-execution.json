@@ -1,0 +1,20 @@
+{
+  "command": [
+    "rtk",
+    "proxy",
+    ".venv/Scripts/python.exe",
+    "scripts/test_with_postgres.py",
+    "--pg-bin",
+    "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+    "--",
+    ".venv/Scripts/python.exe",
+    "scripts/run_pg_suite.py",
+    "var/carebalance-integration/realistic-demo-20261114/test_cohort_pg.py",
+    "-q",
+    "--junitxml=pg-rehearsal-corrected-v2.xml"
+  ],
+  "exit_code": 0,
+  "log": "pg-rehearsal-corrected-v2.log",
+  "xml": "pg-rehearsal-corrected-v2.xml",
+  "retained_initial_failure": "Disposable baseline initially compared production creation timestamps; corrected to compare only same demographic/context/version inputs. Initial test failed before API cohort mutations. Initial PowerShell wrapper did not propagate child exit code; XML/log record actual failure."
+}

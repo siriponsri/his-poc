@@ -1,0 +1,30 @@
+{
+  "status": "PASS_OFFLINE",
+  "request_dto_shapes_checked": 146,
+  "fictional_cases": 6,
+  "lab_sources_planned": 11,
+  "document_tasks_planned": 6,
+  "labclear_tasks_planned": 6,
+  "normal_requests_planned": 146,
+  "plan_sha256": "d9534736c473c9aae78b039f72812a6940c095c372d7805f8ba694149829f468",
+  "operator_file_sha256": "247dedb9fa6a16723ca86e89d9c76179d66c20f504eb0b6a6a8bd47a35b32496",
+  "checks": [
+    "actual Pydantic DTOs and dynamic D10 action schemas",
+    "distinct HNs/DOBs and adult ages",
+    "BMI arithmetic",
+    "all scope assignments before test01 mutations",
+    "boolean version/empty HN/invalid sex rejected",
+    "fake transport dependency expansion",
+    "own Secure HttpOnly CLI cookie explicitly sent only to known loopback API",
+    "GET auth/me identity roles and persisted permissions checked after each own login",
+    "own cookie absent from receipts and output",
+    "durable key/body hash before every fake dispatch",
+    "completed receipt cache no replay",
+    "unknown outcome STOP and subsequent replay denied"
+  ],
+  "production_writes": 0,
+  "model_calls": 0,
+  "postgresql_state_guards": "NOT_RUN",
+  "real_normal_api_execution": "NOT_RUN",
+  "retained_preflight_failure": "First read-only inventory used DATABASE_URL for DR; DR requires CAREBALANCE_DR_DATABASE_URL. Read-only failure made zero writes; corrected three-DB inventory passed."
+}

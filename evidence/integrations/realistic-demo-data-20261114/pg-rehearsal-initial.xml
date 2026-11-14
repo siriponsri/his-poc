@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="1" time="7.184" timestamp="2026-11-14T19:32:01.500740+07:00" hostname="DESKTOP-C8EHASQ"><testcase classname="var.carebalance-integration.realistic-demo-20261114.test_cohort_pg" name="test_exact_cohort_normal_api" time="4.797"><failure message="AssertionError: assert [{'organizati...-01-01', ...}] == [{'organizati...-01-01', ...}]&#10;  &#10;[+2 more lines; full report in element text]">def test_exact_cohort_normal_api():
+     assert engine.url.database=='his_test'
+     with SessionLocal.begin() as db:
+      seed(db,os.environ['HIS_SEED_PASSWORD'])
+      assert not db.get(User,'user-test01-poc')
+      db.add(User(id='user-test01-poc',organization_id='org-demo',username='test01',display_name='Disposable test01',status='active',REDACTED_CREDENTIAL_FIELD=REDACTED_CREDENTIAL_FIELDer.hash(os.environ['HIS_SEED_PASSWORD'])));db.flush()
+      db.add(Membership(user_id='user-test01-poc',facility_id='facility-demo',role='clinician'))
+      db.add(CareAssignment(user_id='user-test01-poc',patient_id='patient-001'))
+     before=snapshot();plan=json.loads((HERE/'cohort-plan.json').read_text(encoding='utf-8'));production_baseline=json.loads((HERE/'preflight-before.json').read_text(encoding='utf-8'))
+&gt;    assert before['legacy']==production_baseline['his']['legacy_patients']
+E    AssertionError: assert [{'organizati...-01-01', ...}] == [{'organizati...-01-01', ...}]
+E      
+E      At index 0 diff: {'organization_id': 'org-demo', 'facility_id': 'facility-demo', 'display_name': 'ผู้ป่วยสังเคราะห์ 001', 'birth_date': '1981-01-01', 'sex': 'unknown', 'status': 'active', 'version': 1, 'id': 'patient-001', 'created_at': '2026-11-14T19:32:07.549626+07:00'} != {'organization_id': 'org-demo', 'facility_id': 'facility-demo', 'display_name': 'ผู้ป่วยสังเคราะห์ 001', 'birth_date': '1981-01-01', 'sex': 'unknown', 'status': 'active', 'version': 1, 'id': 'patient-001', 'created_at': '2026-11-13T12:02:56.385978+00:00'}
+E      Use -v to get more diff
+
+var\carebalance-integration\realistic-demo-20261114\test_cohort_pg.py:35: AssertionError</failure></testcase></testsuite></testsuites>

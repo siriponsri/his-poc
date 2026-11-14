@@ -1,0 +1,27 @@
+{
+  "schema": "carebalance.public-safe-evidence-index.v1",
+  "classification": "WHOLLY_INVENTED_DEMONSTRATION",
+  "files": {
+    "authored-cohort.json": "b2327b1c77b543f0700f1cd5ca32e5290bef11f64c9f3bb714838b0fce30c1c1",
+    "DEMO_DATA.md": "17e0754d2ae202aa0ae4ae65be9590e750aa78f1aeefa9e5ab3523e04aca1ef3",
+    "offline-validation.json": "f096bf75680cbdd8aba8b1539ca192cbb9b8bacdc555dc2487773ed2aae12964",
+    "pg-rehearsal-corrected-v2.log": "9b484866271a8754018932b34fd25cf11d6490b56bc88b3e206149a19e58a534",
+    "pg-rehearsal-corrected-v2.xml": "287fea3bb3aa0a68ce64b86cfa2000ddf1f680eb6b68532516ae41087ab3320c",
+    "pg-rehearsal-initial.log": "70018a784355ffd5af71d8a0e8b0e57abe5e26daf40e25e4a9525635a3ae60c2",
+    "pg-rehearsal-initial.xml": "117172391a498e6f090ec2d62ea201237ed13a16c35519dd033ac8deab4bd887",
+    "postgresql-rehearsal.json": "49faae4cb324bebdf5868c46c2cc50ea3d709ab7a6cb773768003a22aaa4e3c4",
+    "production-verification.json": "71c2375d2f4e3759219c7f171d7133098df342b930fbc9a7bc58ee8f40d39d04",
+    "rehearsal-execution.json": "b6119b2221b3e2f5e7aff00c2879acd1de774b1bea3c77031da9e979907cea53",
+    "verification-after.json": "4cee113566c3fce7983c586c29a939420931c8a15bb3ff0722b70512a1408a36"
+  },
+  "excluded": [
+    "full database row inventories",
+    "authentication/dispatch ledger",
+    "credentials",
+    "cookies",
+    "private fixture scripts"
+  ],
+  "production_writes_in_staging": 0,
+  "publication": "NOT_RUN_PARENT_REVIEW_REQUIRED",
+  "retained_staging_failure": "Conservative scan initially rejected the credential hash FIELD LABEL in initial pytest embedded fixture source; no actual hash/credential was present. Public XML label redacted; original remains private."
+}

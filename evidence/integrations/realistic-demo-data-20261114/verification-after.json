@@ -1,0 +1,114 @@
+{
+  "status": "PASS_API_DATABASE_PRESERVATION",
+  "checks": {
+    "separate_dr_labclear_exact_rows": true,
+    "source_files_exact": true,
+    "all_three_container_image_ids_exact": true,
+    "all_old_rows_preserved_except_four_patient_names": true,
+    "inference9_results9_credentials_roles_grants_unchanged": true,
+    "four_name_version_exceptions_exact": true,
+    "only_six_new_test01_care_assignments": true,
+    "expected_normal_api_row_deltas": true
+  },
+  "name_amendments": [
+    {
+      "patient_id": "patient-001",
+      "old_name": "ผู้ป่วยสังเคราะห์ 001",
+      "new_name": "ณัฐพล จันทร์ธารา",
+      "old_version": 1,
+      "new_version": 2
+    },
+    {
+      "patient_id": "patient-002",
+      "old_name": "ผู้ป่วยสังเคราะห์ 002",
+      "new_name": "พิมพ์ชนก วรานันท์",
+      "old_version": 1,
+      "new_version": 2
+    },
+    {
+      "patient_id": "patient-003",
+      "old_name": "ผู้ป่วยสังเคราะห์ 003",
+      "new_name": "ธีรภัทร เมธาวรรณ",
+      "old_version": 1,
+      "new_version": 2
+    },
+    {
+      "patient_id": "patient-004",
+      "old_name": "ผู้ป่วยสังเคราะห์ 004",
+      "new_name": "กัญญารัตน์ ศิริธารา",
+      "old_version": 1,
+      "new_version": 2
+    }
+  ],
+  "new_patients": [
+    {
+      "display_name": "สุเมธ ภัทรกุล",
+      "birth_date": "1968-04-12",
+      "sex": "male",
+      "identifier": "6901425",
+      "issuer": "CAREBALANCE_DEMO",
+      "id": "12cbfae5-7549-4be6-87a5-6819b6570172",
+      "encounter_id": "1209f8e5-677a-4ac4-ae61-8cc058c2cdde"
+    },
+    {
+      "display_name": "อรอนงค์ วัฒนธารา",
+      "birth_date": "1965-08-26",
+      "sex": "female",
+      "identifier": "6901426",
+      "issuer": "CAREBALANCE_DEMO",
+      "id": "219b841a-d00d-4443-aae9-aa10526f51c5",
+      "encounter_id": "3e433fe7-cc4a-4f03-8e57-3cfcdd62abef"
+    },
+    {
+      "display_name": "ภาคิน พงศ์ธนกิจ",
+      "birth_date": "1990-02-18",
+      "sex": "male",
+      "identifier": "6901427",
+      "issuer": "CAREBALANCE_DEMO",
+      "id": "74ba1031-b7dd-42dc-b2df-229ac77ee3f7",
+      "encounter_id": "3f5c768d-d701-4a54-ad8c-0a24fe9ad1b4"
+    },
+    {
+      "display_name": "ปาริฉัตร กิตติธารา",
+      "birth_date": "1979-07-04",
+      "sex": "female",
+      "identifier": "6901428",
+      "issuer": "CAREBALANCE_DEMO",
+      "id": "7205afbe-6620-43c4-acc6-998a89da2cca",
+      "encounter_id": "8fec8e03-7574-45dc-9f5b-654e00f50809"
+    },
+    {
+      "display_name": "สมภพ ธีรวัฒน์",
+      "birth_date": "1958-02-11",
+      "sex": "male",
+      "identifier": "6901429",
+      "issuer": "CAREBALANCE_DEMO",
+      "id": "d4870664-4be9-4bf9-aa6a-46dd9b2f4e8c",
+      "encounter_id": "2fbd5685-5a0a-481d-a725-36f849cacb45"
+    },
+    {
+      "display_name": "รินรดา สุวรรณเมธา",
+      "birth_date": "1997-09-23",
+      "sex": "female",
+      "identifier": "6901430",
+      "issuer": "CAREBALANCE_DEMO",
+      "id": "7942804e-6b2a-4895-a0dd-38d2ba6640ba",
+      "encounter_id": "fe37c00f-fae2-4997-b5fc-3e5e1eba64ac"
+    }
+  ],
+  "expected_row_deltas": {
+    "patients": 6,
+    "patient_identifiers": 6,
+    "encounters": 6,
+    "documents": 6,
+    "document_versions": 6,
+    "clinical_orders": 11,
+    "tasks": 23,
+    "clinical_labs": 11,
+    "operations": 146
+  },
+  "scope_note": "Existing test01 care scope intentionally expanded only to the six new patients. Previously captured bindings and authorization hashes are preserved. No old pending command is replayed; actual browser reads require a separate live check.",
+  "model_calls": 0,
+  "clinical_effectiveness": "NOT_EVALUATED",
+  "public_browser_acceptance": "NOT_RUN"
+}
