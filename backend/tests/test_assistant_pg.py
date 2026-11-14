@@ -584,3 +584,71 @@ def test_legacy_new_run_lease_starts_after_delayed_global_admission(monkeypatch)
             assert result['run']['outcome']=='success' and result['proposal'] is not None
     finally:event.remove(Session,'before_flush',assign_logical_created_at)
     assert calls==[1]
+
+@pytest.mark.parametrize('reason',['ASSISTANT_PROVIDER_CONNECTION_FAILED','ASSISTANT_PROVIDER_ERROR'])
+@pytest.mark.parametrize('change',['none','source','session'])
+def test_unknown_transport_after_dispatch_retains_hold_and_original_reason(reason,change):
+    with SessionLocal.begin() as db:
+        first_pid,first_eid,first_doc=context(db);second_pid,second_eid,_=context(db)
+        first_actor=actor(db);second_actor=actor(db)
+        first,_=enqueue(db,first_actor,'visit_preparation',first_pid,first_eid,'en',uid());rid=first.id
+        second,_=enqueue(db,second_actor,'visit_preparation',second_pid,second_eid,'en',uid());second_id=second.id
+    calls=[]
+    def dropped(*args):
+        calls.append('dispatched')
+        with SessionLocal.begin() as db:
+            if change=='source':db.get(M.Document,first_doc).title='Human edit during disconnected remote execution'
+            elif change=='session':db.get(M.SessionRecord,first_actor.session_id).revoked_at=utcnow()
+        if reason=='ASSISTANT_PROVIDER_ERROR':raise RuntimeError('Simulated unknown disconnect after dispatch')
+        return {'outcome':'failed','reason':reason,'artifact':None,'provenance':{'test_dispatch_started':True},'usage':None}
+    result=dispatch(dropped)
+    assert result['state']==('failed' if change=='none' else 'stale_context')
+    with SessionLocal.begin() as db:
+        first=db.get(AssistantRun,rid)
+        assert first.provider['provider_outcome']=='failed' and first.provider['provider_reason']==reason
+        assert first.hold_until>utcnow() and admission_busy(db)
+    assert dispatch(dropped)['dispatched']==0 and calls==['dispatched']
+    with SessionLocal.begin() as db:
+        assert db.get(AssistantRun,second_id).execution_state=='waiting_for_capacity'
+        db.get(AssistantRun,rid).hold_until=utcnow()-timedelta(seconds=1)
+    assert dispatch()['run_id']==second_id
+
+@pytest.mark.parametrize('reason,stale',[('PROVIDER_CONNECTION_FAILED',False),('PROVIDER_CONNECTION_FAILED',True),('PROVIDER_UNEXPECTED_ERROR',False)])
+def test_legacy_unknown_transport_reason_holds_shared_admission_after_failed_or_stale(reason,stale,monkeypatch):
+    from backend.app import ai
+    from sqlalchemy.orm import Session
+    with SessionLocal.begin() as db:
+        pid,eid,did=context(db);second_pid,second_eid,_=context(db);a=actor(db)
+        task=M.Task(id=uid(),organization_id=a.organization_id,facility_id=a.facility_id,patient_id=pid,encounter_id=eid,domain='D37',kind='document_review',title='Synthetic legacy unknown transport')
+        db.add(task);db.flush();tid=task.id
+        queued,_=enqueue(db,a,'visit_preparation',second_pid,second_eid,'en',uid());queued_id=queued.id
+    key=uid();logical_time=utcnow()-timedelta(minutes=10);calls=[]
+    def stamp(session,flush_context,instances):
+        for row in session.new:
+            if isinstance(row,M.InferenceRun) and row.operation_key==key:row.created_at=logical_time
+    class LegacyProvider:
+        name='offline_unknown_legacy';is_live=True;timeout_seconds=2
+        def public_config(self):return {'provider':self.name,'test_double':True}
+        def generate_document(self,*args):
+            calls.append('dispatched')
+            if stale:
+                with SessionLocal.begin() as db:db.get(M.Document,did).version+=1
+            if reason=='PROVIDER_UNEXPECTED_ERROR':raise RuntimeError('Simulated unknown legacy disconnect')
+            return {'outcome':'failed','reason':reason,'action':None,'provenance':{'test_dispatch_started':True},'usage':None}
+    event.listen(Session,'before_flush',stamp)
+    try:
+        with monkeypatch.context() as patch:
+            patch.setattr(ai,'utcnow',lambda:logical_time)
+            with SessionLocal() as db:
+                task=db.get(M.Task,tid);doc=db.get(M.Document,did);visit=db.get(M.Encounter,eid);revision=db.get(M.DocumentVersion,doc.current_version_id)
+                body=ai.Propose(task_id=tid,document_id=did)
+                result=ai.live_propose(db,a,body,key,body.model_dump(),LegacyProvider(),task,doc,visit,revision)
+                assert result['run']['outcome']==('stale_context' if stale else 'failed')
+                assert result['run']['provenance']['provider_outcome']=='failed'
+                assert result['run']['provenance']['provider_reason']==reason
+        # An explicitly injected historical clock tests this retained attempt's
+        # active window, then actual time lets this isolated fixture expire.
+        assert run_once(prepare=provider,validate=lambda p,a,v:a,config=lambda:CONFIG,now=logical_time)['dispatched']==0
+        assert calls==['dispatched']
+    finally:event.remove(Session,'before_flush',stamp)
+    assert dispatch()['run_id']==queued_id

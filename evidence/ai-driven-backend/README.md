@@ -14,11 +14,11 @@ Executed on an isolated, loopback-only PostgreSQL 18.6 database named `his_test`
 - Full baseline: 126 tests PASS, zero failures: 51 assistant, 5 provider integration,
   20 assistant-provider, 18 existing core, 32 existing document-provider tests.
   See `pytest-results.xml` for individual cases.
-- After the final lease-clock repair: 17 targeted worker, admission, concurrent,
+- After the final lease-clock and unknown-transport repairs: 26 targeted worker, admission, concurrent,
   timeout, legacy, authorization, terminal-visit and feature-flag tests PASS
   (37 unrelated assistant cases deselected). This includes three new clock-order
-  regressions. The full baseline was not repeated after that narrowly scoped
-  clock change. `lease-fence-execution.json` pins the final source hashes and
+  regressions and nine disconnected-transport cases. The full baseline was not
+  repeated after these narrowly scoped changes. `lease-fence-execution.json` pins the final source hashes and
   `lease-fence-pytest.xml` names the executed cases.
 - Existing document review and provider tests are included in that total.
 - Full canonical compact inference view is bounded to 2000 UTF-8 bytes. Notes
@@ -58,6 +58,14 @@ all authorization, collection and admission waits. No DB transaction is held
 across provider network work. Legacy live inference inserts its new run only
 after the shared admission lock returns, so its created-at lease also starts
 after the wait. Existing legacy records are unchanged.
+
+Failed connection/unexpected-provider errors are treated as potentially still
+running remotely. The assistant retains its original hold even when source or
+session revalidation changes the final state. Both paths persist the original
+`provider_reason` beside `provider_outcome`; legacy admission recognizes those
+failed transport attempts until their original lease expires. No automatic retry
+or second call is issued during the hold. These are conservative bounded holds,
+including connection errors that may have happened before remote generation.
 
 `backend/tests/export_assistant_qualification_packets.py` separately exported
 four authored synthetic packets from a disposable database for the root's

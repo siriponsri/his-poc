@@ -19,6 +19,11 @@ from .assistant_admission import admission_busy
 from .auth import actor_for
 from .common import utcnow, authorization_hash, digest, uid, audit
 
+UNKNOWN_TRANSPORT_REASONS={'ASSISTANT_PROVIDER_CONNECTION_FAILED','ASSISTANT_PROVIDER_ERROR'}
+
+def remote_execution_unknown(result):
+    return result.get('outcome')=='timeout' or (result.get('outcome')=='failed' and result.get('reason') in UNKNOWN_TRANSPORT_REASONS)
+
 def stored_actor(db,actor_id,session_id):
     user=db.get(M.User,actor_id);session=db.get(M.SessionRecord,session_id)
     if not user or user.status!='active' or not session or session.user_id!=actor_id or session.revoked_at or session.expires_at<=utcnow():
@@ -143,13 +148,13 @@ def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None
                 run=db.get(AssistantRun,run_id,with_for_update=True)
                 if run.execution_state!='running' or run.lease_id!=lease_id:
                     if run.lease_id==lease_id:
-                        run.provider={**(run.provider or {}),'late_provider_outcome':result.get('outcome'),'provenance':result.get('provenance',{}),'elapsed_ms':elapsed}
+                        run.provider={**(run.provider or {}),'late_provider_outcome':result.get('outcome'),'provider_outcome':result.get('outcome'),'provider_reason':result.get('reason'),'provenance':result.get('provenance',{}),'elapsed_ms':elapsed}
                         run.usage=result.get('usage')
                     return {'dispatched':1,'run_id':run_id,'state':run.execution_state}
                 packet=collect_packet(db,actor,profile,run.patient_id,run.encounter_id,locale)
                 outcome=result.get('outcome','invalid_output')
                 if outcome not in ('success','failed','timeout','invalid_output','abstained'):outcome='invalid_output'
-                run.provider={**(run.provider or {}),'provenance':result.get('provenance',{}),'elapsed_ms':result.get('elapsed_ms',elapsed),'provider_outcome':outcome}
+                run.provider={**(run.provider or {}),'provenance':result.get('provenance',{}),'elapsed_ms':result.get('elapsed_ms',elapsed),'provider_outcome':outcome,'provider_reason':result.get('reason')}
                 run.usage=result.get('usage');run.measured_cost=None
                 run.error=result.get('reason');run.completed_at=utcnow()
                 if authorization_hash(actor)!=run.authorization_hash or packet['source_digest']!=run.source_digest:
@@ -163,16 +168,16 @@ def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None
                         db.add(AssistantRevision(id=uid(),run_id=run.id,version=1,content_hash=digest(artifact),source_digest=run.source_digest,artifact=artifact,origin='model',created_by=actor.user_id))
                         run.review_state='pending'
                 run.execution_state='succeeded' if outcome=='success' else outcome
-                # A stale packet does not prove an already timed-out remote job stopped.
-                if outcome not in ('timeout','interrupted') and result.get('outcome')!='timeout':run.hold_until=None
+                # Staleness/revocation cannot prove a disconnected remote job stopped.
+                if outcome not in ('timeout','interrupted') and not remote_execution_unknown(result):run.hold_until=None
                 audit(db,actor,PROFILES[profile]['domains'][0],run.id,'assistant_'+run.execution_state,{'provider_outcome':result.get('outcome'),'automatic_retry':False})
         except HTTPException:
             with session_factory.begin() as db:
                 run=db.get(AssistantRun,run_id,with_for_update=True)
                 if run and run.execution_state=='running':
                     run.execution_state='stale_context';run.review_state='unavailable';run.error='AUTHORIZATION_OR_SCOPE_CHANGED';run.completed_at=utcnow()
-                    run.provider={**(run.provider or {}),'provenance':result.get('provenance',{}),'provider_outcome':result.get('outcome'),'elapsed_ms':elapsed};run.usage=result.get('usage')
-                    if result.get('outcome')!='timeout':run.hold_until=None
+                    run.provider={**(run.provider or {}),'provenance':result.get('provenance',{}),'provider_outcome':result.get('outcome'),'provider_reason':result.get('reason'),'elapsed_ms':elapsed};run.usage=result.get('usage')
+                    if not remote_execution_unknown(result):run.hold_until=None
                     audit(db,_receipt_actor(run),PROFILES[profile]['domains'][0],run.id,'assistant_revoked',{})
         with session_factory() as db:return {'dispatched':1,'run_id':run_id,'state':db.get(AssistantRun,run_id).execution_state}
     return {'dispatched':0}

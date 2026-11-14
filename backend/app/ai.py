@@ -127,7 +127,7 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
             old=begin_operation(db,actor,key,op,payload)
             return old if old else finish_operation(db,actor,key,op,payload,response)
         run.elapsed_ms=generated.get('elapsed_ms',elapsed);run.usage=generated.get('usage');run.measured_cost=None
-        run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed')}
+        run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed'),'provider_reason':generated.get('reason')}
         fresh_task=record(db,actor,Task,snapshot['task_id'],True);require_domain(actor,fresh_task.domain,True)
         fresh_doc=record(db,actor,Document,snapshot['document_id'],True);fresh_enc=scoped_encounter(db,actor,snapshot['encounter_id'],True)
         current_revision=db.get(DocumentVersion,snapshot['document_version_id'])
@@ -160,7 +160,7 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
         if run and run.outcome=='running':
             run.outcome='permission_revoked' if rejection.status_code in (401,403,404) else 'stale_context'
             run.reason='AUTHORIZATION_OR_SCOPE_CHANGED';run.elapsed_ms=elapsed;run.completed_at=utcnow()
-            run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed')}
+            run.provenance={**(run.provenance or {}),**generated.get('provenance',{}),'provider_outcome':generated.get('outcome','failed'),'provider_reason':generated.get('reason')}
             run.usage=generated.get('usage')
             audit(db,actor,'D37',run.id,'inference_'+run.outcome,{'task_id':run.task_id,'provider':run.provider})
             db.commit()
