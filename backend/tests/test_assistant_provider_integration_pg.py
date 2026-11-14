@@ -37,8 +37,8 @@ def test_actual_pg_collector_provider_schema_worker_and_complete_prompt_budget(r
     system=SYSTEM_PROMPT+' '+PROFILE_PROMPTS[profile]+' Write Thai.'
     full_input_bytes=len((system+envelope).encode('utf-8'))
     assert len(envelope.encode('utf-8'))<=2000
-    assert full_input_bytes+TEMPLATE_RESERVE+1024<=4096
-    assert len((SYSTEM_PROMPT+' '+PROFILE_PROMPTS[profile]+' Write English.').encode('utf-8'))<=816
+    assert full_input_bytes+TEMPLATE_RESERVE+512<=4096
+    assert len((SYSTEM_PROMPT+' '+PROFILE_PROMPTS[profile]+' Write English.').encode('utf-8'))<=1328
     facts=[{'source_ref':'s1','field':'display_name'}]
     drafts=[]
     for candidate in view['effect_candidates']:
@@ -59,7 +59,7 @@ def test_actual_pg_collector_provider_schema_worker_and_complete_prompt_budget(r
         assert revision.artifact==verified
         assert run.provider['provenance']['model_digest']==adapter.settings.model_digest
         assert run.review_state=='pending' and run.measured_cost is None
-    ROWS.append({'profile':profile,'canonical_view_bytes':len(envelope.encode('utf-8')),'complete_input_bytes':full_input_bytes,'template_reserve':TEMPLATE_RESERVE,'max_output_tokens':1024,'context_tokens':4096,'mock_transport_chat_calls':1,'worker_state':'succeeded','schema_validation':'PASS','live_network_calls':0})
+    ROWS.append({'profile':profile,'canonical_view_bytes':len(envelope.encode('utf-8')),'complete_input_bytes':full_input_bytes,'template_reserve':TEMPLATE_RESERVE,'max_output_tokens':512,'context_tokens':4096,'mock_transport_chat_calls':1,'worker_state':'succeeded','schema_validation':'PASS','live_network_calls':0})
     out=Path('evidence/ai-driven-backend/provider-integration.json')
     out.parent.mkdir(parents=True,exist_ok=True)
     out.write_text(json.dumps({'scope':'actual PostgreSQL18 collector + actual provider/schema + explicit offline HTTP MockTransport; NOT real model qualification','profiles':ROWS},indent=2),encoding='utf-8')

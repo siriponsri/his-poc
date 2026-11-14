@@ -35,3 +35,25 @@ actual application. Direct qualification is not an API authorization bypass.
 
 Production timeout/output limits remain a later release decision based on actual
 profile results. No target response time or saved staff minutes is claimed here.
+
+## First real profile result and reviewed v1.2 continuation
+
+The first visit call completed in55.584s (291 output tokens/17.398s generation),
+then failed source/schema validation. It proposed a gap without evidence, used
+`field=text` for document text and omitted the draft effect's `draft_id`. The raw
+result remains unchanged and unqualified. No production database was involved.
+The7-token neutral timing extrapolation did not predict this longer output;
+the measured real-profile result supersedes that extrapolation.
+
+The v1.2 candidate strengthens generation grammar using the actual permitted
+source references/field keys, quotation branches, supported typed gaps and
+server-offered effects with required draft IDs. Model-built display/gap-title
+fields are excluded from the grammar. Independent post-generation validation
+is unchanged; the invalid first result still fails. This is not output repair.
+
+The explicit continuation budget is one reviewed visit requalification plus the
+three unattempted profiles: maximum5 direct calls including the retained failed
+v1.1 call. Each remains300s/512 output/4096 context/thread6/keep_alive0, no automatic
+retry. Default output limit is now512. Keep the original stage, call and failure
+ledger; a separately pinned continuation records the new grammar/prompt source
+and the exact old failed receipt it supersedes. Stop for review again on failure.

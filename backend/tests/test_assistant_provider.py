@@ -12,7 +12,7 @@ from backend.app.assistant_provider import (
     MODEL_DIGEST,
     assistant_provider_config,
 )
-from backend.app.assistant_schema import validate_assistant_artifact
+from backend.app.assistant_schema import output_schema, validate_assistant_artifact
 from backend.app.providers import OllamaSettings
 
 
@@ -85,7 +85,7 @@ def provider(handler):
         "0.12.6",
         timeout_seconds=5,
         context_tokens=4096,
-        max_output_tokens=1024,
+        max_output_tokens=512,
     )
     return AssistantOllamaProvider(settings, transport=httpx.MockTransport(handler))
 
@@ -174,6 +174,8 @@ def test_pinned_private_transport_validates_sources_and_calls_generate_once(
         and result["artifact"]["facts"][0]["display"] == "58"
     )
     assert calls.count(("POST", "/api/chat")) == 1
+    assert result["provenance"]["dispatch_started"] is True
+    assert result["provenance"]["terminal_response_observed"] is True
     assert (
         result["provenance"]["model_digest"] == MODEL_DIGEST
         and result["usage"]["eval_count"] == 200
@@ -295,6 +297,27 @@ def test_malformed_capability_metadata_cannot_dispatch(capabilities, monkeypatch
     result = provider(handler).prepare("visit_preparation", "th", packet())
     assert result["reason"] == "ASSISTANT_MODEL_CAPABILITY_INVALID"
     assert ("POST", "/api/chat") not in calls
+    assert result["provenance"]["dispatch_started"] is False
+    assert result["provenance"]["terminal_response_observed"] is False
+
+
+def test_malformed_chat_retains_dispatch_without_terminal_evidence(monkeypatch):
+    monkeypatch.delenv("HIS_ASSISTANT_TEMPLATE_SHA256", raising=False)
+    handler, calls = responder()
+
+    def malformed(request):
+        response = handler(request)
+        if request.url.path == "/api/chat":
+            return httpx.Response(
+                200, content=b"{", headers={"content-type": "application/json"}
+            )
+        return response
+
+    result = provider(malformed).prepare("visit_preparation", "th", packet())
+    assert result["reason"] == "PROVIDER_RESPONSE_INVALID_JSON"
+    assert result["artifact"] is None and calls.count(("POST", "/api/chat")) == 1
+    assert result["provenance"]["dispatch_started"] is True
+    assert result["provenance"]["terminal_response_observed"] is False
 
 
 @pytest.mark.parametrize("location", ["text", "title"])
@@ -328,3 +351,46 @@ def test_gap_kind_and_title_need_supporting_typed_field():
     output["work_gaps"][0]["title"] = "Invented clinical claim"
     with pytest.raises(ValueError, match="ASSISTANT_GAP_TITLE_TEMPLATE_MISMATCH"):
         validate_assistant_artifact("visit_preparation", output, view)
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        "document_text_field",
+        "gap_without_evidence",
+        "missing_draft_id",
+        "model_display",
+    ],
+)
+def test_generation_schema_rejects_observed_live_contract_errors(mutation):
+    import jsonschema
+
+    view, output = packet(), artifact()
+    jsonschema.Draft202012Validator.check_schema(output_schema(view))
+    jsonschema.validate(output, output_schema(view))
+    if mutation == "document_text_field":
+        output["facts"][1] = {"source_ref": "s2", "field": "text"}
+    elif mutation == "gap_without_evidence":
+        output["work_gaps"] = [{"source_ref": "s2", "kind": "missing_document"}]
+    elif mutation == "missing_draft_id":
+        output["suggested_effects"][0].pop("draft_id")
+    else:
+        output["facts"][0]["display"] = "58"
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate(output, output_schema(view))
+
+
+def test_generation_schema_binds_field_to_its_source_and_only_supported_gap():
+    import jsonschema
+
+    view, output = packet(), artifact()
+    output["work_gaps"] = [
+        {"source_ref": "s2", "field": "status", "kind": "review_required"}
+    ]
+    jsonschema.validate(output, output_schema(view))
+    assert validate_assistant_artifact("visit_preparation", output, view)["work_gaps"][
+        0
+    ]["title"]
+    output["facts"][0] = {"source_ref": "s2", "field": "age"}
+    with pytest.raises(jsonschema.ValidationError):
+        jsonschema.validate(output, output_schema(view))

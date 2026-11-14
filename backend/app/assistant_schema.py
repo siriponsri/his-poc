@@ -8,7 +8,7 @@ from typing import Literal
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-SCHEMA_VERSION = "carebalance-assistant-v1"
+SCHEMA_VERSION = "carebalance-assistant-v1.1"
 PROFILES = (
     "visit_preparation",
     "nursing_handover",
@@ -105,8 +105,109 @@ class AssistantArtifact(StrictModel):
     requires_review: Literal[True]
 
 
-def output_schema() -> dict:
-    return AssistantArtifact.model_json_schema()
+def output_schema(inference_view: dict | None = None) -> dict:
+    """Generate only offered evidence/actions; validate independently afterward.
+
+    Normalized DTOs still carry server-built displays. Those fields are absent
+    from the model grammar, which binds references to their actual field keys.
+    """
+    schema = AssistantArtifact.model_json_schema()
+    if inference_view is None:
+        return schema
+
+    def constant(value):
+        return {"type": "string", "enum": [value]}
+
+    def object_schema(properties):
+        return {
+            "type": "object",
+            "properties": properties,
+            "required": list(properties),
+            "additionalProperties": False,
+        }
+
+    sources = inference_view["sources"]
+    refs = [source["ref"] for source in sources]
+    facts, gaps = [], []
+    for source in sources:
+        fields = [
+            key
+            for key, value in source["fields"].items()
+            if value is None or isinstance(value, (str, int, float, bool))
+        ]
+        if fields:
+            facts.append(
+                object_schema(
+                    {
+                        "source_ref": constant(source["ref"]),
+                        "field": {"type": "string", "enum": fields},
+                    }
+                )
+            )
+        if source.get("text"):
+            facts.append(
+                object_schema(
+                    {
+                        "source_ref": constant(source["ref"]),
+                        "quote": {"type": "string", "minLength": 1, "maxLength": 400},
+                    }
+                )
+            )
+        for field in fields:
+            for kind in GAP_KINDS:
+                if _gap_supported({"field": field, "kind": kind}, source):
+                    gaps.append(
+                        object_schema(
+                            {
+                                "source_ref": constant(source["ref"]),
+                                "field": constant(field),
+                                "kind": constant(kind),
+                            }
+                        )
+                    )
+    schema["$defs"]["Fact"] = {"anyOf": facts}
+    if gaps:
+        schema["$defs"]["WorkGap"] = {"anyOf": gaps}
+    else:
+        schema["properties"]["work_gaps"]["maxItems"] = 0
+
+    candidates = inference_view.get("effect_candidates", [])
+    effects = []
+    for candidate in candidates:
+        properties = {
+            "action_id": constant(candidate["action_id"]),
+            "kind": constant(candidate["kind"]),
+            "source_refs": {
+                "type": "array",
+                "items": {"type": "string", "enum": candidate["source_refs"]},
+                "minItems": 1,
+                "maxItems": 12,
+                "uniqueItems": True,
+            },
+        }
+        if candidate.get("draft_id"):
+            properties["draft_id"] = constant(candidate["draft_id"])
+        effects.append(object_schema(properties))
+    if effects:
+        schema["$defs"]["SuggestedEffect"] = {"anyOf": effects}
+        schema["properties"]["suggested_effects"]["maxItems"] = len(effects)
+    else:
+        schema["properties"]["suggested_effects"]["maxItems"] = 0
+    draft_ids = [
+        candidate["draft_id"] for candidate in candidates if candidate.get("draft_id")
+    ]
+    if draft_ids:
+        schema["$defs"]["Draft"]["properties"]["id"] = {
+            "type": "string",
+            "enum": draft_ids,
+        }
+        schema["$defs"]["Draft"]["properties"]["source_refs"]["items"] = {
+            "type": "string",
+            "enum": refs,
+        }
+    else:
+        schema["properties"]["drafts"]["maxItems"] = 0
+    return schema
 
 
 def assert_profile_sources(profile, rows):

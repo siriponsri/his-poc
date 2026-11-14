@@ -179,6 +179,7 @@ class DrTrainOllamaProvider:
                                                  if key in ('format', 'family', 'families', 'parameter_size', 'quantization_level')},
                                   declared_capabilities=[value for value in capabilities
                                                          if value in ('completion', 'vision', 'tools', 'thinking', 'embedding')])
+                provenance['dispatch_started'] = True
                 response = await self._json(client, 'POST', '/api/chat', payload={
                     'model': s.model, 'stream': False, 'format': schema,
                     'messages': [{'role': 'system', 'content': SYSTEM_PROMPT},
@@ -192,6 +193,7 @@ class DrTrainOllamaProvider:
                 result['usage'] = {key: value for key in usage_fields
                                    if isinstance((value := response.get(key)), int) and not isinstance(value, bool) and value >= 0} or None
                 provenance['response_sha256'] = sha256(json_canonical(response))
+                provenance['terminal_response_observed'] = response.get('model') == s.model and response.get('done') is True
                 await self._verify_identity(client, deadline)
                 return response
 
@@ -209,7 +211,8 @@ class DrTrainOllamaProvider:
                       'checklist_id': checklist_id, 'temperature': 0, 'seed': 0,
                       'num_ctx': s.context_tokens, 'num_predict': s.max_output_tokens,
                       'keep_alive_seconds': s.keep_alive_seconds, 'data_class': 'synthetic',
-                      'artifact_revision': 'ollama_manifest_digest', 'hf_revision': None}
+                      'artifact_revision': 'ollama_manifest_digest', 'hf_revision': None,
+                      'dispatch_started': False, 'terminal_response_observed': False}
         result = {'provider': self.name, 'demo': False, 'outcome': 'failed', 'action': None,
                   'reason': None, 'provenance': provenance, 'usage': None, 'measured_cost': None}
         try:
