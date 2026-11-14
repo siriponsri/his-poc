@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "scope": "187 actual disposable-PG18.6 AI/core/provider tests; offline HTTP doubles, no live model or production DB",
+  "pytest_passed": 187,
+  "warnings": 1,
+  "xml_sha256": "66d466b4364b2888936360c1982a80a918e4b1aad645c0ffd3678bbb6ac9562a",
+  "xml_testcases": 187,
+  "source_sha256": {
+    "backend/app/assistant_worker.py": "e72d9c0970e2a3e5850bca689397c29bc27d63baeb730fe06ac374ec22b1b160",
+    "backend/app/assistant_reconciliation.py": "1c888ee5cf9a282edf5554cc45e16b687508a0c21317eb7053485d8203294430",
+    "backend/app/assistant_admission.py": "b1104ae3abe949d50162e44145c7d95b415fd9d3cb0a417354c6a93c6852524b",
+    "backend/app/assistant_collectors.py": "d92670a61457cd2c719740f9bb113c74f37f19f3c4de4562e27277930240a961",
+    "backend/app/assistant_effects.py": "5cf0c449b043527ec358fee1e902bbb2eafc7f54071b4aecf0b8bcd7fbbf8205",
+    "backend/app/assistant_core.py": "44f0b0238ef013615183d4659bcebbf229d230e6f082a059d7d47a63a02336db",
+    "backend/app/assistant_api.py": "76e0b85caa9ad1b726370fbe4266daccc41a5db4c7ec67d6ce9f2de320107ba9",
+    "backend/app/assistant_provider.py": "50c46ebbb52a1c404f2010b25264749faad201979504563513beae0fd1b9de2a",
+    "backend/app/assistant_schema.py": "05140effa55cd61c462c2edadc504e3cbe94e8047efa6feb12757fe3ef4e2611",
+    "backend/app/providers.py": "752e66f65e9183e633de3e814bd7b0f3048f264487e1bc3c4db12b98fa1a3fca",
+    "backend/app/ai.py": "56196e8a385d7453327a316854fceb61ea2abd98568351f01a69b2e5c434aab7",
+    "backend/app/models_assistant.py": "20e1bf6cdd9a00edd971c273cdd6e4bc13ac8be051c84fd13f7287b6fa2cbe08"
+  },
+  "frontend": {
+    "mounted_passed": 156,
+    "unit_passed": 31,
+    "typecheck_build": "PASS",
+    "scope": "Local rendered components/build, separate from public browser"
+  },
+  "previous_broad_run": "Retained earlier shared-fixture FAIL plus isolated resolutions in root-pg-checks.json"
+}

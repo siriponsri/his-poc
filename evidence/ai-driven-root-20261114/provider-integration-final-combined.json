@@ -1,0 +1,53 @@
+{
+  "scope": "actual PostgreSQL18 collector + actual provider/schema + explicit offline HTTP MockTransport; NOT real model qualification",
+  "profiles": [
+    {
+      "profile": "visit_preparation",
+      "canonical_view_bytes": 887,
+      "complete_input_bytes": 1697,
+      "template_reserve": 256,
+      "max_output_tokens": 512,
+      "context_tokens": 4096,
+      "mock_transport_chat_calls": 1,
+      "worker_state": "succeeded",
+      "schema_validation": "PASS",
+      "live_network_calls": 0
+    },
+    {
+      "profile": "nursing_handover",
+      "canonical_view_bytes": 755,
+      "complete_input_bytes": 1579,
+      "template_reserve": 256,
+      "max_output_tokens": 512,
+      "context_tokens": 4096,
+      "mock_transport_chat_calls": 1,
+      "worker_state": "succeeded",
+      "schema_validation": "PASS",
+      "live_network_calls": 0
+    },
+    {
+      "profile": "records_readiness",
+      "canonical_view_bytes": 583,
+      "complete_input_bytes": 1422,
+      "template_reserve": 256,
+      "max_output_tokens": 512,
+      "context_tokens": 4096,
+      "mock_transport_chat_calls": 1,
+      "worker_state": "succeeded",
+      "schema_validation": "PASS",
+      "live_network_calls": 0
+    },
+    {
+      "profile": "laboratory_handoff",
+      "canonical_view_bytes": 608,
+      "complete_input_bytes": 1428,
+      "template_reserve": 256,
+      "max_output_tokens": 512,
+      "context_tokens": 4096,
+      "mock_transport_chat_calls": 1,
+      "worker_state": "succeeded",
+      "schema_validation": "PASS",
+      "live_network_calls": 0
+    }
+  ]
+}

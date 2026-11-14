@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "status": "IMPLEMENTED_OFFLINE_VALIDATED_LIVE_QUALIFICATION_PENDING",
+  "status": "SOURCE_FIDELITY_QUALIFIED_FOUR_FIXTURES_NOT_DEPLOYED",
   "configuration_is_not_runtime_authority": true,
   "route": "dr_train_gpu0_v1",
   "data_class": "authored_synthetic",
@@ -25,13 +25,21 @@
     "records_readiness",
     "laboratory_handoff"
   ],
-  "qualified_profiles": [],
-  "live_preparation_capability": "NOT_YET_QUALIFIED",
+  "qualified_profiles": [
+    "visit_preparation",
+    "nursing_handover",
+    "records_readiness",
+    "laboratory_handoff"
+  ],
+  "live_preparation_capability": "SOURCE_FIDELITY_QUALIFIED_ONCE_PER_PROFILE",
   "physical_resource_checks": "Fresh host admission before each separately managed one-shot worker; not an exclusive GPU reservation",
   "unknown_dispatch_policy": "Persistent shared HIS quarantine; only audited terminal/no-dispatch evidence or explicit verified operator reconciliation clears it",
   "clinical_effectiveness": "NOT_ESTABLISHED",
   "streaming": "NOT_IMPLEMENTED",
   "server_cancellation": "NOT_VERIFIED",
   "monetary_cost": null,
-  "fallback": "NONE"
+  "fallback": "NONE",
+  "verification_evidence": "evidence/ai-driven-root-20261114/live-source-fidelity.json",
+  "application_worker_and_url_validation": "NOT_RUN",
+  "qualification_limitation": "One authored fixture per profile; visit includes a specifically reconciled final teardown sample; no clinical or throughput claim"
 }

@@ -1,0 +1,208 @@
+{
+  "schema": "carebalance.source-fidelity-qualification.safe-receipt.v1",
+  "status": "ROOT_REVIEWED_FOUR_SOURCE_FIDELITY_FIXTURES",
+  "at": "2026-11-14T15:48:40.212657+00:00",
+  "data_class": "AUTHORED_SYNTHETIC",
+  "qualification_source_commit": "b10faecfaed2c0897e706d5780f8efdd4426ade9",
+  "runtime_source_sha256": {
+    "backend/app/assistant_provider.py": "50c46ebbb52a1c404f2010b25264749faad201979504563513beae0fd1b9de2a",
+    "backend/app/assistant_schema.py": "05140effa55cd61c462c2edadc504e3cbe94e8047efa6feb12757fe3ef4e2611",
+    "backend/app/providers.py": "752e66f65e9183e633de3e814bd7b0f3048f264487e1bc3c4db12b98fa1a3fca",
+    "backend/app/document_completeness.py": "d6d2b6b5f36efb1489b18a7bcdb841d11749548ceef515331b91205e2afe37d5"
+  },
+  "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+  "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+  "engine_version": "0.12.6",
+  "placement": "dedicated GPU0 service",
+  "bounds": {
+    "http_deadline_seconds": 300,
+    "context_tokens": 4096,
+    "maximum_output_tokens": 512,
+    "num_thread": 6,
+    "keep_alive_seconds": 0,
+    "chat_attempt_limit": 5
+  },
+  "call_accounting": {
+    "retained_v11_invalid_output_calls": 1,
+    "v12_profile_calls": 4,
+    "total_generation_calls": 5,
+    "remaining_calls": 0,
+    "automatic_retries": 0
+  },
+  "cases": [
+    {
+      "profile": "visit_preparation",
+      "provider_outcome": "success",
+      "reason": null,
+      "pinned_local_source_validator": "PASS_PINNED_LOCAL_SOURCE_VALIDATOR",
+      "source_and_preparation_checks": {
+        "source_validator_passed": true,
+        "intended_preparation_present": true,
+        "requires_review": true
+      },
+      "root_semantic_review": "PASS_SOURCE_FIDELITY",
+      "qualification_scope": "PASS_SOURCE_FIDELITY_WITH_RECONCILED_TEARDOWN_SAMPLER_LIMITATION",
+      "sampler_evidence": "RECONCILED_ONE_FINAL_NONATOMIC_TEARDOWN_SAMPLE_WITH_EXPLICIT_ROOT_REVIEW",
+      "prompt_version": "carebalance-preparation-v1.2:visit_preparation",
+      "schema_version": "carebalance-assistant-v1.1",
+      "dispatch_started": true,
+      "terminal_response_observed": true,
+      "generation_calls": 1,
+      "metadata_show_posts": 1,
+      "identity_gets": 4,
+      "provider_elapsed_ms": 56197,
+      "usage": {
+        "prompt_eval_count": 526,
+        "eval_count": 267,
+        "total_duration": 55921190114,
+        "load_duration": 34359629541,
+        "prompt_eval_duration": 8888038852,
+        "eval_duration": 9574523014
+      },
+      "measured_cost": null,
+      "keep_alive0_unloaded": true,
+      "protected_services_and_selected_model_bytes_preserved": true,
+      "human_review_required": true,
+      "original_phase_status": "PASS_SOURCE_FIDELITY_WITH_RECONCILED_TEARDOWN_SAMPLER_LIMITATION"
+    },
+    {
+      "profile": "nursing_handover",
+      "provider_outcome": "success",
+      "reason": null,
+      "pinned_local_source_validator": "PASS_PINNED_LOCAL_SOURCE_VALIDATOR",
+      "source_and_preparation_checks": {
+        "source_validator_passed": true,
+        "intended_preparation_present": true,
+        "requires_review": true
+      },
+      "root_semantic_review": "PASS_SOURCE_FIDELITY",
+      "qualification_scope": "PASS_SOURCE_FIDELITY_SINGLE_AUTHORED_FIXTURE",
+      "sampler_evidence": "PASS_ADJACENT_BEFORE_AFTER_OWNERSHIP_AND_STRICT_FOREIGN_DENIAL",
+      "prompt_version": "carebalance-preparation-v1.2:nursing_handover",
+      "schema_version": "carebalance-assistant-v1.1",
+      "dispatch_started": true,
+      "terminal_response_observed": true,
+      "generation_calls": 1,
+      "metadata_show_posts": 1,
+      "identity_gets": 4,
+      "provider_elapsed_ms": 57231,
+      "usage": {
+        "prompt_eval_count": 481,
+        "eval_count": 254,
+        "total_duration": 56943592601,
+        "load_duration": 35043973817,
+        "prompt_eval_duration": 367518931,
+        "eval_duration": 17701464144
+      },
+      "measured_cost": null,
+      "keep_alive0_unloaded": true,
+      "protected_services_and_selected_model_bytes_preserved": true,
+      "human_review_required": true,
+      "original_phase_status": "COMPLETE_SUCCESS_PENDING_REVIEW"
+    },
+    {
+      "profile": "records_readiness",
+      "provider_outcome": "success",
+      "reason": null,
+      "pinned_local_source_validator": "PASS_PINNED_LOCAL_SOURCE_VALIDATOR",
+      "source_and_preparation_checks": {
+        "source_validator_passed": true,
+        "intended_preparation_present": true,
+        "requires_review": true
+      },
+      "root_semantic_review": "PASS_SOURCE_FIDELITY",
+      "qualification_scope": "PASS_SOURCE_FIDELITY_SINGLE_AUTHORED_FIXTURE",
+      "sampler_evidence": "PASS_ADJACENT_BEFORE_AFTER_OWNERSHIP_AND_STRICT_FOREIGN_DENIAL",
+      "prompt_version": "carebalance-preparation-v1.2:records_readiness",
+      "schema_version": "carebalance-assistant-v1.1",
+      "dispatch_started": true,
+      "terminal_response_observed": true,
+      "generation_calls": 1,
+      "metadata_show_posts": 1,
+      "identity_gets": 4,
+      "provider_elapsed_ms": 53259,
+      "usage": {
+        "prompt_eval_count": 356,
+        "eval_count": 126,
+        "total_duration": 53042642999,
+        "load_duration": 34849978407,
+        "prompt_eval_duration": 9072911062,
+        "eval_duration": 6729090239
+      },
+      "measured_cost": null,
+      "keep_alive0_unloaded": true,
+      "protected_services_and_selected_model_bytes_preserved": true,
+      "human_review_required": true,
+      "original_phase_status": "COMPLETE_SUCCESS_PENDING_REVIEW"
+    },
+    {
+      "profile": "laboratory_handoff",
+      "provider_outcome": "success",
+      "reason": null,
+      "pinned_local_source_validator": "PASS_PINNED_LOCAL_SOURCE_VALIDATOR",
+      "source_and_preparation_checks": {
+        "source_validator_passed": true,
+        "intended_preparation_present": true,
+        "requires_review": true
+      },
+      "root_semantic_review": "PASS_SOURCE_FIDELITY",
+      "qualification_scope": "PASS_SOURCE_FIDELITY_SINGLE_AUTHORED_FIXTURE",
+      "sampler_evidence": "PASS_ADJACENT_BEFORE_AFTER_OWNERSHIP_AND_STRICT_FOREIGN_DENIAL",
+      "prompt_version": "carebalance-preparation-v1.2:laboratory_handoff",
+      "schema_version": "carebalance-assistant-v1.1",
+      "dispatch_started": true,
+      "terminal_response_observed": true,
+      "generation_calls": 1,
+      "metadata_show_posts": 1,
+      "identity_gets": 4,
+      "provider_elapsed_ms": 52605,
+      "usage": {
+        "prompt_eval_count": 377,
+        "eval_count": 126,
+        "total_duration": 52389047680,
+        "load_duration": 33944637683,
+        "prompt_eval_duration": 9219731895,
+        "eval_duration": 6693037519
+      },
+      "measured_cost": null,
+      "keep_alive0_unloaded": true,
+      "protected_services_and_selected_model_bytes_preserved": true,
+      "human_review_required": true,
+      "original_phase_status": "COMPLETE_SUCCESS_PENDING_REVIEW"
+    }
+  ],
+  "history": [
+    {
+      "event": "V1_1_VISIT_INVALID_OUTPUT_RETAINED",
+      "reason": "Runtime validator stopped at missing exact gap evidence; root review additionally identified document text used as a typed field and a missing draft reference. Original raw and markers preserved"
+    },
+    {
+      "event": "V1_2_STAGING_AND_PREREQUISITE_BYTE_ASSERTION",
+      "reason": "Four dry profiles made zero model calls. First visit prerequisite stopped before dispatch because Windows CRLF versus Linux LF bytes differed; exact semantic equality/byte/canonical guards resolved via separately reviewed continuation without rewriting original failed marker"
+    },
+    {
+      "event": "V1_2_VISIT_TEARDOWN_SAMPLE_RECONCILIATION",
+      "reason": "One final non-atomic sample listed the same unique GPU0 PID explicitly owned in47 prior samples after later docker-top omitted it. Root accepted this exact final sample only after fresh unloaded/preserved proof; original RUNNING/PENDING retained. No generic foreign-PID waiver or exclusive GPU reservation claim"
+    },
+    {
+      "event": "REMAINING_PROFILE_SAMPLER_BOUNDARY",
+      "reason": "Subsequent profiles capture owned PID sets before and after compute sampling; only their adjacent union is accepted and all other foreign GPU0 PIDs fail closed"
+    },
+    {
+      "event": "ROOT_LAB_SOURCE_FIDELITY_REVIEW_PASS",
+      "reason": "Exact recorded lab result/released status and offered D10 review linkage; no draft, threshold, urgency, guessed unit, order or signature"
+    }
+  ],
+  "production_database_used": false,
+  "his_api_or_worker_used": false,
+  "app_or_worker_activated": false,
+  "limitations": [
+    "One authored-synthetic fixture per profile; source fidelity review only, not clinical effectiveness or diagnostic validation",
+    "Observed timings are individual cold-loading calls, not a performance benchmark or throughput/service-level guarantee",
+    "Direct adapter qualification does not prove PostgreSQL worker admission, role-scoped application workflow, human approval effects or actual URL behavior",
+    "Visit qualification includes the explicitly reconciled final teardown sampler limitation; no exclusive GPU reservation was established",
+    "All four root semantic source-fidelity reviews passed on one authored fixture each; publication, profile enablement, production migration and worker release require separate gates"
+  ],
+  "private_source_proposal_sha256": "429fdf6359d170f045cc10313cbc1eaf5f441b86d933e9c94cb701d39e36ca40",
+  "runtime_qualified_profile_flags_changed": false
+}
