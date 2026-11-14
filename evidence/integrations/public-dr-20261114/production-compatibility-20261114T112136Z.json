@@ -1,0 +1,15 @@
+{
+  "operator_script_sha256": "0a9bde97be791ab71d2c3a0fa70128e498e95cd341c8b93dc62b7d2d9378a2e6",
+  "status": "PASS",
+  "at": "2026-11-14T11:21:36.998346+00:00",
+  "phase": "compatibility",
+  "original_nonapp_containers_unchanged": true,
+  "original_configs_unchanged": true,
+  "image_id": "sha256:e6e336a6f9515710dbe3c37a3e0af80daed57f9e0788e65d8553fdac58f966d0",
+  "ready": {
+    "ready": true,
+    "migration": "0003_carebalance_integrations"
+  },
+  "legacy_rows_and_files_preserved": true,
+  "downgrade_or_seed": false
+}

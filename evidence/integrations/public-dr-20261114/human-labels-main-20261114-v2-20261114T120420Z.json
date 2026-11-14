@@ -1,0 +1,27 @@
+{
+  "operator_script_sha256": "084d2d02fc32bc415e219f59c0dbf2b0a4edd086c5dcfdfab3e87024d3282f6b",
+  "status": "PASS",
+  "at": "2026-11-14T12:04:20.449673+00:00",
+  "phase": "human-labels-main-20261114-v2",
+  "original_nonapp_containers_unchanged": true,
+  "original_configs_unchanged": true,
+  "static_only": true,
+  "manifest_sha256": "34fd361069b3af61c789c7398a49a052feef736dc49303fd5866794f9752d079",
+  "his_image_id": "sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0",
+  "dr_image_id": "sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5",
+  "receiver_recreated": false,
+  "all_three_databases_and_source_files_unchanged": true,
+  "all_nonapp_container_ids_unchanged": true,
+  "registry": {
+    "registry_sha256": "93abaf30023479ac0793e05421a3dd58f8438ca507ba483adea959f02dc91657",
+    "exact_registry_bytes_preserved": true,
+    "uid": 10001,
+    "mode": "0600"
+  },
+  "http": {
+    "actual_authenticated_http": true,
+    "assets_verified": 10,
+    "binding_id": "9af49e5b-8753-4a6b-a3ff-d8d2ad074f03"
+  },
+  "browser_acceptance": "NOT_RUN"
+}

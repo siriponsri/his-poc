@@ -2,13 +2,34 @@
 
 ## Current integration checkpoint — 14 November 2026
 
-The LabClear gateway/isolated receiver passes independent PostgreSQL tests and an
-actual private source42 to reviewed43 browser journey; final25 unit/117 component/
-3 audit cases and typecheck/build pass. DR derivative theme main is qualified;
-its bound receiver is ACTIVE. Final5328 public LabClear activation and actual
-authenticated source6 to reviewed7, refresh/read-only reopen/mobile journey pass.
-See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md). Original baseline below
-retains its own verification date and limits.
+HISa30f is publicly ready on migration04 with DR289/schema1 and LabClearc194,
+each receiver using a dedicated database and loopback listener. Fresh production
+backup/actual isolated restore verified112 tables/one file. Activation preserved
+all original row hashes/files/sessions, all9 committed results,3 selected hashes
+and inference9. No production seed or restore occurred.
+
+| Current extension | Executed scope | Remaining limit |
+| --- | --- | --- |
+| HIS/receiver software | Main77 HIS PostgreSQL,37 receiver, independent2 quality checks; HIS25 unit/135 component/3 audit/build | Does not repeat all38 domains |
+| Final DR human-label frontend |522 unique-case composite coverage;521 full-run passes/one native30s timeout, unchanged isolated2 pass; main76 focused/UWF2/typecheck/build | Retain full-run failure; do not call it522 passes in one run |
+| Protected public DR manual journey | Native Chrome consent, original640x480 previews, quality/patient/eye confirmation, unsigned draft save/full reload and explicit unsigned check; DB readback | Earlier7c76 rendered acceptance; final34fd label-only browser smoke NOT_RUN after physical Escape stop |
+| Final34fd static refresh | PASS12:04:20Z:3 databases/files,59 non-app container IDs and registry bytes/UID10001/0600 preserved;10 authenticated assets matched | Initial pre-dispatch directory failure retained separately; not a new clinical write |
+| Public LabClear manual review | Source6 to reviewed7, explicit confirmation, reload/read-only reopen; source unchanged/task open | No live laboratory interface or clinical/model result |
+| LabClear authorized source/theme |76 tests and bounded actual-browser checks;18 owner file hashes unchanged | Mobile actual width355, requested390; existing Render deployment not changed |
+
+The current DR source is separate local main d8a2d9b, no remote;191 native
+backend hashes remain unchanged. Contracts for04 are separately exported at
+[contracts-0004](docs/integrations/contracts-0004/manifest.json):142 paths,
+120 modeled tables/121 including Alembic. Historical contracts/v2 remain tied
+to their baseline image. Ten owner-renamed MMRDR images remain held for unknown
+laterality and untouched. No new model calls or grade/signing grants occurred.
+The long goal remains ACTIVE pending final label-only public browser smoke,
+the owner-added fictional Thai/coherent clinical demo-data UX extension and
+closeout. Future intentional demographic amendments must be recorded as exact
+post-preservation row/version exceptions, not unchanged original row hashes.
+[Public receipt index](evidence/integrations/public-dr-20261114/receipts.json) and
+[current integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
+Original baseline below retains its own verification date and limits.
 
 ## Historical selected UI checkpoint — 14 November 2026
 

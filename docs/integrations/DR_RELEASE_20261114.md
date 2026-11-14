@@ -2,21 +2,28 @@
 
 ## Current manual-quality checkpoint
 
-Long goal ACTIVE. The current HIS and receiver images are running only in the
-private Linux shadow. Production remains the existing HIS5328/LabClearc194
-deployment on migration03 with9 inference rows at the last preservation check.
-Public DR activation/browser acceptance, fresh production backup/isolated
-restore and controlled main integration/rebuild remain open.
+Long goal ACTIVE. HIS main `ac63879e166c41c65b96f75a3ed22408e97bc11f`
+was merged and pushed. The separate derivative's authoritative local main is
+`6359e598cd594bd23a6e791ab5e90699268ef80b`, without a remote; its191 inherited
+backend files remain unchanged. The current images and final main frontend run
+only in the private Linux shadow. Production remains HIS5328/LabClearc194 on
+migration03, preserving all9 stored inference results, including the3 selected
+results. Fresh production backup and actual isolated restore passed at
+2026-11-14T11:07:21Z:112 tables and1 file, with no production migration/seed.
+Deployment materials are being prepared/diagnosed; no completed materials phase
+or public DR activation/browser acceptance is claimed.
 
 | Gate | Current executed result | Evidence |
 | --- | --- | --- |
-| HIS gateway, provenance and actual two-process HTTP |77 passed on PG18.6; zero skips | [Backend qualification](../../evidence/integrations/dr-manual-qualified-20261114/backend-qualification.json) |
-| Receiver manual-quality and clinical guards |37 passed; separate independent2 passed | Same qualification and receiver.xml/independent.xml |
-| Complete DR frontend before the final small UX refinement |514 passed; typecheck/build; source and191 native-backend files unchanged | Derivative frontend/evidence/carebalance-manual-quality-qualified-20261114/checks.json |
-| Final scoped frontend UX refinement |RUNNING at this checkpoint; do not infer a pass from the prior514 run | Derivative frontend/evidence/carebalance-manual-ux-qualified-20261114/checks.json when complete |
+| HIS gateway, provenance and actual two-process HTTP |77 passed on main, PG18.6; zero skips | [Main XML](../../evidence/integrations/dr-main-qualified-20261114/his.xml) |
+| Receiver manual-quality and clinical guards |37 passed on main; prior separate independent2 passed | [Main receiver XML](../../evidence/integrations/dr-main-qualified-20261114/receiver.xml) and [independent qualification](../../evidence/integrations/dr-manual-qualified-20261114/backend-qualification.json) |
+| Complete final DR frontend branch |516 passed; typecheck/build; no source/native-backend drift | Derivative frontend/evidence/carebalance-manual-ux-qualified-20261114/checks.json |
+| Authoritative derivative main frontend |70 focused tests, typecheck and main rebuild passed;191 native backend unchanged | [Main frontend receipt](../../evidence/integrations/dr-main-qualified-20261114/dr-main-frontend.json) |
 | HIS frontend |25 unit/135 component/3 audit cases and build passed | [Receipt](../../evidence/integrations/dr-manual-ui-20261114/checks.json) |
 | Private Linux upgrade |PASS; all three databases/source files unchanged; no migration, seed or backfill | Private operator receipt manual-quality-upgrade-20261114-v1-20261114T103543Z.json |
-| Private actual browser |Coordinator-observed draft/reload, permission, mobile390 and exact-return checks; final UX bundle recheck still open | [Browser checkpoint](DR_BROWSER_CHECKPOINT_20261114.md) |
+| Final main static refresh |All10 authenticated assets match;3 databases/files, registry bytes and other5 containers preserved | [Static receipt](../../evidence/integrations/dr-main-qualified-20261114/shadow-static.json) |
+| Private actual browser |Final main bundle save/loading, stale-message, unsigned copy, reload and mobile390 checks passed | [Final browser receipt](../../evidence/integrations/dr-main-qualified-20261114/private-browser-final.json) |
+| Private persisted readback |Unsigned draft, exact notes, original D11v6/source bytes, open review task,0 inference/grants/pending writes | [Read-only DB receipt](../../evidence/integrations/dr-main-qualified-20261114/prior-browser-database-readback.json) |
 
 Current immutable software images:
 
@@ -27,6 +34,9 @@ Current immutable software images:
   `sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5`;
   200 runtime inputs, including191 unchanged inherited backend files. Its source
   package and private frontend bundle stay separate from public HIS Git.
+- Final derivative main dist manifest:
+  `7c7628f9c64550650e704a8ed06cdf56d2d38f81bb7bbe06f03fb42c1e6b4aaf`;
+  10 protected assets, including `assets/index-BkzaUflX.js`.
 - Compatibility rollback `his-poc-server:rollback-0004-2c88b48dca31`, image
   `sha256:e6e336a6f9515710dbe3c37a3e0af80daed57f9e0788e65d8553fdac58f966d0`;
   same-DB old-LabClear-UI rehearsal passed before restoring the new candidate.

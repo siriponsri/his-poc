@@ -1,0 +1,46 @@
+{
+  "services": {
+    "app": {
+      "environment": {
+        "HIS_DR_ENABLED": "true",
+        "HIS_DR_DESTINATIONS_FILE": "/run/carebalance-dr/destinations.json",
+        "HIS_DR_WEB_MANIFEST": "/run/carebalance-dr/web-manifest.json"
+      },
+      "volumes": [
+        {"type": "bind", "source": "${HIS_DR_CONFIG_DIR:?New private registry directory required}", "target": "/run/carebalance-dr", "read_only": true},
+        {"type": "bind", "source": "${HIS_DR_WEB_DIR:?Exact reviewed derivative dist directory required}", "target": "/opt/carebalance-dr-web", "read_only": true}
+      ]
+    },
+    "dr_db": {
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "environment": {
+        "POSTGRES_DB": "carebalance_dr", "POSTGRES_USER": "carebalance_dr",
+        "POSTGRES_PASSWORD": "${DR_DATABASE_PASSWORD:?New dedicated DR database password required}"
+      },
+      "ports": ["127.0.0.1:15435:5432"],
+      "volumes": ["dr_database:/var/lib/postgresql"],
+      "healthcheck": {"test": ["CMD-SHELL", "pg_isready -U carebalance_dr -d carebalance_dr"], "interval": "2s", "timeout": "3s", "retries": 30},
+      "restart": "unless-stopped", "cpus": 1, "mem_limit": "512m",
+      "logging": {"driver": "json-file", "options": {"max-size": "10m", "max-file": "3"}}
+    },
+    "dr": {
+      "image": "${HIS_DR_IMAGE:?Exact new PUBLIC JPEG qualified DR image required}",
+      "network_mode": "host",
+      "environment": {
+        "CAREBALANCE_DR_ENABLED": "true",
+        "CAREBALANCE_DR_DATABASE_URL": "postgresql://carebalance_dr:${DR_DATABASE_PASSWORD}@127.0.0.1:15435/carebalance_dr",
+        "CAREBALANCE_DR_EXPECTED_DATABASE": "carebalance_dr",
+        "CAREBALANCE_DR_KEY": "${DR_CONNECTOR_KEY:?New dedicated DR service key required}",
+        "CAREBALANCE_DR_SCOPE_JSON": "${DR_SCOPE_JSON:?Exact HIS created source set scope required}",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "depends_on": {"dr_db": {"condition": "service_healthy"}},
+      "healthcheck": {"test": ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18190/ready',timeout=3)"], "interval": "5s", "timeout": "4s", "retries": 12},
+      "restart": "unless-stopped", "cpus": 1, "mem_limit": "1g",
+      "read_only": true, "tmpfs": ["/tmp:rw,noexec,nosuid,size=64m"],
+      "cap_drop": ["ALL"], "security_opt": ["no-new-privileges:true"],
+      "logging": {"driver": "json-file", "options": {"max-size": "10m", "max-file": "3"}}
+    }
+  },
+  "volumes": {"dr_database": {}}
+}

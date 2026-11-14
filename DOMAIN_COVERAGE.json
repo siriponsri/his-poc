@@ -408,10 +408,21 @@
       "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
       "verified_level": "L2",
       "verification_status": "PASS",
-      "external_integration_status": "NOT_CONNECTED",
+      "external_integration_status": "QUALIFIED_PUBLIC_SYNTHETIC_LABCLEAR_MANUAL_REVIEW",
       "limitations": [
-        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+        "Local L2 baseline retained; protected public LabClear manual-review subset independently qualified on synthetic released results.",
+        "Original HIS source values remain unchanged; explicit reviewed-value confirmation does not automatically complete HIS tasks. No live laboratory interface, OCR/model inference or clinical/product effectiveness is established."
       ],
+      "external_verification": {
+        "scope": "Released synthetic laboratory source6/v10 to reviewed7/revision1; explicit consent, same-person confirmation, reload/read-only reopen and PostgreSQL preservation.",
+        "status": "PASS",
+        "evidence": [
+          "evidence/integrations/public-labclear-20261114/acceptance.json",
+          "evidence/integrations/public-labclear-20261114/public-readback-database.json",
+          "docs/integrations/VALIDATION_CHECKPOINT_20261114.md"
+        ],
+        "clinical_effectiveness": "NOT_EVALUATED"
+      },
       "implemented_subset": "Lab order/worklist, manual result/unit/reference, human release, retained correction history and clinician acknowledgement.",
       "required_invariants": "ผล/หน่วย/reference เป็นข้อมูล manual; release ต้องตรวจสิทธิ์และ version; corrected result เก็บฉบับเดิม",
       "acceptance_case": "กรอกผล synthetic และ release แล้ว OPD เห็นผลของ encounter นั้น; correction แสดงทั้งฉบับเก่าและใหม่",
@@ -449,10 +460,26 @@
       "implementation_status": "IMPLEMENTED_LOCAL_WORKFLOW",
       "verified_level": "L2",
       "verification_status": "PASS",
-      "external_integration_status": "NOT_CONNECTED",
+      "external_integration_status": "QUALIFIED_PUBLIC_SYNTHETIC_DR_MANUAL_REVIEW_FINAL_UI_PENDING",
       "limitations": [
-        "Local authored synthetic workflow acceptance only; no production, clinical/product effectiveness or live external validation."
+        "Local L2 baseline retained; protected public DR manual-review subset passed on authored synthetic images with fixed patient/encounter/eye context and an unsigned persisted draft.",
+        "Final human-label frontend static refresh/post-refresh preservation pass; label-only public browser smoke is NOT_RUN after the physical Escape stop. No DR model, PACS/DICOM conformance, real-patient transfer, signing grant or clinical effectiveness is established.",
+        "Ten owner-renamed MMRDR images remain held for unknown laterality; no pairing, clinical registration, transfer or model call."
       ],
+      "external_verification": {
+        "scope": "Protected public explicit consent, original640x480 previews, manual quality, checked patient/eye confirmation, unsigned draft save/full reload and explicit unsigned review check; limited account cannot sign.",
+        "status": "PASS_PUBLIC_MANUAL_SUBSET_FINAL_UI_PENDING",
+        "evidence": [
+          "evidence/integrations/public-dr-20261114/receipts.json",
+          "evidence/integrations/public-dr-20261114/public-browser-readback-20261114T115240Z.json",
+          "evidence/integrations/public-dr-20261114/human-labels-main-20261114-v2-20261114T120420Z.json",
+          "docs/integrations/DR_RELEASE_20261114.md",
+          "docs/integrations/DR_BROWSER_CHECKPOINT_20261114.md",
+          "docs/integrations/VALIDATION_CHECKPOINT_20261114.md"
+        ],
+        "clinical_effectiveness": "NOT_EVALUATED",
+        "model_inference": "NOT_RUN"
+      },
       "implemented_subset": "Imaging order, synthetic allowlisted file/checksum, asset link, human report verification/release, portal publication and amendment.",
       "required_invariants": "ไฟล์ allowlist/size/hash และ ownership ตรวจจริง; ไม่อ้าง PACS/DICOM conformance หรือวินิจฉัยจากภาพ",
       "acceptance_case": "แนบภาพสังเคราะห์กับ study แล้วเปิดจากแฟ้มถูกคน; release report ตามสิทธิ์และเข้าถึงไฟล์ข้ามคนไม่ได้",

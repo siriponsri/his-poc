@@ -2,12 +2,29 @@
 
 ## Active long goal and UI checkpoint — 14 November 2026
 
-Current DR gate: source/software images, private Linux workflow, same-DB rollback
-and manual-quality upgrade pass. Private browser draft persistence, disabled
-grade/signing, mobile390 and exact HIS return were observed by the coordinator.
-Finish the scoped frontend UX qualification, main integration/rebuild, fresh
-production backup/isolated restore, activation and protected public DR readback.
-Preserve existing LabClear and document-AI evidence. [Checkpoint](docs/integrations/DR_RELEASE_20261114.md).
+Owner-added six-patient fictional-data/metadata and UI task: audit the existing
+seed patients, then use normal
+versioned/audited APIs for realistic fictional Thai names, DOB/sex and coherent
+demo visits/documents/labs. Keep existing HN/identifiers immutable; a new HN
+requires a normal new-patient creation. Record each intentional patient-row
+version change after the preservation baseline, then verify live names and
+retained fixed DR IDs/pseudonym/source snapshots, existing AI results, source
+files and permission scope. Normal PATCH support was investigated; actual
+dataset/UI implementation, amendment and UX qualification are NOT_RUN.
+
+Current DR gate: source/main qualification, private workflow/rollback, fresh
+112-table/one-file backup/isolated restore and public04 activation pass. Actual
+protected native-Chrome manual quality/context confirmation, unsigned draft
+save/full reload and PostgreSQL readback pass on the preceding7c76 bundle.
+Final human-label bundle34fd static refresh/post-refresh preservation pass:
+3 databases/files,59 non-app container IDs and registry bytes preserved;
+10 authenticated assets verified. Retain the initial pre-dispatch directory
+failure and separate successful v2. Final label-only public browser smoke is
+NOT_RUN after the physical Escape stop;
+fictional-data UX qualification and final publication remain required.
+[Public receipt index](evidence/integrations/public-dr-20261114/receipts.json).
+Preserve existing LabClear, all9 committed results, inference9 and source files.
+[Checkpoint](docs/integrations/DR_RELEASE_20261114.md).
 
 1. Selected Clinical1 Home/Login + Patient2 workspace + logo3, then wide read-only
    Patient panel and explicit route/auth scroll/focus repair: implemented/deployed.
@@ -25,9 +42,11 @@ Preserve existing LabClear and document-AI evidence. [Checkpoint](docs/integrati
    frontend checks/build pass. Final5328 public activation and authenticated
    source6 to reviewed7, refresh/read-only reopen/mobile journey now pass.
 7. Fixed source-set/manual receiver: HIS77, receiver37 plus2 independent quality
-   checks, prior full DR frontend514, current HIS25/135/3 and private Linux/browser
-   scope pass. Final small frontend UX refinement remains under qualification;
-   protected public DR journey and controlled main release remain ACTIVE.
+   checks, current HIS25/135/3 and actual protected public synthetic manual
+   journey/readback pass. DR final522 unique-case composite coverage retains
+   the native timeout/rerun distinction; main76 focused/UWF2/typecheck/build pass.
+   Final34fd static/preservation PASS; label-only public smoke, fictional-data
+   UX and final docs publication ACTIVE.
    No original DR mutation, live retinal inference or owner MMRDR transfer.
 
 See [release phases and limits](docs/RELEASE_PATIENT_PANEL.md) and

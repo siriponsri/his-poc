@@ -2,6 +2,15 @@
 
 All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 describes this prototype scope; named external verification is reported separately; clinical/production effectiveness remains unverified. Per-domain scenarios, source reports and hashes are retained in [DOMAIN_COVERAGE.json](DOMAIN_COVERAGE.json).
 
+Additional14 November public subsets are recorded separately: D10 LabClear
+manual review passes explicit import/confirm/reload without changing the released
+HIS source; D11 DR manual quality/context confirmation and unsigned draft
+save/reload pass on authored synthetic images. Final DR human-label static
+refresh/post-refresh preservation pass; label-only public browser smoke remains
+NOT_RUN after the physical Escape stop. [Public receipts](evidence/integrations/public-dr-20261114/receipts.json). These
+subsets do not promote the local L2 baseline or establish DR inference/clinical
+effectiveness. [Current integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
+
 | Domain | Name | Implementation | Verified | External |
 |---|---|---|---|---|
 | D01 | ทะเบียนและตัวตนผู้ป่วย | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
@@ -13,8 +22,8 @@ All 38 domains passed local synthetic PostgreSQL and rendered UI acceptance. L2 
 | D07 | คำสั่งแพทย์และการจัดการคำสั่ง | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 | D08 | เภสัชกรรมและการจ่ายยา | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 | D09 | การให้ยา ณ จุดดูแล | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
-| D10 | ห้องปฏิบัติการและผลวิกฤต | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
-| D11 | รังสี RIS และภาพทางการแพทย์ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
+| D10 | ห้องปฏิบัติการและผลวิกฤต | Local PostgreSQL workflow | L2 PASS | Public synthetic LabClear manual-review subset PASS |
+| D11 | รังสี RIS และภาพทางการแพทย์ | Local PostgreSQL workflow | L2 PASS | Public synthetic DR manual-review subset PASS; final UI smoke pending |
 | D12 | ห้องผ่าตัดและวิสัญญี | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 | D13 | ICU และข้อมูลจากอุปกรณ์ | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |
 | D14 | สูติกรรม มารดา และทารกแรกเกิด | Local PostgreSQL workflow | L2 PASS | NOT_CONNECTED |

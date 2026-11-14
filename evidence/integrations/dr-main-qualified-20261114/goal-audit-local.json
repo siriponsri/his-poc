@@ -1,0 +1,29 @@
+{
+  "status": "PASS_WITH_REMAINING_PUBLIC_DR_GATES",
+  "his_code_main": "ac63879e166c41c65b96f75a3ed22408e97bc11f",
+  "derivative_runtime_code_main": "6359e598cd594bd23a6e791ab5e90699268ef80b",
+  "derivative_publication": "Local separate project, no remote configured; licensed native source is not included in public HIS Git.",
+  "main_qualification": {"his_postgresql": 77, "receiver_postgresql": 37, "dr_frontend_focused": 70, "dr_frontend_branch_full": 516, "his_unit": 25, "his_component": 135, "his_audit": 3, "typecheck_and_build": "PASS"},
+  "inherited_dr_backend": {"files": 191, "baseline_hash_drift": 0},
+  "labclear_theme": {
+    "receipt_root": "C:/Users/User/Desktop/myProject/LabClear/docs/evidence/carebalance-theme-20261114",
+    "tests": "76 passed:16 theme and60 business-v3; later mobile-header repair passed16 theme tests",
+    "actual_browser": "PASS_WITH_SCOPE_LIMITS: desktop light/dark, mobile navigation, TH/EN, original-value confirmation dialog; offline labelled OCR double; no submitted confirmation or live AI/OCR.",
+    "browser_receipt_sha256": "5180acbfe637e684bc53b3035f7788934ff7628e13ab705b286cd71a788c69d6",
+    "mobile_requested_width": 390,
+    "mobile_actual_css_width": 355,
+    "current_css_sha256": "db8bb80688baad8018d170bdceab3c8ea95bb1cdae1173b2801887dad7fc1dd5",
+    "preexisting_owner_modified_files": 18,
+    "fresh_owner_hash_drift": 0,
+    "existing_remote_deployment": "Not changed; the separately scoped HIS LabClear receiver has its own public integration evidence."
+  },
+  "existing_user_requirements": {
+    "login_dashboard_patient_panel_logo_user_journey": "Existing published release evidence retained under evidence/research-ui-release and docs/USER_JOURNEY_TH.md.",
+    "labclear_public_workflow": "Existing evidence/integrations/public-labclear-20261114; final DR release must verify preservation.",
+    "document_real_ai": "Existing pinned Typhoon public workflow evidence and results retained; final DR release must verify no inference/result drift.",
+    "actual_mmrdr_images": "All10 held pending laterality at owner's explicit instruction; no transfer, pairing or model calls.",
+    "full_system_baseline": "38 domains L2 and10 journeys local L3 retain their historical evidence. Current tests do not claim a full public repeat."
+  },
+  "remaining": ["Public DR activation and authenticated browser journey", "Post-public persisted database/source/task and existing service/result preservation", "Final release documentation, source manifest, synchronized main and handoff"],
+  "clinical_effectiveness": "NOT_EVALUATED"
+}

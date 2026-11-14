@@ -1,0 +1,27 @@
+{
+  "operator_script_sha256": "084d2d02fc32bc415e219f59c0dbf2b0a4edd086c5dcfdfab3e87024d3282f6b",
+  "status": "FAIL_BEFORE_STATIC_DISPATCH_RECONCILED",
+  "at": "2026-11-14T11:59:37.627105+00:00",
+  "phase": "human-labels-main-20261114-v1",
+  "original_start": {
+    "status": "RUNNING",
+    "at": "2026-11-14T11:56:24.582201+00:00"
+  },
+  "error": "FileNotFoundError preparing unique upgrade directory because static-upgrades parent absent",
+  "runtime_all_60_container_ids_unchanged": true,
+  "dr_env_sha256": "dfa5cc5b4136dae031e8ced3e857bdbb85afa58db2a139e8951d61fa1c7cebe0",
+  "dr_env_matches_prior_exact_values": true,
+  "current_static": {
+    "manifest_sha256": "7c7628f9c64550650e704a8ed06cdf56d2d38f81bb7bbe06f03fb42c1e6b4aaf",
+    "assets": 10
+  },
+  "clinical": {
+    "case_revision": 3,
+    "exact_notes_unchanged": true,
+    "unsigned": true
+  },
+  "upgrade_child_absent": true,
+  "scp_or_dispatch_occurred": false,
+  "production_config_or_app_changed": false,
+  "continuation_allowed": "new uniquely named v2 phase after root review; original phase not replayed"
+}

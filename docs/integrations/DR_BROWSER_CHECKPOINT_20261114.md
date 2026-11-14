@@ -8,11 +8,20 @@ selected and foregrounded the owner's native Chrome window and verified
 uncertainty below; it does not establish protected public DR acceptance. Browser
 contexts remain separate: no cookies, tokens or Access bypass were copied.
 
-The current private shadow runs HIS074aa8f8a0b2 and DR05476e8f5ebb. The quality
-repair is qualified by HIS77, receiver37 and2 independent tests. The prior full
-DR frontend514/typecheck/build passes; a final small UX refinement is currently
-being qualified. Exact image IDs and receipts are in the [release checkpoint](DR_RELEASE_20261114.md).
-Production DR activation remains NOT_RUN; public HIS/LabClear remain on03.
+HIS main `ac63879` is merged/pushed; derivative local main `6359e59` has no
+remote. Final DR branch516 tests and main70 focused tests/typecheck/rebuild
+passed. HIS main77 PostgreSQL tests, receiver37 and HIS25 unit/135 component/
+3 audit cases/build passed; the earlier independent2 quality checks remain
+separate evidence. The private shadow runs HIS074aa8f8a0b2/DR05476e8f5ebb and
+the exact main-built10-asset manifest
+`7c7628f9c64550650e704a8ed06cdf56d2d38f81bb7bbe06f03fb42c1e6b4aaf`.
+The static refresh preserved all3 databases/source files, registry bytes and
+other5 container identities. Exact image IDs and receipts are in the
+[release checkpoint](DR_RELEASE_20261114.md). Production DR activation remains
+NOT_RUN; public HIS/LabClear remain on03. Fresh production backup and actual
+isolated restore passed112 tables/1 file at2026-11-14T11:07:21Z, with production
+services/configuration unchanged and no production migration/seed. Materials
+preparation is in progress; no completed materials phase is claimed.
 
 ### Coordinator-executed private browser checks
 
@@ -42,20 +51,26 @@ worker's independent browser review or a full clinical evaluation.
    close button, made two outside regions inert, and Escape restored focus to
    the DR screening trigger. The narrow dialog also had width390/document390.
 
-Screenshots were inspected inline. Browser file-path guards prevented saving
-screenshots, so no repository screenshot artifact is claimed. Final database
-readback/preservation and the final refined bundle browser check remain open.
-The final frontend refinement distinguishes a normal in-flight write from an
-uncertain result, clears stale Saved messages and uses manual/unsigned wording;
-it must retain every existing write fence.
+Final-main bundle browser checks then passed: Save draft showed ordinary Loading
+without the recovery warning, then Report saved; a later local edit cleared the
+stale Saved message; explicit reload confirmation restored the saved notes;
+Check current review displayed "This draft has not been signed." Grade copy is
+manual-only and the grade controls remain disabled. The final mobile check again
+reported viewport390/document390. [Final actual-browser receipt](../../evidence/integrations/dr-main-qualified-20261114/private-browser-final.json).
+
+Separate read-only PostgreSQL checks verified the exact saved remark, unsigned
+PRELIMINARY report, explicit quality actor and subsequent image reconfirmation,
+original D11v6/source bytes, open review task, completed acquisition tasks and
+zero inference/grants/pending mutations. [Persisted readback](../../evidence/integrations/dr-main-qualified-20261114/prior-browser-database-readback.json).
+Screenshots were inspected inline; file-path guards prevented repository
+screenshot files. No public DR or clinical/model effectiveness claim follows.
 
 ### Remaining release sequence
 
-Finish final qualification/review, controlled main integration and a frontend
-rebuild on authoritative main. Verify the exact private asset manifest again.
-Then take a fresh consistent production backup and restore only into a new
-isolated target. Deploy the dedicated DR database/receiver, private0600 registry
-and exact source-set scope, explicitly migrate04 and replace only the app.
+Main integration/rebuild, final private asset/browser checks and fresh production
+backup/isolated restore now pass. Complete and inspect the deployment materials
+phase before activating the dedicated DR database/receiver, private0600 registry
+and exact source-set scope. Explicitly migrate04 and replace only the app.
 Layer server.env, labclear.env and dr.env plus their reviewed overlays. Complete
 the authenticated public DR journey and persisted/preservation readback before
 closing the long goal. Do not grant grade/signing or call a model to make this

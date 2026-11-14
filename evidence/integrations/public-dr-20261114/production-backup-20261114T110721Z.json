@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T11:07:21.042504+00:00",
+  "phase": "backup",
+  "production_services_unchanged": true,
+  "database_snapshot_consistent": true,
+  "file_archive_separate_transaction_boundary": true,
+  "tables_restored": 112,
+  "restored_database": "his_pre_dr_restore_20261114110717",
+  "restore_container": "his-poc-dr-validation-db-1",
+  "dump_sha256": "c834b3b38dd55f18e2e99a2bdb2e1d7ebd72066d458130f02705da69eb06e66e",
+  "dump_bytes": 728856,
+  "files_tar_sha256": "4b7bd9d975205b41bce1602238006b6f862a98194f9504611b753f9f33031061",
+  "files_verified": 1,
+  "original_config_hashes_preserved": true,
+  "production_migration_or_seed": false
+}

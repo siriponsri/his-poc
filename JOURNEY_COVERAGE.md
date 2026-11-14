@@ -17,6 +17,24 @@ All ten local synthetic journeys have executed PostgreSQL and rendered-browser e
 
 Supporting gates: browser recovery PASS9; final-image smoke PASS11; read-only verification of the actual UI restore PASS109 tables/1 file/8 exact browser records. Baseline D37 is MOCK. A subsequent J01 document-review extension uses real pinned Typhoon on dr-train: browser PASS7 + read-only PASS2, with separate IDs/evidence in JOURNEY_COVERAGE.json. Other live interfaces, clinical validation and production deployment remain separate.
 
+## Additional protected public manual-review subsets
+
+The14 November LabClear subset associated with J02 passed released source6 to
+reviewed7, explicit confirmation, reload/read-only reopen and persisted readback;
+original source6/v10 remains unchanged and the HIS review task stays open.
+The public DR subset associated with J08 passed explicit source consent, fixed
+patient/visit/eye context, original640x480 image preview, manual quality and
+patient/eye confirmation, unsigned draft save/full reload and an explicit
+unsigned review check. No clinical signing or model call occurred. The final
+DR human-label bundle refresh/post-refresh preservation pass; label-only public
+browser smoke is NOT_RUN after the physical Escape stop. [Public receipts](evidence/integrations/public-dr-20261114/receipts.json)
+and [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
+
+These are bounded synthetic extensions, not a rerun of the complete local J02,
+J08 or all10 L3 journeys. The original L3 records above retain their date/scope;
+real-patient transfer, DR model performance and clinical effectiveness remain
+unverified. Ten owner-renamed MMRDR images remain held for laterality.
+
 ## Additional public document/AI subset
 
 The protected dr-train deployment passed the document→real-AI→human editv2→approve→commit→reload subset associated with J01. This is not a complete repeat of registration or all10 journeys. Original local L3 evidence is retained. See evidence/triadic-release/public-final/browser-acceptance.json and evidence/deployment-20261113/public-workflow-readback.json.

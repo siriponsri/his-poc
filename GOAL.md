@@ -2,25 +2,46 @@
 
 ## Active owner extension — 14 November 2026
 
-Latest DR gate: HIS77, receiver37 plus2 independent quality-guard checks, and
-the prior complete DR frontend514 qualification pass. Private Linux workflow,
-same-DB rollback and the manual-quality image upgrade pass. The coordinator
-executed the private browser draft/reload, limited-permission, mobile390 and
-exact-return journey; a final small frontend UX refinement is being qualified.
-Fresh production backup/restore, public DR activation, main integration and
-protected public DR acceptance remain open. Existing public LabClear remains
-active on migration03. Ten owner-renamed MMRDR images are held for laterality;
-no new model call or grade/signing grant. See [DR release checkpoint](docs/integrations/DR_RELEASE_20261114.md).
+New owner-directed six-patient fictional demo-data/metadata and UI extension is
+NOT_IMPLEMENTED: replace literal numbered
+synthetic patient labels with realistic fictional Thai names, age/sex/HN context
+and coherent clinical examples. Use only fictional data and normal versioned,
+audited APIs; preserve existing immutable identifiers and source evidence.
+Intentional demographic amendments must be recorded after the preceding
+preservation checkpoint, with explicit row/version exceptions rather than a
+claim that every original row hash remains unchanged. Qualify the resulting
+patient/visit/document/laboratory UX and retained AI/DR/LabClear behavior before
+closing the goal. Existing committed AI results, files and access scope remain
+preservation requirements.
+
+Current deployment: HISa30f is ready on migration04, with dedicated DR289/schema1
+and the existing LabClearc194 receiver, three separate databases and loopback
+listeners. Fresh112-table/one-file backup and isolated restore passed; activation
+preserved original rows/files/sessions, all9 committed results and inference9.
+Actual protected native-Chrome DR manual review passed explicit consent, quality,
+patient/eye confirmation, unsigned draft save/full reload and unsigned readback.
+Final human-label34fd static refresh and post-refresh preservation passed at
+12:04:20Z: all3 databases/files and59 non-app container IDs unchanged, registry
+bytes/UID10001/mode0600 preserved,10 authenticated assets matched. The first
+directory-preparation failure is retained and reconciled. The final label-only
+public browser smoke is NOT_RUN after the physical Escape browser stop. The long goal remains ACTIVE for that
+check, the fictional demo-data extension and final publication/handoff.
+[Public receipts](evidence/integrations/public-dr-20261114/receipts.json) and
+[DR release checkpoint](docs/integrations/DR_RELEASE_20261114.md).
 
 The long goal remains ACTIVE: improve the patient reading journey, create a
 separate CareBalance derivative based on dr-support-screening-poc while preserving
 the original project, and connect LabClear with authorized source/theme changes.
 The LabClear gateway/isolated receiver and actual private browser round trip are
 qualified; the current HIS frontend passes25 unit/135 component/3 audit cases
-and build. Separate DR theme main and the bounded manual receiver are qualified
-within the explicitly recorded software/private-runtime scope.
-LabClear activation and authenticated public synthetic journey now pass. DR
-integration acceptance remains ongoing. See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
+and build. The separate DR derivative is local main d8a2d9b with no remote;
+all191 inherited backend files remain unchanged. Final DR software evidence is
+522 unique-case composite coverage, retaining one native full-run timeout and
+its unchanged isolated passing rerun; main76 focused plus UWF2/typecheck/build
+passed. LabClear source/theme76 tests and bounded actual-browser checks pass,
+preserving18 owner-modified file hashes. Ten owner-renamed MMRDR images remain
+held for unknown laterality; no new model call or grade/signing grant.
+See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
 
 ## Historical selected UI qualification
 

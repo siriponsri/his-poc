@@ -2,15 +2,35 @@
 
 ## Current checkpoint and active work — 14 November 2026
 
-- PASS: DR bridge/PUBLIC-JPEG provenance and explicit manual-quality guard,
-  77 HIS tests,37 receiver tests plus2 independent quality checks, prior full
-  514 DR frontend tests,135 HIS components, builds and schema drift check.
-- PASS: private Linux workflow, same-DB compatibility rollback and manual-quality
-  image upgrade. Coordinator browser observations cover draft persistence after
-  reload, denied grade/signing, mobile390 and exact HIS record return.
-- ACTIVE: final scoped frontend UX qualification, main integration/rebuild,
-  fresh production backup/isolated restore and protected public DR activation,
-  browser/persistence/preservation. Current production remains migration03.
+- NOT_IMPLEMENTED OWNER EXTENSION: six-patient realistic fictional Thai dataset,
+  metadata/UI presentation, patient names/age/sex/HN
+  context and coherent demo clinical values, using normal audited/versioned
+  APIs. Preserve existing immutable HN/source evidence; create new patients
+  normally if new identifiers are needed. Record intentional demographic-row
+  version/hash exceptions after the existing preservation checkpoint, then
+  qualify the patient/visit/document/laboratory UX and retained AI/DR/LabClear.
+- RETAINED FAILURE: first final-static refresh stopped on missing directory
+  preparation before dispatch; existing7c76 app/container state unchanged.
+  Separate corrected v2 static refresh/preservation PASS at12:04:20Z.
+- PASS: DR bridge/PUBLIC-JPEG provenance/manual-quality guard,77 HIS tests,
+  37 receiver tests plus2 independent quality checks,135 HIS components/build.
+- PASS_WITH_RETAINED_FAILURE: final DR522 unique-case composite coverage:
+  521 full-run passes plus one native30s timeout; unchanged isolated2 tests pass.
+  Main76 focused/UWF2/typecheck/build pass;191 inherited backend files unchanged.
+- PASS: private workflow/same-DB rollback; fresh production112-table/one-file
+  backup/isolated restore; public HIS04/DRschema1 activation. Original rows,
+  files/sessions, all9 committed results and inference9 preserved.
+- PASS: actual native-Chrome protected DR consent→manual quality→patient/eye
+  confirmation→unsigned draft→save→full reload→unsigned check, plus DB readback.
+- PASS: LabClear source/theme76 tests and bounded actual-browser checks;
+  18 preexisting owner-modified files retain exact hashes.
+- PASS: final34fd static refresh,3 database/file equality, all59 non-app container
+  identities, exact registry0600/UID10001 and10 authenticated asset hashes.
+  [Public receipts](evidence/integrations/public-dr-20261114/receipts.json).
+- NOT_RUN: final34fd label-only public browser smoke after physical Escape stop.
+- ACTIVE: six-patient fictional-data/metadata/UI extension;
+  final documentation/source publication and closeout audit. Goal stays ACTIVE
+  after the DR UI gate.
 - HELD BY OWNER:10 renamed MMRDR JPEGs await eye metadata; no pairing,
   clinical registration, transfer or model call.
 

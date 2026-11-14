@@ -1,0 +1,20 @@
+{
+  "operator_script_sha256": "084d2d02fc32bc415e219f59c0dbf2b0a4edd086c5dcfdfab3e87024d3282f6b",
+  "status": "PASS",
+  "at": "2026-11-14T11:34:31.654747+00:00",
+  "phase": "receiver",
+  "original_nonapp_containers_unchanged": true,
+  "original_configs_unchanged": true,
+  "ready": {
+    "ready": true,
+    "schema": 1,
+    "service": "carebalance-dr-receiver"
+  },
+  "workspace_id": "cb-9b95bbb28262d356b9d03faafc2cb866",
+  "source_set_id": "c2186190-b0d6-477c-92c4-37f6fa631b3f",
+  "expected_database": "carebalance_dr",
+  "dedicated_role": "carebalance_dr",
+  "app_config_equivalent_to_bootstrap": true,
+  "hmac_key_exported": false,
+  "model_calls": 0
+}

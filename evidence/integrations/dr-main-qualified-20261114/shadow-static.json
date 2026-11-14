@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T11:04:00.586868+00:00",
+  "phase": "manual-main-static-20261114-v1",
+  "production_unchanged": true,
+  "static_only": true,
+  "his_image_id": "sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0",
+  "dr_image_id": "sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5",
+  "dr_recreated": false,
+  "all_three_databases_and_source_files_unchanged": true,
+  "other_five_shadow_container_ids_unchanged": true,
+  "registry": {
+    "registry_sha256": "488a780a9f17125f6ad86c12c02270ecd52faedec69d1e52a3f6b34b3a602547",
+    "exact_registry_bytes_preserved": true,
+    "uid": 10001,
+    "mode": "0600"
+  },
+  "manifest_sha256": "7c7628f9c64550650e704a8ed06cdf56d2d38f81bb7bbe06f03fb42c1e6b4aaf",
+  "http": {
+    "assets_verified": 10,
+    "binding_id": "96dbaf2d-13a5-4fc2-b9db-818bcba33302",
+    "actual_authenticated_http": true
+  },
+  "browser_acceptance": "NOT_RUN",
+  "production_activation": false
+}

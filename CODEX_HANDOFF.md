@@ -2,6 +2,110 @@
 
 ## Current integration continuation
 
+Long goal ACTIVE. The named public deployment is now HIS
+`his-poc-server:workspace-074aa8f8a0b2` / image
+`sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0`,
+ready on `0004_dr_screening_bridge`; DR
+`his-poc-dr:source-05476e8f5ebb` / image
+`sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5`,
+schema1; LabClear remains `source-c1944c772e87` / image
+`sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f`.
+Each receiver has a dedicated PostgreSQL database and loopback listener. The
+original non-app containers/configurations, all112 legacy table row hashes,
+files/sessions, all9 committed results/3 selected hashes and inference9 were
+preserved. Fresh backup/isolated restore passed112 tables/one file at11:07Z.
+No production seed/reset/restore or new signing/grade grant occurred.
+
+### Exact current checkpoint and pending gates
+
+- New owner steering: realistic FICTIONAL Thai patient names, age/sex/HN context
+  and coherent clinical values replace literal numbered synthetic labels.
+  Normal patient PATCH supports versioned/audited name/DOB/sex; existing HN
+  identifiers remain immutable except normal creation of a new patient. Planned
+  six-patient fictional dataset/metadata/UI enhancement is NOT_IMPLEMENTED;
+  normal PATCH source support was investigated but no names/demographics have
+  changed. Never introduce real patient data. The sealed DR source-set snapshot
+  binds IDs/source versions/hashes, not live demographics; preserve the same
+  patient IDs/pseudonym/source binding and test the live label after amendment.
+  Record intentional Patient row/version/name/DOB/sex exceptions AFTER the
+  existing preservation checkpoint. Do not claim all original row hashes remain
+  unchanged after those authorized edits. Preserve all9 committed AI results,
+  source files, memberships/scope and original source snapshots.
+- HIS source main `ac63879e166c41c65b96f75a3ed22408e97bc11f` was pushed;
+  current documentation changes are not yet committed.245 runtime source inputs
+  match the deployed image. The derivative stays local/no remote at main
+  `d8a2d9b6a21360e0dff3b4aeb97ea4c2692d225f`;191 inherited backend hashes match.
+- Final human-label frontend manifest
+  `34fd361069b3af61c789c7398a49a052feef736dc49303fd5866794f9752d079`
+  static v2 refresh PASSED at2026-11-14T12:04:20Z. All3 databases/files matched
+  exactly; all59 non-app container IDs, exact registry bytes/UID10001/mode0600
+  were preserved and10 authenticated assets verified. The first attempt failed
+  on missing parent-directory preparation before dispatch; retain that reconciled
+  failure separately. Final label-only public browser smoke is NOT_RUN: physical
+  Escape stopped Computer Use before new-bundle reload. Do not resume that
+  stopped surface within the same turn or infer an owner pause of the goal.
+- Final DR evidence:522 unique-case composite coverage, with521 full-run passes
+  and one retained native30-second timeout; the unchanged isolated2-case rerun
+  passes. Main76 focused plus UWF2/typecheck/build pass. This is not522 passes
+  in one full execution. HIS77/receiver37 PostgreSQL and HIS25/135/3/build pass.
+- Earlier public7c76 actual native-Chrome manual journey passes. It must not be
+  promoted into the final34fd rendered acceptance without the pending smoke.
+- Finish final label-only public browser smoke, then implement and qualify the
+  fictional-data UX extension. Static/preservation proof is complete. Update
+  exact intentional-change exceptions and
+  all evidence links, commit/push authorized HIS docs/main and perform the final
+  goal audit. Do not close the goal merely after the DR UI gate or publish the
+  licensed DR derivative. No new inference is needed to prove static labels.
+- At this checkpoint the new documentation/contracts/evidence are uncommitted;
+  there is no new clean-checkpoint commit/push. HISmainac63879 remains the last
+  source publication. Root owns the eventual reviewed checkpoint publication.
+
+### Protected public browser and persisted record
+
+The coordinator used the owner-authenticated native Chrome, with its own binding
+`de1ab8b3-299f-4276-8b01-98dff797d993`, source set
+`c2186190-b0d6-477c-92c4-37f6fa631b3f` and workspace
+`cb-9b95bbb28262d356b9d03faafc2cb866`. Explicit consent showed both authored
+640x480 originals, followed by left-eye manual quality acceptance, checked
+patient/eye confirmation, unsigned draft save, full Chrome reload and explicit
+"This draft has not been signed" check. Signing stayed disabled. Saved notes:
+`CareBalance public browser DR integration check 2026-11-14; authored synthetic draft.`
+
+Public-safe [read-only proof](evidence/integrations/public-dr-20261114/public-browser-readback-20261114T115240Z.json)
+confirms receiver left revision3/PRELIMINARY/unsigned, quality and confirmation
+by the verified HIS session, one read receipt/UNAVAILABLE freshness, exact notes
+and unchanged original bytes. D11 left
+`4377f0e6-4117-4a9d-961a-866fd5d34136` and right
+`2658f896-6589-4dcb-b634-1382b34d3e57` remain version6. Review task
+`d9583d21-b6c2-41f6-a0eb-4478c5baecec` remains OPEN; acquisition tasks are
+complete; DR grants0/inference9/pending mutations0. A separate CLI-owned
+authenticated asset proof used its own session/binding, without extracting
+browser cookies and without changing clinical case hashes.
+
+Ten public-safe deployment/backup/compatibility/migration/receiver/canonical/
+browser-readback/static receipts and the reconciled initial failure are indexed
+at [public-dr-20261114/receipts.json](evidence/integrations/public-dr-20261114/receipts.json).
+Private credentials, browser cookies and raw dumps are excluded. This index
+explicitly leaves final label-only rendered smoke and fictional data work open.
+
+Current schemas are documented separately at
+`docs/integrations/contracts-0004/manifest.json`:142 paths/120 modeled tables,
+121 operational including Alembic. Keep baseline contracts/v2 as historical
+image inputs. LabClear source/theme76 tests and bounded browser checks pass;
+actual mobile width355/requested390,18 owner-modified file hashes unchanged.
+The separate existing LabClear Render deployment is outside this activation.
+
+Ten owner-renamed MMRDR images remain HELD_FOR_LATERALITY with unknown eyes,
+untouched and unpaired. No clinical registration/transfer/model call follows
+the owner's source attestation. Original DR source/Git/runtime are preserved.
+Operations must layer server.env, labclear.env, dr.env and all three reviewed
+overlays; base-only startup and old hardcoded0002 helpers are unsuitable.
+
+## Earlier private/public-LabClear checkpoint history
+
+The text below retains the preceding checkpoint and its dated identities.
+Current deployment, publication and remaining gates are defined above.
+
 Latest exact resume point: [DR_BROWSER_CHECKPOINT_20261114.md](docs/integrations/DR_BROWSER_CHECKPOINT_20261114.md).
 Private Linux12 checks, same-DB compatibility rollback/candidate restore and the
 manual-quality image upgrade pass. The coordinator recovered the native Chrome

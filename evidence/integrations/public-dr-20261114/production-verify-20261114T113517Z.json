@@ -1,0 +1,42 @@
+{
+  "operator_script_sha256": "084d2d02fc32bc415e219f59c0dbf2b0a4edd086c5dcfdfab3e87024d3282f6b",
+  "status": "PASS",
+  "at": "2026-11-14T11:35:17.072484+00:00",
+  "phase": "verify",
+  "original_nonapp_containers_unchanged": true,
+  "original_configs_unchanged": true,
+  "image_id": "sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0",
+  "dr_image_id": "sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5",
+  "ready": {
+    "ready": true,
+    "migration": "0004_dr_screening_bridge"
+  },
+  "preserved_legacy_row_hashes": true,
+  "preserved_old_files": true,
+  "preserved_accounts_memberships_care_and_sessions": true,
+  "preserved_three_ai_results": true,
+  "inference_runs": 9,
+  "labclear_rows_preserved": true,
+  "source_readback": {
+    "review_task": "open",
+    "sources_unchanged": true,
+    "acquisition_tasks": "completed",
+    "test01_dr_grants": 0,
+    "registry_exact_scope": true,
+    "static_files": 10,
+    "uid": 10001
+  },
+  "listeners": [
+    "LISTEN 0      2048                                127.0.0.1:18080 0.0.0.0:*",
+    "LISTEN 0      2048                                127.0.0.1:18090 0.0.0.0:*",
+    "LISTEN 0      2048                                127.0.0.1:18190 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:20331 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:11434 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:15432 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:15433 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:15435 0.0.0.0:*"
+  ],
+  "browser_public_acceptance": "NOT_RUN",
+  "source_set_id": "c2186190-b0d6-477c-92c4-37f6fa631b3f",
+  "url": "https://his.ai-cie.com/domains/D11?patient_id=patient-001&encounter_id=encounter-001&record=4377f0e6-4117-4a9d-961a-866fd5d34136"
+}

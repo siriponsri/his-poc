@@ -185,6 +185,12 @@ verified grant; no fake successful button.
 
 ## Qualification and ownership
 
+The [migration04 API/schema reference](contracts-0004/manifest.json) is exported
+from the integrated implementation:142 paths,120 modeled tables and the separate
+Alembic version table. It includes the DR routes and current clinical inputs.
+Earlier contracts/v2 exports remain the baseline image's historical inputs.
+Reference SQL is documentation; apply only the explicit Alembic migration.
+
 Backend owns new dr_protocol/client/models/gateway/registration modules,
 migration0004 and their tests; main/model_registry registration and readiness
 change are coordinated. Frontend is separately owned by parent after backend

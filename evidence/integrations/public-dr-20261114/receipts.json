@@ -1,0 +1,60 @@
+{
+  "scope": "Public synthetic manual DR release; actual clinical/model effectiveness not evaluated",
+  "receipts": {
+    "production-backup-20261114T110721Z.json": {
+      "sha256": "7bf0cc2c6648cda531051e5d27ed16c8c47b49560222014adcfce715e0c61551",
+      "status": "PASS",
+      "at": "2026-11-14T11:07:21.042504+00:00"
+    },
+    "production-compatibility-20261114T112136Z.json": {
+      "sha256": "fa4f57ab609df2d31e80f434f9fca1cc9122a4a8aa5735c37921f8e2d832f9f6",
+      "status": "PASS",
+      "at": "2026-11-14T11:21:36.998346+00:00"
+    },
+    "production-migrate-20261114T112237Z.json": {
+      "sha256": "b941b0797abff8ded3f18034cff274847649c83f7560aec8024385811e2a3ac5",
+      "status": "PASS",
+      "at": "2026-11-14T11:22:37.992710+00:00"
+    },
+    "production-candidate-20261114T112350Z.json": {
+      "sha256": "1ca1e7991312a970d6d349d1e75b3d50fe700096bfff8796b798ac1375761134",
+      "status": "PASS",
+      "at": "2026-11-14T11:23:50.239321+00:00"
+    },
+    "production-receiver-20261114T113431Z.json": {
+      "sha256": "4e5440dd5cecc1ae7a6dfce7ce133a8439cbb659a042f42aff12e433e31ba122",
+      "status": "PASS",
+      "at": "2026-11-14T11:34:31.654747+00:00"
+    },
+    "production-verify-20261114T113517Z.json": {
+      "sha256": "97ccf1a677174f58c478aabad96d2474cf4b78d6d272d453f31e870f71e286b3",
+      "status": "PASS",
+      "at": "2026-11-14T11:35:17.072484+00:00"
+    },
+    "production-canonical-checkpoint-20261114T113823Z.json": {
+      "sha256": "2133ccb8b89224bd4cac0143e8d59156f47bb02580f0c695b9aca7dbdb51b105",
+      "status": "PASS_READ_ONLY_CANONICAL_CHECKPOINT",
+      "at": "2026-11-14T11:38:23.930808+00:00"
+    },
+    "public-browser-readback-20261114T115240Z.json": {
+      "sha256": "a22ed8f188e854eb422f22d29ead2b83f9689caf3499c4d173ffdd43d2ff30f3",
+      "status": "PASS",
+      "at": "2026-11-14T11:52:40.639475+00:00"
+    },
+    "public-static-prepare-failure-reconciliation-20261114T115937Z.json": {
+      "sha256": "dcbc953e798888737b412460bd7d307aa5744755eb55390f9da347e49ba363ce",
+      "status": "FAIL_BEFORE_STATIC_DISPATCH_RECONCILED",
+      "at": "2026-11-14T11:59:37.627105+00:00"
+    },
+    "human-labels-main-20261114-v2-20261114T120420Z.json": {
+      "sha256": "6637c9a1b80efb2699783f7719dbc19632306311d01acaf82fbcfead09870ec5",
+      "status": "PASS",
+      "at": "2026-11-14T12:04:20.449673+00:00"
+    }
+  },
+  "limits": [
+    "Initial7c76 public journey and persisted DB readback are separate from subsequent34fd static refresh.",
+    "The final34fd browser smoke and new realistic fictional demographic work remain pending.",
+    "Private credentials, cookie proof, raw database dumps and actual MMRDR image files are excluded."
+  ]
+}

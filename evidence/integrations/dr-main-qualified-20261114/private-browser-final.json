@@ -1,0 +1,34 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T11:06:51.800301+00:00",
+  "scope": "Private actual browser on final main frontend; public activation and public browser acceptance remain NOT_RUN",
+  "image_binding": {
+    "his_image_id": "sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0",
+    "dr_image_id": "sha256:2891650421e89546783d9c3a268dbdc8f6fcef3ebbe84500163be6f6c894d2e5",
+    "dr_dist_manifest_sha256": "7c7628f9c64550650e704a8ed06cdf56d2d38f81bb7bbe06f03fb42c1e6b4aaf"
+  },
+  "lineage": "Earlier private browser manual quality/confirmation/draft persistence used the same current backend images. Final main-only static refresh preserved all three databases, source files, registry bytes and other five shadow services; all ten authenticated assets matched.",
+  "final_browser_checks": [
+    "Final assets/index-BkzaUflX.js loaded in the same owned binding.",
+    "Persisted exact remarks and read-only pseudonymous patient key were retained.",
+    "Signing remained disabled.",
+    "Explicit Check current review displayed This draft has not been signed.",
+    "Save draft displayed Loading without the awaiting-confirmation recovery warning, then Report saved.",
+    "Subsequent local edit immediately cleared stale Report saved and showed unsaved edits.",
+    "Explicit reload confirmation discarded only that authored unsaved UI check and restored the saved remarks.",
+    "Mobile viewport width390/document width390, no errors."
+  ],
+  "binding_id": "d276b4c0-338a-47eb-9377-b0597941ba08",
+  "persisted_remarks": "CareBalance private browser persistence check 2026-11-14; authored fixture draft.",
+  "screenshots": "Native inline only; no repository screenshot file claimed.",
+  "model_calls": 0,
+  "actual_mmrdr_images": "HELD_FOR_LATERALITY",
+  "main_qualification": {
+    "his_pg": 77,
+    "receiver_pg": 37,
+    "dr_main_focused": 70,
+    "dr_branch_full": 516,
+    "his_ui": "25 unit /135 component /3 audit and build PASS"
+  },
+  "clinical_effectiveness": "NOT_EVALUATED"
+}

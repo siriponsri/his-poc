@@ -1,13 +1,68 @@
 # CareBalance integration validation checkpoint
 
-Latest DR software/image qualification and remaining Linux/public gates:
-[DR_RELEASE_20261114.md](DR_RELEASE_20261114.md). The owner explicitly holds the
-ten renamed MMRDR images pending laterality; tests use authored fixtures.
-Existing public LabClear remains unchanged while the new DR shadow is rehearsed.
+## Current public deployment and remaining final gate
 
-The long goal remains ACTIVE. This checkpoint distinguishes the qualified
-LabClear connector from ongoing DR receiver work. Synthetic software validation
-does not establish clinical effectiveness or authorize real-source transfer.
+The long goal remains ACTIVE. Public HISa30f is ready on migration04, dedicated
+DR289/schema1 is ready and LabClearc194 remains ready. Three separate databases
+and private loopback listeners retain their service identities. Fresh production
+backup/actual isolated restore passed112 tables/one file at11:07Z. Activation
+preserved original non-app containers/configuration, all112 legacy table row
+hashes/files/sessions, all9 committed results/3 selected result hashes and
+inference9. No production seed/reset/restore occurred.
+
+The actual protected native-Chrome DR manual journey passed on the7c76 bundle:
+explicit source consent, both authored640x480 originals, left manual quality
+acceptance, checked patient/eye confirmation, unsigned draft save/full reload,
+then an explicit unsigned review check; signing remained disabled. Separate
+read-only PostgreSQL proof confirms left revision3/PRELIMINARY, exact notes,
+verified-session quality/confirmation, one UNAVAILABLE read receipt, original
+D11v6 source bytes, review task OPEN, acquisition tasks complete and grants0.
+The original document-AI inference count remains9, without a new model call.
+
+Final human-label frontend34fd static v2 refresh/preservation PASSED at12:04:20Z:
+all3 databases/files and59 non-app container IDs unchanged, registry bytes/
+UID10001/mode0600 preserved and10 authenticated assets matched. The initial
+directory-preparation failure before dispatch is retained/reconciled separately.
+Final label-only public rendered smoke is NOT_RUN after the physical Escape
+browser stop, before the new-bundle reload. Do not equate earlier
+7c76 browser PASS with the new bundle's rendered acceptance or close the goal:
+the owner-added six-patient realistic fictional Thai/coherent clinical dataset,
+metadata and UI task remains NOT_IMPLEMENTED, with explicit audited demographic-row exceptions required
+after this preservation checkpoint. [Ten public-safe receipts](../../evidence/integrations/public-dr-20261114/receipts.json)
+include the actual public draft [database readback](../../evidence/integrations/public-dr-20261114/public-browser-readback-20261114T115240Z.json).
+See [DR release](DR_RELEASE_20261114.md), [browser checkpoint](DR_BROWSER_CHECKPOINT_20261114.md)
+and [exact continuation](../../CODEX_HANDOFF.md).
+
+Current source: HIS mainac63879 was pushed; derivative local maind8a2d9b has no
+remote and preserves191 inherited backend files. Final DR qualification records
+522 unique-case composite coverage:521 full-run passes/one retained native30s
+timeout, unchanged isolated2-pass rerun; main76 focused/UWF2/typecheck/build pass.
+HIS main77/receiver37 PostgreSQL, independent2 quality checks and HIS25unit/
+135component/3audit/build pass. These are synthetic software/integration results,
+not model or clinical effectiveness. Contracts04 are separately exported at
+[contracts-0004](contracts-0004/manifest.json):142 paths/120 modeled/121 operational
+tables. Baseline contracts/v2 retain their historical binding.
+
+Ten owner-renamed MMRDR images remain HELD_FOR_LATERALITY, unchanged and unpaired.
+No assignment, clinical registration, transfer or model call was made. Their
+source attestation does not provide missing eye labels.
+
+## LabClear source/theme adaptation
+
+The authorized sibling LabClear theme work passed76 tests:16 theme/route/cache/
+contrast tests plus60 existing business regressions. Bounded actual browser
+checks were performed separately by the coordinator, including mobile actual
+width355/requested390. All18 preexisting owner-modified file hashes remained
+unchanged. Evidence remains in the sibling checkout at
+`C:/Users/User/Desktop/myProject/LabClear/docs/evidence/carebalance-theme-20261114`.
+Its existing Render deployment, OCR/model services and unrelated owner changes
+were not deployed or repurposed by the dedicated HIS receiver.
+
+## Historical LabClear qualification and activation
+
+The LabClear records below retain their original candidate5328/migration03
+phase. HIS is now on the04 image described above; the receiverc194, reviewed
+laboratory value and original released source remain preserved.
 
 ## LabClear
 

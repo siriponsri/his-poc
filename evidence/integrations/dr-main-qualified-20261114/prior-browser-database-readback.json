@@ -1,0 +1,45 @@
+{
+  "status": "PASS",
+  "method": "READ_ONLY PostgreSQL in HIS and independent DR databases; no HTTP, HMAC, nonce consumption or writes",
+  "his": {
+    "binding_id": "d276b4c0-338a-47eb-9377-b0597941ba08",
+    "actor_id": "36fcf8c7-ccb9-4e01-8e99-54f0b5d3c727",
+    "source_set_id": "bedfa932-300f-4e36-b2bf-633239d856ab",
+    "workspace_id": "cb-6f2f5a019f950f55fa4d9f07ec6f65b3",
+    "review_task_status": "open",
+    "original_d11_versions": [
+      6,
+      6
+    ],
+    "original_source_bytes_preserved": true,
+    "acquisition_tasks": "completed",
+    "inference_runs": 0,
+    "dr_grants": 0,
+    "pending_mutations": 0
+  },
+  "receiver": {
+    "case_id": "5a2d64fa5282f3774ad7c12da3ba81fedbec899514c9fdce25832f55250d6346",
+    "case_revision": 5,
+    "report_status": "PRELIMINARY",
+    "remarks": "CareBalance private browser persistence check 2026-11-14; authored fixture draft.",
+    "report_unsigned": true,
+    "source_set_sha256": "fadbab12495764484388812758d6d33824f9a018c68e8375cb9c4a40a832235c",
+    "manual_quality": "GRADABLE",
+    "quality_actor": "36fcf8c7-ccb9-4e01-8e99-54f0b5d3c727",
+    "reconfirmed_after_quality": true,
+    "confirm_actor": "36fcf8c7-ccb9-4e01-8e99-54f0b5d3c727",
+    "source_origin": "SYNTHETIC",
+    "inspection_field_present": false,
+    "stored_report_readback": "UNAVAILABLE",
+    "stored_read_receipts": 1,
+    "original_receiver_image_bytes_preserved": true,
+    "global_model_result": null,
+    "lesion_model_result": null
+  },
+  "limits": [
+    "Parent reports actual browser interactions separately; this proves persisted readback only",
+    "Unsigned draft, not clinical signing or model/clinical effectiveness"
+  ],
+  "at": "2026-11-14T10:55:12.692081+00:00",
+  "production_unchanged": true
+}

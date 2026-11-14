@@ -1,0 +1,16 @@
+{
+  "operator_script_sha256": "0a9bde97be791ab71d2c3a0fa70128e498e95cd341c8b93dc62b7d2d9378a2e6",
+  "status": "PASS",
+  "at": "2026-11-14T11:23:50.239321+00:00",
+  "phase": "candidate",
+  "original_nonapp_containers_unchanged": true,
+  "original_configs_unchanged": true,
+  "image_id": "sha256:a30f5e9d1e9284942343098423b0bfe56e27c91325d84fb68b86b3d4c22159f0",
+  "ready": {
+    "ready": true,
+    "migration": "0004_dr_screening_bridge"
+  },
+  "empty_registry_bootstrap": true,
+  "legacy_rows_and_files_preserved": true,
+  "seed_or_restore": false
+}

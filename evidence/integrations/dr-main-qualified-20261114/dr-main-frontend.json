@@ -1,0 +1,85 @@
+{
+  "at": "2026-11-14T11:03:05.887984+00:00",
+  "status": "PASS",
+  "phase": "Final approved return-context and bound-only guard refinement",
+  "branch": "main",
+  "head": "6359e598cd594bd23a6e791ab5e90699268ef80b",
+  "execution": [
+    {
+      "name": "targeted-frontend",
+      "command": [
+        "rtk",
+        "proxy",
+        "npm.cmd",
+        "test",
+        "--",
+        "--run",
+        "tests/carebalanceBound.test.tsx",
+        "tests/reportPage.test.tsx",
+        "tests/reviewerPreference.test.tsx",
+        "tests/authGate.test.tsx",
+        "tests/phase2_1Ux.test.tsx",
+        "--reporter=json",
+        "--outputFile=C:\\Users\\User\\Desktop\\myProject\\carebalance-dr-screening\\frontend\\evidence\\carebalance-manual-main-qualified-20261114\\vitest.json"
+      ],
+      "started_at": "2026-11-14T11:01:31.038011+00:00",
+      "completed_at": "2026-11-14T11:02:28.485360+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "typecheck",
+      "command": [
+        "rtk",
+        "proxy",
+        "npm.cmd",
+        "run",
+        "typecheck"
+      ],
+      "started_at": "2026-11-14T11:02:28.485360+00:00",
+      "completed_at": "2026-11-14T11:02:49.548756+00:00",
+      "exit_code": 0
+    },
+    {
+      "name": "build",
+      "command": [
+        "rtk",
+        "proxy",
+        "npm.cmd",
+        "run",
+        "build"
+      ],
+      "started_at": "2026-11-14T11:02:49.548756+00:00",
+      "completed_at": "2026-11-14T11:03:05.588830+00:00",
+      "exit_code": 0
+    }
+  ],
+  "tests": {
+    "numTotalTests": 70,
+    "numPassedTests": 70,
+    "numFailedTests": 0,
+    "numPendingTests": 0,
+    "success": true
+  },
+  "source_files": 181,
+  "source_drift": [],
+  "legacy_backend_files": 191,
+  "legacy_backend_drift": [],
+  "dist_files": 10,
+  "dist_sha256": {
+    "build-identity.json": "ba9530d50ed0feeaf6cac48bb16c003cafcc68031832854c475a94cbf2bc5971",
+    "index.html": "241fad857641eb888266c28918a43497c504282c848b16cf5d4b99b8752ba9ac",
+    "assets/anuphan-VWf4qHMu.woff2": "2621c8496e21708ded67c483aeb159e2482f4a6114ea54f28a21a33b5799c867",
+    "assets/carebalance-wordmark-BJrGvbrX.svg": "a3f91309239fcf34e09daf77f58ac5ed8bb89f655c3ce100d877916c23da5609",
+    "assets/index-BkzaUflX.js": "b4a682260e87a0f3b55f5b9d77994d0205dde6a1607c37f420e062db470ff68e",
+    "assets/index-BkzaUflX.js.map": "c150e944eecc3e161fabc0e59adf21e6aa768a43897010bb53a932fddcb6adeb",
+    "assets/index-CXJN26iy.css": "d6cbcbc559b7d8366f28cdeac8bfc3dc382be7ec72ae22c68a7ae9a3580976ca",
+    "assets/manrope-98zy8qap.woff2": "64424208a993eeb2799605d75e5ce039b3aae5f4cf6e35b544803f4288df0908",
+    "licenses/anuphan-OFL.txt": "cbc57ac0dddda1b70f246a16358fc3c2a32628a23a6d10ef64f746141d3fb159",
+    "licenses/manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+  },
+  "limits": [
+    "Mounted tests use authored HTTP doubles",
+    "No actual HIS BFF, browser, public, model or clinical acceptance",
+    "No original DR repository/runtime access, Git mutation or deployment"
+  ]
+}

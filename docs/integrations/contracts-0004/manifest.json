@@ -1,0 +1,24 @@
+{
+  "status": "PASS_GENERATED_DOCUMENTATION",
+  "at": "2026-11-14T11:23:45.333492+00:00",
+  "migration": "0004_dr_screening_bridge",
+  "modeled_tables": 120,
+  "operational_tables_including_alembic_version": 121,
+  "dr_paths": [
+    "/api/v2/integrations/dr/sources",
+    "/api/v2/integrations/dr/capability-grants/{id}/history",
+    "/api/v2/integrations/dr/source-sets",
+    "/api/v2/integrations/dr/source-sets/{id}",
+    "/api/v2/integrations/dr/source-sets/{id}/bindings",
+    "/api/v2/integrations/dr/bindings/{id}",
+    "/api/v2/integrations/dr/bindings/{id}/read-report",
+    "/api/v2/integrations/dr/bindings/{id}/recover"
+  ],
+  "files": {
+    "clinical-inputs.json": "7d9c64d8826a4ad74413582d88e87938306e20ce8d35c030b603fa926d2701c3",
+    "DATA_DICTIONARY.csv": "d5248f42942dc561c7bcedafa1209121efab9a328c286a61f601e5efe42e7c63",
+    "openapi.json": "03f79ab5da1e749d2701a52c99ac87d18f0011c21939eb5dfb9a95378674bae5",
+    "schema-reference.sql": "685f7728bc028917c5d64dbe81847eef24e3ff65828a9d863c84aee86478e5c6"
+  },
+  "limits": "Generated from current main implementation; reference documentation only, not migration or clinical acceptance. Prior baseline contracts/v2 exports are retained as historical image inputs."
+}

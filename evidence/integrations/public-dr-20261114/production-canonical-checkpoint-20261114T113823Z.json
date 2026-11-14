@@ -1,0 +1,54 @@
+{
+  "operator_script_sha256": "084d2d02fc32bc415e219f59c0dbf2b0a4edd086c5dcfdfab3e87024d3282f6b",
+  "status": "PASS_READ_ONLY_CANONICAL_CHECKPOINT",
+  "at": "2026-11-14T11:38:23.930808+00:00",
+  "baseline_container_count": 58,
+  "preserved_nonapp_container_ids": 57,
+  "current_container_count": 60,
+  "phases": {
+    "backup": "PASS",
+    "materials": "PASS",
+    "compatibility": "PASS",
+    "migrate": "PASS",
+    "candidate": "PASS",
+    "fixture": "PASS",
+    "receiver": "PASS",
+    "verify": "PASS"
+  },
+  "source_set_id": "c2186190-b0d6-477c-92c4-37f6fa631b3f",
+  "review_task_id": "d9583d21-b6c2-41f6-a0eb-4478c5baecec",
+  "sources": [
+    {
+      "source_id": "4377f0e6-4117-4a9d-961a-866fd5d34136",
+      "source_version": 6,
+      "image_sha256": "5a2d64fa5282f3774ad7c12da3ba81fedbec899514c9fdce25832f55250d6346",
+      "laterality": "L",
+      "modality": "CFP",
+      "order_id": "5c36034d-1b2f-4966-8195-ad9e6abf77cd",
+      "acquisition_task_id": "81898a8b-ff59-43fc-885f-930ff381fb4e",
+      "geometry": [
+        640,
+        480
+      ],
+      "byte_size": 7820
+    },
+    {
+      "source_id": "2658f896-6589-4dcb-b634-1382b34d3e57",
+      "source_version": 6,
+      "image_sha256": "60c4e1c046f220a19bdb9c154db279c7257d37faf6b4fff202c2ac71476485cb",
+      "laterality": "R",
+      "modality": "CFP",
+      "order_id": "7e822456-142e-4392-8068-9c6c53502a12",
+      "acquisition_task_id": "05abba5e-bfe7-484e-84e1-99c45cd6a1c5",
+      "geometry": [
+        640,
+        480
+      ],
+      "byte_size": 7950
+    }
+  ],
+  "server_state_path": "/home/chaw/his-poc/var/dr-production-manual-main-20261114/fixture-state.json",
+  "url": "https://his.ai-cie.com/domains/D11?patient_id=patient-001&encounter_id=encounter-001&record=4377f0e6-4117-4a9d-961a-866fd5d34136",
+  "public_browser_acceptance": "NOT_RUN_BY_DEPLOY_AGENT",
+  "registry_or_session_secrets_printed": false
+}
