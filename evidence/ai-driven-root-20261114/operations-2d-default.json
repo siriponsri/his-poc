@@ -1,0 +1,23 @@
+{
+  "status": "PASS_LOCAL_COMPONENT_AND_BUILD",
+  "scope": "Operations starts with 2D work lists; explicitly toggle 3D on/off without inference or mutations.",
+  "source_sha256": {
+    "apps/web/src/components/care-workspace.tsx": "efd1d70f24b2f76efcdbc943ce0d196783ed169b261d6850aa5a62821f8c7627",
+    "apps/web/src/components/hospital-operations.tsx": "614cc48753daef9e52ccc9b61a295dd1fa13483c599f1bf1d23d0ab2affb50c5",
+    "apps/web/tests/assistant-workspace.component.test.tsx": "76b2bbce0e7f866085b249d588ee2cbe1bb24fc30def48dd4725647cc8c82a41"
+  },
+  "all_mounted_components": {
+    "passed": 156,
+    "failures": 0,
+    "phase": "2D behavior before final explanatory copy"
+  },
+  "focused_components_after_final_copy": {
+    "passed": 17,
+    "failures": 0
+  },
+  "typecheck_and_production_build": "PASS",
+  "backend_and_provider_source": "UNCHANGED_FROM_31761108",
+  "real_model_calls": 0,
+  "public_browser_acceptance": "NOT_RUN",
+  "illustration": "Optional demonstration layout, not real building geometry or staff tracking"
+}
