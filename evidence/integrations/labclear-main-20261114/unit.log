@@ -1,0 +1,35 @@
+npm notice run his-poc-web@0.3.0 test
+npm notice run node --test tests/*.test.mjs
+✔ typed decoder frozen context_initial (1.9677ms)
+✔ typed decoder frozen context_faults (0.2099ms)
+✔ typed decoder frozen context_pending (0.1978ms)
+✔ typed decoder frozen context_edited (0.1012ms)
+✔ typed decoder frozen context_approved (0.1244ms)
+✔ typed decoder frozen context_committed (0.1519ms)
+✔ HTTP200 timeout/abstention/failure never becomes a proposal (22.6398ms)
+✔ review payload excludes edits for approve and reject, includes edit (1.1163ms)
+✔ document save preserves metadata and original draft version (0.6442ms)
+✔ discard draft intentionally adopts latest server version (1.3427ms)
+✔ dirty edits or document prevents approval (0.2911ms)
+✔ lost response retry retains identical payload/key (1.5068ms)
+✔ pending commit refuses a different proposal version (0.3031ms)
+✔ fixture adapter is read-only and never calls fetch (0.3956ms)
+✔ 403 errors and nonJSON responses remain explicit errors (1.0179ms)
+✔ no provider endpoint call and only singleton API mutation context (0.5617ms)
+✔ dirty review remains bound to old version/hash after concurrent refresh (0.5373ms)
+✔ default browser fetch retains its global receiver when called through Client (23.6336ms)
+✔ cookie session client sends CSRF and stable idempotency key only to HIS API (0.3812ms)
+✔ definitive conflict is distinct from network/5xx unknown outcome (2.4672ms)
+✔ successful mutation replaces entire displayed revision atomically (1.1365ms)
+✔ readback reconciles only exact operation/proposal/version/hash (0.2934ms)
+✔ URL router does not consume skip link hashes; explicit unknown route (0.2672ms)
+✔ malformed v2 collections fail explicitly instead of empty fallback (0.3475ms)
+✔ session response requires server identity, permissions and CSRF (0.2737ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 162.3542

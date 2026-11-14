@@ -1,0 +1,31 @@
+{
+  "at": "2026-11-14T05:49:37.570966+00:00",
+  "status": "PASS",
+  "source_commit": "a16f37231668eb2973abfb59fb359aa52dbf17ea",
+  "branch": "main",
+  "checks": {
+    "frontend_all_exit0": true,
+    "frontend_source_identical": true,
+    "all17_dist_assets_identical": true,
+    "all231_candidate_inputs_identical": true,
+    "backend_xml_present": true
+  },
+  "frontend": {
+    "unit": 25,
+    "component": 117,
+    "audit_cases": 3,
+    "typecheck_build": "PASS"
+  },
+  "backend": {
+    "tests": 29,
+    "subtests": 62,
+    "command": "python -m pytest backend/tests/test_integration_protocol_unit.py backend/tests/test_integration_clients_unit.py backend/tests/test_labclear_gateway_unit.py -q --junitxml=.../backend-unit.xml",
+    "exit_code": 0
+  },
+  "same_as_active_image": "his-poc-server:workspace-5328d8216f0f",
+  "source_drift": [],
+  "limits": [
+    "Main reran bounded backend unit/regression and frontend checks; broad PostgreSQL source-qualification receipts remain separate",
+    "No new model or deployment call"
+  ]
+}
