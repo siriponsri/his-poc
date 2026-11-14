@@ -1,0 +1,23 @@
+{
+  "recorded_at_utc": "2026-11-14T14:29:15Z",
+  "status": "READY_FOR_PARENT_REVIEW",
+  "base": "f9fd47f9b3e6b5cc37834a2ac695ea5100da258c",
+  "branch": "feat/ai-workspace-3d",
+  "scope": "frontend and optional operations visualization",
+  "checks": [
+    {"command":"npm.cmd test","status":"PASS","exit_code":0,"tests":31,"log":"unit.log"},
+    {"command":"npm.cmd run test:component","status":"PASS","exit_code":0,"tests":152,"baseline_tests":139,"new_tests":13,"log":"components-polished.log"},
+    {"command":"npm.cmd run build","status":"PASS","exit_code":0,"includes":"Python catalog sync, tsc --noEmit, Vite production build","python_path":"C:/Users/User/Desktop/myProject/his-poc/.venv/Scripts","log":"build-polished.log"},
+    {"command":"npm.cmd run test:audit","status":"PASS_BOUNDED_PROBES","exit_code":0,"probes":3,"reproduced_defects":0,"log":"audit-regression.log"},
+    {"command":"isolated Playwright authored-fixture browser check","status":"PASS_FIXTURE_ONLY","exit_code":0,"result":"browser-fixture-result.json"},
+    {"command":"npm.cmd audit --json","status":"FAIL","exit_code":1,"low":1,"moderate":0,"high":0,"critical":0,"advisory":"GHSA-g7r4-m6w7-qqqr","dependency":"existing esbuild 0.27.7 development dependency","log":"npm-audit.json.log"},
+    {"command":"git diff --check","status":"PASS","exit_code":0},
+    {"command":"real backend/model/public URL integration acceptance","status":"NOT_RUN"}
+  ],
+  "external_inference_calls":0,
+  "server_changes":false,
+  "push_performed":false,
+  "deploy_performed":false,
+  "retained_warnings":["Vite optional Three scene chunk exceeds 500 kB", "Existing low esbuild Windows dev-server advisory"],
+  "limitations":["Browser evidence uses authored intercepted API DTOs", "No benchmark or clinical validation", "Edits and unknown-operation retry keys are held in memory; do not reload during an unresolved operation"]
+}

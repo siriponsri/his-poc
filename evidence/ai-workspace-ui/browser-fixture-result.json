@@ -1,0 +1,48 @@
+{
+  "kind": "AUTHORED_FIXTURE_ONLY",
+  "no_model_calls": true,
+  "posts": [],
+  "initial_scene_downloaded": false,
+  "canvas_count": 1,
+  "raycast_opened_actual_room": true,
+  "page_errors": [],
+  "mobile_document_overflow": false,
+  "requests": [
+    {
+      "path": "auth/me",
+      "method": "GET"
+    },
+    {
+      "path": "auth/me",
+      "method": "GET"
+    },
+    {
+      "path": "assistant/config",
+      "method": "GET"
+    },
+    {
+      "path": "patients",
+      "method": "GET"
+    },
+    {
+      "path": "assistant/config",
+      "method": "GET"
+    },
+    {
+      "path": "assistant/worklist",
+      "method": "GET"
+    },
+    {
+      "path": "assistant/worklist",
+      "method": "GET"
+    },
+    {
+      "path": "assistant/operations-map",
+      "method": "GET"
+    },
+    {
+      "path": "assistant/operations-map",
+      "method": "GET"
+    }
+  ]
+}

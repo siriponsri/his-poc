@@ -88,7 +88,7 @@ test('home task destinations resolve the exact same-patient encounter and task, 
  await clickText('Work A')
  assert.equal(document.querySelectorAll<HTMLSelectElement>('.patient-context select')[1].value,'e1')
  assert.equal(document.querySelector<HTMLSelectElement>('.ai-intake select')!.value,'task-a')
- await clickText('Work queue')
+ await clickText('Workspace')
  await clickText('Work B')
  assert.equal(document.querySelectorAll<HTMLSelectElement>('.patient-context select')[1].value,'e2')
  assert.equal(document.querySelector<HTMLSelectElement>('.ai-intake select')!.value,'task-b')

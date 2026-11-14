@@ -1,0 +1,17 @@
+{
+    "apps/web/src/lib/assistant-types.ts":  "2c2f54d61d355b4af2663240d03606273cbbbc5f1b284a55e1f027fa32854528",
+    "apps/web/src/components/care-workspace.tsx":  "2478a3b2cac069df345ef551efedaa81f59e03312834917238a0f6c95f7964ba",
+    "apps/web/tests/assistant-workspace.component.test.tsx":  "cf86c152e8431205aaf31b13bba955ca04191bf88683ab6a34fc10ac97cfa9fa",
+    "apps/web/src/main.tsx":  "6e33849bedfd0cb03eed490af9cfcb9c09aef0862c2df2b83c62b2abebd8f65c",
+    "apps/web/LICENSE_NOTICES.md":  "21e73b45dbff5346d89bc0ef31c4a487939159c94f8b03729db32f3d1fe72a89",
+    "apps/web/public/licenses/THREE_LICENSE.txt":  "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+    "apps/web/src/lib/assistant-client.ts":  "0fccf6a61263d32e343128064aacb5fbd3487646dc97eec1681308e3274cc0d7",
+    "apps/web/package.json":  "eca4923ee3aa598f1be549ff434ffb73bc666a327eb769c6e2df8aa0e9398f2a",
+    "apps/web/tests/refresh.component.test.tsx":  "73de62a52f2d451aa29f43d623a0d94f1741c959721862799e3e9f30d47628a4",
+    "apps/web/src/App.tsx":  "05373c6f110a84b0c2eb1bfb25253a8c6b5ee1e75839987b51a4d1224db161f3",
+    "apps/web/src/care-workspace.css":  "cd92b66eefd5b6d2225f599d1459d5b1f9897957ba19c11f277be19da7059df9",
+    "apps/web/package-lock.json":  "0b583ddb60c43240074c42e7464375861ed3411b12b7ce28fd015f99dffd9171",
+    "apps/web/src/lib/hospital-layout.ts":  "cbb73b845a302af7a04c5627350ce581df9cd3a4fbd3f6cc085e2fd75fd85235",
+    "apps/web/src/components/hospital-operations.tsx":  "ed7d191165e979b04a73b4fbab69f21f4fb3fe83f12a80218036094c5ef4af33",
+    "apps/web/src/components/hospital-scene.tsx":  "4eedc6a4e7af6a6b4eadb77ba7cb8fcae669d75f5655ceb8002eaf448cdc9456"
+}
