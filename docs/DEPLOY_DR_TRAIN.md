@@ -4,6 +4,25 @@ Target: https://his.ai-cie.com. Deployment root: /home/chaw/his-poc.
 This is the server runtime root, not a Git checkout. Source releases are separately
 verified snapshots under releases/. Private operator state stays under var/.
 
+## Current AI workspace release
+
+15November2026: runtime source286f391 / immutable image9afd73f2 / migration0005.
+The guarded foreground cron worker and six real synthetic application calls
+passed bounded acceptance. Existing HIS/LC/DR databases and private services
+remain separate. See [the current release and operator handoff](RELEASE_AI_WORKSPACE.md)
+and [actual runtime witness](../evidence/ai-driven-root-20261114/assistant-runtime-readback.json).
+
+This current runtime resolves three original ENV/Compose layers (base,LabClear,
+DR) plus the separately bound assistant overlay. The highest original dr.env
+image selection is authoritative; changing only server.env does not select a
+new current image. Maintain all three specialist layers. New assistant calls
+use300seconds/4096context/512output on the dedicated GPU0 service; the legacy
+document-review route retains its own configuration and shared model endpoint.
+Do not reinterpret the original90-second topology notes below as the new
+assistant route. The original first-deployment examples are historical context;
+current0005 recovery requires the separate pause/drain/admission/preservation
+handoff and must not downgrade or restore over production.
+
 ## Authorized boundary
 
 The owner explicitly authorized deploying the HIS application and named Cloudflare

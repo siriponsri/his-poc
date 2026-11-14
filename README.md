@@ -2,11 +2,11 @@
   <img src="docs/branding/carebalance-logo.svg" alt="CareBalance" width="300" />
 </p>
 
-<h1 align="center">Connected hospital workflows. Traceable records.</h1>
+<h1 align="center">AI-assisted preparation. Connected hospital workflows.</h1>
 
 <p align="center">
-  A hospital information and ERP development prototype with shared patient context,
-  server-enforced permissions, and auditable transactions.
+  A hospital information prototype that prepares source-linked staff work with AI,
+  shared patient context, server-enforced permissions, and auditable transactions.
 </p>
 
 <p align="center">
@@ -30,17 +30,17 @@
 
 [Demo patients and evidence](docs/DEMO_PATIENTS_TH.md): six realistic Thai names, DOB/sex, numeric demo HNs, six consultation notes and eleven released lab values. All data are invented; the global Demo notice remains. The HN/age/sex display is deployed and verified through the protected URL. See the [current release](docs/RELEASE_REALISTIC_PATIENTS.md).
 
-**Active extension:** AI preparation for visits, nursing handover, records readiness and laboratory handoff is deployed on schema0005. Four real Typhoon fixtures passed source-fidelity review, one per profile. The background worker remains paused pending actual start verification and application acceptance; direct fixture checks do not establish that staff workflow yet. Operations opens as a2D list, with3D available explicitly. The existing document-completeness route and specialist workflows remain. [Contract](docs/AI_DRIVEN_CONTRACT_V1.md), [qualification evidence](evidence/ai-driven-root-20261114/live-source-fidelity.json), [deployment evidence](evidence/ai-driven-root-20261114/deployment-readback.json) and [responsive reading](evidence/ai-driven-public-20261114/responsive-reading.json).
+**AI preparation is live:** visits, nursing handover, records readiness and laboratory handoff use the dedicated Typhoon service on dr-train. Six real application calls passed the bounded synthetic checks: source-linked review, human draft edits, five accepted decisions and seven draft/task effects. Actual role checks preserve metadata-only records access and nursing laboratory restrictions. An unchanged watch made no new call; one authored source revision made one new run, then the test watch was paused. Operations opens as a2D list, with3D available explicitly. [Release and limits](docs/RELEASE_AI_WORKSPACE.md), [actual application evidence](evidence/ai-driven-root-20261114/application-acceptance.json), [deployment](evidence/ai-driven-root-20261114/deployment-readback.json) and [responsive reading](evidence/ai-driven-public-20261114/responsive-reading.json).
 
 The selected design combines **Clinical Workspace** for Home and Login, **Patient Record** for patient work, and the original **Operations Desk logo**. English headings accompany Thai records; neutral surfaces use blue **#1C4286**, burgundy **#861C42** and green **#42861C** accents. [Design contract and research](docs/design/CLINICAL_WORKSPACE.md).
 
 Patient names now open a separate, wide **Patient panel** over the queue. Read and switch documents there, then open the existing document, review or visit workspace with the exact patient context. Closing the panel restores the queue position and keyboard focus. [User journey](docs/USER_JOURNEY_TH.md).
 
-![Patient panel on the protected public POC in Chrome](evidence/research-ui-release/patient-panel-public/patient-panel-new-document.jpg)
+![Wide patient record on the protected POC, with authored fictional data](evidence/ai-driven-public-20261114/patient-wide.jpg)
 
 The earlier LabClear integration release contained **231 source files /17 assets**, with **25 unit /117 component /3 audit cases** and build checks passed for that exact release. The current deployment retains this workflow: open a released Laboratory result, choose **Review with LabClear**, explicitly send the source, review/confirm and reopen the saved result. Original HIS values remain unchanged. [Public integration evidence](evidence/integrations/public-labclear-20261114/) and [deployment operations](evidence/integrations/deployment-labclear-20261114/ops-activation-runbook.md).
 
-The separate **CareBalance DR Screening** integration is deployed. The latest protected browser check opened the authored synthetic image set, confirmed one scoped transfer and reopened the saved manual Draft without grading/signing or another model call. This is a bounded subset of the wider private acceptance, not public proof of every grading/annotation step. The ten owner-supplied MMRDR images remain held for eye metadata. [Current release/readback](docs/RELEASE_REALISTIC_PATIENTS.md), [DR checkpoint](docs/integrations/DR_RELEASE_20261114.md) and [browser scope](docs/integrations/DR_BROWSER_CHECKPOINT_20261114.md). The long goal remains active.
+The separate **CareBalance DR Screening** integration is deployed. The latest protected browser check opened the authored synthetic image set, confirmed one scoped transfer and reopened the saved manual Draft without grading/signing or another model call. This is a bounded subset of the wider private acceptance, not public proof of every grading/annotation step. The ten owner-supplied MMRDR images remain held for eye metadata. [Current release/readback](docs/RELEASE_REALISTIC_PATIENTS.md), [DR checkpoint](docs/integrations/DR_RELEASE_20261114.md) and [browser scope](docs/integrations/DR_BROWSER_CHECKPOINT_20261114.md). The original source remains separate; these manual DR checks are distinct from the new AI preparation evidence.
 
 The earlier14 November Patient-panel release matched214 source files/17 assets and passed25 unit/91 component/3 audit cases. Its public synthetic document workflow passed document → real Typhoon → human edit v2 → approval → commit → reload: **11.563 seconds,424 input /134 output tokens**, cost unmeasured. Later authenticated Chrome reopening verified the persisted version2 proposal without another inference. [Patient-panel release history](docs/RELEASE_PATIENT_PANEL.md) and [reopen evidence](evidence/research-ui-release/final91-public-reopen/acceptance.json) retain their exact candidate identities. These checks establish integration behavior, not clinical effectiveness or throughput.
 
@@ -62,7 +62,7 @@ The development scope covers **38 domains** and **10 cross-module journeys**, fr
 | Finance and supply chain | Versioned prices, charges, invoices, synthetic claims and remittance, receipts, independently reviewed refunds, costs, procurement, lots, and stock movements |
 | Hospital operations | Staff references, assets, maintenance, support services, quality incidents, reporting, integration records, and analytical snapshots |
 | Shared controls | Sessions, scope and permission checks, immutable document revisions, version-bound approvals, audit records, idempotent mutations, and isolated backup/restore |
-| AI review | Explicit DEMO mock by default; optional pinned Typhoon inference for synthetic document completeness, with human editing, review, approval, and commit |
+| AI preparation and review | Local defaults remain explicit DEMO mock; the protected POC uses pinned Typhoon for four role-scoped preparation profiles plus the existing document-completeness route, with source review, editing and explicit workflow effects |
 
 The [domain matrix](spec/DOMAIN_IMPLEMENTATION_MATRIX.md) defines the minimum required behavior. The [coverage files](DOMAIN_COVERAGE.json) describe implementation and verification separately.
 
@@ -76,7 +76,10 @@ flowchart LR
     Services --> PG[("PostgreSQL 18")]
     Services --> Files["Local file storage<br/>Revision references + checksums"]
     Services --> Jobs["Operational jobs<br/>Backup / isolated restore"]
-    Services --> AI["AI provider boundary"]
+    Services --> Queue["Durable preparation queue<br/>Bounded source-change watches"]
+    Queue --> Worker["Guarded worker<br/>Same immutable app image"]
+    Worker --> Prepare["Private GPU0 Typhoon<br/>Four qualified preparation profiles"]
+    Services --> AI["Existing document-review provider boundary"]
     AI --> Mock["Explicit DEMO mock"]
     AI -. "Explicit synthetic opt-in" .-> Typhoon["Private dr-train Ollama<br/>Pinned Typhoon document checklist"]
 ```

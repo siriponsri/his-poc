@@ -1,0 +1,16 @@
+{
+  "status": "PASS_PUBLIC_OPTIONAL_3D_RENDER_AND_SCOPED_ROOM_NAVIGATION",
+  "captured_at": "2026-11-14T18:04:21.079Z",
+  "url": "https://his.ai-cie.com/home",
+  "image_sha256": "6de6d04649eb983506908150859082983298031bd0b888323f9de6ab6c4b5e9f",
+  "image_edited": false,
+  "default_view": "2D department and preparation lists",
+  "explicit_opt_in_render": "Actual illustrative WebGL scene, six labeled rooms and one actual Prepared marker",
+  "actual_visit_run_id": "8ffb9937-bea5-4f45-9db6-8cf376fd95b4",
+  "equivalent_list": "Visit preparation / Prepared / Used / same fictional patient",
+  "room_navigation": "Clicked AI workspace room; opened the existing prepared visit with the same saved human edit/effects",
+  "return_to_operations": "2D default restored; 3D unchecked",
+  "model_calls_by_navigation": 0,
+  "staff_location_or_live_building_claim": false,
+  "clinical_acceptance": false
+}

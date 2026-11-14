@@ -1,29 +1,67 @@
 # CareBalance integration validation checkpoint
 
-## Current deployed milestone and active AI-driven extension
+## Current AI-driven deployment and acceptance
 
-Patient/UI release PASS: source d4f0bca / image8b9815ab / schema0004 is deployed.
-Actual authenticated public browser and read-only PostgreSQL checks passed the
-six fictional identities/HN/age/sex, wide patient reading, retained AI proposalv2,
-released laboratory data/LabClear launcher and latest DR Draft-label/readback
-subset. All old post-cohort rows/files remain; explicit DR-launch append-only
-audit/binding records are recorded. Historical inference9 comprises3 REAL
-dr_train_ollama successes and6 mock successes; all9 results are retained.
-No new inference was performed by this browser verification.
-[Current release](../../docs/RELEASE_REALISTIC_PATIENTS.md) and
-[exact receipts](../../evidence/integrations/realistic-demo-release-20261114/ROOT_RECEIPTS.json).
+Status: DEPLOYED_AND_APPLICATION_ACCEPTED for the named synthetic POC scope.
+Runtime source286f391 / immutable image9afd73f2 / schema0005 is deployed behind
+the existing Access policy at https://his.ai-cie.com. Login, wide Patient record,
+realistic fictional patients, LabClear and the separate DR derivative remain.
+Operations opens in2D; explicit3D rendered on the protected URL and its room
+opened the same saved visit. The3D scene is illustrative, with no staff tracking.
 
-The LONG GOAL REMAINS ACTIVE. Latest owner steering expands the product to
-AI-driven workload relief across ALL clinical/nursing, records/admin and lab
-personas, using dr-train first, plus a useful optional genuine 3D hospital or
-agent-office view linked to actual authorized work. This NEW extension is
-NOT_IMPLEMENTED: research, role/source permission mapping and dedicated GPU0
-service preparation are underway; no new inference/service was started.
-Installed Typhoon matches the earlier3 real runs; MedGemma27B is installed but
-unqualified. Shared GPU1 has an unrelated research workload; isolation/capacity,
-bounded real-profile qualification, source-grounded outputs, normal reviewed
-effects and protected live browser tests remain required before goal closure.
-Never relabel manual DR/LabClear work or mock history as real AI-agent activity.
+The foreground cron-owned assistant guard was observed from fresh SSH at17:57
+UTC, with matching PID/startticks/cgroup/config/privateENV/image. The exact owned
+one-off was removed and persistent reboot approval recorded. No reboot was run.
+This is separate from actual inference: six normal-application Typhoon calls
+completed with bound terminal evidence, using existing clinician/nurse/
+registration/laboratory roles and no permission changes. Four preparation
+profiles passed source-fidelity review. The original nursing test-only input was
+preserved unapplied; one explicitly reviewed reserve call used a better authored
+synthetic handover. No automatic retry, cloud fallback or held-image inference.
+
+Five accepted decisions saved seven effects: two draft documents, two new
+follow-up tasks and three links to existing review tasks. Human edits remained
+new revisions; actual identical-key HTTP replay for nursing/records/laboratory
+created no duplicate effects. Records used metadata only; nursing had no lab
+source access. Nine actual role/scope reads passed expected403/404/metadata
+boundaries. The protected public browser covered one visit: queue → evidence →
+full omitted note → explicit demonstration edit → apply → full reload. Other
+role workflows were normal authenticated production API checks, not separate
+public-browser role acceptance.
+
+An unchanged records watch caused zero automatic runs during its observed scan
+window. One explicit authored source revision caused one new run; its reviewed
+effect reused the original records task. The watch is paused with count1.
+The source change intentionally leaves earlier visit/records artifacts stale;
+saved old drafts/evidence remain. Page reads,2D/3D navigation, apply and replay
+do not dispatch inference. Runtime app/worker remain enabled for explicit use.
+
+Read-only18:12 preservation passed all old126HIS/2LabClear/10DR table rows, source
+files, legacy configuration and non-app service identities. HIS additions are
+explicit test records, not overwritten baseline rows. Historical InferenceRun9
+(3REAL +6mock) and nine results remain separate from the six new AssistantRuns.
+The original DR repository and LabClear owner edits remain preserved; ten renamed
+MMRDR images remain held for laterality as the owner requested.
+
+Evidence: [application acceptance](../../evidence/ai-driven-root-20261114/application-acceptance.json),
+[deployment](../../evidence/ai-driven-root-20261114/deployment-readback.json),
+[public screenshots](../../evidence/ai-driven-public-20261114/),
+[release guide](../RELEASE_AI_WORKSPACE.md).
+Final local source checks passed187 disposable PostgreSQL18.6 cases,156 mounted
+frontend checks,31unit checks, typecheck/build; these are not a rerun of all38
+domains. The older broad-suite failure and isolated resolution remain retained.
+Two neutral infrastructure calls and five direct qualification calls are separate
+from application calls; that direct budget is exhausted. Application trial used6
+of7, including one source-correction reserve; no remaining trial call is automatic.
+
+Limits: measured provider times50.579–56.381s, not a benchmark/SLA; monetary cost
+is unmeasured/null. Outputs largely copy included short notes or select title/DOB
+facts. Visit/nursing compact inputs omit records and require full-chart review.
+This does not establish clinical effectiveness, measured staff-time savings,
+all38domains using realAI, MedGemma27B/DR inference or host-reboot acceptance.
+Direct fixture evidence, actual application effects and clinical validation must
+remain distinct. Current API/DDL reference is docs/integrations/contracts-0005;
+the historical contracts/v2 export is preserved separately.
 
 ## Earlier DR checkpoint at 12:04 UTC
 

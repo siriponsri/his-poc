@@ -1,0 +1,433 @@
+{
+  "schema": "carebalance.public.application-acceptance.v1",
+  "status": "PASS_BOUNDED_PRODUCTION_ASSISTANT_WORKFLOWS",
+  "runtime_source_commit": "286f391aba8fb5e589d43e171c14d2dfabe037a5",
+  "image_id": "sha256:9afd73f2595e35b46cb796f1836eb15c0885d33fb4c4a636c73b41104da72338",
+  "migration": "0005_assistant_workspaces",
+  "data_class": "AUTHORED_SYNTHETIC_ONLY",
+  "normal_api_authentication": {
+    "existing_roles": [
+      "clinician",
+      "nurse",
+      "registration",
+      "laboratory"
+    ],
+    "session_csrf_idempotency": true,
+    "role_or_care_grants_changed": false,
+    "model_endpoint_called_by_test_client": false
+  },
+  "application_call_budget": {
+    "maximum": 7,
+    "actual": 6,
+    "known_terminal_success": 6,
+    "automatic_retries": 0,
+    "reviewed_corrected_input_reserve_calls": 1,
+    "remaining_trial_calls_not_automatically_used": 1,
+    "supervisor_enforces_seven_call_quota": false,
+    "direct_qualification_budget_separate_and_exhausted": true
+  },
+  "public_browser_scope": "Existing test01/Cloudflare Access; single visit queue, source evidence, full omitted note, explicit demo human edit, apply and full reload; optional3D room opens same saved visit. Other staff profiles use normal authenticated production API, not separate public-browser role tests.",
+  "runs": [
+    {
+      "case": "visit",
+      "id": "8ffb9937-bea5-4f45-9db6-8cf376fd95b4",
+      "profile": "visit_preparation",
+      "created_at": "2026-11-14T17:58:01.904210+00:00",
+      "completed_at": "2026-11-14T17:59:11.222160+00:00",
+      "elapsed_ms": 55427,
+      "queue_to_completion_seconds": 69.318,
+      "usage": {
+        "eval_count": 281,
+        "eval_duration": 9694095421,
+        "load_duration": 33703525479,
+        "prompt_eval_count": 577,
+        "prompt_eval_duration": 8347360562,
+        "total_duration": 55145731556
+      },
+      "measured_cost": null,
+      "coverage": {
+        "eligible_sources": 7,
+        "included_sources": 6,
+        "omitted_sources": 1,
+        "unavailable_domains": []
+      },
+      "source_digest": "eb21327f92c0444e87e62e6141387dbdf4ff0f41d2d54c57396a9b568e302e5b",
+      "model_revision_id": "f1a8d066-34e0-41ff-88ac-a50c1937aea6",
+      "model_artifact_hash": "b7380056e3c3b56941d0cbf129c41e3a653afa352c972a5b855a8e965938223b",
+      "snapshot_sha256": "48f01c14e6b336d79eacac5ef16047d79d0a2e713717ef38f24b70433ffc3810",
+      "source_fidelity": "PASS_MECHANICAL_AND_SEPARATE_ROOT_AND_INDEPENDENT_REVIEW",
+      "input_quality_limit": null,
+      "clinical_effectiveness": "NOT_ESTABLISHED"
+    },
+    {
+      "case": "nursing_original",
+      "id": "9f3e2cba-05db-40b5-a764-627ced51f386",
+      "profile": "nursing_handover",
+      "created_at": "2026-11-14T18:01:19.626099+00:00",
+      "completed_at": "2026-11-14T18:02:22.352359+00:00",
+      "elapsed_ms": 56381,
+      "queue_to_completion_seconds": 62.726,
+      "usage": {
+        "eval_count": 326,
+        "eval_duration": 10451090597,
+        "load_duration": 33907825258,
+        "prompt_eval_count": 666,
+        "prompt_eval_duration": 8112458350,
+        "total_duration": 56124064433
+      },
+      "measured_cost": null,
+      "coverage": {
+        "eligible_sources": 11,
+        "included_sources": 7,
+        "omitted_sources": 4,
+        "unavailable_domains": []
+      },
+      "source_digest": "3ab3a312ff9fcb87626742d0e23999b0a2a62f8124beb8dba762128b49e8c94b",
+      "model_revision_id": "3ce2f4e1-97d3-481e-a35e-4a511ad29789",
+      "model_artifact_hash": "a9ef4103a04a3ab8c24158ee79c4a085900673be807353bc98405a577d51d842",
+      "snapshot_sha256": "0181e759bcc1ff73746d69880e9c34dbe6a3ac1fc870bec3eb945beeacff57fb",
+      "source_fidelity": "PASS_MECHANICAL_AND_SEPARATE_ROOT_AND_INDEPENDENT_REVIEW",
+      "input_quality_limit": "Original test-document-only nursing input preserved unapplied; corrected authored source is a separate reviewed reserve call",
+      "clinical_effectiveness": "NOT_ESTABLISHED"
+    },
+    {
+      "case": "nursing_corrected",
+      "id": "07f753ec-d048-47e1-9a69-2ee5adc0601b",
+      "profile": "nursing_handover",
+      "created_at": "2026-11-14T18:03:52.128846+00:00",
+      "completed_at": "2026-11-14T18:04:51.768986+00:00",
+      "elapsed_ms": 54555,
+      "queue_to_completion_seconds": 59.64,
+      "usage": {
+        "eval_count": 291,
+        "eval_duration": 9882007464,
+        "load_duration": 32431662840,
+        "prompt_eval_count": 584,
+        "prompt_eval_duration": 8438872311,
+        "total_duration": 54300102335
+      },
+      "measured_cost": null,
+      "coverage": {
+        "eligible_sources": 12,
+        "included_sources": 4,
+        "omitted_sources": 8,
+        "unavailable_domains": []
+      },
+      "source_digest": "115f9eb1e3e55f80964eccc7e693a1949d081240c70622ffd786a239513d12f6",
+      "model_revision_id": "daed3c10-5ee8-4211-8d36-37caccf8ce41",
+      "model_artifact_hash": "c2d620ea601c06901b6fbfb70955c8e09d8bf79bca5c6f2d33bfaee0ab530d43",
+      "snapshot_sha256": "a7ed1a05f305be66c0c57c68cd461600de3c8e201a45a1d3f3b34fae3344271d",
+      "source_fidelity": "PASS_MECHANICAL_AND_SEPARATE_ROOT_AND_INDEPENDENT_REVIEW",
+      "input_quality_limit": null,
+      "clinical_effectiveness": "NOT_ESTABLISHED"
+    },
+    {
+      "case": "records",
+      "id": "fee41066-d710-40bf-b56b-883be8319cf1",
+      "profile": "records_readiness",
+      "created_at": "2026-11-14T18:05:22.134734+00:00",
+      "completed_at": "2026-11-14T18:06:23.572849+00:00",
+      "elapsed_ms": 51175,
+      "queue_to_completion_seconds": 61.438,
+      "usage": {
+        "eval_count": 130,
+        "eval_duration": 6529278902,
+        "load_duration": 33775041626,
+        "prompt_eval_count": 388,
+        "prompt_eval_duration": 8262355207,
+        "total_duration": 50885115625
+      },
+      "measured_cost": null,
+      "coverage": {
+        "eligible_sources": 4,
+        "included_sources": 4,
+        "omitted_sources": 0,
+        "unavailable_domains": []
+      },
+      "source_digest": "ff8c0f1bc450d727a828ad84ea7e4b07704960af42cbfb3a6eafa1b486083e38",
+      "model_revision_id": "1fb1163c-4c23-46b8-ba58-ecec82ec9122",
+      "model_artifact_hash": "b5117596f51bbab80d8337570d18bef53929f932b1291697b101111169bc5bd5",
+      "snapshot_sha256": "d7d303c5ee4b87a04be38841f4512408b166289f772695ab7ba15b0612b1bf85",
+      "source_fidelity": "PASS_MECHANICAL_AND_SEPARATE_ROOT_AND_INDEPENDENT_REVIEW",
+      "input_quality_limit": null,
+      "clinical_effectiveness": "NOT_ESTABLISHED"
+    },
+    {
+      "case": "laboratory",
+      "id": "0207d773-4e75-44be-a2a7-328199d15112",
+      "profile": "laboratory_handoff",
+      "created_at": "2026-11-14T18:07:50.465150+00:00",
+      "completed_at": "2026-11-14T18:08:48.879233+00:00",
+      "elapsed_ms": 51103,
+      "queue_to_completion_seconds": 58.414,
+      "usage": {
+        "eval_count": 136,
+        "eval_duration": 6698101101,
+        "load_duration": 32896131878,
+        "prompt_eval_count": 538,
+        "prompt_eval_duration": 8367973426,
+        "total_duration": 50847151102
+      },
+      "measured_cost": null,
+      "coverage": {
+        "eligible_sources": 7,
+        "included_sources": 7,
+        "omitted_sources": 0,
+        "unavailable_domains": []
+      },
+      "source_digest": "d1032295eb8c5c8de76b2afb9a93cc67a2bf93f8ec7f2dac635a22a9bf2f5d32",
+      "model_revision_id": "dadefc59-4d87-45af-854c-796088b9837f",
+      "model_artifact_hash": "c8a4e2df0a130e08701c5d717a3a00c59c0e9c5e95b12d92cf5ce637f033449f",
+      "snapshot_sha256": "265887aa14494fed4aa038d2faf0b3a8c0dd562e43bb47d8473bb776ee5f09b3",
+      "source_fidelity": "PASS_MECHANICAL_AND_SEPARATE_ROOT_AND_INDEPENDENT_REVIEW",
+      "input_quality_limit": null,
+      "clinical_effectiveness": "NOT_ESTABLISHED"
+    },
+    {
+      "case": "watch",
+      "id": "e8df3d86-9eac-4771-b8ba-20ab19db67a5",
+      "profile": "records_readiness",
+      "created_at": "2026-11-14T18:09:43.266034+00:00",
+      "completed_at": "2026-11-14T18:10:34.125105+00:00",
+      "elapsed_ms": 50579,
+      "queue_to_completion_seconds": 50.859,
+      "usage": {
+        "eval_count": 130,
+        "eval_duration": 6571375009,
+        "load_duration": 33473380558,
+        "prompt_eval_count": 388,
+        "prompt_eval_duration": 8341974924,
+        "total_duration": 50314469275
+      },
+      "measured_cost": null,
+      "coverage": {
+        "eligible_sources": 4,
+        "included_sources": 4,
+        "omitted_sources": 0,
+        "unavailable_domains": []
+      },
+      "source_digest": "54e6012ab85831ca70c35de7aec8efb1c8d2068921d8c125fe11d2dd05f95b3c",
+      "model_revision_id": "7e87cbc1-78ed-4df6-a9ad-d105aa6a1f22",
+      "model_artifact_hash": "b5117596f51bbab80d8337570d18bef53929f932b1291697b101111169bc5bd5",
+      "snapshot_sha256": "c69911efe031e89cdb3ed3040f52f82b7cd5f404ae4bff5156d8c5792a171d12",
+      "source_fidelity": "PASS_MECHANICAL_AND_SEPARATE_ROOT_AND_INDEPENDENT_REVIEW",
+      "input_quality_limit": null,
+      "clinical_effectiveness": "NOT_ESTABLISHED"
+    }
+  ],
+  "effects": [
+    {
+      "case": "visit",
+      "id": "931a2093-ddc3-43ec-9248-4c1a4f7cbf20",
+      "action_id": "a1",
+      "kind": "create_visit_draft",
+      "domain": "D22",
+      "created": true,
+      "document_id": "d83c9923-9834-4bcf-8414-55461dda8454",
+      "task_id": null,
+      "target_version": 1,
+      "target_status": "draft",
+      "revision_origin": "human"
+    },
+    {
+      "case": "visit",
+      "id": "57620180-886b-4eba-94d6-edb32c0d1eb6",
+      "action_id": "a2",
+      "kind": "create_document_review_task",
+      "domain": "D37",
+      "created": false,
+      "document_id": null,
+      "task_id": "2073f929-da10-4690-a4ea-094246e2baff",
+      "target_version": 1,
+      "target_status": "open",
+      "revision_origin": "human"
+    },
+    {
+      "case": "nursing_corrected",
+      "id": "5af1ff57-1190-491e-987c-a6736bf8364d",
+      "action_id": "a1",
+      "kind": "create_nursing_draft",
+      "domain": "D22",
+      "created": true,
+      "document_id": "502e52a8-9592-433a-b524-3fe491e50543",
+      "task_id": null,
+      "target_version": 1,
+      "target_status": "draft",
+      "revision_origin": "human"
+    },
+    {
+      "case": "nursing_corrected",
+      "id": "eda88225-2c8d-49c9-8697-8ff65923f114",
+      "action_id": "a2",
+      "kind": "create_nursing_followup_task",
+      "domain": "D06",
+      "created": true,
+      "document_id": null,
+      "task_id": "ecd8864d-3258-4636-98c6-600aead7907e",
+      "target_version": 1,
+      "target_status": "open",
+      "revision_origin": "human"
+    },
+    {
+      "case": "records",
+      "id": "bea39f25-38f1-499b-8543-e497f82a2884",
+      "action_id": "a1",
+      "kind": "create_records_review_task",
+      "domain": "D01",
+      "created": true,
+      "document_id": null,
+      "task_id": "b8c452a6-30bd-4f78-a472-2b44368ca8b5",
+      "target_version": 1,
+      "target_status": "open",
+      "revision_origin": "model"
+    },
+    {
+      "case": "laboratory",
+      "id": "b17ce36a-0085-4428-ae8a-7e139d68fb27",
+      "action_id": "a1",
+      "kind": "link_lab_review_task",
+      "domain": "D10",
+      "created": false,
+      "document_id": null,
+      "task_id": "56a8ccb9-7c15-4fc0-abb6-cc7ab4d9be48",
+      "target_version": 1,
+      "target_status": "open",
+      "revision_origin": "model"
+    },
+    {
+      "case": "watch",
+      "id": "68b06a7b-ac3e-46da-9f6a-abe0244a4a5b",
+      "action_id": "a1",
+      "kind": "create_records_review_task",
+      "domain": "D01",
+      "created": false,
+      "document_id": null,
+      "task_id": "b8c452a6-30bd-4f78-a472-2b44368ca8b5",
+      "target_version": 1,
+      "target_status": "open",
+      "revision_origin": "model"
+    }
+  ],
+  "effects_summary": {
+    "decisions": 5,
+    "saved_effects": 7,
+    "created_draft_documents": 2,
+    "created_followup_tasks": 2,
+    "linked_existing_tasks": 3,
+    "clinical_sign_order_release_actions": 0
+  },
+  "actual_identical_key_replay": {
+    "status": "PASS_ROOT_OBSERVED_REAL_HTTP_REPLAY",
+    "cases": [
+      "nursing_corrected",
+      "records",
+      "laboratory"
+    ],
+    "duplicate_effects": 0,
+    "new_generation_calls": 0
+  },
+  "watch": {
+    "id": "f13bd28c-646b-4d31-a11a-1442b5eb7a81",
+    "unchanged_source_automatic_runs": 0,
+    "unchanged_scan_next_at": "2026-11-14T18:09:32.348480+00:00",
+    "configured_started_at": "2026-11-14T18:07:48.209574+00:00",
+    "elapsed_to_unchanged_scan_boundary_seconds": 104.139,
+    "explicit_authored_document_version_change": [
+      1,
+      2
+    ],
+    "changed_source_automatic_runs": 1,
+    "reused_same_records_task": true,
+    "final_status": "paused",
+    "final_auto_run_count": 1,
+    "same_artifact_hash_with_new_source_digest_is_retained": true,
+    "no_new_call_for_pristine_assistant_created_sources_in_observed_unchanged_window": true
+  },
+  "actual_role_scope_checks": [
+    {
+      "actor": "nurse",
+      "check": "other_actor_run_hidden",
+      "status": "PASS_404"
+    },
+    {
+      "actor": "registration",
+      "check": "other_actor_run_hidden",
+      "status": "PASS_404"
+    },
+    {
+      "actor": "laboratory",
+      "check": "other_actor_run_hidden",
+      "status": "PASS_404"
+    },
+    {
+      "actor": "test01",
+      "check": "other_actor_run_hidden",
+      "status": "PASS_404"
+    },
+    {
+      "actor": "nurse",
+      "check": "forbidden_profile",
+      "profile": "laboratory_handoff",
+      "status": "PASS_403"
+    },
+    {
+      "actor": "registration",
+      "check": "forbidden_profile",
+      "profile": "laboratory_handoff",
+      "status": "PASS_403"
+    },
+    {
+      "actor": "laboratory",
+      "check": "forbidden_profile",
+      "profile": "visit_preparation",
+      "status": "PASS_403"
+    },
+    {
+      "check": "nurse_unassigned_six_patient_context_hidden",
+      "status": "PASS"
+    },
+    {
+      "check": "records_ordinary_document_read_has_no_body",
+      "status": "PASS"
+    }
+  ],
+  "preservation": {
+    "status": "PASS_OLD_ROWS_FILES_SPECIALIST_AND_CONFIG_PRESERVED",
+    "failures": [],
+    "new_rows_by_table": {
+      "his": {
+        "public.assistant_decisions": 5,
+        "public.assistant_effects": 7,
+        "public.assistant_revisions": 8,
+        "public.assistant_runs": 6,
+        "public.assistant_watches": 1,
+        "public.audit_events": 42,
+        "public.document_versions": 5,
+        "public.documents": 4,
+        "public.login_attempts": 4,
+        "public.operations": 19,
+        "public.security_events": 9,
+        "public.sessions": 4,
+        "public.tasks": 2
+      },
+      "lc": {},
+      "dr": {}
+    },
+    "expected_intentional_HIS_appends_require_separate_review": true,
+    "own_ephemeral_worker_excluded_from_container_inventory": true,
+    "model_calls_by_probe": 0,
+    "database_writes_by_probe": 0
+  },
+  "review_limits": [
+    "Source grounding and successful workflow effects do not establish clinical effectiveness or measured staff-time savings.",
+    "Drafts mostly copy the included short authored notes; selected facts often use document titles or DOB.",
+    "Visit and nursing compact inputs omit eligible records; full-record review remains necessary.",
+    "The source revision for watch testing intentionally makes the earlier visit/records artifact stale; saved old draft and immutable evidence remain.",
+    "The unmodified initial nursing run is retained without effects after the authored source correction.",
+    "Six application calls are separate from two neutral infrastructure and five direct profile qualification calls and the historical legacy inference rows.",
+    "Host reboot, latency SLA, all38domains using realAI, DR/CAD inference and heldMMRDR image transfer are not established."
+  ],
+  "mechanical_reviewer_sha256": "6a3694b3b0e15a78920d6c5016bb6676133ba3cdb12ef07d745dcbf3ac6578de",
+  "independent_saved_source_reviews": "PASS_ROOT_WITNESSED_BOUND_SOURCE_REVIEW_BY_SEPARATE_AGENT",
+  "monetary_cost": "UNMEASURED_NULL"
+}

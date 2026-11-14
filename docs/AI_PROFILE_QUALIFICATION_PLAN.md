@@ -57,3 +57,14 @@ v1.1 call. Each remains300s/512 output/4096 context/thread6/keep_alive0, no auto
 retry. Default output limit is now512. Keep the original stage, call and failure
 ledger; a separately pinned continuation records the new grammar/prompt source
 and the exact old failed receipt it supersedes. Stop for review again on failure.
+
+## Executed qualification and application acceptance
+
+The five direct calls are exhausted: one retained invalid v1.1 visit and four
+qualified v1.2 fixtures. A separate application plan allowed at most7 calls;
+6 executed successfully, including one reviewed corrected nursing source and
+one changed-source watch. The active worker uses300s/4096/512 and the exact
+qualified profiles. No automatic reserve retry is authorized. See
+[actual acceptance](../evidence/ai-driven-root-20261114/application-acceptance.json)
+and [release limits](RELEASE_AI_WORKSPACE.md). These are bounded synthetic
+results, not clinical effectiveness or measured staff-time savings.

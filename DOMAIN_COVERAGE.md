@@ -1,9 +1,10 @@
 # Domain coverage — 38 local L2 workflows
 
 The additional AI preparation release is tracked separately: runtime9afd/schema0005
-is deployed; four direct synthetic profile fixtures passed source fidelity, while
-foreground worker and actual application preparation/review/watch acceptance
-remain pending. These checks do not replace or expand the historical38-domain/
+is deployed; foreground worker and six real application calls passed bounded
+preparation/review/watch acceptance across four profiles. The public browser
+covered one visit; other roles used normal production APIs. These checks do not
+replace or expand the historical38-domain/
 10-journey baseline. [Deployment](evidence/ai-driven-root-20261114/deployment-readback.json)
 and [model qualification](evidence/ai-driven-root-20261114/live-source-fidelity.json).
 

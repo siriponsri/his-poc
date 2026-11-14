@@ -1,7 +1,8 @@
 # AI-driven Care Workspace: v1 implementation contract
 
 Status: SOURCE CONTRACT IMPLEMENTED; runtime source286f391/image9afd/schema0005 deployed.
-Four direct profile fixtures qualified; foreground worker and application acceptance pending.
+Four direct profile fixtures qualified; foreground worker and six real application calls accepted.
+See RELEASE_AI_WORKSPACE.md for exact public-browser/API, omission and clinical limits.
 Clinical effectiveness is not established.
 Owner direction: reduce personnel work across clinical/nursing, medical
 records/administration and laboratory teams; use dr-train first; add a useful

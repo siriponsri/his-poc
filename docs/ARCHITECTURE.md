@@ -17,8 +17,10 @@ orders or releases a result. Records preparation sends metadata only; the
 existing nurse cannot gain laboratory access by selecting another profile.
 The complete manifest remains server-side; the compact model view reports
 omitted sources. Operations is2D first; optional lazy3D reads the same scoped
-work and run states and never triggers generation. See the
-[contract](AI_DRIVEN_CONTRACT_V1.md) and current readiness in GOAL.md.
+work and run states and never triggers generation. The foreground cron worker
+and six real application calls passed bounded production acceptance; host reboot
+is NOT_RUN. See the [contract](AI_DRIVEN_CONTRACT_V1.md),
+[release guide](RELEASE_AI_WORKSPACE.md) and exact current evidence in GOAL.md.
 
 ## CareBalance specialist boundary
 

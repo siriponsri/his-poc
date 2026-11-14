@@ -1,0 +1,19 @@
+{
+  "status": "PASS_PUBLIC_VISIT_DRAFT_EDIT_APPLY_RELOAD_SUBSET",
+  "captured_at": "2026-11-14T18:00:44.950Z",
+  "url": "https://his.ai-cie.com/home",
+  "image_sha256": "2ac616afac29d720a4ac3ef253e2c7f365a9dbe5156950259a6edcd2958866da",
+  "image_edited": false,
+  "run_id": "8ffb9937-bea5-4f45-9db6-8cf376fd95b4",
+  "data": "authored synthetic only",
+  "actor": "test01",
+  "source_evidence_opened": true,
+  "omitted_original_note_opened_in_full_patient_panel": true,
+  "human_edit": "Added an explicit demonstration preparation label, no clinical attestation",
+  "single_selected_visit_generation": true,
+  "revision_after_apply": 2,
+  "observed_after_full_reload": "Prepared / Used; edited draft retained; two saved effects; apply disabled",
+  "duplicate_generation_from_source_reads_or_reload": false,
+  "clinical_effectiveness": "NOT_ESTABLISHED",
+  "source": "Exact native JPEG already returned in this chat CUA output"
+}
