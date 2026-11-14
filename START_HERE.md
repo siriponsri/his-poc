@@ -1,12 +1,12 @@
 # HIS POC v0.3 — เว็บทดสอบพร้อมใช้งาน
 
-อัปเดต14 พฤศจิกายน2026: Home/Login และ Patient Record ขึ้นเว็บแล้ว งาน LabClear ผ่านการเชื่อมฐานข้อมูลแยกและทดสอบหน้าจอจริงในระบบทดสอบส่วนตัว รุ่นใหม่ผ่าน25 unit/117 component/3 audit cases และ build ส่วน DR รุ่น CareBalance ผ่านการปรับธีมและกำลังทำ receiver ที่ผูกกับผู้ป่วยและชุดภาพโดยเฉพาะ อ่าน [checkpoint ล่าสุด](docs/integrations/VALIDATION_CHECKPOINT_20261114.md) และแยกผล deploy/ทดสอบ URL จริงจากผลทดสอบส่วนตัว Long goal ยัง ACTIVE
+อัปเดต14 พฤศจิกายน2026: Login, Clinical Workspace, Patient panel กว้าง และผู้ป่วยสมมุติ6รายขึ้นเว็บแล้ว พร้อม LabClear และ DR workspace สำหรับทบทวนโดยคน ส่วน AI เตรียมงาน4กลุ่มผ่านการตรวจอ้างอิงต้นทางด้วย Typhoon จริงกลุ่มละหนึ่งกรณีแล้ว และผ่าน187 PostgreSQL tests,156 component checks,31 unit checks และ build แต่ยังไม่ได้ deploy AI รุ่นใหม่นี้ ต้องตรวจ backup/rollback และทดสอบผ่าน URL จริงต่อ Long goal ยัง ACTIVE อ่าน [สถานะล่าสุด](GOAL.md) และ [หลักฐาน AI](evidence/ai-driven-root-20261114/live-source-fidelity.json) โดยแยกผลซอฟต์แวร์ ผลโมเดล และผลใช้งานเว็บออกจากกัน
 
 ผลรอบ 13 พฤศจิกายน 2026: 38 domains ที่ L2 และ J01–J10 ที่ L3 ผ่านบนข้อมูลสังเคราะห์ พร้อม Windows Docker, PostgreSQL, browser และ isolated restore ที่รันจริง อ่าน VALIDATION_REPORT.md และ coverage เพื่อดูขอบเขต หลักฐาน MOCK และ external L4 ที่ยังไม่ได้ตรวจ
 
 ## เปิดเว็บที่ deploy แล้ว
 
-เข้า **[his.ai-cie.com](https://his.ai-cie.com)** → ยืนยันอีเมลที่ได้รับอนุญาตผ่าน Cloudflare Access → ล็อกอิน HIS ด้วย **test01** และรหัสผ่านที่เจ้าของระบุไว้ในแชต บัญชีนี้ใช้ข้อมูลสังเคราะห์ patient-001 และงานเอกสาร/AI เท่านั้น ไม่มีสิทธิ์ผู้ดูแลหรือการเงิน รหัสผ่านไม่ถูกเก็บใน repository
+เข้า **[his.ai-cie.com](https://his.ai-cie.com)** → ยืนยันอีเมลที่ได้รับอนุญาตผ่าน Cloudflare Access → ล็อกอิน HIS ด้วย **test01** และรหัสผ่านที่เจ้าของระบุไว้ในแชต บัญชีนี้เข้าถึง patient-001 และผู้ป่วยสมมุติ6รายตาม care assignment พร้อมงานเอกสาร/AI ที่ได้รับสิทธิ์ ไม่มีสิทธิ์ผู้ดูแลหรือการเงิน รหัสผ่านไม่ถูกเก็บใน repository
 
 หน้า Home ใช้ Work queue เลือกชื่อผู้ป่วยเพื่อเปิด Patient panel กว้างแยกจากคิว เลือกเอกสารเพื่ออ่าน แล้ว Open document, Open review หรือ Open visit เพื่อทำงานต่อในบริบทเดิม ปิด panel กลับตำแหน่งเดิมของคิว หัวข้อหลักใช้ภาษาอังกฤษร่วมกับเนื้อหาไทย เปิดงานหรือเอกสารจากคิว แล้วเทียบต้นฉบับกับข้อค้นพบใน Reviews แก้ข้อความเป็นรุ่นใหม่ก่อนอนุมัติและยืนยันบันทึกผล สีน้ำเงิน #1C4286 แดงม่วง #861C42 และเขียว #42861C เป็นสีเน้นบนพื้นกลาง
 

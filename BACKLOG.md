@@ -17,21 +17,31 @@ The LONG GOAL REMAINS ACTIVE. The new AI-driven candidate now implements
 four role-scoped preparation profiles, a durable queue/watch, source-bound
 facts/drafts and reviewed ordinary workflow effects. An optional lazy Operations
 3D view supplements the equivalent 2D list. It is not the primary work surface.
-Backend126 baseline tests and26 later targeted lease/transport tests passed;
-provider52 tests and UI152 baseline mounted/17 later focused checks passed.
-These are separate source-bound checkpoints, not a new all-green full-suite run.
-The retained broad-suite failure and isolated resolution are recorded in
-[root checks](evidence/ai-driven-root-20261114/root-pg-checks.json).
+Final local checks passed187 disposable-PostgreSQL18.6 AI/core/provider
+tests,156 mounted frontend checks,31 unit checks, typecheck and build. These
+are bounded software checks, not public application acceptance or a repeat of
+all38 domains. The earlier broad-suite failure and isolated resolution remain
+in [root checks](evidence/ai-driven-root-20261114/root-pg-checks.json); the final
+source hashes are in [final checks](evidence/ai-driven-root-20261114/final-local-checks.json).
 
-A dedicated HIS GPU0 service is running. Two separately gated neutral real
-model calls passed; their46.98s/71.31s timings are not clinical-profile or
-capacity qualification. Shared11434, GPU1 research and existing app/data remain
-preserved. Four-profile live qualification, final unknown-dispatch admission
-review, schema0005-compatible rollback, production migration/worker activation,
-protected public tests and final publication remain open. See the
-[qualification plan](docs/AI_PROFILE_QUALIFICATION_PLAN.md). New profiles are
-NOT_DEPLOYED and qualified flags remain empty. MedGemma27B stays unqualified.
-Never relabel manual DR/LabClear work or mock history as real AI-agent activity.
+A dedicated HIS GPU0 service is running. Four real Typhoon preparation calls
+passed source-fidelity review for one authored synthetic fixture per profile:
+visit, nursing, records and laboratory. Recorded elapsed times were52.61–57.23s.
+The earlier invalid v1.1 output and reconciled teardown sampler limitation remain
+in [the safe qualification receipt](evidence/ai-driven-root-20261114/live-source-fidelity.json).
+This proves neither clinical effectiveness nor performance across other inputs.
+The five-call direct qualification budget is exhausted; no automatic retry.
+The two earlier neutral calls remain separate from these profile calls and from
+the historical9 production inference rows. Shared11434, GPU1 research and the
+existing app/data remain preserved. Unknown-dispatch admission review is closed;
+a schema0005-compatible fallback image has passed static source verification.
+Fresh isolated backup/restore and004/005 authenticated compatibility, candidate
+build, production migration/worker activation, protected public tests and final
+publication remain open. New profiles are NOT_DEPLOYED and runtime qualified
+flags remain empty. See the [qualification plan](docs/AI_PROFILE_QUALIFICATION_PLAN.md).
+MedGemma27B stays unqualified. Never relabel manual DR/LabClear work or mock
+history as real AI-agent activity. The owner permits dropping3D if it does not
+help actual work; retain the equivalent2D list and keep3D off by default.
 
 ## Earlier DR checkpoint at 12:04 UTC
 
