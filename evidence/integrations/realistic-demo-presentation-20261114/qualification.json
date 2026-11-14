@@ -1,0 +1,67 @@
+{
+  "status": "PASS",
+  "candidate_branch": "feat/realistic-demo-presentation",
+  "base_commit": "c643241fdd12329a00a71296645135b98c8eaac4",
+  "generated_at": "2026-11-14T12:44:12.812577+00:00",
+  "source_manifest": "source-manifest.json",
+  "source_manifest_sha256": "f8987b0aef230bd7efe30d2fa021989ca8385607de033598fae0d826104fa15a",
+  "checks": {
+    "postgresql18_patient_privacy": {
+      "status": "PASS",
+      "passed": 6,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "realistic-patient-pg.xml",
+      "command": "rtk proxy .venv\\Scripts\\python.exe scripts/test_with_postgres.py --pg-bin C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin -- .venv\\Scripts\\python.exe scripts/run_pg_suite.py -q backend/tests/test_patient_presentation_pg.py --junitxml=apps/web/.test-out/realistic-patient-pg.xml"
+    },
+    "postgresql18_scoped_core_regression": {
+      "status": "PASS",
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "deselected": 15,
+      "evidence": "realistic-patient-core-regression.xml",
+      "command": "rtk proxy .venv\\Scripts\\python.exe scripts/test_with_postgres.py --pg-bin C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin -- .venv\\Scripts\\python.exe scripts/run_pg_suite.py -q backend/tests/test_patient_presentation_pg.py backend/tests/test_core.py -k \"patient_presentation or test_02_auth_and_scope or test_03_unique_context_and_immutable_history or test_05_j07_revocation_scope_switch_and_replay\" --junitxml=apps/web/.test-out/realistic-patient-core-regression.xml"
+    },
+    "frontend": {
+      "status": "PASS",
+      "unit_passed": 31,
+      "component_passed": 139,
+      "failed": 0,
+      "skipped": 0,
+      "source_drift": [],
+      "typecheck_and_build": "PASS",
+      "evidence": "../realistic-demo-ui-final-20261114/checks.json",
+      "command": "rtk proxy .venv\\Scripts\\python.exe var/carebalance-integration/final_ui_validate.py evidence/integrations/realistic-demo-ui-final-20261114"
+    },
+    "legacy_audit_probe": {
+      "status": "PASS",
+      "cases_executed": 3,
+      "defects_reproduced": 0,
+      "limitation": "Legacy pre-render probe completed; not browser or application acceptance."
+    },
+    "diff_check": {
+      "status": "PASS",
+      "command": "rtk proxy git diff --check"
+    },
+    "live_browser_deployment_clinical": {
+      "status": "NOT_RUN",
+      "reason": "Assigned implementation-only task. Parent owns deployment and actual URL verification."
+    }
+  },
+  "retained_failure": {
+    "evidence": "../realistic-demo-ui-20261114/checks.json",
+    "component_passed": 138,
+    "component_failed": 1,
+    "cause": "Existing privileged Home test double provided reference/patients only; approved full-D01 client now requests patients.",
+    "repair": "Updated only the privileged Home fixture endpoint and its source-name assertion; production privacy behavior unchanged."
+  },
+  "privacy": "Full D01 patient list adds actual issuer/value pairs only for already scoped patients. Minimum-reference patient response remains exactly id/display_name/status. D03 full visit dates are fetched only for D03 readers. All request and navigation identities are unchanged.",
+  "display": "HN recognized only for explicit HN or documented authored-demo CAREBALANCE_DEMO issuer; all exact values retained. Other identifiers use Patient ID and absent identifiers use labelled actual Record ID. Age uses completed calendar years. Missing/future/invalid DOB produces no inferred age. Visit labels use actual kind/date or labelled ID prefix.",
+  "unchanged": [
+    "No original DR changes",
+    "No production configuration/data changes by this agent",
+    "No source snapshot/AI/reviewer/grant changes",
+    "No identifier rewrite or invented patient/visit aliases"
+  ]
+}

@@ -10,6 +10,7 @@ import {Icon} from './components/icons'
 import {Brand,BrandMark} from './components/brand'
 import {Home} from './components/home-workspace'
 import {PatientRecordPanel,type PatientRecordRequest} from './components/patient-record-panel'
+import {patientReferenceText,patientSummary,visitReferenceText} from './lib/patient-display'
 import {field,type DomainDef,type Resource} from './lib/catalog'
 import {LangProvider,useLang,groupNames,groupOrder,domainNamesEn} from './lib/i18n'
 import domains from './data/full-domains.json'
@@ -151,7 +152,7 @@ function Workspace(){
  if(!session)return <Login onLogin={enter} error={sessionError}/>
  const context={patient_id:patient,encounter_id:encounter};const activePatient=patients.find(p=>p.id===patient);const activeEncounter=encounters.find(e=>e.id===encounter);const clinical=domain&&Number(domain.id.slice(1))<=22||route==='D37';const resources=(resourceCatalog as DomainDef[]).find(d=>d.id===route)?.resources||[]
  const pageName=domain?(navLabels[domain.id]?.[1]||domainName(domain.id)):({home:'Work queue',worklist:'All tasks',audit:'Activity','not-found':t('ไม่พบหน้า','Not found')}[route]||t('ภาพรวมงาน','Overview'))
- const patientFacts=activePatient?[activePatient.id,activePatient.sex&&activePatient.sex!=='unknown'?String(activePatient.sex):'',activePatient.birth_date?t('เกิด ','Born ')+new Date(String(activePatient.birth_date)).toLocaleDateString(lang==='en'?'en-GB':'th-TH',{dateStyle:'medium'}):''].filter(Boolean):[]
+ const patientFacts=activePatient?[...patientSummary(activePatient,lang),activePatient.birth_date?t('เกิด ','Born ')+new Date(String(activePatient.birth_date)+'T00:00:00').toLocaleDateString(lang==='en'?'en-GB':'th-TH',{dateStyle:'medium'}):''].filter(Boolean):[]
  return <><SidebarProvider><button className="skip-link" onClick={()=>mainRef.current?.focus()}>ข้ามไปยังเนื้อหา</button><Navigation session={session} route={route} navigate={navigate}/><SidebarInset>
   <div className={clinical?'patient-workspace':'general-workspace'}>
   <header className="topbar">
@@ -171,8 +172,8 @@ function Workspace(){
      {activePatient&&<span className="context-facts">{patientFacts.map((fact,i)=><span key={i}>{fact}</span>)}{activeEncounter?<span className="context-encounter">{String(activeEncounter.kind)} · {statusLabel(String(activeEncounter.status),lang)}</span>:<span>{t('ทุกการรับบริการ','All encounters')}</span>}</span>}
     </div>
    </div>
-   <label><span>{t('ผู้ป่วย','Patient')}</span><select value={patient} disabled={pending||!!session.user.patient_scope} onChange={e=>navigateContext(e.target.value,'')}><option value="">{t('ยังไม่เลือก','Not selected')}</option>{patients.map(p=><option key={p.id} value={p.id}>{String(p.display_name)} · {p.id}</option>)}</select></label>
-   <label><span>{t('การรับบริการ','Encounter')}</span><select value={encounter} disabled={pending||!patient} onChange={e=>navigateContext(patient,e.target.value)}><option value="">{t('ทุก encounter ของผู้ป่วย','All encounters for this patient')}</option>{encounters.map(e=><option key={e.id} value={e.id}>{String(e.kind)} · {e.id} · {statusLabel(String(e.status),lang)}</option>)}</select></label>
+   <label><span>{t('ผู้ป่วย','Patient')}</span><select value={patient} disabled={pending||!!session.user.patient_scope} onChange={e=>navigateContext(e.target.value,'')}><option value="">{t('ยังไม่เลือก','Not selected')}</option>{patients.map(p=><option key={p.id} value={p.id}>{String(p.display_name)} · {patientReferenceText(p,lang)}</option>)}</select></label>
+   <label><span>{t('การรับบริการ','Encounter')}</span><select value={encounter} disabled={pending||!patient} onChange={e=>navigateContext(patient,e.target.value)}><option value="">{t('ทุก encounter ของผู้ป่วย','All encounters for this patient')}</option>{encounters.map(e=><option key={e.id} value={e.id} title={e.id}>{visitReferenceText(e,lang)} · {statusLabel(String(e.status),lang)}</option>)}</select></label>
   </section>}
   {clinical&&!session.user.patient_scope&&<nav className="patient-tabs" aria-label="Patient record">{[['D03','Visits'],['D22','Documents'],['D07','Tasks'],['D37','Review']].filter(([id])=>hasPermission(session.user,id)).map(([id,label])=><button key={id} aria-current={route===id?'page':undefined} disabled={pending} onClick={()=>navigate('/domains/'+id+'?'+new URLSearchParams({...(patient?{patient_id:patient}:{}),...(encounter?{encounter_id:encounter}:{})}))}>{label}</button>)}</nav>}
   <div className="page" ref={mainRef} tabIndex={-1}>

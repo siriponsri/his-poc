@@ -1,0 +1,42 @@
+{
+  "backend/app/core.py": {
+    "sha256": "856104f9a3cf1ad866b8692bbe6d300bde5381039702cdee5c8371030b978eb2",
+    "bytes": 27936
+  },
+  "backend/tests/test_patient_presentation_pg.py": {
+    "sha256": "d871605343183016e7a24ce145c74269790fd1bf09e361c3b1e5a87f63e204f3",
+    "bytes": 5622
+  },
+  "apps/web/src/lib/patient-display.ts": {
+    "sha256": "6402c001467356c97b1e84edcb467dd76006af1b9c28721ce6b1cad3ff1e78d2",
+    "bytes": 3698
+  },
+  "apps/web/src/App.tsx": {
+    "sha256": "02268f54b7f7768e9c9dfc1830758a01da67730f41c37e43a29f103059752e4b",
+    "bytes": 35170
+  },
+  "apps/web/src/components/home-workspace.tsx": {
+    "sha256": "4fda3d3dac5caa4a2c8825a422f2b76bd676fed58c1f0ab16f958f05900da521",
+    "bytes": 14648
+  },
+  "apps/web/src/components/patient-record-panel.tsx": {
+    "sha256": "052881849d9adacc885fdfae77c24ab2045a96747c6b7c33beb76f2ae6f218aa",
+    "bytes": 12455
+  },
+  "apps/web/src/components/workspace.tsx": {
+    "sha256": "ecd2ef613a11ed5a4a5d2c67bb70c23079897dcd4a7eac1a1b89b49ac7489486",
+    "bytes": 26103
+  },
+  "apps/web/tests/patient-display.test.mjs": {
+    "sha256": "786826872428e7053a4dd56342d881ae50b9af18bd0bdf3d6cc991871cd52184",
+    "bytes": 3566
+  },
+  "apps/web/tests/patient-presentation.component.test.tsx": {
+    "sha256": "ea18fce5bb7b0caef09562102a7684ffdbf03f6ae6ec766de102d6c781075bdf",
+    "bytes": 7984
+  },
+  "apps/web/tests/refresh.component.test.tsx": {
+    "sha256": "d9748a59c2101f23379a4787649c73fa25e763a15a761273d2defabce52a7f19",
+    "bytes": 26757
+  }
+}

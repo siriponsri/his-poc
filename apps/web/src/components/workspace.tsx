@@ -7,6 +7,7 @@ import {GrowthTimeline} from './growth'
 import {Icon} from './icons'
 import {LabClearReviewPanel} from './labclear-review-panel'
 import {DRReviewPanel} from './dr-review-panel'
+import {patientReferenceText,patientSummary} from '../lib/patient-display'
 
 const statusNames:Record<string,string>={draft:'ร่าง',pending:'รอตรวจทาน',verified:'ตรวจยืนยันแล้ว',active:'ใช้งาน',inactive:'ปิดใช้',open:'เปิดงาน',in_progress:'กำลังดำเนินงาน',completed:'เสร็จสิ้น',cancelled:'ยกเลิก',requested:'รอดำเนินการ',booked:'จองแล้ว',checked_in:'เช็กอินแล้ว',called:'เรียกคิวแล้ว',waiting:'รอรับบริการ',in_consult:'กำลังตรวจ',reviewed:'ทบทวนแล้ว',closed:'ปิดงาน',approved:'อนุมัติ',rejected:'ปฏิเสธ',committed:'บันทึกผลแล้ว',posted:'ลงรายการแล้ว',released:'เผยแพร่แล้ว',attested:'รับรองแล้ว',returned:'ส่งคืน',in_review:'รอตรวจทาน',amended:'ฉบับแก้ไข',failed:'ไม่สำเร็จ',timeout:'หมดเวลารอ',abstained:'งดให้ข้อเสนอ',success:'สำเร็จ',requested_restore:'ขอกู้คืน',restore_verified:'ตรวจผลกู้คืนแล้ว'}
 // Tone carries meaning together with the label; unknown states stay neutral rather than guessing.
@@ -64,8 +65,8 @@ export function EmptyState({icon='inbox',title,children}:{icon?:string;title:str
 export function SkeletonRows({count=5,label}:{count?:number;label:string}){
  return <div className="skeleton-list" role="status" aria-label={label}>{Array.from({length:count},(_,i)=><div className="skeleton-row" key={i}><span/><span/></div>)}<span className="sr-only">{label}</span></div>
 }
-function rowMeta(row:Row,lang:string){
- const parts=[row.identifier,row.kind,row.domain,row.analyte,row.modality].filter(v=>typeof v==='string'&&v).map(String)
+function rowMeta(row:Row,lang:string,patient=false){
+ const parts=patient?patientSummary(row,lang):[row.identifier,row.kind,row.domain,row.analyte,row.modality].filter(v=>typeof v==='string'&&v).map(String)
  if(typeof row.created_at==='string'&&isoLike.test(row.created_at))parts.push(new Date(row.created_at).toLocaleDateString(lang==='en'?'en-GB':'th-TH',{dateStyle:'medium'}))
  return parts
 }
@@ -93,7 +94,7 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,onOpe
  const available=selected&&!readOnly?resource.actions.filter(a=>!a.from||a.from.includes(String(selected.status))):[]
  const canLabClear=selected&&!readOnly&&resource.path==='clinical/D10/records'&&['released','corrected'].includes(String(selected.status))&&selected.patient_id===context.patient_id&&selected.encounter_id===context.encounter_id
  const canDR=selected&&resource.path==='clinical/D11/records'&&!!selected.file_sha256&&['released','corrected'].includes(String(selected.status))&&selected.patient_id===context.patient_id&&selected.encounter_id===context.encounter_id
- const filtered=items.filter(row=>Object.values(row).some(v=>typeof v!=='object'&&String(v).toLocaleLowerCase().includes(query.toLocaleLowerCase())))
+ const filtered=items.filter(row=>(resource.path==='patients'&&patientReferenceText(row,lang).toLocaleLowerCase().includes(query.toLocaleLowerCase()))||Object.values(row).some(v=>typeof v!=='object'&&String(v).toLocaleLowerCase().includes(query.toLocaleLowerCase())))
  const loadingLabel=t('กำลังโหลดข้อมูล…','Loading records…')
  return <div className="workspace-stack">
   {labClearSource&&<LabClearReviewPanel client={client} source={labClearSource} context={context} onClose={()=>setLabClearSource(null)}/>}
@@ -117,13 +118,13 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,onOpe
      <span className="count-chip">{filtered.length} {t('รายการ','records')}</span>
     </div>
     {!loaded&&!error?<SkeletonRows label={loadingLabel}/>:filtered.length?<div className="record-list">{filtered.map(row=>{const title=rowTitle(row);return <button className={'record-button '+(selected?.id===row.id?'selected':'')} key={row.id} aria-current={selected?.id===row.id?'true':undefined} onClick={()=>choose(row)} disabled={!!pending}>
-     <div><strong>{title}</strong><small className="record-meta">{rowMeta(row,lang).map((part,i)=><span key={i}>{part}</span>)}{title!==row.id&&<span className="record-id" title={row.id}>{row.id}</span>}</small></div>
+     <div><strong>{title}</strong><small className="record-meta">{rowMeta(row,lang,resource.path==='patients').map((part,i)=><span key={i}>{part}</span>)}{title!==row.id&&resource.path!=='patients'&&<span className="record-id" title={row.id}>{row.id}</span>}</small></div>
      <Status value={row.status}/><span className="chevron"><Icon name="chevron" size={18}/></span>
     </button>})}</div>:<EmptyState title={query?t('ไม่พบรายการที่ตรงกับคำค้น','No records match your search'):t('ยังไม่มีรายการที่ตรงเงื่อนไข','No records yet')}>{query?t('ลองคำค้นอื่น หรือล้างช่องค้นหา','Try another term or clear the search'):t('เพิ่มข้อมูลหรือปรับบริบทผู้ป่วยเพื่อเริ่มงาน','Add a record or change the patient context to begin')}</EmptyState>}
    </section>
    <section className="detail-card" ref={detailRef}>{selected?<>
     <div className="detail-header">
-     <div><h3>{rowTitle(selected)}</h3><p className="record-ref"><span title={selected.id}>{t('รหัส','ID')} {selected.id}</span>{selected.version!==undefined&&<span>{t('รุ่น','v')} {selected.version}</span>}</p></div>
+     <div><h3>{rowTitle(selected)}</h3><p className="record-ref"><span title={selected.id}>{resource.path==='patients'?patientReferenceText(selected,lang):t('รหัส','ID')+' '+selected.id}</span>{selected.version!==undefined&&<span>{t('รุ่น','v')} {selected.version}</span>}</p></div>
      <Status value={selected.status}/>
     </div>
     {(onSelectContext||onOpenPatientRecord||available.length>0||canLabClear||canDR)&&<div className="actions-bar">

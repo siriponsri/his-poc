@@ -93,7 +93,13 @@ def document_dto(db,d,actor=None):
 def patients(q:str='',actor=Depends(current_actor),db=Depends(get_db,scope="function")):
     require_domain(actor,'D01');query=scope_query(Patient,actor)
     if q:query=query.where(Patient.display_name.ilike('%'+q[:100]+'%'))
-    return {'items':[serialize(p) for p in db.scalars(query.order_by(Patient.created_at).limit(200))]}
+    selected=list(db.scalars(query.order_by(Patient.created_at).limit(200)))
+    identifiers={p.id:[] for p in selected}
+    if identifiers:
+        identifier_query=select(PatientIdentifier).where(PatientIdentifier.patient_id.in_(list(identifiers)),PatientIdentifier.organization_id==actor.organization_id).order_by(PatientIdentifier.issuer,PatientIdentifier.value,PatientIdentifier.id)
+        for identifier in db.scalars(identifier_query):
+            identifiers[identifier.patient_id].append({'issuer':identifier.issuer,'value':identifier.value})
+    return {'items':[{**serialize(p),'identifiers':identifiers[p.id]} for p in selected]}
 @router.get('/patients/{id}')
 def patient(id:str,actor=Depends(current_actor),db=Depends(get_db,scope="function")):
     require_domain(actor,'D01');p=scoped_patient(db,actor,id);r=serialize(p);r['identifiers']=[serialize(i) for i in db.scalars(select(PatientIdentifier).where(PatientIdentifier.patient_id==id))];return r

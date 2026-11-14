@@ -128,11 +128,11 @@ test('mobile navigation contains keyboard focus and makes the underlying work su
 })
 
 test('Home preview reads the production top-level document DTO and never invents completed totals',async()=>{
- customHandler=path=>path==='home'?{open_tasks:1,items:[{id:'task-a',title:'Review source',domain:'D37',patient_id:'p1',encounter_id:'e1',status:'open'}]}:path==='documents'?{items:[{id:'doc-a',title:'Source A',patient_id:'p1',encounter_id:'e1',version:3,current_version_id:'v-source',content:'ข้อความต้นฉบับจาก DTO จริง',content_hash:'a'.repeat(64),content_access:'allowed',status:'draft'}]}:path==='reference/patients'?{items:[{id:'p1',display_name:'ชื่อผู้ป่วยจาก reference'}]}:null
+ customHandler=path=>path==='home'?{open_tasks:1,items:[{id:'task-a',title:'Review source',domain:'D37',patient_id:'p1',encounter_id:'e1',status:'open'}]}:path==='documents'?{items:[{id:'doc-a',title:'Source A',patient_id:'p1',encounter_id:'e1',version:3,current_version_id:'v-source',content:'ข้อความต้นฉบับจาก DTO จริง',content_hash:'a'.repeat(64),content_access:'allowed',status:'draft'}]}:path==='patients'?{items:[{id:'p1',display_name:'ชื่อผู้ป่วยจากทะเบียน'}]}:null
  await mount()
  const preview=document.querySelector('.queue-preview')!
  assert.match(preview.textContent!,/ข้อความต้นฉบับจาก DTO จริง/)
- assert.match(preview.textContent!,/ชื่อผู้ป่วยจาก reference/)
+ assert.match(preview.textContent!,/ชื่อผู้ป่วยจากทะเบียน/)
  assert.match(preview.textContent!,/Record v3/)
  assert.doesNotMatch(preview.textContent!,/ไม่มีสิทธิ์อ่านเนื้อหา|restricted/)
  assert.doesNotMatch(document.querySelector('.queue-tabs')!.textContent!,/Completed/)

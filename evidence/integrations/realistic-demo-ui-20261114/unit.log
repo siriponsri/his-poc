@@ -1,0 +1,40 @@
+npm notice run his-poc-web@0.3.0 test
+npm notice run node --test tests/*.test.mjs
+✔ typed decoder frozen context_initial (2.0123ms)
+✔ typed decoder frozen context_faults (0.1906ms)
+✔ typed decoder frozen context_pending (0.1676ms)
+✔ typed decoder frozen context_edited (0.0974ms)
+✔ typed decoder frozen context_approved (0.1215ms)
+✔ typed decoder frozen context_committed (0.1198ms)
+✔ HTTP200 timeout/abstention/failure never becomes a proposal (22.9485ms)
+✔ review payload excludes edits for approve and reject, includes edit (0.8516ms)
+✔ document save preserves metadata and original draft version (0.5359ms)
+✔ discard draft intentionally adopts latest server version (0.8064ms)
+✔ dirty edits or document prevents approval (0.1732ms)
+✔ lost response retry retains identical payload/key (0.8546ms)
+✔ pending commit refuses a different proposal version (0.2153ms)
+✔ fixture adapter is read-only and never calls fetch (0.2309ms)
+✔ 403 errors and nonJSON responses remain explicit errors (0.5292ms)
+✔ no provider endpoint call and only singleton API mutation context (0.2577ms)
+✔ dirty review remains bound to old version/hash after concurrent refresh (0.2805ms)
+✔ default browser fetch retains its global receiver when called through Client (27.7746ms)
+✔ cookie session client sends CSRF and stable idempotency key only to HIS API (0.5628ms)
+✔ definitive conflict is distinct from network/5xx unknown outcome (3.8461ms)
+✔ successful mutation replaces entire displayed revision atomically (0.3476ms)
+✔ readback reconciles only exact operation/proposal/version/hash (0.3187ms)
+✔ URL router does not consume skip link hashes; explicit unknown route (0.3347ms)
+✔ malformed v2 collections fail explicitly instead of empty fallback (0.356ms)
+✔ session response requires server identity, permissions and CSRF (0.2636ms)
+✔ completed age uses the exact birthday and a controlled calendar date (0.9548ms)
+✔ missing, invalid and future birth dates never fabricate an age (0.2226ms)
+✔ actual HN and the documented authored-demo issuer retain exact values including zeroes (0.8024ms)
+✔ other stored identifiers remain truthful and missing identifiers use an explicitly labelled internal ID (0.1541ms)
+✔ localized demographic facts use only provided metadata and preserve patient identity (0.3071ms)
+ℹ tests 30
+ℹ suites 0
+ℹ pass 30
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 167.668
