@@ -6,11 +6,11 @@ from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError,OperationalError
 from starlette.concurrency import run_in_threadpool
 from .db import engine,SessionLocal
-from . import model_registry,auth,core,ai,admin,integrations,dr_gateway
+from . import model_registry,auth,core,ai,admin,integrations,dr_gateway,assistant_api
 from .domains import clinical,erp,operations
 from .legacy_import import make_router
 app=FastAPI(title='HIS POC Development Prototype',version='0.3.0',docs_url='/api/docs',openapi_url='/api/v2/openapi.json')
-for router in [auth.router,operations.router,core.router,ai.router,admin.router,clinical.router,erp.router,integrations.router,dr_gateway.router,make_router()]:app.include_router(router,prefix='/api/v2')
+for router in [auth.router,operations.router,core.router,ai.router,admin.router,clinical.router,erp.router,integrations.router,dr_gateway.router,assistant_api.router,make_router()]:app.include_router(router,prefix='/api/v2')
 app.include_router(dr_gateway.browser_router)
 @app.exception_handler(IntegrityError)
 def integrity_error(request,exc):return JSONResponse(status_code=409,content={'detail':{'code':'CONSTRAINT_CONFLICT','outcome':'not_written'}})
@@ -47,7 +47,7 @@ def ready():
     try:
         with engine.connect() as conn:
             version=conn.scalar(text('select version_num from alembic_version'))
-            if version!='0004_dr_screening_bridge':return JSONResponse(status_code=503,content={'ready':False,'reason':'MIGRATION_REQUIRED'})
+            if version!='0005_assistant_workspaces':return JSONResponse(status_code=503,content={'ready':False,'reason':'MIGRATION_REQUIRED'})
         return {'ready':True,'migration':version}
     except Exception:return JSONResponse(status_code=503,content={'ready':False,'reason':'DATABASE_OR_SCHEMA_UNAVAILABLE'})
 @app.get('/{path:path}',include_in_schema=False)

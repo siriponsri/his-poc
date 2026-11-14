@@ -102,10 +102,8 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
     title,content=d.title,v.content
     run=InferenceRun(id=uid(),task_id=t.id,actor_id=actor.user_id,provider=provider.name,outcome='running',reason=None,elapsed_ms=0,measured_cost=None,usage=None,operation_key=key,request_hash=request_hash,authorization_hash=auth_hash,context_snapshot=snapshot,provenance=provider.public_config())
     db.add(run);db.flush();run_id=run.id
-    admission_lock=int.from_bytes(hashlib.sha256(('his-inference-admission:'+provider.name).encode()).digest()[:8],'big',signed=True)
-    db.execute(text('SELECT pg_advisory_xact_lock(:key)'),{'key':admission_lock})
-    active=db.scalars(select(InferenceRun).where(InferenceRun.provider==provider.name,InferenceRun.outcome=='running',InferenceRun.id!=run_id)).all()
-    if any((utcnow()-other.created_at).total_seconds()<=int((other.context_snapshot or {}).get('lease_seconds',360)) for other in active):
+    from .assistant_admission import admission_busy
+    if admission_busy(db,legacy_id=run_id):
         run.outcome='failed';run.reason='LIVE_PROVIDER_BUSY';run.completed_at=utcnow()
         audit(db,actor,'D37',run.id,'inference_failed',{'task_id':run.task_id,'provider':run.provider,'reason':'LIVE_PROVIDER_BUSY'})
         return finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':False})

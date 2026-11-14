@@ -1,0 +1,44 @@
+{
+  "postgres_version": "18.6",
+  "scope": "HTTP TestClient + actual PostgreSQL; not browser",
+  "journeys": [
+    {
+      "journey": "J01",
+      "actors": [
+        "registration",
+        "system_admin",
+        "clinician"
+      ],
+      "patient_id": "83d02f7f-e2f9-413b-8cdd-99dee6781a28",
+      "appointment_id": "8d7fb08b-d6fc-42fb-8a7b-76da5cfd74ec",
+      "encounter_id": "f1fb2861-970c-4028-9f89-d6d99c771bd8",
+      "document_id": "d18b1398-8c15-4419-a65c-2f26b8a737b1",
+      "task_id": "d021a142-e638-45b8-ae98-c13a32979b79",
+      "proposal_id": "735e12cd-9092-4a91-b722-53d1c366e753",
+      "result_id": "a5d3d2f6-cd3d-4a38-b4c3-13a088835392",
+      "operation_key": "385439fe-cf71-4a9c-8e40-6e175f900e63",
+      "assertions": [
+        "appointment_queue_to_encounter",
+        "care_scope",
+        "immutable_edit_binding",
+        "same_key_replay",
+        "persisted_result"
+      ]
+    },
+    {
+      "journey": "J07",
+      "actors": [
+        "system_admin",
+        "registration_63efb2c5"
+      ],
+      "user_id": "7e0ba740-437e-4034-bd91-ebb96bbb397d",
+      "session_id": "fd8cb158-59a8-4e60-ad94-67afc5a0b156",
+      "patient_id": "6ee4418e-7a41-4a10-99be-1f8ca9303ebb",
+      "assertions": [
+        "scope_switch",
+        "cross_scope_replay_denied",
+        "revoked_session_denied"
+      ]
+    }
+  ]
+}
