@@ -13,16 +13,24 @@ No new inference was performed by this browser verification.
 [Current release](docs/RELEASE_REALISTIC_PATIENTS.md) and
 [exact receipts](evidence/integrations/realistic-demo-release-20261114/ROOT_RECEIPTS.json).
 
-The LONG GOAL REMAINS ACTIVE. Latest owner steering expands the product to
-AI-driven workload relief across ALL clinical/nursing, records/admin and lab
-personas, using dr-train first, plus a useful optional genuine 3D hospital or
-agent-office view linked to actual authorized work. This NEW extension is
-NOT_IMPLEMENTED: research, role/source permission mapping and dedicated GPU0
-service preparation are underway; no new inference/service was started.
-Installed Typhoon matches the earlier3 real runs; MedGemma27B is installed but
-unqualified. Shared GPU1 has an unrelated research workload; isolation/capacity,
-bounded real-profile qualification, source-grounded outputs, normal reviewed
-effects and protected live browser tests remain required before goal closure.
+The LONG GOAL REMAINS ACTIVE. The new AI-driven candidate now implements
+four role-scoped preparation profiles, a durable queue/watch, source-bound
+facts/drafts and reviewed ordinary workflow effects. An optional lazy Operations
+3D view supplements the equivalent 2D list. It is not the primary work surface.
+Backend126 baseline tests and26 later targeted lease/transport tests passed;
+provider52 tests and UI152 baseline mounted/17 later focused checks passed.
+These are separate source-bound checkpoints, not a new all-green full-suite run.
+The retained broad-suite failure and isolated resolution are recorded in
+[root checks](evidence/ai-driven-root-20261114/root-pg-checks.json).
+
+A dedicated HIS GPU0 service is running. Two separately gated neutral real
+model calls passed; their46.98s/71.31s timings are not clinical-profile or
+capacity qualification. Shared11434, GPU1 research and existing app/data remain
+preserved. Four-profile live qualification, final unknown-dispatch admission
+review, schema0005-compatible rollback, production migration/worker activation,
+protected public tests and final publication remain open. See the
+[qualification plan](docs/AI_PROFILE_QUALIFICATION_PLAN.md). New profiles are
+NOT_DEPLOYED and qualified flags remain empty. MedGemma27B stays unqualified.
 Never relabel manual DR/LabClear work or mock history as real AI-agent activity.
 
 ## Earlier DR checkpoint at 12:04 UTC

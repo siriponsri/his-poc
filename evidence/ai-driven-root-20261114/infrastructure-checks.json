@@ -1,0 +1,66 @@
+{
+  "status": "PASS_TWO_NEUTRAL_CHECKS_ONLY",
+  "checks": [
+    {
+      "status": "PASS",
+      "phase": "probe4096",
+      "at": "2026-11-14T14:23:58.511222+00:00",
+      "model_calls": 1,
+      "context_tokens": 4096,
+      "max_output_tokens": 128,
+      "http_wall_seconds": 71.3106979909935,
+      "actual_eval_count": 7,
+      "actual_prompt_eval_count": 38,
+      "engine_duration_ns": {
+        "total_duration": 71086807236,
+        "load_duration": 58194513956,
+        "prompt_eval_duration": 7965794038,
+        "eval_duration": 4087796387
+      },
+      "gpu_placement_proven": true,
+      "gpu_uuids": [
+        "GPU-044a8b11-4729-458b-a07b-297e45439419"
+      ],
+      "gpu0_peak_total_used_mib": 8077.0,
+      "keep_alive0_unloaded": true,
+      "existing_services_and_selected_artifact_preserved": true,
+      "legacy11434_route_changed": false,
+      "clinical_quality": "NOT_TESTED",
+      "private_raw_receipt_sha256": "4640b4aa012b5fb4d2a688bc58a7ece1a99def0efd53502b22c19594f8a62092"
+    },
+    {
+      "status": "PASS",
+      "phase": "probe4096_cpu6",
+      "at": "2026-11-14T14:39:20.548583+00:00",
+      "model_calls": 1,
+      "context_tokens": 4096,
+      "max_output_tokens": 128,
+      "http_wall_seconds": 46.97727588401176,
+      "actual_eval_count": 7,
+      "actual_prompt_eval_count": 38,
+      "engine_duration_ns": {
+        "total_duration": 46403247473,
+        "load_duration": 33059822479,
+        "prompt_eval_duration": 8257487400,
+        "eval_duration": 4352334796
+      },
+      "gpu_placement_proven": true,
+      "gpu_uuids": [
+        "GPU-044a8b11-4729-458b-a07b-297e45439419"
+      ],
+      "gpu0_peak_total_used_mib": 8077.0,
+      "keep_alive0_unloaded": true,
+      "existing_services_and_selected_artifact_preserved": true,
+      "legacy11434_route_changed": false,
+      "clinical_quality": "NOT_TESTED",
+      "runtime_cpu_quota": 6,
+      "requested_num_thread": 6,
+      "comparison_limit": "Second run has warmed artifact/kernel/page caches; one comparison cannot establish CPU causality",
+      "private_raw_receipt_sha256": "3423815c755a6922b2bc13791fa859180534d90e3b8b8205ed6237c9ed21298e"
+    }
+  ],
+  "original_startup_host_route": "FAIL_CONNECTION_REFUSED_RETAINED",
+  "resolution": "Same exact healthy container private internal route verified in a separate continuation; original dispatch/phase unchanged",
+  "profile_qualification": "NOT_RUN_AT_THIS_CHECKPOINT",
+  "capacity_or_clinical_effectiveness": "NOT_ESTABLISHED"
+}
