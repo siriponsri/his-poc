@@ -1,7 +1,7 @@
 {
   "status": "PASS",
   "scope": "disposable PostgreSQL18 + FastAPI + explicit offline provider doubles; no live inference/server/deployment",
-  "started_at": "2026-11-14T14:24:32.967587+00:00",
+  "started_at": "2026-11-14T14:28:54.195371+00:00",
   "commands": [
     {
       "command": [
@@ -32,7 +32,9 @@
         "-m",
         "pytest",
         "backend/tests/test_assistant_pg.py",
+        "backend/tests/test_assistant_provider_integration_pg.py",
         "backend/tests/test_core.py",
+        "backend/tests/test_assistant_provider.py",
         "backend/tests/test_document_provider_unit.py",
         "-q",
         "--junitxml=evidence/ai-driven-backend/pytest-results.xml"
@@ -47,10 +49,12 @@
     "backend/app/ai.py": "996f6bf6d36e73c44f55179f231bc80ad9dc25a37ec6866196a71857f0993092",
     "backend/app/assistant_admission.py": "e26a33521179d6a46c7d55d383b66278a7b24d4a1f7c1eb2a3ba96881f6003e7",
     "backend/app/assistant_api.py": "1bd1a7d0b3819944744881b18215b808f4ee5ef85e1ab5a4048497107d84f926",
-    "backend/app/assistant_collectors.py": "95285330f13ce683e9279094fbca78021732784b2c7790b480bf8c892489fc09",
+    "backend/app/assistant_collectors.py": "684091aaab65de26ebe16e9ff91576868ddb9f742e48f325a4f82e5c806da329",
     "backend/app/assistant_core.py": "2952e97867e619a0a2383dc47e2bcb2480cf61b3a81f23758bdf0711873a8333",
     "backend/app/assistant_effects.py": "5cf0c449b043527ec358fee1e902bbb2eafc7f54071b4aecf0b8bcd7fbbf8205",
     "backend/app/assistant_profiles.py": "2ebcf863849a18cf2e82e9fa43d4b3b54de82a89974d9b572df82b3a8069d0c8",
+    "backend/app/assistant_provider.py": "fb6194a4d80e0f3c3ff03378e2e810a85a4eecf276573c4f48ee48cb859a59a4",
+    "backend/app/assistant_schema.py": "6dff2d5c9d430f5d41ecd2dc020df72f31396b61e45a75156f800c837a054932",
     "backend/app/assistant_worker.py": "9bdb887f1d28fb923bca992a47cd0f2d0df41a49ed594ab917be884a003c5fdc",
     "backend/app/auth.py": "cdf14f2fab1040813c6f8398fbbcd876ffc5c98e161dac64afc932e6435fa97a",
     "backend/app/common.py": "4ab78929f67b146a540fb9520ea79c4bf40b8ae968f56f1317c34c07ca06410c",
@@ -89,9 +93,11 @@
     "backend/migrations/versions/0003_carebalance_integrations.py": "b987799709ce479bf9b61fd0c00a31a7bf975378aab6a66c0ff73832d4f7548f",
     "backend/migrations/versions/0004_dr_screening_bridge.py": "5bb3ddbd9044ba1272730725790bc94808bd2beb4e556e80cc6818a09b56817a",
     "backend/migrations/versions/0005_assistant_workspaces.py": "023e7c21602a190376783316a4d20ab1e165d36baa651418a385fcb585cc4652",
-    "backend/tests/run_assistant_validation.py": "803d823b77565a8b882edcfac6a66617a8b31b03298fa65b0f34da16ef91b2eb",
+    "backend/tests/run_assistant_validation.py": "921f183bd91c14979f0ac1c7e5394c04924f3d85b17a7fd80cf3c8f1f1703970",
     "backend/tests/run_core_validation.py": "4ede937b31b206558401b3ae6ec0c715a64359a865cc6f13acec0af7ede32d49",
     "backend/tests/test_assistant_pg.py": "56394ccd97f82c31b7c08e5d6eb1d245b060cc22d52c31ec502cd57fb114c044",
+    "backend/tests/test_assistant_provider.py": "2a6896fe4eef411b0aeb4ed64f226fa1c9cf73af928e638a5dfbfe3fedc61ea5",
+    "backend/tests/test_assistant_provider_integration_pg.py": "e3a415b46ca949416239510fc20f04403d7af99dedd7b6c2f7527d192a2fc0de",
     "backend/tests/test_browser_cli_unit.py": "389b0b3ecd253f95798c67d85f3c9df645de8654c61e3d1528aebd3fce3c1ccd",
     "backend/tests/test_browser_restore_verifier_unit.py": "211f7bf521457f81e7ec1e8164535ba63f2235f2dfbf4a6332c95557aa95c920",
     "backend/tests/test_carebalance_cross_app_pg.py": "1bc491badf4a3894cd9a2ab2075cfffd5b125a3a6e144d36d89f55ec0610a246",
@@ -118,5 +124,5 @@
     "backend/tests/test_release_packaging_unit.py": "83e4cb1df7dc7aac440fa2d9fa200e36a1c26e00c20660e9bad063ca3b92ffc2",
     "backend/tests/test_validation_launcher_unit.py": "28b309cbaf89724ae4c9146c276f2f850135c294e5f707b79be07c5ba1ede3df"
   },
-  "finished_at": "2026-11-14T14:25:17.876992+00:00"
+  "finished_at": "2026-11-14T14:29:52.301078+00:00"
 }

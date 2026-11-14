@@ -9,14 +9,14 @@
         "system_admin",
         "clinician"
       ],
-      "patient_id": "83d02f7f-e2f9-413b-8cdd-99dee6781a28",
-      "appointment_id": "8d7fb08b-d6fc-42fb-8a7b-76da5cfd74ec",
-      "encounter_id": "f1fb2861-970c-4028-9f89-d6d99c771bd8",
-      "document_id": "d18b1398-8c15-4419-a65c-2f26b8a737b1",
-      "task_id": "d021a142-e638-45b8-ae98-c13a32979b79",
-      "proposal_id": "735e12cd-9092-4a91-b722-53d1c366e753",
-      "result_id": "a5d3d2f6-cd3d-4a38-b4c3-13a088835392",
-      "operation_key": "385439fe-cf71-4a9c-8e40-6e175f900e63",
+      "patient_id": "5e4dc3c4-5567-4931-9004-981378f3aea4",
+      "appointment_id": "2976114a-3438-4ab0-9638-de70f238330e",
+      "encounter_id": "a1677934-8352-4cdd-9dc0-0e775b941ac4",
+      "document_id": "95e1330f-5585-4aae-99d1-848aad673a3e",
+      "task_id": "618a76ba-b85a-49d9-9028-ba97c9c322f8",
+      "proposal_id": "b712d449-435c-4c76-97dd-5b87092a8f67",
+      "result_id": "d589cc0a-0172-4ff8-b93f-018809aeddaf",
+      "operation_key": "4d35ece4-2618-4f7d-943e-02897119db52",
       "assertions": [
         "appointment_queue_to_encounter",
         "care_scope",
@@ -29,11 +29,11 @@
       "journey": "J07",
       "actors": [
         "system_admin",
-        "registration_63efb2c5"
+        "registration_d13f6d2a"
       ],
-      "user_id": "7e0ba740-437e-4034-bd91-ebb96bbb397d",
-      "session_id": "fd8cb158-59a8-4e60-ad94-67afc5a0b156",
-      "patient_id": "6ee4418e-7a41-4a10-99be-1f8ca9303ebb",
+      "user_id": "b4a54ef6-d2c4-437f-89ea-542fc7199e74",
+      "session_id": "e3acf2e7-a0e9-48fd-9c25-30baa17399bc",
+      "patient_id": "717f2b03-148d-4543-89a2-c20c2e0c67b2",
       "assertions": [
         "scope_switch",
         "cross_scope_replay_denied",

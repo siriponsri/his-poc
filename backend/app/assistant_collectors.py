@@ -8,6 +8,7 @@ from .core import bound, scope_query
 from .assistant_profiles import require_profile, allowed_effects
 
 VIEW_BYTES = 2000  # Complete canonical view; leaves >=816 bytes for pinned system/profile text.
+MAX_INCLUDED_SOURCES = 12  # Frozen draft/effect source reference cardinality.
 
 def _pristine(db, row, kind):
     column = AssistantEffect.document_id if kind == 'document' else AssistantEffect.task_id
@@ -86,7 +87,7 @@ def collect_packet(db, actor, profile, patient_id, encounter_id, locale='th'):
         if 'text' in row:
             item['text']=row['text']
         # Complete source or explicit omission. Never truncate a clinical note.
-        if len(canonical(make_view(included+[item])).encode('utf-8')) <= VIEW_BYTES:
+        if len(included)<MAX_INCLUDED_SOURCES and len(canonical(make_view(included+[item])).encode('utf-8')) <= VIEW_BYTES:
             included.append(item)
             row['ref']=item['ref']
     view=make_view(included)
