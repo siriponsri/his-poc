@@ -2,8 +2,16 @@
 
 ## Current deployed milestone and active AI-driven extension
 
-Patient/UI release PASS: source d4f0bca / image8b9815ab / schema0004 is deployed.
-Actual authenticated public browser and read-only PostgreSQL checks passed the
+AI workspace deployment PASS: runtime source286f391 / immutable image9afd73f2 /
+schema0005 is deployed. Operations defaults to2D;3D is an explicit optional view.
+The same-image assistant configuration is enabled, while its background worker
+remains paused and disabled pending actual foreground-start verification.
+No new application preparation run, watch or effect has been requested yet.
+Protected public test01 login and the default2D Operations view were observed.
+This is deployment/UI evidence, not application inference acceptance.
+
+The earlier patient/UI release d4f0bca / image8b9815ab / schema0004 passed
+actual authenticated public browser and read-only PostgreSQL checks for the
 six fictional identities/HN/age/sex, wide patient reading, retained AI proposalv2,
 released laboratory data/LabClear launcher and latest DR Draft-label/readback
 subset. All old post-cohort rows/files remain; explicit DR-launch append-only
@@ -34,11 +42,15 @@ The five-call direct qualification budget is exhausted; no automatic retry.
 The two earlier neutral calls remain separate from these profile calls and from
 the historical9 production inference rows. Shared11434, GPU1 research and the
 existing app/data remain preserved. Unknown-dispatch admission review is closed;
-a schema0005-compatible fallback image has passed static source verification.
-Fresh isolated backup/restore and004/005 authenticated compatibility, candidate
-build, production migration/worker activation, protected public tests and final
-publication remain open. New profiles are NOT_DEPLOYED and runtime qualified
-flags remain empty. See the [qualification plan](docs/AI_PROFILE_QUALIFICATION_PLAN.md).
+a schema0005-compatible fallback image has passed isolated authenticated004/005
+compatibility. Fresh three-database backup/isolated restore and candidate9afd
+static/nonroot checks passed. Explicit production0005 migration and deployment
+preserved old rows/files and the separate LabClear/DR services. The earlier
+directory-permission failures and research-job completion exception remain in
+the deployment evidence; failed attempts are not replaced by later PASS.
+Runtime has all four qualified profiles configured. Actual worker activation,
+application preparation/review/watch tests and final publication remain open.
+See the [qualification plan](docs/AI_PROFILE_QUALIFICATION_PLAN.md).
 MedGemma27B stays unqualified. Never relabel manual DR/LabClear work or mock
 history as real AI-agent activity. The owner permits dropping3D if it does not
 help actual work; retain the equivalent2D list and keep3D off by default.

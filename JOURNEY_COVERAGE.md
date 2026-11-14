@@ -1,5 +1,12 @@
 # J01–J10 local L3 coverage
 
+The additional AI preparation release is tracked separately: runtime9afd/schema0005
+is deployed; four direct synthetic profile fixtures passed source fidelity, while
+foreground worker and actual application preparation/review/watch acceptance
+remain pending. These checks do not replace or expand the historical38-domain/
+10-journey baseline. [Deployment](evidence/ai-driven-root-20261114/deployment-readback.json)
+and [model qualification](evidence/ai-driven-root-20261114/live-source-fidelity.json).
+
 All ten local synthetic journeys have executed PostgreSQL and rendered-browser evidence. Successful scenarios were composed from retained runs; original failed attempts were not upgraded or erased. Exact API and browser record IDs are separate in [JOURNEY_COVERAGE.json](JOURNEY_COVERAGE.json).
 
 | Journey | API + PostgreSQL | Real browser | Local level | Browser source |

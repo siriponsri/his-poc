@@ -1,6 +1,6 @@
 # HIS POC v0.3 — เว็บทดสอบพร้อมใช้งาน
 
-อัปเดต14 พฤศจิกายน2026: Login, Clinical Workspace, Patient panel กว้าง และผู้ป่วยสมมุติ6รายขึ้นเว็บแล้ว พร้อม LabClear และ DR workspace สำหรับทบทวนโดยคน ส่วน AI เตรียมงาน4กลุ่มผ่านการตรวจอ้างอิงต้นทางด้วย Typhoon จริงกลุ่มละหนึ่งกรณีแล้ว และผ่าน187 PostgreSQL tests,156 component checks,31 unit checks และ build แต่ยังไม่ได้ deploy AI รุ่นใหม่นี้ ต้องตรวจ backup/rollback และทดสอบผ่าน URL จริงต่อ Long goal ยัง ACTIVE อ่าน [สถานะล่าสุด](GOAL.md) และ [หลักฐาน AI](evidence/ai-driven-root-20261114/live-source-fidelity.json) โดยแยกผลซอฟต์แวร์ ผลโมเดล และผลใช้งานเว็บออกจากกัน
+อัปเดต15 พฤศจิกายน2026: Login, Clinical Workspace, Patient panel กว้าง และผู้ป่วยสมมุติ6รายขึ้นเว็บแล้ว พร้อม LabClear และ DR workspace สำหรับทบทวนโดยคน รุ่น AI เตรียมงาน4กลุ่มขึ้นระบบบน schema0005 แล้ว โมเดลจริงผ่านการตรวจเทียบต้นทางกลุ่มละหนึ่งกรณี แต่ยังรอตรวจเริ่ม worker และทดสอบงานจริงในแอป Operations เปิดด้วยรายการ2Dก่อน และเลือกเปิด3Dเองได้ ตรวจการอ่าน Patient record บนจอ390pxผ่านเว็บจริงแล้ว Long goal ยัง ACTIVE อ่าน [สถานะล่าสุด](GOAL.md), [หลักฐาน deployment](evidence/ai-driven-root-20261114/deployment-readback.json) และ [หลักฐาน AI](evidence/ai-driven-root-20261114/live-source-fidelity.json) แยกกัน
 
 ผลรอบ 13 พฤศจิกายน 2026: 38 domains ที่ L2 และ J01–J10 ที่ L3 ผ่านบนข้อมูลสังเคราะห์ พร้อม Windows Docker, PostgreSQL, browser และ isolated restore ที่รันจริง อ่าน VALIDATION_REPORT.md และ coverage เพื่อดูขอบเขต หลักฐาน MOCK และ external L4 ที่ยังไม่ได้ตรวจ
 

@@ -1,5 +1,25 @@
 # Full-system architecture
 
+## AI preparation workspace
+
+Runtime source286f391/image9afd uses migration0005 and126 modeled/catalog tables.
+The four role-scoped preparation profiles use the existing session, CSRF, care
+assignment and domain permissions. Durable assistant runs, revisions, decisions,
+effects and bounded watches are additive; source documents remain immutable.
+Normal API writes queue work. A separate guarded CLI worker uses the same image
+and a private dedicated Typhoon GPU0 service; no database transaction spans the
+model HTTP call. One PostgreSQL admission boundary covers legacy and assistant
+inference. Unknown dispatch remains quarantined until audited terminal evidence.
+
+The source-bound artifact is reviewed before ordinary draft/task effects apply
+atomically with audit and idempotency. No assistant effect signs, prescribes,
+orders or releases a result. Records preparation sends metadata only; the
+existing nurse cannot gain laboratory access by selecting another profile.
+The complete manifest remains server-side; the compact model view reports
+omitted sources. Operations is2D first; optional lazy3D reads the same scoped
+work and run states and never triggers generation. See the
+[contract](AI_DRIVEN_CONTRACT_V1.md) and current readiness in GOAL.md.
+
 ## CareBalance specialist boundary
 
 LabClear uses `integrations.py`, immutable connector bindings/attempts/exchanges
@@ -12,11 +32,13 @@ original semantic command. Source values and HIS task completion remain separate
 from confirmed review. Startup validates receiver DB identity/schema before
 route registration. [Contract and evidence](integrations/VALIDATION_CHECKPOINT_20261114.md).
 
-The separate DR derivative is implementing a fixed immutable clinical workspace
+The separate DR derivative is deployed with a fixed immutable clinical workspace
 and sealed source set with current verified HIS actor/capability. Its broad legacy
 factory, workspace/admin/model routes and self-declared signer fallback are not
-integration surfaces. HIS BFF/DR runtime/public acceptance remain ongoing; source
-inspection and theme previews cannot establish them.
+integration surfaces. Protected public acceptance covers authored-image context,
+quality confirmation and an unsigned manual draft/reload subset. It does not
+establish DR inference or clinical accuracy. Original DR source remains separate.
+See [the exact release](RELEASE_REALISTIC_PATIENTS.md).
 
 Current application: React/TypeScript/Vite → same-origin FastAPI `/api/v2` → SQLAlchemy PostgreSQL18. Domain routers share one identity/session, one patient/encounter core, one unit of work and one audit/operation boundary. SQLite/std-library server remains isolated historical regression; it is not mounted by the application. `/api/v1` default returns404. No new response shape is inserted under v1 routes.
 

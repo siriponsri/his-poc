@@ -1,6 +1,8 @@
 # AI-driven Care Workspace: v1 implementation contract
 
-Status: ACTIVE IMPLEMENTATION, not yet deployed or live-profile qualified.
+Status: SOURCE CONTRACT IMPLEMENTED; runtime source286f391/image9afd/schema0005 deployed.
+Four direct profile fixtures qualified; foreground worker and application acceptance pending.
+Clinical effectiveness is not established.
 Owner direction: reduce personnel work across clinical/nursing, medical
 records/administration and laboratory teams; use dr-train first; add a useful
 optional genuine 3D hospital/agent-office operations view.
@@ -161,9 +163,13 @@ transport plus source/role validation tests. Frontend owns workspace/3D/client/
 navigation/dependencies and component/browser checks. Frozen DTO changes require
 coordination, never silent parallel alternatives.
 
-Migration0005 needs a separately qualified rollback/readiness image: current8b
-hardcodes0004. No normal production downgrade/restore. Verify all old sources,
-results/roles/permissions, DR/LabClear and held MMRDR preservation.
+Migration0005 has a separately qualified a7fb9aa1 compatibility image because
+historical8b hardcodes0004. Isolated authenticated004/005 checks passed before
+the explicit production migration. Runtime is9afd; no production downgrade or
+restore was performed. Recovery from enabled assistant/worker state requires
+its own pause, natural drain, admission and preservation checks before selecting
+a fallback. Retain old sources/results/roles/permissions, DR/LabClear and held
+MMRDR preservation. Readiness proof is not an executed rollback.
 
 Acceptance: actual qualified dr-train inference for all four profiles/three
 staff groups; source-linked artifact → permitted draft/task once → reload;

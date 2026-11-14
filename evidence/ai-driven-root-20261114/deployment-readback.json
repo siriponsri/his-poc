@@ -1,0 +1,174 @@
+{
+  "schema": "carebalance.public.deployment-readback.v1",
+  "status": "PASS_APPLICATION_DEPLOYMENT_AND_ORIGIN_READBACK",
+  "checkpoint_at_utc": "2026-11-14T17:18:22.399232Z",
+  "scope": "Historical application deployment checkpoint with assistant and worker disabled. Static image checks, isolated compatibility checks and production deployment are reported separately. Subsequent assistant enablement and staff acceptance require separate evidence.",
+  "source_commit": "286f391aba8fb5e589d43e171c14d2dfabe037a5",
+  "deployed_image_id": "sha256:9afd73f2595e35b46cb796f1836eb15c0885d33fb4c4a636c73b41104da72338",
+  "archive_sha256": "6bed11a513f0fbd37ecfdbcb5ba9a6d9e79f18e4ddacf295ce8451540ba9a66a",
+  "runtime_source_files": 280,
+  "migration_source_sha256": "023e7c21602a190376783316a4d20ab1e165d36baa651418a385fcb585cc4652",
+  "static_image_evidence": {
+    "status": "PASS_CANDIDATE_STATIC_SMOKE_ONLY",
+    "at_utc": "2026-11-14T16:47:32.206672Z",
+    "receipt_sha256": "aeb5dc0f5abb946f92996ffdc0d20e027461948b1b25fa5587a6d5683f624da8",
+    "server_local_receipt_bytes_verified_equal": true,
+    "uid": 10001,
+    "gid": 10001,
+    "all_runtime_source_hashes_verified": 280,
+    "asset_count": 20,
+    "asset_manifest_sha256": "1e661732a1d7b0e779a784814c47c16b70409baed36b0a8b247f86a6bac18951",
+    "public_font_and_license_hashes_preserved": true,
+    "three_version": "0.187.0",
+    "three_license_preserved": true,
+    "assistant_modules_compiled_without_application_import": true,
+    "database_or_model_calls": 0,
+    "application_or_clinical_acceptance": "NOT_ESTABLISHED_BY_STATIC_CHECKS"
+  },
+  "isolated_compatibility_evidence": {
+    "status": "PASS_ISOLATED_COMPATIBILITY_004_005",
+    "receipt_sha256": "2542fd743fe4cb9ffff1e60b9a4d20c471123c4363f5b3145782e4ca9fc8e4ae",
+    "server_local_receipt_bytes_verified_equal": true,
+    "compatible_fallback_image_id": "sha256:a7fb9aa18b09c37e529903812a79aec9fa3fa2f9e1188fb74f2203b0f68a3059",
+    "candidate_image_matches_deployed_image": true,
+    "stages": {
+      "restored_0004_authenticated_reads": "PASS",
+      "explicit_isolated_0005_migration": "PASS",
+      "compatible_0005_authenticated_reads": "PASS",
+      "candidate_0005_authenticated_reads": "PASS"
+    },
+    "old_his_tables": 121,
+    "resulting_his_tables": 126,
+    "old_data_and_catalog_preserved": true,
+    "laboratory_retinal_and_source_files_unchanged": true,
+    "production_database_file_configuration_and_container_state_preserved": true,
+    "actual_care_scope_and_cross_scope_denial_verified": true,
+    "minimal_reference_projection_and_existing_result_read_verified": true,
+    "model_calls": 0,
+    "production_migration_or_activation_in_this_isolated_proof": false
+  },
+  "production_deployment_evidence": {
+    "status": "PASS",
+    "final_verify_receipt_sha256": "086978ed75ff1e89da81b0a1a5108689795522b1807a1e573b9258b80267d536",
+    "server_local_final_receipt_bytes_verified_equal": true,
+    "health": "healthy",
+    "ready": true,
+    "migration": "0005_assistant_workspaces",
+    "nonroot_runtime_user_verified": true,
+    "fresh_backup": {
+      "status": "PASS",
+      "at_utc": "2026-11-14T17:08:21.106446Z",
+      "database_count": 3,
+      "source_file_count": 3,
+      "individually_consistent_exported_snapshot_dumps": true,
+      "cross_database_atomic_snapshot": false,
+      "production_restore": false
+    },
+    "explicit_migration": {
+      "status": "PASS",
+      "at_utc": "2026-11-14T17:16:23.571900Z",
+      "cli_exit_code": 0,
+      "old_his_tables_preserved": 121,
+      "new_empty_assistant_tables": 5,
+      "approved_schema_version_row_change_only_in_old_table_data": true,
+      "seed_reset": false,
+      "downgrade_or_production_restore": false
+    },
+    "candidate_activation": {
+      "status": "PASS",
+      "at_utc": "2026-11-14T17:17:26.049768Z",
+      "application_image_only_selection": true,
+      "all_nonimage_environment_bytes_preserved": true,
+      "existing_three_compose_overlays_preserved": true,
+      "protected_services_and_connector_preserved": true
+    },
+    "origin_readback": {
+      "status": "PASS",
+      "asset_hashes_verified": 20,
+      "spa_routes_verified": [
+        "/login",
+        "/home",
+        "/patients"
+      ],
+      "all_three_database_rows_and_source_files_preserved": true
+    },
+    "assistant_state_at_this_checkpoint": {
+      "assistant_enabled": false,
+      "assistant_live_synthetic_enabled": false,
+      "worker_and_scheduler_enabled": false,
+      "model_calls_during_build_static_isolated_and_rollout_work": 0
+    },
+    "authenticated_public_browser_journey": "NOT_RUN_BY_THIS_RELEASE_STAGE",
+    "subsequent_assistant_overlay_worker_enablement_and_staff_ai_acceptance": "SEPARATE_EVIDENCE_REQUIRED",
+    "automatic_rollback_executed": false
+  },
+  "retained_failure_chronology": [
+    {
+      "event": "earlier_source_staging_inventory_guard",
+      "status": "STOPPED_AND_EXPLICITLY_RECONCILED",
+      "cause": "An unrelated transient container completed while the strict inventory fence was active.",
+      "resolution": "A separately reviewed identity-specific reconciliation verified the existing uploaded archive and preserved the original unknown marker; the failed dispatch was not replayed.",
+      "unrelated_resource_action": false
+    },
+    {
+      "event": "initial_nonroot_source_smoke",
+      "status": "FAIL_RETAINED",
+      "cause": "Root-owned nested code directories had mode 0700, preventing the nonroot runtime user from reading source files.",
+      "failed_image_id": "sha256:7a8c9093b0646b80086b30fd28f90209898bf3010b9e092cb69655c06f2f1878",
+      "failed_dispatch_and_image_retained": true
+    },
+    {
+      "event": "build_context_permission_correction",
+      "build_status": "PASS_BUILD_ONLY",
+      "nonroot_smoke_status": "FAIL_RETAINED",
+      "failed_image_id": "sha256:609c65cebd9a86b2ff052c1e438c625aa14b153233be0753cd6bdb438b87acc8",
+      "observed_cause": "The context directories were corrected, but cached Docker COPY layers retained the same restrictive directory metadata in all 11 image layers.",
+      "root_readonly_metadata_diagnosis": "PASS",
+      "failed_dispatch_and_image_retained": true
+    },
+    {
+      "event": "observed_directory_metadata_fix",
+      "status": "PASS_BUILD_AND_FRESH_NONROOT_STATIC",
+      "resolution": "One networkless derived image layer changed directories only to mode 0755; file content, file modes, ownership and inherited image configuration remained unchanged.",
+      "base_layer_prefix_verified": 11,
+      "new_metadata_layer_count": 1,
+      "recipe_sha256": "99948cb205355c57137cf5740101186446e6a8dfb74fc43f4a9e1a77b25b1594",
+      "earlier_failures_retained": true
+    },
+    {
+      "event": "compatible_image_selection_local_timeout",
+      "local_status": "TIMEOUT_UNKNOWN_RETAINED",
+      "local_deadline_seconds": 360,
+      "durable_server_status": "PASS",
+      "durable_server_completed_at_utc": "2026-11-14T17:03:39.437473Z",
+      "cause": "The initial preservation helper requested a full container inventory once per existing container.",
+      "resolution": "The original helper completed naturally. A reviewed replacement captures one inventory; a separate read-only check verified all original postconditions before continuation.",
+      "readonly_postconditions_at_utc": "2026-11-14T17:07:05.456722Z",
+      "original_server_receipt_sha256": "2ecd63c2311f7f964a563a3702799dfb709fefc7d1d57de9df3d65e127d43fbe",
+      "signal_or_reselection_performed": false,
+      "original_unknown_and_server_pass_preserved": true
+    },
+    {
+      "event": "first_app_stop_precondition",
+      "status": "STOPPED_BEFORE_APP_STOP",
+      "cause": "One unrelated research container had naturally completed after the fresh backup baseline.",
+      "resolution": "A new once-only continuation required the explicitly reviewed original identity and continued absence, preserved immutable baseline bytes and every other existing identity, then performed the first actual app stop.",
+      "actual_stop_continuation_at_utc": "2026-11-14T17:15:27.900672Z",
+      "actual_app_stop_count": 1,
+      "exception_can_cover_app_or_protected_services": false,
+      "unrelated_research_process_or_resource_action": false,
+      "original_failed_unknown_dispatch_preserved": true
+    }
+  ],
+  "acceptance_limits": {
+    "staff_end_to_end_ai_journeys": "NOT_ASSERTED_BY_THIS_CHECKPOINT",
+    "enabled_worker_persistence": "NOT_ASSERTED_BY_THIS_CHECKPOINT",
+    "clinical_effectiveness": "NOT_EVALUATED",
+    "later_runtime_state": "NOT_INFERRED_FROM_THIS_HISTORICAL_CHECKPOINT"
+  },
+  "publication_safety": {
+    "source": "Whitelisted summaries and verified receipt digests only",
+    "private_server_paths_host_addresses_credentials_raw_database_content_or_personal_identities_included": false,
+    "new_server_actions_for_this_public_summary": 0
+  }
+}

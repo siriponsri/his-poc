@@ -1,0 +1,9 @@
+{
+  "scope": "Native CUA screenshot of actual protected URL, existing test01 login, Operations starts2D with3D opt-in; no AI preparation was requested",
+  "captured_at": "2026-11-14T17:28:48.149Z",
+  "url": "https://his.ai-cie.com/home",
+  "image_sha256": "ca23c2db6cd4192701af174eec80ba333d1fe438d7bba86813da7cdd9586d3b9",
+  "original_tool_call_id": "call_33ab7254726148fc82554d277241702b",
+  "image_edited": false,
+  "model_generation_calls": 0
+}

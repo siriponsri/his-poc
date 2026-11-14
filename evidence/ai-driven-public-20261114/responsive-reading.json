@@ -1,0 +1,53 @@
+{
+  "url": "https://his.ai-cie.com/home",
+  "authenticated_as": "test01",
+  "data": "fictional existing POC records",
+  "status": "PASS_RESPONSIVE_READING_SUBSET",
+  "screenshots": [
+    {
+      "file": "prepared-mobile.jpg",
+      "captured_at": "2026-11-14T17:42:45.660Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "3722a002b1cca6232e971f18fb3027a948fcc9a5b7a6d7348f88eb51adb9a996",
+      "scope": "Prepared work, no preparation requested",
+      "image_edited": false,
+      "model_calls": 0
+    },
+    {
+      "file": "patient-wide.jpg",
+      "captured_at": "2026-11-14T17:43:02.413Z",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "sha256": "659c1494be55168fd158af4ca80c30fbbf8cd349dcd9482d7c7f5f04a8a37952",
+      "scope": "Existing fictional patient record, full document reading panel",
+      "image_edited": false,
+      "model_calls": 0
+    },
+    {
+      "file": "patient-mobile.jpg",
+      "captured_at": "2026-11-14T17:43:06.975Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "3844d903118a33edf506beb50077cfdb2161e3e7ea5fb6a189b6e2a1d0f08aab",
+      "scope": "Same fictional patient record, mobile document selector and fixed actions",
+      "image_edited": false,
+      "model_calls": 0
+    }
+  ],
+  "mobile_horizontal_overflow": {
+    "prepared_document_width": 380,
+    "prepared_viewport": 390,
+    "patient_document_width": 390,
+    "patient_viewport": 390
+  },
+  "close_patient_restores_original_queue_name_focus": true,
+  "temporary_viewport_reset": true,
+  "application_AI_acceptance": "NOT_RUN_AT_THIS_CHECKPOINT"
+}
