@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T05:04:08.458504+00:00",
+  "rollback_image": "his-poc-server:rollback-0003-8b91c19e32fe",
+  "rollback_image_id": "sha256:590f3b505e4ce7617e60376d14d42db3850a2eb1d261f2d6cdf0ec0d17ece13c",
+  "ready_on_0003": true,
+  "smoke": {
+    "status": "PASS",
+    "auth_and_existing_reads": true,
+    "core_write_on_0003": true,
+    "labclear_gateway_unavailable_in_rollback": true,
+    "main_sha256": "8b91c19e32fe527ab36e252cb2504c2fd6034a2a572fbc8bdb1c5b747336eee7",
+    "model_calls": 0
+  },
+  "candidate_restored": "his-poc-server:workspace-07a719f2bee4",
+  "shadow_db_receiver_containers_preserved": true,
+  "production_unchanged": true,
+  "schema_restored_or_downgraded": false,
+  "public_activation": false
+}

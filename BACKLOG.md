@@ -11,12 +11,17 @@
 - PASS: final image167d14addf47 binds214 source/17 assets; app-only activation
   preserves180 prior sessions, three selected results and file; origin7/Access5.
 - PASS: final rendered navigation/Login/logout viewport reset and visible logo.
-- NOT_VERIFIED: interactive selection/reopening of the persisted proposal after
-  the final scroll-only swap. Click/key attempt did not select it; current server
-  record readback passes. Resume only after confirming the browser's current URL.
-- ACTIVE: separate CareBalance DR derivative preserving the original DR project,
-  then LabClear connection and authorized source/theme adaptation. No integration
-  endpoint, shared identity, result import or themed derivative is delivered here.
+- PASS: subsequent authenticated Chrome persisted-proposal reopening, exact
+  version2/hash/checklist with disabled mutations; zero new model calls.
+- PASS: independent DR theme main,458 branch tests and32 focused main tests/build;
+  actual mobile visual preview has its own API-double boundary.
+- PASS: LabClear gateway/isolated packaged receiver, independent PostgreSQL
+  regression, source42 to reviewed43 private HTTP/browser round trip and recovery.
+- PASS: final5328 public LabClear activation, actual backup restore,109 legacy
+  counts/181 sessions/three results/file preservation and authenticated browser
+  source6 to reviewed7, refresh/read-only reopen/mobile journey.
+- ACTIVE: bounded DR receiver, HIS BFF, bound frontend and synthetic public
+  journey. See [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
 - Source publication remains the parent integrator's work; the documentation
   checkpoint does not imply a Git push or close the overall long goal.
 

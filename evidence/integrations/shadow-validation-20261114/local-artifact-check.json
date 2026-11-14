@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "helper_ast_parse": true,
+  "receipts_parsed": {
+    "production-preservation.json": "PASS",
+    "rollback-build.json": "PASS",
+    "rollback-image-source-binding.json": "PASS",
+    "rollback-runtime.json": "PASS",
+    "shadow-api-journey.json": "PASS",
+    "shadow-final-inventory.json": "PASS",
+    "shadow-prepare.json": "PASS"
+  },
+  "operator_helper_sha256": "fb9097dc24e3624b2098c3c9833b0a1b3bc1215400f567e63984a77a9e337f20",
+  "notes": "Operator helper is ignored/private; secrets remain outside published evidence."
+}

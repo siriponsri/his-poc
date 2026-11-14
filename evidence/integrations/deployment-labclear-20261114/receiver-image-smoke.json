@@ -1,0 +1,12 @@
+{
+  "image_user_id": 10001,
+  "runtime_hashes_checked": 17,
+  "all_hashes_match": true,
+  "unconfigured_startup_denied": true,
+  "network": "none",
+  "read_only": true,
+  "no_customer_routes": true,
+  "image_id": "sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f",
+  "archive_sha256": "c1944c772e87612d073ce7e8bc8b7a22fc7d367b19367a76bd315f3ba865c185",
+  "activation": false
+}

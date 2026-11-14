@@ -1,0 +1,59 @@
+{
+  "recorded_by": "parent integrator from actual independent agent messages and retained raw receipts",
+  "at": "2026-11-14T05:33:43.823497+00:00",
+  "backend": {
+    "status": "PASS",
+    "reviewer": "review_gateway_release",
+    "raw_evidence": "evidence/integrations/independent-gateway-review-20261114/results",
+    "executed": "14 broad PostgreSQL cases/suites and44 targeted tests with62 subtests",
+    "not_claimed": [
+      "public browser",
+      "model inference",
+      "clinical effectiveness"
+    ]
+  },
+  "receiver_startup": {
+    "status": "PASS",
+    "reviewer": "review_labclear_ui",
+    "method": "Independent source review plus inspection of parent two-test actual PostgreSQL XML; reviewer did not rerun PG",
+    "previous_high_finding": "fixed: wrong/unprepared database rejects before route registration"
+  },
+  "ui_historical_read": {
+    "status": "PASS",
+    "reviewer": "review_labclear_ui",
+    "executed_tests": 24,
+    "scope": "completedtask/closedvisit read-only review; confirmed read skips write-scoped recover; active pending retains command"
+  },
+  "ui_final_fix": {
+    "status": "PASS",
+    "reviewer": "review_labclear_ui",
+    "executed_tests": 55,
+    "scope": "exact internal destination whitelist/query retention and clinical title/collapsed rawhistory",
+    "source_hashes_unchanged_during_review": true,
+    "writes_by_reviewer": false
+  },
+  "parent_browser": {
+    "status": "PASS",
+    "method": "Actual IAB UI on deployed private dr-train two-DB shadow",
+    "proof": "evidence/integrations/shadow-browser-20261114",
+    "initial_login_query_loss": "FAIL retained in initial acceptance; repaired final5328 fresh-login proof",
+    "model_calls": 0
+  },
+  "source_sha256": {
+    "apps/web/src/App.tsx": "a666fc776069b758d454373751ddafa1619bebac9846125b8129220f473c4094",
+    "apps/web/src/components/workspace.tsx": "6fb0ea7043cdb8366320242eee441119831913f7d00ca919894041f72e277559",
+    "apps/web/tests/workflow.component.test.tsx": "5fc148916da845f166ff18e4d43593accacd236e1fd68c8683b8f17a4d1ea27f",
+    "apps/web/src/components/labclear-review-panel.tsx": "b21aab1bbcd4ac5e9773406eb16c848d9cadf35f99f9e695b2973bb7f25bde2c",
+    "apps/web/tests/labclear-review.component.test.tsx": "600b764c09f150b9d8fad8efa85edb2acf77da2413d81d90fe52fb82be215ed9",
+    "backend/app/integration_clients.py": "fb3949852c3dbc32814b6f23b9ec3c53b7e27f48fa70a2bad9be3f0e1d295da3",
+    "backend/app/integration_protocol.py": "a56181cf3b7d5f9505c29382dd65119f29182053c2e08c3211d4c4efbec22071",
+    "backend/app/integrations.py": "e1911c6c9671f92411bad017f4a74596b58df204a29257733bb86aa994a51d7f",
+    "backend/app/models_integrations.py": "94b5fdfba2d17e488cef2faf244ba4cd1f6d773181223c093769070411f9cc55",
+    "backend/migrations/versions/0003_carebalance_integrations.py": "b987799709ce479bf9b61fd0c00a31a7bf975378aab6a66c0ff73832d4f7548f"
+  },
+  "limits": [
+    "Independent reviewer is not the implementer",
+    "Shadow tests do not establish public acceptance",
+    "This receipt does not claim a new full clinical validation"
+  ]
+}

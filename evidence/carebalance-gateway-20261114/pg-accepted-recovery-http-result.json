@@ -1,0 +1,22 @@
+{
+  "finished_at": "2026-11-14T04:30:46.551744+00:00",
+  "exit_code": 0,
+  "drift": [],
+  "command": [
+    "rtk",
+    "proxy",
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "scripts/test_with_postgres.py",
+    "--pg-bin",
+    "C:/Users/User/.cache/his-poc-tools/pg18/pgsql/bin",
+    "--",
+    "C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe",
+    "scripts/run_pg_suite.py",
+    "backend/tests/test_labclear_gateway_unit.py",
+    "backend/tests/test_labclear_gateway_pg.py",
+    "backend/tests/test_carebalance_cross_app_pg.py",
+    "-q",
+    "--junitxml=C:\\Users\\User\\Desktop\\myProject\\his-poc\\evidence\\carebalance-gateway-20261114\\pg-accepted-recovery-http.xml"
+  ],
+  "raw_log": "evidence\\carebalance-gateway-20261114\\pg-accepted-recovery-http.txt"
+}

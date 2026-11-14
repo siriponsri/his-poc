@@ -1,0 +1,123 @@
+{
+  "status": "PASS",
+  "method": "Read-only synthetic patient-001 D10 inventory; no new rows or authentication",
+  "sources": [
+    {
+      "id": "118004b0-dca0-4519-8b47-3d6d6314ede4",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "order_id": "f3693432-613e-498c-8b8d-bb8145c8aad5",
+      "status": "corrected",
+      "version": 10,
+      "analyte": "Synthetic browser analyte",
+      "result_value": "6",
+      "unit": "demo-unit",
+      "reference_range": "manual 1-10"
+    },
+    {
+      "id": "4b136f83-061e-4a9b-991c-99c4a8861692",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "order_id": "302e9665-8d5d-4c93-b0f3-b5e89627b8ca",
+      "status": "corrected",
+      "version": 10,
+      "analyte": "Synthetic browser analyte",
+      "result_value": "6",
+      "unit": "demo-unit",
+      "reference_range": "manual 1-10"
+    },
+    {
+      "id": "fcb45152-2bca-4b40-bbb0-78dbe7e1fdff",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "order_id": "bcb54aa2-af29-4dd8-a9c3-4a52991e3b1b",
+      "status": "corrected",
+      "version": 10,
+      "analyte": "Synthetic browser analyte",
+      "result_value": "6",
+      "unit": "demo-unit",
+      "reference_range": "manual 1-10"
+    },
+    {
+      "id": "4fe8a1f3-b1c2-43cf-8232-51af3c70dc89",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "order_id": "801b6b48-d837-4740-8bd6-32e0eea7554a",
+      "status": "corrected",
+      "version": 10,
+      "analyte": "Synthetic browser analyte",
+      "result_value": "6",
+      "unit": "demo-unit",
+      "reference_range": "manual 1-10"
+    },
+    {
+      "id": "1ac28903-cc4f-4752-83c8-d042a3ad83e8",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "order_id": "15b46e47-de49-451e-833f-e1c342d50625",
+      "status": "corrected",
+      "version": 10,
+      "analyte": "Synthetic browser analyte",
+      "result_value": "6",
+      "unit": "demo-unit",
+      "reference_range": "manual 1-10"
+    },
+    {
+      "id": "a8b8ec98-277c-4828-a830-ceb341d52ff6",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "order_id": "3b7125b7-9072-47cc-bef1-a6c7885b4986",
+      "status": "corrected",
+      "version": 10,
+      "analyte": "Synthetic browser analyte",
+      "result_value": "6",
+      "unit": "demo-unit",
+      "reference_range": "manual 1-10"
+    }
+  ],
+  "linked_orders": [
+    {
+      "id": "15b46e47-de49-451e-833f-e1c342d50625",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "status": "completed",
+      "version": 4
+    },
+    {
+      "id": "302e9665-8d5d-4c93-b0f3-b5e89627b8ca",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "status": "completed",
+      "version": 4
+    },
+    {
+      "id": "3b7125b7-9072-47cc-bef1-a6c7885b4986",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "status": "completed",
+      "version": 4
+    },
+    {
+      "id": "801b6b48-d837-4740-8bd6-32e0eea7554a",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "status": "completed",
+      "version": 4
+    },
+    {
+      "id": "bcb54aa2-af29-4dd8-a9c3-4a52991e3b1b",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "status": "completed",
+      "version": 4
+    },
+    {
+      "id": "f3693432-613e-498c-8b8d-bb8145c8aad5",
+      "patient_id": "patient-001",
+      "encounter_id": "encounter-001",
+      "status": "completed",
+      "version": 4
+    }
+  ],
+  "labclear_review_tasks": []
+}

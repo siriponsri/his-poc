@@ -1,0 +1,60 @@
+{
+  "status": "PASS",
+  "environment": "https://his.ai-cie.com behind owner-verified Cloudflare Access",
+  "data": "Authored synthetic POC only",
+  "actor": "user-test01-poc",
+  "bundle": "/assets/index-DwWM1dVK.js",
+  "source_id": "118004b0-dca0-4519-8b47-3d6d6314ede4",
+  "source_version": 10,
+  "source_sha256": "2043dbd9eb0244bd767f46e3f81ba50e90c7c00f7cd25c42365aabeb6947bea4",
+  "task_id": "c5ede7b8-6ba2-489e-9590-a3cf2de0039d",
+  "binding_id": "c61fa41a-a340-41ca-8c19-38c3da27ac75",
+  "checks": {
+    "fresh_login_retains_scoped_link": true,
+    "explicit_new_review_task": true,
+    "explicit_source_transfer": true,
+    "imported_printed_value": "6",
+    "human_reviewed_value": "7",
+    "same_person_confirmation": true,
+    "confirmed_readonly": true,
+    "reload_and_explicit_readback": true,
+    "original_source_still_displayed": "6",
+    "escape_restores_opener_and_removes_inert": true,
+    "mobile390_no_body_overflow": true
+  },
+  "readback": {
+    "fields": [
+      {
+        "disabled": true,
+        "label": "Test row 1",
+        "value": "Synthetic browser analyte"
+      },
+      {
+        "disabled": true,
+        "label": "Value row 1",
+        "value": "7"
+      },
+      {
+        "disabled": true,
+        "label": "Unit row 1",
+        "value": "demo-unit"
+      },
+      {
+        "disabled": true,
+        "label": "Reference row 1",
+        "value": "manual 1-10"
+      },
+      {
+        "disabled": true,
+        "label": "Printed flag row 1",
+        "value": ""
+      }
+    ],
+    "text": "CareBalance / LabClear\nLab result review\n\nตรวจค่าที่เผยแพร่แล้ว แล้วแยกยืนยันการทบทวน\n\n×\nผู้ป่วยสังเคราะห์ 001\nOPD\nSynthetic browser analyte\nSource v10\nReleased source\nTest\nSynthetic browser analyte\nPrinted value\n6\nUnit\ndemo-unit\nPrinted reference\nmanual 1-10\nSource details\nConfirmed review\nตรวจผลล่าสุด\n\nการทบทวนนี้ยืนยันแล้ว แสดงค่าฉบับที่บันทึกไว้\n\nTest\nValue\nUnit\nReference\nPrinted flag\nรายการที่ 1\nTest\nValue\nUnit\nReference\nPrinted flag\nReview details\nSource revision\n10\nSource hash\n2043dbd9eb0244bd767f46e3f81ba50e90c7c00f7cd25c42365aabeb6947bea4\nReview reference\nc61fa41a-a340-41ca-8c19-38c3da27ac75\nConfirmed revision\n1\nReviewer\nuser-test01-poc\n\nการทบทวนนี้ไม่เปลี่ยนผลแล็บต้นฉบับ\n\nปิด"
+  },
+  "model_calls": 0,
+  "limits": [
+    "Server-side read-only DB/receiver preservation evidence follows separately",
+    "No OCR/model inference or clinical effectiveness claim"
+  ]
+}

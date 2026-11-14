@@ -1,0 +1,10 @@
+{
+  "started_at": "2026-11-14T04:34:30.414433+00:00",
+  "source_sha256": {
+    "backend/app/integrations.py": "e1911c6c9671f92411bad017f4a74596b58df204a29257733bb86aa994a51d7f",
+    "backend/app/integration_protocol.py": "a56181cf3b7d5f9505c29382dd65119f29182053c2e08c3211d4c4efbec22071",
+    "backend/app/integration_clients.py": "fb3949852c3dbc32814b6f23b9ec3c53b7e27f48fa70a2bad9be3f0e1d295da3",
+    "backend/tests/test_carebalance_cross_app_pg.py": "1bc491badf4a3894cd9a2ab2075cfffd5b125a3a6e144d36d89f55ec0610a246",
+    "backend/tests/test_carebalance_packaged_receiver_pg.py": "1cdd883366922cfcbe574d4e9ab0f85f27cfba3378835b3d26ee401923844ead"
+  }
+}

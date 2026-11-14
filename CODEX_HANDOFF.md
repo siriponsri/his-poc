@@ -1,5 +1,23 @@
 # Codex handoff — Patient panel deployed; integration long goal active
 
+## Current integration continuation
+
+Long goal ACTIVE. Work in C:/Users/User/Desktop/myProject/his-poc on
+feat/carebalance-labclear; base main f535040. Final candidate5328 verifies231
+source files/17 assets with25 unit/117 component/3 audit cases/build PASS.
+Private LabClear two-DB and actual browser round trip passed. Final5328 is now
+active on migration0003 with a separate ready receiver:109 legacy counts,
+181 sessions, three selected results/file/account preserved. Actual backup
+restore passed. Public browser source6 to reviewed7 confirmation/reload/read-only
+reopen/mobile PASS; exact receipts under evidence/integrations/public-labclear-20261114.
+Operations MUST layer server.env then labclear.env with base+receiver overlay;
+base-only selects the old image. See ops-activation-runbook.md in deployment evidence.
+DR derivative at C:/Users/User/Desktop/myProject/carebalance-dr-screening is
+on feat/carebalance-his-bridge after qualified theme main eacdef0 and doc
+commit a9932be. Original DR is excluded. Bounded receiver implementation ACTIVE;
+no live retinal inference. Read [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md) and its
+linked exact receipts. Do not close the goal while DR/BFF/public work remains.
+
 ## Subsequent publication and browser readback
 
 UI checkpoint `1e77901` was committed and pushed to main. A later authenticated
@@ -9,9 +27,10 @@ edit/approval/commit actions, with no new inference or source writes. See
 `evidence/research-ui-release/final91-public-reopen/acceptance.json`. This resolves
 the earlier NOT_VERIFIED saved-proposal selection item below. The earlier full
 real-inference journey remains89-phase evidence. The integration goal is active;
-new gateway/receiver work is a separate, undeployed source phase.
+gateway/receiver work has since reached the private validation checkpoint above;
+its public deployment is governed by the separate current receipts.
 
-## Latest checkpoint — 14 November 2026
+## Historical UI checkpoint — 14 November 2026
 
 Work in C:/Users/User/Desktop/myProject/his-poc. The long goal remains ACTIVE:
 separate CareBalance DR derivative based on dr-support-screening-poc, preserving

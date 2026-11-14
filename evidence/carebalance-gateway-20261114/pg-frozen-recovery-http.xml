@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="5" skipped="0" tests="45" time="43.289" timestamp="2026-11-14T11:28:30.910516+07:00" hostname="DESKTOP-C8EHASQ"><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayPureTests" name="test_context_and_output_keep_opaque_long_external_ids" time="0.049" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayPureTests" name="test_default_transport_remains_disabled" time="0.010" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayPureTests" name="test_exact_source_cells_and_hash_detect_revision_changes" time="0.003" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayPureTests" name="test_import_and_confirmation_dto_do_not_accept_owner_url_or_coercion" time="0.003" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayPureTests" name="test_source_capability_rejects_without_truncation" time="0.006" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayAuthorizationComponentTests" name="test_closed_mutation_but_completed_task_historical_read" time="0.011" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayAuthorizationComponentTests" name="test_permission_and_each_explicit_row_scope" time="0.093" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayAuthorizationComponentTests" name="test_review_task_is_separate_from_completed_order_task" time="0.009" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayReservationComponentTests" name="test_actual_receipt_recorded_before_authorization_race_denies_response" time="0.014"><failure message="IndexError: pop from empty list">self = &lt;test_labclear_gateway_unit.GatewayReservationComponentTests testMethod=test_actual_receipt_recorded_before_authorization_race_denies_response&gt;
+
+    def test_actual_receipt_recorded_before_authorization_race_denies_response(self):
+        for status, code in [(401, "SESSION_REVOKED"), (409, "CONNECTOR_SOURCE_STALE")]:
+&gt;           db, user, row, task, encounter, reservation = self.reserve()
+                                                          ^^^^^^^^^^^^^^
+
+backend\tests\test_labclear_gateway_unit.py:191: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\test_labclear_gateway_unit.py:156: in reserve
+    result = gateway._reserve_attempt(db, user, row, task, encounter, operation, "key", payload or {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend\app\integrations.py:198: in _reserve_attempt
+    unresolved = db.scalar(select(ConnectorAttempt).where(ConnectorAttempt.binding_id == binding.id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_labclear_gateway_unit.ControlledSession object at 0x00000263D564ADB0&gt;
+query = &lt;sqlalchemy.sql.selectable.Select object at 0x00000263D5650770&gt;
+
+&gt;   def scalar(self, query): return self.scalars_to_return.pop(0)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   IndexError: pop from empty list
+
+backend\tests\test_labclear_gateway_unit.py:54: IndexError</failure></testcase><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayReservationComponentTests" name="test_live_lease_blocks_second_http_and_changed_key_payload_conflicts" time="0.004"><failure message="IndexError: pop from empty list">self = &lt;test_labclear_gateway_unit.GatewayReservationComponentTests testMethod=test_live_lease_blocks_second_http_and_changed_key_payload_conflicts&gt;
+
+    def test_live_lease_blocks_second_http_and_changed_key_payload_conflicts(self):
+&gt;       db, user, row, task, encounter, reservation = self.reserve()
+                                                      ^^^^^^^^^^^^^^
+
+backend\tests\test_labclear_gateway_unit.py:182: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\test_labclear_gateway_unit.py:156: in reserve
+    result = gateway._reserve_attempt(db, user, row, task, encounter, operation, "key", payload or {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend\app\integrations.py:198: in _reserve_attempt
+    unresolved = db.scalar(select(ConnectorAttempt).where(ConnectorAttempt.binding_id == binding.id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_labclear_gateway_unit.ControlledSession object at 0x00000263D56527E0&gt;
+query = &lt;sqlalchemy.sql.selectable.Select object at 0x00000263D564B6E0&gt;
+
+&gt;   def scalar(self, query): return self.scalars_to_return.pop(0)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   IndexError: pop from empty list
+
+backend\tests\test_labclear_gateway_unit.py:54: IndexError</failure></testcase><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayReservationComponentTests" name="test_read_retries_need_fresh_authorization_without_a_mutation_key" time="0.002" /><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayReservationComponentTests" name="test_reservation_commits_and_closes_before_transport" time="0.004"><failure message="IndexError: pop from empty list">self = &lt;test_labclear_gateway_unit.GatewayReservationComponentTests testMethod=test_reservation_commits_and_closes_before_transport&gt;
+
+    def test_reservation_commits_and_closes_before_transport(self):
+&gt;       db, user, row, task, encounter, reservation = self.reserve()
+                                                      ^^^^^^^^^^^^^^
+
+backend\tests\test_labclear_gateway_unit.py:160: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\test_labclear_gateway_unit.py:156: in reserve
+    result = gateway._reserve_attempt(db, user, row, task, encounter, operation, "key", payload or {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend\app\integrations.py:198: in _reserve_attempt
+    unresolved = db.scalar(select(ConnectorAttempt).where(ConnectorAttempt.binding_id == binding.id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_labclear_gateway_unit.ControlledSession object at 0x00000263D5653590&gt;
+query = &lt;sqlalchemy.sql.selectable.Select object at 0x00000263D5650B90&gt;
+
+&gt;   def scalar(self, query): return self.scalars_to_return.pop(0)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   IndexError: pop from empty list
+
+backend\tests\test_labclear_gateway_unit.py:54: IndexError</failure></testcase><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayReservationComponentTests" name="test_unknown_outcome_is_durable_and_reconcilable" time="0.004"><failure message="IndexError: pop from empty list">self = &lt;test_labclear_gateway_unit.GatewayReservationComponentTests testMethod=test_unknown_outcome_is_durable_and_reconcilable&gt;
+
+    def test_unknown_outcome_is_durable_and_reconcilable(self):
+&gt;       db, user, row, task, encounter, reservation = self.reserve()
+                                                      ^^^^^^^^^^^^^^
+
+backend\tests\test_labclear_gateway_unit.py:204: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\test_labclear_gateway_unit.py:156: in reserve
+    result = gateway._reserve_attempt(db, user, row, task, encounter, operation, "key", payload or {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend\app\integrations.py:198: in _reserve_attempt
+    unresolved = db.scalar(select(ConnectorAttempt).where(ConnectorAttempt.binding_id == binding.id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_labclear_gateway_unit.ControlledSession object at 0x00000263D5653740&gt;
+query = &lt;sqlalchemy.sql.selectable.Select object at 0x00000263D563F770&gt;
+
+&gt;   def scalar(self, query): return self.scalars_to_return.pop(0)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   IndexError: pop from empty list
+
+backend\tests\test_labclear_gateway_unit.py:54: IndexError</failure></testcase><testcase classname="backend.tests.test_labclear_gateway_unit.GatewayReservationComponentTests" name="test_unknown_retry_reuses_request_id_and_original_payload" time="0.004"><failure message="IndexError: pop from empty list">self = &lt;test_labclear_gateway_unit.GatewayReservationComponentTests testMethod=test_unknown_retry_reuses_request_id_and_original_payload&gt;
+
+    def test_unknown_retry_reuses_request_id_and_original_payload(self):
+&gt;       db, user, row, task, encounter, first = self.reserve()
+                                                ^^^^^^^^^^^^^^
+
+backend\tests\test_labclear_gateway_unit.py:170: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+backend\tests\test_labclear_gateway_unit.py:156: in reserve
+    result = gateway._reserve_attempt(db, user, row, task, encounter, operation, "key", payload or {})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+backend\app\integrations.py:198: in _reserve_attempt
+    unresolved = db.scalar(select(ConnectorAttempt).where(ConnectorAttempt.binding_id == binding.id,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;test_labclear_gateway_unit.ControlledSession object at 0x00000263D56530B0&gt;
+query = &lt;sqlalchemy.sql.selectable.Select object at 0x00000263D563DD90&gt;
+
+&gt;   def scalar(self, query): return self.scalars_to_return.pop(0)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   IndexError: pop from empty list
+
+backend\tests\test_labclear_gateway_unit.py:54: IndexError</failure></testcase><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_migration_ready_import_review_read_and_his_unchanged" time="11.186" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_timeout_unknown_retries_same_receiver_request_without_duplicate" time="2.007" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_unknown_confirmation_command_recovers_after_refresh_with_scope_fences" time="2.430" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_actor_session_csrf_scope_and_stale_source_denials" time="2.608" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_foreign_task_and_source_are_filtered_before_row_lock" time="0.775" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_inflight_authorization_or_source_change_quarantines_actual_receipt[session-401]" time="0.528" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_inflight_authorization_or_source_change_quarantines_actual_receipt[membership-401]" time="0.596" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_inflight_authorization_or_source_change_quarantines_actual_receipt[source-409]" time="0.723" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_inflight_authorization_or_source_change_quarantines_actual_receipt[task-409]" time="0.725" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_inflight_authorization_or_source_change_quarantines_actual_receipt[assignment-404]" time="0.792" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_old_read_draft_response_cannot_regress_confirmed_binding" time="2.299" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_unresolved_mutation_requires_exact_command_recovery" time="2.531" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_released_task_confirmation_and_mapping_gates_precede_http" time="2.847" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_live_lease_one_http_call_under_concurrent_retry" time="0.989" /><testcase classname="backend.tests.test_labclear_gateway_pg" name="test_pg_guards_preserve_source_attempt_and_completed_exchange" time="0.723" /><testcase classname="backend.tests.test_carebalance_cross_app_pg" name="test_real_http_import_human_correction_confirm_retry_and_readback" time="5.149" /><testcase classname="backend.tests.test_carebalance_cross_app_pg" name="test_real_http_binding_scope_and_service_auth_remain_closed" time="2.715" /></testsuite></testsuites>

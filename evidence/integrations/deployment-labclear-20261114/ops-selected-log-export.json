@@ -1,0 +1,4 @@
+{
+  "status": "PASS",
+  "method": "Exact selected command stdout/stderr, screened against actual configured secret values; no credentials exported"
+}

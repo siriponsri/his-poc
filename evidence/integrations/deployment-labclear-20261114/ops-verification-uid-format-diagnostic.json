@@ -1,0 +1,11 @@
+{
+  "state": "FAILED_METADATA_FORMAT_GUARD",
+  "status": "FAIL",
+  "observed_at": "2026-11-14T05:35:35.103779+00:00",
+  "diagnostic": "Image Docker USER includes explicit group; exact user-only string assertion was too narrow. Runtime numeric uid10001 and correct image verified. No service repair/restart needed.",
+  "image_user": "10001:10001",
+  "runtime_uid": 10001,
+  "service_healthy": true,
+  "source_and_dist_hashes_before_guard_passed": true,
+  "preservation_checks_before_guard_passed": true
+}

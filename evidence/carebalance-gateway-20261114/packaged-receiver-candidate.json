@@ -1,0 +1,32 @@
+{
+  "captured_after_test_at": "2026-11-14T04:35:47.474443+00:00",
+  "archive_sha256": "a1d17b830914d09934a4400add6815cb585385dac8fd58f3386fe1364f3091fb",
+  "files": 19,
+  "bytes": 143360,
+  "source_manifest": {
+    "schema": "carebalance.labclear-source.v1",
+    "scope": "connector-only; no OCR/model/browser routes",
+    "source_sha256": {
+      "Dockerfile": "787e74fb8b847eceafa50e29995f9e512f276a7b335c66a7cc918f1be6f21444",
+      "NOTICE.md": "1aab0c96db5b2faa4b2983c4a520bf47f7d50efa218d07c1ec047f76448437b5",
+      "carebalance_receiver.py": "ed7f3c5516c88b289871e7fe290db5653bd193c69a440d2f3a979829d48e7e15",
+      "config.py": "2b56f1cf650a6eb5f24d3a873ce3cf1d7fec25643d7e3e2d3bc71b917d601219",
+      "requirements.txt": "8a1a886f71e91cd63cfd899639a54347ef432b3e26e99287a346f5e6513fe223",
+      "routers/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "routers/carebalance_bridge.py": "bb7f05c35d96b15a80dff21639dbd8f15cffbdf3117e5196cee6d7fd40bb0360",
+      "services/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "services/business_store.py": "ccadd4d05b197bf744a53ba21c9acdc45151c97ee5161963306369353644e4f6",
+      "services/carebalance_protocol.py": "a56181cf3b7d5f9505c29382dd65119f29182053c2e08c3211d4c4efbec22071",
+      "services/carebalance_reports.py": "b51f670d6c508e013b4d0730c0880892a396f51f7c1c814ff42f5aabe28bdd9f",
+      "services/conversation_transport.py": "e2dce3ef6c4bf2e84e4a83cdcfeda50ccc3d796e4daaf759ca2364473b39c512",
+      "services/execution.py": "003528a4ba15a415fa7b9b5960649f83595e52e781b44c3e210a36578cf0c9b5",
+      "services/guest_memory.py": "0a43dc225e4d6653b81db82136a89aed7049e7de6f7beffeaf35abfe031bca61",
+      "services/lab_fields_v2.py": "5bc4e09d3eb695187ae1a3d372244682fca13b276bd2a4c62684c825e748b08c",
+      "services/lab_units.py": "459999ddeab69ff6d2e5f386f8ebe718b675d1461157547e199fc32e6dd77b60",
+      "services/providers.py": "5dfeb24ff553ae1f34d84f63a228d163d851b2e23043d1aeef0b5da6ca2db0fe",
+      "services/report_binding.py": "3b9256b317c95546904b3e35ef60e083f0d21999416fa12e635ce18aec47c258"
+    }
+  },
+  "builder_sha256": "9725a56351c3046c2706b9ce462f1dbd8b70391f96e8b79f087954bf46fdcd9e",
+  "scope": "Deterministic package reconstruction after accepted exact-entrypoint separate-PostgreSQL test; not deployment"
+}

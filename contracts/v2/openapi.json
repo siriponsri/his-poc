@@ -6806,6 +6806,245 @@
         }
       }
     },
+    "/api/v2/integrations/labclear/import": {
+      "post": {
+        "tags": [
+          "specialist integration"
+        ],
+        "summary": "Import Lab",
+        "operationId": "import_lab_api_v2_integrations_labclear_import_post",
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ImportInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/integrations/labclear/bindings": {
+      "get": {
+        "tags": [
+          "specialist integration"
+        ],
+        "summary": "List Bindings",
+        "operationId": "list_bindings_api_v2_integrations_labclear_bindings_get",
+        "parameters": [
+          {
+            "name": "patient_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Patient Id"
+            }
+          },
+          {
+            "name": "encounter_id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Encounter Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/integrations/labclear/bindings/{id}/read": {
+      "post": {
+        "tags": [
+          "specialist integration"
+        ],
+        "summary": "Read Binding",
+        "operationId": "read_binding_api_v2_integrations_labclear_bindings__id__read_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/integrations/labclear/bindings/{id}/recover": {
+      "post": {
+        "tags": [
+          "specialist integration"
+        ],
+        "summary": "Recover Binding",
+        "description": "Expose an owned durable command for explicit resumption, never resend it.",
+        "operationId": "recover_binding_api_v2_integrations_labclear_bindings__id__recover_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/integrations/labclear/bindings/{id}/confirm": {
+      "post": {
+        "tags": [
+          "specialist integration"
+        ],
+        "summary": "Confirm Binding",
+        "operationId": "confirm_binding_api_v2_integrations_labclear_bindings__id__confirm_post",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Id"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Idempotency-Key"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfirmInput"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/v2/legacy/results": {
       "get": {
         "tags": [
@@ -7282,6 +7521,42 @@
           "action_hash"
         ],
         "title": "Commit"
+      },
+      "ConfirmInput": {
+        "properties": {
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/ReviewedField"
+            },
+            "type": "array",
+            "maxItems": 60,
+            "minItems": 1,
+            "title": "Fields"
+          },
+          "same_person_confirmed": {
+            "type": "boolean",
+            "title": "Same Person Confirmed"
+          },
+          "source_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Source Version"
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$",
+            "title": "Source Sha256"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "fields",
+          "same_person_confirmed",
+          "source_version",
+          "source_sha256"
+        ],
+        "title": "ConfirmInput"
       },
       "Context": {
         "properties": {
@@ -7791,6 +8066,49 @@
         },
         "type": "object",
         "title": "HTTPValidationError"
+      },
+      "ImportInput": {
+        "properties": {
+          "patient_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Patient Id"
+          },
+          "encounter_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Encounter Id"
+          },
+          "task_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Task Id"
+          },
+          "source_id": {
+            "type": "string",
+            "maxLength": 64,
+            "minLength": 1,
+            "title": "Source Id"
+          },
+          "source_version": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Source Version"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "patient_id",
+          "encounter_id",
+          "task_id",
+          "source_id",
+          "source_version"
+        ],
+        "title": "ImportInput"
       },
       "IncidentAction": {
         "properties": {
@@ -8907,6 +9225,53 @@
           "decision"
         ],
         "title": "Review"
+      },
+      "ReviewedField": {
+        "properties": {
+          "source_index": {
+            "type": "integer",
+            "maximum": 59.0,
+            "minimum": 0.0,
+            "title": "Source Index"
+          },
+          "name": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "title": "Name"
+          },
+          "value": {
+            "type": "string",
+            "maxLength": 150,
+            "title": "Value"
+          },
+          "unit": {
+            "type": "string",
+            "maxLength": 60,
+            "title": "Unit"
+          },
+          "reference": {
+            "type": "string",
+            "maxLength": 150,
+            "title": "Reference"
+          },
+          "printed_flag": {
+            "type": "string",
+            "maxLength": 25,
+            "title": "Printed Flag"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "source_index",
+          "name",
+          "value",
+          "unit",
+          "reference",
+          "printed_flag"
+        ],
+        "title": "ReviewedField"
       },
       "RosterAction": {
         "properties": {

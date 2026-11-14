@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T05:04:55.266944+00:00",
+  "checks": {
+    "production_container_ids_images_unchanged": true,
+    "production_services_healthy": true,
+    "production_ready_still_0002": true,
+    "prior_results_preserved": true,
+    "file_hashes_preserved": true,
+    "test_account_and_memberships_preserved": true,
+    "all_prior_sessions_unchanged": true,
+    "all_prior_table_counts_preserved": true,
+    "connector_ha_four": true
+  },
+  "production_tables": 109,
+  "prior_session_count": 181,
+  "current_session_count": 181,
+  "selected_prior_results": 3,
+  "stored_files": 1,
+  "public_activation": false
+}

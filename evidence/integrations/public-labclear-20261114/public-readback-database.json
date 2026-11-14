@@ -1,0 +1,208 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T05:46:01.620379+00:00",
+  "his": {
+    "status": "PASS",
+    "method": "Read-only repeatable-read HIS PostgreSQL; no session creation, HTTP or mutations",
+    "checks": {
+      "exact_immutable_source_hash": true,
+      "same_actor_session_patient_encounter": true,
+      "one_import_one_confirm": true,
+      "all_attempts_exchanges_succeeded": true,
+      "canonical_request_and_review_hashes": true,
+      "human_same_person_and_correction": true,
+      "confirmed_readbacks_equal": true,
+      "source_and_order_unmodified": true,
+      "task_open_not_completed": true
+    },
+    "binding_id": "c61fa41a-a340-41ca-8c19-38c3da27ac75",
+    "source_id": "118004b0-dca0-4519-8b47-3d6d6314ede4",
+    "source_version": 10,
+    "source_sha256": "2043dbd9eb0244bd767f46e3f81ba50e90c7c00f7cd25c42365aabeb6947bea4",
+    "source_value": "6",
+    "order_id": "f3693432-613e-498c-8b8d-bb8145c8aad5",
+    "order_status": "completed",
+    "order_version": 4,
+    "task_id": "c5ede7b8-6ba2-489e-9590-a3cf2de0039d",
+    "task_status": "open",
+    "task_version": 1,
+    "actor_id": "user-test01-poc",
+    "session_ownership_verified": true,
+    "attempt_counts": {
+      "import": 1,
+      "confirm": 1,
+      "read": 1
+    },
+    "exchange_count": 3,
+    "review": {
+      "sha256": "2c2b022bdc7a598dd6374f2f3b5482748aa5ad7c8aa5c6fd53757ec672776967",
+      "revision": 1,
+      "reviewer_id": "user-test01-poc",
+      "confirmed_at": 1794634794.7332606,
+      "source_sha256": "2043dbd9eb0244bd767f46e3f81ba50e90c7c00f7cd25c42365aabeb6947bea4",
+      "source_revision": 10,
+      "same_person_confirmed": true,
+      "corrected_source_indices": [
+        0
+      ]
+    },
+    "confirmed_fields": [
+      {
+        "id": "r1",
+        "name": "Synthetic browser analyte",
+        "unit": "demo-unit",
+        "value": "7",
+        "status": "unknown",
+        "reference": "manual 1-10",
+        "printed_flag": "",
+        "source_index": 0
+      }
+    ],
+    "external_report_id": "cb_report_285d114d00baaa77b6bf41deceb52dbb5a7dd721390f32673f235ff1d68d8733",
+    "attempts": [
+      {
+        "id": "1480e74a-008f-44a2-b60a-bf955d6a98d6",
+        "operation": "import",
+        "request_id": "3704187a-ad4f-4d8b-a32e-3593c57f1758",
+        "request_hash": "48f5d038bf681279005f15ac3414bc260817f234e0adae04b1c7b3c5cbdbf37a",
+        "status": "succeeded"
+      },
+      {
+        "id": "733991cc-a44e-4b53-8542-9ad3fef7f23f",
+        "operation": "confirm",
+        "request_id": "c67d201f-9763-42cf-901f-cdb33b6ad7b8",
+        "request_hash": "878e8408c685ae5e0ec3655f6e3fc1e9f96fb23643cd440dc1e028139867da1f",
+        "status": "succeeded"
+      },
+      {
+        "id": "024e0380-2842-4ec8-906b-6931a33d9d85",
+        "operation": "read",
+        "request_id": "a8e84e1e-2531-4369-9aec-77c7b59d6ce8",
+        "request_hash": "942c1468afefa8d0cb2d3188a5829d60c47171c39080f63497e206d56ead551a",
+        "status": "succeeded"
+      }
+    ],
+    "exchanges": [
+      {
+        "id": "b39c71d7-65e7-4b1f-b98e-405da18eddd7",
+        "attempt_id": "1480e74a-008f-44a2-b60a-bf955d6a98d6",
+        "outcome": "succeeded",
+        "receipt_sha256": "e6afa5cc65bfd2e3559b797597c9ae8343dbc7079a53604ff2a33de1ee68a61c",
+        "quarantined": false
+      },
+      {
+        "id": "dd7576d9-f3dc-4af8-b754-bd62bcbdbae9",
+        "attempt_id": "733991cc-a44e-4b53-8542-9ad3fef7f23f",
+        "outcome": "succeeded",
+        "receipt_sha256": "93fad751f3d0ac50d570f069e626f519c64448fc949a5932118c955fca5368f3",
+        "quarantined": false
+      },
+      {
+        "id": "07eb9bd6-7fe5-45d0-a351-c9a15ac66582",
+        "attempt_id": "024e0380-2842-4ec8-906b-6931a33d9d85",
+        "outcome": "succeeded",
+        "receipt_sha256": "93fad751f3d0ac50d570f069e626f519c64448fc949a5932118c955fca5368f3",
+        "quarantined": false
+      }
+    ],
+    "audit_ids": [
+      {
+        "id": "5d9f761c-7aa9-4019-af3b-21bb8a9ab5ec",
+        "action": "labclear.import.reserved"
+      },
+      {
+        "id": "1858c0bf-845d-41d4-a377-c3a586fe64f7",
+        "action": "labclear.import.succeeded"
+      },
+      {
+        "id": "8fb88b0a-a8a9-48a0-b88b-8d904b660b07",
+        "action": "labclear.confirm.reserved"
+      },
+      {
+        "id": "2cb60358-1840-4418-9d1a-48f048b521a9",
+        "action": "labclear.confirm.succeeded"
+      },
+      {
+        "id": "944a32aa-b6cd-497a-ba1d-4c967075b4ef",
+        "action": "labclear.read.reserved"
+      },
+      {
+        "id": "03f89a73-de77-44b3-ae8a-58e6fa338ffe",
+        "action": "labclear.read.succeeded"
+      }
+    ]
+  },
+  "labclear": {
+    "status": "PASS",
+    "method": "Direct dedicated PostgreSQL readonly transaction plus scoped Fernet decryption in receiver container; no business_store.transaction, route calls, nonce consumption or provider calls",
+    "checks": {
+      "correct_database_and_owner_partition": true,
+      "encrypted_report_matches_his_receipt": true,
+      "original_cells_preserved": true,
+      "review_hash_valid": true,
+      "actor_and_same_person_bound": true,
+      "one_import_one_confirmation_audit": true,
+      "durable_idempotency_receipts": true,
+      "one_report_no_duplicate": true
+    },
+    "report_id": "cb_report_285d114d00baaa77b6bf41deceb52dbb5a7dd721390f32673f235ff1d68d8733",
+    "source_entity_id": "cb_source_285d114d00baaa77b6bf41deceb52dbb5a7dd721390f32673f235ff1d68d8733",
+    "confirmation_entity_id": "cb_confirmation_2cc2996e7a0bac101510dc597a6e32aab837b1f63c9fe71b54768e4250b3559b",
+    "source_value": "6",
+    "confirmed_value": "7",
+    "snapshot_sha256": "84ef40c404b995d3042af77c7f8653a402dc297ff71c72280af6f670d6c5cf65",
+    "review_sha256": "2c2b022bdc7a598dd6374f2f3b5482748aa5ad7c8aa5c6fd53757ec672776967",
+    "review_revision": 1,
+    "reviewer_id": "user-test01-poc",
+    "idempotency_records": [
+      {
+        "id": "cb_idem_1970b18e8c2fe87e2d2778d421bae9da0c3d61f6f2ff21bf10fe11293dfcbca5",
+        "operation": "import",
+        "fingerprint": "8456baae3131b44e752f92e5eda65dd9527950833a770fb1c1bb689c64b617ea"
+      },
+      {
+        "id": "cb_idem_6f64f48865436f96f37dc70999509d175ad5f7a29d2f57824ad78a9091ed3b5b",
+        "operation": "confirm",
+        "fingerprint": "a379f410187448c53eb73cd35578155e0adceb978117e755ac6972bb532dfa00"
+      }
+    ],
+    "audit_ids": [
+      {
+        "id": "audit_b30374783492324108fcf8d8",
+        "action": "carebalance.report.imported"
+      },
+      {
+        "id": "audit_26b83a9b3fdb79c3642467b5",
+        "action": "carebalance.report.confirmed"
+      }
+    ],
+    "entity_kind_counts": {
+      "audit": 2,
+      "carebalance_confirmation": 1,
+      "carebalance_idempotency": 2,
+      "carebalance_nonce": 3,
+      "carebalance_report": 1,
+      "carebalance_scope": 1,
+      "carebalance_source": 1,
+      "migration": 1
+    },
+    "provider_network_enabled": false,
+    "external_business_enabled": false
+  },
+  "private_config_files_unchanged_during_readback": true,
+  "preservation_checks": {
+    "prior_sessions_preserved": true,
+    "test_account_passwordhash_scopes_preserved": true,
+    "committed_results_preserved": true,
+    "stored_file_hashes_preserved": true,
+    "inference_count_unchanged": true,
+    "original_db_connector_ids_images_preserved": true
+  },
+  "prior_session_count": 181,
+  "current_session_count": 182,
+  "inference_runs_before": 9,
+  "inference_runs_after": 9,
+  "new_model_calls": 0,
+  "new_sessions_by_readback": 0,
+  "receiver_http_calls_by_readback": 0
+}

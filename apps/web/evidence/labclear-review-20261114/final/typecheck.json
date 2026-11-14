@@ -1,0 +1,14 @@
+{
+  "command": [
+    "rtk",
+    "proxy",
+    "npm.cmd",
+    "run",
+    "typecheck"
+  ],
+  "exit_code": 0,
+  "status": "PASS",
+  "started_at": "2026-11-14T04:34:13.704207+00:00",
+  "duration_seconds": 1.5,
+  "log": "typecheck.txt"
+}

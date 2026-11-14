@@ -1,0 +1,6 @@
+{
+  "check": "static_package_consistency_not_acceptance",
+  "status": "PASS",
+  "domain_route_inventory": 38,
+  "failures": []
+}

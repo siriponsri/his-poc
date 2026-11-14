@@ -1,0 +1,14 @@
+{
+  "archive_sha256": "c1944c772e87612d073ce7e8bc8b7a22fc7d367b19367a76bd315f3ba865c185",
+  "source_files": 19,
+  "tag": "his-poc-labclear:source-c1944c772e87",
+  "build_exit_code": 0,
+  "log": "/home/chaw/his-poc/integrations/labclear/builds/c1944c772e87612d073ce7e8bc8b7a22fc7d367b19367a76bd315f3ba865c185/docker-build.log",
+  "application_activation": false,
+  "image_id": "sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f",
+  "image_user": "10001:10001",
+  "prebuild_his_ready": {
+    "ready": true,
+    "migration": "0002_live_inference"
+  }
+}

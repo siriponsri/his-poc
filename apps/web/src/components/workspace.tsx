@@ -5,6 +5,7 @@ import {useLang,statusNamesEn} from '../lib/i18n'
 import {DataForm,type FormValues} from './forms'
 import {GrowthTimeline} from './growth'
 import {Icon} from './icons'
+import {LabClearReviewPanel} from './labclear-review-panel'
 
 const statusNames:Record<string,string>={draft:'ร่าง',pending:'รอตรวจทาน',verified:'ตรวจยืนยันแล้ว',active:'ใช้งาน',inactive:'ปิดใช้',open:'เปิดงาน',in_progress:'กำลังดำเนินงาน',completed:'เสร็จสิ้น',cancelled:'ยกเลิก',requested:'รอดำเนินการ',booked:'จองแล้ว',checked_in:'เช็กอินแล้ว',called:'เรียกคิวแล้ว',waiting:'รอรับบริการ',in_consult:'กำลังตรวจ',reviewed:'ทบทวนแล้ว',closed:'ปิดงาน',approved:'อนุมัติ',rejected:'ปฏิเสธ',committed:'บันทึกผลแล้ว',posted:'ลงรายการแล้ว',released:'เผยแพร่แล้ว',attested:'รับรองแล้ว',returned:'ส่งคืน',in_review:'รอตรวจทาน',amended:'ฉบับแก้ไข',failed:'ไม่สำเร็จ',timeout:'หมดเวลารอ',abstained:'งดให้ข้อเสนอ',success:'สำเร็จ',requested_restore:'ขอกู้คืน',restore_verified:'ตรวจผลกู้คืนแล้ว'}
 // Tone carries meaning together with the label; unknown states stay neutral rather than guessing.
@@ -24,7 +25,7 @@ export function Status({value}:{value:unknown}){
 
 const fieldNames:Record<string,[string,string]>={display_name:['ชื่อ','Name'],title:['ชื่อเรื่อง','Title'],status:['สถานะ','Status'],kind:['ประเภท','Type'],birth_date:['วันเกิด','Date of birth'],sex:['เพศ','Sex'],created_at:['สร้างเมื่อ','Created'],updated_at:['แก้ไขล่าสุด','Updated'],content:['เนื้อหา','Content'],reason:['เหตุผล','Reason'],published:['เผยแพร่ให้ผู้ป่วย','Published to patient'],disposition:['การจำหน่าย','Disposition'],domain:['พื้นที่งาน','Workspace'],username:['ชื่อบัญชี','Username'],roles:['บทบาท','Roles'],permissions:['สิทธิ์','Permissions'],instructions:['คำสั่ง','Instructions'],quantity:['จำนวน','Quantity'],unit:['หน่วย','Unit'],label:['รายการ','Item'],code:['รหัสรายการ','Code'],action:['การดำเนินการ','Action'],content_access:['การเข้าถึงเนื้อหา','Content access'],identifier:['เลขประจำตัว','Identifier'],expires_at:['หมดอายุ','Expires'],version:['รุ่นข้อมูล','Record version'],id:['รหัสรายการ','Record ID']}
 const hiddenKeys=['password_hash','csrf_token','file_base64']
-const technicalKey=(key:string)=>/^(id|version)$|_ids?$|hash|sha256|_key$|snapshot|^provenance$|^usage$/.test(key)
+const technicalKey=(key:string)=>/^(id|version|history|events)$|_ids?$|hash|sha256|_key$|snapshot|^provenance$|^usage$/.test(key)
 const isoLike=/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}/
 export function formatMoment(value:unknown,lang:string){
  const text=String(value);if(!isoLike.test(text))return text
@@ -67,10 +68,11 @@ function rowMeta(row:Row,lang:string){
  if(typeof row.created_at==='string'&&isoLike.test(row.created_at))parts.push(new Date(row.created_at).toLocaleDateString(lang==='en'?'en-GB':'th-TH',{dateStyle:'medium'}))
  return parts
 }
-const rowTitle=(row:Row)=>String(row.display_name||row.title||row.name||row.label||row.reference||row.id)
+const rowTitle=(row:Row)=>String(row.display_name||row.title||row.name||row.label||row.analyte||row.modality||row.reference||row.id)
 
 export function ResourceWorkspace({resource,client,context,onSelectContext,onOpenPatientRecord,readOnly=false}:{resource:Resource;client:Client;context:{patient_id:string;encounter_id:string};onSelectContext?:(row:Row)=>void;onOpenPatientRecord?:(patientId:string)=>void;readOnly?:boolean}){
  const {lang,t}=useLang()
+ const [labClearSource,setLabClearSource]=useState<Row|null>(null)
  const detailGeneration=useRef(0);const detailRef=useRef<HTMLElement>(null);const [versions,setVersions]=useState<Row[]>([]);
  const [items,setItems]=useState<Row[]>([]);const [selected,setSelected]=useState<Row|null>(null);const [history,setHistory]=useState<Row[]>([]);const [error,setError]=useState('');const [notice,setNotice]=useState('');const [noticeKind,setNoticeKind]=useState<'success'|'warning'>('success');const [busy,setBusy]=useState(false);const [create,setCreate]=useState(false);const [query,setQuery]=useState('');const [action,setAction]=useState<ActionDef|null>(null);const [pending,setPending]=useState<PendingOperation|null>(null);const [loaded,setLoaded]=useState(false)
  useEffect(()=>{window.dispatchEvent(new CustomEvent('his-pending',{detail:!!pending}));const warn=(event:BeforeUnloadEvent)=>{if(pending){event.preventDefault();event.returnValue=''}};window.addEventListener('beforeunload',warn);return()=>{window.removeEventListener('beforeunload',warn);window.dispatchEvent(new CustomEvent('his-pending',{detail:false}))}},[pending])
@@ -87,9 +89,11 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,onOpe
  async function createRecord(values:FormValues){await run({path:resource.path,body:values,key:crypto.randomUUID()})}
  async function applyAction(values:FormValues){if(!selected||!action)return;await run({path:action.path? action.path.replace('{id}',selected.id):`${resource.path}/${selected.id}/actions`,body:{...(!action.omitVersion?{version:selected.version}:{}),...(!action.path?{action:action.name}:{}),...(action.target?{target:action.target}:{}),...values},key:crypto.randomUUID(),method:action.method})}
  const available=selected&&!readOnly?resource.actions.filter(a=>!a.from||a.from.includes(String(selected.status))):[]
+ const canLabClear=selected&&!readOnly&&resource.path==='clinical/D10/records'&&['released','corrected'].includes(String(selected.status))&&selected.patient_id===context.patient_id&&selected.encounter_id===context.encounter_id
  const filtered=items.filter(row=>Object.values(row).some(v=>typeof v!=='object'&&String(v).toLocaleLowerCase().includes(query.toLocaleLowerCase())))
  const loadingLabel=t('กำลังโหลดข้อมูล…','Loading records…')
  return <div className="workspace-stack">
+  {labClearSource&&<LabClearReviewPanel client={client} source={labClearSource} context={context} onClose={()=>setLabClearSource(null)}/>}
   <section className="section-toolbar">
    <div><h2>{resource.label}</h2>{resource.description&&<p>{resource.description}</p>}</div>
    <div className="button-row">
@@ -115,10 +119,11 @@ export function ResourceWorkspace({resource,client,context,onSelectContext,onOpe
    </section>
    <section className="detail-card" ref={detailRef}>{selected?<>
     <div className="detail-header">
-     <div><h3>{String(selected.display_name||selected.title||selected.name||selected.id)}</h3><p className="record-ref"><span title={selected.id}>{t('รหัส','ID')} {selected.id}</span>{selected.version!==undefined&&<span>{t('รุ่น','v')} {selected.version}</span>}</p></div>
+     <div><h3>{rowTitle(selected)}</h3><p className="record-ref"><span title={selected.id}>{t('รหัส','ID')} {selected.id}</span>{selected.version!==undefined&&<span>{t('รุ่น','v')} {selected.version}</span>}</p></div>
      <Status value={selected.status}/>
     </div>
-    {(onSelectContext||onOpenPatientRecord||available.length>0)&&<div className="actions-bar">
+    {(onSelectContext||onOpenPatientRecord||available.length>0||canLabClear)&&<div className="actions-bar">
+     {canLabClear&&<button className="secondary" disabled={busy||!!pending} onClick={()=>setLabClearSource(selected)}>Review with LabClear</button>}
      {onOpenPatientRecord&&<button className="secondary" disabled={busy||!!pending} onClick={()=>onOpenPatientRecord(selected.id)}>Open patient record</button>}
      {onSelectContext&&<button className="primary" onClick={()=>onSelectContext(selected)}>{t('ใช้รายการนี้เป็นบริบท','Use as working context')}</button>}
      {available.map(a=><button key={a.name} className={'secondary'+(action?.name===a.name?' pressed':'')} aria-pressed={action?.name===a.name} disabled={busy||!!pending} onClick={()=>setAction(a)}>{a.label}</button>)}

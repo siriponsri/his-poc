@@ -1,0 +1,7 @@
+{
+  "head": "1e779010355729dfb95dd2959ec70133e0398014",
+  "owned_before_sha256": {
+    "backend/app/main.py": "4a883e322b99bda908dd4c133d573d678880d06eb3bf735bc54a1199aa586591",
+    "backend/app/model_registry.py": "3f09946e2e66fe727a05092909505a2994b7a8fa55489cacf41fbbde686aa17f"
+  }
+}

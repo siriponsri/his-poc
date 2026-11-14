@@ -1,0 +1,25 @@
+{
+  "state": "PASS",
+  "observed_at": "2026-11-14T05:30:38.806962+00:00",
+  "status": "PASS",
+  "backup_path": "/home/chaw/his-poc/var/backups/pre-labclear-20261114T053020Z",
+  "dump_sha256": "b5b55176f6d70cb5a0691a6bd3e903a25ab1a9eec28183a795f039bdb910841f",
+  "dump_bytes": 706777,
+  "files_archive_sha256": "01c6b11bed9cc7405f8007434af90baf8992951bdf36b9096d2376be12aff4b2",
+  "files_archive_bytes": 10240,
+  "archived_file_hashes": {
+    "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23.bin": "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23"
+  },
+  "config_sha256": {
+    "server.env.before": "39cd4643b9190a6ca88983bffcf54961804031c64250c7c2882ea2ef6a47a1aa",
+    "compose.json.before": "d2fc1fbdac9831a62d66dac93de7ec216cab0a8a9ab59cec015cbaea8fa801df",
+    "his_tunnel_config_file.before": "1e5c560e61c2e956fdfd68bc8b544f566c6e9bdd513d8cc05f7d3790af1799ba",
+    "his_tunnel_credentials_file.before": "2a13e48b0eac3d2add78275198a89d09d257dc18ca2b2bb6da99f28027a823d2"
+  },
+  "restore_database": "his_predeploy_restore_20261114053021",
+  "restore_cluster": "his-poc-carebalance-validation-db-1",
+  "restored_tables": 109,
+  "restored_table_counts_exact": true,
+  "restored_revision": "0002_live_inference",
+  "original_database_restored_or_seeded": false
+}

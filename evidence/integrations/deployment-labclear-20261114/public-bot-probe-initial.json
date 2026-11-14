@@ -1,0 +1,38 @@
+{
+  "at": "2026-11-14T05:35:47.046759+00:00",
+  "status": "FAIL",
+  "method": "Fresh unauthenticated HTTPS requests, no redirects followed, no cookies or authorization headers",
+  "checks": [
+    {
+      "path": "/",
+      "status": 403,
+      "redirect_host": null,
+      "access_gate": false
+    },
+    {
+      "path": "/home",
+      "status": 403,
+      "redirect_host": null,
+      "access_gate": false
+    },
+    {
+      "path": "/api/v2/auth/me",
+      "status": 403,
+      "redirect_host": null,
+      "access_gate": false
+    },
+    {
+      "path": "/api/v2/integrations/labclear/bindings",
+      "status": 403,
+      "redirect_host": null,
+      "access_gate": false
+    },
+    {
+      "path": "/assets/index-DwWM1dVK.js",
+      "status": 403,
+      "redirect_host": null,
+      "access_gate": false
+    }
+  ],
+  "authenticated_public_journey": "NOT_RUN; waiting for owner Access login"
+}

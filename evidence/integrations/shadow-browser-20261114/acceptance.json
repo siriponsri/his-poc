@@ -1,0 +1,38 @@
+{
+  "environment": "Private dr-train PostgreSQL shadow; synthetic data only; no inference",
+  "freshLoginQueryRetention": "FAIL: patient encounter record query stripped; manual selection used",
+  "roundtrip": "PASS: source42 import, explicit edit43, same-person confirmation",
+  "persistedReopen": {
+    "fields": [
+      {
+        "disabled": true,
+        "label": "Test row 1",
+        "value": "ALT"
+      },
+      {
+        "disabled": true,
+        "label": "Value row 1",
+        "value": "43"
+      },
+      {
+        "disabled": true,
+        "label": "Unit row 1",
+        "value": "U/L"
+      },
+      {
+        "disabled": true,
+        "label": "Reference row 1",
+        "value": "0-40"
+      },
+      {
+        "disabled": true,
+        "label": "Printed flag row 1",
+        "value": ""
+      }
+    ],
+    "text": "CareBalance / LabClear\nLab result review\n\nตรวจค่าที่เผยแพร่แล้ว แล้วแยกยืนยันการทบทวน\n\n×\nผู้ป่วยสังเคราะห์ 001\nOPD\nALT\nSource v6\nReleased source\nTest\nALT\nPrinted value\n42\nUnit\nU/L\nPrinted reference\n0-40\nSource details\nConfirmed review\nตรวจผลล่าสุด\n\nการทบทวนนี้ยืนยันแล้ว แสดงค่าฉบับที่บันทึกไว้\n\nTest\nValue\nUnit\nReference\nPrinted flag\nรายการที่ 1\nTest\nValue\nUnit\nReference\nPrinted flag\nReview details\n\nการทบทวนนี้ไม่เปลี่ยนผลแล็บต้นฉบับ\n\nปิด"
+  },
+  "focusRestore": "PASS: Escape returned focus to Review with LabClear and removed inert",
+  "mobile": "PASS:390 viewport/body390; dialog left10/right380.4",
+  "limitation": "No public acceptance or clinical effectiveness proof"
+}

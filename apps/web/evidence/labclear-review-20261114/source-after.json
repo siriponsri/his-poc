@@ -1,0 +1,25 @@
+{
+  "finished_at": "2026-11-14T04:32:20.077869+00:00",
+  "status": "PASS",
+  "source_count": 53,
+  "source_drift": [],
+  "assets": {
+    "index.html": "4a0e62fbd86b15d0267727ed6e63ca60378497279ada7303013add1be03e4115",
+    "logo.svg": "30272f3a4b83e6cfc500657d909835fe6ab6ca47cc00003129f066ce0551bb44",
+    "assets/index-Bf5uy9Sb.js": "b9e1e84dc3b9e8eb153276c019f8fb7c9f6a8969e34427b8985db7c4754f099f",
+    "assets/index-CAcoPRTb.css": "eb6a26810a84cc4b6476c393ab633182d46d7bf8521bab74b75c5073d9a28f33",
+    "fonts/anuphan-OFL.txt": "cbc57ac0dddda1b70f246a16358fc3c2a32628a23a6d10ef64f746141d3fb159",
+    "fonts/anuphan.woff2": "2621c8496e21708ded67c483aeb159e2482f4a6114ea54f28a21a33b5799c867",
+    "fonts/instrumentsans-OFL.txt": "9e27a72ed30eb49a08678f6a5d6ed98ec7ba5368f541637ee0683ec9134ef966",
+    "fonts/instrumentsans.woff2": "93e1f1146ed9cf56072844a27499d27a9ab6d514c0451756cf934aed9df18ee8",
+    "fonts/manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+    "fonts/manrope.woff2": "64424208a993eeb2799605d75e5ce039b3aae5f4cf6e35b544803f4288df0908",
+    "fonts/SOURCES.json": "9417df78b7cd007b33e93422321542a286ce9c6f81ebba900f61fe96a7232d8b",
+    "licenses/ibm-plex-sans-thai-looped-OFL.txt": "e3ac4237aef600394644cdab2375d7011b0f80d2229ff05f47df2e61a109ab57",
+    "licenses/ibm-plex-sans-thai-OFL.txt": "0eda9417087c7f8fd73ef70d2598e66bbf2e5fabc121fe796fa2e36b9eb16789",
+    "licenses/REACT_DOM_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/REACT_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/SCHEDULER_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "licenses/SHADCN_LICENSE.txt": "cbe191a94b1484349d68d02b943bdeae08f3a9a34cc19cbaa7746bee50dd69ac"
+  }
+}

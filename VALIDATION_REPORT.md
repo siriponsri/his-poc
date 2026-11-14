@@ -1,6 +1,16 @@
 # Validation report — local baseline and protected deployment
 
-## Latest UI checkpoint — 14 November 2026
+## Current integration checkpoint — 14 November 2026
+
+The LabClear gateway/isolated receiver passes independent PostgreSQL tests and an
+actual private source42 to reviewed43 browser journey; final25 unit/117 component/
+3 audit cases and typecheck/build pass. DR derivative theme main is qualified;
+its bound receiver is ACTIVE. Final5328 public LabClear activation and actual
+authenticated source6 to reviewed7, refresh/read-only reopen/mobile journey pass.
+See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md). Original baseline below
+retains its own verification date and limits.
+
+## Historical selected UI checkpoint — 14 November 2026
 
 Selected Home/Login, Patient Record and logo are deployed with a wide read-only
 Patient panel. Final25 unit/91 component/3 audit cases/typecheck/build: PASS
@@ -25,8 +35,8 @@ preserved180 preexisting sessions, three selected results, one file and109 table
 counts; no restore/seed/account/connector/DB/model change occurred. Backend/AI
 sources are unchanged between the public workflow and final scroll-only image.
 
-The overall long goal is ACTIVE. Separate CareBalance DR derivative and LabClear
-integration/theme adaptation are not implemented or accepted here. The38-domain/
+The overall long goal is ACTIVE. This historical UI phase predates the separate
+DR/LabClear integration work described in the current checkpoint above. The38-domain/
 10-journey local baseline below was not rerun. This authored synthetic integration
 flow does not establish clinical/product effectiveness or throughput.
 

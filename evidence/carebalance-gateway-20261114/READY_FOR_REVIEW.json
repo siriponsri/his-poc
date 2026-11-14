@@ -1,0 +1,37 @@
+{
+  "recorded_at": "2026-11-14T04:37:13.000040+00:00",
+  "status": "READY_FOR_PARENT_REVIEW",
+  "source_sha256": {
+    "backend/app/integrations.py": "e1911c6c9671f92411bad017f4a74596b58df204a29257733bb86aa994a51d7f",
+    "backend/app/models_integrations.py": "94b5fdfba2d17e488cef2faf244ba4cd1f6d773181223c093769070411f9cc55",
+    "backend/app/main.py": "bb241b3a93305ba82e02403391bf4eeb62d5bc16ca593202b9fabaced5c9bc79",
+    "backend/app/model_registry.py": "c6e05f4696c1e70225d6053a8e4378a8c4b23735ef036bb3ea26c36317d92d1c",
+    "backend/migrations/versions/0003_carebalance_integrations.py": "b987799709ce479bf9b61fd0c00a31a7bf975378aab6a66c0ff73832d4f7548f",
+    "backend/tests/test_labclear_gateway_unit.py": "4b822f490818f44512cf02a940fd1393dd404b15323fe6c4366d015902378a7a",
+    "backend/tests/test_labclear_gateway_pg.py": "f99cf5450b222cfd3bd4dcd1eba9ceef31d34b4e167e77050761bdceaddd29d9",
+    "backend/tests/test_carebalance_cross_app_pg.py": "1bc491badf4a3894cd9a2ab2075cfffd5b125a3a6e144d36d89f55ec0610a246",
+    "backend/tests/test_carebalance_packaged_receiver_pg.py": "1cdd883366922cfcbe574d4e9ab0f85f27cfba3378835b3d26ee401923844ead",
+    "scripts/carebalance_receiver_fixture.py": "708e10f6055b5906b7da0e5e403ebfd5383038854c399f43a7e24b3cf44d6f9f",
+    "docs/integrations/LABCLEAR_GATEWAY.md": "63a6efc0859f38c99ddb6565c9736d506d5776fa9a24a0ce83be867737e1541f"
+  },
+  "in_memory_python_compile": "PASS",
+  "new_and_modified_file_whitespace_issues": [],
+  "gateway_recovery_phase": {
+    "status": "PASS",
+    "tests": 32,
+    "unittest_subtests": 14,
+    "receipt": "pg-accepted-recovery-http-result.json"
+  },
+  "exact_packaged_separate_postgres_phase": {
+    "status": "PASS",
+    "tests": 2,
+    "receipt": "packaged-postgres-result.json",
+    "candidate": "packaged-receiver-candidate.json"
+  },
+  "limits": [
+    "No browser or public deployment acceptance",
+    "No active database/schema/environment changes",
+    "Final full-system regression and alembic metadata check remain parent integration work"
+  ],
+  "git_mutations": false
+}

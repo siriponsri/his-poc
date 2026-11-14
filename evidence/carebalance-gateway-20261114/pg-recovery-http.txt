@@ -1,0 +1,62 @@
+[rtk] /!\ No hook installed — run `rtk init -g` for automatic token savings
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "C:\\Users\\User\\AppData\\Local\\Temp\\his-pg-tests-0z2qdwln\\files"}
+..............................                             [100%]
+================================== FAILURES ===================================
+_ GatewayAuthorizationComponentTests.test_permission_and_each_explicit_row_scope (mutation=<function GatewayAuthorizationComponentTests.test_permission_and_each_explicit_row_scope.<locals>.<lambda> at 0x000001EEA14CD300>) _
+
+self = <test_labclear_gateway_unit.GatewayAuthorizationComponentTests testMethod=test_permission_and_each_explicit_row_scope>
+
+    def test_permission_and_each_explicit_row_scope(self):
+        mutations = [lambda a, t, s, o, e: a.permissions.clear(),
+                     lambda a, t, s, o, e: setattr(t, "patient_id", "other"),
+                     lambda a, t, s, o, e: setattr(s, "encounter_id", "other"),
+                     lambda a, t, s, o, e: setattr(o, "facility_id", "other"),
+                     lambda a, t, s, o, e: setattr(e, "patient_id", "other"),
+                     lambda a, t, s, o, e: setattr(t, "domain", "D11"),
+                     lambda a, t, s, o, e: setattr(t, "kind", "lab"),
+                     lambda a, t, s, o, e: setattr(o, "kind", "imaging"),
+                     lambda a, t, s, o, e: setattr(s, "status", "preliminary"),
+                     lambda a, t, s, o, e: setattr(s, "version", 6)]
+        for mutation in mutations:
+>           with self.subTest(mutation=mutation), self.assertRaises(HTTPException): self.authorize(mutation)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: HTTPException not raised
+
+backend\tests\test_labclear_gateway_unit.py:140: AssertionError
+_ GatewayAuthorizationComponentTests.test_permission_and_each_explicit_row_scope (mutation=<function GatewayAuthorizationComponentTests.test_permission_and_each_explicit_row_scope.<locals>.<lambda> at 0x000001EEA14CD6C0>) _
+
+self = <test_labclear_gateway_unit.GatewayAuthorizationComponentTests testMethod=test_permission_and_each_explicit_row_scope>
+
+    def test_permission_and_each_explicit_row_scope(self):
+        mutations = [lambda a, t, s, o, e: a.permissions.clear(),
+                     lambda a, t, s, o, e: setattr(t, "patient_id", "other"),
+                     lambda a, t, s, o, e: setattr(s, "encounter_id", "other"),
+                     lambda a, t, s, o, e: setattr(o, "facility_id", "other"),
+                     lambda a, t, s, o, e: setattr(e, "patient_id", "other"),
+                     lambda a, t, s, o, e: setattr(t, "domain", "D11"),
+                     lambda a, t, s, o, e: setattr(t, "kind", "lab"),
+                     lambda a, t, s, o, e: setattr(o, "kind", "imaging"),
+                     lambda a, t, s, o, e: setattr(s, "status", "preliminary"),
+                     lambda a, t, s, o, e: setattr(s, "version", 6)]
+        for mutation in mutations:
+>           with self.subTest(mutation=mutation), self.assertRaises(HTTPException): self.authorize(mutation)
+                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           AssertionError: HTTPException not raised
+
+backend\tests\test_labclear_gateway_unit.py:140: AssertionError
+============================== warnings summary ===============================
+.venv\Lib\site-packages\fastapi\testclient.py:1
+  C:\Users\User\Desktop\myProject\his-poc\.venv\Lib\site-packages\fastapi\testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+SUBFAILED(mutation=<function GatewayAuthorizationComponentTests.test_permission_and_each_explicit_row_scope.<locals>.<lambda> at 0x000001EEA14CD300>) backend/tests/test_labclear_gateway_unit.py::GatewayAuthorizationComponentTests::test_permission_and_each_explicit_row_scope
+SUBFAILED(mutation=<function GatewayAuthorizationComponentTests.test_permission_and_each_explicit_row_scope.<locals>.<lambda> at 0x000001EEA14CD6C0>) backend/tests/test_labclear_gateway_unit.py::GatewayAuthorizationComponentTests::test_permission_and_each_explicit_row_scope
+2 failed, 30 passed, 1 warning, 12 subtests passed in 44.01s
+Traceback (most recent call last):
+  File "C:\Users\User\Desktop\myProject\his-poc\scripts\run_pg_suite.py", line 7, in <module>
+    subprocess.run([sys.executable,'-m','pytest',*sys.argv[1:]],check=True)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python312\Lib\subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['C:\\Users\\User\\Desktop\\myProject\\his-poc\\.venv\\Scripts\\python.exe', '-m', 'pytest', 'backend/tests/test_labclear_gateway_unit.py', 'backend/tests/test_labclear_gateway_pg.py', 'backend/tests/test_carebalance_cross_app_pg.py', '-q', '--junitxml=C:\\Users\\User\\Desktop\\myProject\\his-poc\\evidence\\carebalance-gateway-20261114\\pg-recovery-http.xml']' returned non-zero exit status 1.

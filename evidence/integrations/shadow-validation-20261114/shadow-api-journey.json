@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "method": "Actual candidate Linux images + HIS PostgreSQL + real loopback HTTP + separate LabClear PostgreSQL",
+  "checks": {
+    "role_based_lab_release": true,
+    "wrong_verifier_denied": true,
+    "explicit_review_task": true,
+    "source_import": true,
+    "human_correction_43": true,
+    "confirmation_hash_readback": true,
+    "same_key_retry": true,
+    "cross_actor_and_session_denied": true,
+    "cross_patient_denied": true,
+    "csrf_required": true,
+    "his_source_unchanged": true,
+    "review_task_not_completed": true,
+    "his_database_has_no_receiver_tables": true,
+    "no_model_calls": true
+  },
+  "source_id": "52f53251-54c6-4293-8598-cb0d93a2fa6f",
+  "source_version": 6,
+  "task_id": "fea71ada-0140-42de-8b5e-15fe6901f2cc",
+  "binding_id": "318c9954-fdcb-415e-b084-01a703415e7f",
+  "external_report_id": "cb_report_6bbdb6e41c79e6f5ffdeafbad37413106e5b0a304f0d54fb4ae940884d488b42",
+  "model_calls": 0,
+  "public_activation": false,
+  "production_resources_unchanged": true
+}

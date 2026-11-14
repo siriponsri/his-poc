@@ -1,0 +1,35 @@
+{
+  "body": 390,
+  "fields": [
+    {
+      "disabled": true,
+      "label": "Test row 1",
+      "value": "Synthetic browser analyte"
+    },
+    {
+      "disabled": true,
+      "label": "Value row 1",
+      "value": "7"
+    },
+    {
+      "disabled": true,
+      "label": "Unit row 1",
+      "value": "demo-unit"
+    },
+    {
+      "disabled": true,
+      "label": "Reference row 1",
+      "value": "manual 1-10"
+    },
+    {
+      "disabled": true,
+      "label": "Printed flag row 1",
+      "value": ""
+    }
+  ],
+  "inert": true,
+  "left": 10,
+  "right": 380.3999938964844,
+  "text": "CareBalance / LabClear\nLab result review\n\nตรวจค่าที่เผยแพร่แล้ว แล้วแยกยืนยันการทบทวน\n\n×\nผู้ป่วยสังเคราะห์ 001\nOPD\nSynthetic browser analyte\nSource v10\nReleased source\nTest\nSynthetic browser analyte\nPrinted value\n6\nUnit\ndemo-unit\nPrinted reference\nmanual 1-10\nSource details\nConfirmed review\nตรวจผลล่าสุด\n\nการทบทวนนี้ยืนยันแล้ว แสดงค่าฉบับที่บันทึกไว้\n\nรายการที่ 1\nTest\nValue\nUnit\nReference\nPrinted flag\nReview details\n\nการทบทวนนี้ไม่เปลี่ยนผลแล็บต้นฉบับ\n\nปิด",
+  "viewport": 390
+}

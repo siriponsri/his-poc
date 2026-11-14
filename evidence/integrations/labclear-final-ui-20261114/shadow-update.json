@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T05:24:23.487652+00:00",
+  "image": "his-poc-server:workspace-5328d8216f0f",
+  "image_id": "sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6",
+  "ready": {
+    "ready": true,
+    "migration": "0003_carebalance_integrations"
+  },
+  "public_services_unchanged": true,
+  "model_calls": 0
+}

@@ -1,0 +1,23 @@
+{
+  "state": "PASS",
+  "observed_at": "2026-11-14T05:33:17.536375+00:00",
+  "status": "PASS",
+  "image": "his-poc-server:workspace-5328d8216f0f",
+  "image_id": "sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6",
+  "migration_exit_code": 0,
+  "ready": {
+    "ready": true,
+    "migration": "0003_carebalance_integrations"
+  },
+  "receiver_ready": {
+    "ready": true,
+    "service": "carebalance-labclear",
+    "inference_enabled": false
+  },
+  "database_and_connector_ids_images_unchanged": true,
+  "server_env_unchanged": true,
+  "seed_or_restore_live_database": false,
+  "rollback_executed": false,
+  "no_schema_downgrade": true,
+  "inference_calls": 0
+}

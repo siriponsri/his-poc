@@ -1,0 +1,2 @@
+{"postgres": "postgres (PostgreSQL) 18.6", "profile": "disposable_synthetic_test", "database": "his_test", "network": "loopback-only", "files": "C:\\Users\\User\\AppData\\Local\\Temp\\his-pg-tests-os3dh7an\\files"}
+{"status": "PASS", "http_assertions": 19, "browser_assertions": 0}

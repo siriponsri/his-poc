@@ -1,0 +1,11 @@
+{
+  "state": "PASS",
+  "observed_at": "2026-11-14T05:32:44.349240+00:00",
+  "status": "PASS",
+  "diagnostic": "Explicit public profile required only for complete configuration comparison. Service up remains scoped to named services.",
+  "original_services_unchanged": true,
+  "new_receiver_services_started": false,
+  "database_migrated": false,
+  "original_server_env_unchanged": true,
+  "private_generated_environment_retained": true
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "helper_ast": true,
+  "helper_sha256": "7785dd492c17bea196938f941055361ce8a82594d448470f0eb3f2c6a55a780b",
+  "receipts": {
+    "ops-activation.json": "PASS",
+    "ops-backup-restore.json": "PASS",
+    "ops-patient001-existing-lab-inventory.json": "PASS",
+    "ops-postactivation-preservation.json": "PASS",
+    "ops-preflight.json": "PASS",
+    "ops-receiver-initial-failure-reconciled.json": "PASS",
+    "ops-receiver-prepared.json": "PASS",
+    "ops-selected-log-export.json": "PASS",
+    "ops-verification-uid-format-diagnostic.json": "FAIL"
+  },
+  "note": "FAIL diagnostic is intentionally retained; parent browser acceptance separate."
+}

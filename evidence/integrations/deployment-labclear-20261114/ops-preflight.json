@@ -1,0 +1,18 @@
+{
+  "state": "PASS",
+  "observed_at": "2026-11-14T05:30:14.729691+00:00",
+  "status": "PASS",
+  "prior_tables": 109,
+  "prior_results": 3,
+  "prior_sessions": 181,
+  "source_files_verified": 231,
+  "dist_assets_verified": 17,
+  "candidate": "his-poc-server:workspace-5328d8216f0f",
+  "candidate_id": "sha256:a57b43d918bbbfe05cc444c1273ae952a46407efef017631bbd15f8c7b5b4ee6",
+  "receiver": "his-poc-labclear:source-c1944c772e87",
+  "receiver_id": "sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f",
+  "overlay_sha256": "4ef28599fa37281f42ee5a05b7827d67335f288ce0d143e00715ce8eda40fd88",
+  "base_compose_sha256": "d2fc1fbdac9831a62d66dac93de7ec216cab0a8a9ab59cec015cbaea8fa801df",
+  "server_env_sha256": "39cd4643b9190a6ca88983bffcf54961804031c64250c7c2882ea2ef6a47a1aa",
+  "production_mutated": false
+}

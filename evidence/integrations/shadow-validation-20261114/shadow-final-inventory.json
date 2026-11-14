@@ -1,0 +1,47 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T05:07:52.174167+00:00",
+  "resources": [
+    {
+      "name": "his-poc-carebalance-validation-app-1",
+      "id": "a72456a7541992c3c0da955b8575964e2a7b325f03d0822c19e488ad7b63325a",
+      "image": "his-poc-server:workspace-07a719f2bee4",
+      "image_id": "sha256:590304cabbf699b67b2af059fd80d088497d41fe541b66d134ad8797ca4cf6ed",
+      "running": true
+    },
+    {
+      "name": "his-poc-carebalance-validation-db-1",
+      "id": "0ae053af1158c9523fec6152c09473559824a1031316b7686dcc281b4bdeff5f",
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "image_id": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "running": true
+    },
+    {
+      "name": "his-poc-carebalance-validation-labclear-1",
+      "id": "fde44b00362da3fa4b3877b87b6ae0e1c4b781fb6857e4664dc5d52833b3cd56",
+      "image": "his-poc-labclear:source-c1944c772e87",
+      "image_id": "sha256:d02a78be86e67d8fc64f5133ceb5a07ab2270b4e97ad44f4fa518748da539b6f",
+      "running": true
+    }
+  ],
+  "listeners": [
+    "127.0.0.1:18180",
+    "127.0.0.1:19190",
+    "127.0.0.1:15434"
+  ],
+  "databases": [
+    "carebalance_labclear_test_shadow",
+    "his_shadow"
+  ],
+  "database_isolation": "Distinct databases in one fresh validation-only PostgreSQL cluster; same validation admin role. Not production role-isolation evidence.",
+  "his_ready": {
+    "ready": true,
+    "migration": "0003_carebalance_integrations"
+  },
+  "labclear_ready": {
+    "ready": true,
+    "service": "carebalance-labclear",
+    "inference_enabled": false
+  },
+  "public_activation": false
+}

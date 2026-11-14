@@ -1,5 +1,23 @@
 # Full-system architecture
 
+## CareBalance specialist boundary
+
+LabClear uses `integrations.py`, immutable connector bindings/attempts/exchanges
+and additive migration0003. The HIS browser retains its own session/CSRF and
+released-result context; a server-only signed request reaches a dedicated
+loopback LabClear receiver/database. No browser cookie, OCR route, model call or
+existing LabClear business account is forwarded. Reserve commands and close the
+database transaction before HTTP; retain unknown outcomes and retry only the
+original semantic command. Source values and HIS task completion remain separate
+from confirmed review. Startup validates receiver DB identity/schema before
+route registration. [Contract and evidence](integrations/VALIDATION_CHECKPOINT_20261114.md).
+
+The separate DR derivative is implementing a fixed immutable clinical workspace
+and sealed source set with current verified HIS actor/capability. Its broad legacy
+factory, workspace/admin/model routes and self-declared signer fallback are not
+integration surfaces. HIS BFF/DR runtime/public acceptance remain ongoing; source
+inspection and theme previews cannot establish them.
+
 Current application: React/TypeScript/Vite → same-origin FastAPI `/api/v2` → SQLAlchemy PostgreSQL18. Domain routers share one identity/session, one patient/encounter core, one unit of work and one audit/operation boundary. SQLite/std-library server remains isolated historical regression; it is not mounted by the application. `/api/v1` default returns404. No new response shape is inserted under v1 routes.
 
 ```mermaid

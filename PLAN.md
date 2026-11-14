@@ -9,13 +9,17 @@
 3. Fresh public synthetic document/real-AI/human v2/approval/commit/reload on the
    preceding89-component candidate: PASS. Its16 server readback checks pass again
    after the final UI-only swap; no repeated inference was needed for scroll reset.
-4. Active image167d14addf47:214 source/17 asset binding, backup, app-only replacement,
+4. Previous selected UI image167d14addf47:214 source/17 asset binding, backup, app-only replacement,
    180 prior sessions/three results/file preservation, origin7 and Access5: PASS.
-5. Final rendered navigation/logout/signin scroll smoke: PASS. Interactive reopening
-   of the persisted proposal after that last swap: NOT_VERIFIED; investigate via
-   the existing authenticated browser when its current URL can be verified.
-6. Continue separate CareBalance DR derivative and LabClear integration/theme work.
-   These are active future tasks, not delivered integrations in this UI release.
+5. Final rendered navigation/logout/signin scroll and authenticated persisted
+   proposal reopening: PASS, exact version2/hash/checklist, zero new inference.
+6. LabClear scoped gateway, isolated receiver and private two-DB/browser journey:
+   PASS at the bounded [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md). Final25/117/3
+   frontend checks/build pass. Final5328 public activation and authenticated
+   source6 to reviewed7, refresh/read-only reopen/mobile journey now pass.
+7. Independent DR theme main qualified; fixed source-set/manual receiver ACTIVE.
+   Continue HIS BFF, bound frontend, real PostgreSQL and public synthetic journey.
+   No original DR mutation, live retinal inference or real-source transfer.
 
 See [release phases and limits](docs/RELEASE_PATIENT_PANEL.md) and
 [user journey](docs/USER_JOURNEY_TH.md). These checks do not rerun the original

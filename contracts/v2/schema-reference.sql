@@ -1211,6 +1211,97 @@ CREATE TABLE committed_results (
 ;
 
 
+CREATE TABLE connector_attempts (
+	binding_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	operation VARCHAR(24) NOT NULL, 
+	operation_key VARCHAR(120) NOT NULL, 
+	request_id VARCHAR(64) NOT NULL, 
+	request_hash VARCHAR(64) NOT NULL, 
+	authorization_hash VARCHAR(64) NOT NULL, 
+	payload JSONB NOT NULL, 
+	status VARCHAR(24) NOT NULL, 
+	lease_id VARCHAR(64) NOT NULL, 
+	lease_expires_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	response JSONB, 
+	error_code VARCHAR(64), 
+	completed_at TIMESTAMP WITH TIME ZONE, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_connector_attempts PRIMARY KEY (id), 
+	CONSTRAINT uq_connector_attempt_actor_session_key UNIQUE (actor_id, session_id, operation_key), 
+	CONSTRAINT ck_connector_attempts_attempt_operation CHECK (operation IN ('import','read','confirm')), 
+	CONSTRAINT ck_connector_attempts_attempt_status CHECK (status IN ('running','succeeded','unknown','rejected','quarantined')), 
+	CONSTRAINT fk_connector_attempts_binding_id_connector_bindings FOREIGN KEY(binding_id) REFERENCES connector_bindings (id), 
+	CONSTRAINT fk_connector_attempts_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_connector_attempts_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id), 
+	CONSTRAINT uq_connector_attempts_request_id UNIQUE (request_id)
+)
+
+;
+
+CREATE INDEX ix_connector_attempts_binding_id ON connector_attempts (binding_id);
+
+
+CREATE TABLE connector_bindings (
+	connector VARCHAR(24) NOT NULL, 
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	patient_id VARCHAR(64) NOT NULL, 
+	encounter_id VARCHAR(64) NOT NULL, 
+	task_id VARCHAR(64) NOT NULL, 
+	source_id VARCHAR(64) NOT NULL, 
+	source_version INTEGER NOT NULL, 
+	source_hash VARCHAR(64) NOT NULL, 
+	source_snapshot JSONB NOT NULL, 
+	lab_values JSONB NOT NULL, 
+	external_report_id VARCHAR(128), 
+	state VARCHAR(24) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_connector_bindings PRIMARY KEY (id), 
+	CONSTRAINT uq_connector_binding_source UNIQUE (actor_id, session_id, connector, task_id, source_id, source_version), 
+	CONSTRAINT fk_connector_binding_encounter_scope FOREIGN KEY(encounter_id, patient_id, organization_id, facility_id) REFERENCES encounters (id, patient_id, organization_id, facility_id), 
+	CONSTRAINT ck_connector_bindings_positive_source_version CHECK (source_version > 0), 
+	CONSTRAINT ck_connector_bindings_known_connector CHECK (connector = 'labclear'), 
+	CONSTRAINT ck_connector_bindings_binding_state CHECK (state IN ('reserved','draft','confirmed','unknown','quarantined')), 
+	CONSTRAINT fk_connector_bindings_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_connector_bindings_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_connector_bindings_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_connector_bindings_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id), 
+	CONSTRAINT fk_connector_bindings_patient_id_patients FOREIGN KEY(patient_id) REFERENCES patients (id), 
+	CONSTRAINT fk_connector_bindings_encounter_id_encounters FOREIGN KEY(encounter_id) REFERENCES encounters (id), 
+	CONSTRAINT fk_connector_bindings_task_id_tasks FOREIGN KEY(task_id) REFERENCES tasks (id), 
+	CONSTRAINT fk_connector_bindings_source_id_clinical_labs FOREIGN KEY(source_id) REFERENCES clinical_labs (id)
+)
+
+;
+
+
+CREATE TABLE connector_exchanges (
+	attempt_id VARCHAR(64) NOT NULL, 
+	context_snapshot JSONB NOT NULL, 
+	outcome VARCHAR(24) NOT NULL, 
+	receipt JSONB, 
+	error_code VARCHAR(64), 
+	quarantined BOOLEAN NOT NULL, 
+	quarantine_reason VARCHAR(64), 
+	completed_at TIMESTAMP WITH TIME ZONE, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_connector_exchanges PRIMARY KEY (id), 
+	CONSTRAINT ck_connector_exchanges_exchange_outcome CHECK (outcome IN ('running','succeeded','unknown','rejected')), 
+	CONSTRAINT fk_connector_exchanges_attempt_id_connector_attempts FOREIGN KEY(attempt_id) REFERENCES connector_attempts (id)
+)
+
+;
+
+CREATE INDEX ix_connector_exchanges_attempt_id ON connector_exchanges (attempt_id);
+
+
 CREATE TABLE corrective_actions (
 	incident_id VARCHAR(64) NOT NULL, 
 	owner_id VARCHAR(64) NOT NULL, 

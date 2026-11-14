@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "verdict_scope": "Independent source-level security/message-validation and isolated offline interoperability review of the listed HIS sender and LabClear receiver files only; one acknowledged LOW hardening recommendation remains",
+  "recorded_at": "2026-11-14T03:25:11Z",
+  "reviewer": "ui_release_checkpoint, independent of sender and receiver implementers",
+  "implementation_owners": {
+    "HIS_sender": "root agent",
+    "LabClear_receiver": "LabClear implementation agent"
+  },
+  "authorization_boundary": "Read-only implementation review. Only this new review.json artifact was written by the reviewer for this task. No gateway review, application source edits, Git action, deployed runtime access, model call or real patient data.",
+  "final_sha256": {
+    "HIS": {
+      "backend/app/integration_clients.py": "fb3949852c3dbc32814b6f23b9ec3c53b7e27f48fa70a2bad9be3f0e1d295da3",
+      "backend/app/integration_protocol.py": "a56181cf3b7d5f9505c29382dd65119f29182053c2e08c3211d4c4efbec22071",
+      "backend/tests/test_integration_clients_unit.py": "ede5d6d414c21b6fa968563a924dbb80e2f76994f25f595d7ca0e6c096cfdac4",
+      "backend/tests/test_integration_protocol_unit.py": "f53e7035215438254f0bd05fb4a6f16e9d6f2c6416e882ed88b3f7a848f3a6db",
+      "backend/tests/test_labclear_receiver_interop.py": "060620b5e9856663cc4691e00adf67fc39e665a2f961f0501302d4ea34b99065"
+    },
+    "LabClear": {
+      "routers/carebalance_bridge.py": "bb7f05c35d96b15a80dff21639dbd8f15cffbdf3117e5196cee6d7fd40bb0360",
+      "services/carebalance_reports.py": "b51f670d6c508e013b4d0730c0880892a396f51f7c1c814ff42f5aabe28bdd9f",
+      "services/carebalance_protocol.py": "a56181cf3b7d5f9505c29382dd65119f29182053c2e08c3211d4c4efbec22071",
+      "docs/carebalance-receiver.md": "b777d2e5824d359eeac708338dacf50b35242b1e6fcba0bac2c2bbf2f9a48125",
+      "tests/test_carebalance_receiver.py": "f16869f9067836f10e1a922d5458a5faf8eaeb2da2998898e93cb47fe2bbfbae"
+    }
+  },
+  "source_checks": [
+    {
+      "name": "Shared wire protocol byte parity",
+      "status": "PASS",
+      "evidence": "Direct SHA256 equality of HIS integration_protocol.py and LabClear carebalance_protocol.py"
+    },
+    {
+      "name": "Explicit disabled defaults and dedicated transport",
+      "status": "PASS_SOURCE_REVIEW",
+      "evidence": "Exact true enable flags and >=32-byte server keys required; HIS sender allows explicit loopback IP/http origins only, no URL credentials/query/fragment, proxy inheritance or followed redirect; receiver rejects browser cookies/Origin/Sec-Fetch/query"
+    },
+    {
+      "name": "HMAC integrity and bounded context",
+      "status": "PASS",
+      "evidence": "Version, method, path, canonical timestamp, nonce, audience and raw body SHA256 are signed; constant-time comparison; duplicate auth headers rejected; explicit UTC Z wire timestamp and now < expiry <= now+120 required"
+    },
+    {
+      "name": "Nonce and business transaction separation",
+      "status": "PASS_SOURCE_AND_SQLITE_TESTS",
+      "evidence": "Insert-only deterministic UNIQUE primary key commits before business action, including action failure; permanent retention; SQLite serialization and concurrent replay test produce one winner. Existing PostgreSQL mutex branch inspected but not executed."
+    },
+    {
+      "name": "Source, owner and revision isolation",
+      "status": "PASS_SOURCE_AND_OFFLINE_TESTS",
+      "evidence": "Owner partition includes organization/facility/actor/patient. Exact binding additionally checks encounter/task/audience/purpose/binding/source and exact immutable cells. Report and source use dedicated entity kinds; foreign context and changed source cells fail."
+    },
+    {
+      "name": "Human confirmation and semantic idempotency",
+      "status": "PASS_SOURCE_AND_OFFLINE_TESTS",
+      "evidence": "Explicit same-person confirmation, current source revision/hash, complete ordered source-index mapping and draft-only immutable confirmation. Atomic business writes/idempotency exclude only refreshable context expiry; same operation payload replays original receipt and changed payload conflicts."
+    },
+    {
+      "name": "Size, schema and returned receipt checks",
+      "status": "PASS_AFTER_FIXES",
+      "evidence": "Receiver streams <=256KiB before JSON validation; sender bounds request256KiB and receipt2MiB. Root/nested strict models reject extras/coercion, lab rows max60, printed Unicode strings/ranges preserved. Typed receipt validates required cell/review data, source/report/snapshot hashes, row IDs, human reviewer and confirmation hash; draft cells equal normalized source; confirmed cells equal submitted normalized reviewed cells. Deep JSON parse recursion is normalized to unknown outcome."
+    }
+  ],
+  "reviewer_executed_checks": [
+    {
+      "command": "rtk proxy .venv\\Scripts\\python.exe -B -m unittest backend.tests.test_integration_protocol_unit backend.tests.test_integration_clients_unit -v",
+      "cwd_project": "HIS",
+      "status": "PASS",
+      "exit_code": 0,
+      "tests": 14,
+      "sender_sha256_at_execution": "e1c93f5c063f0939c0369110f2ce73c589e502ff4543ec1d21defce2dc133509",
+      "method": "Synthetic httpx.MockTransport only; no sockets, deployed service or HIS PostgreSQL authorization exercised",
+      "raw_evidence": "Reviewer tool execution transcript; no separate raw log file created by this read-only review"
+    },
+    {
+      "command": "rtk proxy .venv\\Scripts\\python.exe -B scripts/offline_check.py pytest -q -p no:cacheprovider tests/test_carebalance_receiver.py",
+      "cwd_project": "LabClear",
+      "status": "PASS",
+      "exit_code": 0,
+      "tests": 51,
+      "warnings": "One existing Starlette/httpx deprecation warning",
+      "method": "Network-denying launcher, isolated temporary encrypted SQLite, signed in-process HTTP; provider entrypoints replaced with immediate failures",
+      "raw_evidence": "Reviewer tool execution transcript"
+    },
+    {
+      "command": "rtk proxy .venv\\Scripts\\python.exe -B scripts/offline_check.py pytest -q -p no:cacheprovider C:\\Users\\User\\Desktop\\myProject\\his-poc\\backend\\tests\\test_labclear_receiver_interop.py",
+      "cwd_project": "LabClear",
+      "status": "PASS",
+      "exit_code": 0,
+      "tests": 9,
+      "warnings": "One existing Starlette/httpx deprecation warning",
+      "sender_sha256_at_execution": "e1c93f5c063f0939c0369110f2ce73c589e502ff4543ec1d21defce2dc133509",
+      "method": "Real HIS client -> httpx.MockTransport -> real LabClear ASGI receiver, isolated SQLite; no TCP/remote service/model",
+      "raw_evidence": "Reviewer tool execution transcript"
+    },
+    {
+      "name": "Final bounded deep-JSON regression reprobe",
+      "status": "PASS",
+      "exit_code": 0,
+      "sender_sha256": "fb3949852c3dbc32814b6f23b9ec3c53b7e27f48fa70a2bad9be3f0e1d295da3",
+      "input": "application/json receipt containing20000 nested objects,120001 bytes, below2MiB cap",
+      "before": "Uncaught RecursionError on e1c93f5 candidate",
+      "after": "ConnectorOutcomeUnknown: Connector outcome needs reconciliation",
+      "source_phase_check": "Reversing only the final catch-tuple edit reconstructs exact e1c93f5 SHA256; no other sender byte changes between the independently tested candidate and final sender. Full suites were not repeated by reviewer after this isolated fix."
+    }
+  ],
+  "other_evidence_checked": [
+    {
+      "kind": "Durable LabClear receipt inspected, not rerun in full by reviewer",
+      "path": "LabClear/docs/evidence/carebalance-receiver-20261114/pytest-final.xml",
+      "status": "PASS_RECORDED",
+      "junit_tests": 127,
+      "junit_failures": 0,
+      "junit_errors": 0,
+      "junit_skipped": 0,
+      "boundary": "Receiver51/theme16/business60 offline cases; reviewer independently reran only the51 receiver cases. Original fixture failures remain in pytest-initial.xml and README."
+    },
+    {
+      "kind": "Parent-reported final regression",
+      "status": "PASS_REPORTED_BY_PARENT",
+      "tests": 14,
+      "scope": "Parent reports actual14 protocol/sender unit tests passed after final RecursionError catch and regression-fixture addition; reviewer independently reran only the bounded20k-depth probe on this final hash"
+    }
+  ],
+  "finding_history": [
+    {
+      "id": "IR-01",
+      "severity": "MEDIUM",
+      "status": "FIXED",
+      "file": "HIS/backend/app/integration_clients.py",
+      "initial_sender_sha256": "3fc0932c506451431c287346665ffbea41751544bb08a4890848dd48a75a3841",
+      "reproduction": "confirm_report accepted returned value999 for submitted value<5.0 when upstream recalculated a self-consistent review hash. Draft receipt with only source_index and no printed cells was also accepted.",
+      "impact": "A mismatched or incomplete upstream receipt could be presented as successful review of the user's submitted cells.",
+      "repair": "Strict Draft/Confirmed receipt and cell schemas; exact normalized draft/source and confirmation/submitted-cell comparisons; independent source/hash/reviewer/row validation.",
+      "verification": "Source review and14 independently executed unit tests plus9 actual ASGI interoperability tests passed on repaired e1c93f5 candidate."
+    },
+    {
+      "id": "IR-02",
+      "severity": "MEDIUM",
+      "status": "FIXED",
+      "file": "HIS/backend/app/integration_clients.py",
+      "initial_sender_sha256": "3fc0932c506451431c287346665ffbea41751544bb08a4890848dd48a75a3841",
+      "reproduction": "Valid JSON receipt state=[] raised TypeError in set-membership validation instead of ConnectorOutcomeUnknown.",
+      "repair": "Typed receipt validation runs before state membership and normalizes invalid-schema errors.",
+      "verification": "Regression for malformed state arrays/missing cells passed within14 independently executed unit tests."
+    },
+    {
+      "id": "IR-03",
+      "severity": "MEDIUM",
+      "status": "FIXED",
+      "file": "HIS/backend/app/integration_clients.py:154",
+      "initial_sender_sha256": "e1c93f5c063f0939c0369110f2ce73c589e502ff4543ec1d21defce2dc133509",
+      "reproduction": "A120001-byte response with20000 nested JSON objects escaped as RecursionError, despite being below the receipt byte limit.",
+      "impact": "Malformed upstream output could bypass unknown-outcome reconciliation and escape as an unhandled client error.",
+      "repair": "Final catch includes RecursionError without forwarding upstream diagnostics; regression case added.",
+      "verification": "Reviewer repeated exact bounded deep-body reprobe on finalfb394985 candidate and observed ConnectorOutcomeUnknown."
+    }
+  ],
+  "residual_recommendations": [
+    {
+      "id": "IR-04",
+      "severity": "LOW",
+      "status": "ACKNOWLEDGED_NONBLOCKING_HARDENING",
+      "file": "HIS/backend/app/integration_clients.py:215",
+      "observation": "Sender validates correction indices are ordered/unique/in range, but does not recompute that they exactly match the returned printed-cell differences from the normalized source baseline.",
+      "recommendation": "Optionally compare corrected_source_indices with the actual changed printed-field rows, ignoring receiver-computed id/status.",
+      "limits": "Code-inspection recommendation only, not a new demonstrated receiver defect. LabClear receiver computes correction indices from actual reviewed-vs-source cells, and confirm response now matches submitted normalized reviewed cells exactly. Parent explicitly acknowledged this as a separate LOW hardening item."
+    }
+  ],
+  "not_run_or_not_reviewed": [
+    "Moving HIS gateway and PostgreSQL session/scope/source-release authorization implementation",
+    "PostgreSQL receiver execution, concurrency or persistence acceptance",
+    "Deployed connector, TCP/TLS/Cloudflare/public browser round trip or live provider/model",
+    "Production configuration, real credentials, real patient data or clinical/product validation",
+    "LabClear theme/browser review and unrelated application source",
+    "Git, staging, commit, push, deployment or remote resource mutation"
+  ],
+  "handoff": "PASS applies only to the exact hashed sender/receiver source and bounded offline checks above, with acknowledged LOW recommendation. Keep connectors disabled until gateway authorization, isolated runtime configuration and their own end-to-end acceptance are completed."
+}

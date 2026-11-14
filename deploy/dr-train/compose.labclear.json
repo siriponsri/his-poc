@@ -1,0 +1,57 @@
+{
+  "services": {
+    "app": {
+      "environment": {
+        "HIS_LABCLEAR_ENABLED": "${HIS_LABCLEAR_ENABLED:-false}",
+        "HIS_LABCLEAR_ORIGIN": "http://127.0.0.1:18090",
+        "HIS_LABCLEAR_KEY": "${LABCLEAR_CONNECTOR_KEY:?Dedicated connector key required}"
+      }
+    },
+    "labclear_db": {
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "environment": {
+        "POSTGRES_DB": "carebalance_labclear",
+        "POSTGRES_USER": "carebalance_labclear",
+        "POSTGRES_PASSWORD": "${LABCLEAR_DATABASE_PASSWORD:?Dedicated database password required}"
+      },
+      "ports": ["127.0.0.1:15433:5432"],
+      "volumes": ["labclear_database:/var/lib/postgresql"],
+      "healthcheck": {
+        "test": ["CMD-SHELL", "pg_isready -U carebalance_labclear -d carebalance_labclear"],
+        "interval": "2s", "timeout": "3s", "retries": 30
+      },
+      "restart": "unless-stopped",
+      "cpus": 1, "mem_limit": "512m",
+      "logging": {"driver": "json-file", "options": {"max-size": "10m", "max-file": "3"}}
+    },
+    "labclear": {
+      "image": "${HIS_LABCLEAR_IMAGE:?Immutable reviewed LabClear image required}",
+      "network_mode": "host",
+      "environment": {
+        "APP_ENV": "production",
+        "CAREBALANCE_INSTANCE_ID": "carebalance-labclear-his-poc",
+        "CAREBALANCE_CONNECTOR_ENABLED": "true",
+        "CAREBALANCE_CONNECTOR_KEY": "${LABCLEAR_CONNECTOR_KEY:?Dedicated connector key required}",
+        "CAREBALANCE_EXPECTED_DATABASE": "carebalance_labclear",
+        "DATABASE_URL": "postgresql://carebalance_labclear:${LABCLEAR_DATABASE_PASSWORD}@127.0.0.1:15433/carebalance_labclear",
+        "BUSINESS_DATA_KEY": "${LABCLEAR_DATA_KEY:?Dedicated encryption key required}",
+        "PROVIDER_NETWORK_ENABLED": "false",
+        "BUSINESS_EXTERNAL_ENABLED": "false",
+        "PYTHONDONTWRITEBYTECODE": "1"
+      },
+      "depends_on": {"labclear_db": {"condition": "service_healthy"}},
+      "healthcheck": {
+        "test": ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:18090/ready',timeout=3)"],
+        "interval": "5s", "timeout": "4s", "retries": 12
+      },
+      "restart": "unless-stopped",
+      "cpus": 1, "mem_limit": "512m",
+      "read_only": true,
+      "tmpfs": ["/tmp:rw,noexec,nosuid,size=32m"],
+      "cap_drop": ["ALL"],
+      "security_opt": ["no-new-privileges:true"],
+      "logging": {"driver": "json-file", "options": {"max-size": "10m", "max-file": "3"}}
+    }
+  },
+  "volumes": {"labclear_database": {}}
+}

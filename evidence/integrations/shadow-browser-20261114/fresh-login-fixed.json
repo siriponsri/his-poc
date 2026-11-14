@@ -1,0 +1,12 @@
+{
+  "detail": "ALT",
+  "heading": [
+    "Laboratory"
+  ],
+  "selectors": [
+    "patient-001",
+    "encounter-001"
+  ],
+  "url": "/domains/D10?patient_id=patient-001&encounter_id=encounter-001&record=5f64d1b6-17d3-4fd7-9bb3-d231e0be6cfc",
+  "visibleRawHistory": false
+}

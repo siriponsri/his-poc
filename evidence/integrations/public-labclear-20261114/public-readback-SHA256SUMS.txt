@@ -1,0 +1,3 @@
+ca02f32df89c6433d311c336e7ead6b373c1d039dfe42a5998c130208b82a405  evidence/integrations/public-labclear-20261114/public-readback-artifacts.json
+7b4428ffe48a90bd72c975528f6012b6522e182dd7ac56822861d66d53c84731  evidence/integrations/public-labclear-20261114/public-readback-database.json
+94fd3ac4ec95ef8031281e8d5c7062e22404350ce7715b7a015f5740924ed73e  evidence/integrations/public-labclear-20261114/public-readback-notes.md

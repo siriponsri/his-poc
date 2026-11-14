@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "command": [
+    "rtk",
+    "proxy",
+    "python",
+    "var/carebalance-integration/public_labclear_readback.py"
+  ],
+  "observed_exit_code": 0,
+  "operator_helper_ast": true,
+  "operator_helper_sha256": "9827b9f7b16fbb1e0c8239f2f085a494cd1b87e44c628b834bd4567242677ab5",
+  "his_checks": 9,
+  "receiver_checks": 8,
+  "preservation_checks": 6,
+  "no_business_write_or_receiver_http": true
+}

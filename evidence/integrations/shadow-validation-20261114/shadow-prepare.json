@@ -1,0 +1,25 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T05:01:56.232472+00:00",
+  "project": "his-poc-carebalance-validation",
+  "his_database": "his_shadow",
+  "labclear_database": "carebalance_labclear_test_shadow",
+  "his_ready": {
+    "ready": true,
+    "migration": "0003_carebalance_integrations"
+  },
+  "labclear_ready": {
+    "ready": true,
+    "service": "carebalance-labclear",
+    "inference_enabled": false
+  },
+  "production_unchanged": true,
+  "provider": "mock_demo",
+  "model_calls": 0,
+  "public_activation": false,
+  "ports": [
+    18180,
+    19190,
+    15434
+  ]
+}

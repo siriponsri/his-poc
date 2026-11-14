@@ -16,7 +16,7 @@ import domains from './data/full-domains.json'
 import resourceCatalog from './data/resource-catalog.json'
 
 const client=new Client()
-function safeDestination(path:string){return path.startsWith('/domains/')||path==='/worklist'||path==='/audit'?path:'/home'}
+function safeDestination(path:string){const pathname=path.split('?')[0];return /^\/domains\/D(?:0[1-9]|[12][0-9]|3[0-8])\/?$/.test(pathname)||['/worklist','/audit','/home'].includes(pathname)?path:'/home'}
 function useNames(){
  const {lang}=useLang()
  return {
@@ -130,7 +130,7 @@ function Workspace(){
  const {lang,t}=useLang();const {domainName,groupName}=useNames()
  const [recordRequest,setRecordRequest]=useState<PatientRecordRequest|null>(null)
  const [scrollReset,setScrollReset]=useState(0)
- const authGeneration=useRef(0);const booted=useRef(false);const [session,setSession]=useState<Session|null>(null);const [booting,setBooting]=useState(true);const [sessionError,setSessionError]=useState('');const [path,setPath]=useState(location.pathname);const [patient,setPatient]=useState('');const [encounter,setEncounter]=useState('');const [patients,setPatients]=useState<Row[]>([]);const [encounters,setEncounters]=useState<Row[]>([]);const [contextError,setContextError]=useState('');const [pending,setPending]=useState(false);const originalDestination=useRef(safeDestination(location.pathname));const route=routePath(path.split('?')[0]);const domain=domains.find(d=>d.id===route);const mainRef=useRef<HTMLDivElement>(null)
+ const authGeneration=useRef(0);const booted=useRef(false);const [session,setSession]=useState<Session|null>(null);const [booting,setBooting]=useState(true);const [sessionError,setSessionError]=useState('');const [path,setPath]=useState(location.pathname);const [patient,setPatient]=useState('');const [encounter,setEncounter]=useState('');const [patients,setPatients]=useState<Row[]>([]);const [encounters,setEncounters]=useState<Row[]>([]);const [contextError,setContextError]=useState('');const [pending,setPending]=useState(false);const originalDestination=useRef(safeDestination(location.pathname+location.search));const route=routePath(path.split('?')[0]);const domain=domains.find(d=>d.id===route);const mainRef=useRef<HTMLDivElement>(null)
  // Explicit navigation starts at the page heading; modal toggles and browser history keep their scroll.
  useLayoutEffect(()=>{if(!booting&&scrollReset>0)window.scrollTo({top:0,left:0,behavior:'instant'})},[scrollReset,booting])
  useEffect(()=>{setRecordRequest(null)},[session?.user.id,session?.user.facility_id])

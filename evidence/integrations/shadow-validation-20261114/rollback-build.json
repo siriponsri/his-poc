@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "at": "2026-11-14T05:01:02.730259+00:00",
+  "image": "his-poc-server:rollback-0003-8b91c19e32fe",
+  "image_id": "sha256:590f3b505e4ce7617e60376d14d42db3850a2eb1d261f2d6cdf0ec0d17ece13c",
+  "source_files": 214,
+  "changed_files": [
+    "backend/app/main.py"
+  ],
+  "old_main_sha256": "4a883e322b99bda908dd4c133d573d678880d06eb3bf735bc54a1199aa586591",
+  "new_main_sha256": "8b91c19e32fe527ab36e252cb2504c2fd6034a2a572fbc8bdb1c5b747336eee7",
+  "original_source_unchanged": true,
+  "production_unchanged": true,
+  "runtime_test": "NOT_RUN",
+  "schema_downgrade": false
+}

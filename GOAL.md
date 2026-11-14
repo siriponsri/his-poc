@@ -5,8 +5,13 @@
 The long goal remains ACTIVE: improve the patient reading journey, create a
 separate CareBalance derivative based on dr-support-screening-poc while preserving
 the original project, and connect LabClear with authorized source/theme changes.
-DR and LabClear integration are not implemented in this UI checkpoint; local UI
-or earlier domain evidence does not establish those connections.
+The LabClear gateway/isolated receiver and actual private browser round trip are
+qualified; final25 unit/117 component/3 audit cases and build pass. Separate DR
+theme main is qualified and its bounded receiver is being implemented.
+LabClear activation and authenticated public synthetic journey now pass. DR
+integration acceptance remains ongoing. See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
+
+## Historical selected UI qualification
 
 The selected Clinical Workspace Home/Login, Patient Record workspace, Operations
 Desk logo and wide read-only Patient panel are deployed. Final25 unit/91 component/
@@ -17,7 +22,8 @@ selected results and the stored file. Seven origin hashes and five Access gates 
 The preceding89-component candidate passed a fresh public synthetic
 Typhoon→human v2→approve→commit→reload workflow. Its exact result passes16 read-only
 checks again on the final scroll/focus-only image. Final rendered navigation/Login
-scroll smoke passes; final interactive persisted-proposal reopening is NOT_VERIFIED.
+scroll smoke passes; final interactive persisted-proposal reopening subsequently passed in Chrome
+with exact version2/hash/checklist and disabled mutations (zero new inference).
 See [current checkpoint](docs/RELEASE_PATIENT_PANEL.md) and
 [user journey](docs/USER_JOURNEY_TH.md). Do not mark the full long goal complete.
 Earlier completed milestones below retain their original acceptance scope.

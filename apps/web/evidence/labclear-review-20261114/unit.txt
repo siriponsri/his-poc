@@ -1,0 +1,36 @@
+[rtk] /!\ No hook installed — run `rtk init -g` for automatic token savings
+npm notice run his-poc-web@0.3.0 test
+npm notice run node --test tests/*.test.mjs
+✔ typed decoder frozen context_initial (2.5914ms)
+✔ typed decoder frozen context_faults (0.3054ms)
+✔ typed decoder frozen context_pending (0.4267ms)
+✔ typed decoder frozen context_edited (0.1797ms)
+✔ typed decoder frozen context_approved (0.2193ms)
+✔ typed decoder frozen context_committed (0.2441ms)
+✔ HTTP200 timeout/abstention/failure never becomes a proposal (32.795ms)
+✔ review payload excludes edits for approve and reject, includes edit (1.3261ms)
+✔ document save preserves metadata and original draft version (0.689ms)
+✔ discard draft intentionally adopts latest server version (1.1572ms)
+✔ dirty edits or document prevents approval (0.2708ms)
+✔ lost response retry retains identical payload/key (1.3892ms)
+✔ pending commit refuses a different proposal version (0.3112ms)
+✔ fixture adapter is read-only and never calls fetch (0.3405ms)
+✔ 403 errors and nonJSON responses remain explicit errors (1.8285ms)
+✔ no provider endpoint call and only singleton API mutation context (0.4622ms)
+✔ dirty review remains bound to old version/hash after concurrent refresh (0.4628ms)
+✔ default browser fetch retains its global receiver when called through Client (32.7255ms)
+✔ cookie session client sends CSRF and stable idempotency key only to HIS API (0.6642ms)
+✔ definitive conflict is distinct from network/5xx unknown outcome (4.7811ms)
+✔ successful mutation replaces entire displayed revision atomically (0.3373ms)
+✔ readback reconciles only exact operation/proposal/version/hash (0.3145ms)
+✔ URL router does not consume skip link hashes; explicit unknown route (0.3224ms)
+✔ malformed v2 collections fail explicitly instead of empty fallback (0.508ms)
+✔ session response requires server identity, permissions and CSRF (0.4438ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 228.6359

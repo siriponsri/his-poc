@@ -1,6 +1,6 @@
 # HIS POC v0.3 — เว็บทดสอบพร้อมใช้งาน
 
-อัปเดต14 พฤศจิกายน2026: หน้า Home/Login และ Patient Record ที่เลือกขึ้นเว็บแล้ว พร้อม Patient panel แยกขนาดกว้างสำหรับอ่านเอกสาร ผ่าน25 unit/91 component/3 audit cases, typecheck และ build งานเอกสาร→Typhoon จริง→แก้v2→อนุมัติ→บันทึก→reload ผ่าน URL จริงบนรุ่น panel ก่อนแก้ scroll และผลเดิมยังผ่าน16ข้อฝั่งเซิร์ฟเวอร์หลังอัปเดตสุดท้าย การเปิด proposal เดิมซ้ำด้วยคลิกหลังอัปเดตนั้นยัง NOT_VERIFIED อ่าน [ผลรอบล่าสุด](docs/RELEASE_PATIENT_PANEL.md) และ [User journey](docs/USER_JOURNEY_TH.md) ส่วน long goal เชื่อม DR/LabClear ยังทำต่อและยังไม่ผ่านการเชื่อมจริง
+อัปเดต14 พฤศจิกายน2026: Home/Login และ Patient Record ขึ้นเว็บแล้ว งาน LabClear ผ่านการเชื่อมฐานข้อมูลแยกและทดสอบหน้าจอจริงในระบบทดสอบส่วนตัว รุ่นใหม่ผ่าน25 unit/117 component/3 audit cases และ build ส่วน DR รุ่น CareBalance ผ่านการปรับธีมและกำลังทำ receiver ที่ผูกกับผู้ป่วยและชุดภาพโดยเฉพาะ อ่าน [checkpoint ล่าสุด](docs/integrations/VALIDATION_CHECKPOINT_20261114.md) และแยกผล deploy/ทดสอบ URL จริงจากผลทดสอบส่วนตัว Long goal ยัง ACTIVE
 
 ผลรอบ 13 พฤศจิกายน 2026: 38 domains ที่ L2 และ J01–J10 ที่ L3 ผ่านบนข้อมูลสังเคราะห์ พร้อม Windows Docker, PostgreSQL, browser และ isolated restore ที่รันจริง อ่าน VALIDATION_REPORT.md และ coverage เพื่อดูขอบเขต หลักฐาน MOCK และ external L4 ที่ยังไม่ได้ตรวจ
 

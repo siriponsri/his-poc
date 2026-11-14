@@ -38,7 +38,7 @@ The final14 November image matches **214 source files /17 built assets**. Fronte
 
 A fresh public Chrome workflow on the preceding wide-panel candidate passed document → real Typhoon → human edit v2 → approval → commit → reload. The same result passed16 read-only server checks again after the final scroll/focus-only update: **11.563 seconds,424 input /134 output tokens**, cost unmeasured. Final rendered navigation/Login scroll checks passed; reopening the persisted proposal interactively after that last update remains **NOT_VERIFIED**. [Current release report](docs/RELEASE_PATIENT_PANEL.md) records the exact source phases and limitation. This synthetic integration check does not establish clinical effectiveness or throughput.
 
-The long goal continues with a separate CareBalance DR derivative and LabClear integration/theme work. Those integrations are not implemented in this UI checkpoint. [Deployment operations](docs/DEPLOY_DR_TRAIN.md).
+LabClear review is deployed and verified through the protected public URL: select a released Laboratory result, open **Review with LabClear**, explicitly send the source, review/confirm and reopen the saved result. Original HIS values remain unchanged. The separate CareBalance DR theme is qualified; its bound clinical receiver is in progress and the long goal remains active. [Integration evidence and current limits](docs/integrations/VALIDATION_CHECKPOINT_20261114.md). [Current deployment operations](evidence/integrations/deployment-labclear-20261114/ops-activation-runbook.md).
 
 ## Overview
 
