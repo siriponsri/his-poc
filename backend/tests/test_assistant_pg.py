@@ -96,7 +96,8 @@ def test_four_profile_packets_are_role_safe(role,profile,has_note,has_lab):
         if role=='registration':
             assert 'Synthetic history' not in str(packet) and 'created_by' not in str(packet)
             assert all('draft_id' not in candidate for candidate in view['effect_candidates'])
-        if role=='nurse':assert '152' not in str(packet) and 'D37' not in str(packet)
+        if role=='nurse':
+            assert not any(row['kind']=='lab' or row['fields'].get('domain')=='D37' for row in rows)
         if has_lab:
             row=next(r for r in rows if r['kind']=='lab')
             assert row['fields']['result']=='Fasting plasma glucose: 152 mg/dL (70-99)'
@@ -479,3 +480,107 @@ def test_read_render_endpoints_do_not_create_runs_or_watches(monkeypatch):
     for route in ('config','worklist','watches','operations-map'):
         for _ in range(2):assert c.get('/api/v2/assistant/'+route).status_code==200
     with SessionLocal() as db:assert counts==(db.scalar(select(func.count()).select_from(AssistantRun)),db.scalar(select(func.count()).select_from(AssistantWatch)))
+
+def test_terminal_visits_are_absent_from_eligible_work_and_do_not_abort_batch():
+    with SessionLocal.begin() as db:
+        pid,active_eid,_=context(db)
+        terminal_ids=[]
+        for status in ('closed','completed','discharged','cancelled'):
+            _,eid,_=context(db);visit=db.get(M.Encounter,eid);visit.status=status;visit.version+=1;terminal_ids.append(eid)
+    c=login()
+    work=c.get('/api/v2/assistant/worklist',params={'profile':'visit_preparation'})
+    assert work.status_code==200
+    eligible={item['encounter_id'] for item in work.json()['eligible_contexts']}
+    assert active_eid in eligible and not eligible.intersection(terminal_ids)
+    response=c.post('/api/v2/assistant/batches',json={'profile':'visit_preparation','maximum_contexts':1,'keep_prepared':False},headers={'Idempotency-Key':uid()})
+    assert response.status_code==202,response.text
+    assert [run['encounter_id'] for run in response.json()['runs']]==[active_eid]
+    assert c.post('/api/v2/auth/logout').status_code==200
+    assert dispatch()['dispatched']==0
+
+def test_disabled_assistant_flag_keeps_role_capability_metadata_but_disables_home(monkeypatch):
+    from backend.app import assistant_api
+    calls=[]
+    def disabled_config():calls.append(1);return {**CONFIG,'enabled':False}
+    monkeypatch.setattr(assistant_api,'_provider_config',disabled_config)
+    response=login().get('/api/v2/assistant/config')
+    assert response.status_code==200
+    data=response.json()
+    assert data['enabled'] is False and data['provider']['enabled'] is False
+    assert next(p for p in data['profiles'] if p['id']=='visit_preparation')['available'] is True
+    assert data['default_profile']=='visit_preparation' and calls==[1]
+
+def test_worker_lease_clock_refreshes_after_delayed_authorization_and_admission():
+    a,rid,_,_,_=fixture_run()
+    entry=utcnow()-timedelta(minutes=10);reserved=utcnow()
+    times={'current':entry};calls=[]
+    def after_collection_config():
+        # Simulate a lock/collection wait longer than the entire old reservation.
+        times['current']=reserved
+        return CONFIG
+    def prepared(*args):
+        with SessionLocal() as db:
+            run=db.get(AssistantRun,rid)
+            assert run.started_at==reserved
+            assert run.lease_expires_at==reserved+timedelta(seconds=62)
+            assert run.hold_until==reserved+timedelta(seconds=122)
+            assert run.lease_expires_at>utcnow()
+        calls.append(1)
+        return provider(*args)
+    result=run_once(prepare=prepared,validate=lambda p,a,v:a,config=after_collection_config,clock=lambda:times['current'])
+    assert result['state']=='succeeded' and calls==[1]
+
+def test_admission_clock_is_read_only_after_global_lock_acquisition(monkeypatch):
+    from backend.app import assistant_admission
+    observed=[]
+    with SessionLocal.begin() as db:
+        original=db.execute
+        def execute(statement,*args,**kwargs):
+            result=original(statement,*args,**kwargs)
+            if 'pg_advisory_xact_lock' in str(statement):observed.append('lock_acquired')
+            return result
+        def after_lock_clock():
+            assert observed==['lock_acquired']
+            observed.append('clock_read')
+            return utcnow()
+        monkeypatch.setattr(db,'execute',execute)
+        monkeypatch.setattr(assistant_admission,'utcnow',after_lock_clock)
+        assert not admission_busy(db)
+    assert observed==['lock_acquired','clock_read']
+
+def test_legacy_new_run_lease_starts_after_delayed_global_admission(monkeypatch):
+    from backend.app import ai, assistant_admission
+    from sqlalchemy.orm import Session
+    with SessionLocal.begin() as db:
+        pid,eid,did=context(db);a=actor(db)
+        task=M.Task(id=uid(),organization_id=a.organization_id,facility_id=a.facility_id,patient_id=pid,encounter_id=eid,domain='D37',kind='document_review',title='Synthetic legacy admission test')
+        db.add(task);db.flush();task_id=task.id
+    key=uid();entry=utcnow()-timedelta(minutes=10);reserved=utcnow();clock={'value':entry};calls=[]
+    original=assistant_admission.admission_busy
+    def delayed_admission(db,**kwargs):
+        busy=original(db,**kwargs)
+        clock['value']=reserved
+        return busy
+    def assign_logical_created_at(session,flush_context,instances):
+        for row in session.new:
+            if isinstance(row,M.InferenceRun) and row.operation_key==key:row.created_at=clock['value']
+    class LegacyProvider:
+        name='offline_delayed_legacy';is_live=True;timeout_seconds=2
+        def public_config(self):return {'provider':self.name,'test_double':True}
+        def generate_document(self,*args):
+            with SessionLocal() as db:
+                persisted=db.scalar(select(M.InferenceRun).where(M.InferenceRun.operation_key==key))
+                assert persisted.created_at==reserved
+                assert persisted.created_at+timedelta(seconds=persisted.context_snapshot['lease_seconds'])>utcnow()
+            calls.append(1)
+            return {'outcome':'success','reason':None,'action':{'text':'Synthetic professional review','completeness':{}},'provenance':{'test_double':True},'usage':None}
+    monkeypatch.setattr(assistant_admission,'admission_busy',delayed_admission)
+    event.listen(Session,'before_flush',assign_logical_created_at)
+    try:
+        with SessionLocal() as db:
+            task=db.get(M.Task,task_id);doc=db.get(M.Document,did);visit=db.get(M.Encounter,eid);revision=db.get(M.DocumentVersion,doc.current_version_id)
+            body=ai.Propose(task_id=task_id,document_id=did)
+            result=ai.live_propose(db,a,body,key,body.model_dump(),LegacyProvider(),task,doc,visit,revision)
+            assert result['run']['outcome']=='success' and result['proposal'] is not None
+    finally:event.remove(Session,'before_flush',assign_logical_created_at)
+    assert calls==[1]

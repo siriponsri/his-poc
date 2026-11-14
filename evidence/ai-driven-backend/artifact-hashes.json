@@ -1,7 +1,9 @@
 {
-  "executed-core-journeys.json": "84d6c32d23a7424d990578b7c0f8468d09be002c5c0267723a0db4c5b0444051",
-  "execution.json": "8abac1c9c69b159cd0f160c0f355917727815213f0bae439c43f60f13580a5e5",
+  "executed-core-journeys.json": "5a768c3fadc4b334512e500f40e5a0c73cb0dc047355d99349c20006c0c8a9ec",
+  "execution.json": "01594479a73117b3bdb070ddf76c5916d553084f366ea8d5e817bce9d90f6b1c",
+  "lease-fence-execution.json": "3ed7540b7ebe512a8c37757d18dde5ec1067b2d8d1322a7bbab4571c7dd06725",
+  "lease-fence-pytest.xml": "2776766741b76d6046786c1e50c23d95d92d02186d7fa32497608582dddc11b3",
   "provider-integration.json": "9020165bb40cf5a572db58e4b37de725eda006508d0bfda69101df30182b2beb",
-  "pytest-results.xml": "de759945f6d215c32d3f2dc1c9539b327854898bc8a24702b9c877b99a601eaa",
-  "README.md": "137c0ee9d1049bf295c98664fa8a27606d4b63056ee163db28242fa2d0cfc769"
+  "pytest-results.xml": "05473010f17bd97eefd835b130b833a6bed3d27c9103402b6e011fe52b100163",
+  "README.md": "0b73bf15f2f9e6ad3420323ebab5ceefc1092d9926312ee287ae41f668abed27"
 }

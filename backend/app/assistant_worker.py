@@ -82,9 +82,10 @@ def _recover_expired(db,now):
         run.execution_state='interrupted';run.review_state='unavailable';run.error='WORKER_LEASE_EXPIRED';run.completed_at=now
         audit(db,_receipt_actor(run),PROFILES[run.profile]['domains'][0],run.id,'assistant_interrupted',{'reason':'WORKER_LEASE_EXPIRED','automatic_retry':False})
 
-def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None,now=None):
+def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None,now=None,clock=utcnow):
     """Dispatch at most one queued run. Dependency injection is for offline test doubles."""
-    now=now or utcnow()
+    fixed_now=now
+    now=fixed_now if fixed_now is not None else clock()
     if prepare is None or validate is None or config is None:
         from .assistant_provider import prepare_assistant, validate_assistant_artifact, assistant_provider_config
         prepare=prepare or prepare_assistant;validate=validate or validate_assistant_artifact;config=config or assistant_provider_config
@@ -108,12 +109,15 @@ def run_once(session_factory=SessionLocal,prepare=None,validate=None,config=None
                     run.execution_state='failed';run.error='ASSISTANT_PROVIDER_NOT_QUALIFIED';run.provider=provider;run.completed_at=now
                     audit(db,actor,PROFILES[run.profile]['domains'][0],run.id,'assistant_failed',{'reason':run.error})
                     continue
-                if admission_busy(db,assistant_id=run.id,now=now):
+                if admission_busy(db,assistant_id=run.id,now=fixed_now):
                     run.execution_state='waiting_for_capacity';continue
+                # Authorization/source/global admission locks may have waited. Start the
+                # reservation from a fresh clock while the global lock is still held.
+                reservation_now=fixed_now if fixed_now is not None else clock()
                 timeout=min(300,max(1,int(provider.get('timeout_seconds',180))))
-                run.execution_state='running';run.lease_id=uid();run.started_at=now
-                run.lease_expires_at=now+timedelta(seconds=timeout+60)
-                run.hold_until=now+timedelta(seconds=timeout+120)
+                run.execution_state='running';run.lease_id=uid();run.started_at=reservation_now
+                run.lease_expires_at=reservation_now+timedelta(seconds=timeout+60)
+                run.hold_until=reservation_now+timedelta(seconds=timeout+120)
                 run.provider=provider
                 lease_id=run.lease_id;profile=run.profile;locale=run.locale;view=run.inference_view
                 audit(db,actor,PROFILES[profile]['domains'][0],run.id,'assistant_started',{'profile':profile,'input_hash':run.input_hash})

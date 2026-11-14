@@ -101,12 +101,16 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
     snapshot={'task_id':t.id,'task_version':t.version,'document_id':d.id,'document_version':d.version,'document_version_id':v.id,'content_hash':v.content_hash,'encounter_id':e.id,'encounter_version':e.version,'patient_id':t.patient_id,'checklist_id':'SYNTHETIC_DOCUMENT_COMPLETENESS_V1','lease_seconds':min(300,max(1,int(timeout)))+60}
     title,content=d.title,v.content
     run=InferenceRun(id=uid(),task_id=t.id,actor_id=actor.user_id,provider=provider.name,outcome='running',reason=None,elapsed_ms=0,measured_cost=None,usage=None,operation_key=key,request_hash=request_hash,authorization_hash=auth_hash,context_snapshot=snapshot,provenance=provider.public_config())
-    db.add(run);db.flush();run_id=run.id
+    run_id=run.id
     from .assistant_admission import admission_busy
     if admission_busy(db,legacy_id=run_id):
         run.outcome='failed';run.reason='LIVE_PROVIDER_BUSY';run.completed_at=utcnow()
+        db.add(run);db.flush()
         audit(db,actor,'D37',run.id,'inference_failed',{'task_id':run.task_id,'provider':run.provider,'reason':'LIVE_PROVIDER_BUSY'})
         return finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':False})
+    # Start this new attempt's created_at lease only after admission wait; the
+    # global transaction lock remains held through insert and dispatch commit.
+    db.add(run);db.flush()
     audit(db,actor,'D37',run_id,'inference_started',{'task_id':t.id,'document_version_id':v.id,'provider':run.provider})
     db.commit();db.close()
     started=time.perf_counter_ns()

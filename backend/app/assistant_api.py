@@ -54,9 +54,10 @@ def _provider_config():
 
 @router.get('/config')
 def config(actor=Depends(current_actor)):
+    provider=_provider_config()
     profiles=[{'id':key,'label':p['label'],'available':available(actor,key),'allowed_effects':allowed_effects(actor,key)} for key,p in PROFILES.items()]
     preferred=next((p for role,p in (('laboratory','laboratory_handoff'),('nurse','nursing_handover'),('clinician','visit_preparation'),('registration','records_readiness')) if role in actor.roles and available(actor,p)),None)
-    return {'enabled':any(p['available'] for p in profiles),'profiles':profiles,'default_profile':preferred or next((p['id'] for p in profiles if p['available']),None),'provider':_provider_config(),'limits':LIMITS}
+    return {'enabled':bool(provider.get('enabled')) and any(p['available'] for p in profiles),'profiles':profiles,'default_profile':preferred or next((p['id'] for p in profiles if p['available']),None),'provider':provider,'limits':LIMITS}
 
 def _visible_watches(db,actor):
     rows=[]

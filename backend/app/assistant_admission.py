@@ -7,9 +7,10 @@ from .models_assistant import AssistantRun
 from .common import utcnow
 
 def admission_busy(db, *, legacy_id=None, assistant_id=None, now=None):
-    now=now or utcnow()
     key=int.from_bytes(hashlib.sha256(b'his-inference-admission:global:v1').digest()[:8],'big',signed=True)
     db.execute(text('SELECT pg_advisory_xact_lock(:key)'),{'key':key})
+    # A production caller may wait for this lock; age leases only after acquiring it.
+    now=now if now is not None else utcnow()
     legacy=db.scalars(select(InferenceRun).where(InferenceRun.id!=legacy_id if legacy_id else text('true'), InferenceRun.provider!='mock_demo', or_(InferenceRun.outcome.in_(['running','timeout','interrupted']),InferenceRun.provenance['provider_outcome'].astext=='timeout')))
     for run in legacy:
         hold=run.created_at+timedelta(seconds=int((run.context_snapshot or {}).get('lease_seconds',360)))

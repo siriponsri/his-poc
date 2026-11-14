@@ -11,9 +11,15 @@ Executed on an isolated, loopback-only PostgreSQL 18.6 database named `his_test`
 
 - Alembic migration to `0005_assistant_workspaces`: PASS.
 - Alembic schema drift check: PASS, no new upgrade operations.
-- 124 tests: PASS, zero failures: 49 assistant, 5 provider integration,
+- Full baseline: 126 tests PASS, zero failures: 51 assistant, 5 provider integration,
   20 assistant-provider, 18 existing core, 32 existing document-provider tests.
   See `pytest-results.xml` for individual cases.
+- After the final lease-clock repair: 17 targeted worker, admission, concurrent,
+  timeout, legacy, authorization, terminal-visit and feature-flag tests PASS
+  (37 unrelated assistant cases deselected). This includes three new clock-order
+  regressions. The full baseline was not repeated after that narrowly scoped
+  clock change. `lease-fence-execution.json` pins the final source hashes and
+  `lease-fence-pytest.xml` names the executed cases.
 - Existing document review and provider tests are included in that total.
 - Full canonical compact inference view is bounded to 2000 UTF-8 bytes. Notes
   are included whole or explicitly omitted; all eligible source evidence remains
@@ -43,6 +49,25 @@ by this backend worker** and remain with the root integrator. The root's exact
 provider/schema dependency `e0531d89a5be0a6c10a1e292d53048c0b5f06d4e` was
 cherry-picked under explicit parent authorization for offline integration tests;
 this worker did not edit that dependency's source files.
+
+The eligibility predicate excludes closed, completed, discharged and cancelled
+visits, matching admission. The feature flag controls `config.enabled` while
+preserving role-capability metadata. Production admission reads its clock after
+the global PostgreSQL lock; the worker starts its lease from a fresh clock after
+all authorization, collection and admission waits. No DB transaction is held
+across provider network work. Legacy live inference inserts its new run only
+after the shared admission lock returns, so its created-at lease also starts
+after the wait. Existing legacy records are unchanged.
+
+`backend/tests/export_assistant_qualification_packets.py` separately exported
+four authored synthetic packets from a disposable database for the root's
+private real-model qualification. Visit/nursing packets include a short Thai
+note created through the normal document service. Their compact views are
+1215/1083/583/608 bytes and complete input texts 1827/1707/1223/1250 bytes.
+The private export and SHA receipt live under the root's ignored `var` directory,
+contain no session credentials, and were prepared with zero model calls and zero
+production database queries. The receipt preserves the exact source hashes at
+export time; later eligibility/clock repairs do not rewrite those frozen inputs.
 
 The worker requires `configured`, `qualified`, and the run's explicit membership
 in `profiles_qualified`; an empty list qualifies no profile. No qualification-mode

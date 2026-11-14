@@ -96,5 +96,5 @@ def collect_packet(db, actor, profile, patient_id, encounter_id, locale='th'):
 
 def eligible_contexts(db, actor, profile):
     require_profile(actor,profile)
-    encounters=db.scalars(scope_query(M.Encounter,actor).where(M.Encounter.status!='closed').order_by(M.Encounter.created_at.desc(),M.Encounter.id).limit(100))
+    encounters=db.scalars(scope_query(M.Encounter,actor).where(M.Encounter.status.not_in(('closed','completed','discharged','cancelled'))).order_by(M.Encounter.created_at.desc(),M.Encounter.id).limit(100))
     return [{'patient_id':e.patient_id,'encounter_id':e.id,'patient_label':db.get(M.Patient,e.patient_id).display_name,'patient_reference':e.patient_id,'profile':profile} for e in encounters]
