@@ -86,11 +86,16 @@
       "signin_destination": "Original D37 route; no claim of Home redirect"
     },
     "final_interactive_persisted_proposal_reopen": {
-      "status": "NOT_VERIFIED",
-      "observation": "Parent click/key attempt did not select persisted proposal; no cause established",
-      "browser_stop_reason": "Current Windows Chrome URL could not be verified confidently",
-      "server_state": "Exact earlier public result readback16 checks PASS after final activation",
-      "resume": "Verify current authenticated URL, open exact proposal and inspect version2/result. No additional inference or seed/account reset is needed for read-only inspection."
+      "status": "PASS",
+      "prior_inconclusive_attempt": {
+        "status": "NOT_VERIFIED",
+        "observation": "Parent click/key attempt did not select persisted proposal; no cause established",
+        "browser_stop_reason": "Current Windows Chrome URL could not be verified confidently",
+        "server_state": "Exact earlier public result readback16 checks PASS after final activation",
+        "resume": "Verify current authenticated URL, open exact proposal and inspect version2/result. No additional inference or seed/account reset is needed for read-only inspection."
+      },
+      "receipt": "evidence/research-ui-release/final91-public-reopen/acceptance.json",
+      "observation": "Authenticated Chrome opened exact saved version2; matching final bundle/hash/source checklist; edit/approve/reject/commit disabled; no new inference or writes"
     }
   },
   "public_model_run": {

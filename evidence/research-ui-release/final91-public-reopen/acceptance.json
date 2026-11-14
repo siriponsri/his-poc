@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "scope": "Actual authenticated Chrome, final deployed UI, read-only persisted proposal inspection",
+  "candidate_bundle": "/assets/index-YkkpA1iL.js",
+  "candidate_image": "his-poc-server:workspace-167d14addf47",
+  "proposal_id": "1715af20-6275-43a3-bfbb-08ce6ffec70f",
+  "proposal_version": 2,
+  "action_hash": "73bd30484fb8b6c8f25a443c91b59bc85283bd95be392ea3eada5d667cd40483",
+  "task_id": "1e5bda27-e154-4415-b48d-97e0ed96ec20",
+  "document_id": "56b34d6a-e16f-4e73-b34b-a839ea25d73f",
+  "checks": {
+    "current_https_origin_and_exact_context": "PASS",
+    "matching_final_bundle_observed_in_DOM": "PASS",
+    "click_saved_committed_proposal_opens_version2": "PASS",
+    "source_quotes_and_four_present_one_missing_checklist": "PASS",
+    "displayed_action_hash_matches_prior_persisted_receipt": "PASS",
+    "edit_approve_reject_commit_actions_disabled": "PASS"
+  },
+  "new_model_calls": 0,
+  "source_writes": 0,
+  "artifacts": [
+    "review-open.dom.txt",
+    "review-open.jpg"
+  ],
+  "capture_note": "Full-page CDP screenshot timed out; supported normal screenshot capture succeeded. DOM state and loaded bundle were verified directly. No root cause is assigned to the earlier inconclusive browser attempt.",
+  "limits": [
+    "This is saved-result inspection, not a new final-candidate inference run",
+    "No new DR or LabClear deployment acceptance"
+  ],
+  "recorded_at": "2026-11-14T03:34:38.625377+00:00"
+}

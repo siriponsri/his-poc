@@ -1,5 +1,16 @@
 # Codex handoff — Patient panel deployed; integration long goal active
 
+## Subsequent publication and browser readback
+
+UI checkpoint `1e77901` was committed and pushed to main. A later authenticated
+Chrome inspection of `/assets/index-YkkpA1iL.js` successfully opened the retained
+version2 proposal, matched its action hash/source checklist and verified disabled
+edit/approval/commit actions, with no new inference or source writes. See
+`evidence/research-ui-release/final91-public-reopen/acceptance.json`. This resolves
+the earlier NOT_VERIFIED saved-proposal selection item below. The earlier full
+real-inference journey remains89-phase evidence. The integration goal is active;
+new gateway/receiver work is a separate, undeployed source phase.
+
 ## Latest checkpoint — 14 November 2026
 
 Work in C:/Users/User/Desktop/myProject/his-poc. The long goal remains ACTIVE:

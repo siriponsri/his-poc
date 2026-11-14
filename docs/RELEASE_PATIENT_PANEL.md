@@ -34,11 +34,12 @@ A fresh public Chrome document → real Typhoon → human editv2 → approve →
 reload workflow passed on the preceding89-component wide-panel candidate. Its
 exact result passed all16 read-only server checks again after the final
 scroll/focus-only update. The final rendered navigation/Login/logout scroll smoke
-passed. **Interactive reopening of the persisted proposal after the final swap
-remains NOT_VERIFIED**: click/key did not select it. The current browser URL then
-could not be verified, ending that browser attempt. No cause was established;
-current server result verification remains PASS. Do not promote the earlier
-interactive workflow to an unexecuted final91 interactive check.
+passed. A subsequent authenticated Chrome inspection of the final bundle opened
+the exact committed proposal, displayed version2, the matching action hash and
+source checklist, and verified all edit/approval/commit actions disabled.
+**Final91 saved-proposal reopening PASS**, with zero new model calls or source
+writes. The earlier inconclusive browser attempt remains historical evidence;
+no cause is assigned to it. [Final browser receipt](../evidence/research-ui-release/final91-public-reopen/acceptance.json).
 
 ## Exact release phases
 
@@ -175,11 +176,10 @@ and [retained initial link failure/repair](../evidence/research-ui-release/relea
 No application tests, browser action, inference, deployment, package ZIP or source
 stage/commit/push was performed by the documentation closeout agent.
 
-Re-establish the authenticated browser's current URL, then open the exact retained
-proposal and inspect version2/result to resolve the final interactive check. No
-extra inference, seed or account reset is needed for that inspection. A current
-server readback is already PASS; do not claim the browser selection passed until
-it is observed.
+The subsequent final91 read-only browser inspection resolved the saved-proposal
+selection gap; its receipt is linked above. The earlier real-inference workflow
+still belongs to the89 phase. No additional inference, seed or account reset was
+performed for that inspection. UI source was published on main as `1e77901`.
 
 Continue the owner-authorized long goal: establish the separate CareBalance DR
 derivative, preserve the original DR project, connect LabClear and adapt its theme

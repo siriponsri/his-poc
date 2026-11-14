@@ -1,0 +1,145 @@
+- button "ข้ามไปยังเนื้อหา"
+- main:
+  - link "CareBalance home":
+    - /url: /home
+    - generic: CareBalance
+  - navigation "Main navigation":
+    - button "Overview"
+    - button "Patients"
+    - button "Documents"
+    - button "Reviews"
+  - generic "ข้อมูลสังเคราะห์สำหรับการพัฒนา": HIS POC
+  - group "ภาษา / Language":
+    - button "ไทย" [pressed]
+    - button "EN"
+  - button "ออกจากระบบ":
+    - text: ออกจากระบบ
+  - region "บริบทผู้ป่วย":
+    - generic: ผู
+    - generic: กำลังทำงานกับ
+    - strong:
+      - button "ผู้ป่วยสังเคราะห์ 001"
+    - generic: patient-001
+    - generic: เกิด 1 ม.ค. 2524
+    - generic: OPD · กำลังตรวจ
+    - generic: ผู้ป่วย
+    - combobox "ผู้ป่วย":
+      - option "ยังไม่เลือก"
+      - option "ผู้ป่วยสังเคราะห์ 001 · patient-001" [selected]
+    - generic: การรับบริการ
+    - combobox "การรับบริการ":
+      - option "ทุก encounter ของผู้ป่วย"
+      - option "OPD · encounter-001 · กำลังตรวจ" [selected]
+  - navigation "Patient record":
+    - button "Visits"
+    - button "Documents"
+    - button "Tasks"
+    - button "Review"
+  - heading "AI document review" [level=1]
+  - paragraph: ตรวจเอกสารสังเคราะห์โดยมีผู้ตรวจอนุมัติก่อนบันทึก
+  - generic: AI จริง · dr-train
+  - button "โหลดและยืนยันผลล่าสุด"
+  - region "เลือกงานและหลักฐาน":
+    - generic: งานที่ผูกผู้ป่วย / encounter
+    - combobox "งานที่ผูกผู้ป่วย / encounter":
+      - option "เลือกงาน"
+      - 'option "Public Patient Panel Review 14-11-2026: เสร็จสิ้น" [selected]'
+      - 'option "ตรวจความครบถ้วนด้วย AI จริง: เสร็จสิ้น"'
+      - 'option "ตรวจความครบถ้วนด้วย AI จริง: เปิดงาน"'
+      - 'option "ตรวจเอกสารสังเคราะห์ 001: เสร็จสิ้น"'
+    - generic: เอกสารหลักฐาน
+    - combobox "เอกสารหลักฐาน":
+      - option "เลือกเอกสาร"
+      - 'option "ทดสอบ Patient panel ผ่าน Cloudflare 14-11-2026: v1" [selected]'
+      - 'option "ทดสอบ Cloudflare Triadic 13-11-2026: v1"'
+      - 'option "ทดสอบ AI จริง 111751: v1"'
+      - 'option "ทดสอบ AI จริง 26359a: v1"'
+      - 'option "Synthetic delayed A ef3ff8: v1"'
+      - 'option "Synthetic delayed A 1d3023: v1"'
+      - 'option "Browser imaging report: v1"'
+      - 'option "Browser imaging report: v1"'
+      - 'option "บันทึกสังเคราะห์: v1"'
+    - button "สร้างข้อเสนอจากเอกสารที่บันทึก" [disabled]
+    - paragraph: งานนี้ปิดแล้ว เปิดงานตรวจเอกสารใหม่หากต้องการเรียก AI อีกครั้ง
+  - generic "ข้อเสนอของงาน 1 กำลังอ่านรุ่น 2":
+    - text: ข้อเสนอของงาน
+    - generic: "1"
+    - generic: กำลังอ่านรุ่น 2
+  - region "เอกสารต้นฉบับ":
+    - heading "เอกสารต้นฉบับ" [level=2]
+    - paragraph:
+      - text: "เอกสารสังเคราะห์สำหรับทดสอบ Patient record บน his.ai-cie.com อาการสำคัญ:"
+      - mark: มาทบทวนเอกสารตัวอย่าง
+      - text: "ประวัติ:"
+      - mark: ข้อมูลสมมติในการทดสอบระบบ ไม่ใช่ผู้ป่วยจริง
+      - text: "การประเมิน:"
+      - mark: ผู้บันทึกระบุให้ตรวจความครบถ้วนของข้อความ
+      - text: "ผู้บันทึก:"
+      - mark: ผู้ทดสอบ test01
+    - paragraph: ข้อความที่โมเดลอ้างถึงถูกเน้นไว้
+    - generic "หลักฐานและรหัสผูกรุ่น" [active]
+    - paragraph: "Action hash: 73bd30484fb8b6c8f25a443c91b59bc85283bd95be392ea3eada5d667cd40483"
+    - term: encounter version
+    - definition: "1"
+    - term: task version
+    - definition: "1"
+    - generic "รายละเอียดทางเทคนิค 4":
+      - text: รายละเอียดทางเทคนิค
+      - generic: "4"
+  - region "ผลตรวจและการอนุมัติ":
+    - heading "ทบทวนรุ่น 2" [level=2]
+    - generic "committed": บันทึกผลแล้ว
+    - paragraph:
+      - generic: "ผู้ป่วย: patient-001"
+      - generic: "การรับบริการ: encounter-001"
+    - paragraph:
+      - text: AI จริง
+      - generic: ข้อเสนอจาก AI จริง
+    - region "ผลตรวจความครบถ้วนเอกสาร":
+      - heading "รายการตรวจจากโมเดล" [level=4]
+      - paragraph:
+        - text: พบหลักฐาน
+        - generic: "4"
+        - text: ไม่พบหลักฐาน
+        - generic: "1"
+        - text: ยังไม่ชัดเจน
+        - generic: "0"
+      - paragraph: พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ
+      - list:
+        - paragraph:
+          - strong: อาการสำคัญ / เหตุผลที่มารับบริการ
+          - generic: พบหลักฐาน
+        - blockquote: มาทบทวนเอกสารตัวอย่าง
+        - paragraph:
+          - strong: ประวัติที่เกี่ยวข้อง
+          - generic: พบหลักฐาน
+        - blockquote: ข้อมูลสมมติในการทดสอบระบบ ไม่ใช่ผู้ป่วยจริง
+        - paragraph:
+          - strong: ผลประเมินโดยผู้บันทึก
+          - generic: พบหลักฐาน
+        - blockquote: ผู้บันทึกระบุให้ตรวจความครบถ้วนของข้อความ
+        - paragraph:
+          - strong: แผนการดูแล
+          - generic: ไม่พบหลักฐาน
+        - paragraph: ยังไม่พบในเอกสาร · ไม่มีข้อความอ้างอิงสำหรับรายการนี้
+        - paragraph:
+          - strong: ผู้บันทึกเอกสาร
+          - generic: พบหลักฐาน
+        - blockquote: ผู้ทดสอบ test01
+      - paragraph: รายการนี้เป็นการตรวจข้อความตามแบบตรวจสังเคราะห์ ผู้ตรวจต้องเทียบกับเอกสารต้นฉบับก่อนอนุมัติ
+    - generic: ข้อเสนอที่ตรวจจริง
+    - textbox "ข้อเสนอที่ตรวจจริง" [disabled]: ผู้ตรวจ test01 อ่านต้นฉบับสังเคราะห์จาก Patient panel แล้ว พบอาการสำคัญ ประวัติ การประเมิน และชื่อผู้บันทึก แต่ยังไม่มีแผนการดูแลหรือการติดตาม ขอให้ผู้บันทึกเพิ่มเติมก่อนนำเอกสารไปใช้งาน ผลนี้ไม่ประเมินความถูกต้องทางคลินิก
+    - paragraph: บันทึกผลแล้ว ข้อเสนอนี้แก้ไขหรืออนุมัติซ้ำไม่ได้
+    - button "บันทึกเป็นรุ่นใหม่" [disabled]
+    - button "อนุมัติรุ่นที่แสดง" [disabled]
+    - button "ปฏิเสธ" [disabled]
+    - button "ยืนยันบันทึกผล" [disabled]
+  - generic "โมเดลและที่มาของผลตรวจ"
+  - generic "ประวัติการเรียก AI 1":
+    - text: ประวัติการเรียก AI
+    - generic: "1"
+  - generic "ผลที่บันทึก 5":
+    - text: ผลที่บันทึก
+    - generic: "5"
+  - generic: CareBalance / HIS POC
+  - generic: ข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา
