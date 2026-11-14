@@ -48,7 +48,12 @@ The exact acknowledgement is:
    Reconciliation releases admission only. It does not requeue, retry, approve,
    attest, sign, release a result or apply an old clinical artifact.
 
-Trusted adapter success/abstention can also produce audited
-`positive_terminal_evidence`, including when an output remains stale/interrupted
-for review. Generic failed/invalid-output observations cannot produce that proof.
-All markers remain read-only through the API.
+Trusted adapter dispatch telemetry can also produce audited
+`positive_terminal_evidence`: the adapter observed the pinned model, `done=true`
+and a canonical response SHA. This physical proof may clear admission even when
+the clinical artifact or a later identity check fails. Clinical rejection and
+source/review staleness remain unchanged. Audited `no_dispatch_evidence` proves a
+failure occurred before chat dispatch. Raw flags and generic outcome labels do
+not establish either proof; dispatched failures without terminal evidence remain
+UNKNOWN regardless of TTL. Flagless older adapters retain conservative legacy
+reason handling. All markers remain read-only through the API.

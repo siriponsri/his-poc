@@ -17,7 +17,7 @@ before=historical.read_bytes() if historical.exists() else None
 commands=[
     [sys.executable,'-m','alembic','-c','backend/alembic.ini','upgrade','head'],
     [sys.executable,'-m','alembic','-c','backend/alembic.ini','check'],
-    [sys.executable,'-m','pytest','backend/tests/test_assistant_pg.py','backend/tests/test_assistant_quarantine_pg.py','backend/tests/test_assistant_provider_integration_pg.py','backend/tests/test_core.py','backend/tests/test_assistant_provider.py','backend/tests/test_document_provider_unit.py','-q','--junitxml=evidence/ai-driven-backend/pytest-results.xml'],
+    [sys.executable,'-m','pytest','backend/tests/test_assistant_pg.py','backend/tests/test_assistant_quarantine_pg.py','backend/tests/test_assistant_dispatch_stage_pg.py','backend/tests/test_assistant_provider_integration_pg.py','backend/tests/test_core.py','backend/tests/test_assistant_provider.py','backend/tests/test_document_provider_unit.py','-q','--junitxml=evidence/ai-driven-backend/pytest-results.xml'],
 ]
 report={'status':'RUNNING','scope':'disposable PostgreSQL18 + FastAPI + explicit offline provider doubles; no live inference/server/deployment','started_at':datetime.now(timezone.utc).isoformat(),'commands':[],'source_sha256':{str(path.relative_to(ROOT)).replace('\\','/'):hashlib.sha256(path.read_bytes()).hexdigest() for path in sorted((ROOT/'backend').rglob('*.py'))}}
 code=1

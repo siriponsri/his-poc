@@ -1,5 +1,6 @@
 """Trusted audited evidence; no HTTP reconciliation route exists. TTL/ps[] cannot clear UNKNOWN."""
 from datetime import timedelta
+import re
 from fastapi import HTTPException
 from .models import AuditEvent, Task, InferenceRun
 from .models_assistant import AssistantRun
@@ -41,9 +42,19 @@ def _verified_marker(db,run,kind,key,action):
     return marker
 
 def record_positive_terminal(db,run,kind,actor,result):
-    """Only trusted adapter boundaries may report verified success/abstention."""
+    """Audit physical-stage proof from trusted adapters, separately from clinical validity."""
+    observed=result.get('provenance') or {}
+    if not isinstance(observed,dict):return None
+    started=observed.get('dispatch_started');terminal=observed.get('terminal_response_observed')
+    common={'outcome':result.get('outcome'),'provenance_sha256':digest(observed)}
+    if started is True and terminal is True and isinstance(observed.get('response_sha256'),str) and re.fullmatch('[0-9a-f]{64}',observed['response_sha256']):
+        return _write_marker(db,run,kind,actor,'positive_terminal_evidence','inference_provider_terminal_observed',{**common,'evidence_kind':'pinned_terminal_response','response_sha256':observed['response_sha256']})
+    if started is False and terminal is False and result.get('outcome') in ('failed','timeout','invalid_output'):
+        return _write_marker(db,run,kind,actor,'no_dispatch_evidence','inference_no_dispatch_observed',{**common,'evidence_kind':'verified_no_dispatch'})
+    # Incomplete/inconsistent stage telemetry never falls back to a success label.
+    if 'dispatch_started' in observed or 'terminal_response_observed' in observed:return None
     if result.get('outcome') not in ('success','abstained'):return None
-    return _write_marker(db,run,kind,actor,'positive_terminal_evidence','inference_provider_terminal_observed',{'outcome':result['outcome'],'provenance_sha256':digest(result.get('provenance',{}))})
+    return _write_marker(db,run,kind,actor,'positive_terminal_evidence','inference_provider_terminal_observed',{**common,'evidence_kind':'legacy_verified_success'})
 
 def admission_status(db,run,kind,now=None):
     now=now if now is not None else utcnow()
@@ -52,12 +63,16 @@ def admission_status(db,run,kind,now=None):
         expires=run.lease_expires_at;unknown_reason=data.get('provider_reason') in ASSISTANT_UNKNOWN or (state=='failed' and run.error in ASSISTANT_UNKNOWN)
     else:
         expires=run.created_at+timedelta(seconds=int((run.context_snapshot or {}).get('lease_seconds',360)));unknown_reason=data.get('provider_reason') in LEGACY_UNKNOWN or (state=='failed' and run.reason in LEGACY_UNKNOWN)
-    result={'state':'clear','reason':None,'reconciliation':None,'positive_terminal_evidence':None}
+    observed=(data.get('provenance') or {}) if kind=='assistant' else data
+    stage_present=isinstance(observed,dict) and ('dispatch_started' in observed or 'terminal_response_observed' in observed)
+    result={'state':'clear','reason':None,'reconciliation':None,'positive_terminal_evidence':None,'no_dispatch_evidence':None}
     if state=='running' and expires and expires>now:return {**result,'state':'active','reason':'RUNNING'}
-    unknown=state in ('running','timeout','interrupted') or data.get('provider_outcome') in ('timeout','interrupted') or unknown_reason
+    unknown=state in ('running','timeout','interrupted') or data.get('provider_outcome') in ('timeout','interrupted') or unknown_reason or stage_present
     if not unknown:return result
     terminal=_verified_marker(db,run,kind,'positive_terminal_evidence','inference_provider_terminal_observed')
-    if terminal and terminal.get('outcome') in ('success','abstained'):return {**result,'reason':'VERIFIED_PROVIDER_TERMINAL','positive_terminal_evidence':terminal}
+    if terminal and (terminal.get('evidence_kind')=='pinned_terminal_response' or terminal.get('outcome') in ('success','abstained')):return {**result,'reason':'VERIFIED_PROVIDER_TERMINAL','positive_terminal_evidence':terminal}
+    not_dispatched=_verified_marker(db,run,kind,'no_dispatch_evidence','inference_no_dispatch_observed')
+    if not_dispatched and not_dispatched.get('evidence_kind')=='verified_no_dispatch':return {**result,'reason':'VERIFIED_NO_DISPATCH','no_dispatch_evidence':not_dispatched}
     reconciled=_verified_marker(db,run,kind,'operator_reconciliation','inference_unknown_reconciled')
     if reconciled and reconciled.get('acknowledgement')==ACKNOWLEDGEMENT:return {**result,'reason':'OPERATOR_RECONCILED','reconciliation':reconciled}
     return {**result,'state':'quarantined','reason':'REMOTE_EXECUTION_UNKNOWN'}

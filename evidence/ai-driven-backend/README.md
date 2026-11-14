@@ -24,6 +24,10 @@ Executed on an isolated, loopback-only PostgreSQL 18.6 database named `his_test`
   `quarantine-execution.json` pins the latest source hashes and command;
   `quarantine-pytest.xml` records the executed cases. This is a targeted delta,
   not a claim that the historical full baseline was repeated.
+- Final dispatch-stage extension: 43 targeted tests PASS (22 actual-adapter stage
+  cases plus 21 sticky-quarantine cases). `dispatch-stage-execution.json` pins
+  the latest source hashes; `dispatch-stage-pytest.xml` records those cases.
+  Both actual adapters use explicit offline HTTP MockTransport, not a live model.
 - Existing document review and provider tests are included in that total.
 - Full canonical compact inference view is bounded to 2000 UTF-8 bytes. Notes
   are included whole or explicitly omitted; all eligible source evidence remains
@@ -71,12 +75,24 @@ remain; late provider observations are stored separately. No automatic retry or
 second call occurs while any unreconciled UNKNOWN exists. This deliberately
 includes connection errors that may have happened before remote generation.
 
-Only an audited, attempt-bound positive terminal observation from the trusted
-adapter (success/abstained) or explicit private operator reconciliation clears
-UNKNOWN. Failed/invalid-output observations, TTL expiry, fake JSON markers and
-`ps[]` alone do not. See [OPERATOR-RECOVERY.md](OPERATOR-RECOVERY.md). No HTTP
+Only audited, attempt-bound physical-stage evidence from the trusted adapter or
+explicit private operator reconciliation clears UNKNOWN. A pinned model response
+with `done=true` and a computed response SHA proves physical completion even when
+the clinical artifact or post-response identity check fails; that clinical output
+stays rejected. Proven pre-dispatch failure is also audited. Dispatched calls with
+no terminal proof remain quarantined for malformed JSON, non-object/oversized
+bodies, HTTP errors and drops regardless of their reason code. Outcome labels,
+raw provenance flags, TTL expiry, fake JSON markers and `ps[]` alone do not clear
+UNKNOWN. See [OPERATOR-RECOVERY.md](OPERATOR-RECOVERY.md). No HTTP
 clear/reconcile mutation exists; the marker and admission state are read-only
 API metadata. Operator functions were exercised only against disposable fixtures.
+
+The latest real adapter dependency bytes were synchronized exactly from root
+`b10faecfaed2c0897e706d5780f8efdd4426ade9` under explicit authorization, including
+the root's dynamic generation grammar. The three runtime and two test dependency
+Git blob hashes were verified against that commit. This worker did not edit those
+root-owned source files. The root should integrate only the subsequent backend
+logic commit, not the child-only dependency synchronization commit.
 
 `backend/tests/export_assistant_qualification_packets.py` separately exported
 four authored synthetic packets from a disposable database for the root's
