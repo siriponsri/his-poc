@@ -1,0 +1,7 @@
+{
+  "scope": "Historical initial072/76 Access receipt compatibility copy for the original report link; not final91 evidence",
+  "copied_from": "evidence/research-ui-release/deployment/public-access-boundary/access-boundary.json",
+  "sha256": "bd5cc9d8f692e46942a1aecbc4f45c3b7105213c54b975e16c413f484998e7c7",
+  "current_release": "docs/RELEASE_PATIENT_PANEL.md",
+  "current_access_receipt": "evidence/research-ui-release/deployment/scroll-reset/public-access-boundary/access-boundary.json"
+}

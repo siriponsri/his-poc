@@ -1,0 +1,126 @@
+{
+  "status": "PASS_WITH_ACCEPTED_VENDOR_WHITESPACE_EXCEPTION",
+  "observed_at": "2026-11-14T03:07:03.829992+00:00",
+  "scope": "Documentation/evidence static closeout only; no browser/test-suite rerun, source stage/commit/push, deployment, resource mutation or package ZIP creation",
+  "agent": "ui_release_checkpoint",
+  "owned_files": [
+    "README.md",
+    "START_HERE.md",
+    "GOAL.md",
+    "PLAN.md",
+    "BACKLOG.md",
+    "CODEX_HANDOFF.md",
+    "VALIDATION_REPORT.md",
+    "DESIGN.md",
+    "RELEASE_NOTES.md",
+    "RELEASE_MANIFEST.json",
+    "config/runtime_inventory.json",
+    "docs/DEPLOY_DR_TRAIN.md",
+    "docs/RELEASE_PATIENT_PANEL.md",
+    "docs/RELEASE_CLINICAL_WORKSPACE.md",
+    "evidence/research-ui-release/release-checkpoint.json",
+    "evidence/research-ui-release/final91-source-phase-check.json",
+    "evidence/research-ui-release/public-authenticated-pending.json"
+  ],
+  "owned_file_sha256": {
+    "README.md": "402cc91ff3f6b509b8acafcf7b8e5c600d253669163c431c15b1817b8a298128",
+    "START_HERE.md": "0191e3943fa1c0301fb63c9a9a801479130654237c68bf1726d5857794f1fe26",
+    "GOAL.md": "b09940d6de87083f4cba04e8bac9c9ea9a969a06c91d0903f06ad9cf44c96342",
+    "PLAN.md": "71262426dccff0017a404649688b41ef17d2d12b0cef78496ac91fd6037f8db1",
+    "BACKLOG.md": "f73ba812304165271ffeabf138d46a8ea7bfd8190dde07a9470dd5c4b8ef0ed1",
+    "CODEX_HANDOFF.md": "34b6bccc25f4d10012e5cccaf1bfc4caeee93c24367391dc01a0a500249467ff",
+    "VALIDATION_REPORT.md": "a3e6f5341bcc686506a3ff1abd955cb7c98b6a16d4c93515ccf386191e967e35",
+    "DESIGN.md": "f623c40ba760b33dadda81387a1213677bc97038e71c5e7cd315dcebcbc138d4",
+    "RELEASE_NOTES.md": "5a8f750d895d9cb2ce110345213572e0bd9db8faee180e75d38a8b0dad1dc97a",
+    "RELEASE_MANIFEST.json": "0aa6492ce066ddd91621cb08711d52577f103c42f788d334d4bc32dcc593d74f",
+    "config/runtime_inventory.json": "9e17b680fdf21e2df4c3bbc12a8aa7a1d094a9a317f68ff9deb74ac9f8faeff3",
+    "docs/DEPLOY_DR_TRAIN.md": "1c0bad6d4f317a56aa16ec9b5c46c378f2e6f74a8b949d62d9a90176a5d55d02",
+    "docs/RELEASE_PATIENT_PANEL.md": "bce2a0243f734804ab9c92526f9e6ff50e1504f6550f9e9ee8740c4be86221c5",
+    "docs/RELEASE_CLINICAL_WORKSPACE.md": "9c0d15bf05a524f0dcc8ca8d5de8a45fd72fead23c6e245620b6c3219020cffa",
+    "evidence/research-ui-release/release-checkpoint.json": "e5d61535db3869a140fe6261e3182764b0039cc187c4445b76cc4fd46de99a0c",
+    "evidence/research-ui-release/final91-source-phase-check.json": "3f9ea5d383e56ae89ca2b51131a1c0fe564a416342dacd761a13ae3b5a3ef52c",
+    "evidence/research-ui-release/public-authenticated-pending.json": "58a4204cc3015b5b1966e171917ab2d680a6bd508ebfde16d747bfbca7964f05"
+  },
+  "git_head_at_documentation_closeout": "8681f32446cd3e4b92b611204f16462167f0755a",
+  "relative_links": {
+    "checked": 109,
+    "failures": []
+  },
+  "json_parse": {
+    "checked": 47,
+    "failures": []
+  },
+  "scoped_secret_text_scan": {
+    "files_checked": 68,
+    "categories": [
+      "private_key_material",
+      "jwt_material",
+      "github_token_material",
+      "owner_requested_plaintext_test_password"
+    ],
+    "hits": [],
+    "limits": "No binary screenshot audit, ignored/private file contents or repository-wide secret guarantee"
+  },
+  "executed_checks": [
+    {
+      "command": "rtk proxy .venv\\Scripts\\python.exe scripts/check_fullsystem_package.py",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "{\n  \"check\": \"static_package_consistency_not_acceptance\",\n  \"status\": \"PASS\",\n  \"domain_route_inventory\": 38,\n  \"failures\": []\n}\n",
+      "stderr": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n"
+    },
+    {
+      "command": "rtk git diff --check",
+      "exit_code": 0,
+      "status": "PASS",
+      "stdout": "\n",
+      "stderr": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n"
+    }
+  ],
+  "source_binding_check": "evidence/research-ui-release/final91-source-phase-check.json",
+  "retained_environment_note": "Parent reported an earlier system-Python package-check attempt lacked SQLAlchemy. This receipt uses repository .venv and does not erase or relabel that earlier environment failure.",
+  "source_publication": "NOT_PERFORMED_BY_DOCUMENTATION_AGENT",
+  "staged_whitespace_gate": {
+    "status": "FAIL_WITH_ACCEPTED_VENDOR_LICENSE_EXCEPTION",
+    "observed_at": "2026-11-14T03:12:39.243569+00:00",
+    "command": "rtk proxy git diff --cached --check",
+    "exit_code": 2,
+    "stdout": "apps/web/public/fonts/anuphan-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \napps/web/public/fonts/instrumentsans-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \napps/web/public/fonts/manrope-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \ndocs/branding/manrope-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \n",
+    "stderr": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n",
+    "known_failures": [
+      {
+        "path": "apps/web/public/fonts/anuphan-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "cbc57ac0dddda1b70f246a16358fc3c2a32628a23a6d10ef64f746141d3fb159",
+        "matches_frozen_license_bytes": true
+      },
+      {
+        "path": "apps/web/public/fonts/instrumentsans-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "9e27a72ed30eb49a08678f6a5d6ed98ec7ba5368f541637ee0683ec9134ef966",
+        "matches_frozen_license_bytes": true
+      },
+      {
+        "path": "apps/web/public/fonts/manrope-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+        "matches_frozen_license_bytes": true
+      },
+      {
+        "path": "docs/branding/manrope-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+        "matches_frozen_license_bytes": true
+      }
+    ],
+    "unexpected_failures": [],
+    "exception_authority": "Parent integrator instruction on2026-11-14: keep upstream OFL license bytes/hashes verbatim and record the accepted vendor-license whitespace exception",
+    "prior_unstaged_gate": "PASS for rtk git diff --check; then-untracked license files were not inspected by that command",
+    "source_or_license_changes": "NONE_BY_THIS_CHECK"
+  },
+  "status_explanation": "Previously executed static checks retain their actual PASS results. Later staged whitespace command is FAIL on four unchanged upstream OFL line21 trailing spaces, with the exact parent-accepted exception; it is not relabelled clean PASS."
+}

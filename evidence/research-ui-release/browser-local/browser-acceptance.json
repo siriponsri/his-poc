@@ -1,0 +1,28 @@
+{
+  "status": "PASS",
+  "scope": "Actual local browser against the existing Windows Docker PostgreSQL app, with current frontend served by Vite on loopback. This is not authenticated public-URL acceptance.",
+  "frontend_receipt": "apps/web/evidence/research-ui-20261114-final/checks.json",
+  "method": "CUA browser forms, navigation, accessibility observations, screenshots and read-only rendered DOM inspection. No injected fetch or React state mutation.",
+  "observations": [
+    {"id":"login-desktop","status":"PASS","detail":"Selected original loop logo, public neutral document illustration, two real account fields, visible focus and no patient preview.","screenshot":"login-desktop.jpg"},
+    {"id":"login-mobile","status":"PASS","detail":"390x844 viewport, both fields and Sign in fit without horizontal page overflow.","screenshot":"login-mobile.jpg"},
+    {"id":"login-recovery","status":"PASS","detail":"One incorrect local password produced the actual rejection message; correct existing credentials then opened the app. Passwords are not recorded."},
+    {"id":"home-data","status":"PASS","detail":"Actual scoped open tasks, patient reference names, document version/date and source excerpt displayed; no prototype rows were inserted.","screenshot":"home-desktop.jpg"},
+    {"id":"home-search","status":"PASS","detail":"An unmatched search displayed the empty-filter state and 0/8 loaded tasks; clearing it restored the real list."},
+    {"id":"document-open","status":"PASS","detail":"Open document retained exact patient-001, encounter-001 and selected document identity; readable source and actual revision author appeared.","screenshot":"patient-document-desktop.jpg"},
+    {"id":"patient-filter","status":"PASS","detail":"Switching to patient-002 with all encounters showed only its three authorized documents, clearing the previous document."},
+    {"id":"context-history","status":"PASS","detail":"Patient change canonicalized URL and removed old record/task/encounter; reload retained patient-002; Back restored patient-001 exact encounter and source."},
+    {"id":"mobile-drawer","status":"PASS","detail":"Opening navigation focused its first link; Escape closed it and restored trigger focus; main content was no longer inert."},
+    {"id":"mobile-home","status":"PASS","detail":"390px layout kept rows usable, page width <= viewport and logout on one line.","screenshot":"home-mobile.jpg"},
+    {"id":"document-and-task-write","status":"PASS","detail":"Created one authored synthetic document and a fresh document_review task through existing typed forms at patient-001/encounter-001."},
+    {"id":"real-ai","status":"PASS","detail":"Existing pinned dr_train_ollama/Typhoon returned four present findings and one missing plan, with exact source quotes; no mock fallback."},
+    {"id":"human-review","status":"PASS","detail":"Edited action text into immutable version2, approved that version, then committed through existing controls."},
+    {"id":"reload-commit","status":"PASS","detail":"Reopened the exact task and selected the persisted proposal: version2 remained committed and edit/approve/reject/commit controls were disabled.","screenshot":"ai-committed-reloaded.jpg"},
+    {"id":"mobile-ai","status":"PASS","detail":"390px patient context, tabs and AI intake fit without horizontal page overflow; the committed action remained disabled.","screenshot":"ai-mobile.jpg"}
+  ],
+  "actual_run": "bf08ea07-0771-49e7-b179-5e593a6e59d1",
+  "actual_result": "9fb308fb-ac85-4319-9e8b-772d1e6b97f0",
+  "readback": "local-workflow-readback.json",
+  "post_test": "Local clinician browser session logged out; temporary viewport reset. Server test01 and prior server records were not changed by this local workflow.",
+  "limits": "Screenshots document visual observations during final refinement; deployed source and built assets are independently hash-bound. This is one synthetic integration run, not a clinical or throughput evaluation. All38 domains/J01-J10 were not rerun in this UI iteration."
+}

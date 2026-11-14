@@ -1,0 +1,110 @@
+{
+  "observed_at": "2026-11-14T02:30:14.577400+00:00",
+  "resources": [
+    {
+      "service": "his-poc-server-app-1",
+      "container_id": "28a41ebaff9959ea9a575aa6494d899c71353d7eb4430d8bf2c39de1c5b9ec0a",
+      "image": "his-poc-server:workspace-86b174ff10c5",
+      "image_id": "sha256:5fdd760121dc8db0e7e233b7b8cee6d4e575b3f23f515cec1f28971680f2c63c",
+      "health": "healthy",
+      "started_at": "2026-11-14T02:30:07.419400102Z",
+      "restart": "unless-stopped",
+      "network_mode": "host",
+      "memory_bytes": 2147483648,
+      "nano_cpus": 2000000000,
+      "read_only": true,
+      "port_bindings": {}
+    },
+    {
+      "service": "his-poc-server-db-1",
+      "container_id": "58f05858ccb3878d7c97c78fbff628b5c713de3c19e632420be65e5438c1533b",
+      "image": "postgres:18.6-bookworm@sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "image_id": "sha256:f1ea2a1a4fb7b68d4836be1fdcb8a6466a89b072158bf9d97663600538c294c5",
+      "health": "healthy",
+      "started_at": "2026-11-13T15:52:47.836664331Z",
+      "restart": "unless-stopped",
+      "network_mode": "his-poc-server_default",
+      "memory_bytes": 2147483648,
+      "nano_cpus": 1000000000,
+      "read_only": false,
+      "port_bindings": {
+        "5432/tcp": [
+          {
+            "HostIp": "127.0.0.1",
+            "HostPort": "15432"
+          }
+        ]
+      }
+    },
+    {
+      "service": "his-poc-server-connector-1",
+      "container_id": "190b9214238c2a9e6e47c546abc6f0b984f728ec327a17c0a6d48cbea7270b38",
+      "image": "cloudflare/cloudflared:2026.10.7@sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "image_id": "sha256:4955524aeaa379e154023d5a027c250f7b35041a2e7e950cf13f144bc9b9c5ba",
+      "health": "healthy",
+      "started_at": "2026-11-13T15:55:15.592080983Z",
+      "restart": "unless-stopped",
+      "network_mode": "host",
+      "memory_bytes": 268435456,
+      "nano_cpus": 500000000,
+      "read_only": true,
+      "port_bindings": {}
+    }
+  ],
+  "ready": {
+    "ready": true,
+    "migration": "0002_live_inference"
+  },
+  "cache_control": "no-store",
+  "connector_ha_connections": [
+    4.0
+  ],
+  "listener_lines": [
+    "LISTEN 0      2048                                127.0.0.1:18080 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:20331 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:11434 0.0.0.0:*",
+    "LISTEN 0      4096                                127.0.0.1:15432 0.0.0.0:*"
+  ],
+  "status": "PASS",
+  "checks": {
+    "all_services_healthy": true,
+    "ready_migration": true,
+    "no_store": true,
+    "selected_image": true,
+    "database_unchanged_container": true,
+    "connector_unchanged_container": true,
+    "prior_results_preserved": true,
+    "file_hashes_preserved": true,
+    "test_account_unchanged": true,
+    "prior_sessions_unchanged": true,
+    "prior_table_counts_preserved": true,
+    "private_listener_bindings": true,
+    "connector_ha": true
+  },
+  "prior_session_count": 179,
+  "current_session_count": 179,
+  "table_count": 109,
+  "file_sha256": {
+    "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23.bin": "8c150c52d0f21db8f0c6177db93aa128344ac73f39be1bc752365e832bd91f23"
+  },
+  "prior_results": [
+    {
+      "id": "8d61f05f-6b07-45d6-8d76-dc3296693dbb",
+      "proposal_id": "374c1cee-7e5b-46f4-8128-d3be1be621a6",
+      "task_id": "d25f0857-19ed-4e66-ab5b-dbd21bb5df0a",
+      "version": 2,
+      "action_hash": "31d59896c5eb19892ac2b48e203d602cdc197684a3082ced7f7fde7e1d3ac00f"
+    },
+    {
+      "id": "ef4e9f7e-e0b2-473e-ab55-79ea383ffb72",
+      "proposal_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+      "task_id": "task-patient-001",
+      "version": 2,
+      "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448"
+    }
+  ],
+  "image": "his-poc-server:workspace-86b174ff10c5",
+  "image_id": "sha256:5fdd760121dc8db0e7e233b7b8cee6d4e575b3f23f515cec1f28971680f2c63c",
+  "source_verification": "PASS: runtime-source-binding.json,214files",
+  "dist_verification": "PASS: runtime-source-binding.json,17assets"
+}

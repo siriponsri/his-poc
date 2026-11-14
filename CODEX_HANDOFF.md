@@ -1,8 +1,73 @@
-# Codex handoff — triadic UI and protected POC deployed
+# Codex handoff — Patient panel deployed; integration long goal active
 
-Local synthetic acceptance: 38 domains L2 and 10 journeys L3 PASS. Read VALIDATION_REPORT.md, DOMAIN_COVERAGE.json and JOURNEY_COVERAGE.json for the exact scope and evidence. The subsequent named real dr-train document route is recorded separately below; production and clinical acceptance remain NOT_RUN.
+## Latest checkpoint — 14 November 2026
 
-## Current deployed state — 13 November 2026
+Work in C:/Users/User/Desktop/myProject/his-poc. The long goal remains ACTIVE:
+separate CareBalance DR derivative based on dr-support-screening-poc, preserving
+the original, plus LabClear connection and authorized source/theme adaptation.
+Those integrations are not implemented by this UI checkpoint. Parent owns the
+integration plan/source work and publication; this handoff does not imply a push.
+At documentation closeout, Git HEAD was8681f32446cd3e4b92b611204f16462167f0755a
+with shared uncommitted UI/docs/evidence work. Deployment is a working-source
+snapshot rather than that commit. Parent must record the later publication SHA
+after controlled staging/commit/push; no source publication was performed here.
+
+The selected Clinical Workspace Home/Login, Patient Record full workspace,
+Operations Desk logo and wide read-only Patient panel are deployed as
+his-poc-server:workspace-167d14addf47. Snapshot SHA256:
+167d14addf47841efa40298098aa1552761518eee3c99acd2e329fde3da16d87.
+Image ID sha256:56821a7a82ae714f7bfc039ef82e35ad51c4d0b5f91d89c5d5d816de8cb9210b.
+All214 source files and17 built assets match the final frozen candidate. Fresh
+backup/app-only replacement preserved109 table counts, one file, test01,180 prior
+session rows and three selected committed results. DB/connector containers and
+the existing Ollama/Access/DNS were unchanged. Origin7 hashes and Access5 gates pass.
+
+Frozen frontend:25 unit/91 component/3 audit cases/typecheck/build PASS, receipt
+apps/web/evidence/patient-record-panel-scroll-20261114-final/checks.json.
+Earlier76/89 component phases are historical; do not promote their browser checks
+to an unexecuted final91 interactive test. Only App viewport/focus handling and
+focused tests changed between the89 public workflow and91 final image; backend,
+AI/provider and source/version transaction guards are unchanged.
+
+Public Chrome test01→Home patient link→wide panel→Open document→fresh synthetic
+document/task→Open review→real Typhoon→human edit v2→approve→commit→reload PASS on
+the89-component image. Run9b797df1-18b5-4537-b036-b37cf8d337ca,
+result64d8a1ae-958c-4c33-a4e8-fa222c1e8448;11563ms,424input/134outputtokens,
+costnull. Exact16 read-only PostgreSQL checks PASS before and again after final
+image activation, including one attempt/proposal/result and approval/action hashes.
+See evidence/research-ui-release/patient-panel-public/public-workflow-readback.json
+and deployment/scroll-reset/prior-public-workflow-readback.json.
+
+Final rendered navigation scrollY115.2→0, logoutY2.4→0, Login logo top27.6 and
+signinY0 were observed by the parent in authenticated Chrome. Final interactive
+persisted-proposal reopening is NOT_VERIFIED: click/key did not select the item.
+No cause was established. Browser work stopped when the current Windows Chrome
+URL could no longer be verified; do not infer an app failure or success from that
+automation boundary. Re-establish current URL, open the exact persisted proposal
+and inspect its version2/result before claiming final interactive acceptance.
+No extra model call or account reset is needed just to inspect the retained result.
+
+Local browser15/real-model11623ms413/133 evidence and local panel8 observations
+remain separate from public evidence and were not copied into the server DB.
+The initial072/76 deployment Access-pending receipt is retained as superseded
+history; the owner subsequently completed Access and the public flow above.
+
+Read [release report](docs/RELEASE_PATIENT_PANEL.md),
+[user journey](docs/USER_JOURNEY_TH.md) and [operations](docs/DEPLOY_DR_TRAIN.md).
+Documentation closeout [checks](evidence/research-ui-release/release-documentation-checks.json)
+record actual static package consistency, relative links, JSON parse, scoped text
+secret review and git whitespace checks. Direct frontend source/dist hashes pass
+with zero drift; all48 backend sources match between89 and91. The reporting-only
+config/runtime_inventory.json update intentionally differs from the frozen image.
+Rollback selects prior imagehis-poc-server:workspace-86b174ff10c5 and recreates
+only app, preserving DB/files. No rollback has been executed.
+
+The original38-domain L2/10-journey L3 local synthetic baseline below was not rerun
+for this UI checkpoint. External/clinical/product effectiveness remain unverified.
+No passwords, cookies, Access assertion, private env or tunnel credential belongs
+in source/evidence. Publication and deployment are separate actions.
+
+## Historical deployed state — 13 November 2026
 
 The owner resumed and authorized the named synthetic deployment. https://his.ai-cie.com is active behind exact-host Cloudflare Access. dr-train root /home/chaw/his-poc is a snapshot runtime, not a Git checkout. Dedicated Compose project his-poc-server uses app127.0.0.1:18080, DB127.0.0.1:15432 and connector metrics127.0.0.1:20331; existing private Ollama11434 is unchanged. The Windows source database/files remain independent.
 

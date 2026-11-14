@@ -1,6 +1,36 @@
 # Validation report — local baseline and protected deployment
 
-Latest named deployment/public workflow passed; see the final triadic section below. Historical local/pause observations retain their original dates and scope.
+## Latest UI checkpoint — 14 November 2026
+
+Selected Home/Login, Patient Record and logo are deployed with a wide read-only
+Patient panel. Final25 unit/91 component/3 audit cases/typecheck/build: PASS
+([frozen receipt](apps/web/evidence/patient-record-panel-scroll-20261114-final/checks.json)).
+These component checks use jsdom/authored doubles; no new backend suite or all-domain
+baseline is implied. Earlier source reviews and local/browser observations retain
+their candidate boundaries in [the release report](docs/RELEASE_PATIENT_PANEL.md).
+
+| Source phase | Executed result | Evidence |
+|---|---|---|
+| Initial selected UI,76 components | Local browser15 and real-model/human persistence PASS;11623ms,413/133 tokens | [local browser](evidence/research-ui-release/browser-local/browser-acceptance.json) |
+| Wide Patient panel,89 components | Local8 observations and public desktop/mobile panel; fresh public document/task→Typhoon→human v2→approve→commit→reload PASS | [local panel](evidence/research-ui-release/patient-panel-local/browser-acceptance.json), [public server readback](evidence/research-ui-release/patient-panel-public/public-workflow-readback.json) |
+| Final scroll/focus-only candidate,91 components |214 source/17 assets, app-only activation/preservation, origin7 and Access5 PASS; earlier public result readback16/16 PASS | [binding](evidence/research-ui-release/deployment/scroll-reset/runtime-source-binding.json), [preservation](evidence/research-ui-release/deployment/scroll-reset/postactivation-preservation.json), [readback](evidence/research-ui-release/deployment/scroll-reset/prior-public-workflow-readback.json) |
+| Final rendered scroll smoke | NavigationY115.2→0, logoutY2.4→0, Login logo top27.6, signinY0 PASS; parent-observed Chrome | [checkpoint](evidence/research-ui-release/release-checkpoint.json) |
+| Final interactive persisted proposal reopening | NOT_VERIFIED; click/key did not select the item, then current browser URL could not be verified. Server result remains valid; no cause established | [checkpoint limitation](evidence/research-ui-release/release-checkpoint.json) |
+
+Public run9b797df1-18b5-4537-b036-b37cf8d337ca produced result
+64d8a1ae-958c-4c33-a4e8-fa222c1e8448 in11563ms,424input/134outputtokens,costnull.
+Readback16 checks include exact source/version binding, action hashes, human v2
+approval, canonical commit, replay and one attempt/proposal/result. The final swap
+preserved180 preexisting sessions, three selected results, one file and109 table
+counts; no restore/seed/account/connector/DB/model change occurred. Backend/AI
+sources are unchanged between the public workflow and final scroll-only image.
+
+The overall long goal is ACTIVE. Separate CareBalance DR derivative and LabClear
+integration/theme adaptation are not implemented or accepted here. The38-domain/
+10-journey local baseline below was not rerun. This authored synthetic integration
+flow does not establish clinical/product effectiveness or throughput.
+
+The13 November deployment/public workflow passed; see the historical triadic section below. Local/pause observations retain their original dates and scope.
 
 Date: 13 November 2026. Data: authored synthetic only.
 

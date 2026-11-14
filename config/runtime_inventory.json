@@ -9,8 +9,8 @@
     "dirty": null,
     "network_location": "Cloudflare Access/Tunnel -> private server app -> dedicated loopback PostgreSQL and existing loopback Ollama",
     "commit_binding": "Current source/commit binding is recorded by execution evidence, not inferred from this inventory metadata.",
-    "deployment_evidence": "evidence/deployment-20261113/final-deployment-verification.json",
-    "public_acceptance": "evidence/triadic-release/public-final/browser-acceptance.json"
+    "deployment_evidence": "evidence/research-ui-release/deployment/scroll-reset/runtime-source-binding.json",
+    "public_acceptance": "evidence/research-ui-release/release-checkpoint.json"
   },
   "dr_train": {
     "cpu": null,
@@ -97,5 +97,23 @@
     "protocol_probe": "2026-11-13T13:09:13.363368+00:00",
     "provider_cases": "2026-11-13T13:18:30.669599+00:00"
   },
-  "observed_deployment_at": "2026-11-13T16:29:36.995323+00:00"
+  "observed_deployment_at": "2026-11-14T02:43:25.669757+00:00",
+  "ui_release": {
+    "observed_at": "2026-11-14",
+    "image": "his-poc-server:workspace-167d14addf47",
+    "source_files": 214,
+    "dist_assets": 17,
+    "frontend_tests": {
+      "unit": 25,
+      "component": 91,
+      "audit_cases": 3
+    },
+    "local_browser_real_ai": "PASS_INITIAL_76_COMPONENT_PHASE",
+    "public_access_boundary": "PASS_5_CHECKS_FINAL_IMAGE",
+    "public_workflow": "PASS_PRECEDING_89_COMPONENT_CANDIDATE_SYNTHETIC_REAL_AI",
+    "public_result_readback_after_final_swap": "PASS_16_CHECKS",
+    "final_rendered_scroll_smoke": "PASS_PARENT_OBSERVED",
+    "final_interactive_persisted_proposal_reopen": "NOT_VERIFIED",
+    "report": "docs/RELEASE_PATIENT_PANEL.md"
+  }
 }

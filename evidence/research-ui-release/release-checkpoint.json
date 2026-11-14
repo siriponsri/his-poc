@@ -1,0 +1,155 @@
+{
+  "status": "DEPLOYED_WITH_FINAL_INTERACTIVE_REOPEN_LIMITATION",
+  "recorded_at": "2026-11-14T03:02:42.015121+00:00",
+  "target": "https://his.ai-cie.com",
+  "data_class": "authored_synthetic_only",
+  "report": "docs/RELEASE_PATIENT_PANEL.md",
+  "user_journey": "docs/USER_JOURNEY_TH.md",
+  "active_long_goal": {
+    "status": "ACTIVE",
+    "remaining_scope": [
+      "Separate CareBalance derivative based on dr-support-screening-poc, preserving original project",
+      "LabClear connection and authorized source/theme adaptation"
+    ],
+    "integration_implementation": "NOT_IMPLEMENTED_IN_THIS_UI_CHECKPOINT"
+  },
+  "phase76": {
+    "image": "his-poc-server:workspace-072a759f371d",
+    "frontend": {
+      "unit": 25,
+      "component": 76,
+      "audit_cases": 3
+    },
+    "local_browser": "PASS_15_OBSERVATIONS",
+    "local_real_ai": "PASS_SYNTHETIC_SEPARATE_WINDOWS_RECORDS",
+    "public_status_at_that_time": "NOT_RUN_OWNER_ACCESS_PENDING",
+    "historical_report": "docs/RELEASE_CLINICAL_WORKSPACE.md",
+    "historical_pending_receipt": "evidence/research-ui-release/public-authenticated-pending.json"
+  },
+  "phase89": {
+    "image": "his-poc-server:workspace-86b174ff10c5",
+    "frontend": {
+      "unit": 25,
+      "component": 89,
+      "audit_cases": 3
+    },
+    "local_panel_browser": "PASS_8_OBSERVATIONS",
+    "actual_public_browser": "PASS_FRESH_SYNTHETIC_DOCUMENT_REAL_TYPHOON_HUMAN_V2_APPROVE_COMMIT_RELOAD",
+    "public_screenshots": "evidence/research-ui-release/patient-panel-public",
+    "public_readback": "evidence/research-ui-release/patient-panel-public/public-workflow-readback.json",
+    "public_readback_checks": 16,
+    "public_readback_status": "PASS"
+  },
+  "phase91": {
+    "image": "his-poc-server:workspace-167d14addf47",
+    "image_id": "sha256:56821a7a82ae714f7bfc039ef82e35ad51c4d0b5f91d89c5d5d816de8cb9210b",
+    "archive_sha256": "167d14addf47841efa40298098aa1552761518eee3c99acd2e329fde3da16d87",
+    "frontend": {
+      "unit": 25,
+      "component": 91,
+      "audit_cases": 3
+    },
+    "frontend_status": "PASS",
+    "frontend_receipt": "apps/web/evidence/patient-record-panel-scroll-20261114-final/checks.json",
+    "source_phase_check": "evidence/research-ui-release/final91-source-phase-check.json",
+    "independent_review": {
+      "status": "PASS_REPORTED_BY_PARENT",
+      "reviewer": "selected_ui_review",
+      "provenance": "Parent relay of predecessor agent verdict; no separate durable final91 review receipt available to documentation closeout agent",
+      "reported_scope": "Final91 scroll-only review and source/dist zero drift; tests/browser not rerun by reviewer",
+      "current_direct_verification": "final91-source-phase-check.json separately records direct current hashes/phase comparison"
+    },
+    "runtime_source_files": 214,
+    "runtime_dist_assets": 17,
+    "runtime_source_binding": "evidence/research-ui-release/deployment/scroll-reset/runtime-source-binding.json",
+    "source_changes_from_phase89": [
+      "apps/web/src/App.tsx",
+      "apps/web/tests/refresh.component.test.tsx",
+      "apps/web/tests/workflow.component.test.tsx"
+    ],
+    "backend_ai_and_transaction_guards": "UNCHANGED_FROM_PHASE89",
+    "origin_assets": "PASS_7_HASHED_RESPONSES",
+    "public_access_boundary": "PASS_5_UNAUTHENTICATED_PROBES",
+    "preservation": "PASS_13_CHECKS_180_PRIOR_SESSIONS_3_SELECTED_RESULTS_1_FILE_109_TABLE_COUNTS",
+    "public_result_repeat_readback": "evidence/research-ui-release/deployment/scroll-reset/prior-public-workflow-readback.json",
+    "public_result_repeat_readback_checks": 16,
+    "public_result_repeat_readback_status": "PASS",
+    "final_rendered_scroll_smoke": {
+      "status": "PASS_PARENT_OBSERVED",
+      "provenance": "Parent agent authenticated Chrome observations reported to ui_release_checkpoint; not rerun by documentation agent",
+      "navigation_scroll_y_before": 115.2,
+      "navigation_scroll_y_after": 0,
+      "logout_scroll_y_before": 2.4,
+      "logout_scroll_y_after": 0,
+      "login_brand_top_px": 27.6,
+      "signin_scroll_y_after": 0,
+      "signin_destination": "Original D37 route; no claim of Home redirect"
+    },
+    "final_interactive_persisted_proposal_reopen": {
+      "status": "NOT_VERIFIED",
+      "observation": "Parent click/key attempt did not select persisted proposal; no cause established",
+      "browser_stop_reason": "Current Windows Chrome URL could not be verified confidently",
+      "server_state": "Exact earlier public result readback16 checks PASS after final activation",
+      "resume": "Verify current authenticated URL, open exact proposal and inspect version2/result. No additional inference or seed/account reset is needed for read-only inspection."
+    }
+  },
+  "public_model_run": {
+    "run_id": "9b797df1-18b5-4537-b036-b37cf8d337ca",
+    "result_id": "64d8a1ae-958c-4c33-a4e8-fa222c1e8448",
+    "elapsed_ms": 11563,
+    "input_tokens": 424,
+    "output_tokens": 134,
+    "measured_cost": null,
+    "post_final_additional_inference": false
+  },
+  "publication": "PARENT_INTEGRATOR_SEPARATE_STEP_NOT_CLAIMED_BY_THIS_RECEIPT",
+  "limits": [
+    "No full-system38-domain/10-journey rerun",
+    "Component/audit doubles are separate from actual browser/PostgreSQL/real model evidence",
+    "No clinical, product, throughput or production acceptance",
+    "No DR derivative or LabClear integration acceptance",
+    "Historical receipts and diagnostic failures retained"
+  ],
+  "documentation_whitespace_gate": {
+    "status": "FAIL_WITH_ACCEPTED_VENDOR_LICENSE_EXCEPTION",
+    "observed_at": "2026-11-14T03:12:39.243569+00:00",
+    "command": "rtk proxy git diff --cached --check",
+    "exit_code": 2,
+    "stdout": "apps/web/public/fonts/anuphan-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \napps/web/public/fonts/instrumentsans-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \napps/web/public/fonts/manrope-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \ndocs/branding/manrope-OFL.txt:21: trailing whitespace.\n+fonts, including any derivative works, can be bundled, embedded, \n",
+    "stderr": "[rtk] /!\\ No hook installed — run `rtk init -g` for automatic token savings\n",
+    "known_failures": [
+      {
+        "path": "apps/web/public/fonts/anuphan-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "cbc57ac0dddda1b70f246a16358fc3c2a32628a23a6d10ef64f746141d3fb159",
+        "matches_frozen_license_bytes": true
+      },
+      {
+        "path": "apps/web/public/fonts/instrumentsans-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "9e27a72ed30eb49a08678f6a5d6ed98ec7ba5368f541637ee0683ec9134ef966",
+        "matches_frozen_license_bytes": true
+      },
+      {
+        "path": "apps/web/public/fonts/manrope-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+        "matches_frozen_license_bytes": true
+      },
+      {
+        "path": "docs/branding/manrope-OFL.txt",
+        "line": 21,
+        "kind": "trailing whitespace",
+        "sha256": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+        "matches_frozen_license_bytes": true
+      }
+    ],
+    "unexpected_failures": [],
+    "exception_authority": "Parent integrator instruction on2026-11-14: keep upstream OFL license bytes/hashes verbatim and record the accepted vendor-license whitespace exception",
+    "prior_unstaged_gate": "PASS for rtk git diff --check; then-untracked license files were not inspected by that command",
+    "source_or_license_changes": "NONE_BY_THIS_CHECK"
+  }
+}

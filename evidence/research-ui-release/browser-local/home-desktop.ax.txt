@@ -1,0 +1,194 @@
+Browser tab: 7, Title: "CareBalance | Clinical workspace", URL: "http://127.0.0.1:5173/home".
+1 AXWebArea CareBalance | Clinical workspace, URL: 127.0.0.1:5173/home
+	2 container root
+		3 button ข้ามไปยังเนื้อหา
+		36 container Description: เมนูระบบ, ID: app-navigation
+			37 link Description: CareBalance home, Value: 127.0.0.1:5173/home
+			38 text Clinical workspace
+			39 text facility-demo
+			40 text field (settable) ค้นหาเมนู
+			41 container พื้นที่ทำงาน
+				42 heading Workspace, Value: 2
+					43 text Workspace
+				44 button Work queue
+				45 button Patients
+				46 button Documents
+				47 button Reviews
+				48 button All tasks
+				49 heading Registration & access, Value: 2
+					50 button (collapsed) Registration & access, Secondary Actions: Expand
+				51 heading Clinical care, Value: 2
+					52 button (collapsed) Clinical care, Secondary Actions: Expand
+				53 heading Diagnostics & treatment, Value: 2
+					54 button (collapsed) Diagnostics & treatment, Secondary Actions: Expand
+				55 heading Coordination & records, Value: 2
+					56 button (collapsed) Coordination & records, Secondary Actions: Expand
+			57 text DEMO clinician
+			58 text clinician facility-demo
+		4 container main-content
+			5 container
+				59 text งานของฉัน Work queue
+				12 text HIS POC
+				13 container ภาษา / Language
+					14 checkbox ไทย, Value: 1
+					15 checkbox EN, Value: 0
+				16 button ออกจากระบบ
+			35 container Team queue facility-demo Work queue Document preview Workload by workspace (21) All workspaces 21 CareBalance / HIS POC ข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา
+				60 container
+					61 heading Work queue, Value: 1
+						62 text Work queue
+					90 text 8 งานที่เปิดในรายการนี้ งานที่เกี่ยวข้องกับคุณและเอกสารของทีม
+					64 button Open worklist
+				65 text Team queue
+				66 text facility-demo
+				67 container Work queue
+					68 container
+						69 text ค้นหางาน
+						70 text field (settable) ค้นหางาน
+					71 container
+						72 text สถานะงาน
+						73 pop up button (collapsed, settable) สถานะงาน, Value: All states, Secondary Actions: Expand
+							74 menu
+								75 (selected) All states
+								91 Open
+					92 table
+						93 row
+							94 cell
+								95 text Task / patient
+							96 cell
+								97 text Workspace
+							98 cell
+								99 text State
+							100 cell
+								101 text Preview
+						102 row
+							103 cell
+								104 button ตรวจเอกสารสังเคราะห์ 001
+								105 text ผู้ป่วยสังเคราะห์ 001 · encounter-001
+							106 cell
+								107 text AI & decision support
+							108 cell
+								109 text Open
+							110 cell
+								111 checkbox Description: Preview ตรวจเอกสารสังเคราะห์ 001, Value: 1
+						112 row
+							113 cell
+								114 button ตรวจเอกสารสังเคราะห์ 002
+								115 text ผู้ป่วยสังเคราะห์ 002 · encounter-002
+							116 cell
+								117 text AI & decision support
+							118 cell
+								119 text Open
+							120 cell
+								121 checkbox Description: Preview ตรวจเอกสารสังเคราะห์ 002, Value: 0
+						122 row
+							123 cell
+								124 button ตรวจเอกสารสังเคราะห์ 003
+								125 text ผู้ป่วยสังเคราะห์ 003 · encounter-003
+							126 cell
+								127 text AI & decision support
+							128 cell
+								129 text Open
+							130 cell
+								131 checkbox Description: Preview ตรวจเอกสารสังเคราะห์ 003, Value: 0
+						132 row
+							133 cell
+								134 button ตรวจเอกสารสังเคราะห์ 004
+								135 text ผู้ป่วยสังเคราะห์ 004 · encounter-004
+							136 cell
+								137 text AI & decision support
+							138 cell
+								139 text Open
+							140 cell
+								141 checkbox Description: Preview ตรวจเอกสารสังเคราะห์ 004, Value: 0
+						142 row
+							143 cell
+								144 button Browser J01 review
+								145 text ผู้ป่วยสังเคราะห์ browser 657300 · 0c91120f
+							146 cell
+								147 text AI & decision support
+							148 cell
+								149 text Open
+							150 cell
+								151 checkbox Description: Preview Browser J01 review, Value: 0
+						152 row
+							153 cell
+								154 button Browser pending handoff task
+								155 text ผู้ป่วยสังเคราะห์ 003 · encounter-003
+							156 cell
+								157 text Nursing & shift handover
+							158 cell
+								159 text Open
+							160 cell
+								161 checkbox Description: Preview Browser pending handoff task, Value: 0
+						162 row
+							163 cell
+								164 button Browser pending handoff task
+								165 text ผู้ป่วยสังเคราะห์ 003 · 0a06595d
+							166 cell
+								167 text Nursing & shift handover
+							168 cell
+								169 text Open
+							170 cell
+								171 checkbox Description: Preview Browser pending handoff task, Value: 0
+						172 row
+							173 cell
+								174 button ตรวจความครบถ้วนด้วย AI จริง
+								175 text ผู้ป่วยสังเคราะห์ 001 · encounter-001
+							176 cell
+								177 text AI & decision support
+							178 cell
+								179 text Open
+							180 cell
+								181 checkbox Description: Preview ตรวจความครบถ้วนด้วย AI จริง, Value: 0
+					78 text 8  /  8  loaded tasks เลือกชื่องานเพื่อทำงานต่อ
+					79 text ต้นฉบับและผลตรวจ AI อยู่ในบริบทผู้ป่วยและการรับบริการเดียวกัน
+					182 button (collapsed) Recent records 47, Secondary Actions: Expand
+						183 text Recent records 
+						184 text 47
+				80 container Document preview
+					81 heading Document preview, Value: 2
+						82 text Document preview
+					185 text 7  documents
+					186 text ผู้ป่วยสังเคราะห์ 001
+					187 container
+						188 text patient-001  ·  encounter-001
+					189 heading ทดสอบ AI จริง 111751, Value: 3
+						190 text ทดสอบ AI จริง 111751
+					191 container
+						192 text Record v1 ·  Draft
+					193 container
+						194 text Created  13 พ.ย. 2569 20:35
+					195 container
+						196 heading Source document, Value: 4
+							197 text Source document
+						198 text เอกสารสังเคราะห์เพื่อทดสอบระบบ
+อาการสำคัญ: มาทบทวนเอกสารตามนัด
+ประวัติ: เป็นข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง
+การประเมิน: ผู้บันทึกระบุว่าต้องทบทวนความครบถ้วนของข้อมูล
+ผู้บันทึก: ผู้ทดสอบระบบ A01
+					199 container
+						200 text Documents
+						201 pop up button (collapsed, settable) Documents, Value: ทดสอบ AI จริง 111751, Secondary Actions: Expand
+							202 menu
+								203 (selected) ทดสอบ AI จริง 111751
+								204 ทดสอบ AI จริง 26359a
+								205 Synthetic delayed A ef3ff8
+								206 Synthetic delayed A 1d3023
+								207 Browser imaging report
+								208 Browser imaging report
+								209 บันทึกสังเคราะห์
+					210 container
+						211 button Open document
+						212 button Open task
+				213 button (collapsed) Workload by workspace (21), Secondary Actions: Expand
+					214 text Workload by workspace (
+					215 text 21
+					216 text )
+				85 button (collapsed) All workspaces 21, Secondary Actions: Expand
+					86 text All workspaces 
+					87 text 21
+				88 container
+					89 text CareBalance / HIS POC ข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา
+
+The focused UI element is 35 container Team queue facility-demo Work queue Document preview Workload by workspace (21) All workspaces 21 CareBalance / HIS POC ข้อมูลสังเคราะห์ · ไม่ใช้ตัดสินใจรักษา

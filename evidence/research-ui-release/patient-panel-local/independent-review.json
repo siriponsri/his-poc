@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "reviewer": "selected_ui_review, independent read-only interface reviewer",
+  "candidate_receipt": "apps/web/evidence/patient-record-panel-20261114-final/checks.json",
+  "source_and_dist_hash_drift": 0,
+  "coverage": [
+    "Current source and dist hashes compared with final receipt",
+    "Corrected actual desktop Patient Record modal screenshot inspected",
+    "Broad source reading column, stable identity and scoped document selection",
+    "Exact patient/encounter/document/task navigation and D37 source preselection",
+    "Late response isolation, explicit access errors, metadata-only handling",
+    "Focus containment/restoration, hidden controls and native Visits summary",
+    "Read-only panel; existing immutable AI approval/commit/retry preserved"
+  ],
+  "passing_test_receipts_inspected": {"unit":25,"component":89,"audit_cases":3,"typecheck":"PASS","build":"PASS"},
+  "limits": "Reviewer inspected definitions/logs/hashes and actual desktop image, did not rerun tests or operate the browser. Root separately checks mobile, keyboard, public URL and real-model workflow."
+}

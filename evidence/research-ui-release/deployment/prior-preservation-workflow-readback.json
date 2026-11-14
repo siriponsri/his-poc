@@ -1,0 +1,290 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T01:49:25.397708+00:00",
+  "method": "Read-only repeatable-read PostgreSQL transaction on dr-train; no inference, sessions, mutations or restart",
+  "scope": "Authored synthetic public browser workflow readback, not clinical effectiveness",
+  "checks": {
+    "real_provider": true,
+    "successful": true,
+    "source_hash_valid": true,
+    "context_binding": true,
+    "action_hashes_valid": true,
+    "model_checklist_retained": true,
+    "all_source_quotes_valid": true,
+    "human_edit_changes_hash": true,
+    "current_version_approved": true,
+    "canonical_result_matches": true,
+    "committed": true,
+    "stored_commit_replay_matches": true,
+    "one_attempt": true,
+    "one_proposal": true,
+    "one_result": true,
+    "one_committed_audit": true
+  },
+  "document": {
+    "id": "72de8a50-dc96-4be9-a094-b9ef7ca9a383",
+    "title": "ทดสอบ Cloudflare Triadic 13-11-2026",
+    "patient_id": "patient-001",
+    "encounter_id": "encounter-001",
+    "status": "draft",
+    "version": 1,
+    "current_version_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1",
+    "revision_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1",
+    "content_hash": "7637981392ab5acfd5d81c97aa6112cdd97d6bbedbd509c2bafa42733c625864"
+  },
+  "task": {
+    "id": "task-patient-001",
+    "patient_id": "patient-001",
+    "encounter_id": "encounter-001",
+    "status": "completed",
+    "version": 2,
+    "kind": "document_review",
+    "domain": "D37"
+  },
+  "run": {
+    "id": "63506882-333c-479c-992e-027b991c836a",
+    "task_id": "task-patient-001",
+    "actor_id": "user-test01-poc",
+    "provider": "dr_train_ollama",
+    "outcome": "success",
+    "elapsed_ms": 10414,
+    "measured_cost": null,
+    "usage": {
+      "eval_count": 136,
+      "eval_duration": 2212534513,
+      "load_duration": 6095077640,
+      "total_duration": 10124202987,
+      "prompt_eval_count": 422,
+      "prompt_eval_duration": 327848176
+    },
+    "operation_key": "716e35ca-5a62-4e89-b65b-37ca6ec49acf",
+    "created_at": "2026-11-13 16:22:50.978498+00:00",
+    "completed_at": "2026-11-13 16:23:01.532921+00:00",
+    "context_snapshot": {
+      "task_id": "task-patient-001",
+      "patient_id": "patient-001",
+      "document_id": "72de8a50-dc96-4be9-a094-b9ef7ca9a383",
+      "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+      "content_hash": "7637981392ab5acfd5d81c97aa6112cdd97d6bbedbd509c2bafa42733c625864",
+      "encounter_id": "encounter-001",
+      "task_version": 1,
+      "lease_seconds": 150,
+      "document_version": 1,
+      "encounter_version": 1,
+      "document_version_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1"
+    },
+    "provenance": {
+      "demo": false,
+      "seed": 0,
+      "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+      "engine": "ollama",
+      "num_ctx": 8192,
+      "provider": "dr_train_ollama",
+      "use_case": "document_completeness",
+      "data_class": "synthetic",
+      "hf_revision": null,
+      "num_predict": 1024,
+      "temperature": 0,
+      "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+      "input_sha256": "c4fd11f6860aa7acc10f32fa0c2950e2a1750a05a073aeca38ae9da46c872703",
+      "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+      "model_details": {
+        "family": "gemma3",
+        "format": "gguf",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "11.8B",
+        "quantization_level": "unknown"
+      },
+      "schema_sha256": "0c07ecf3d871e84ea032de9e927667c06ba69ddac9285885c18879fd9b211c5e",
+      "context_tokens": 8192,
+      "engine_version": "0.12.6",
+      "prompt_version": "his-document-completeness-v1",
+      "active_provider": "dr_train_ollama",
+      "response_sha256": "b928189685230638b826c1dac0b8303f0a02b2577d816755c67f619fbee4dfc7",
+      "template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+      "provider_outcome": "success",
+      "artifact_revision": "ollama_manifest_digest",
+      "max_output_tokens": 1024,
+      "parameters_sha256": "9ce3defaaf78fa2c3b43e556f9089ed90a2c022f566ba4b3af6da55d5e58377e",
+      "keep_alive_seconds": 0,
+      "max_document_chars": 6000,
+      "input_budget_policy": "conservative_utf8_bytes",
+      "live_routes_enabled": true,
+      "verification_status": "CONFIGURED_NOT_PROBED",
+      "chat_template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+      "supported_task_kinds": [
+        "document_review"
+      ],
+      "system_prompt_sha256": "2712af860df4cfc89a1cdbadb271c28182d26c2211338f88ba2def8cd8d7f21b",
+      "declared_capabilities": [
+        "completion"
+      ],
+      "requires_human_review": true
+    }
+  },
+  "proposal": {
+    "task_id": "task-patient-001",
+    "run_id": "63506882-333c-479c-992e-027b991c836a",
+    "document_version_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1",
+    "encounter_version": 1,
+    "task_version": 1,
+    "version": 2,
+    "status": "committed",
+    "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448",
+    "expires_at": "2026-11-13 16:38:01.533151+00:00",
+    "id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+    "created_at": "2026-11-13 16:23:01.538131+00:00"
+  },
+  "immutable_versions": [
+    {
+      "version": 1,
+      "action_hash": "0eea6ffb0af0dadfb466b2c9025f08c5f3065a069ee6b09f3e5f20f22c04a511"
+    },
+    {
+      "version": 2,
+      "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "96718ee6-592a-488f-b66b-e90b186faeed",
+      "actor_id": "user-test01-poc",
+      "version": 1,
+      "action_hash": "0eea6ffb0af0dadfb466b2c9025f08c5f3065a069ee6b09f3e5f20f22c04a511",
+      "decision": "edit"
+    },
+    {
+      "id": "8795c486-846a-4d70-861b-75fbeaa1faef",
+      "actor_id": "user-test01-poc",
+      "version": 2,
+      "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448",
+      "decision": "approve"
+    }
+  ],
+  "result": {
+    "proposal_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+    "task_id": "task-patient-001",
+    "actor_id": "user-test01-poc",
+    "version": 2,
+    "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448",
+    "operation_key": "e691c244-3c6c-43b5-bd57-b9f186bf1410",
+    "id": "ef4e9f7e-e0b2-473e-ab55-79ea383ffb72",
+    "created_at": "2026-11-13 16:23:40.877431+00:00"
+  },
+  "checklist": {
+    "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+    "items": [
+      {
+        "evidence_quote": "มาตรวจความครบถ้วนของเอกสารตัวอย่าง",
+        "key": "chief_complaint",
+        "label": "อาการสำคัญหรือเหตุผลที่มารับบริการ",
+        "status": "present"
+      },
+      {
+        "evidence_quote": "ข้อมูลสมมติ ไม่ใช่ผู้ป่วยจริง",
+        "key": "history",
+        "label": "ประวัติหรือข้อมูลประกอบ",
+        "status": "present"
+      },
+      {
+        "evidence_quote": "ผู้บันทึกระบุให้ทบทวนความครบถ้วนของเอกสาร",
+        "key": "assessment",
+        "label": "การประเมินโดยผู้บันทึก",
+        "status": "present"
+      },
+      {
+        "evidence_quote": "",
+        "key": "plan",
+        "label": "แผนหรือการติดตามที่ผู้บันทึกระบุ",
+        "status": "missing"
+      },
+      {
+        "evidence_quote": "ผู้ทดสอบ test01",
+        "key": "author",
+        "label": "ชื่อหรือรหัสผู้บันทึก",
+        "status": "present"
+      }
+    ],
+    "requires_human_review": true,
+    "scope": "documentation_completeness_only",
+    "summary": "พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ"
+  },
+  "audits": [
+    {
+      "id": "877b082f-c4e6-4f03-86a3-20d863f3cb7e",
+      "entity_id": "72de8a50-dc96-4be9-a094-b9ef7ca9a383",
+      "action": "draft_created",
+      "actor_id": "user-test01-poc",
+      "created_at": "2026-11-13 16:18:40.361724+00:00",
+      "details": {
+        "version_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1",
+        "content_hash": "7637981392ab5acfd5d81c97aa6112cdd97d6bbedbd509c2bafa42733c625864"
+      }
+    },
+    {
+      "id": "bfca8cb2-f414-40cc-ab48-cbe40955b1d2",
+      "entity_id": "63506882-333c-479c-992e-027b991c836a",
+      "action": "inference_started",
+      "actor_id": "user-test01-poc",
+      "created_at": "2026-11-13 16:22:50.986892+00:00",
+      "details": {
+        "task_id": "task-patient-001",
+        "provider": "dr_train_ollama",
+        "document_version_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1"
+      }
+    },
+    {
+      "id": "c303e171-e9f5-46a4-8a46-d47db64a1119",
+      "entity_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+      "action": "proposed",
+      "actor_id": "user-test01-poc",
+      "created_at": "2026-11-13 16:23:01.542197+00:00",
+      "details": {
+        "run_id": "63506882-333c-479c-992e-027b991c836a",
+        "task_id": "task-patient-001",
+        "provider": "dr_train_ollama",
+        "document_version_id": "6c5684b9-cd50-4fea-a060-7c075b56ffe1"
+      }
+    },
+    {
+      "id": "d7dad3d3-a123-451b-85a3-b60b4521cc9e",
+      "entity_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+      "action": "review_edit",
+      "actor_id": "user-test01-poc",
+      "created_at": "2026-11-13 16:23:10.688647+00:00",
+      "details": {
+        "version": 2,
+        "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448"
+      }
+    },
+    {
+      "id": "b6fb4e6a-c818-49bf-a56a-9031d15cb5a8",
+      "entity_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+      "action": "review_approve",
+      "actor_id": "user-test01-poc",
+      "created_at": "2026-11-13 16:23:27.719131+00:00",
+      "details": {
+        "version": 2,
+        "action_hash": "008eca73ddfba0287ff7da18a77b7e130c286d8ed3374b66a01b0cbe58a88448"
+      }
+    },
+    {
+      "id": "f79c0cb2-aac6-4abc-9beb-8ec3630aebc3",
+      "entity_id": "b6cc13f6-fa9e-4985-96a2-4646e113c180",
+      "action": "committed",
+      "actor_id": "user-test01-poc",
+      "created_at": "2026-11-13 16:23:40.885988+00:00",
+      "details": {
+        "task_id": "task-patient-001",
+        "version": 2,
+        "result_id": "ef4e9f7e-e0b2-473e-ab55-79ea383ffb72",
+        "operation_key": "e691c244-3c6c-43b5-bd57-b9f186bf1410"
+      }
+    }
+  ],
+  "inference_attempt_count_for_revision": 1,
+  "proposal_count_for_revision": 1,
+  "result_count_for_proposal_or_task": 1
+}

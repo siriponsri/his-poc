@@ -1,0 +1,3 @@
+Browser tab: 7, Title: "CareBalance | Clinical workspace", URL: "http://127.0.0.1:5173/domains/D22?record=1db87d2c-73e0-43f6-9931-90c5b85f2239&patient_id=patient-001&encounter_id=encounter-001".
+There has been no change in the accessibility tree.
+The focused UI element is 1 AXWebArea CareBalance | Clinical workspace, URL: 127.0.0.1:5173/domains/D22?record=1db87d2c-73e0-43f6-9931-90c5b85f2239&patient_id=patient-001&encounter_id=encounter-001

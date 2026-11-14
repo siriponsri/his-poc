@@ -1,0 +1,15 @@
+[rtk] /!\ No hook installed — run `rtk init -g` for automatic token savings
+npm notice run his-poc-web@0.3.0 build
+npm notice run python scripts/sync_full_catalog.py && tsc --noEmit && vite build
+Synced 18 clinical + 13 ERP domain contracts; core screens authored separately.
+vite v8.3.8 building client environment for production...
+transforming...
+✓ 33 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                   0.47 kB │ gzip:   0.32 kB
+dist/assets/index-_P8ibJb-.css   73.13 kB │ gzip:  14.64 kB
+dist/assets/index-D_Z_fXba.js   419.44 kB │ gzip: 113.89 kB
+
+✓ built in 694ms
+

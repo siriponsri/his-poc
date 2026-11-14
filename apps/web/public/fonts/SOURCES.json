@@ -1,0 +1,22 @@
+{
+  "source_repository": "https://github.com/google/fonts",
+  "license": "SIL Open Font License 1.1; individual OFL license files included",
+  "transform": "Original TTF fonts converted locally with fontTools to WOFF2, without changing glyphs or naming",
+  "families": {
+    "manrope": {
+      "source": "https://github.com/google/fonts/tree/main/ofl/manrope",
+      "original_ttf_sha256": "3ae11c49db0455a3cc33e37d380f20fdb8c7f8b41dc07625c177e3d87a9d6ae6",
+      "woff2_sha256": "64424208a993eeb2799605d75e5ce039b3aae5f4cf6e35b544803f4288df0908"
+    },
+    "anuphan": {
+      "source": "https://github.com/google/fonts/tree/main/ofl/anuphan",
+      "original_ttf_sha256": "7ec47ebcaa9d6459d974691cbb42fae52e1449478a607b071bfaf3ccdb433ce4",
+      "woff2_sha256": "2621c8496e21708ded67c483aeb159e2482f4a6114ea54f28a21a33b5799c867"
+    },
+    "instrumentsans": {
+      "source": "https://github.com/google/fonts/tree/main/ofl/instrumentsans",
+      "original_ttf_sha256": "b24f1812584816958afcf22e22d08e44318c5e51651e25d2438efdde389b33b1",
+      "woff2_sha256": "93e1f1146ed9cf56072844a27499d27a9ab6d514c0451756cf934aed9df18ee8"
+    }
+  }
+}

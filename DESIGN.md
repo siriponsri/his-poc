@@ -1,38 +1,69 @@
 # CareBalance interface system
 
-Locked to the user's triadic palette on 13 November 2026. This supersedes the earlier green and purple/yellow/orange interface directions. The application is an operational HIS workspace, not a marketing page.
+The owner selected this combination on 14 November 2026:
 
-## Color and type
+- Clinical Workspace: main work queue and login composition.
+- Patient Record: stable patient/encounter context, document list and readable detail.
+- Operations Desk: the original loop mark and CareBalance wordmark, shared throughout.
 
-| Role | Anchor | Usage |
-|---|---|---|
-| Primary | #1C4286 | Primary actions, current location, focus and navigable task titles |
-| Review | #861C42 | Missing/unclear evidence, failed/rejected outcomes and work awaiting review |
-| Verified | #42861C | Evidence found and recorded/verified outcomes; never a claim of clinical accuracy |
-| Neutral | CSS semantic surface/ink tokens | Canvas, work surfaces, labels, tables and separators |
+This supersedes the 13 November triadic layout. The palette anchors remain blue
+#1C4286, burgundy #861C42 and green #42861C. Neutral surfaces carry the interface;
+color identifies an action or meaningful finding. English primary headings and
+navigation sit alongside Thai clinical content and explanations. Self-hosted Latin
+and Thai typography replaces the earlier IBM Plex treatment, with license notices
+retained alongside the fonts.
 
-Every CSS color and font uses a root token; tints are derived for readable backgrounds. IBM Plex Sans Thai is self-hosted with its recorded OFL notice. Labels use the body face rather than technical monospace. Code, hashes and exact model identifiers retain monospace. Normal product-scale type and 4/8/12/16/24 spacing are preferred over display text.
+## Composition and data
 
-## Composition
+The main workspace keeps a scoped task table beside details for the selected
+item. Patient work retains identity and encounter while documents, visits and
+related work change. Navigation remains permission-filtered, including all 38
+existing domain destinations, and becomes a focus-contained drawer on mobile.
+Login exposes only the actual local account flow and public neutral illustration.
 
-The shell keeps the permission-filtered fixed sidebar because the system has38 destinations. The main work region is capped and centered; mobile navigation becomes a focus-contained drawer, makes the underlying main inert and restores focus after Escape. Clinical context stays visibly separate from page content.
+All rows, counts, versions and findings come from authorized APIs. The design
+proposal fixtures do not populate the app. Missing metadata is not invented, and
+loaded collection sizes do not claim global totals. Important status is readable
+in words; colored leading card stripes and pill stacks are not part of this system.
 
-Home has one real task register with search and status filtering. Counters retain server-provided meanings. Task rows open the specific task, patient and encounter through URL parameters; the encounter must resolve against scoped records. Workload, recent records and workspace directory are secondary disclosures.
+## Patient reading journey
 
-Shared domains use list/detail work surfaces, typed inline forms and state-specific commands. D22 retains immutable document revision reading/editing/attestation flows. D37 uses compact task/document intake, progressive proposal selection and parallel source/findings panels. Human review and commit actions remain beside the review, with detailed model/run history progressively available.
+Patient names in the queue open a separate wide, read-only dialog, retaining the
+queue behind it. On the actual1536px public desktop viewport the panel is1120px
+wide and source area790.4px, replacing the330px preview as the main reading space.
+At390px mobile width, a native document selector leaves356.8px for source reading.
+These are observed dimensions, not a user study or a breakpoint guarantee.
 
-The interface has no marketing hero, decorative gradient, invented chart/KPI, fake result or automatic clinical action. Findings carry words and symbols as well as color. Source quotes prove containment, not semantic or clinical correctness.
+Document selection remains inside the panel. Visits expand into a list; Open visit
+continues in the existing visit workspace, where encounter selection belongs.
+Open document and Open review carry exact document/task/patient/encounter context.
+The panel has no editing, AI execution or approval actions. Escape/Close restore
+trigger focus and queue position; route/Login/logout navigation resets the viewport.
+Loading, empty and denied/error states are distinct; retry uses close and reopen.
 
-## Context and transaction states
+See [User journey](docs/USER_JOURNEY_TH.md) and
+[release evidence and limits](docs/RELEASE_PATIENT_PANEL.md). The separate CareBalance
+DR derivative and LabClear theme integration remain active future implementation.
 
-- Selecting a subject resets prior drafts/results through existing route/context boundaries.
-- Visible proposals must match the selected patient/encounter metadata; unknown metadata fails closed under a selected context.
-- Browsing authorized history without global context is read-only. Editing, approval and commit require both global IDs to match the bound proposal, and any selected task must match.
-- Runs/results are resolved through scoped task identities because result DTOs do not carry direct patient/encounter fields.
-- Busy, ambiguous network outcome and pending replay retain original operation keys. No provider or mock fallback was introduced.
-- Rejected/recorded status is displayed directly; an artificial linear progress ribbon no longer suggests approval for terminal outcomes.
-- Loading, empty, error, denied, disabled, unsaved, pending, confirmed and read-only states use existing real behavior.
+## Workflow invariants
 
-## Verification
+Task links retain exact task/patient/encounter context. Patient changes clear old
+drafts/results through the existing boundaries. Proposals must match the current
+patient and encounter; unknown metadata fails closed. Authorized history without
+matching context remains read-only. Edits, approval and commit bind the selected
+proposal version, hash, source evidence and stable operation key.
 
-Read docs/design/TRIADIC_REDESIGN.md for exact source/evidence and retained failures. Visual quality uses the requested no-slop-ui rules and Hallmark app-screen guidance; backend authorization, data correctness and task truth take precedence over visual heuristics.
+D22 retains immutable revision reading/editing/attestation. D37 preserves actual
+provider labeling, source quotes, human editing, approval and atomic commit.
+Network ambiguity and replay keep the original operation key; provider failure
+does not switch to mock or cloud. Source containment does not establish clinical
+accuracy. Loading, empty, error, denied, pending, unsaved and recorded states retain
+their existing actions and keyboard behavior.
+
+## Evidence and references
+
+See [selected design contract](docs/design/CLINICAL_WORKSPACE.md) for research,
+provenance and release boundaries. Historical implementation evidence remains in
+[the prior design record](docs/design/TRIADIC_REDESIGN.md); it is not proof of this
+iteration. Current release evidence identifies the candidate, checks and deployed
+image separately from the original 38-domain local acceptance.

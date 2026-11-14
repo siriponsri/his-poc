@@ -1,0 +1,3 @@
+Browser tab: 1600430616, Title: "CareBalance | Clinical workspace", URL: "https://his.ai-cie.com/domains/D37?patient_id=patient-001&encounter_id=encounter-001&task_id=1e5bda27-e154-4415-b48d-97e0ed96ec20&document_id=56b34d6a-e16f-4e73-b34b-a839ea25d73f".
+There has been no change in the accessibility tree.
+The focused UI element is 1 AXWebArea CareBalance | Clinical workspace, URL: his.ai-cie.com/domains/D37?patient_id=patient-001&encounter_id=encounter-001&task_id=1e5bda27-e154-4415-b48d-97e0ed96ec20&document_id=56b34d6a-e16f-4e73-b34b-a839ea25d73f

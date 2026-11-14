@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T02:42:29.383010+00:00",
+  "archive_sha256": "167d14addf47841efa40298098aa1552761518eee3c99acd2e329fde3da16d87",
+  "snapshot_files": 214,
+  "frontend_check_source_hashes_match": true,
+  "frontend_checks": "apps/web/evidence/patient-record-panel-scroll-20261114-final/checks.json",
+  "scope": "Scroll-reset-only immutable image build; activation NOT_RUN. No backend/core AI/source guard changes. Other dr-train services outside scope.",
+  "local_archive": "scroll-reset-20261114T024228Z.tar.gz"
+}

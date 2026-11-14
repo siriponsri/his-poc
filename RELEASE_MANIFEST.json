@@ -17,5 +17,31 @@
   "clinical_product_effectiveness": "NOT_RUN",
   "validation": "VALIDATION_REPORT.md",
   "repository": "https://github.com/siriponsri/his-poc",
-  "source_integrity": "SHA256SUMS.json"
+  "source_integrity": "SHA256SUMS.json",
+  "selected_ui_release": {
+    "date": "2026-11-14",
+    "status": "DEPLOYED_WITH_FINAL_INTERACTIVE_REOPEN_LIMITATION",
+    "report": "docs/RELEASE_PATIENT_PANEL.md",
+    "checkpoint": "evidence/research-ui-release/release-checkpoint.json",
+    "image": "his-poc-server:workspace-167d14addf47",
+    "source_files": 214,
+    "dist_assets": 17,
+    "frontend_tests": {
+      "unit": 25,
+      "component": 91,
+      "audit_cases": 3
+    },
+    "typecheck": "PASS",
+    "build": "PASS",
+    "public_workflow_on_preceding_89_component_candidate": "PASS_SYNTHETIC_REAL_AI_HUMAN_V2_COMMIT_RELOAD",
+    "public_result_readback_after_final_swap": "PASS_16_CHECKS",
+    "final_rendered_scroll_smoke": "PASS_PARENT_OBSERVED",
+    "final_interactive_persisted_proposal_reopen": "NOT_VERIFIED",
+    "baseline_fields_scope": "Original local baseline fields above retain their original validation scope."
+  },
+  "active_long_goal": {
+    "status": "ACTIVE",
+    "scope": "Separate CareBalance DR derivative preserving original DR project; LabClear connection and authorized source/theme adaptation",
+    "integration_implementation": "NOT_IMPLEMENTED_IN_UI_CHECKPOINT"
+  }
 }

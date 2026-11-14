@@ -1,5 +1,26 @@
 # Goal-based implementation milestones
 
+## Active long goal and UI checkpoint — 14 November 2026
+
+1. Selected Clinical1 Home/Login + Patient2 workspace + logo3, then wide read-only
+   Patient panel and explicit route/auth scroll/focus repair: implemented/deployed.
+2. Final frontend25 unit/91 component/3 audit cases/typecheck/build: PASS. Component
+   doubles, independent review and actual browser observations remain distinct.
+3. Fresh public synthetic document/real-AI/human v2/approval/commit/reload on the
+   preceding89-component candidate: PASS. Its16 server readback checks pass again
+   after the final UI-only swap; no repeated inference was needed for scroll reset.
+4. Active image167d14addf47:214 source/17 asset binding, backup, app-only replacement,
+   180 prior sessions/three results/file preservation, origin7 and Access5: PASS.
+5. Final rendered navigation/logout/signin scroll smoke: PASS. Interactive reopening
+   of the persisted proposal after that last swap: NOT_VERIFIED; investigate via
+   the existing authenticated browser when its current URL can be verified.
+6. Continue separate CareBalance DR derivative and LabClear integration/theme work.
+   These are active future tasks, not delivered integrations in this UI release.
+
+See [release phases and limits](docs/RELEASE_PATIENT_PANEL.md) and
+[user journey](docs/USER_JOURNEY_TH.md). These checks do not rerun the original
+38-domain/10-journey baseline below. Overall long goal remains ACTIVE.
+
 ขอบเขต F0–F5 แทน M0–M6/B00R–B06R ของรุ่นก่อน. สถานะเป็น evidence-based ใน VALIDATION_REPORT และ coverage; checkpoint เป็นจุดบันทึก ไม่ใช่ข้ออ้างหยุดงานที่พร้อม
 
 | Milestone | ผลลัพธ์ | เงื่อนไขรับ |

@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "generated_at": "2026-11-14T02:28:37.091856+00:00",
+  "scope": "Frontend checks only; component tests use jsdom and authored HTTP doubles, audit uses legacy isolated doubles. Public deployment/browser/real AI evidence is separate.",
+  "supersedes": "../research-ui-20261114-final/checks.json after owner-requested wide patient record journey",
+  "checks": [
+    {
+      "name": "unit",
+      "command": "rtk proxy npm test",
+      "exit_code": 0,
+      "output": "unit.txt"
+    },
+    {
+      "name": "component",
+      "command": "rtk proxy npm run test:component",
+      "exit_code": 0,
+      "output": "component.txt"
+    },
+    {
+      "name": "audit",
+      "command": "rtk proxy npm run test:audit",
+      "exit_code": 0,
+      "output": "audit.txt"
+    },
+    {
+      "name": "typecheck",
+      "command": "rtk proxy npm run typecheck",
+      "exit_code": 0,
+      "output": "typecheck.txt"
+    },
+    {
+      "name": "build",
+      "command": "rtk proxy npm run build",
+      "exit_code": 0,
+      "output": "build.txt"
+    }
+  ],
+  "counts": {
+    "unit": 25,
+    "component": 89,
+    "audit_cases": 3
+  },
+  "source_sha256": {
+    "apps/web/index.html": "e1c19753e0910c289d6eaf6880868b721983ba98e7b3feba649b74306305c11e",
+    "apps/web/src/App.tsx": "b9c628535767648114d7cfa996c835a85df881b1b3712851ea1390f06faf040b",
+    "apps/web/src/components/app-sidebar.tsx": "3dfde2f51785f92edf80b2a319e99d5e40ad1cf51930e7beb067db525a637f60",
+    "apps/web/src/components/brand.tsx": "05597be416a067aa460a96767d7bac97910db8ada3744afd51e919727e1936c6",
+    "apps/web/src/components/core-workspaces.tsx": "d57ef71a0d22b821d7dc9849e02471459069ba2e35d309edfdacd89a13ec1f54",
+    "apps/web/src/components/forms.tsx": "5fbd6ac457bfd71d448db2da86a9ce03fdd4f6b0432744feee52ec98d6756821",
+    "apps/web/src/components/growth.tsx": "c2b2ff6ef69b29f47d248262f02a544dfe73adfd39ef6055ad76d3d455740c80",
+    "apps/web/src/components/home-workspace.tsx": "7049be9fbf04646a4e47eef4b0a0b60df1e0153ea4917ee15fc025acbe26d862",
+    "apps/web/src/components/icons.tsx": "ef64f0809a8654811b821bc53ba62e2e5f53bc46e5575d86ea6d0a2544e966d0",
+    "apps/web/src/components/operations.tsx": "b8830139c7296a5ce23c5fa6d2274daaf6aa6acd33e7e2510c8293d8deae153a",
+    "apps/web/src/components/patient-record-panel.tsx": "2cba0201799530e5ea917e4376a19ca98da40edf97d520150cd0e8b890be620c",
+    "apps/web/src/components/portal.tsx": "51e8216c3eb9db60a2fea469859e34d2b52144f66584b1ae82f28882c6e68ce0",
+    "apps/web/src/components/sidebar.tsx": "03f1b2134a74924fa1ef6c895439139a5b7ce450022625aaf056d97d662dfdef",
+    "apps/web/src/components/workspace.tsx": "c5b50b257a80a8215bffa6402dd07591c03d51038f0e87c53d210e200adb4ebd",
+    "apps/web/src/data/domains.json": "f2dbdb1e7c7c783459e34ff70863a0003e63e439d09517e5f0bcb18098cb439a",
+    "apps/web/src/data/full-domains.json": "ebb95be12796cc43bae70b2e4ee7034d98208d95701bff8320b2340cf9489a72",
+    "apps/web/src/data/resource-catalog.json": "d67a7c3b99d61c181219dc9512f2f6cd3e589afa1805336c58c16b5867584655",
+    "apps/web/src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303",
+    "apps/web/src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "apps/web/src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "apps/web/src/lib/catalog.ts": "c924b48539b9828ee6de6e57f09d6e9db7b2e9f603f0013ceb420fbe42ed402d",
+    "apps/web/src/lib/client.ts": "54ec9af616577091566e2fb14943420c00d461609bfef837bc8c805144993d62",
+    "apps/web/src/lib/i18n.tsx": "6254e5e5b6b1fc6727ce813e2de894e067d944cbd492a11d44025b60987f5cb0",
+    "apps/web/src/main.tsx": "d2d217edfbd7821f47e52922634bfd2c402788da14eaafe111f50fe5fdd67cce",
+    "apps/web/src/selected-theme.css": "4b13e3ff50e3258fab9bd6acdb3d9b9650e8ade343511049d39c9c3efa76e24d",
+    "apps/web/src/styles.css": "28f914eb72adfd9a35d04a0721b22e7f3b36f08b0d62c7f2c3ade3b366418221",
+    "apps/web/src/vite-env.d.ts": "65996936fbb042915f7b74a200fcdde7e410f32a669b1ab9597cfaa4b0faddb5",
+    "apps/web/tests/adapter.test.mjs": "7640415c19b7492362f3f3470a8773ac5aeba897c36c54e84980dab674aed0b8",
+    "apps/web/tests/client-v2.test.mjs": "b7c8f2e139f133778b825ed6c09d445d22104b61bec696b96e356b70e8abd44b",
+    "apps/web/tests/live-ai.component.test.tsx": "1e7962f32c29a739f673d0ef3898a409a5fd4b0282b96d7982db1132abd1b3d2",
+    "apps/web/tests/patient-record.component.test.tsx": "c08c95238a7447e7adcfaed2f8e903bf9f55af90569f14c1b4eed6aeee351e00",
+    "apps/web/tests/refresh.component.test.tsx": "a963e1e9f8ffe24dc5209b024cdd5e00136ad2f142af5933ff2e547fe5fcbe7c",
+    "apps/web/tests/workflow.component.test.tsx": "389b2dbabfbdbd294c65d343920255d54801850d04b9fbdb51625aebb57a9372",
+    "apps/web/public/fonts/anuphan-OFL.txt": "cbc57ac0dddda1b70f246a16358fc3c2a32628a23a6d10ef64f746141d3fb159",
+    "apps/web/public/fonts/anuphan.woff2": "2621c8496e21708ded67c483aeb159e2482f4a6114ea54f28a21a33b5799c867",
+    "apps/web/public/fonts/instrumentsans-OFL.txt": "9e27a72ed30eb49a08678f6a5d6ed98ec7ba5368f541637ee0683ec9134ef966",
+    "apps/web/public/fonts/instrumentsans.woff2": "93e1f1146ed9cf56072844a27499d27a9ab6d514c0451756cf934aed9df18ee8",
+    "apps/web/public/fonts/manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+    "apps/web/public/fonts/manrope.woff2": "64424208a993eeb2799605d75e5ce039b3aae5f4cf6e35b544803f4288df0908",
+    "apps/web/public/fonts/SOURCES.json": "9417df78b7cd007b33e93422321542a286ce9c6f81ebba900f61fe96a7232d8b",
+    "apps/web/public/logo.svg": "30272f3a4b83e6cfc500657d909835fe6ab6ca47cc00003129f066ce0551bb44"
+  },
+  "dist_sha256": {
+    "apps/web/dist/assets/index-_P8ibJb-.css": "a13e361e71dce3b77508fa659d138211b49699e16fb45ea31eccc9f4766c9771",
+    "apps/web/dist/assets/index-D_Z_fXba.js": "f547cd13981d4acf9c7a800d22272d58655ce929094c98c373cfad5852fd0fc2",
+    "apps/web/dist/fonts/anuphan-OFL.txt": "cbc57ac0dddda1b70f246a16358fc3c2a32628a23a6d10ef64f746141d3fb159",
+    "apps/web/dist/fonts/anuphan.woff2": "2621c8496e21708ded67c483aeb159e2482f4a6114ea54f28a21a33b5799c867",
+    "apps/web/dist/fonts/instrumentsans-OFL.txt": "9e27a72ed30eb49a08678f6a5d6ed98ec7ba5368f541637ee0683ec9134ef966",
+    "apps/web/dist/fonts/instrumentsans.woff2": "93e1f1146ed9cf56072844a27499d27a9ab6d514c0451756cf934aed9df18ee8",
+    "apps/web/dist/fonts/manrope-OFL.txt": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+    "apps/web/dist/fonts/manrope.woff2": "64424208a993eeb2799605d75e5ce039b3aae5f4cf6e35b544803f4288df0908",
+    "apps/web/dist/fonts/SOURCES.json": "9417df78b7cd007b33e93422321542a286ce9c6f81ebba900f61fe96a7232d8b",
+    "apps/web/dist/index.html": "36276fe0edd56062d768332f001e60b8ef405526b5930921c36be3f2e8a80234",
+    "apps/web/dist/licenses/ibm-plex-sans-thai-looped-OFL.txt": "e3ac4237aef600394644cdab2375d7011b0f80d2229ff05f47df2e61a109ab57",
+    "apps/web/dist/licenses/ibm-plex-sans-thai-OFL.txt": "0eda9417087c7f8fd73ef70d2598e66bbf2e5fabc121fe796fa2e36b9eb16789",
+    "apps/web/dist/licenses/REACT_DOM_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "apps/web/dist/licenses/REACT_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "apps/web/dist/licenses/SCHEDULER_LICENSE.txt": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "apps/web/dist/licenses/SHADCN_LICENSE.txt": "cbe191a94b1484349d68d02b943bdeae08f3a9a34cc19cbaa7746bee50dd69ac",
+    "apps/web/dist/logo.svg": "30272f3a4b83e6cfc500657d909835fe6ab6ca47cc00003129f066ce0551bb44"
+  }
+}

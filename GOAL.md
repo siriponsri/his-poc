@@ -1,5 +1,27 @@
 # HIS POC — Full System development target
 
+## Active owner extension — 14 November 2026
+
+The long goal remains ACTIVE: improve the patient reading journey, create a
+separate CareBalance derivative based on dr-support-screening-poc while preserving
+the original project, and connect LabClear with authorized source/theme changes.
+DR and LabClear integration are not implemented in this UI checkpoint; local UI
+or earlier domain evidence does not establish those connections.
+
+The selected Clinical Workspace Home/Login, Patient Record workspace, Operations
+Desk logo and wide read-only Patient panel are deployed. Final25 unit/91 component/
+3 audit cases/typecheck/build pass. Active image167d14addf47 matches214 source files
+and17 assets; backup and app-only replacement preserved180 prior sessions, three
+selected results and the stored file. Seven origin hashes and five Access gates pass.
+
+The preceding89-component candidate passed a fresh public synthetic
+Typhoon→human v2→approve→commit→reload workflow. Its exact result passes16 read-only
+checks again on the final scroll/focus-only image. Final rendered navigation/Login
+scroll smoke passes; final interactive persisted-proposal reopening is NOT_VERIFIED.
+See [current checkpoint](docs/RELEASE_PATIENT_PANEL.md) and
+[user journey](docs/USER_JOURNEY_TH.md). Do not mark the full long goal complete.
+Earlier completed milestones below retain their original acceptance scope.
+
 เป้าหมายรอบนี้แทนข้อจำกัด singleton ของ v0.2 โดยชัดเจน: แอป HIS/ERP ที่ login จริง ใช้ PostgreSQL เป็นฐานหลัก มีหลายผู้ป่วย/encounters/tasks และใช้ identity, scope, evidence และ audit ร่วมกันทั้งระบบ สำหรับ solo owner และ synthetic development data
 
 เกณฑ์รับเป้าหมาย: D01–D38 ถึง L2 และ J01–J10 ถึง L3 ตาม `spec/DOMAIN_IMPLEMENTATION_MATRIX.json` และ `spec/ACCEPTANCE_TEST_PLAN_TH.md`. L2 ต้องมี workflow ของ domain นั้นพร้อม PostgreSQL persistence และ evidence; L3 ต้องมี integration/browser evidence ของ journey. เมนู ฟอร์ม schema หรือ tests ของ SQLite ไม่ทดแทนเกณฑ์เหล่านี้

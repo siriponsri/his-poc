@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/branding/his-poc-logo.png" alt="HIS POC logo" width="420" />
+  <img src="docs/branding/carebalance-logo.svg" alt="CareBalance" width="300" />
 </p>
 
 <h1 align="center">Connected hospital workflows. Traceable records.</h1>
@@ -26,15 +26,19 @@
 
 ## Open the protected POC
 
-**[his.ai-cie.com](https://his.ai-cie.com)** now serves the redesigned application on dr-train behind Cloudflare Access. Use an allowed Access email, then sign in to HIS as **test01** with the password supplied privately by the owner. This limited synthetic account can work with patient-001 and the document/AI review flow.
+**[his.ai-cie.com](https://his.ai-cie.com)** serves CareBalance on dr-train behind Cloudflare Access. Verify an allowed email, then sign in as **test01** with the password supplied privately by the owner. This limited synthetic account can work with patient-001 and the document/AI review flow.
 
-The interface uses the owner's blue **#1C4286**, burgundy **#861C42** and green **#42861C** anchors: one searchable task register, shared record workspaces and source beside human review. No-slop-ui and Hallmark guidance informed the redesign; [design decisions and provenance](docs/design/TRIADIC_REDESIGN.md) describe what was actually used.
+The selected design combines **Clinical Workspace** for Home and Login, **Patient Record** for patient work, and the original **Operations Desk logo**. English headings accompany Thai records; neutral surfaces use blue **#1C4286**, burgundy **#861C42** and green **#42861C** accents. [Design contract and research](docs/design/CLINICAL_WORKSPACE.md).
 
-![Public task workspace](evidence/triadic-release/public-final/home-loaded.jpg)
+Patient names now open a separate, wide **Patient panel** over the queue. Read and switch documents there, then open the existing document, review or visit workspace with the exact patient context. Closing the panel restores the queue position and keyboard focus. [User journey](docs/USER_JOURNEY_TH.md).
 
-The real HTTPS flow passed document save → Typhoon findings → human edit v2 → approval → commit → reload. Server readback confirms one inference and one result, source/approval hash binding, **10.414 seconds**, **422 input / 136 output tokens**, and cost unmeasured. These are one synthetic integration observation, not clinical accuracy or a performance guarantee. See [public acceptance](evidence/triadic-release/public-final/browser-acceptance.json) and the [deployment runbook](docs/DEPLOY_DR_TRAIN.md).
+![Patient panel on the protected public POC in Chrome](evidence/research-ui-release/patient-panel-public/patient-panel-new-document.jpg)
 
-Frontend checks passed **25 unit / 69 component tests**, audit, typecheck and build. Actual local desktop/tablet/mobile confirmation passed 13 observations. Public app source and all 21 built assets match the reviewed candidate. The earlier full-system baseline below retains its original scope.
+The final14 November image matches **214 source files /17 built assets**. Frontend checks passed **25 unit /91 component /3 audit cases**, typecheck and build. App-only replacement preserved all180 preexisting sessions, three selected committed results and the stored file; seven origin asset hashes and five unauthenticated Cloudflare Access checks passed.
+
+A fresh public Chrome workflow on the preceding wide-panel candidate passed document → real Typhoon → human edit v2 → approval → commit → reload. The same result passed16 read-only server checks again after the final scroll/focus-only update: **11.563 seconds,424 input /134 output tokens**, cost unmeasured. Final rendered navigation/Login scroll checks passed; reopening the persisted proposal interactively after that last update remains **NOT_VERIFIED**. [Current release report](docs/RELEASE_PATIENT_PANEL.md) records the exact source phases and limitation. This synthetic integration check does not establish clinical effectiveness or throughput.
+
+The long goal continues with a separate CareBalance DR derivative and LabClear integration/theme work. Those integrations are not implemented in this UI checkpoint. [Deployment operations](docs/DEPLOY_DR_TRAIN.md).
 
 ## Overview
 

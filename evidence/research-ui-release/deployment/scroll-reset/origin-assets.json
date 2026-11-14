@@ -1,0 +1,72 @@
+{
+  "observed_at": "2026-11-14T02:43:28.817542+00:00",
+  "method": "Read-only loopback HTTP asset responses; no authentication/session/inference/mutation",
+  "checks": [
+    {
+      "path": "/login",
+      "status": 200,
+      "bytes": 477,
+      "sha256": "b03896b8aaf33e5ac658e73e20bc0d5f8df42373fcc3a3d7b7bc8d7889a188f1",
+      "content_type": "text/html; charset=utf-8",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    },
+    {
+      "path": "/assets/index-YkkpA1iL.js",
+      "status": 200,
+      "bytes": 419654,
+      "sha256": "804e57de519d4f45438d08716262f107978c0aa78e18c8c6d65c62fe05fdb768",
+      "content_type": "text/javascript; charset=utf-8",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    },
+    {
+      "path": "/assets/index-_P8ibJb-.css",
+      "status": 200,
+      "bytes": 73133,
+      "sha256": "a13e361e71dce3b77508fa659d138211b49699e16fb45ea31eccc9f4766c9771",
+      "content_type": "text/css; charset=utf-8",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    },
+    {
+      "path": "/fonts/anuphan.woff2",
+      "status": 200,
+      "bytes": 91172,
+      "sha256": "2621c8496e21708ded67c483aeb159e2482f4a6114ea54f28a21a33b5799c867",
+      "content_type": "application/octet-stream",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    },
+    {
+      "path": "/fonts/instrumentsans.woff2",
+      "status": 200,
+      "bytes": 89156,
+      "sha256": "93e1f1146ed9cf56072844a27499d27a9ab6d514c0451756cf934aed9df18ee8",
+      "content_type": "application/octet-stream",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    },
+    {
+      "path": "/fonts/manrope.woff2",
+      "status": 200,
+      "bytes": 53892,
+      "sha256": "64424208a993eeb2799605d75e5ce039b3aae5f4cf6e35b544803f4288df0908",
+      "content_type": "application/octet-stream",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    },
+    {
+      "path": "/logo.svg",
+      "status": 200,
+      "bytes": 248,
+      "sha256": "30272f3a4b83e6cfc500657d909835fe6ab6ca47cc00003129f066ce0551bb44",
+      "content_type": "image/svg+xml",
+      "cache_control": "no-store",
+      "matches_local_dist": true
+    }
+  ],
+  "public_browser_acceptance": "Separate authenticated browser evidence required",
+  "status": "PASS",
+  "local_dist_matches": true
+}

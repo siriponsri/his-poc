@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "reviewer": "selected_ui_review, independent read-only interface reviewer",
+  "candidate_receipt": "apps/web/evidence/research-ui-20261114-final/checks.json",
+  "source_and_dist_hash_drift": 0,
+  "checks": [
+    "Current frontend source compared with final receipt",
+    "Actual desktop Login, Home and Patient Documents screenshots inspected",
+    "Selected Clinical Workspace, Patient Record and Operations logo combination matched",
+    "Production document DTO source rendering and restricted content handling reviewed",
+    "Patient/encounter document filtering and mismatched detail rejection reviewed",
+    "Canonical context URLs including D01/D03 actions and history reviewed",
+    "AI scope, immutable version/hash approval, pending operation and retry guards retained",
+    "Final D01/D03 canonical working-context callbacks and reload regression reviewed"
+  ],
+  "test_receipts_inspected": {
+    "unit": 25,
+    "component": 76,
+    "audit_cases": 3,
+    "typecheck": "PASS",
+    "build": "PASS"
+  },
+  "limits": "Reviewer inspected source, test definitions, receipts and root-captured desktop images; did not rerun tests or operate the browser. Root owns mobile, keyboard, deployment, public URL and live-model acceptance."
+}

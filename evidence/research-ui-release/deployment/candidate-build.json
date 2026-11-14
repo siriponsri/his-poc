@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T02:02:43.961905+00:00",
+  "release_path": "/home/chaw/his-poc/releases/workspace-072a759f371d",
+  "image": "his-poc-server:workspace-072a759f371d",
+  "image_id": "sha256:cd6f108817aa65663c7bc2842bcc40242356b15924015a7a266e62a1e5aae211",
+  "archive_sha256": "072a759f371d7c77d50edb5ce1bb5fe14907ba7ba6889b6d04e4bf027aff19bf",
+  "verified_snapshot_files": 212,
+  "build_exit_code": 0,
+  "build_log": "/home/chaw/his-poc/var/build-workspace-072a759f371d.log",
+  "activated": false
+}

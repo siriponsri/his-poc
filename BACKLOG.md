@@ -1,5 +1,28 @@
 # Executable backlog — full-system scope
 
+## Current checkpoint and active work — 14 November 2026
+
+- PASS: selected Clinical1 Home/Login, Patient2 full workspace and logo3; wide
+  read-only Patient panel with document selection and exact-context navigation.
+- PASS: final25 unit/91 component/3 audit cases/typecheck/build; separate local
+  browser evidence and source review retain their candidate identities.
+- PASS: public document/real Typhoon/human v2/approve/commit/reload on the preceding
+  89-component wide-panel candidate. Same result readback16/16 after final swap.
+- PASS: final image167d14addf47 binds214 source/17 assets; app-only activation
+  preserves180 prior sessions, three selected results and file; origin7/Access5.
+- PASS: final rendered navigation/Login/logout viewport reset and visible logo.
+- NOT_VERIFIED: interactive selection/reopening of the persisted proposal after
+  the final scroll-only swap. Click/key attempt did not select it; current server
+  record readback passes. Resume only after confirming the browser's current URL.
+- ACTIVE: separate CareBalance DR derivative preserving the original DR project,
+  then LabClear connection and authorized source/theme adaptation. No integration
+  endpoint, shared identity, result import or themed derivative is delivered here.
+- Source publication remains the parent integrator's work; the documentation
+  checkpoint does not imply a Git push or close the overall long goal.
+
+Evidence: [current release](docs/RELEASE_PATIENT_PANEL.md),
+[user journey](docs/USER_JOURNEY_TH.md). Historical receipts and failures remain.
+
 F0–F5 are active scope; historic B00R–B06R is superseded. Actual completed/remaining detail is maintained in DOMAIN_COVERAGE.json and VALIDATION_REPORT. Never relabel a menu as an implemented domain.
 
 | ID | Work | Acceptance / dependency |

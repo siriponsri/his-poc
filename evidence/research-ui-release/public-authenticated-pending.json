@@ -1,0 +1,18 @@
+{
+  "status": "NOT_RUN",
+  "target": "https://his.ai-cie.com",
+  "scope": "New UI authenticated public browser and a fresh public synthetic document/AI/human-review workflow",
+  "reason": "Current browser is at the existing Cloudflare Access email verification screen. Owner verification requested asynchronously; no response received at this checkpoint.",
+  "completed_separately": [
+    "Dedicated server application deployed and healthy",
+    "212 source and 17 built assets match the frozen candidate",
+    "Seven origin assets return200 with exact body hashes",
+    "Five unauthenticated public HTTPS probes redirect to Access, including an invalid assertion",
+    "Prior server data, test01 and178 sessions preserved",
+    "Local current-UI real-model workflow and16 PostgreSQL readback checks pass"
+  ],
+  "resume": "After owner verifies an allowed email in the handed-off Access tab, sign in using the existing test01 account. Inspect new Login/Home/patient documents, create a fresh synthetic D37 task via All tasks and a D22 document, run pinned Typhoon once, human edit/approve/commit/reload, then read back exact server run/result. Do not reset accounts, seed, restore or alter Access.",
+  "historical_checkpoint": true,
+  "superseded_by": "evidence/research-ui-release/release-checkpoint.json",
+  "supersession_note": "Original initial072/76 checkpoint retained verbatim above. Owner subsequently completed Access; a fresh public workflow passed on the89-component wide-panel candidate. Final91 scroll-only phase has current server readback and rendered scroll smoke, with interactive persisted-proposal reopening still NOT_VERIFIED."
+}

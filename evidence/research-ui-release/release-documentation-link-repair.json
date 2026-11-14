@@ -1,0 +1,22 @@
+{
+  "status": "PASS_AFTER_REPAIR",
+  "scope": "Documentation link integrity; no runtime or public behavior change",
+  "initial_observation": {
+    "status": "FAIL",
+    "provenance": "Transcribed from the first check_patient_panel_release_docs.py tool result; first latest-status receipt was replaced on rerun",
+    "relative_links_checked": 106,
+    "json_files_checked": 43,
+    "document": "docs/RELEASE_CLINICAL_WORKSPACE.md",
+    "broken_target": "../evidence/research-ui-release/public-access-boundary/access-boundary.json",
+    "other_checks": "JSON parse, scoped secret scan, .venv static package consistency and git diff --check passed"
+  },
+  "repair": {
+    "method": "Byte-identical historical receipt compatibility copy at the original published link, with adjacent PROVENANCE.json",
+    "original_historical_report_body": "PRESERVED_VERBATIM",
+    "source": "evidence/research-ui-release/deployment/public-access-boundary/access-boundary.json",
+    "compatibility_copy": "evidence/research-ui-release/public-access-boundary/access-boundary.json",
+    "provenance": "evidence/research-ui-release/public-access-boundary/PROVENANCE.json",
+    "latest_checks": "evidence/research-ui-release/release-documentation-checks.json"
+  },
+  "limits": "The compatibility receipt remains initial072/76 historical evidence; current91 Access evidence is under deployment/scroll-reset. The repair does not rerun or promote either Access result."
+}

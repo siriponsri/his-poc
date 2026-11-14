@@ -30,7 +30,7 @@ const client=new Client(async(url,init)=>{
  return result instanceof Response?result:new Response(JSON.stringify(result??{}))
 })
 beforeEach(()=>{
- document.body.innerHTML='<div id="root"></div>';root=createRoot(document.getElementById('root')!);calls=[];proposals=[];runs=[]
+ document.body.innerHTML='<div id="root"></div>';history.replaceState({},'','/domains/D37');root=createRoot(document.getElementById('root')!);calls=[];proposals=[];runs=[]
  config={active_provider:'dr_train_ollama',demo:false,live_routes_enabled:true,model,model_digest:'a'.repeat(64),supported_task_kinds:['document_review']}
  mutate=()=>{throw Error('Unexpected mutation')}
 })
@@ -118,4 +118,51 @@ test('changing patient context clears prior proposal and cannot retain actionabl
  await act(async()=>root.render(<AIWorkspace client={client} context={{patient_id:'p2',encounter_id:'e2'}}/>))
  assert.equal(document.querySelector('textarea'),null);assert.doesNotMatch(document.body.textContent!,/AI ตรวจข้อความสังเคราะห์แล้ว/)
  assert.equal(calls.some(c=>c.body),false)
+})
+
+test('patient-record review destination preselects the exact task and source without calling AI',async()=>{
+ history.replaceState({},'','/domains/D37?patient_id=p1&encounter_id=e1&task_id=task-doc&document_id=doc1')
+ await mount()
+ const selectors=document.querySelectorAll<HTMLSelectElement>('.ai-intake select')
+ assert.equal(selectors[0].value,'task-doc');assert.equal(selectors[1].value,'doc1')
+ assert.equal(button('สร้างข้อเสนอจากเอกสารที่บันทึก').disabled,false)
+ assert.equal(calls.some(call=>call.body),false)
+})
+
+test('unknown document in a review URL cannot enable inference through an invisible select value',async()=>{
+ history.replaceState({},'','/domains/D37?task_id=task-doc&document_id=missing-document')
+ await mount()
+ assert.equal(document.querySelectorAll<HTMLSelectElement>('.ai-intake select')[1].value,'')
+ assert.equal(button('สร้างข้อเสนอจากเอกสารที่บันทึก').disabled,true)
+ await act(async()=>button('สร้างข้อเสนอจากเอกสารที่บันทึก').click())
+ assert.equal(calls.some(call=>call.body),false)
+})
+
+test('a document URL from another encounter cannot become evidence for the selected task',async()=>{
+ history.replaceState({},'','/domains/D37?task_id=task-doc&document_id=other-visit-document')
+ const crossClient=new Client(async(url,init)=>{
+  assert.equal(init?.body,undefined)
+  const path=String(url).replace('/api/v2/','')
+  const value=path.startsWith('documents')?{items:[{id:'other-visit-document',patient_id:'p1',encounter_id:'e2',title:'Wrong visit source',version:1}]}:await client.get(path)
+  return new Response(JSON.stringify(value))
+ })
+ await act(async()=>root.render(<AIWorkspace client={crossClient} context={{patient_id:'p1',encounter_id:'e1'}}/>))
+ assert.doesNotMatch(document.querySelector('.ai-intake')!.textContent!,/Wrong visit source/)
+ assert.equal(button('สร้างข้อเสนอจากเอกสารที่บันทึก').disabled,true)
+ assert.equal(calls.some(call=>call.body),false)
+})
+
+test('a completed task can be read but cannot request fresh inference',async()=>{
+ history.replaceState({},'','/domains/D37?task_id=task-doc&document_id=doc1')
+ const closedClient=new Client(async(url,init)=>{
+  assert.equal(init?.body,undefined)
+  const path=String(url).replace('/api/v2/','')
+  const value=path.startsWith('tasks')?{items:[{id:'task-doc',patient_id:'p1',encounter_id:'e1',title:'Closed review task',kind:'document_review',status:'completed'}]}:await client.get(path)
+  return new Response(JSON.stringify(value))
+ })
+ await act(async()=>root.render(<AIWorkspace client={closedClient} context={{patient_id:'p1',encounter_id:'e1'}}/>))
+ assert.equal(document.querySelectorAll<HTMLSelectElement>('.ai-intake select')[1].value,'doc1')
+ assert.equal(button('สร้างข้อเสนอจากเอกสารที่บันทึก').disabled,true)
+ assert.match(document.body.textContent!,/งานนี้ปิดแล้ว/)
+ assert.equal(calls.some(call=>call.body),false)
 })

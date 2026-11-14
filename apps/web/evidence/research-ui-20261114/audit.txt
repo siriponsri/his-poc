@@ -1,0 +1,95 @@
+[rtk] /!\ No hook installed — run `rtk init -g` for automatic token savings
+npm notice run his-poc-web@0.3.0 test:audit
+npm notice run node scripts/audit_regression.mjs ../..
+{
+  "report_version": "1.0",
+  "generated_at": "2026-11-14T01:59:41.732Z",
+  "node_version": "v24.19.0",
+  "starter_root": "C:\\Users\\User\\Desktop\\myProject\\his-poc",
+  "method": "Actual App.tsx pre-render functions + actual HisApi/decoders + minimal state-hook and HTTP doubles; no React renderer/browser.",
+  "source_sha256": {
+    "apps/web/legacy/App.audit-fixed.tsx.txt": "88e1264d57dfec62948a0345077e23ce3c7d841034685cb08a51d59f99bdf9d4",
+    "apps/web/src/lib/api.ts": "35d5291ccda286eca31c5b84eee62d55db93f541ae2a6d99980974e58fc746b8",
+    "apps/web/src/data/workflow.json": "c68ef4b17d7ad3febceae3710901a3d0d07a03d2480dfbe0ed96514c2c82332a",
+    "apps/web/src/data/thai_records.json": "2f66da220d6503dadfd3dcc70ab111c08fdd63d5fc1b295d9d1403da6f968303"
+  },
+  "fixture_transform": "Proposal expires set to current time +900 seconds in memory to isolate revision/recovery behavior; original files unchanged.",
+  "source_files_modified": false,
+  "real_network_calls": false,
+  "real_database_writes": false,
+  "browser_assertions": 0,
+  "visual_qa": "NOT_RUN",
+  "cases": [
+    {
+      "id": "F20-02",
+      "name": "Definitive commit rejection remains pending after refresh",
+      "stimulus": "POST /commits returns HTTP409 STALE_CONTEXT; subsequent GET /context succeeds.",
+      "expected": "Definitive rejection should lead to a recovery state that allows a fresh proposal/review, without describing the write as unknown.",
+      "observed": {
+        "pending_after_409": false,
+        "pending_after_refresh": false,
+        "error": "หลักฐานเปลี่ยนแล้ว กรุณาโหลดข้อมูลล่าสุดและสร้างข้อเสนอใหม่ · STALE_CONTEXT",
+        "notice": "คำสั่งถูกปฏิเสธโดยไม่บันทึก โหลดข้อมูลล่าสุดแล้วดำเนินงานต่อได้",
+        "commits_sent": 1
+      },
+      "defect_reproduced": false
+    },
+    {
+      "id": "F20-03",
+      "name": "Committed read-back does not resolve pending state",
+      "stimulus": "Commit response is lost; GET /context then supplies the matching committed proposal/result from frozen fixture data.",
+      "expected": "A verified matching result should reconcile the pending operation and be reflected as confirmed.",
+      "observed": {
+        "readback_results": 1,
+        "displayed_status": "committed",
+        "pending_still_unresolved": false,
+        "confirmed": {
+          "id": "68168cc1-4b81-485d-938d-af15f29c476b",
+          "proposal": "460387cf-07c1-4376-9666-092a188212e5",
+          "patient": "p-demo",
+          "encounter": "e-demo",
+          "action": {
+            "kind": "document_completeness",
+            "missing_fields": [
+              "signed_at"
+            ],
+            "summary": "DEMO revised summary requiring a fresh review"
+          },
+          "review": "703e3ce9-deed-481f-80bc-17af9f4e01db",
+          "created": 1794466852.8197992
+        },
+        "commits_sent": 1
+      },
+      "defect_reproduced": false
+    },
+    {
+      "id": "F20-01",
+      "name": "Successful edit plus failed refresh splits displayed and actionable revisions",
+      "stimulus": "POST /reviews edit returns a new pending version; the immediately following GET /context fails.",
+      "expected": "Displayed version/hash and the review action binding must stay consistent; otherwise approval must be unavailable.",
+      "observed": {
+        "displayed_proposal_version": 2,
+        "displayed_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "binding_version": 2,
+        "binding_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "review_draft": "New reviewed summary — synthetic state reproduction",
+        "review_dirty": false,
+        "approval_ready": true,
+        "next_approve_binding": {
+          "version": 2,
+          "action_hash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+        },
+        "error": "เชื่อมต่อไม่สำเร็จ ผลรายการอาจยังไม่แน่นอน กรุณาอ่านข้อมูลล่าสุดหรือ retry รายการเดิม · NETWORK_ERROR"
+      },
+      "defect_reproduced": false
+    }
+  ],
+  "summary": {
+    "cases_executed": 3,
+    "defects_reproduced": 0,
+    "exit_zero_meaning": "Probe completed; this is not an application acceptance PASS."
+  }
+}
+(node:28132) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+

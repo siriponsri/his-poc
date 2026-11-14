@@ -1,0 +1,290 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T02:06:34.939199+00:00",
+  "method": "Read-only repeatable-read PostgreSQL transaction in Windows Docker HIS; no inference, sessions, mutations or restart",
+  "scope": "Authored synthetic local browser workflow readback, not public deployment or clinical effectiveness",
+  "checks": {
+    "real_provider": true,
+    "successful": true,
+    "source_hash_valid": true,
+    "context_binding": true,
+    "action_hashes_valid": true,
+    "model_checklist_retained": true,
+    "all_source_quotes_valid": true,
+    "human_edit_changes_hash": true,
+    "current_version_approved": true,
+    "canonical_result_matches": true,
+    "committed": true,
+    "stored_commit_replay_matches": true,
+    "one_attempt": true,
+    "one_proposal": true,
+    "one_result": true,
+    "one_committed_audit": true
+  },
+  "document": {
+    "id": "49507bda-d21f-481b-8864-06798afb3fd2",
+    "title": "ทดสอบ Clinical Workspace 14-11-2026",
+    "patient_id": "patient-001",
+    "encounter_id": "encounter-001",
+    "status": "draft",
+    "version": 1,
+    "current_version_id": "dcaa7bb3-9321-4098-806e-6047814606d6",
+    "revision_id": "dcaa7bb3-9321-4098-806e-6047814606d6",
+    "content_hash": "c432d93327109655a6f1fc27dcaea0ddabfa57b8eb8ca2d1349fa1f768ab037b"
+  },
+  "task": {
+    "id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+    "patient_id": "patient-001",
+    "encounter_id": "encounter-001",
+    "status": "completed",
+    "version": 2,
+    "kind": "document_review",
+    "domain": "D37"
+  },
+  "run": {
+    "id": "bf08ea07-0771-49e7-b179-5e593a6e59d1",
+    "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+    "actor_id": "user-clinician",
+    "provider": "dr_train_ollama",
+    "outcome": "success",
+    "elapsed_ms": 11623,
+    "measured_cost": null,
+    "usage": {
+      "eval_count": 133,
+      "eval_duration": 2881393419,
+      "load_duration": 6271827470,
+      "total_duration": 11105278417,
+      "prompt_eval_count": 413,
+      "prompt_eval_duration": 399362930
+    },
+    "operation_key": "6c804f6c-f6f8-4a98-b20a-c9a076b09391",
+    "created_at": "2026-11-14 02:04:15.430959+00:00",
+    "completed_at": "2026-11-14 02:04:27.102127+00:00",
+    "context_snapshot": {
+      "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+      "patient_id": "patient-001",
+      "document_id": "49507bda-d21f-481b-8864-06798afb3fd2",
+      "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+      "content_hash": "c432d93327109655a6f1fc27dcaea0ddabfa57b8eb8ca2d1349fa1f768ab037b",
+      "encounter_id": "encounter-001",
+      "task_version": 1,
+      "lease_seconds": 240,
+      "document_version": 1,
+      "encounter_version": 1,
+      "document_version_id": "dcaa7bb3-9321-4098-806e-6047814606d6"
+    },
+    "provenance": {
+      "demo": false,
+      "seed": 0,
+      "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+      "engine": "ollama",
+      "num_ctx": 8192,
+      "provider": "dr_train_ollama",
+      "use_case": "document_completeness",
+      "data_class": "synthetic",
+      "hf_revision": null,
+      "num_predict": 1024,
+      "temperature": 0,
+      "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+      "input_sha256": "b073917e44658bea39d80ec71a3876efe5daccf7624f2715138a004b2f154740",
+      "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+      "model_details": {
+        "family": "gemma3",
+        "format": "gguf",
+        "families": [
+          "gemma3"
+        ],
+        "parameter_size": "11.8B",
+        "quantization_level": "unknown"
+      },
+      "schema_sha256": "0c07ecf3d871e84ea032de9e927667c06ba69ddac9285885c18879fd9b211c5e",
+      "context_tokens": 8192,
+      "engine_version": "0.12.6",
+      "prompt_version": "his-document-completeness-v1",
+      "active_provider": "dr_train_ollama",
+      "response_sha256": "04c62dc1b938382268c85238756fc301a54b528a65665415a0a17818879ac84c",
+      "template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+      "provider_outcome": "success",
+      "artifact_revision": "ollama_manifest_digest",
+      "max_output_tokens": 1024,
+      "parameters_sha256": "9ce3defaaf78fa2c3b43e556f9089ed90a2c022f566ba4b3af6da55d5e58377e",
+      "keep_alive_seconds": 0,
+      "max_document_chars": 6000,
+      "input_budget_policy": "conservative_utf8_bytes",
+      "live_routes_enabled": true,
+      "verification_status": "CONFIGURED_NOT_PROBED",
+      "chat_template_sha256": "109037bec39c0becc8221222ae23557559bc594290945a2c4221ab4f303b8871",
+      "supported_task_kinds": [
+        "document_review"
+      ],
+      "system_prompt_sha256": "2712af860df4cfc89a1cdbadb271c28182d26c2211338f88ba2def8cd8d7f21b",
+      "declared_capabilities": [
+        "completion"
+      ],
+      "requires_human_review": true
+    }
+  },
+  "proposal": {
+    "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+    "run_id": "bf08ea07-0771-49e7-b179-5e593a6e59d1",
+    "document_version_id": "dcaa7bb3-9321-4098-806e-6047814606d6",
+    "encounter_version": 1,
+    "task_version": 1,
+    "version": 2,
+    "status": "committed",
+    "action_hash": "b4ffdb5ad43ca151958aa630c58219bd7e5020ddc2b5b971ef0086fd16f68b89",
+    "expires_at": "2026-11-14 02:19:27.102204+00:00",
+    "id": "0b21e79f-07f6-413b-8818-f823b6d921f9",
+    "created_at": "2026-11-14 02:04:27.104693+00:00"
+  },
+  "immutable_versions": [
+    {
+      "version": 1,
+      "action_hash": "2c1ee39706be1a66527625adddf8b8ca5e892e33a08f5d9c5c23465715064f1b"
+    },
+    {
+      "version": 2,
+      "action_hash": "b4ffdb5ad43ca151958aa630c58219bd7e5020ddc2b5b971ef0086fd16f68b89"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "22580345-150f-4bff-8ed3-6e9780c44201",
+      "actor_id": "user-clinician",
+      "version": 1,
+      "action_hash": "2c1ee39706be1a66527625adddf8b8ca5e892e33a08f5d9c5c23465715064f1b",
+      "decision": "edit"
+    },
+    {
+      "id": "8c147086-5e4f-4da9-876f-37174d0420a1",
+      "actor_id": "user-clinician",
+      "version": 2,
+      "action_hash": "b4ffdb5ad43ca151958aa630c58219bd7e5020ddc2b5b971ef0086fd16f68b89",
+      "decision": "approve"
+    }
+  ],
+  "result": {
+    "proposal_id": "0b21e79f-07f6-413b-8818-f823b6d921f9",
+    "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+    "actor_id": "user-clinician",
+    "version": 2,
+    "action_hash": "b4ffdb5ad43ca151958aa630c58219bd7e5020ddc2b5b971ef0086fd16f68b89",
+    "operation_key": "1ead5042-33a5-4df6-95d4-6527ce825d90",
+    "id": "9fb308fb-ac85-4319-9e8b-772d1e6b97f0",
+    "created_at": "2026-11-14 02:05:10.643192+00:00"
+  },
+  "checklist": {
+    "checklist_id": "SYNTHETIC_DOCUMENT_COMPLETENESS_V1",
+    "items": [
+      {
+        "evidence_quote": "มาทบทวนเอกสารตามนัด",
+        "key": "chief_complaint",
+        "label": "อาการสำคัญหรือเหตุผลที่มารับบริการ",
+        "status": "present"
+      },
+      {
+        "evidence_quote": "ข้อมูลสมมติสำหรับทดสอบระบบ ไม่ใช่ผู้ป่วยจริง",
+        "key": "history",
+        "label": "ประวัติหรือข้อมูลประกอบ",
+        "status": "present"
+      },
+      {
+        "evidence_quote": "ผู้บันทึกต้องการตรวจความครบถ้วนของข้อความ",
+        "key": "assessment",
+        "label": "การประเมินโดยผู้บันทึก",
+        "status": "present"
+      },
+      {
+        "evidence_quote": "",
+        "key": "plan",
+        "label": "แผนหรือการติดตามที่ผู้บันทึกระบุ",
+        "status": "missing"
+      },
+      {
+        "evidence_quote": "ผู้ทดสอบ Clinical Workspace",
+        "key": "author",
+        "label": "ชื่อหรือรหัสผู้บันทึก",
+        "status": "present"
+      }
+    ],
+    "requires_human_review": true,
+    "scope": "documentation_completeness_only",
+    "summary": "พบหลักฐาน 4/5 หัวข้อ ไม่พบ 1 หัวข้อ และยังไม่ชัดเจน 0 หัวข้อ"
+  },
+  "audits": [
+    {
+      "id": "04834534-1b80-42fd-8dde-1924cb283611",
+      "entity_id": "49507bda-d21f-481b-8864-06798afb3fd2",
+      "action": "draft_created",
+      "actor_id": "user-clinician",
+      "created_at": "2026-11-14 02:02:43.430437+00:00",
+      "details": {
+        "version_id": "dcaa7bb3-9321-4098-806e-6047814606d6",
+        "content_hash": "c432d93327109655a6f1fc27dcaea0ddabfa57b8eb8ca2d1349fa1f768ab037b"
+      }
+    },
+    {
+      "id": "353ec78d-84cd-4bf5-957a-b8773b5a2eea",
+      "entity_id": "bf08ea07-0771-49e7-b179-5e593a6e59d1",
+      "action": "inference_started",
+      "actor_id": "user-clinician",
+      "created_at": "2026-11-14 02:04:15.436293+00:00",
+      "details": {
+        "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+        "provider": "dr_train_ollama",
+        "document_version_id": "dcaa7bb3-9321-4098-806e-6047814606d6"
+      }
+    },
+    {
+      "id": "4c69296a-77a6-4c33-bd7f-4f38e2cfbc52",
+      "entity_id": "0b21e79f-07f6-413b-8818-f823b6d921f9",
+      "action": "proposed",
+      "actor_id": "user-clinician",
+      "created_at": "2026-11-14 02:04:27.109779+00:00",
+      "details": {
+        "run_id": "bf08ea07-0771-49e7-b179-5e593a6e59d1",
+        "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+        "provider": "dr_train_ollama",
+        "document_version_id": "dcaa7bb3-9321-4098-806e-6047814606d6"
+      }
+    },
+    {
+      "id": "3c8153d5-507f-4b96-aff7-a17d3b17dfda",
+      "entity_id": "0b21e79f-07f6-413b-8818-f823b6d921f9",
+      "action": "review_edit",
+      "actor_id": "user-clinician",
+      "created_at": "2026-11-14 02:05:01.977314+00:00",
+      "details": {
+        "version": 2,
+        "action_hash": "b4ffdb5ad43ca151958aa630c58219bd7e5020ddc2b5b971ef0086fd16f68b89"
+      }
+    },
+    {
+      "id": "90caa069-508c-47d3-9f48-3ea63bae3d9f",
+      "entity_id": "0b21e79f-07f6-413b-8818-f823b6d921f9",
+      "action": "review_approve",
+      "actor_id": "user-clinician",
+      "created_at": "2026-11-14 02:05:06.448322+00:00",
+      "details": {
+        "version": 2,
+        "action_hash": "b4ffdb5ad43ca151958aa630c58219bd7e5020ddc2b5b971ef0086fd16f68b89"
+      }
+    },
+    {
+      "id": "0484e7fa-9c6f-422e-afbb-e585bc193fed",
+      "entity_id": "0b21e79f-07f6-413b-8818-f823b6d921f9",
+      "action": "committed",
+      "actor_id": "user-clinician",
+      "created_at": "2026-11-14 02:05:10.645916+00:00",
+      "details": {
+        "task_id": "c3336e38-cf0b-4eff-bd56-a23417e0ad92",
+        "version": 2,
+        "result_id": "9fb308fb-ac85-4319-9e8b-772d1e6b97f0",
+        "operation_key": "1ead5042-33a5-4df6-95d4-6527ce825d90"
+      }
+    }
+  ],
+  "inference_attempt_count_for_revision": 1,
+  "proposal_count_for_revision": 1,
+  "result_count_for_proposal_or_task": 1
+}

@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "scope": "Actual Chrome loopback/Vite preview against existing Windows Docker PostgreSQL. No model calls or domain mutations during this panel-only check.",
+  "candidate_receipt": "apps/web/evidence/patient-record-panel-20261114-final/checks.json",
+  "observations": [
+    {"id":"wide-reading","status":"PASS","detail":"Patient Record dialog1120px; selected source article791.6px. Patient identity, actual document and source visible.","screenshot":"patient-panel-desktop.jpg"},
+    {"id":"keyboard-containment","status":"PASS","detail":"Initial close focus; Shift+Tab wraps to last action; Tab wraps to close. Root background has inert attribute."},
+    {"id":"close-and-return","status":"PASS","detail":"Escape removes dialog and background inertness, restores opening control and preserves queue search/filter."},
+    {"id":"exact-review-link","status":"PASS","detail":"Open review carries patient-001/encounter-001/task-patient-001 and document49507bda-d21f-481b-8864-06798afb3fd2; D37 selects that exact task and document without inference."},
+    {"id":"header-entry","status":"PASS","detail":"Clinical patient heading opens the same wide panel and inherits current task/document IDs."},
+    {"id":"compact-mobile","status":"PASS","detail":"Requested390x844 browser size, effective355 CSS px under existing Chrome zoom. Native Document selector replaces the scroll list, full-width panel/source fit without horizontal overflow.","screenshot":"patient-panel-mobile.jpg"},
+    {"id":"mobile-document-selection","status":"PASS","detail":"Selecting another actual document updates the source heading/content inside the same fixed patient/encounter panel."},
+    {"id":"invalid-source-link","status":"PASS","detail":"Unknown document_id under a valid scoped task leaves fresh inference disabled; no model request made."}
+  ],
+  "post_test": "Local clinician session logged out; preview tab closed; viewport reset. Public Chrome owner session retained.",
+  "limits": "Component tests separately cover delayed responses,403 and metadata-only cases. Public deployed patient-panel acceptance is a separate report."
+}

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "observed_at": "2026-11-14T03:02:42.015121+00:00",
+  "method": "Read-only SHA256 comparison by ui_release_checkpoint agent; no test execution, browser action, deployment or inference",
+  "final_frontend_receipt": "apps/web/evidence/patient-record-panel-scroll-20261114-final/checks.json",
+  "final_frontend_source_and_dist_hashes_checked": 58,
+  "final_frontend_missing": [],
+  "final_frontend_hash_drift": [],
+  "preceding_public_candidate_image": "his-poc-server:workspace-86b174ff10c5",
+  "final_image": "his-poc-server:workspace-167d14addf47",
+  "source_changes_89_to_91": [
+    "apps/web/src/App.tsx",
+    "apps/web/tests/refresh.component.test.tsx",
+    "apps/web/tests/workflow.component.test.tsx"
+  ],
+  "removed_sources": [],
+  "backend_files_compared": 48,
+  "backend_unchanged": true,
+  "current_snapshot_source_differences": [
+    "config/runtime_inventory.json"
+  ],
+  "permitted_reporting_metadata_differences": [
+    "config/runtime_inventory.json"
+  ],
+  "unexpected_current_snapshot_differences": [],
+  "scope_note": "Runtime214 source/17dist hashes match the frozen snapshot. Later reporting-only runtime_inventory.json update is intentionally not in the active image. Frontend source/dist still exactly match final91 receipt."
+}

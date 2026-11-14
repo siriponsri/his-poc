@@ -124,7 +124,7 @@ and [Cloudflare origin/Access parameters](https://developers.cloudflare.com/tunn
 
 The owner explicitly authorized a separate test01 account on the server. It has only the clinician membership at facility-demo and care assignment for patient-001. It does not have identity administration, operations, finance or wildcard permissions. Existing users and the global account-creation password policy were not changed. Provisioning used the existing Argon2 helper and an audit event, with no plaintext password saved in source/evidence. Actual login, document/AI/human-review permissions, admin403 and other-patient404 were verified; the probe session was logged out. See test-account-provisioning.json.
 
-## Activated triadic candidate
+## Historical activated triadic candidate — 13 November 2026
 
 The current-working-source snapshot SHA256 is
 778ba97bf46f714b0b9290555549a6aeab09d5228e279204d28a53a1f8d8f7d4.
@@ -145,3 +145,54 @@ final-resource-verification.json under evidence/deployment-20261113.
 
 The parent integrator owns final external browser and real-model workflow evidence.
 This activation receipt does not replace that acceptance.
+
+## Historical first Clinical Workspace candidate — 14 November 2026
+
+Active image: his-poc-server:workspace-072a759f371d,
+IDsha256:cd6f108817aa65663c7bc2842bcc40242356b15924015a7a266e62a1e5aae211.
+Snapshot SHA256072a759f371d7c77d50edb5ce1bb5fe14907ba7ba6889b6d04e4bf027aff19bf
+contains212source files. All212 and17built assets match the final reviewed
+candidate. A fresh private backup preceded app-only replacement; database and
+connector containers,109table counts, file, test01 and178sessions were preserved.
+Seven origin asset responses match current body hashes and five anonymous public
+paths still require Access. No schema/seed/restore/account/DNS/model change occurred.
+
+Rollback for this UI release selects his-poc-server:triadic-778ba97bf46f and
+recreates only app with the existing command above. Do not restore a database
+backup merely to roll back appearance. Keep the existing Access policy active.
+
+At this initial072/76 checkpoint, authenticated public browser verification awaited
+owner Access email verification; the owner subsequently completed it on the newer
+wide-panel candidate. This paragraph is retained as historical context. See RELEASE_CLINICAL_WORKSPACE.md and
+evidence/research-ui-release/public-authenticated-pending.json for the precise
+checkpoint; local real-AI acceptance is separate from that pending public check.
+
+## Current Patient panel and scroll candidate — 14 November 2026
+
+Active image: his-poc-server:workspace-167d14addf47.
+Image ID: sha256:56821a7a82ae714f7bfc039ef82e35ad51c4d0b5f91d89c5d5d816de8cb9210b.
+Snapshot SHA256:167d14addf47841efa40298098aa1552761518eee3c99acd2e329fde3da16d87.
+The final25unit/91component/3audit/typecheck/build receipt binds the frontend;
+active runtime matches all214 source files and17 built assets. Deployment evidence
+is under evidence/research-ui-release/deployment/scroll-reset at repository root.
+
+Fresh backup preceded app-only replacement; DB/connector containers, test01 scope,
+180 prior sessions, three selected results,109 table counts and the one file were
+preserved. Origin7 asset hashes and Access5 anonymous probes pass. Four endpoints
+remain loopback-only; connector retains four HA connections. No restore, seed,
+account reset, model/DNS/Access change or connector restart occurred.
+
+Rollback target is now his-poc-server:workspace-86b174ff10c5,
+image ID sha256:5fdd760121dc8db0e7e233b7b8cee6d4e575b3f23f515cec1f28971680f2c63c.
+Use the existing app-only command above with the private image selection; preserve
+DB/files. No rollback was executed. Take another fresh backup/state observation
+before any future update. Source push alone does not activate a server image.
+
+The preceding89-component wide-panel image passed a fresh authenticated public
+synthetic document→real Typhoon→human v2→approval→commit→reload workflow. After this
+final scroll/focus-only swap, its same result passes16 read-only server checks and
+the rendered route/Login/logout scroll smoke passes. Interactive persisted-proposal
+reopening on this last image is NOT_VERIFIED; see
+[current release report](RELEASE_PATIENT_PANEL.md). Do not replace this limitation
+with the earlier89 candidate's browser PASS. New DR/LabClear integrations remain
+active future work and require their own exact source/runtime/journey evidence.
