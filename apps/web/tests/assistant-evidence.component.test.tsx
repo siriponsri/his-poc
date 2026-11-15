@@ -22,13 +22,13 @@ afterEach(async()=>{await act(async()=>root.unmount());document.body.style.overf
 async function mount(request={source,quote}){await act(async()=>root.render(<SourceEvidenceModal client={client} run={run} request={request} onClose={()=>closed++} navigate={()=>{throw Error('Unexpected navigation')}}/>))}
 
 test('snapshot highlights exact original Unicode code-point offsets, not the first equal passage',async()=>{
- await mount();const mark=document.querySelector('mark');assert.equal(mark?.textContent,quote);assert.equal(mark?.previousSibling?.textContent,unicodeSlice(text,0,start));assert.equal(document.querySelector('.evidence-source-text p')?.textContent,text);assert.match(document.body.textContent!,/ข้อมูลปัจจุบันเปลี่ยนแล้ว/);assert.equal(requests[0].path,'/api/v2/assistant/runs/run-a/sources/s-doc');assert.equal(requests.some(item=>item.init?.method),false)
+ await mount();const mark=document.querySelector('mark');assert.equal(mark?.textContent,quote);assert.equal(mark?.previousSibling?.textContent,unicodeSlice(text,0,start));assert.equal(document.querySelector('.evidence-source-text p')?.textContent,text);assert.match(document.body.textContent!,/บริบทที่ใช้เตรียมร่างเปลี่ยนแล้ว/);assert.equal(requests[0].path,'/api/v2/assistant/runs/run-a/sources/s-doc');assert.equal(requests.some(item=>item.init?.method),false)
 })
 test('a malformed citation offset never highlights a plausible but different quote',async()=>{
  reply={...snapshot,citations:[{field:null,quote,display:'Authored finding',start:start-1,end:end-1}]};await mount();assert.equal(document.querySelector('mark'),null);assert.match(document.body.textContent!,/ไม่พบข้อความอ้างอิง/)
 })
 test('metadata-only snapshot renders permitted fields without using cached source body',async()=>{
- reply={...snapshot,text:null,fields:{status:'draft',title:'Metadata note'},citations:[]};await mount({source:{...source,text:'NEVER_SHOW_CACHED_DOCUMENT'},quote});assert.match(document.body.textContent!,/เฉพาะข้อมูลกำกับ/);assert.match(document.body.textContent!,/Metadata note/);assert.doesNotMatch(document.body.textContent!,/NEVER_SHOW_CACHED_DOCUMENT/);assert.equal(document.querySelector('.evidence-source-text'),null)
+ reply={...snapshot,text:null,fields:{status:'draft',title:'Metadata note'},citations:[]};await mount({source:{...source,text:'NEVER_SHOW_CACHED_DOCUMENT'},quote});assert.match(document.body.textContent!,/อ้างอิงจากช่องข้อมูล/);assert.match(document.body.textContent!,/Metadata note/);assert.doesNotMatch(document.body.textContent!,/NEVER_SHOW_CACHED_DOCUMENT/);assert.equal(document.querySelector('.evidence-source-text'),null)
 })
 test('permission denial clears captured evidence instead of falling back to run text',async()=>{
  reply=new Response(JSON.stringify({detail:'FORBIDDEN'}),{status:403});await mount();assert.match(document.querySelector('[role=alert]')!.textContent!,/ไม่มีสิทธิ์/);assert.doesNotMatch(document.body.textContent!,/หมายเหตุใหม่/)

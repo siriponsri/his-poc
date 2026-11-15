@@ -1,5 +1,175 @@
 -- REFERENCE ONLY: apply Alembic migrations, not this export.
 
+CREATE TABLE assistant_decisions (
+	run_id VARCHAR(64) NOT NULL, 
+	revision_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	authorization_hash VARCHAR(64) NOT NULL, 
+	content_hash VARCHAR(64) NOT NULL, 
+	decision VARCHAR(16) NOT NULL, 
+	selected_action_ids JSONB NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_assistant_decisions PRIMARY KEY (id), 
+	CONSTRAINT uq_assistant_decision_run UNIQUE (run_id), 
+	CONSTRAINT ck_assistant_decisions_explicit_decision CHECK (decision IN ('accepted','rejected')), 
+	CONSTRAINT fk_assistant_decisions_run_id_assistant_runs FOREIGN KEY(run_id) REFERENCES assistant_runs (id), 
+	CONSTRAINT fk_assistant_decisions_revision_id_assistant_revisions FOREIGN KEY(revision_id) REFERENCES assistant_revisions (id), 
+	CONSTRAINT fk_assistant_decisions_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id)
+)
+
+;
+
+
+CREATE TABLE assistant_effects (
+	run_id VARCHAR(64) NOT NULL, 
+	revision_id VARCHAR(64) NOT NULL, 
+	action_id VARCHAR(32) NOT NULL, 
+	kind VARCHAR(64) NOT NULL, 
+	task_id VARCHAR(64), 
+	document_id VARCHAR(64), 
+	receipt JSONB NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_assistant_effects PRIMARY KEY (id), 
+	CONSTRAINT uq_assistant_effect_revision_action UNIQUE (revision_id, action_id), 
+	CONSTRAINT uq_assistant_effect_run_action UNIQUE (run_id, action_id), 
+	CONSTRAINT fk_assistant_effects_run_id_assistant_runs FOREIGN KEY(run_id) REFERENCES assistant_runs (id), 
+	CONSTRAINT fk_assistant_effects_revision_id_assistant_revisions FOREIGN KEY(revision_id) REFERENCES assistant_revisions (id), 
+	CONSTRAINT fk_assistant_effects_task_id_tasks FOREIGN KEY(task_id) REFERENCES tasks (id), 
+	CONSTRAINT fk_assistant_effects_document_id_documents FOREIGN KEY(document_id) REFERENCES documents (id)
+)
+
+;
+
+CREATE INDEX ix_assistant_effects_document_id ON assistant_effects (document_id);
+
+CREATE INDEX ix_assistant_effects_run_id ON assistant_effects (run_id);
+
+CREATE INDEX ix_assistant_effects_task_id ON assistant_effects (task_id);
+
+
+CREATE TABLE assistant_revisions (
+	run_id VARCHAR(64) NOT NULL, 
+	version INTEGER NOT NULL, 
+	content_hash VARCHAR(64) NOT NULL, 
+	source_digest VARCHAR(64) NOT NULL, 
+	artifact JSONB NOT NULL, 
+	origin VARCHAR(16) NOT NULL, 
+	created_by VARCHAR(64) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_assistant_revisions PRIMARY KEY (id), 
+	CONSTRAINT uq_assistant_revision_version UNIQUE (run_id, version), 
+	CONSTRAINT ck_assistant_revisions_revision_origin CHECK (version > 0 AND origin IN ('model','human')), 
+	CONSTRAINT fk_assistant_revisions_run_id_assistant_runs FOREIGN KEY(run_id) REFERENCES assistant_runs (id), 
+	CONSTRAINT fk_assistant_revisions_created_by_users FOREIGN KEY(created_by) REFERENCES users (id)
+)
+
+;
+
+CREATE INDEX ix_assistant_revisions_run_id ON assistant_revisions (run_id);
+
+
+CREATE TABLE assistant_runs (
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	patient_id VARCHAR(64) NOT NULL, 
+	encounter_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	profile VARCHAR(40) NOT NULL, 
+	locale VARCHAR(8) NOT NULL, 
+	authorization_hash VARCHAR(64) NOT NULL, 
+	operation_key VARCHAR(120) NOT NULL, 
+	request_hash VARCHAR(64) NOT NULL, 
+	source_digest VARCHAR(64) NOT NULL, 
+	source_manifest JSONB NOT NULL, 
+	inference_view JSONB NOT NULL, 
+	input_hash VARCHAR(64) NOT NULL, 
+	execution_state VARCHAR(32) NOT NULL, 
+	review_state VARCHAR(24) NOT NULL, 
+	provider JSONB NOT NULL, 
+	usage JSONB, 
+	measured_cost VARCHAR(80), 
+	error VARCHAR(80), 
+	lease_id VARCHAR(64), 
+	lease_expires_at TIMESTAMP WITH TIME ZONE, 
+	hold_until TIMESTAMP WITH TIME ZONE, 
+	started_at TIMESTAMP WITH TIME ZONE, 
+	completed_at TIMESTAMP WITH TIME ZONE, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_assistant_runs PRIMARY KEY (id), 
+	CONSTRAINT fk_assistant_runs_encounter_id_patient_id_organization__7393 FOREIGN KEY(encounter_id, patient_id, organization_id, facility_id) REFERENCES encounters (id, patient_id, organization_id, facility_id), 
+	CONSTRAINT uq_assistant_run_actor_key UNIQUE (actor_id, operation_key), 
+	CONSTRAINT ck_assistant_runs_known_profile CHECK (profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff')), 
+	CONSTRAINT ck_assistant_runs_execution_state CHECK (execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted')), 
+	CONSTRAINT ck_assistant_runs_review_state CHECK (review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')), 
+	CONSTRAINT fk_assistant_runs_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_assistant_runs_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_assistant_runs_patient_id_patients FOREIGN KEY(patient_id) REFERENCES patients (id), 
+	CONSTRAINT fk_assistant_runs_encounter_id_encounters FOREIGN KEY(encounter_id) REFERENCES encounters (id), 
+	CONSTRAINT fk_assistant_runs_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_assistant_runs_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id)
+)
+
+;
+
+CREATE INDEX ix_assistant_runs_actor_id ON assistant_runs (actor_id);
+
+CREATE INDEX ix_assistant_runs_encounter_id ON assistant_runs (encounter_id);
+
+CREATE INDEX ix_assistant_runs_execution_state ON assistant_runs (execution_state);
+
+CREATE INDEX ix_assistant_runs_facility_id ON assistant_runs (facility_id);
+
+CREATE INDEX ix_assistant_runs_organization_id ON assistant_runs (organization_id);
+
+CREATE INDEX ix_assistant_runs_patient_id ON assistant_runs (patient_id);
+
+
+CREATE TABLE assistant_watches (
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	patient_id VARCHAR(64) NOT NULL, 
+	encounter_id VARCHAR(64) NOT NULL, 
+	profile VARCHAR(40) NOT NULL, 
+	locale VARCHAR(8) NOT NULL, 
+	authorization_hash VARCHAR(64) NOT NULL, 
+	status VARCHAR(24) NOT NULL, 
+	expires_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	next_scan_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	last_source_digest VARCHAR(64), 
+	last_run_id VARCHAR(64), 
+	last_enqueued_at TIMESTAMP WITH TIME ZONE, 
+	auto_run_count INTEGER NOT NULL, 
+	max_auto_runs INTEGER NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_assistant_watches PRIMARY KEY (id), 
+	CONSTRAINT fk_assistant_watches_encounter_id_patient_id_organizati_341f FOREIGN KEY(encounter_id, patient_id, organization_id, facility_id) REFERENCES encounters (id, patient_id, organization_id, facility_id), 
+	CONSTRAINT ck_assistant_watches_bounded_watch CHECK (status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3), 
+	CONSTRAINT fk_assistant_watches_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_assistant_watches_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id), 
+	CONSTRAINT fk_assistant_watches_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_assistant_watches_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_assistant_watches_patient_id_patients FOREIGN KEY(patient_id) REFERENCES patients (id), 
+	CONSTRAINT fk_assistant_watches_encounter_id_encounters FOREIGN KEY(encounter_id) REFERENCES encounters (id), 
+	CONSTRAINT fk_assistant_watches_last_run_id_assistant_runs FOREIGN KEY(last_run_id) REFERENCES assistant_runs (id)
+)
+
+;
+
+CREATE INDEX ix_assistant_watches_actor_id ON assistant_watches (actor_id);
+
+CREATE INDEX ix_assistant_watches_next_scan_at ON assistant_watches (next_scan_at);
+
+CREATE INDEX ix_assistant_watches_status ON assistant_watches (status);
+
+
 CREATE TABLE audit_events (
 	facility_id VARCHAR(64) NOT NULL, 
 	organization_id VARCHAR(64) NOT NULL, 
@@ -1590,6 +1760,252 @@ CREATE INDEX ix_documents_organization_id ON documents (organization_id);
 CREATE INDEX ix_documents_patient_id ON documents (patient_id);
 
 
+CREATE TABLE dr_attempts (
+	binding_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	operation VARCHAR(24) NOT NULL, 
+	operation_key VARCHAR(120) NOT NULL, 
+	request_id VARCHAR(64) NOT NULL, 
+	request_hash VARCHAR(64) NOT NULL, 
+	authorization_hash VARCHAR(64) NOT NULL, 
+	payload JSONB NOT NULL, 
+	status VARCHAR(24) NOT NULL, 
+	lease_id VARCHAR(64) NOT NULL, 
+	lease_expires_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	response JSONB, 
+	error_code VARCHAR(64), 
+	completed_at TIMESTAMP WITH TIME ZONE, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_attempts PRIMARY KEY (id), 
+	CONSTRAINT uq_dr_attempt_actor_session_key UNIQUE (actor_id, session_id, operation_key), 
+	CONSTRAINT ck_dr_attempts_attempt_operation CHECK (operation IN ('import','dispatch','read_report')), 
+	CONSTRAINT ck_dr_attempts_attempt_status CHECK (status IN ('running','succeeded','unknown','rejected','quarantined')), 
+	CONSTRAINT fk_dr_attempts_binding_id_dr_bindings FOREIGN KEY(binding_id) REFERENCES dr_bindings (id), 
+	CONSTRAINT fk_dr_attempts_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_dr_attempts_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id), 
+	CONSTRAINT uq_dr_attempts_request_id UNIQUE (request_id)
+)
+
+;
+
+CREATE INDEX ix_dr_attempts_binding_id ON dr_attempts (binding_id);
+
+
+CREATE TABLE dr_bindings (
+	source_set_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	destination_id VARCHAR(64) NOT NULL, 
+	destination_sha256 VARCHAR(64) NOT NULL, 
+	workspace_id VARCHAR(64) NOT NULL, 
+	consent_snapshot JSONB NOT NULL, 
+	state VARCHAR(24) NOT NULL, 
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	patient_id VARCHAR(64) NOT NULL, 
+	encounter_id VARCHAR(64) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_bindings PRIMARY KEY (id), 
+	CONSTRAINT fk_dr_binding_encounter_scope FOREIGN KEY(encounter_id, patient_id, organization_id, facility_id) REFERENCES encounters (id, patient_id, organization_id, facility_id), 
+	CONSTRAINT uq_dr_binding_set_actor_session UNIQUE (source_set_id, actor_id, session_id), 
+	CONSTRAINT ck_dr_bindings_binding_state CHECK (state IN ('reserved','imported','unknown','quarantined')), 
+	CONSTRAINT fk_dr_bindings_source_set_id_dr_source_sets FOREIGN KEY(source_set_id) REFERENCES dr_source_sets (id), 
+	CONSTRAINT fk_dr_bindings_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_dr_bindings_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id), 
+	CONSTRAINT fk_dr_bindings_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_dr_bindings_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_dr_bindings_patient_id_patients FOREIGN KEY(patient_id) REFERENCES patients (id), 
+	CONSTRAINT fk_dr_bindings_encounter_id_encounters FOREIGN KEY(encounter_id) REFERENCES encounters (id)
+)
+
+;
+
+
+CREATE TABLE dr_capability_grant_events (
+	grant_id VARCHAR(64) NOT NULL, 
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	grant_version INTEGER NOT NULL, 
+	operation VARCHAR(16) NOT NULL, 
+	old_snapshot JSONB, 
+	new_snapshot JSONB NOT NULL, 
+	database_principal VARCHAR(128) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_capability_grant_events PRIMARY KEY (id), 
+	CONSTRAINT uq_dr_grant_event_version UNIQUE (grant_id, grant_version), 
+	CONSTRAINT ck_dr_capability_grant_events_grant_event_operation CHECK (operation IN ('INSERT','UPDATE') AND grant_version > 0), 
+	CONSTRAINT fk_dr_capability_grant_events_grant_id_dr_capability_grants FOREIGN KEY(grant_id) REFERENCES dr_capability_grants (id), 
+	CONSTRAINT fk_dr_capability_grant_events_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_dr_capability_grant_events_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id)
+)
+
+;
+
+CREATE INDEX ix_dr_capability_grant_events_grant_id ON dr_capability_grant_events (grant_id);
+
+
+CREATE TABLE dr_capability_grants (
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	user_id VARCHAR(64) NOT NULL, 
+	capability VARCHAR(32) NOT NULL, 
+	status VARCHAR(16) NOT NULL, 
+	valid_from TIMESTAMP WITH TIME ZONE NOT NULL, 
+	valid_until TIMESTAMP WITH TIME ZONE NOT NULL, 
+	verification_status VARCHAR(16) NOT NULL, 
+	evidence_reference VARCHAR(240) NOT NULL, 
+	verifier_id VARCHAR(64) NOT NULL, 
+	version INTEGER NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_capability_grants PRIMARY KEY (id), 
+	CONSTRAINT fk_dr_grant_facility_scope FOREIGN KEY(facility_id, organization_id) REFERENCES facilities (id, organization_id), 
+	CONSTRAINT ck_dr_capability_grants_explicit_clinical_capability CHECK (capability IN ('dr.grade.confirm','dr.report.sign')), 
+	CONSTRAINT ck_dr_capability_grants_verified_grant_state CHECK (status IN ('active','revoked') AND verification_status='verified'), 
+	CONSTRAINT ck_dr_capability_grants_valid_grant_interval CHECK (valid_until > valid_from AND version > 0), 
+	CONSTRAINT fk_dr_capability_grants_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_dr_capability_grants_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_dr_capability_grants_user_id_users FOREIGN KEY(user_id) REFERENCES users (id), 
+	CONSTRAINT fk_dr_capability_grants_verifier_id_users FOREIGN KEY(verifier_id) REFERENCES users (id)
+)
+
+;
+
+
+CREATE TABLE dr_exchanges (
+	attempt_id VARCHAR(64) NOT NULL, 
+	context_snapshot JSONB NOT NULL, 
+	outcome VARCHAR(24) NOT NULL, 
+	receipt JSONB, 
+	error_code VARCHAR(64), 
+	quarantined BOOLEAN NOT NULL, 
+	quarantine_reason VARCHAR(64), 
+	completed_at TIMESTAMP WITH TIME ZONE, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_exchanges PRIMARY KEY (id), 
+	CONSTRAINT ck_dr_exchanges_exchange_outcome CHECK (outcome IN ('running','succeeded','unknown','rejected')), 
+	CONSTRAINT fk_dr_exchanges_attempt_id_dr_attempts FOREIGN KEY(attempt_id) REFERENCES dr_attempts (id)
+)
+
+;
+
+CREATE INDEX ix_dr_exchanges_attempt_id ON dr_exchanges (attempt_id);
+
+
+CREATE TABLE dr_report_receipts (
+	binding_id VARCHAR(64) NOT NULL, 
+	attempt_id VARCHAR(64) NOT NULL, 
+	source_set_id VARCHAR(64) NOT NULL, 
+	case_id VARCHAR(64) NOT NULL, 
+	case_revision INTEGER NOT NULL, 
+	snapshot_sha256 VARCHAR(64) NOT NULL, 
+	receipt JSONB NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_report_receipts PRIMARY KEY (id), 
+	CONSTRAINT fk_dr_report_receipts_binding_id_dr_bindings FOREIGN KEY(binding_id) REFERENCES dr_bindings (id), 
+	CONSTRAINT uq_dr_report_receipts_attempt_id UNIQUE (attempt_id), 
+	CONSTRAINT fk_dr_report_receipts_attempt_id_dr_attempts FOREIGN KEY(attempt_id) REFERENCES dr_attempts (id), 
+	CONSTRAINT fk_dr_report_receipts_source_set_id_dr_source_sets FOREIGN KEY(source_set_id) REFERENCES dr_source_sets (id)
+)
+
+;
+
+
+CREATE TABLE dr_source_provenance (
+	source_id VARCHAR(64) NOT NULL, 
+	source_version INTEGER NOT NULL, 
+	image_sha256 VARCHAR(64) NOT NULL, 
+	byte_size INTEGER NOT NULL, 
+	source_origin VARCHAR(24) NOT NULL, 
+	laterality VARCHAR(1) NOT NULL, 
+	modality VARCHAR(8) NOT NULL, 
+	capture_time VARCHAR(32), 
+	evidence_reference VARCHAR(240) NOT NULL, 
+	dataset_provenance JSONB, 
+	registrar_id VARCHAR(64) NOT NULL, 
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	patient_id VARCHAR(64) NOT NULL, 
+	encounter_id VARCHAR(64) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_source_provenance PRIMARY KEY (id), 
+	CONSTRAINT fk_dr_provenance_encounter_scope FOREIGN KEY(encounter_id, patient_id, organization_id, facility_id) REFERENCES encounters (id, patient_id, organization_id, facility_id), 
+	CONSTRAINT uq_dr_provenance_source_revision UNIQUE (source_id, source_version), 
+	CONSTRAINT ck_dr_source_provenance_registered_source_origin CHECK ((source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object')), 
+	CONSTRAINT ck_dr_source_provenance_explicit_eye_modality CHECK (laterality IN ('L','R') AND modality IN ('CFP','UWF')), 
+	CONSTRAINT ck_dr_source_provenance_source_size_revision CHECK (source_version > 0 AND byte_size BETWEEN 1 AND 1048576), 
+	CONSTRAINT fk_dr_source_provenance_source_id_clinical_imaging FOREIGN KEY(source_id) REFERENCES clinical_imaging (id), 
+	CONSTRAINT fk_dr_source_provenance_registrar_id_users FOREIGN KEY(registrar_id) REFERENCES users (id), 
+	CONSTRAINT fk_dr_source_provenance_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_dr_source_provenance_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_dr_source_provenance_patient_id_patients FOREIGN KEY(patient_id) REFERENCES patients (id), 
+	CONSTRAINT fk_dr_source_provenance_encounter_id_encounters FOREIGN KEY(encounter_id) REFERENCES encounters (id)
+)
+
+;
+
+
+CREATE TABLE dr_source_set_items (
+	source_set_id VARCHAR(64) NOT NULL, 
+	position INTEGER NOT NULL, 
+	source_id VARCHAR(64) NOT NULL, 
+	source_version INTEGER NOT NULL, 
+	provenance_id VARCHAR(64) NOT NULL, 
+	source_snapshot JSONB NOT NULL, 
+	source_sha256 VARCHAR(64) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	CONSTRAINT pk_dr_source_set_items PRIMARY KEY (id), 
+	CONSTRAINT uq_dr_item_position UNIQUE (source_set_id, position), 
+	CONSTRAINT uq_dr_item_source UNIQUE (source_set_id, source_id), 
+	CONSTRAINT ck_dr_source_set_items_bounded_position_revision CHECK (position BETWEEN 0 AND 7 AND source_version > 0), 
+	CONSTRAINT fk_dr_source_set_items_source_set_id_dr_source_sets FOREIGN KEY(source_set_id) REFERENCES dr_source_sets (id), 
+	CONSTRAINT fk_dr_source_set_items_source_id_clinical_imaging FOREIGN KEY(source_id) REFERENCES clinical_imaging (id), 
+	CONSTRAINT fk_dr_source_set_items_provenance_id_dr_source_provenance FOREIGN KEY(provenance_id) REFERENCES dr_source_provenance (id)
+)
+
+;
+
+
+CREATE TABLE dr_source_sets (
+	task_id VARCHAR(64) NOT NULL, 
+	actor_id VARCHAR(64) NOT NULL, 
+	session_id VARCHAR(64) NOT NULL, 
+	operation_key VARCHAR(120) NOT NULL, 
+	request_hash VARCHAR(64) NOT NULL, 
+	revision INTEGER NOT NULL, 
+	manifest_sha256 VARCHAR(64) NOT NULL, 
+	manifest JSONB NOT NULL, 
+	consent_snapshot JSONB NOT NULL, 
+	destination_id VARCHAR(64) NOT NULL, 
+	organization_id VARCHAR(64) NOT NULL, 
+	facility_id VARCHAR(64) NOT NULL, 
+	patient_id VARCHAR(64) NOT NULL, 
+	encounter_id VARCHAR(64) NOT NULL, 
+	id VARCHAR(64) NOT NULL, 
+	created_at TIMESTAMP WITH TIME ZONE NOT NULL, 
+	CONSTRAINT pk_dr_source_sets PRIMARY KEY (id), 
+	CONSTRAINT fk_dr_set_encounter_scope FOREIGN KEY(encounter_id, patient_id, organization_id, facility_id) REFERENCES encounters (id, patient_id, organization_id, facility_id), 
+	CONSTRAINT uq_dr_set_actor_session_key UNIQUE (actor_id, session_id, operation_key), 
+	CONSTRAINT ck_dr_source_sets_positive_revision CHECK (revision > 0), 
+	CONSTRAINT fk_dr_source_sets_task_id_tasks FOREIGN KEY(task_id) REFERENCES tasks (id), 
+	CONSTRAINT fk_dr_source_sets_actor_id_users FOREIGN KEY(actor_id) REFERENCES users (id), 
+	CONSTRAINT fk_dr_source_sets_session_id_sessions FOREIGN KEY(session_id) REFERENCES sessions (id), 
+	CONSTRAINT fk_dr_source_sets_organization_id_organizations FOREIGN KEY(organization_id) REFERENCES organizations (id), 
+	CONSTRAINT fk_dr_source_sets_facility_id_facilities FOREIGN KEY(facility_id) REFERENCES facilities (id), 
+	CONSTRAINT fk_dr_source_sets_patient_id_patients FOREIGN KEY(patient_id) REFERENCES patients (id), 
+	CONSTRAINT fk_dr_source_sets_encounter_id_encounters FOREIGN KEY(encounter_id) REFERENCES encounters (id)
+)
+
+;
+
+
 CREATE TABLE encounters (
 	organization_id VARCHAR(64) NOT NULL, 
 	facility_id VARCHAR(64) NOT NULL, 
@@ -2858,6 +3274,25 @@ CREATE TABLE suppliers (
 CREATE INDEX ix_suppliers_facility_id ON suppliers (facility_id);
 
 CREATE INDEX ix_suppliers_organization_id ON suppliers (organization_id);
+
+
+CREATE TABLE task_coordination (
+	task_id VARCHAR(64) NOT NULL, 
+	due_at TIMESTAMP WITH TIME ZONE, 
+	priority VARCHAR(12) DEFAULT 'normal' NOT NULL, 
+	escalation_level INTEGER DEFAULT '0' NOT NULL, 
+	escalation_reason VARCHAR(2000), 
+	escalated_at TIMESTAMP WITH TIME ZONE, 
+	operational_updates INTEGER DEFAULT '0' NOT NULL, 
+	CONSTRAINT pk_task_coordination PRIMARY KEY (task_id), 
+	CONSTRAINT ck_task_coordination_operational_priority CHECK (priority IN ('low','normal','high')), 
+	CONSTRAINT ck_task_coordination_operational_bounds CHECK (escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0), 
+	CONSTRAINT fk_task_coordination_task_id_tasks FOREIGN KEY(task_id) REFERENCES tasks (id)
+)
+
+;
+
+CREATE INDEX ix_task_coordination_due_at ON task_coordination (due_at);
 
 
 CREATE TABLE tasks (

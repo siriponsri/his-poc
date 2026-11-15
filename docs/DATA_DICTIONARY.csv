@@ -1,4 +1,78 @@
 table,column,postgresql_type,nullable,primary_key,foreign_keys,constraints
+assistant_decisions,run_id,VARCHAR(64),False,False,assistant_runs.id,"decision IN ('accepted','rejected')"
+assistant_decisions,revision_id,VARCHAR(64),False,False,assistant_revisions.id,"decision IN ('accepted','rejected')"
+assistant_decisions,actor_id,VARCHAR(64),False,False,users.id,"decision IN ('accepted','rejected')"
+assistant_decisions,authorization_hash,VARCHAR(64),False,False,,"decision IN ('accepted','rejected')"
+assistant_decisions,content_hash,VARCHAR(64),False,False,,"decision IN ('accepted','rejected')"
+assistant_decisions,decision,VARCHAR(16),False,False,,"decision IN ('accepted','rejected')"
+assistant_decisions,selected_action_ids,JSONB,False,False,,"decision IN ('accepted','rejected')"
+assistant_decisions,id,VARCHAR(64),False,True,,"decision IN ('accepted','rejected')"
+assistant_decisions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"decision IN ('accepted','rejected')"
+assistant_effects,run_id,VARCHAR(64),False,False,assistant_runs.id,
+assistant_effects,revision_id,VARCHAR(64),False,False,assistant_revisions.id,
+assistant_effects,action_id,VARCHAR(32),False,False,,
+assistant_effects,kind,VARCHAR(64),False,False,,
+assistant_effects,task_id,VARCHAR(64),True,False,tasks.id,
+assistant_effects,document_id,VARCHAR(64),True,False,documents.id,
+assistant_effects,receipt,JSONB,False,False,,
+assistant_effects,id,VARCHAR(64),False,True,,
+assistant_effects,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+assistant_revisions,run_id,VARCHAR(64),False,False,assistant_runs.id,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,version,INTEGER,False,False,,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,content_hash,VARCHAR(64),False,False,,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,source_digest,VARCHAR(64),False,False,,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,artifact,JSONB,False,False,,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,origin,VARCHAR(16),False,False,,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,created_by,VARCHAR(64),False,False,users.id,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,id,VARCHAR(64),False,True,,"version > 0 AND origin IN ('model','human')"
+assistant_revisions,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"version > 0 AND origin IN ('model','human')"
+assistant_runs,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,actor_id,VARCHAR(64),False,False,users.id,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,session_id,VARCHAR(64),False,False,sessions.id,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,profile,VARCHAR(40),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,locale,VARCHAR(8),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,authorization_hash,VARCHAR(64),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,operation_key,VARCHAR(120),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,request_hash,VARCHAR(64),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,source_digest,VARCHAR(64),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,source_manifest,JSONB,False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,inference_view,JSONB,False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,input_hash,VARCHAR(64),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,execution_state,VARCHAR(32),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,review_state,VARCHAR(24),False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,provider,JSONB,False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,usage,JSONB,True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,measured_cost,VARCHAR(80),True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,error,VARCHAR(80),True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,lease_id,VARCHAR(64),True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,lease_expires_at,TIMESTAMP WITH TIME ZONE,True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,hold_until,TIMESTAMP WITH TIME ZONE,True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,started_at,TIMESTAMP WITH TIME ZONE,True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,completed_at,TIMESTAMP WITH TIME ZONE,True,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,id,VARCHAR(64),False,True,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_runs,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"execution_state IN ('queued','waiting_for_capacity','running','succeeded','failed','timeout','invalid_output','abstained','stale_context','interrupted'); profile IN ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'); review_state IN ('unavailable','pending','accepted','rejected','superseded','stale')"
+assistant_watches,actor_id,VARCHAR(64),False,False,users.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,session_id,VARCHAR(64),False,False,sessions.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,profile,VARCHAR(40),False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,locale,VARCHAR(8),False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,authorization_hash,VARCHAR(64),False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,status,VARCHAR(24),False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,expires_at,TIMESTAMP WITH TIME ZONE,False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,next_scan_at,TIMESTAMP WITH TIME ZONE,False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,last_source_digest,VARCHAR(64),True,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,last_run_id,VARCHAR(64),True,False,assistant_runs.id,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,last_enqueued_at,TIMESTAMP WITH TIME ZONE,True,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,auto_run_count,INTEGER,False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,max_auto_runs,INTEGER,False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,id,VARCHAR(64),False,True,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
+assistant_watches,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"status IN ('active','paused','expired','revoked','exhausted') AND auto_run_count BETWEEN 0 AND 3 AND max_auto_runs BETWEEN 1 AND 3"
 audit_events,facility_id,VARCHAR(64),False,False,facilities.id,
 audit_events,organization_id,VARCHAR(64),False,False,organizations.id,
 audit_events,actor_id,VARCHAR(64),False,False,users.id,
@@ -607,6 +681,120 @@ documents,current_version_id,VARCHAR(64),True,False,document_versions.id,
 documents,published,BOOLEAN,False,False,,
 documents,id,VARCHAR(64),False,True,document_versions.document_id,
 documents,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+dr_attempts,binding_id,VARCHAR(64),False,False,dr_bindings.id,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,actor_id,VARCHAR(64),False,False,users.id,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,session_id,VARCHAR(64),False,False,sessions.id,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,operation,VARCHAR(24),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,operation_key,VARCHAR(120),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,request_id,VARCHAR(64),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,request_hash,VARCHAR(64),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,authorization_hash,VARCHAR(64),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,payload,JSONB,False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,status,VARCHAR(24),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,lease_id,VARCHAR(64),False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,lease_expires_at,TIMESTAMP WITH TIME ZONE,False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,response,JSONB,True,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,error_code,VARCHAR(64),True,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,completed_at,TIMESTAMP WITH TIME ZONE,True,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,id,VARCHAR(64),False,True,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_attempts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"operation IN ('import','dispatch','read_report'); status IN ('running','succeeded','unknown','rejected','quarantined')"
+dr_bindings,source_set_id,VARCHAR(64),False,False,dr_source_sets.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,actor_id,VARCHAR(64),False,False,users.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,session_id,VARCHAR(64),False,False,sessions.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,destination_id,VARCHAR(64),False,False,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,destination_sha256,VARCHAR(64),False,False,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,workspace_id,VARCHAR(64),False,False,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,consent_snapshot,JSONB,False,False,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,state,VARCHAR(24),False,False,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,id,VARCHAR(64),False,True,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_bindings,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"state IN ('reserved','imported','unknown','quarantined')"
+dr_capability_grant_events,grant_id,VARCHAR(64),False,False,dr_capability_grants.id,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,organization_id,VARCHAR(64),False,False,organizations.id,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,facility_id,VARCHAR(64),False,False,facilities.id,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,grant_version,INTEGER,False,False,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,operation,VARCHAR(16),False,False,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,old_snapshot,JSONB,True,False,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,new_snapshot,JSONB,False,False,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,database_principal,VARCHAR(128),False,False,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,id,VARCHAR(64),False,True,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grant_events,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"operation IN ('INSERT','UPDATE') AND grant_version > 0"
+dr_capability_grants,organization_id,VARCHAR(64),False,False,facilities.organization_id;organizations.id,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,facility_id,VARCHAR(64),False,False,facilities.id;facilities.id,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,user_id,VARCHAR(64),False,False,users.id,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,capability,VARCHAR(32),False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,status,VARCHAR(16),False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,valid_from,TIMESTAMP WITH TIME ZONE,False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,valid_until,TIMESTAMP WITH TIME ZONE,False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,verification_status,VARCHAR(16),False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,evidence_reference,VARCHAR(240),False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,verifier_id,VARCHAR(64),False,False,users.id,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,version,INTEGER,False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,id,VARCHAR(64),False,True,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_capability_grants,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"capability IN ('dr.grade.confirm','dr.report.sign'); status IN ('active','revoked') AND verification_status='verified'; valid_until > valid_from AND version > 0"
+dr_exchanges,attempt_id,VARCHAR(64),False,False,dr_attempts.id,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,context_snapshot,JSONB,False,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,outcome,VARCHAR(24),False,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,receipt,JSONB,True,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,error_code,VARCHAR(64),True,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,quarantined,BOOLEAN,False,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,quarantine_reason,VARCHAR(64),True,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,completed_at,TIMESTAMP WITH TIME ZONE,True,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,id,VARCHAR(64),False,True,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_exchanges,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"outcome IN ('running','succeeded','unknown','rejected')"
+dr_report_receipts,binding_id,VARCHAR(64),False,False,dr_bindings.id,
+dr_report_receipts,attempt_id,VARCHAR(64),False,False,dr_attempts.id,
+dr_report_receipts,source_set_id,VARCHAR(64),False,False,dr_source_sets.id,
+dr_report_receipts,case_id,VARCHAR(64),False,False,,
+dr_report_receipts,case_revision,INTEGER,False,False,,
+dr_report_receipts,snapshot_sha256,VARCHAR(64),False,False,,
+dr_report_receipts,receipt,JSONB,False,False,,
+dr_report_receipts,id,VARCHAR(64),False,True,,
+dr_report_receipts,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+dr_source_provenance,source_id,VARCHAR(64),False,False,clinical_imaging.id,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,source_version,INTEGER,False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,image_sha256,VARCHAR(64),False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,byte_size,INTEGER,False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,source_origin,VARCHAR(24),False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,laterality,VARCHAR(1),False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,modality,VARCHAR(8),False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,capture_time,VARCHAR(32),True,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,evidence_reference,VARCHAR(240),False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,dataset_provenance,JSONB,True,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,registrar_id,VARCHAR(64),False,False,users.id,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,id,VARCHAR(64),False,True,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_provenance,created_at,TIMESTAMP WITH TIME ZONE,False,False,,"(source_origin='SYNTHETIC' AND dataset_provenance IS NULL) OR (source_origin='PUBLIC' AND dataset_provenance IS NOT NULL AND jsonb_typeof(dataset_provenance)='object'); laterality IN ('L','R') AND modality IN ('CFP','UWF'); source_version > 0 AND byte_size BETWEEN 1 AND 1048576"
+dr_source_set_items,source_set_id,VARCHAR(64),False,False,dr_source_sets.id,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,position,INTEGER,False,False,,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,source_id,VARCHAR(64),False,False,clinical_imaging.id,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,source_version,INTEGER,False,False,,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,provenance_id,VARCHAR(64),False,False,dr_source_provenance.id,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,source_snapshot,JSONB,False,False,,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,source_sha256,VARCHAR(64),False,False,,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_set_items,id,VARCHAR(64),False,True,,position BETWEEN 0 AND 7 AND source_version > 0
+dr_source_sets,task_id,VARCHAR(64),False,False,tasks.id,revision > 0
+dr_source_sets,actor_id,VARCHAR(64),False,False,users.id,revision > 0
+dr_source_sets,session_id,VARCHAR(64),False,False,sessions.id,revision > 0
+dr_source_sets,operation_key,VARCHAR(120),False,False,,revision > 0
+dr_source_sets,request_hash,VARCHAR(64),False,False,,revision > 0
+dr_source_sets,revision,INTEGER,False,False,,revision > 0
+dr_source_sets,manifest_sha256,VARCHAR(64),False,False,,revision > 0
+dr_source_sets,manifest,JSONB,False,False,,revision > 0
+dr_source_sets,consent_snapshot,JSONB,False,False,,revision > 0
+dr_source_sets,destination_id,VARCHAR(64),False,False,,revision > 0
+dr_source_sets,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,revision > 0
+dr_source_sets,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,revision > 0
+dr_source_sets,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,revision > 0
+dr_source_sets,encounter_id,VARCHAR(64),False,False,encounters.id;encounters.id,revision > 0
+dr_source_sets,id,VARCHAR(64),False,True,,revision > 0
+dr_source_sets,created_at,TIMESTAMP WITH TIME ZONE,False,False,,revision > 0
 encounters,organization_id,VARCHAR(64),False,False,organizations.id;patients.organization_id,version > 0
 encounters,facility_id,VARCHAR(64),False,False,facilities.id;patients.facility_id,version > 0
 encounters,patient_id,VARCHAR(64),False,False,patients.id;patients.id,version > 0
@@ -1092,6 +1280,13 @@ suppliers,facility_id,VARCHAR(64),False,False,facilities.id,
 suppliers,version,INTEGER,False,False,,
 suppliers,status,VARCHAR(40),False,False,,
 suppliers,created_at,TIMESTAMP WITH TIME ZONE,False,False,,
+task_coordination,task_id,VARCHAR(64),False,True,tasks.id,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
+task_coordination,due_at,TIMESTAMP WITH TIME ZONE,True,False,,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
+task_coordination,priority,VARCHAR(12),False,False,,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
+task_coordination,escalation_level,INTEGER,False,False,,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
+task_coordination,escalation_reason,VARCHAR(2000),True,False,,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
+task_coordination,escalated_at,TIMESTAMP WITH TIME ZONE,True,False,,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
+task_coordination,operational_updates,INTEGER,False,False,,"escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0; priority IN ('low','normal','high')"
 tasks,organization_id,VARCHAR(64),False,False,encounters.organization_id;organizations.id,
 tasks,facility_id,VARCHAR(64),False,False,encounters.facility_id;facilities.id,
 tasks,patient_id,VARCHAR(64),False,False,encounters.patient_id;patients.id,
