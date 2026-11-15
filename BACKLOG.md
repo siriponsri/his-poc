@@ -2,8 +2,13 @@
 
 ## Active goal — AI evidence, team queue and Admin AI monitoring
 
-Owner-authorized 15 November 2026. Status: IMPLEMENTING; no new deployment or
-live acceptance claimed. Baseline c47868a remains the retained public release.
+Owner-authorized 15 November 2026. Status: DEPLOYED_ACCEPTANCE_IN_PROGRESS.
+Runtime source1960a82 / image dfaad737 / schema0006 is deployed on dr-train.
+Local qualification and preservation migration passed; new bounded model
+and protected-browser acceptance are in progress. Cloudflare Access renewal
+is pending for the browser session. No final acceptance or publication of
+this milestone is claimed. Baseline c47868a remains the published release.
+Copy-only follow-up d8755d9 is locally checked and not yet deployed.
 See [the frozen contract](docs/AI_TEAM_OPERATIONS_CONTRACT.md).
 
 1. Implement profile-ranked exact source passages, original-revision evidence

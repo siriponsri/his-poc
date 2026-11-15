@@ -2,8 +2,13 @@
 
 ## Active goal — AI evidence, team queue and Admin AI monitoring
 
-Owner-authorized 15 November 2026. Status: IMPLEMENTING; no new deployment or
-live acceptance claimed. Baseline c47868a remains the retained public release.
+Owner-authorized 15 November 2026. Status: DEPLOYED_ACCEPTANCE_IN_PROGRESS.
+Runtime source1960a82 / image dfaad737 / schema0006 is deployed on dr-train.
+Local qualification and preservation migration passed; new bounded model
+and protected-browser acceptance are in progress. Cloudflare Access renewal
+is pending for the browser session. No final acceptance or publication of
+this milestone is claimed. Baseline c47868a remains the published release.
+Copy-only follow-up d8755d9 is locally checked and not yet deployed.
 See [the frozen contract](docs/AI_TEAM_OPERATIONS_CONTRACT.md).
 
 1. Implement profile-ranked exact source passages, original-revision evidence
@@ -20,6 +25,48 @@ New live acceptance is bounded to at most eight application generations,
 including two corrective reserves; no automatic retries/watch trial/cloud calls.
 Old qualification and public evidence below retain their original scope.
 
+
+## Current AI/team checkpoint
+
+Work in `C:/Users/User/Desktop/myProject/his-poc`, branch
+`codex/ai-team-operations`. Local source follow-up is `d8755d9`; it is not yet
+published. The server still runs source1960a82/image dfaad737/schema0006. Keep the
+new trial on that deployment until its six initial cases have been recorded.
+The source-only copy follow-up must be deployed afterward and checked through
+the protected URL. It changes wording, not the model or backend behavior.
+
+Canonical private operational records are under
+`var/ai-team-operations-release-20261115` and
+`var/ai-team-live-acceptance-20261115`. They are deliberately excluded from Git.
+The persistent server trial lives in the existing backup volume at
+`/var/his/backups/ai-team-live-acceptance-20261115-1960a82-v1`.
+Never reinstall/reset the attempt ledger or repeat an unknown command. Read the
+latest ledger and exact command receipts before another generation. The maximum
+is eight reserved attempts, with six initial cases and two separately reviewed
+changed-source reserves; no batch/watch/direct-provider trial is authorized.
+
+Deployment, schema preservation and compatible fallback qualification passed.
+A1/A2 production application calls and manual meaning review passed; their
+selected effects reused the existing fixture follow-up tasks without duplicates.
+A3/A4 are proceeding under separate case-specific root authorization. B1/B2
+fixtures already exist, but their native model buttons have not been clicked.
+Do not recreate fixtures or substitute API calls for the native cases.
+
+The ordinary browser session was test01. Cloudflare Access expired after Team
+queue mutation acceptance, and the user was asked to renew it in the existing
+chat browser tab. No security policy was changed. Pending native work: B1/B2
+single-context preparation, snapshot reading and reviewed draft save/reload;
+Team queue mobile and reload persistence; Admin AI operations. Never use the
+nearby Prepare my work batch control. Native queue task
+`c2765968-283e-4bce-9ecb-31b444cb1ae5` is a new synthetic task, physical version7,
+semantic version1, assigned to clinician, high operational priority, past due
+and escalation1. Current source/input hashes remained unchanged by coordination.
+
+After native acceptance: complete the copy-only deployment, final preservation
+and budget audit, safe public evidence, this report/status family, release hash
+manifest/source package and the authorized non-force main push. Do not mark the
+long goal complete before these steps. The previous resume checkpoint below is
+a retained historical Guide release and must not drive current server actions.
 
 ## Illustrated in-app User Guide — 15 November 2026
 

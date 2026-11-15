@@ -1,0 +1,406 @@
+{
+  "status": "API_COHORT_PASS_NATIVE_ACCEPTANCE_PENDING",
+  "scope": "Four authored synthetic application cases; no benchmark or clinical-effectiveness claim",
+  "deployed_source": "1960a827ac96784de5b39d8c84e688c721e963cb",
+  "cases": [
+    {
+      "case_id": "A1",
+      "channel": "in_process_https_HIS_API_with_persisted_role_auth_not_public_browser",
+      "profile": "visit_preparation",
+      "execution_state": "succeeded",
+      "provider_terminal_evidence": true,
+      "source_coverage": {
+        "omitted_sources": 9,
+        "eligible_sources": 17,
+        "included_sources": 8,
+        "unavailable_domains": []
+      },
+      "partial_source_count": 1,
+      "selection_version": "profile-passages-v2",
+      "fact_evidence": {
+        "exact_quote_count": 0,
+        "exact_typed_field_count": 2
+      },
+      "meaning_review": {
+        "reviewer": "root",
+        "status": "PASS_AUTHORED_SYNTHETIC_CASE",
+        "unsupported_claims_present": false,
+        "draft_generated_count": 1,
+        "draft_saved_count": 0,
+        "clinical_effectiveness": "NOT_ESTABLISHED"
+      },
+      "provider_elapsed_ms": 54146,
+      "end_to_end_created_to_completed_ms": 62086,
+      "usage": {
+        "prompt_eval_count": 676,
+        "eval_count": 290,
+        "load_duration": 32678949852,
+        "prompt_eval_duration": 8421373683,
+        "eval_duration": 9624501081,
+        "total_duration": 53864589968
+      },
+      "measured_cost": null,
+      "model_pin": {
+        "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+        "engine_version": "0.12.6",
+        "route": "dr_train_gpu0_v1",
+        "context_tokens": 4096,
+        "max_output_tokens": 512
+      },
+      "effect": {
+        "kind": "create_document_review_task",
+        "domain": "D37",
+        "applied_count": 1,
+        "created_new_task": false,
+        "reused_existing_task": true,
+        "same_key_replay_equal": true,
+        "replay_created_new_inference": false
+      },
+      "input_hash": "d558f245f8908e833cefa3b51210c97557497432ecebe29038f6072c6b7daae8",
+      "source_digest": "e11ff396b8fbf3c61c431ae48884921e5880357213d07ca24e4e13761d91044d",
+      "local_terminal_receipt_sha256": "94fc2ea3256abc487fcd2fcf4bcbccb497ad22077f05898a6f9b22b38f32bc83",
+      "examples": [
+        {
+          "source_ref": "s1",
+          "source_kind": "document",
+          "source_label": "A1 long authored clinical note",
+          "field": "status",
+          "captured_value": "draft",
+          "model_display": "draft",
+          "exact_match": true
+        },
+        {
+          "source_ref": "s2",
+          "source_kind": "task",
+          "source_label": "Review authored source and request previous spirometry report",
+          "field": "title",
+          "captured_value": "Review authored source and request previous spirometry report",
+          "model_display": "Review authored source and request previous spirometry report",
+          "exact_match": true
+        }
+      ],
+      "manual_narrative_comparison": {
+        "authored_source_passage": "History: reports dry cough for three days. No medicine changes are recorded.\nPending: bring the previous spirometry report for clinician review.",
+        "captured_source_content_hash": "827855017e14722c02b0ea4059ec9efdc718765c1b8fe2ff0ee0e118006be90e",
+        "generated_draft": "History: reports dry cough for three days. No medicine changes are recorded. Pending: bring the previous spirometry report for clinician review.",
+        "reviewed_meaning_faithful": true,
+        "not_a_model_literal_quote_fact": true
+      }
+    },
+    {
+      "case_id": "A2",
+      "channel": "in_process_https_HIS_API_with_persisted_role_auth_not_public_browser",
+      "profile": "nursing_handover",
+      "execution_state": "succeeded",
+      "provider_terminal_evidence": true,
+      "source_coverage": {
+        "omitted_sources": 0,
+        "eligible_sources": 5,
+        "included_sources": 5,
+        "unavailable_domains": []
+      },
+      "partial_source_count": 0,
+      "selection_version": "profile-passages-v2",
+      "fact_evidence": {
+        "exact_quote_count": 0,
+        "exact_typed_field_count": 2
+      },
+      "meaning_review": {
+        "reviewer": "root",
+        "status": "PASS_AUTHORED_SYNTHETIC_CASE",
+        "unsupported_claims_present": false,
+        "draft_generated_count": 1,
+        "draft_saved_count": 0,
+        "clinical_effectiveness": "NOT_ESTABLISHED"
+      },
+      "provider_elapsed_ms": 58032,
+      "end_to_end_created_to_completed_ms": 66707,
+      "usage": {
+        "prompt_eval_count": 518,
+        "eval_count": 245,
+        "load_duration": 32203966095,
+        "prompt_eval_duration": 13429952452,
+        "eval_duration": 8736760421,
+        "total_duration": 57752300344
+      },
+      "measured_cost": null,
+      "model_pin": {
+        "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+        "engine_version": "0.12.6",
+        "route": "dr_train_gpu0_v1",
+        "context_tokens": 4096,
+        "max_output_tokens": 512
+      },
+      "effect": {
+        "kind": "create_nursing_followup_task",
+        "domain": "D06",
+        "applied_count": 1,
+        "created_new_task": false,
+        "reused_existing_task": true,
+        "same_key_replay_equal": true,
+        "replay_created_new_inference": false
+      },
+      "input_hash": "f21243fa2c1b5060d5a1500aed62b8833bf74c874ad98bd863f3c9f4d6951513",
+      "source_digest": "da41b9420e6fa03981828ca8ab68f305732fe76018da2ae7ac657adbe5f8bbe8",
+      "source_boundary": {
+        "laboratory_control_absent_from_input": true
+      },
+      "local_terminal_receipt_sha256": "d005ac3407818bb1c09fbffa40e484af4d8ed59192f7ec1149aad55d57aaf30b",
+      "examples": [
+        {
+          "source_ref": "s1",
+          "source_kind": "handover",
+          "source_label": "Nursing handover",
+          "field": "pending_tasks",
+          "captured_value": "Recheck call bell position at the next nursing round.",
+          "model_display": "Recheck call bell position at the next nursing round.",
+          "exact_match": true
+        },
+        {
+          "source_ref": "s2",
+          "source_kind": "document",
+          "source_label": "A2 authored bedside note",
+          "field": "status",
+          "captured_value": "draft",
+          "model_display": "draft",
+          "exact_match": true
+        }
+      ],
+      "manual_narrative_comparison": {
+        "authored_source_passage": "Nursing history: needs one-person assistance when walking to the bathroom.\nPending: check that the call bell remains within reach.",
+        "captured_source_content_hash": "070508ecc47152cbf99ee653bf6540d70369a4104cf65519725f9116f76a5c38",
+        "generated_draft": "Needs one-person assistance when walking to the bathroom. Pending: check that the call bell remains within reach.",
+        "reviewed_meaning_faithful": true,
+        "not_a_model_literal_quote_fact": true
+      }
+    },
+    {
+      "case_id": "A3",
+      "channel": "in_process_https_HIS_API_with_persisted_role_auth_not_public_browser",
+      "profile": "records_readiness",
+      "execution_state": "succeeded",
+      "provider_terminal_evidence": true,
+      "source_coverage": {
+        "omitted_sources": 0,
+        "eligible_sources": 5,
+        "included_sources": 5,
+        "unavailable_domains": []
+      },
+      "partial_source_count": 0,
+      "selection_version": "profile-passages-v2",
+      "fact_evidence": {
+        "exact_quote_count": 0,
+        "exact_typed_field_count": 2
+      },
+      "meaning_review": {
+        "reviewer": "root",
+        "status": "PASS_AUTHORED_SYNTHETIC_CASE",
+        "unsupported_claims_present": false,
+        "draft_generated_count": 0,
+        "draft_saved_count": 0,
+        "clinical_effectiveness": "NOT_ESTABLISHED"
+      },
+      "provider_elapsed_ms": 49530,
+      "end_to_end_created_to_completed_ms": 52732,
+      "usage": {
+        "prompt_eval_count": 427,
+        "eval_count": 135,
+        "load_duration": 32049356371,
+        "prompt_eval_duration": 321210951,
+        "eval_duration": 14192404825,
+        "total_duration": 49251498719
+      },
+      "measured_cost": null,
+      "model_pin": {
+        "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+        "engine_version": "0.12.6",
+        "route": "dr_train_gpu0_v1",
+        "context_tokens": 4096,
+        "max_output_tokens": 512
+      },
+      "effect": {
+        "kind": "create_records_review_task",
+        "domain": "D01",
+        "applied_count": 1,
+        "created_new_task": false,
+        "reused_existing_task": true,
+        "same_key_replay_equal": true,
+        "replay_created_new_inference": false
+      },
+      "input_hash": "b65e4cbd8c2fb6846e572b4d7286dc8cb11199f814843c9572d5073480b2dbce",
+      "source_digest": "363dbd3a178fff36c41644fbf90ed3b04b9f2cda3d200861a3f0b43c71fc2367",
+      "source_boundary": {
+        "clinical_text_absent_from_snapshots": true,
+        "drafts_absent": true,
+        "named_administrative_source_association_count": 2
+      },
+      "local_terminal_receipt_sha256": "0b0f75ff8f4f53683a86c1409670f533e83b9350a7008792d6004301f03c2702",
+      "examples": [
+        {
+          "source_ref": "s1",
+          "source_kind": "document",
+          "source_label": "A3 consent form",
+          "field": "title",
+          "captured_value": "A3 consent form",
+          "model_display": "A3 consent form",
+          "exact_match": true
+        },
+        {
+          "source_ref": "s2",
+          "source_kind": "task",
+          "source_label": "Confirm referral attachment and consent document status with reception",
+          "field": "title",
+          "captured_value": "Confirm referral attachment and consent document status with reception",
+          "model_display": "Confirm referral attachment and consent document status with reception",
+          "exact_match": true
+        }
+      ]
+    },
+    {
+      "case_id": "A4",
+      "channel": "in_process_https_HIS_API_with_persisted_role_auth_not_public_browser",
+      "profile": "laboratory_handoff",
+      "execution_state": "succeeded",
+      "provider_terminal_evidence": true,
+      "source_coverage": {
+        "omitted_sources": 0,
+        "eligible_sources": 7,
+        "included_sources": 7,
+        "unavailable_domains": []
+      },
+      "partial_source_count": 0,
+      "selection_version": "profile-passages-v2",
+      "fact_evidence": {
+        "exact_quote_count": 0,
+        "exact_typed_field_count": 2
+      },
+      "meaning_review": {
+        "reviewer": "root",
+        "status": "PASS_AUTHORED_SYNTHETIC_CASE",
+        "unsupported_claims_present": false,
+        "draft_generated_count": 0,
+        "draft_saved_count": 0,
+        "clinical_effectiveness": "NOT_ESTABLISHED"
+      },
+      "provider_elapsed_ms": 48576,
+      "end_to_end_created_to_completed_ms": 53867,
+      "usage": {
+        "prompt_eval_count": 531,
+        "eval_count": 98,
+        "load_duration": 31916397570,
+        "prompt_eval_duration": 8204748796,
+        "eval_duration": 5862884342,
+        "total_duration": 48303024018
+      },
+      "measured_cost": null,
+      "model_pin": {
+        "model": "hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M",
+        "model_digest": "ab914ef406c9a78e2a8893eaa3b0ef78049f6c4e2703626433028e838d3a168b",
+        "engine_version": "0.12.6",
+        "route": "dr_train_gpu0_v1",
+        "context_tokens": 4096,
+        "max_output_tokens": 512
+      },
+      "effect": {
+        "kind": "link_lab_review_task",
+        "domain": "D10",
+        "applied_count": 1,
+        "created_new_task": false,
+        "reused_existing_task": true,
+        "same_key_replay_equal": true,
+        "replay_created_new_inference": false
+      },
+      "input_hash": "23ea4ccdd1f769a5da99bf6dc659a2deb56dc3139d3c71a466227e97b73cb1bf",
+      "source_digest": "7530b7e0854f984139d418aada34b2822ee261f712af2d8a81b97d0e8d799af7",
+      "laboratory_pairs": {
+        "input_selected": 2,
+        "input_expected": 2,
+        "output_present": 2,
+        "output_target": 2,
+        "target_met": true,
+        "analyte_value_unit_range_associations_checked": true,
+        "clinical_range_interpretation_claimed": false
+      },
+      "local_terminal_receipt_sha256": "1131a7d340f5b8451f0965a1c7c9a78e298ed205d2f25e15815ef428d9efff99",
+      "examples": [
+        {
+          "source_ref": "s1",
+          "source_kind": "lab",
+          "source_label": "Glucose authored acceptance",
+          "field": "result",
+          "captured_value": "Glucose authored acceptance: 105 mg/dL (70-99)",
+          "model_display": "Glucose authored acceptance: 105 mg/dL (70-99)",
+          "exact_match": true
+        },
+        {
+          "source_ref": "s5",
+          "source_kind": "lab",
+          "source_label": "ALT authored acceptance",
+          "field": "result",
+          "captured_value": "ALT authored acceptance: 42 U/L (7-56)",
+          "model_display": "ALT authored acceptance: 42 U/L (7-56)",
+          "exact_match": true
+        }
+      ]
+    }
+  ],
+  "budget": {
+    "reserved_allowance_consumed": 4,
+    "observed_generation_dispatches": 4,
+    "unknown_dispatch_attempts": 0,
+    "verified_no_dispatch_attempts": 0,
+    "exact_actual_generations": 4,
+    "maximum_generations": 8,
+    "api_calls_completed": 4,
+    "native_calls_completed": 0,
+    "corrective_reserves_used": 0
+  },
+  "preservation": {
+    "all_old_assistant_row_hashes_present_unchanged": true,
+    "old_assistant_counts": {
+      "assistant_runs": 6,
+      "assistant_revisions": 8,
+      "assistant_decisions": 5,
+      "assistant_effects": 7,
+      "assistant_watches": 1
+    },
+    "current_assistant_counts": {
+      "assistant_runs": 10,
+      "assistant_revisions": 12,
+      "assistant_decisions": 9,
+      "assistant_effects": 11,
+      "assistant_watches": 1
+    },
+    "legacy": {
+      "public.inference_runs": {
+        "count": 9,
+        "row_hashes_exact": true
+      },
+      "public.committed_results": {
+        "count": 9,
+        "row_hashes_exact": true
+      }
+    },
+    "active_runs": 0,
+    "active_watches": 0,
+    "receipt_sha256": "98f6f3a9c86d47a081d041d4d4a8c7bfa7853a8c0681d0c0bedf672407662301"
+  },
+  "remaining_acceptance": {
+    "native_B1_B2": "WAITING_CLOUDFLARE_ACCESS_RENEWAL_NO_RESERVATION",
+    "static_copy_followup": "NOT_DEPLOYED",
+    "final_public_smoke_and_full_preservation_audit": "NOT_RUN"
+  },
+  "operator_notes": [
+    "Two A2 outer pre-enqueue worker-busy stops were NOT_RUN, had no inner reservation/API/provider dispatch, and remain retained.",
+    "The reviewed existing dispatch.lock protocol prevents the empty-scan race without restarting or pausing services.",
+    "All four cases used typed field evidence; zero literal quote facts. Faithful narrative drafts in A1/A2 required human review and were not saved as D22 documents.",
+    "Four effects reused existing authored fixture tasks; no new duplicate task was created."
+  ],
+  "projected_at": "2026-11-15T06:04:51.011649+00:00",
+  "root_reviewed_candidate_sha256": "a3eef96103aa27c0158230d85d17cf2cfd5daa2615e98aacb3204f5e14f7a10c",
+  "evidence_scope_note": "Four predeclared authored synthetic cases on the deployed application. The examples below allow direct comparison; this is not an independent clinical evaluation.",
+  "usage_duration_unit": "nanoseconds for *_duration; milliseconds for *_ms"
+}

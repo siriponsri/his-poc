@@ -32,6 +32,25 @@ synthetic-only configuration. All demonstrated patient data are fictional.
 
 ## Try CareBalance
 
+The current deployed milestone adds three connected workflows:
+
+- **Source evidence:** read the captured original revision, exact field or quote,
+  selected passages and disclosed omissions before using a preparation.
+- **[Team queue](https://his.ai-cie.com/team-queue):** claim work, hand it to an
+  eligible colleague with a reason, set an operational due date and follow an
+  overdue task without creating another obligation.
+- **Admin AI operations:** inspect persisted execution/review state, filters,
+  timing, usage and unknown costs without opening patient charts or starting AI.
+
+Four authored synthetic production application cases passed the new source
+selection and human-review checks. Final protected-browser AI/Admin acceptance
+is still pending normal Access renewal in the test session. Read the
+[dated milestone report](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
+[exact API examples](evidence/ai-team-20261115/api-acceptance.json) and
+[task manual](docs/AI_TEAM_OPERATIONS.md) for the evidence boundary.
+
+![Actual protected Team queue after claim, eligible handoff and same-task escalation](evidence/ai-team-20261115/screenshots/team-queue-desktop.jpg)
+
 **Protected demo:** open [his.ai-cie.com](https://his.ai-cie.com), verify an allowed
 email through Cloudflare Access, then use the existing **test01** account with
 the password provided privately by the owner. The account has a limited care

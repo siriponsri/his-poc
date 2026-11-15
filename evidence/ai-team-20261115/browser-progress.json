@@ -1,0 +1,36 @@
+{
+  "status": "NATIVE_TEAM_MUTATIONS_PASS_REMAINING_ACCESS_RENEWAL_PENDING",
+  "origin": "https://his.ai-cie.com",
+  "surface": "native_public_browser",
+  "deployed_source": "1960a827ac96784de5b39d8c84e688c721e963cb",
+  "data_class": "authored_synthetic",
+  "team_queue": {
+    "claim": "PASS_SERVER_READBACK",
+    "eligible_handoff_with_reason": "PASS_SERVER_READBACK",
+    "keyboard_due_date_and_operational_priority": "PASS_SERVER_READBACK",
+    "overdue_escalation_same_task_and_owner": "PASS_SERVER_READBACK",
+    "physical_version": 7,
+    "operational_updates": 6,
+    "semantic_source_version": 1,
+    "source_digest_and_input_hash_after_coordination": "UNCHANGED_PRIVATE_ORM_CORROBORATION",
+    "initial_datetime_automation_outcomes": "Two null-date schedules retained; real keyboard event then persisted a past date",
+    "reload_persistence": "NOT_RUN_ACCESS_EXPIRED",
+    "mobile_final": "NOT_RUN_ACCESS_EXPIRED"
+  },
+  "B1_B2_fixtures": "CREATED_VIA_NATIVE_FORMS_NO_NATIVE_GENERATION_RESERVED",
+  "native_model_generations": 0,
+  "native_source_snapshot_and_draft_acceptance": "NOT_RUN_ACCESS_EXPIRED",
+  "native_admin_ai_operations": "NOT_RUN_ACCESS_EXPIRED",
+  "current_blocker": "Existing Cloudflare Access browser session expired; normal user verification requested",
+  "security_policy_changed": false,
+  "service_restart_for_access": false,
+  "temporary_mobile_viewport_reset": true,
+  "screenshot": {
+    "file": "screenshots/team-queue-desktop.jpg",
+    "sha256": "3268cde0161a4da256a5ab45bce11dc938c39170590d1d3766536cc9b7cfb454",
+    "actual_jpeg_width": 1270,
+    "actual_jpeg_height": 714,
+    "image_edited": false,
+    "caption": "Actual protected Team queue after claim, keyboard schedule, eligible handoff and escalation"
+  }
+}
