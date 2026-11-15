@@ -1,5 +1,26 @@
 # Backlog — User Guide accepted, product roadmap retained
 
+## Active goal — AI evidence, team queue and Admin AI monitoring
+
+Owner-authorized 15 November 2026. Status: IMPLEMENTING; no new deployment or
+live acceptance claimed. Baseline c47868a remains the retained public release.
+See [the frozen contract](docs/AI_TEAM_OPERATIONS_CONTRACT.md).
+
+1. Implement profile-ranked exact source passages, original-revision evidence
+   reading and measured selection/quote coverage; preserve the current model,
+   prompt/schema limits, authorization and immutable review workflow.
+2. Implement server-paginated accountable work with eligible claim/handoff,
+   operational due dates and one-task escalation; keep domain completion guards.
+3. Implement read-only Admin AI metadata with truthful timestamps, unknown
+   heartbeat/freshness and scalar allowlists; no chart bodies or host control.
+4. Qualify PostgreSQL/schema compatibility, frontend and independent review,
+   then explicitly migrate/deploy the synthetic dr-train POC and test the real URL.
+
+New live acceptance is bounded to at most eight application generations,
+including two corrective reserves; no automatic retries/watch trial/cloud calls.
+Old qualification and public evidence below retain their original scope.
+
+
 ## Illustrated in-app User Guide — 15 November 2026
 
 Status: DEPLOYED_AND_GUIDE_ACCEPTED for the synthetic protected POC.

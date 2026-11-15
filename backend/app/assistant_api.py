@@ -102,6 +102,16 @@ def create_run(body:RunInput,actor=Depends(current_actor),db=Depends(get_db,scop
 def get_run(id:str,actor=Depends(current_actor),db=Depends(get_db,scope='function')):
     run,packet=scoped_run(db,actor,id);return run_dto(db,actor,run,packet)
 
+@router.get('/runs/{id}/sources/{ref}')
+def source_evidence(id:str,ref:str,actor=Depends(current_actor),db=Depends(get_db,scope='function')):
+    from .assistant_evidence import snapshot
+    from .models_assistant import AssistantRevision
+    run,packet=scoped_run(db,actor,id)
+    row=next((source for source in run.source_manifest['sources'] if source.get('ref')==ref),None)
+    if row is None:raise HTTPException(404,detail={'code':'ASSISTANT_SOURCE_NOT_FOUND'})
+    revision=db.scalar(select(AssistantRevision).where(AssistantRevision.run_id==id).order_by(AssistantRevision.version.desc()))
+    return snapshot(run,row,packet['source_digest']==run.source_digest,revision)
+
 @router.post('/batches',status_code=202)
 def batch(body:BatchInput,actor=Depends(current_actor),db=Depends(get_db,scope='function'),key:str=Header(alias='Idempotency-Key')):
     actor_fence(db,actor);require_profile(actor,body.profile)

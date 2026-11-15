@@ -6,9 +6,19 @@ from .models_assistant import AssistantEffect
 from .common import digest, canonical
 from .core import bound, scope_query
 from .assistant_profiles import require_profile, allowed_effects
+from .assistant_evidence import ordered_sources, excerpt, SELECTION_VERSION
 
 VIEW_BYTES = 2000  # Complete canonical view; leaves >=816 bytes for pinned system/profile text.
 MAX_INCLUDED_SOURCES = 12  # Frozen draft/effect source reference cardinality.
+
+def semantic_task_version(db, row):
+    coordination = db.get(M.TaskCoordination, row.id)
+    value = row.version - (coordination.operational_updates if coordination else 0)
+    if value < 1:
+        from fastapi import HTTPException
+        raise HTTPException(409, detail={'code':'TASK_SOURCE_VERSION_INVALID'})
+    return value
+
 
 def _pristine(db, row, kind):
     column = AssistantEffect.document_id if kind == 'document' else AssistantEffect.task_id
@@ -22,7 +32,7 @@ def _pristine(db, row, kind):
             # its model text a new clinical source. Require a human revision or attestation.
             if row.current_version_id == receipt.get('document_version_id') and not attested:
                 return True
-        elif row.version == receipt.get('version') and row.status == receipt.get('status') and row.title == receipt.get('title'):
+        elif semantic_task_version(db,row) == receipt.get('version') and row.status == receipt.get('status') and row.title == receipt.get('title'):
             return True
     return False
 
@@ -64,7 +74,7 @@ def collect_packet(db, actor, profile, patient_id, encounter_id, locale='th'):
     task_domains=[d for d in definition['domains'] if d+'.read' in actor.permissions]
     for task in db.scalars(scope_query(M.Task,actor).where(M.Task.patient_id==patient.id,M.Task.encounter_id==encounter.id,M.Task.domain.in_(task_domains)).order_by(M.Task.created_at.desc(),M.Task.id)):
         if not _pristine(db,task,'task'):
-            add('task',task.id,task.version,{'domain':task.domain,'kind':task.kind,'title':task.title,'status':task.status},label=task.title)
+            add('task',task.id,semantic_task_version(db,task),{'domain':task.domain,'kind':task.kind,'title':task.title,'status':task.status},label=task.title)
     source_digest=digest({'profile':profile,'sources':rows,'unavailable_domains':unavailable})
     included=[]
     def make_view(sources):
@@ -77,21 +87,31 @@ def collect_packet(db, actor, profile, patient_id, encounter_id, locale='th'):
             effects.append(candidate)
         coverage={'eligible_sources':len(rows),'included_sources':len(sources),'omitted_sources':len(rows)-len(sources),'unavailable_domains':unavailable}
         return {'profile':profile,'locale':locale,'sources':sources,'coverage':coverage,'effect_candidates':effects}
-    for row in rows:
+    for row in ordered_sources(rows,profile):
         fields=dict(row['fields'])
         if row['kind']=='document':
-            fields={k:fields[k] for k in ('title','status','version')}
+            keys=('title','status','version') if profile=='records_readiness' else ('status','version')
+            fields={k:fields[k] for k in keys}
         if row['kind']=='lab':
             fields={k:fields[k] for k in ('result','status','critical')}
         item={'ref':f's{len(included)+1}','kind':row['kind'],'fields':fields}
+        candidates=[(None,None,None)]
         if 'text' in row:
-            item['text']=row['text']
-        # Complete source or explicit omission. Never truncate a clinical note.
-        if len(included)<MAX_INCLUDED_SOURCES and len(canonical(make_view(included+[item])).encode('utf-8')) <= VIEW_BYTES:
-            included.append(item)
-            row['ref']=item['ref']
+            candidates=[excerpt(row['text'],budget) for budget in (480,280,160)]
+        if len(included)>=MAX_INCLUDED_SOURCES:
+            row['selection']={'kind':'omitted','reason':'source_limit'}
+            continue
+        for text,start,end in candidates:
+            candidate=dict(item)
+            if text is not None:candidate['text']=text
+            if len(canonical(make_view(included+[candidate])).encode('utf-8'))<=VIEW_BYTES:
+                included.append(candidate);row['ref']=candidate['ref']
+                row['selection']={'kind':'excerpt' if text is not None and (start!=0 or end!=len(row['text'])) else 'whole','start':start,'end':end}
+                break
+        else:
+            row['selection']={'kind':'omitted','reason':'context_budget'}
     view=make_view(included)
-    manifest={'sources':rows,'coverage':view['coverage'],'patient_label':patient.display_name,'patient_reference':patient.id}
+    manifest={'sources':rows,'coverage':{**view['coverage'],'partial_sources':sum(source.get('selection',{}).get('kind')=='excerpt' for source in rows)},'patient_label':patient.display_name,'patient_reference':patient.id,'selection_version':SELECTION_VERSION}
     return {'source_digest':source_digest,'manifest':manifest,'view':view,'input_hash':digest(view)}
 
 def eligible_contexts(db, actor, profile):

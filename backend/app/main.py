@@ -6,11 +6,11 @@ from sqlalchemy import text
 from sqlalchemy.exc import IntegrityError,OperationalError
 from starlette.concurrency import run_in_threadpool
 from .db import engine,SessionLocal
-from . import model_registry,auth,core,ai,admin,integrations,dr_gateway,assistant_api
+from . import model_registry,auth,core,ai,admin,integrations,dr_gateway,assistant_api,admin_ai
 from .domains import clinical,erp,operations
 from .legacy_import import make_router
 app=FastAPI(title='HIS POC Development Prototype',version='0.3.0',docs_url='/api/docs',openapi_url='/api/v2/openapi.json')
-for router in [auth.router,operations.router,core.router,ai.router,admin.router,clinical.router,erp.router,integrations.router,dr_gateway.router,assistant_api.router,make_router()]:app.include_router(router,prefix='/api/v2')
+for router in [auth.router,operations.router,core.router,ai.router,admin.router,admin_ai.router,clinical.router,erp.router,integrations.router,dr_gateway.router,assistant_api.router,make_router()]:app.include_router(router,prefix='/api/v2')
 app.include_router(dr_gateway.browser_router)
 @app.exception_handler(IntegrityError)
 def integrity_error(request,exc):return JSONResponse(status_code=409,content={'detail':{'code':'CONSTRAINT_CONFLICT','outcome':'not_written'}})

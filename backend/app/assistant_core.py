@@ -33,7 +33,10 @@ def run_dto(db,actor,run,packet=None):
     revision=db.scalar(select(AssistantRevision).where(AssistantRevision.run_id==run.id).order_by(AssistantRevision.version.desc()))
     fresh=packet['source_digest']==run.source_digest
     result={k:getattr(run,k) for k in ('id','profile','patient_id','encounter_id','execution_state','review_state','source_digest','provider','usage','measured_cost','error')}
-    sources=[{key:value for key,value in source.items() if key in ('ref','kind','fields','text','label')} for source in run.source_manifest['sources'] if source.get('ref')]
+    from .assistant_evidence import source_dto,quality_report
+    sources=[source_dto(run,source) for source in run.source_manifest['sources'] if source.get('ref')]
+    result['quality']=quality_report(run,revision)
+    result['omitted_sources']=[{'kind':source['kind'],'label':source.get('label',source['kind']),'reason':source.get('selection',{}).get('reason','legacy_context_limit')} for source in run.source_manifest['sources'] if not source.get('ref')]
     result.update(patient_label=run.source_manifest['patient_label'],source_freshness='current' if fresh else 'stale',coverage=run.inference_view['coverage'],sources=sources,revision=None,effects=[effect_dto(e) for e in db.scalars(select(AssistantEffect).where(AssistantEffect.run_id==run.id))],created_at=run.created_at.isoformat(),completed_at=run.completed_at.isoformat() if run.completed_at else None)
     if not fresh:result['review_state']='stale'
     if revision:result['revision']={'id':revision.id,'version':revision.version,'content_hash':revision.content_hash,'origin':revision.origin,**revision.artifact}
@@ -56,7 +59,7 @@ def enqueue(db,actor,profile,patient_id,encounter_id,locale,key,expected_digest=
     if prior:
         if prior.request_hash!=request_hash or prior.authorization_hash!=authorization_hash(actor):raise HTTPException(409,detail={'code':'IDEMPOTENCY_CONFLICT'})
         return prior,True
-    same=select(AssistantRun).where(AssistantRun.actor_id==actor.user_id,AssistantRun.profile==profile,AssistantRun.patient_id==patient_id,AssistantRun.encounter_id==encounter_id,AssistantRun.source_digest==packet['source_digest'],AssistantRun.authorization_hash==authorization_hash(actor)).order_by(AssistantRun.created_at.desc())
+    same=select(AssistantRun).where(AssistantRun.actor_id==actor.user_id,AssistantRun.profile==profile,AssistantRun.patient_id==patient_id,AssistantRun.encounter_id==encounter_id,AssistantRun.source_digest==packet['source_digest'],AssistantRun.input_hash==packet['input_hash'],AssistantRun.authorization_hash==authorization_hash(actor)).order_by(AssistantRun.created_at.desc())
     prior=db.scalar(same)
     # Failed and timeout attempts are also immutable attempts, never automatic retries.
     if prior:return prior,True

@@ -1,5 +1,17 @@
 # Full-system architecture
 
+## AI team operations extension in progress
+
+The active contract adds a typed task_coordination table in schema0006,
+profile-ranked exact passages and scoped immutable source reads, plus a
+metadata-only Admin monitoring projection. Task remains the sole obligation;
+operational_updates separates ownership edits from clinical source versions.
+Explicit preparation reuse also checks input_hash while watches retain the
+semantic source digest. No current runtime qualification is inferred.
+See [the contract](AI_TEAM_OPERATIONS_CONTRACT.md). Sections below describe
+retained released slices and their original schema/evidence.
+
+
 ## Static learning workspace
 
 The /guide route lazily loads authored chapter/domain data and self-hosted exact

@@ -142,3 +142,27 @@ Protected browser journeys exercise AI evidence, accountable task mutation/reloa
 and Admin monitoring without clinical signing. Report exact subset and results;
 do not claim a new all38/all10 run, clinical effectiveness or saved staff minutes.
 Update architecture/config/contracts/goal/plan/backlog/guide and release evidence.
+
+## Frozen identity and projection clarifications
+
+source_digest continues to hash full authoritative source rows before selection
+metadata/refs. Selection-only changes affect input_hash, not the semantic digest.
+Explicit enqueue dedup additionally matches input_hash; original-key replay keeps
+its original immutable run. Watches compare semantic digests and do not dispatch
+for selector-only rollout or ownership-only updates. Test a frozen v1 digest.
+
+Snapshot text is the full original permitted text (null for metadata-only); its
+selected_excerpt is the exact model-visible passage. Offsets refer to original
+Unicode code points. Snapshot citations carry exact original start/end offsets.
+Typed fields retain their exact source association; unrelated equal numbers are
+not evidence for a different analyte/field. Generated narrative meaning is never
+certified by numerical presence or an aggregate evidence count.
+
+Admin usage projects only prompt_eval_count, eval_count, prompt_eval_duration,
+eval_duration and total_duration; coverage projects eligible_sources,
+included_sources, omitted_sources and partial_sources. Values are finite
+nonnegative numbers or null, never bool/string/object. Error codes use a fixed
+allowlist with OTHER_FAILURE fallback. Monetary strings are numeric-only or null.
+Worker DTO: heartbeat_status:not_observed, heartbeat_at:null, last_started_at,
+last_completed_at, persisted_running. Provider includes declared profiles and
+explicitly separates current selector acceptance from old operator flags.

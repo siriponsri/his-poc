@@ -41,5 +41,16 @@
   "fallback": "NONE",
   "verification_evidence": "evidence/ai-driven-root-20261114/live-source-fidelity.json",
   "application_worker_and_url_validation": "NOT_RUN",
-  "qualification_limitation": "One authored fixture per profile; visit includes a specifically reconciled final teardown sample; no clinical or throughput claim"
+  "qualification_limitation": "One authored fixture per profile; visit includes a specifically reconciled final teardown sample; no clinical or throughput claim",
+  "source_selection": {
+    "version": "profile-passages-v2",
+    "status": "IMPLEMENTING_NOT_QUALIFIED",
+    "max_view_utf8_bytes": 2000,
+    "max_included_sources": 12,
+    "offset_unit": "unicode_code_points",
+    "source_digest": "semantic_authoritative_sources",
+    "explicit_prepare_identity": "input_hash",
+    "watch_selector_only_dispatch": false
+  },
+  "retained_v1_application_evidence": "evidence/ai-driven-root-20261114/application-acceptance.json"
 }
