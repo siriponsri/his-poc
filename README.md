@@ -2,97 +2,43 @@
   <img src="docs/branding/carebalance-logo.svg" alt="CareBalance" width="300" />
 </p>
 
-<h1 align="center">AI-assisted preparation. Connected hospital workflows.</h1>
+<h1 align="center">Hospital workflows, prepared with AI</h1>
 
 <p align="center">
-  A hospital information prototype that prepares source-linked staff work with AI,
-  shared patient context, server-enforced permissions, and auditable transactions.
+  Patient records, staff work and source-linked preparation in one clinical workspace.<br />
+  AI prepares facts and drafts. People review the evidence and decide what to save.
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/status-protected%20POC%20deployed-1c4286" alt="Status: protected POC deployed" />
-  <img src="https://img.shields.io/badge/data-synthetic%20only-42861c" alt="Synthetic data only" />
-  <img src="https://img.shields.io/badge/PostgreSQL-18-4169e1" alt="PostgreSQL 18" />
-  <img src="https://img.shields.io/badge/AI-mock%20default%20%7C%20optional%20Typhoon-64748b" alt="AI: mock default, optional Typhoon" />
-</p>
-
-<p align="center">
+  <a href="https://his.ai-cie.com">Open the protected POC</a> ·
   <a href="START_HERE.md">เริ่มใช้งานภาษาไทย</a> ·
-  <a href="docs/ARCHITECTURE.md">Architecture</a> ·
-  <a href="DOMAIN_COVERAGE.md">Domain coverage</a> ·
-  <a href="JOURNEY_COVERAGE.md">Journey coverage</a> ·
-  <a href="VALIDATION_REPORT.md">Validation evidence</a>
+  <a href="docs/RELEASE_AI_WORKSPACE.md">Release and evidence</a> ·
+  <a href="docs/ARCHITECTURE.md">Architecture</a>
 </p>
 
-## Open the protected POC
+CareBalance is a hospital information and ERP development prototype built with
+**React, FastAPI and PostgreSQL 18**. A shared patient and encounter context
+connects registration, clinical documentation, nursing, diagnostics, follow-up
+work and financial operations. The workspace supports Thai records with English
+navigation and headings.
 
-**[his.ai-cie.com](https://his.ai-cie.com)** serves CareBalance on dr-train behind Cloudflare Access. Verify an allowed email, then sign in as **test01** with the password supplied privately by the owner. This limited demo account can work with patient-001 and six newly authored fictional patients, with document/AI review and explicit LabClear/DR workflows.
+The protected POC runs on **dr-train behind Cloudflare Access**. Its four AI
+preparation profiles use a dedicated, pinned Typhoon service. Local development
+starts with the explicit mock provider; live inference requires separate
+synthetic-only configuration. All demonstrated patient data are fictional.
 
-[Demo patients and evidence](docs/DEMO_PATIENTS_TH.md): six realistic Thai names, DOB/sex, numeric demo HNs, six consultation notes and eleven released lab values. All data are invented; the global Demo notice remains. The HN/age/sex display is deployed and verified through the protected URL. See the [current release](docs/RELEASE_REALISTIC_PATIENTS.md).
+![Wide patient record with authored fictional data, captured on the protected POC](evidence/ai-driven-public-20261114/patient-wide.jpg)
 
-**AI preparation is live:** visits, nursing handover, records readiness and laboratory handoff use the dedicated Typhoon service on dr-train. Six real application calls passed the bounded synthetic checks: source-linked review, human draft edits, five accepted decisions and seven draft/task effects. Actual role checks preserve metadata-only records access and nursing laboratory restrictions. An unchanged watch made no new call; one authored source revision made one new run, then the test watch was paused. Operations opens as a2D list, with3D available explicitly. [Release and limits](docs/RELEASE_AI_WORKSPACE.md), [actual application evidence](evidence/ai-driven-root-20261114/application-acceptance.json), [deployment](evidence/ai-driven-root-20261114/deployment-readback.json) and [responsive reading](evidence/ai-driven-public-20261114/responsive-reading.json).
+## Try CareBalance
 
-The selected design combines **Clinical Workspace** for Home and Login, **Patient Record** for patient work, and the original **Operations Desk logo**. English headings accompany Thai records; neutral surfaces use blue **#1C4286**, burgundy **#861C42** and green **#42861C** accents. [Design contract and research](docs/design/CLINICAL_WORKSPACE.md).
+**Protected demo:** open [his.ai-cie.com](https://his.ai-cie.com), verify an allowed
+email through Cloudflare Access, then use the existing **test01** account with
+the password provided privately by the owner. The account has a limited care
+assignment covering the original demonstration patient and six authored
+fictional patients. Credentials are not distributed in this repository.
 
-Patient names now open a separate, wide **Patient panel** over the queue. Read and switch documents there, then open the existing document, review or visit workspace with the exact patient context. Closing the panel restores the queue position and keyboard focus. [User journey](docs/USER_JOURNEY_TH.md).
-
-![Wide patient record on the protected POC, with authored fictional data](evidence/ai-driven-public-20261114/patient-wide.jpg)
-
-The earlier LabClear integration release contained **231 source files /17 assets**, with **25 unit /117 component /3 audit cases** and build checks passed for that exact release. The current deployment retains this workflow: open a released Laboratory result, choose **Review with LabClear**, explicitly send the source, review/confirm and reopen the saved result. Original HIS values remain unchanged. [Public integration evidence](evidence/integrations/public-labclear-20261114/) and [deployment operations](evidence/integrations/deployment-labclear-20261114/ops-activation-runbook.md).
-
-The separate **CareBalance DR Screening** integration is deployed. The latest protected browser check opened the authored synthetic image set, confirmed one scoped transfer and reopened the saved manual Draft without grading/signing or another model call. This is a bounded subset of the wider private acceptance, not public proof of every grading/annotation step. The ten owner-supplied MMRDR images remain held for eye metadata. [Current release/readback](docs/RELEASE_REALISTIC_PATIENTS.md), [DR checkpoint](docs/integrations/DR_RELEASE_20261114.md) and [browser scope](docs/integrations/DR_BROWSER_CHECKPOINT_20261114.md). The original source remains separate; these manual DR checks are distinct from the new AI preparation evidence.
-
-The earlier14 November Patient-panel release matched214 source files/17 assets and passed25 unit/91 component/3 audit cases. Its public synthetic document workflow passed document → real Typhoon → human edit v2 → approval → commit → reload: **11.563 seconds,424 input /134 output tokens**, cost unmeasured. Later authenticated Chrome reopening verified the persisted version2 proposal without another inference. [Patient-panel release history](docs/RELEASE_PATIENT_PANEL.md) and [reopen evidence](evidence/research-ui-release/final91-public-reopen/acceptance.json) retain their exact candidate identities. These checks establish integration behavior, not clinical effectiveness or throughput.
-
-## Overview
-
-HIS POC explores how clinical, administrative, and financial teams can work with the same patient, encounter, document, and task records. It combines a Thai-language React workspace with a FastAPI modular monolith and PostgreSQL persistence. Local accounts and permissions are verified by the server; changing a label or selection in the browser does not grant access.
-
-The development scope covers **38 domains** and **10 cross-module journeys**, from registration and laboratory results to dispensing, stock movements, claims, refunds, and patient follow-up. Each domain has its own forms and state transitions, while identity, clinical context, evidence, and audit records remain shared.
-
-**Release baseline: v0.3.0 locally validated development prototype, now with a separately verified protected deployment.** All **38 domains at L2** and **10 journeys at L3** have executed local synthetic PostgreSQL and rendered-browser evidence. The [validation report](VALIDATION_REPORT.md) records exact commands, source/runtime hashes, retained failures, and the boundary between local workflow acceptance and external or clinical verification.
-
-## What the prototype includes
-
-| Area | Local workflow scope |
-|---|---|
-| Patient and encounter management | Registration, identifiers, appointments, queues, outpatient visits, admissions, beds, transfers, and discharge follow-up |
-| Clinical workspaces | Orders, nursing handover, dispensing and administration records, laboratory results and corrections, imaging files and reports, specialist documentation, and referrals |
-| Patient portal | Server-linked patient access to published records and appointment or follow-up requests |
-| Finance and supply chain | Versioned prices, charges, invoices, synthetic claims and remittance, receipts, independently reviewed refunds, costs, procurement, lots, and stock movements |
-| Hospital operations | Staff references, assets, maintenance, support services, quality incidents, reporting, integration records, and analytical snapshots |
-| Shared controls | Sessions, scope and permission checks, immutable document revisions, version-bound approvals, audit records, idempotent mutations, and isolated backup/restore |
-| AI preparation and review | Local defaults remain explicit DEMO mock; the protected POC uses pinned Typhoon for four role-scoped preparation profiles plus the existing document-completeness route, with source review, editing and explicit workflow effects |
-
-The [domain matrix](spec/DOMAIN_IMPLEMENTATION_MATRIX.md) defines the minimum required behavior. The [coverage files](DOMAIN_COVERAGE.json) describe implementation and verification separately.
-
-## Architecture
-
-```mermaid
-flowchart LR
-    User["Staff / patient"] --> Web["React + TypeScript<br/>Thai-language workspace"]
-    Web --> API["FastAPI /api/v2<br/>Session · CSRF · scope"]
-    API --> Services["Shared core + domain services<br/>Versions · approvals · audit"]
-    Services --> PG[("PostgreSQL 18")]
-    Services --> Files["Local file storage<br/>Revision references + checksums"]
-    Services --> Jobs["Operational jobs<br/>Backup / isolated restore"]
-    Services --> Queue["Durable preparation queue<br/>Bounded source-change watches"]
-    Queue --> Worker["Guarded worker<br/>Same immutable app image"]
-    Worker --> Prepare["Private GPU0 Typhoon<br/>Four qualified preparation profiles"]
-    Services --> AI["Existing document-review provider boundary"]
-    AI --> Mock["Explicit DEMO mock"]
-    AI -. "Explicit synthetic opt-in" .-> Typhoon["Private dr-train Ollama<br/>Pinned Typhoon document checklist"]
-```
-
-The application serves the production frontend and API from one origin. SQLAlchemy models and Alembic migrations own the database schema. PostgreSQL is the primary database; there is no automatic SQLite fallback. Historical SQLite and v1 demo code remain isolated for regression and import work and are not mounted in the default application.
-
-Mutations check current server identity, permissions, scope, entity version, and allowed state before writing. Domain records, audit entries, and idempotency outcomes share transaction boundaries. Posted financial entries and stock movements use reversals or returns rather than overwriting the original posting. See [architecture](docs/ARCHITECTURE.md) and [workflow contracts](docs/WORKFLOWS.md) for the detailed rules.
-
-## Quick start with Docker Desktop
-
-**Prerequisites:** Python 3.12+, Docker Desktop running its Linux engine, and an available local port 8000. The image build installs the locked application dependencies and builds the frontend.
-
-From the repository root:
+**Start locally:** use Python 3.12+ and Docker Desktop with its Linux engine
+running. From the repository root:
 
 ```powershell
 python scripts/dev.py init
@@ -100,132 +46,155 @@ python scripts/dev.py config
 python scripts/dev.py up
 ```
 
-`init` creates a private `.env` with random development passwords. `config` validates Compose without printing secrets. The first `up` explicitly starts PostgreSQL, applies migrations, seeds synthetic records, and starts the application.
+Open [127.0.0.1:8000/login](http://127.0.0.1:8000/login). `init` creates a private
+`.env`; read `HIS_SEED_PASSWORD` locally and use a seeded account such as
+`registration` or `clinician`. The first `up` explicitly migrates and seeds
+synthetic records. For later starts, use `python scripts/dev.py start`, which
+does not seed. `stop` retains the data volumes.
 
-Open **[http://127.0.0.1:8000/login](http://127.0.0.1:8000/login)**. Use a seeded account such as `registration`, `clinician`, `nurse`, `laboratory`, `imaging`, `pharmacist`, `billing`, `finance`, `inventory`, `quality`, `system_admin`, `auditor`, or `patient`. Read `HIS_SEED_PASSWORD` privately from your local `.env`; there is no bundled shared password.
+See [START_HERE.md](START_HERE.md) for the native PostgreSQL alternative, account
+workflow and configuration. Source publication and deployment are separate:
+**a Git push does not update the running application**.
 
-Start with `registration` to create a patient and encounter. An administrator must assign the new patient to the appropriate clinical user before that user can work with the record. Log out and sign in to change accounts; the server determines the resulting permissions.
+## Prepare the work, keep the evidence
 
-For later sessions:
+Select a patient visit and an available preparation profile. CareBalance collects
+only the sources allowed by the current role, facility and care assignment. The
+result presents facts, citations, an editable draft where applicable, and
+permitted follow-up actions. Omissions remain visible so staff can open the full
+patient record before using the preparation.
 
-```powershell
-python scripts/dev.py start
-python scripts/dev.py status
-python scripts/dev.py logs
-python scripts/dev.py stop
-```
+![Five-step source-bound preparation workflow, with human review before saving](docs/branding/readme-workflow.svg)
 
-`start` applies migrations and starts the application without seeding. `stop` retains the data volumes. Startup does not reset existing records. If the Docker engine is unavailable, the launcher reports the failure; follow the native PostgreSQL path below or start Docker Desktop and retry.
+| Preparation profile | Sources available to that profile | Work a person can choose to save |
+| --- | --- | --- |
+| **Visit preparation** | Permitted notes, released laboratory values when authorized, and scoped tasks | A visit draft and a new or existing document-review task |
+| **Nursing handover** | Permitted notes, nursing records and scoped tasks; the existing nurse role has no laboratory access | A handover draft and nursing follow-up |
+| **Records readiness** | Patient and visit fields, document titles, status, versions and hashes; no document bodies | A metadata-review follow-up task |
+| **Laboratory handoff** | Released or corrected values, units, reference ranges, recorded flags and review tasks | A new or existing laboratory-review task |
 
-### Native PostgreSQL alternative
+Saving rechecks permissions, source versions and the selected actions. Human
+edits create a new immutable revision. Audit and idempotency bind the saved
+effects, including when a command is replayed. An opt-in watch can follow source
+changes for up to 30 minutes with at most three automatic preparations; opening
+pages or reading evidence does not request inference.
 
-Use a **dedicated development PostgreSQL 18 database**, Python 3.12+, and Node.js 24. Create an empty database before running the seed command.
+**Operations starts with 2D lists.** An optional 3D view opens the same scoped
+work from an illustrative hospital layout. It does not represent actual staff
+locations or a hospital building. The [user journey](docs/USER_JOURNEY_TH.md)
+describes the full record, draft, source-change and follow-up flows.
 
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-python -m pip install -r requirements-backend.txt
-npm --prefix apps/web ci
-npm --prefix apps/web run build
-python scripts/dev.py init
-```
+## Connected clinical and operational work
 
-Set `DATABASE_URL`, `FILE_STORAGE_ROOT`, `BACKUP_ROOT`, and the local origin settings in your private `.env` using [.env.example](.env.example) as the configuration reference. Point the database URL only at the isolated development database, then run:
+The local functional baseline spans **38 domains and 10 cross-module journeys**.
+Each domain retains its own forms and state transitions while sharing identity,
+patient context, evidence and transaction controls.
 
-```powershell
-python scripts/dev.py native-seed
-python scripts/dev.py native-up
-```
+| Area | Prototype scope |
+| --- | --- |
+| Patient access | Registration, identifiers, appointments, queues, encounters, beds and discharge follow-up |
+| Clinical care | Orders, nursing handover, medication workflows, clinical documents, laboratory results, imaging and referrals |
+| Finance and supply | Charges, invoices, synthetic claims, receipts, reviewed refunds, procurement, lots and stock movements |
+| Hospital operations | Staff references, assets, maintenance, support services, quality incidents, reporting and integration records |
+| Patient portal | Published records and requests scoped to one server-linked patient |
 
-`native-seed` explicitly migrates and seeds. `native-up` migrates and starts the application without seeding. Backup and restore additionally require PostgreSQL client tools. See the [operations guide](docs/OPERATIONS_FULLSYSTEM.md) for configuration and restore into a separate target.
+**LabClear** opens a released HIS result in a separate, scoped review workspace.
+An explicit transfer and human confirmation preserve the original HIS values.
+**CareBalance DR Screening** is a separate derivative of the original DR project;
+its protected acceptance covers authored-image context, quality confirmation and
+an unsigned manual draft/reload subset. Those specialist checks do not establish
+DR inference or clinical accuracy. See the [integration checkpoint](docs/integrations/VALIDATION_CHECKPOINT_20261114.md).
 
-## Verification and acceptance
+## Architecture
 
-The local acceptance baseline below was executed on 13 November 2026 using synthetic data and the explicit mock AI profile. Subsequent real Typhoon checks are listed separately; they do not turn the baseline journeys into live-model evaluations.
+The application serves the production frontend and `/api/v2` from one origin.
+Server-side role, organization, facility and patient-scope checks govern reads
+and writes. PostgreSQL owns records, versions, task effects and audit; file
+storage retains source bytes and checksums. Startup does not create or reset
+data, and PostgreSQL is not silently replaced with SQLite.
 
-| Evidence category | Executed local result |
-|---|---|
-| Windows Docker startup and repeat seed | PASS; PostgreSQL 18.6, 108 application tables |
-| Core, clinical, ERP, operations and security workflows | 84 PostgreSQL tests PASS; another 10 legacy-import tests PASS |
-| Same-origin HTTP smoke | 19 assertions PASS, including restart persistence |
-| Frontend checks | 25 unit and 53 jsdom component tests PASS |
-| TypeScript, production build and audit regression | PASS |
-| Real Chromium acceptance | 10 journeys and 12 supplemental domain scenarios PASS |
-| Browser recovery | 9 assertions PASS: conflict, scope isolation, audit, restart and UI restore |
-| Real UI backup/isolated restore | 109 tables including Alembic, one file and eight exact browser records verified |
-| Local L2/L3 target | 38/38 domains and 10/10 journeys PASS |
-| Other external integrations and clinical effectiveness | NOT_RUN / NOT_CONNECTED |
+![Logical deployed architecture: Access, application, PostgreSQL, file storage, guarded worker and private specialist services](docs/branding/readme-architecture.svg)
 
-### Optional real document completeness
+The preparation worker runs separately with the same immutable application
+image. Shared PostgreSQL admission limits legacy and preparation inference;
+provider HTTP runs outside a database transaction. Model identity mismatches,
+invalid outputs and unknown outcomes fail closed and retain their evidence.
+There is no silent cloud or mock fallback. The existing document-completeness
+route retains its own private provider configuration.
 
-A separately authorized private route has executed **Typhoon 2.1 Gemma 3 12B** through Ollama 0.12.6 on dr-train, with V100 hardware observed. The exact model is `hf.co/scb10x/typhoon2.1-gemma3-12b-gguf:Q4_K_M`, pinned by its installed Ollama manifest digest. It checks five documentation sections in authored synthetic Thai text and cites source excerpts. It does not evaluate clinical correctness.
+The diagram shows primary logical flows. Detailed interfaces, protocol and
+deployment boundaries are in the [architecture guide](docs/ARCHITECTURE.md),
+[assistant contract](docs/AI_DRIVEN_CONTRACT_V1.md) and
+[deployment handoff](docs/DEPLOY_DR_TRAIN.md).
 
-| Additional evidence | Executed result |
-|---|---|
-| Real provider cases | Three authored Thai cases PASS: complete, missing plan, missing author |
-| Real rendered workflow | 7 browser assertions PASS: findings, source quotes, human edit/approve/commit, provenance, and reload |
-| Read-only browser verification | 2 assertions PASS; existing run/result read back without new inference |
-| Sample browser inference | 11.205 seconds; 408 input / 141 output tokens reported by Ollama; measured cost `null` |
-| New orchestration regressions | 17 PostgreSQL tests PASS with deterministic provider doubles; these are not 17 real model calls |
-| Updated frontend | 60 component tests PASS; the baseline above retains its own 25 unit / 53 component results |
+## What has been verified
 
-Use the [private AI setup guide](docs/DR_TRAIN_AI.md) for opt-in configuration, identity pins, SSH forwarding, resource limits, evidence links, and the five-section review flow. **MedGemma 27B is installed but has not been inference-tested in this work.** No additional model download is needed for the verified document-completeness scope.
+The retained 14 November 2026 UTC AI acceptance used six authored-data application
+calls across four profiles, including one corrected nursing source and one
+changed-source watch. Five accepted decisions saved **two draft documents, two
+new follow-up tasks and three links to existing tasks**. Actual identical-key
+replay for nursing, records and laboratory produced no duplicate effects.
 
-The [validation report](VALIDATION_REPORT.md) and linked execution logs are the source of truth for subsequent reruns and corrections. [Domain coverage](DOMAIN_COVERAGE.json) and [journey coverage](JOURNEY_COVERAGE.json) retain per-item status and evidence references.
+![Observed provider and total durations for six synthetic calls, alongside included and omitted source counts](docs/branding/readme-trial.svg)
 
-To reproduce the PostgreSQL and frontend suites in a prepared environment:
+| Evidence boundary | Retained result | Source |
+| --- | --- | --- |
+| Local functional baseline | 38 domains at L2 and 10 journeys at L3 using synthetic PostgreSQL and rendered-browser evidence | [Domain coverage](DOMAIN_COVERAGE.md) · [Journey coverage](JOURNEY_COVERAGE.md) |
+| Source-bound AI workflows | Six real application calls, five decisions, seven saved effects; nine actual role/scope checks | [Application acceptance](evidence/ai-driven-root-20261114/application-acceptance.json) |
+| Protected browser | One visit: queue, source evidence, full omitted note, demonstration edit, apply and full reload; optional 3D navigation checked separately | [Browser acceptance](evidence/ai-driven-public-20261114/visit-browser-acceptance.json) · [3D check](evidence/ai-driven-public-20261114/optional-3d.json) |
+| Runtime and preservation | Guard process and identity pins observed; HIS, LabClear and DR ready; old rows/files preserved with intentional HIS additions recorded | [Runtime readback](evidence/ai-driven-root-20261114/assistant-runtime-readback.json) · [Deployment](evidence/ai-driven-root-20261114/deployment-readback.json) |
+
+These are bounded synthetic integration results. The other staff profiles were
+tested through normal authenticated production APIs, rather than separate
+public-browser role journeys. Visit and nursing inputs omitted eligible records;
+drafts largely copied included short notes and some facts selected titles or
+dates of birth. The chart is **not a benchmark, latency SLA or staff-time-savings
+estimate**. Monetary cost remains unmeasured/null. Clinical effectiveness,
+all-domain real AI, DR/CAD model acceptance and host-reboot acceptance remain
+unestablished. The [release report](docs/RELEASE_AI_WORKSPACE.md) preserves the
+exact scope, source identities, original attempts and limitations.
+
+## Development
+
+Use Python 3.12+, Node.js 24 and PostgreSQL 18 for native development. Install
+the locked dependencies before running checks:
 
 ```powershell
 python -m pip install -r requirements-backend.txt -r requirements-validation.txt
 npm --prefix apps/web ci
-python scripts/validate_fullsystem.py --pg-bin "C:\path\to\PostgreSQL\18\bin" --include-frontend
-```
-
-The PostgreSQL wrapper creates disposable synthetic test clusters. Browser scripts run separately against an already running isolated app and require an installed Playwright Chromium browser plus private seed credentials in the process environment. Consult [START_HERE.md](START_HERE.md), [VALIDATION_REPORT.md](VALIDATION_REPORT.md), and the scripts under [`apps/web/scripts`](apps/web/scripts) before running them.
-
-## Repository guide
-
-| Path | Purpose |
-|---|---|
-| [`apps/web/`](apps/web/) | React workspace, typed client, domain forms, and browser checks |
-| [`backend/app/`](backend/app/) | Authentication, shared entities, API, and domain services |
-| [`backend/migrations/`](backend/migrations/) | Versioned PostgreSQL migrations |
-| [`contracts/v2/`](contracts/v2/) | Exported API schemas and database references |
-| [`docs/DATA_DICTIONARY.csv`](docs/DATA_DICTIONARY.csv) | Exported data dictionary |
-| [`scripts/`](scripts/) | Development launcher, validation, contracts, import, and operational tools |
-| [`data/`](data/) | Synthetic data manifests and provenance |
-| [`spec/`](spec/) | Canonical system scope, domain matrix, and acceptance plan |
-| [`evidence/fullsystem/`](evidence/fullsystem/) | Executed checks, source evidence, and review records |
-| [`CODEX_HANDOFF.md`](CODEX_HANDOFF.md) | Current technical handoff and remaining work |
-| [`docs/DR_TRAIN_AI.md`](docs/DR_TRAIN_AI.md) | Optional private Typhoon setup, limits, and real-inference evidence |
-
-## Development principles
-
-Changes should extend the shared identity, patient, encounter, and transaction boundaries. Add domain-specific behavior and meaningful PostgreSQL regressions rather than parallel tables or generic placeholders. Keep implementation status, executed PASS/FAIL, mock behavior, and NOT_RUN checks distinct.
-
-After API or model changes, regenerate contracts and check package consistency:
-
-```powershell
-python scripts/export_contracts_v2.py
+npm --prefix apps/web run typecheck
+npm --prefix apps/web test
+npm --prefix apps/web run test:component
 python scripts/check_fullsystem_package.py
 ```
 
-Follow [AGENTS.md](AGENTS.md), the [acceptance plan](spec/ACCEPTANCE_TEST_PLAN_TH.md), and the [backlog](BACKLOG.md). Include the relevant test commands, exit statuses, source references, and remaining gaps with each change.
+The [validation report](VALIDATION_REPORT.md) documents PostgreSQL and real
+browser execution, disposable test clusters and source-specific results. The
+commands above are developer entrypoints, not a claim that every suite was rerun
+for this documentation change. Keep `.env`, credentials, session material,
+database files, backup contents and real patient data outside source control.
 
-## Data, AI, and deployment boundaries
+| Location | Purpose |
+| --- | --- |
+| [`apps/web/`](apps/web/) | React workspaces, typed client, forms and browser checks |
+| [`backend/app/`](backend/app/) | Authentication, shared records, domain services and AI boundaries |
+| [`backend/migrations/`](backend/migrations/) | Versioned PostgreSQL migrations |
+| [`docs/integrations/contracts-0005/`](docs/integrations/contracts-0005/) | Current additive API/DDL reference; historical `contracts/v2` stays separate |
+| [`spec/`](spec/) | Canonical scope, domain matrix and acceptance criteria |
+| [`evidence/`](evidence/) | Dated execution records with explicit evidence limits |
 
-This repository uses **synthetic development data**. Keep `.env`, database credentials, session material, local database files, backup contents, and real patient information out of commits, issues, screenshots, and logs.
+[User journey](docs/USER_JOURNEY_TH.md) ·
+[Operations](docs/OPERATIONS_FULLSYSTEM.md) ·
+[Cloudflare setup](docs/CLOUDFLARE_SETUP_TH.md) ·
+[Backlog](BACKLOG.md) · [Engineering handoff](CODEX_HANDOFF.md)
 
-AI defaults to an explicitly labeled **DEMO mock**. The optional `dr_train_ollama` profile requires explicit synthetic-only opt-in and exact engine/model identity pins. Its verified scope is document completeness. Unknown providers, missing configuration, unavailable connections, identity mismatches, and invalid output fail closed; there is no silent cloud or mock fallback. Manual image/report workflows and mock proposals are not clinical predictions.
+## Licensing and visual provenance
 
-Production deployment, hospital interfaces, payer certification, other live models/tasks, and clinical or product effectiveness remain separate work. Their status must be supported by their own evidence. The three real provider cases and one rendered real-model workflow establish a bounded integration check, not a benchmark or production/clinical readiness.
+A repository-wide license has not yet been selected. Third-party permissions
+and UI reference provenance are documented in
+[LICENSE_NOTICES.md](apps/web/LICENSE_NOTICES.md) and
+[TEMPLATE_PROVENANCE.json](apps/web/TEMPLATE_PROVENANCE.json).
 
-## Licensing and provenance
-
-A repository-wide license has not yet been selected. Review the applicable permissions before redistributing project code. Third-party notices and UI reference provenance are recorded in [`apps/web/LICENSE_NOTICES.md`](apps/web/LICENSE_NOTICES.md) and [`apps/web/TEMPLATE_PROVENANCE.json`](apps/web/TEMPLATE_PROVENANCE.json). Referencing a library does not mean it is a runtime dependency or that its license covers the entire project.
-
-## Deployment and updates
-
-Cloudflare Access and the connector are active for the exact hostname. The app, its dedicated PostgreSQL database and file storage run on dr-train; Cloudflare carries HTTPS traffic and access checks. Existing shared Ollama remains private. The Windows database is preserved as a separate copy, with no bidirectional synchronization.
-
-A push to main **does not automatically deploy**. Future updates require a verified source snapshot, backup, image build and app replacement as described in [DEPLOY_DR_TRAIN.md](docs/DEPLOY_DR_TRAIN.md). Keep credentials private. Historical preparation evidence and the previous palette remain under their dated reports.
+The README diagrams and chart are authored for CareBalance, use its existing
+palette, and load no external fonts or assets. Their editable generator, source
+map and rendering checks are recorded in [README_VISUALS.md](docs/README_VISUALS.md).

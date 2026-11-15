@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="850" viewBox="0 0 1440 850" role="img" aria-labelledby="title desc">
+<title id="title">CareBalance deployed architecture</title><desc id="desc">Staff reach the same-origin React and FastAPI application through Cloudflare Access. On dr-train, PostgreSQL and file storage retain records and evidence. A separate guarded worker reads the durable queue and calls a private Typhoon service. Server-only specialist gateways reach isolated LabClear and DR services. Model and database endpoints have no public route. This is a simplified logical diagram, not a network topology or high-availability claim.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9" fill="none" stroke="#8090a5" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="1440" height="850" fill="#ffffff"/>
+<g font-family="Arial, Helvetica, sans-serif">
+<text x="60" y="58" fill="#1c4286" font-size="15" font-weight="700" text-anchor="start">ONE PATIENT CONTEXT. SEPARATE EXECUTION BOUNDARIES.</text>
+<text x="60" y="104" fill="#202b3a" font-size="36" font-weight="600" text-anchor="start">How CareBalance connects the work</text>
+<rect x="80" y="155" width="420" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="105" cy="186" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="120" y="193" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">Staff browser</text>
+<text x="104" y="224" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Clinical workspace · patient record</text>
+<text x="104" y="248" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Existing HIS account and care assignment</text>
+<rect x="820" y="155" width="500" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="845" cy="186" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="860" y="193" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">Cloudflare Access + Tunnel</text>
+<text x="844" y="224" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Allowed-email access to his.ai-cie.com</text>
+<text x="844" y="248" fill="#667386" font-size="17" font-weight="400" text-anchor="start">HTTPS traffic to the protected HIS origin</text>
+<path d="M500 207 H820" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="660" y="193" fill="#667386" font-size="16" font-weight="400" text-anchor="middle">HTTPS</text>
+<rect x="44" y="317" width="1352" height="470" rx="18" fill="#f5f7fa" stroke="#dbe2eb" stroke-width="1.5"/>
+<text x="72" y="348" fill="#667386" font-size="18" font-weight="600" text-anchor="start">dr-train · application and private services</text>
+<path d="M1070 259 V285 H350 V390" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="700" y="278" fill="#667386" font-size="16" font-weight="400" text-anchor="middle">Exact-host origin</text>
+<rect x="80" y="390" width="540" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="105" cy="421" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="120" y="428" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">CareBalance application</text>
+<text x="104" y="459" fill="#667386" font-size="17" font-weight="400" text-anchor="start">React + FastAPI /api/v2 · shared clinical / ERP core</text>
+<text x="104" y="483" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Session · CSRF · role, facility and patient scope</text>
+<rect x="750" y="390" width="260" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="775" cy="421" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="790" y="428" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">PostgreSQL 18</text>
+<text x="774" y="459" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Records · durable queue</text>
+<text x="774" y="483" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Versions · effects · audit</text>
+<rect x="1060" y="390" width="260" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="1085" cy="421" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="1100" y="428" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">File storage</text>
+<text x="1084" y="459" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Source bytes</text>
+<text x="1084" y="483" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Checksums and ownership</text>
+<path d="M620 430 H750" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="685" y="455" fill="#667386" font-size="16" font-weight="400" text-anchor="middle">SQL</text>
+<path d="M620 406 H720 V368 H1190 V390" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="80" y="635" width="390" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="105" cy="666" r="4" fill="#861c42" stroke="none" stroke-width="1"/>
+<text x="120" y="673" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">LabClear + DR Screening</text>
+<text x="104" y="704" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Server-only scoped gateways</text>
+<text x="104" y="728" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Separate services and databases</text>
+<rect x="650" y="635" width="300" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="675" cy="666" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="690" y="673" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">Guarded worker</text>
+<text x="674" y="704" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Same immutable app image</text>
+<text x="674" y="728" fill="#667386" font-size="17" font-weight="400" text-anchor="start">One queued preparation at a time</text>
+<rect x="1020" y="635" width="300" height="104" rx="12" fill="#ffffff" stroke="#dbe2eb" stroke-width="1.5"/>
+<circle cx="1045" cy="666" r="4" fill="#1c4286" stroke="none" stroke-width="1"/>
+<text x="1060" y="673" fill="#202b3a" font-size="23" font-weight="600" text-anchor="start">Private Typhoon</text>
+<text x="1044" y="704" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Dedicated GPU0 · pinned identity</text>
+<text x="1044" y="728" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Bounded source view and output</text>
+<path d="M880 494 V560 H800 V635" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="1010" y="585" fill="#667386" font-size="17" font-weight="400" text-anchor="middle">Queue + source-change watches</text>
+<path d="M950 687 H1020" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="985" y="672" fill="#667386" font-size="15" font-weight="400" text-anchor="middle">HTTP</text>
+<path d="M275 494 V635" fill="none" stroke="#8090a5" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<text x="310" y="565" fill="#667386" font-size="17" font-weight="400" text-anchor="start">Explicit transfer / review</text>
+<text x="80" y="768" fill="#202b3a" font-size="17" font-weight="400" text-anchor="start">No open database transaction during model or specialist HTTP calls.</text>
+<text x="60" y="824" fill="#667386" font-size="16" font-weight="400" text-anchor="start">Private services have no public model/database route. Legacy document review uses its separate existing private provider route.</text>
+</g></svg>
