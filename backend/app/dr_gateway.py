@@ -20,6 +20,7 @@ from sqlalchemy import select, text
 
 from .auth import current_actor, require, require_domain, revalidate_actor, scoped_encounter, scoped_patient
 from .common import audit, digest, uid, utcnow
+from .task_identity import task_source_version
 from .db import get_db, SessionLocal
 from .dr_client import DRClient, DRRejected, DRUnavailable, DRUnknown, patient_key, resolve_destination, strict_json
 from .dr_core import authorize_set, authorize_source, authorize_task, content, fail, scope_for, validate_public_group
@@ -216,7 +217,7 @@ def reserve(db,actor,binding,source_set,task,encounter,caps,auth_hash,blobs,dest
     else:message=ReadReport.model_validate_json(canonical({**base,**payload}))
     db.flush();db.add(DRExchange(id=exchange_id,attempt_id=attempt.id,context_snapshot={
         'context':context.model_dump(mode='json'),'authorization_hash':auth_hash,
-        'task_version':task.version,'encounter_version':encounter.version},outcome='running'))
+        'task_version':task_source_version(db,task),'encounter_version':encounter.version},outcome='running'))
     audit(db,actor,'D11',binding.id,'dr.'+operation+'.reserved',{'attempt_id':attempt.id,'exchange_id':exchange_id})
     result=Reservation(binding.id,attempt.id,exchange_id,message,destination,tuple(deepcopy(source_set.manifest)))
     db.commit();db.close()
@@ -264,7 +265,7 @@ def execute(db,actor,reservation):
         if attempt.lease_id!=reservation.exchange_id or attempt.lease_expires_at<=utcnow():fail('DR_LEASE_EXPIRED_OR_REPLACED')
         snapshot=exchange.context_snapshot
         if (auth_hash!=snapshot['authorization_hash'] or is_write and
-                (task.version!=snapshot['task_version'] or encounter.version!=snapshot['encounter_version'])):
+                (task_source_version(db,task)!=snapshot['task_version'] or encounter.version!=snapshot['encounter_version'])):
             fail('DR_CONTEXT_CHANGED')
         attempt.status=outcome;attempt.error_code=code;attempt.completed_at=utcnow()
         if outcome=='succeeded':

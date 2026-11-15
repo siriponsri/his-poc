@@ -13,6 +13,7 @@ from sqlalchemy import select, text
 
 from .auth import current_actor, revalidate_actor, require_domain, scoped_encounter, scoped_patient
 from .common import audit, authorization_hash, digest, uid, utcnow
+from .task_identity import task_source_version
 from .db import get_db, SessionLocal
 from .integration_clients import ConnectorConfig, ConnectorOutcomeUnknown, ConnectorRejected, ConnectorUnavailable, LabClearClient
 from .integration_protocol import LabValue, LaunchContext
@@ -216,7 +217,7 @@ def _reserve_attempt(db, actor, binding, task, encounter, operation, key, payloa
     attempt.completed_at = None
     db.flush()
     exchange = ConnectorExchange(id=exchange_id, attempt_id=attempt.id,
-        context_snapshot={"authorization_hash": auth_hash, "task_version": task.version,
+        context_snapshot={"authorization_hash": auth_hash, "task_version": task_source_version(db,task),
                           "encounter_version": encounter.version}, outcome="running")
     db.add(exchange)
     context = context_for(binding, attempt.request_id)
@@ -288,7 +289,7 @@ def _execute(db, actor, client, reservation):
             failure("CONNECTOR_LEASE_REPLACED")
         snapshot = exchange.context_snapshot
         if (authorization_hash(actor) != snapshot["authorization_hash"] or (reservation.operation != "read"
-                and (task.version != snapshot["task_version"] or encounter.version != snapshot["encounter_version"]))):
+                and (task_source_version(db,task) != snapshot["task_version"] or encounter.version != snapshot["encounter_version"]))):
             failure("CONNECTOR_CONTEXT_CHANGED")
         if outcome == "succeeded" and binding.state == "confirmed" and receipt["state"] == "draft":
             failure("CONNECTOR_RECEIPT_STALE")

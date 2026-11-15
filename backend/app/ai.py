@@ -5,6 +5,7 @@ from typing import Literal
 from fastapi import APIRouter,Depends,Header,HTTPException
 from pydantic import Field
 from sqlalchemy import select,text
+from .task_identity import task_source_version
 from .db import get_db
 from .auth import current_actor,revalidate_actor,require_domain,require,scoped_encounter,DTO,actor_for
 from .models import *
@@ -41,7 +42,7 @@ def scoped_proposal(db,actor,id,lock=False):
 
 def evidence_current(db,actor,p,t):
     e=scoped_encounter(db,actor,t.encounter_id,True);v=db.get(DocumentVersion,p.document_version_id);d=record(db,actor,Document,v.document_id,True)
-    if e.status in ('closed','completed','discharged','cancelled') or e.version!=p.encounter_version or t.version!=p.task_version or d.current_version_id!=v.id or t.status not in ('open','in_progress') or p.expires_at<=utcnow():raise HTTPException(409,detail={'code':'STALE_EVIDENCE_OR_TARGET','outcome':'not_written'})
+    if e.status in ('closed','completed','discharged','cancelled') or e.version!=p.encounter_version or task_source_version(db,t)!=p.task_version or d.current_version_id!=v.id or t.status not in ('open','in_progress') or p.expires_at<=utcnow():raise HTTPException(409,detail={'code':'STALE_EVIDENCE_OR_TARGET','outcome':'not_written'})
     if text_hash(v.content)!=v.content_hash or text_hash(p.action_canonical)!=p.action_hash:raise HTTPException(409,detail={'code':'INTEGRITY_MISMATCH','outcome':'not_written'})
     return e,v,d
 @router.get('/proposals')
@@ -71,7 +72,7 @@ def propose(body:Propose,actor=Depends(current_actor),db=Depends(get_db,scope="f
     if outcome!='success':
         audit(db,actor,'D37',run.id,'inference_'+outcome,{'task_id':t.id,'provider':'mock_demo'});return finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':True})
     action=simulation['action'];raw=canonical(action)
-    p=Proposal(id=uid(),task_id=t.id,run_id=run.id,document_version_id=v.id,encounter_version=e.version,task_version=t.version,version=1,action_canonical=raw,action_hash=text_hash(raw),expires_at=utcnow()+timedelta(minutes=15));db.add(p);db.flush();db.add(ProposalVersion(proposal_id=p.id,version=1,action_canonical=raw,action_hash=p.action_hash))
+    p=Proposal(id=uid(),task_id=t.id,run_id=run.id,document_version_id=v.id,encounter_version=e.version,task_version=task_source_version(db,t),version=1,action_canonical=raw,action_hash=text_hash(raw),expires_at=utcnow()+timedelta(minutes=15));db.add(p);db.flush();db.add(ProposalVersion(proposal_id=p.id,version=1,action_canonical=raw,action_hash=p.action_hash))
     audit(db,actor,'D37',p.id,'proposed',{'task_id':t.id,'document_version_id':v.id,'provider':'mock_demo'});return finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':proposal_dto(db,p),'demo':True})
 
 
@@ -98,7 +99,7 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
         response={'run':serialize(prior),'proposal':None,'demo':False}
         return finish_operation(db,actor,key,op,payload,response)
     timeout=getattr(provider,'timeout_seconds',getattr(getattr(provider,'settings',None),'timeout_seconds',180))
-    snapshot={'task_id':t.id,'task_version':t.version,'document_id':d.id,'document_version':d.version,'document_version_id':v.id,'content_hash':v.content_hash,'encounter_id':e.id,'encounter_version':e.version,'patient_id':t.patient_id,'checklist_id':'SYNTHETIC_DOCUMENT_COMPLETENESS_V1','lease_seconds':min(300,max(1,int(timeout)))+60}
+    snapshot={'task_id':t.id,'task_version':task_source_version(db,t),'document_id':d.id,'document_version':d.version,'document_version_id':v.id,'content_hash':v.content_hash,'encounter_id':e.id,'encounter_version':e.version,'patient_id':t.patient_id,'checklist_id':'SYNTHETIC_DOCUMENT_COMPLETENESS_V1','lease_seconds':min(300,max(1,int(timeout)))+60}
     title,content=d.title,v.content
     run=InferenceRun(id=uid(),task_id=t.id,actor_id=actor.user_id,provider=provider.name,outcome='running',reason=None,elapsed_ms=0,measured_cost=None,usage=None,operation_key=key,request_hash=request_hash,authorization_hash=auth_hash,context_snapshot=snapshot,provenance=provider.public_config())
     run_id=run.id
@@ -134,7 +135,7 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
         fresh_task=record(db,actor,Task,snapshot['task_id'],True);require_domain(actor,fresh_task.domain,True)
         fresh_doc=record(db,actor,Document,snapshot['document_id'],True);fresh_enc=scoped_encounter(db,actor,snapshot['encounter_id'],True)
         current_revision=db.get(DocumentVersion,snapshot['document_version_id'])
-        stale=(authorization_hash(actor)!=auth_hash or fresh_task.version!=snapshot['task_version'] or fresh_task.status not in ('open','in_progress') or fresh_task.kind!='document_review' or fresh_task.domain!='D37' or fresh_task.patient_id!=snapshot['patient_id'] or fresh_task.encounter_id!=snapshot['encounter_id'] or fresh_doc.patient_id!=snapshot['patient_id'] or fresh_doc.encounter_id!=snapshot['encounter_id'] or fresh_doc.version!=snapshot['document_version'] or fresh_doc.current_version_id!=snapshot['document_version_id'] or fresh_enc.patient_id!=snapshot['patient_id'] or fresh_enc.version!=snapshot['encounter_version'] or fresh_enc.status in ('closed','completed','discharged','cancelled') or not current_revision or current_revision.document_id!=snapshot['document_id'] or current_revision.content_hash!=snapshot['content_hash'] or text_hash(current_revision.content)!=snapshot['content_hash'])
+        stale=(authorization_hash(actor)!=auth_hash or task_source_version(db,fresh_task)!=snapshot['task_version'] or fresh_task.status not in ('open','in_progress') or fresh_task.kind!='document_review' or fresh_task.domain!='D37' or fresh_task.patient_id!=snapshot['patient_id'] or fresh_task.encounter_id!=snapshot['encounter_id'] or fresh_doc.patient_id!=snapshot['patient_id'] or fresh_doc.encounter_id!=snapshot['encounter_id'] or fresh_doc.version!=snapshot['document_version'] or fresh_doc.current_version_id!=snapshot['document_version_id'] or fresh_enc.patient_id!=snapshot['patient_id'] or fresh_enc.version!=snapshot['encounter_version'] or fresh_enc.status in ('closed','completed','discharged','cancelled') or not current_revision or current_revision.document_id!=snapshot['document_id'] or current_revision.content_hash!=snapshot['content_hash'] or text_hash(current_revision.content)!=snapshot['content_hash'])
         if stale:generated={**generated,'outcome':'stale_context','reason':'EVIDENCE_OR_AUTHORIZATION_CHANGED','action':None}
         if (utcnow()-run.created_at).total_seconds()>snapshot['lease_seconds']:generated={**generated,'outcome':'interrupted','reason':'INFERENCE_LEASE_EXPIRED','action':None}
         outcome=generated.get('outcome','failed')
@@ -151,7 +152,7 @@ def live_propose(db,actor,body,key,payload,provider,t,d,e,v):
                 response=finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':None,'demo':False})
             else:
                 raw=canonical(action)
-                p=Proposal(id=uid(),task_id=fresh_task.id,run_id=run.id,document_version_id=current_revision.id,encounter_version=fresh_enc.version,task_version=fresh_task.version,version=1,action_canonical=raw,action_hash=text_hash(raw),expires_at=utcnow()+timedelta(minutes=15))
+                p=Proposal(id=uid(),task_id=fresh_task.id,run_id=run.id,document_version_id=current_revision.id,encounter_version=fresh_enc.version,task_version=task_source_version(db,fresh_task),version=1,action_canonical=raw,action_hash=text_hash(raw),expires_at=utcnow()+timedelta(minutes=15))
                 db.add(p);db.flush();db.add(ProposalVersion(proposal_id=p.id,version=1,action_canonical=raw,action_hash=p.action_hash))
                 audit(db,actor,'D37',p.id,'proposed',{'task_id':fresh_task.id,'document_version_id':current_revision.id,'provider':run.provider,'run_id':run.id})
                 response=finish_operation(db,actor,key,op,payload,{'run':serialize(run),'proposal':proposal_dto(db,p),'demo':False})

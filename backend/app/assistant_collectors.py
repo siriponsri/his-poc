@@ -11,13 +11,7 @@ from .assistant_evidence import ordered_sources, excerpt, SELECTION_VERSION
 VIEW_BYTES = 2000  # Complete canonical view; leaves >=816 bytes for pinned system/profile text.
 MAX_INCLUDED_SOURCES = 12  # Frozen draft/effect source reference cardinality.
 
-def semantic_task_version(db, row):
-    coordination = db.get(M.TaskCoordination, row.id)
-    value = row.version - (coordination.operational_updates if coordination else 0)
-    if value < 1:
-        from fastapi import HTTPException
-        raise HTTPException(409, detail={'code':'TASK_SOURCE_VERSION_INVALID'})
-    return value
+from .task_identity import task_source_version as semantic_task_version
 
 
 def _pristine(db, row, kind):
