@@ -7,4 +7,5 @@ import './selected-theme.css'
 import './labclear-review.css'
 import './dr-review.css'
 import './care-workspace.css'
+import './admin-workspace.css'
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>)
