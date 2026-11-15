@@ -56,6 +56,24 @@ See [START_HERE.md](START_HERE.md) for the native PostgreSQL alternative, accoun
 workflow and configuration. Source publication and deployment are separate:
 **a Git push does not update the running application**.
 
+## Administration
+
+This source update adds a dedicated **`/admin`** workspace for authorized identity
+administrators. Deployment and private account provisioning for this extension
+remain separate steps; their completion is not claimed here.
+
+The console brings together user search and status, persisted role memberships,
+session review and revocation, security events, and an aggregate assistant-work
+overview. AI counts describe persisted queue, execution, review and watch state.
+Provider configuration is shown as configuration, not a live model-health test;
+the overview does not read clinical bodies or request inference.
+
+Access remains server-enforced. The initial administrator role does not include
+clinical signing, chart-content access or host/platform operations. See
+[Administration operations](docs/ADMIN_OPERATIONS.md) for permission boundaries,
+versioned account actions and explicit private provisioning. Credentials remain
+outside the repository.
+
 ## Prepare the work, keep the evidence
 
 Select a patient visit and an available preparation profile. CareBalance collects
@@ -153,6 +171,24 @@ estimate**. Monetary cost remains unmeasured/null. Clinical effectiveness,
 all-domain real AI, DR/CAD model acceptance and host-reboot acceptance remain
 unestablished. The [release report](docs/RELEASE_AI_WORKSPACE.md) preserves the
 exact scope, source identities, original attempts and limitations.
+
+## Product direction
+
+The next priorities are stronger **source-aware preparation**, **team ownership**
+and **operational visibility**:
+
+- Select clinically relevant permitted sources and show what changed since the
+  previous review, with exact citations and visible omissions.
+- Add a team inbox with claim, handoff, due-date and escalation workflows that
+  preserve one accountable owner under concurrent updates.
+- Extend administration and AI operations with evidence freshness and clearer
+  distinctions between configured, permitted, running and qualified services.
+
+These are proposed improvements beyond the implemented first Admin slice and
+existing preparation workflows. Benefits are hypotheses to measure, not staff
+time already saved. The [product review and roadmap](docs/PRODUCT_REVIEW_20261115.md)
+maps priorities and acceptance criteria across all 38 domains; it does not
+activate those features or expand permissions.
 
 ## Development
 
