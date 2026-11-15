@@ -1,32 +1,41 @@
-# Goal — illustrated User Guide and retained Admin release
+# Goal — AI-driven team operations closeout
 
-## Active goal — AI evidence, team queue and Admin AI monitoring
+## Active milestone — AI evidence, team queue and Admin AI operations
 
-Owner-authorized 15 November 2026. Status: DEPLOYED_ACCEPTANCE_IN_PROGRESS.
-Runtime source1960a82 / image dfaad737 / schema0006 is deployed on dr-train.
-Local qualification and preservation migration passed; new bounded model
-and protected-browser acceptance are in progress. Cloudflare Access renewal
-is pending for the browser session. No final acceptance or publication of
-this milestone is claimed. Baseline c47868a remains the published release.
-Copy-only follow-up d8755d9 is locally checked and not yet deployed.
-See [the frozen contract](docs/AI_TEAM_OPERATIONS_CONTRACT.md).
+Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING (15 November 2026).
+The named synthetic POC runs `0006_team_coordination`, backend `1960a827` plus
+frontend `b860725` in image `fcdbb821`. Four final rollout gates passed. The four-file/
+32-asset frontend overlay preserves all 60 backend inputs byte-for-byte; the
+server is a runtime snapshot, not a Git checkout. Deployment and publication are
+separate operations; full identities and the current guard witness are in
+[the handoff](CODEX_HANDOFF.md).
 
-1. Implement profile-ranked exact source passages, original-revision evidence
-   reading and measured selection/quote coverage; preserve the current model,
-   prompt/schema limits, authorization and immutable review workflow.
-2. Implement server-paginated accountable work with eligible claim/handoff,
-   operational due dates and one-task escalation; keep domain completion guards.
-3. Implement read-only Admin AI metadata with truthful timestamps, unknown
-   heartbeat/freshness and scalar allowlists; no chart bodies or host control.
-4. Qualify PostgreSQL/schema compatibility, frontend and independent review,
-   then explicitly migrate/deploy the synthetic dr-train POC and test the real URL.
+All six authored synthetic application cases passed: four in-process HTTPS API
+cases with normal persisted role authentication, plus two actual protected-public
+browser preparations, source/meaning review, unsigned D22 draft save and reload.
+The ledger records 6/8 reserved slots, six observed dispatches, zero unknowns and
+zero corrective reserves. No further generation is planned. The 12 facts were
+exact typed fields; zero literal quote facts were generated. Native quoted-offset
+highlighting was NOT_EXERCISED despite B1's preserved astral-prefix source.
 
-New live acceptance is bounded to at most eight application generations,
-including two corrective reserves; no automatic retries/watch trial/cloud calls.
-Old qualification and public evidence below retain their original scope.
+Final protected native smoke passed at 07:18–07:20 UTC, including normal role login,
+queue deep-link focus and Admin metadata/mobile containment. Final frontend
+qualification passed 227/227 mounted cases across all 14 files with concurrency 1
+and zero skips. The default-parallel Node heap failure remains FAIL, not the
+passing final run. Unit, PG and isolated connector results keep their own scopes.
+Historical 38 L2 domains/10 L3 journeys are maintained, not rerun or promoted to
+new clinical proof. Fresh-backup restore and host reboot recovery remain NOT_RUN.
+
+Closeout audit: PASS at 2026-11-15T07:42:40.269671Z (read-only audit v2).
+Source publication: PENDING_FINAL_REVIEW_AND_NON_FORCE_MAIN_PUSH.
+See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
+[six-case acceptance](evidence/ai-team-20261115/application-acceptance.json),
+[final native smoke](evidence/ai-team-20261115/browser-acceptance.json),
+[final preservation audit](evidence/ai-team-20261115/deployment-preservation.json) and
+[operating manual](docs/AI_TEAM_OPERATIONS.md). Older sections below are historical.
 
 
-## Illustrated in-app User Guide — 15 November 2026
+## Retained illustrated in-app User Guide — 15 November 2026
 
 Status: DEPLOYED_AND_GUIDE_ACCEPTED for the synthetic protected POC.
 Runtime source 65c5bc5 / image 92166e35 / schema 0005 serves /guide. The guide

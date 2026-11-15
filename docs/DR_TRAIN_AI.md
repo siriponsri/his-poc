@@ -1,4 +1,43 @@
-# Optional private Typhoon document review
+# Private Typhoon routes and verified scope
+
+## Current AI preparation release — 15 November 2026
+
+The four role-scoped assistant profiles run on the dedicated private
+`dr_train_gpu0_v1` route with the existing pinned Typhoon model and Ollama
+0.12.6. Preparation retains 4096 context tokens, 512 output tokens, a 2000-byte
+inference view, at most 12 included sources and one inference admission. No
+model installation, prompt/schema expansion or cloud fallback occurred.
+
+Backend `1960a827` plus frontend `b860725` is deployed on schema0006 in image
+`fcdbb821`. Six new authored synthetic application cases passed across visit,
+nursing, records and laboratory preparation: four normal-role HTTPS API cases
+and two actual protected-public browser cases with source/meaning review and
+unsigned D22 draft save/reload. The distinct new allowance used six of eight
+reserved slots and six observed dispatches, zero unknowns and zero corrective
+reserves. No further generation is planned. This does not reopen the exhausted
+older qualification trial or authorize watch/batch/direct-provider retries.
+
+The six cases produced 12 exact typed fields and zero literal quote facts.
+Native quote-offset highlighting was NOT_EXERCISED, even though the B1 source
+retained its astral prefix. Typed checks, historical checklist quote results
+and local offset tests have separate scopes. Narrative draft meaning requires
+human review; evidence matching is not clinical correctness. Costs stay null.
+
+Final native smoke and read-only preservation audit v2 passed; the latter was
+recorded at 07:42:40.269671 UTC without database/model/service writes. Source
+publication remains pending. [Preservation receipt](../evidence/ai-team-20261115/deployment-preservation.json).
+Read the [operations contract](AI_TEAM_OPERATIONS_CONTRACT.md),
+[operator manual](AI_TEAM_OPERATIONS.md),
+[current deployment runbook](DEPLOY_DR_TRAIN.md),
+[application acceptance](../evidence/ai-team-20261115/application-acceptance.json)
+and [release](RELEASE_AI_TEAM_OPERATIONS_20261115.md).
+
+## Retained optional document-checklist route — 13 November 2026
+
+The settings and results below describe the separate legacy document-review
+adapter. Its 8192/1024-token configuration is not the current assistant
+preparation configuration above. Historical installed-model inventory and
+checklist results do not qualify the four-profile assistant or MedGemma.
 
 The default application uses `HIS_AI_PROVIDER=mock_demo`. This guide describes the separately authorized `dr_train_ollama` route for **authored synthetic document completeness only**. It uses an existing dr-train installation through private SSH forwarding. It does not download models, train them, enable a public inference service, or authorize real patient data.
 

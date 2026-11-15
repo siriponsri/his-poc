@@ -4,24 +4,57 @@ Target: https://his.ai-cie.com. Deployment root: /home/chaw/his-poc.
 This is the server runtime root, not a Git checkout. Source releases are separately
 verified snapshots under releases/. Private operator state stays under var/.
 
-## Current AI workspace release
+## Current AI team operations release — 15 November 2026
 
-15November2026: runtime source286f391 / immutable image9afd73f2 / migration0005.
-The guarded foreground cron worker and six real synthetic application calls
-passed bounded acceptance. Existing HIS/LC/DR databases and private services
-remain separate. See [the current release and operator handoff](RELEASE_AI_WORKSPACE.md)
-and [actual runtime witness](../evidence/ai-driven-root-20261114/assistant-runtime-readback.json).
+The deployed schema is `0006_team_coordination`. Current immutable image:
 
-This current runtime resolves three original ENV/Compose layers (base,LabClear,
-DR) plus the separately bound assistant overlay. The highest original dr.env
-image selection is authoritative; changing only server.env does not select a
-new current image. Maintain all three specialist layers. New assistant calls
-use300seconds/4096context/512output on the dedicated GPU0 service; the legacy
-document-review route retains its own configuration and shared model endpoint.
-Do not reinterpret the original90-second topology notes below as the new
-assistant route. The original first-deployment examples are historical context;
-current0005 recovery requires the separate pause/drain/admission/preservation
-handoff and must not downgrade or restore over production.
+`sha256:fcdbb821331d8433f26c754455a5fc184c6e5cd795de082990e1295abfd8398b`
+
+It combines backend `1960a827ac96784de5b39d8c84e688c721e963cb` and frontend
+`b860725d8b58a61b7a283c7b67a013a09cf3dd17`. The four-file/32-asset frontend
+overlay preserves all 60 backend inputs byte-for-byte. Activation was observed
+at `2026-11-15T07:11:47.673227+00:00`; fresh runtime proof at
+`2026-11-15T07:12:06.504014+00:00`. All four rollout gates passed.
+
+Six bounded application/model cases and final protected native smoke passed
+separately. The model cases ran on the same backend before the frontend overlay;
+the overlay and final smoke made no additional model call. Final read-only
+preservation audit v2 passed at `2026-11-15T07:42:40.269671Z`; source publication
+remains pending. It preserves original 126-table business row-hash subsets with
+explicit schema/session exceptions, final-stage 127-table business rows, two
+LabClear/ten DR tables, three source files and 48 trial hashes. All 60 backend
+inputs, four frontend files, 32 HTTP assets and engine/model/GPU/admission pins
+match. The audit made no database/model/service writes.
+[Exact receipt](../evidence/ai-team-20261115/deployment-preservation.json).
+Audit v1 remains NOT_PASS for a stale predecessor asset map; the separately
+reviewed/executed v2 corrected only the expected 32-asset mapping.
+
+Use [the current handoff](../CODEX_HANDOFF.md) for full app/guard/startticks,
+configuration/ENV fingerprints and the private pre-exec witness. These are dated
+proofs, not authority to act on a future PID. Revalidate current image, service
+identity, admission and pending work before future operational changes.
+
+The compatible schema0006 fallback remains:
+
+`sha256:dfaad73737f8f318c87427a210a964d997076c639a25c5ad169935e3c5e1f3ad`
+
+Old schema0005 application rollback is forbidden against the current database.
+Fallback retains schema0006 and current DB/files; do not downgrade, seed, rewind
+or restore over production. Current fresh-backup restore and host reboot
+recovery are NOT_RUN. Historical isolated restore is not current recovery proof.
+
+The runtime retains base/LabClear/DR ENV and Compose layers plus the separately
+bound assistant overlay. Preserve all specialist layers; changing only
+`server.env` is insufficient when a higher layer selects the image. Do not print
+resolved secret-bearing Compose output. Assistant preparation retains the
+dedicated private GPU0 route, 300-second deadline, 4096 context and 512 output
+tokens. The legacy document-review route retains separate configuration.
+
+[Release and current recovery scope](RELEASE_AI_TEAM_OPERATIONS_20261115.md),
+[application acceptance](../evidence/ai-team-20261115/application-acceptance.json)
+and [final native receipt](../evidence/ai-team-20261115/browser-acceptance.json).
+Original first-deployment commands/topology below are retained history and must
+not be used as current schema0006 activation or rollback instructions.
 
 ## Authorized boundary
 
@@ -34,7 +67,7 @@ The first private/protected origin used the stable base39f788f image while the
 new interface was developed. That baseline must not be called the final UI release.
 Final candidate identity and actual external acceptance are recorded separately.
 
-## Runtime topology
+## Retained first-deployment topology — 13 November 2026
 
 - App: Linux host network, explicitly binds127.0.0.1:18080.
 - PostgreSQL18.6: isolated bridge, published only127.0.0.1:15432.
@@ -80,7 +113,7 @@ manifest before building an immutable image tag under the server releases folder
 The baseline archive was deliberately generated from committed39f788f instead;
 final delivery must use the current-working snapshot after the UI freeze.
 
-## Compose operations
+## Historical first-deployment Compose operations
 
 Set private HIS_DEPLOY_IMAGE to the reviewed immutable image. Do not print the
 resolved Compose configuration because it contains the database and seed passwords.
@@ -115,7 +148,7 @@ Compose labeled it, so Compose reports an existing-unlabeled-volume warning. Its
 exact file checksum, mount and ownership were verified. Do not delete the volume
 to silence that warning.
 
-## Rollback
+## Historical first-deployment rollback
 
 For a UI-only candidate, retain the prior image and change only private
 HIS_DEPLOY_IMAGE back to that immutable tag, then recreate the app with the command
@@ -186,7 +219,7 @@ wide-panel candidate. This paragraph is retained as historical context. See RELE
 evidence/research-ui-release/public-authenticated-pending.json for the precise
 checkpoint; local real-AI acceptance is separate from that pending public check.
 
-## Current Patient panel and scroll candidate — 14 November 2026
+## Historical Patient panel and scroll candidate — 14 November 2026
 
 Active image: his-poc-server:workspace-167d14addf47.
 Image ID: sha256:56821a7a82ae714f7bfc039ef82e35ad51c4d0b5f91d89c5d5d816de8cb9210b.

@@ -1,5 +1,27 @@
 # J01–J10 local L3 coverage
 
+## Current bounded AI/team extension — 15 November 2026
+
+Schema `0006_team_coordination` is deployed with backend `1960a827` and
+frontend `b860725` in image `fcdbb821`. Six authored synthetic application
+cases passed across four profiles: four normal-role HTTPS API cases and two
+actual protected-public browser preparations with reviewed, unsigned D22 draft
+save/reload. Final queue/Admin/source-reading native smoke passed separately.
+
+These are scoped extensions to the retained baseline below. They do not rerun
+all 38 domains or ten journeys, establish clinical effectiveness or upgrade
+external integration status. The six cases produced 12 exact typed fields and
+zero literal quote facts; native quote-offset highlighting was NOT_EXERCISED.
+Final read-only preservation audit v2 passed at 07:42:40.269671 UTC.
+Source publication remains pending.
+[Exact preservation scope](evidence/ai-team-20261115/deployment-preservation.json).
+
+[Application acceptance](evidence/ai-team-20261115/application-acceptance.json),
+[final native receipt](evidence/ai-team-20261115/browser-acceptance.json) and
+[release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md).
+
+## Retained initial AI workspace evidence — 14–15 November 2026
+
 The additional AI preparation release is tracked separately: runtime9afd/schema0005
 is deployed; foreground worker and six real application calls passed bounded
 preparation/review/watch acceptance across four profiles. The public browser

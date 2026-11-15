@@ -2,12 +2,20 @@
 
 ## คู่มือในเว็บ
 
-รุ่นทดสอบล่าสุดมี [Team queue](https://his.ai-cie.com/team-queue) สำหรับรับงาน
-ส่งต่องานและกำหนดเวลาติดตาม พร้อมตัวอ่านหลักฐานต้นฉบับและแท็บ AI operations
-ใน Admin อ่าน [สถานะและขอบเขตผลตรวจ](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md)
-และ [ขั้นตอนใช้งาน](docs/AI_TEAM_OPERATIONS.md) การทดสอบ AI จริงผ่าน application
-ครบ 4 กลุ่มแล้ว ส่วนการทดสอบ AI/Admin บนเว็บรอบสุดท้ายยังรอยืนยัน Access
-ของเบราว์เซอร์ทดสอบ จึงยังไม่ถือว่าปิด milestone นี้
+รุ่นปัจจุบันมี [Team queue](https://his.ai-cie.com/team-queue), ตัวอ่านหลักฐานต้นฉบับ
+และ Admin AI operations บน schema0006 ทดสอบ AI ผ่าน application จริง 6 กรณี:
+API ผ่านสิทธิ์ปกติ 4 กรณี และหน้าเว็บที่มี Access อีก 2 กรณี โดยสองกรณีบนเว็บ
+ผ่านการตรวจโดยคนและบันทึกร่าง D22 ที่ยังไม่ลงนาม ใช้ 6 จาก 8 สิทธิ์เรียกโมเดล
+ไม่มีผลเรียกที่ไม่ทราบสถานะและไม่ใช้สิทธิ์สำรอง ข้อเท็จจริงทั้ง 12 รายการเป็น typed fields;
+ไม่ได้ทดสอบ literal quote/Unicode offset highlighting ผ่านผลโมเดลบนเว็บรอบนี้
+
+รุ่น frontend b860725 บน backend 1960a82 เปิดใช้ใน image fcdbb821/schema0006
+แล้ว ผล native รอบสุดท้ายเวลา 07:18–07:20 UTC วันที่ 15 พฤศจิกายนผ่าน ทั้งการเปิดงาน
+การอ่านข้อมูล Admin การกลับเข้าใช้ตามบทบาทและ mobile layout ผล full preservation
+audit v2 ผ่านเวลา 07:42:40 UTC โดยไม่เขียนฐานข้อมูลหรือเรียกโมเดลเพิ่ม
+ยังรอ final review/commit/push main จึงยังไม่ปิด milestone อ่าน
+[สถานะและหลักฐาน](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
+[วิธีใช้งาน](docs/AI_TEAM_OPERATIONS.md) และ [จุดส่งต่องาน](CODEX_HANDOFF.md)
 
 เปิด [User Guide](https://his.ai-cie.com/guide) จากหน้าเข้าสู่ระบบ เมนูหลัก หรือ
 ปุ่ม User Guide บนแถบด้านบน มี16บท อ้างอิงครบ38ส่วนงาน พร้อมภาพตัวอย่างและ
@@ -25,7 +33,7 @@
 [ผลตรวจรุ่นนี้](docs/ADMIN_RELEASE_20261115.md)
 
 
-อัปเดต15 พฤศจิกายน2026: Login, Clinical Workspace, Patient panel กว้าง และผู้ป่วยสมมุติ6รายพร้อมบนเว็บแล้ว รวม LabClear และ DR workspace สำหรับทบทวนโดยคน AI เตรียมงาน4กลุ่มใช้ Typhoon จริงบน dr-train ทดสอบผ่านระบบ6ครั้ง บันทึกผลหลังตรวจ5รายการ ได้ร่าง2ฉบับ งานใหม่2รายการ และเชื่อมงานเดิม3ครั้ง ทดสอบ watch ข้อมูลคงเดิมไม่เรียกเพิ่ม และข้อมูลเปลี่ยนเรียกใหม่หนึ่งครั้ง จากนั้นหยุด watch ทดสอบแล้ว Operations เริ่มจาก2D และเลือกเปิด3Dเองได้ อ่าน [วิธีใช้และข้อจำกัด](docs/RELEASE_AI_WORKSPACE.md), [สถานะ](GOAL.md) และ [หลักฐานจริง](evidence/ai-driven-root-20261114/application-acceptance.json) ผลนี้ยังไม่ใช่การรับรองประสิทธิผลทางคลินิก
+ผลรอบ AI workspace ก่อนหน้า (14–15 พฤศจิกายน2026): Login, Clinical Workspace, Patient panel กว้าง และผู้ป่วยสมมุติ6รายพร้อมบนเว็บแล้ว รวม LabClear และ DR workspace สำหรับทบทวนโดยคน AI เตรียมงาน4กลุ่มใช้ Typhoon จริงบน dr-train ทดสอบผ่านระบบ6ครั้ง บันทึกผลหลังตรวจ5รายการ ได้ร่าง2ฉบับ งานใหม่2รายการ และเชื่อมงานเดิม3ครั้ง ทดสอบ watch ข้อมูลคงเดิมไม่เรียกเพิ่ม และข้อมูลเปลี่ยนเรียกใหม่หนึ่งครั้ง จากนั้นหยุด watch ทดสอบแล้ว Operations เริ่มจาก2D และเลือกเปิด3Dเองได้ อ่าน [วิธีใช้และข้อจำกัด](docs/RELEASE_AI_WORKSPACE.md), [สถานะ](GOAL.md) และ [หลักฐานจริง](evidence/ai-driven-root-20261114/application-acceptance.json) ผลนี้ยังไม่ใช่การรับรองประสิทธิผลทางคลินิก
 
 ผลรอบ 13 พฤศจิกายน 2026: 38 domains ที่ L2 และ J01–J10 ที่ L3 ผ่านบนข้อมูลสังเคราะห์ พร้อม Windows Docker, PostgreSQL, browser และ isolated restore ที่รันจริง อ่าน VALIDATION_REPORT.md และ coverage เพื่อดูขอบเขต หลักฐาน MOCK และ external L4 ที่ยังไม่ได้ตรวจ
 

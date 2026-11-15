@@ -1,0 +1,186 @@
+{
+  "status": "PASS_PROTECTED_NATIVE_FINAL_FRONTEND_SMOKE",
+  "scope": "Root observed normal authenticated HIS UI behind unchanged Cloudflare Access; authored synthetic records only. Final read-only smoke after frontend overlay. No model or clinical mutation during final smoke.",
+  "urls": [
+    "https://his.ai-cie.com/admin",
+    "https://his.ai-cie.com/team-queue",
+    "https://his.ai-cie.com/home"
+  ],
+  "frontend_source": "b860725d8b58a61b7a283c7b67a013a09cf3dd17",
+  "backend_source": "1960a827ac96784de5b39d8c84e688c721e963cb",
+  "deployed_image": "sha256:fcdbb821331d8433f26c754455a5fc184c6e5cd795de082990e1295abfd8398b",
+  "admin": {
+    "normal_login": "PASS",
+    "persisted_runs": 12,
+    "waiting": 0,
+    "preparing": 0,
+    "nursing_filter_rows_before_overlay": 4,
+    "invalid_output_filter_rows_before_overlay": 0,
+    "details_focus": {
+      "mobile_heading_top_css_px": 307.8999938964844,
+      "desktop_heading_top_css_px": 299.3999938964844,
+      "heading_focused": true
+    },
+    "mobile_layout": {
+      "requested_viewport": [
+        390,
+        844
+      ],
+      "document_client_width_css_px": 380,
+      "document_scroll_width_css_px": 380,
+      "local_table_client_width_css_px": 348,
+      "local_table_scroll_width_css_px": 541,
+      "local_table_position": "relative",
+      "local_horizontal_scroll_preserved": true
+    },
+    "b1_usage": {
+      "input_tokens": 489,
+      "output_tokens": 261,
+      "sources": "4/4",
+      "partial_omitted": "0/0",
+      "revisions_effects": "1/1"
+    },
+    "b2_usage": {
+      "input_tokens": 489,
+      "output_tokens": 265,
+      "sources": "4/4",
+      "partial_omitted": "0/0",
+      "revisions_effects": "1/1"
+    },
+    "measured_cost": null,
+    "model_health": "not_checked",
+    "worker_heartbeat": "not_observed",
+    "source_freshness": "not_checked_in_admin",
+    "patient_name_and_clinical_body_absent": "PASS_ROOT_NATIVE_READ",
+    "native_next_page": "NOT_EXERCISED_12_ROWS_FIT_ONE_PAGE",
+    "clinical_user_admin_denied": "PASS_NATIVE_AFTER_NORMAL_ROLE_SIGN_IN"
+  },
+  "team_queue": {
+    "normal_care_login": "PASS",
+    "fresh_deep_link_reload": "PASS_DESKTOP_AND_MOBILE",
+    "native_list_count": 23,
+    "task_physical_version": 7,
+    "coordination_updates": 6,
+    "semantic_version": 1,
+    "owner": "existing eligible clinician",
+    "due_local": "2026-10-15T11:30:00+07:00",
+    "priority": "high",
+    "escalation_level": 1,
+    "desktop": {
+      "document_client_width_css_px": 1270,
+      "document_scroll_width_css_px": 1270,
+      "heading_top_css_px": 235.8000030517578,
+      "heading_focused": true
+    },
+    "mobile": {
+      "requested_viewport": [
+        390,
+        844
+      ],
+      "document_client_width_css_px": 380,
+      "document_scroll_width_css_px": 380,
+      "heading_top_css_px": 197.9499969482422,
+      "heading_focused": true
+    },
+    "coordination_workflow": "PASS_ACTUAL_NATIVE_CLAIM_SCHEDULE_HANDOFF_ESCALATION_BEFORE_OVERLAY",
+    "source_digest_and_input_hash_unchanged_after_coordination": "PASS_SEPARATE_PRIVATE_READ_ONLY_CORROBORATION"
+  },
+  "source_snapshot": {
+    "b1_used_preparation_read": "PASS",
+    "new_whole_preparation_freshness_copy": "PASS",
+    "original_full_text_unicode_round_trip": "PASS_161_CODE_POINTS_162_UTF16_UNITS",
+    "source_content_hash": "97b4eaa1b5736202e5645976ea14afd188b4e2e8685e763442ce3793638618fd",
+    "exact_structured_status_mark": "draft",
+    "literal_quote_offset_highlight": "NOT_EXERCISED_NO_LITERAL_QUOTE_FACTS",
+    "b1_b2_unsigned_draft_save_and_reload": "PASS_NATIVE_BEFORE_OVERLAY_SEE_APPLICATION_ACCEPTANCE"
+  },
+  "browser_cleanup": {
+    "temporary_viewport_reset": true,
+    "existing_tab_kept_as_deliverable": true
+  },
+  "screenshots": [
+    {
+      "file": "team-queue-desktop.jpg",
+      "captured_at": "2026-11-15T05:36:20.873Z",
+      "width": 1270,
+      "height": 714,
+      "sha256": "3268cde0161a4da256a5ab45bce11dc938c39170590d1d3766536cc9b7cfb454"
+    },
+    {
+      "file": "b1-original-source.jpg",
+      "captured_at": "2026-11-15T06:25:27.116Z",
+      "width": 1280,
+      "height": 720,
+      "sha256": "eb0b523b9faac24d0c036686276ee740b8225a3da6507e60977b4ae62a14f097"
+    },
+    {
+      "file": "b1-typed-evidence.jpg",
+      "captured_at": "2026-11-15T06:26:52.292Z",
+      "width": 1280,
+      "height": 720,
+      "sha256": "64ed1a3e4fb36edd53dcf47ed4d39e059ebb7d18d0b243cdd747e68b3b15730d"
+    },
+    {
+      "file": "b1-saved-draft.jpg",
+      "captured_at": "2026-11-15T06:31:30.072Z",
+      "width": 1270,
+      "height": 714,
+      "sha256": "f71aacf6e745f299fe5eb2c9dc1eb915fc1d25db3de631f853c5d5e353c4e8aa"
+    },
+    {
+      "file": "b2-source-evidence.jpg",
+      "captured_at": "2026-11-15T06:35:53.062Z",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d153d03849c9e85cdd4a3569410701d91c3f49c7ea9a5b69db88b939d547873f"
+    },
+    {
+      "file": "b2-saved-draft.jpg",
+      "captured_at": "2026-11-15T06:36:32.704Z",
+      "width": 1270,
+      "height": 714,
+      "sha256": "e1dd3cfb4ab5efc8a825481ec55cc43db02e19952ada2fb34a5c8b3247ada2c0"
+    },
+    {
+      "file": "admin-ai-final-mobile.jpg",
+      "captured_at": "2026-11-15T07:18:04.860Z",
+      "width": 380,
+      "height": 822,
+      "sha256": "591f76284c53a60c99da4a9bdb6c0b3e44753137f736811eb4d045a3acc6b9c0"
+    },
+    {
+      "file": "admin-ai-final-desktop.jpg",
+      "captured_at": "2026-11-15T07:18:20.978Z",
+      "width": 1270,
+      "height": 714,
+      "sha256": "d8d2fd9cbac1ac3e09dcaec99fba84aa73855fa0b444e526f905794b5f139d4f"
+    },
+    {
+      "file": "team-queue-final-desktop.jpg",
+      "captured_at": "2026-11-15T07:19:37.708Z",
+      "width": 1270,
+      "height": 714,
+      "sha256": "e76909e4a015c62cf952d2b39c63e579c2e5b12a160630e4a70536299559d788"
+    },
+    {
+      "file": "team-queue-final-mobile.jpg",
+      "captured_at": "2026-11-15T07:19:52.722Z",
+      "width": 380,
+      "height": 822,
+      "sha256": "5a08f5adc7ce9191908b573ed03f5f8b77d27185d3a6b765b3271aa289f9cb29"
+    },
+    {
+      "file": "source-evidence-final-desktop.jpg",
+      "captured_at": "2026-11-15T07:20:14.255Z",
+      "width": 1280,
+      "height": 720,
+      "sha256": "98e47c6b1f1152ad7e59d5245d1bad1dff808bccfcffed65c51e6e34551de5c2"
+    }
+  ],
+  "evidence_limits": [
+    "Screenshots are exact returned native JPEGs, not edited mockups. Requested viewport dimensions differ from actual returned JPEG dimensions.",
+    "Native UI observations and private server corroboration are distinct channels.",
+    "No clinical accuracy, benchmark, staff-time saving or current model-health claim.",
+    "Earlier browser-progress.json is a retained historical checkpoint superseded by this receipt."
+  ]
+}

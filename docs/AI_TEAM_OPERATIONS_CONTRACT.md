@@ -1,7 +1,33 @@
 # AI evidence, accountable work and administration operations
 
-Status: ACTIVE_IMPLEMENTATION. Owner authorization: 15 November 2026, this chat.
-Base: c47868a. This extends the retained v1 assistant and Admin contracts.
+Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING.
+Owner authorization: 15 November 2026, this chat. Implementation base:
+`c47868a`; deployed backend `1960a827` plus frontend `b860725`, schema
+`0006_team_coordination`. This extends the retained v1 assistant/Admin contracts.
+
+## Observed acceptance and remaining proof
+
+All six authored cases passed (four HTTPS API cases with normal role
+authentication, two actual protected-public browser cases). The ledger used
+six of eight reserved slots, six observed dispatches, no unknowns and no
+corrective reserves. No additional generation is planned; the unused allowance
+does not schedule a retry. Final native queue/Admin/source-reading smoke passed
+at 07:18–07:20 UTC. Final read-only preservation audit v2 passed at
+07:42:40.269671 UTC; source publication remains pending.
+[Preservation scope](../evidence/ai-team-20261115/deployment-preservation.json).
+
+All 12 generated facts were exact typed fields; no literal quote fact was
+generated. Native quote-offset highlighting was NOT_EXERCISED. Local component
+and PostgreSQL checks of exact quote offsets remain separate from this native
+limit. Four API effects reused existing tasks; two native cases saved unsigned,
+unpublished D22 drafts. These checks establish this synthetic workflow, not
+clinical correctness or staff time savings. Unknown monetary cost stays null.
+
+[Acceptance](../evidence/ai-team-20261115/application-acceptance.json),
+[native receipt](../evidence/ai-team-20261115/browser-acceptance.json),
+[release](RELEASE_AI_TEAM_OPERATIONS_20261115.md) and
+[current operator manual](AI_TEAM_OPERATIONS.md). The frozen requirements below
+remain authoritative; acceptance summaries do not expand permissions or budgets.
 
 ## Delivery and authority
 

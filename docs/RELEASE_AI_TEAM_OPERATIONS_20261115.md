@@ -1,6 +1,6 @@
 # AI evidence, accountable work and operations monitoring
 
-Status: DEPLOYED_ACCEPTANCE_IN_PROGRESS. This report separates implementation,
+Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING. This report separates implementation,
 local qualification, deployment and application acceptance. It does not extend
 the historical 38-domain/10-journey baseline or establish clinical effectiveness.
 
@@ -38,7 +38,7 @@ and isolated HTTP receivers are distinguished from production inference.
 | Legacy AI/LabClear/DR coordination | PASS, 17 PG checks | Coordination during existing review/connector boundaries, no duplicate effects |
 | LabClear compatibility | PASS, 44 tests + 62 subtests | Controlled doubles/isolated database; no production model call |
 | DR receiver interoperability | PASS, 2 HTTP scenarios | Isolated loopback derivative and authored PNG/JPEG; no DR model call |
-| Mounted frontend | PASS, 223 cases and 31 units | Existing behavioral/accessibility checks |
+| Mounted frontend | PASS, final 227 cases, zero skipped; retained 31 units | Final component suite ran with concurrency1 on b860 |
 | Guide content/media | PASS | 16 chapters, 101 steps, 38 domains/152 domain steps, 11 JPEGs, 10 walkthroughs |
 | Copy follow-up | PASS, 7 existing source-evidence checks and typecheck/build | Wording only, exact marks/no cached fallback retained |
 
@@ -49,6 +49,10 @@ were corrected before the separately recorded successful executions. Two DR
 checks skipped in an earlier environment were subsequently executed in the
 correct isolated derivative environment. The retained Vite chunk-size warning
 and Starlette/httpx deprecation warning were not hidden by dependency changes.
+The final default-parallel frontend run terminated one Node process with an
+allocation failure after221 checks passed. That execution remains FAIL. Running
+all14 component files with concurrency1 completed227 checks with no skipped
+tests; no heap limit, application code or test selection changed for that run.
 
 ## Deployment checkpoint
 
@@ -71,13 +75,21 @@ ENV remain unchanged. The deployment operator issued zero model generations.
 The original six assistant runs and their eight revisions, five decisions,
 seven effects and paused watch were preserved at this checkpoint.
 
-Copy-only source `d8755d9` has passed local checks and remains NOT_DEPLOYED at
-this checkpoint. It clarifies that freshness reflects the whole preparation
-context and that text-null snapshots can contain structured field evidence.
+Frontend source `b860725` was subsequently deployed as immutable image
+`sha256:fcdbb821331d8433f26c754455a5fc184c6e5cd795de082990e1295abfd8398b`,
+after all four handover phases passed. Its32 assets and four frontend
+files add precise freshness/structured-evidence wording, queue focus after the
+final asynchronous layout, visible Admin metadata selection and positioned
+table containment for the visually hidden header. Sixty backend, migration and
+dependency inputs and the inherited image Config remain byte-identical to the
+original deployed base. Stage/build/static qualification and handover preserved all127-table, files
+and trial-bundle hashes across the HIS/LabClear/DR baseline. This overlay retains
+backend1960 plus frontendb860 identity; it is not a replacement backend release.
 
 ## Bounded model and browser acceptance
 
-IN_PROGRESS. The frozen trial allows six initial application cases and at most
+PASS for the six-case application cohort and final protected native smoke.
+The frozen trial allows six initial application cases and at most
 two separately reviewed corrective reserves, with no automatic retry, batch,
 watch or direct provider call. Every reserved or unknown attempt remains charged.
 API cases use normal production application authorization via in-process HTTPS
@@ -115,6 +127,25 @@ After the API cohort, every original assistant row hash remained unchanged:
 cases were 10/12/9/11/1. The nine legacy inference rows and nine committed-result
 rows were also unchanged. No active run or watch remained at this checkpoint.
 
+The two native protected-browser cases subsequently passed preparation, original
+snapshot reading, human meaning review, selected unsigned-draft save and reload.
+B1 preserved the authored Thai history/pending text, and B2 preserved the walking
+assistance/call-bell handover. Each saved exactly one version1 unpublished D22
+draft with no clinical attestation or extra task effect. Their recorded provider
+times were53,391 ms and54,236 ms; usage was489/261 and489/265 prompt/output tokens.
+The [six-case application evidence](../evidence/ai-team-20261115/application-acceptance.json)
+keeps the actual native observations separate from private read-only server
+corroboration and includes exact source/draft comparisons and saved-text hashes.
+
+The final trial ledger records6 of8 slots, six positive provider dispatches,
+zero unknown attempts and zero corrective reserves. All original assistant and
+legacy row hashes remain unchanged; current assistant counts are12 runs,
+14 revisions,11 decisions,13 effects and1 paused watch. No active run/watch
+remains. The six examples generated12 typed-field facts and zero literal quote
+facts. B1's original161 Unicode code points/162 UTF-16 units survived the native
+round trip, but native quoted-offset highlighting was not exercised. Exact quote
+offset behavior is covered by the separate local component/PG checks.
+
 Native B1/B2 fixtures were created through normal web forms in separate new
 encounters for the existing synthetic patient. Team queue claim, schedule,
 eligible handoff and escalation were read back from the server on the same task.
@@ -124,8 +155,58 @@ The initial native datetime automation fills did not fire the application change
 event; those null-date results were retained. Real keyboard input subsequently
 persisted a past date and enabled the overdue escalation check.
 
-Cloudflare Access expired before final mobile/reload, native AI and Admin reads.
-Those checks remain NOT_RUN pending normal user verification. Security settings
-were not weakened and no service restart was used to address the Access expiry.
-Final trial totals, native results, preservation audit and publication will be
-recorded here only after execution.
+Cloudflare Access expired during the initial browser checks and was renewed by
+the user through the normal sign-in flow. The resumed queue read retained its
+owner, due date, priority and escalation. Admin normal sign-in,12-row metadata
+view, nursing filter4, empty-state filter0, null cost and explicitly unobserved
+heartbeat/model health passed. Patient names and the B1 clinical body were absent
+from its metadata panel. No security policy was weakened.
+
+Native reading revealed three frontend defects before final activation: a queue
+deep link scrolled before its23-row layout finished; Admin details appeared below
+the viewport; and an absolute1px screen-reader header escaped its unpositioned
+table scroller, matching document width477 versus client380 at a390px viewport.
+The deployed repairs passed final native checks. At a390px requested viewport,
+Admin document width and scroll width were both380px; its table retained local
+horizontal scrolling (348px client,541px content). Selected metadata headings
+received focus and appeared at307.9px on mobile and299.4px on desktop. Queue
+deep-link reload waited for the23-row layout, then focused the selected heading
+at235.8px on desktop and197.95px on mobile. Both root layouts had equal client
+and scroll widths. The same task retained version7, its clinician owner, due
+date, high priority and escalation1. The used B1 source snapshot retained its
+full original text, hash and structured status mark under the clarified copy.
+
+See [final native evidence](../evidence/ai-team-20261115/browser-acceptance.json)
+for exact observations and unedited returned screenshots. Temporary viewport
+overrides were reset. No further model or clinical mutation was issued during
+this final smoke.
+
+## Final preservation and publication
+
+The separately reviewed read-only audit passed at07:42:40 UTC. All original
+business-row hash multisets were retained, with the documented0005-to-0006
+schema transition and authored trial additions. All business rows present before
+the final frontend overlay remained exact. LabClear's two tables, DR's ten
+tables, three stored source files and the48-file trial bundle were unchanged.
+The current image, guard, model/GPU identity, backend60/frontend4 inputs and all32
+assets returned over HTTP matched the qualified release.
+
+Normal final sign-in/logout added two audit events, one login attempt and one
+session. An existing session changed only from a null to a non-null revocation
+time; all its other columns remained exact. The audit separately checked the
+original pretrial session change. No preservation audit wrote database records,
+requested inference, restored a backup or changed services. The original
+assistant and legacy histories remained intact, and the trial allowance stayed
+at6/8 with zero unknowns and zero corrective reserves.
+
+The first final-audit execution remains NOT_PASS: its expected asset map still
+named predecessor files. An offline comparison identified that harness error;
+the separately reviewed v2 changed only the32 expected asset hashes to the
+qualified final build and then passed. This correction did not change deployed
+application bytes or hide the failed receipt. See the
+[public preservation receipt](../evidence/ai-team-20261115/deployment-preservation.json)
+and [scoped local checks](../evidence/ai-team-20261115/local-qualification.json).
+
+Fresh-backup restore, recovery after host reboot and fallback activation remain
+NOT_RUN. Their preparations are not recovery acceptance. Source publication
+still awaits the final reviewed non-force main push at this writing checkpoint.

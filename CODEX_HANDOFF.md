@@ -1,74 +1,139 @@
-# Codex handoff — illustrated User Guide and Admin acceptance
+# Codex handoff — AI team operations release
 
-## Active goal — AI evidence, team queue and Admin AI monitoring
+## Active milestone — AI evidence, team queue and Admin AI operations
 
-Owner-authorized 15 November 2026. Status: DEPLOYED_ACCEPTANCE_IN_PROGRESS.
-Runtime source1960a82 / image dfaad737 / schema0006 is deployed on dr-train.
-Local qualification and preservation migration passed; new bounded model
-and protected-browser acceptance are in progress. Cloudflare Access renewal
-is pending for the browser session. No final acceptance or publication of
-this milestone is claimed. Baseline c47868a remains the published release.
-Copy-only follow-up d8755d9 is locally checked and not yet deployed.
-See [the frozen contract](docs/AI_TEAM_OPERATIONS_CONTRACT.md).
+Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING (15 November 2026).
+The named synthetic POC runs `0006_team_coordination`, backend `1960a827` plus
+frontend `b860725` in image `fcdbb821`. Four final rollout gates passed. The four-file/
+32-asset frontend overlay preserves all 60 backend inputs byte-for-byte; the
+server is a runtime snapshot, not a Git checkout. Deployment and publication are
+separate operations; full identities and the current guard witness are in
+[the handoff](CODEX_HANDOFF.md).
 
-1. Implement profile-ranked exact source passages, original-revision evidence
-   reading and measured selection/quote coverage; preserve the current model,
-   prompt/schema limits, authorization and immutable review workflow.
-2. Implement server-paginated accountable work with eligible claim/handoff,
-   operational due dates and one-task escalation; keep domain completion guards.
-3. Implement read-only Admin AI metadata with truthful timestamps, unknown
-   heartbeat/freshness and scalar allowlists; no chart bodies or host control.
-4. Qualify PostgreSQL/schema compatibility, frontend and independent review,
-   then explicitly migrate/deploy the synthetic dr-train POC and test the real URL.
+All six authored synthetic application cases passed: four in-process HTTPS API
+cases with normal persisted role authentication, plus two actual protected-public
+browser preparations, source/meaning review, unsigned D22 draft save and reload.
+The ledger records 6/8 reserved slots, six observed dispatches, zero unknowns and
+zero corrective reserves. No further generation is planned. The 12 facts were
+exact typed fields; zero literal quote facts were generated. Native quoted-offset
+highlighting was NOT_EXERCISED despite B1's preserved astral-prefix source.
 
-New live acceptance is bounded to at most eight application generations,
-including two corrective reserves; no automatic retries/watch trial/cloud calls.
-Old qualification and public evidence below retain their original scope.
+Final protected native smoke passed at 07:18–07:20 UTC, including normal role login,
+queue deep-link focus and Admin metadata/mobile containment. Final frontend
+qualification passed 227/227 mounted cases across all 14 files with concurrency 1
+and zero skips. The default-parallel Node heap failure remains FAIL, not the
+passing final run. Unit, PG and isolated connector results keep their own scopes.
+Historical 38 L2 domains/10 L3 journeys are maintained, not rerun or promoted to
+new clinical proof. Fresh-backup restore and host reboot recovery remain NOT_RUN.
+
+Closeout audit: PASS at 2026-11-15T07:42:40.269671Z (read-only audit v2).
+Source publication: PENDING_FINAL_REVIEW_AND_NON_FORCE_MAIN_PUSH.
+See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
+[six-case acceptance](evidence/ai-team-20261115/application-acceptance.json),
+[final native smoke](evidence/ai-team-20261115/browser-acceptance.json),
+[final preservation audit](evidence/ai-team-20261115/deployment-preservation.json) and
+[operating manual](docs/AI_TEAM_OPERATIONS.md). Older sections below are historical.
 
 
 ## Current AI/team checkpoint
 
 Work in `C:/Users/User/Desktop/myProject/his-poc`, branch
-`codex/ai-team-operations`. Local source follow-up is `d8755d9`; it is not yet
-published. The server still runs source1960a82/image dfaad737/schema0006. Keep the
-new trial on that deployment until its six initial cases have been recorded.
-The source-only copy follow-up must be deployed afterward and checked through
-the protected URL. It changes wording, not the model or backend behavior.
+`codex/ai-team-operations`. The final frontend overlay is activated; do not deploy
+the old d875 copy candidate or rerun the completed six model cases. Current
+image is `sha256:fcdbb821331d8433f26c754455a5fc184c6e5cd795de082990e1295abfd8398b`,
+backend `1960a827ac96784de5b39d8c84e688c721e963cb` plus frontend
+`b860725d8b58a61b7a283c7b67a013a09cf3dd17`, schema0006_team_coordination.
+All60 backend inputs are byte-identical; the overlay contains four frontend
+source files and32 assets. The four rollout gates passed. The server is a
+runtime snapshot rather than a Git checkout; a source push does not redeploy it.
 
-Canonical private operational records are under
-`var/ai-team-operations-release-20261115` and
-`var/ai-team-live-acceptance-20261115`. They are deliberately excluded from Git.
-The persistent server trial lives in the existing backup volume at
-`/var/his/backups/ai-team-live-acceptance-20261115-1960a82-v1`.
-Never reinstall/reset the attempt ledger or repeat an unknown command. Read the
-latest ledger and exact command receipts before another generation. The maximum
-is eight reserved attempts, with six initial cases and two separately reviewed
-changed-source reserves; no batch/watch/direct-provider trial is authorized.
+Private operational records remain under `var/ai-team-operations-release-20261115`
+and `var/ai-team-live-acceptance-20261115`. The persistent trial is
+`/var/his/backups/ai-team-live-acceptance-20261115-1960a82-v1`. Never reset/reinstall
+its ledger or reuse the two unused reserves automatically. Six cases consumed
+six reserved slots and six observed dispatches, with no unknowns or correction
+reserves. No further generation is planned. Current assistant totals are12 runs/
+14 revisions/11 decisions/13 effects/1 paused watch; original6/8/5/7/1 row hashes
+and legacy inference9/committed results9 remain unchanged in trial subset proof.
+No active run/watch remained after that proof.
 
-Deployment, schema preservation and compatible fallback qualification passed.
-A1/A2 production application calls and manual meaning review passed; their
-selected effects reused the existing fixture follow-up tasks without duplicates.
-A3/A4 are proceeding under separate case-specific root authorization. B1/B2
-fixtures already exist, but their native model buttons have not been clicked.
-Do not recreate fixtures or substitute API calls for the native cases.
+Activation was observed at `2026-11-15T07:11:47.673227+00:00`; the fresh
+runtime proof `rollout/actual-new-fresh-proof.json` was recorded at
+`2026-11-15T07:12:06.504014+00:00`. Use this exact chronology rather than
+an approximate rollout time.
 
-The ordinary browser session was test01. Cloudflare Access expired after Team
-queue mutation acceptance, and the user was asked to renew it in the existing
-chat browser tab. No security policy was changed. Pending native work: B1/B2
-single-context preparation, snapshot reading and reviewed draft save/reload;
-Team queue mobile and reload persistence; Admin AI operations. Never use the
-nearby Prepare my work batch control. Native queue task
-`c2765968-283e-4bce-9ecb-31b444cb1ae5` is a new synthetic task, physical version7,
-semantic version1, assigned to clinician, high operational priority, past due
-and escalation1. Current source/input hashes remained unchanged by coordination.
+The final rollout witness is
+`/home/chaw/his-poc/var/ai-team-operations-release-20261115/static-final-b860-rollout/new-start-preexec.json`.
+Its observed app identity is
+`55767988c8727598c78fcd7861f87f34af07793656c65f8fd9b0dd3f1b2e5029`,
+guard PID3543089/startticks34064095, resolved configuration fingerprint
+`690157687138a403b767407637ae7ff6f391d41bb033fa2ff1a72c11128b5c44`, and private
+ENV fingerprint `bfacb7f0809b31b8587ceeb23268f5021288a6e8fcef6b2873e263c6d7f169c7`.
+These are dated identity witnesses, not authority over a later PID. Revalidate
+image/container/startticks/config/ENV and admission before future server work.
+No model, GPU service, Access policy or assistant configuration changed in the
+frontend activation.
 
-After native acceptance: complete the copy-only deployment, final preservation
-and budget audit, safe public evidence, this report/status family, release hash
-manifest/source package and the authorized non-force main push. Do not mark the
-long goal complete before these steps. The previous resume checkpoint below is
-a retained historical Guide release and must not drive current server actions.
+The compatible schema0006 fallback remains
+`sha256:dfaad73737f8f318c87427a210a964d997076c639a25c5ad169935e3c5e1f3ad`.
+Old schema0005 application rollback is forbidden against the current database.
+Fallback keeps0006 and current DB/files; it does not rewind production or permit
+restoring a backup over it. Current fresh-backup restore and host reboot recovery
+are NOT_RUN; historical isolated-restore results retain their original scope.
 
-## Illustrated in-app User Guide — 15 November 2026
+B1/B2 completed native single-context preparation, original snapshot reading,
+human meaning review, unsigned/unpublished D22 save and reload. Four API effects
+reused existing tasks; the two native cases created two D22 drafts with no
+clinical attestation or extra task effect. All12 model facts were typed fields;
+zero literal quote facts were generated. B1 preserved161 Unicode code points/
+162 UTF-16 units, but native quoted-offset highlighting was NOT_EXERCISED.
+
+Native Team queue readback preserved claim, device-zone date/high priority,
+eligible handoff and escalation on the same obligation: physical version7,
+semantic source version1, unchanged source digest/input hash. Initial null-date
+automation attempts were retained; actual keyboard input persisted the due date.
+Final native smoke at07:18–07:20 UTC passed Admin detail focus, normal role login/
+logout and clinical-user Admin denial, desktop/mobile queue reload and source
+reading. At390px requested width, Admin document width380 equals client380;
+table541 remains locally scrollable within348. The fixes also preserve modal
+focus. Admin native next-page acceptance was NOT_EXERCISED because12 rows fit a
+single page; server pagination has separate PG/component evidence. Read the
+[actual native receipt](evidence/ai-team-20261115/browser-acceptance.json).
+
+## Final preservation proof and pending publication
+
+Final read-only audit v2 passed at `2026-11-15T07:42:40.269671Z`. The
+[public receipt](evidence/ai-team-20261115/deployment-preservation.json) SHA-256
+is `7c6617b55e16e655c25d0344ca8ab9037ffa11b7e54713d65482e104c779fa7d`.
+It retains original row-hash multisets across the 126 pretrial business tables;
+the schema0005-to0006 transition and ordinary logout session revocations are
+explicit exceptions, not silent identity changes. All business rows across
+127 final-stage HIS tables are preserved, together with two LabClear tables,
+ten DR tables, three source files and all 48 trial-bundle hashes. Final-stage
+session logout revocation is explicitly recorded; other existing session
+columns are exact. The six-case trial remains 6/8 allowance used, six observed
+dispatches, zero unknowns and no corrective reserves.
+
+The receipt verifies all 60 backend inputs, four frontend source files and
+32 HTTP-served assets, current engine/model/GPU/admission pins, foreground guard
+identity and unrelated service identities. The audit made zero database writes,
+zero model calls and no service changes. It is not a fresh-backup restore or
+host reboot test.
+
+Audit v1 remains NOT_PASS: its expected `P.dist_sha256` mapping named predecessor
+assets, while backend/frontend sources matched. The separately reviewed and
+executed v2 changed only the 32 expected asset hashes to the qualified `b860725`
+set. The earlier failure is retained and is not relabeled PASS.
+
+- SOURCE_PUBLICATION_PENDING: root reviews/stages final docs/evidence, verifies
+  release hashes/package, commits and performs the authorized non-force main
+  push. Record the actual commit and remote proof, not a planned SHA.
+
+Do not mark the long goal complete until source publication has its own proof.
+Root owns README, release report and public evidence. Historical0005 release
+sections below must not drive current0006 server or rollback actions.
+
+## Retained illustrated in-app User Guide — 15 November 2026
 
 Status: DEPLOYED_AND_GUIDE_ACCEPTED for the synthetic protected POC.
 Runtime source 65c5bc5 / image 92166e35 / schema 0005 serves /guide. The guide
@@ -91,7 +156,9 @@ The Admin account, workflows, AI source/configuration and specialist services
 remain preserved. This is a guide release, not new clinical/model effectiveness.
 
 
-## Resume checkpoint
+## Historical User Guide resume checkpoint
+
+The following0005 snapshot is retained history; the current0006 witness above governs server actions.
 
 Current deployed application source: `65c5bc517b0b5905355ebc2a161c93635a9a7c97`.
 The later documentation/evidence commit does not require another deployment.

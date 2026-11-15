@@ -1,0 +1,101 @@
+{
+  "status": "PASS_RECORDED_SCOPED_CHECKS",
+  "checks": [
+    {
+      "scope": "assistant_regression",
+      "result": "PASS",
+      "counts": {
+        "tests": 169,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "environment_boundary": "Disposable PostgreSQL18.6 and controlled provider doubles",
+      "retained_receipt_sha256": "3d22efd41666cd8610d272cea8802ca659f46d75934b09754af92a41dc29ee39"
+    },
+    {
+      "scope": "source_quality_admin",
+      "result": "PASS",
+      "counts": {
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "environment_boundary": "Eight PostgreSQL checks and nine pure checks",
+      "retained_receipt_sha256": "0cbdf0e7c772b693fab1133b49f323fd5ff9d422117f75313ac55b4b7b732059"
+    },
+    {
+      "scope": "admin_regression",
+      "result": "PASS",
+      "counts": {
+        "tests": 35,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "environment_boundary": "Disposable PostgreSQL18.6",
+      "retained_receipt_sha256": "d4f0e2e951380f2fd080a405959aa066d81a89a1d6ed18c533a2db7f66c70bc5"
+    },
+    {
+      "scope": "core_journeys",
+      "result": "PASS",
+      "counts": {
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "environment_boundary": "Explicit seeded isolated PostgreSQL18.6",
+      "retained_receipt_sha256": "e4733debaa7ade174078f8be02602f928324dd6b0b2e52f58773b9504899fdf9"
+    },
+    {
+      "scope": "team_queue",
+      "result": "PASS",
+      "counts": {
+        "tests": 33,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "environment_boundary": "Disposable PostgreSQL18.6 concurrency/scope/idempotency",
+      "retained_receipt_sha256": "acdb4a3aa00d359b72c661ea54edeb3d20a44e11277b05c2e2843eb258081f43"
+    },
+    {
+      "scope": "legacy_lc_dr_coordination",
+      "result": "PASS",
+      "counts": {
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "environment_boundary": "Disposable PostgreSQL18.6, legacy and controlled connector boundaries",
+      "retained_receipt_sha256": "ef8791fe368caeb68efbe0fe83136f9e104a13265e960d873b89995707b23135"
+    },
+    {
+      "scope": "final_mounted_frontend",
+      "result": "PASS",
+      "tests": 227,
+      "failures": 0,
+      "skipped": 0,
+      "component_files": 14,
+      "concurrency": 1,
+      "source": "b860725d8b58a61b7a283c7b67a013a09cf3dd17",
+      "retained_receipt_sha256": "a81a8778379d615f484296422cd8777dbfd7845191c47c359329ceaf3ba76da0"
+    },
+    {
+      "scope": "final_frontend_typecheck_build",
+      "result": "PASS",
+      "assets": 32,
+      "source": "b860725d8b58a61b7a283c7b67a013a09cf3dd17",
+      "retained_receipt_sha256": "82fab61fc969c5401f150e7ef52ea2ce71d60dc09f9be6e90adee43d4ea01481"
+    }
+  ],
+  "limits": [
+    "Scopes overlap; do not sum them into independent clinical examples.",
+    "Controlled provider and receiver tests do not establish live-model or clinical effectiveness.",
+    "Final default-parallel component execution failed a Node child with allocation failure after221 reported passes; retained as FAIL. Same14 files passed227 checks with concurrency1, no skips, heap-limit or source change.",
+    "LabClear106 JUnit cases (44 tests+62 subtests), DR2 isolated receiver scenarios, guide content validation and retained31 frontend units are separately described in the release report; not rerun for final documentation."
+  ]
+}

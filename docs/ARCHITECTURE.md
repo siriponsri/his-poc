@@ -1,16 +1,30 @@
 # Full-system architecture
 
-## AI team operations extension in progress
+## AI team operations boundary — schema0006
 
-The active contract adds a typed task_coordination table in schema0006,
-profile-ranked exact passages and scoped immutable source reads, plus a
-metadata-only Admin monitoring projection. Task remains the sole obligation;
-operational_updates separates ownership edits from clinical source versions.
-Explicit preparation reuse also checks input_hash while watches retain the
-semantic source digest. No current runtime qualification is inferred.
-See [the contract](AI_TEAM_OPERATIONS_CONTRACT.md). Sections below describe
-retained released slices and their original schema/evidence.
+The deployed extension adds typed `task_coordination` metadata to the existing
+Task obligation, profile-ranked exact passages and immutable source-snapshot
+reads, plus metadata-only Admin monitoring. Operational ownership/date/priority/
+escalation edits increment the physical coordination version without invalidating
+unchanged semantic clinical evidence. Status/source/permission changes still
+invalidate stale actions. Explicit prepare reuse checks input_hash; reads,
+ownership edits and Admin monitoring do not request inference.
 
+Source coverage discloses omitted/partial inputs. Snapshot text is historical
+original evidence; exact quotes use Unicode code-point offsets, while typed
+fields retain their exact source identity. Draft attribution still requires
+human review. Claim/handoff never grants access to another actor's AI output.
+Admin health/cost/freshness unknowns remain explicit rather than estimated.
+
+Backend `1960a827` plus frontend `b860725` is deployed on schema0006; the final
+overlay preserves all backend inputs. Six bounded synthetic application/model
+cases and final protected native smoke passed. Final read-only preservation
+audit v2 passed at 07:42:40.269671 UTC; source publication remains pending.
+[Preservation scope](../evidence/ai-team-20261115/deployment-preservation.json).
+None of these results establishes clinical effectiveness. See the [contract](AI_TEAM_OPERATIONS_CONTRACT.md),
+[release](RELEASE_AI_TEAM_OPERATIONS_20261115.md) and
+[current deployment handoff](../CODEX_HANDOFF.md). Sections below retain earlier
+slices and their original schema/evidence.
 
 ## Static learning workspace
 
@@ -24,18 +38,19 @@ No backend router, schema, provider adapter, dependency or business workflow
 changed. See [release](RELEASE_USER_GUIDE.md) and [media provenance](USER_GUIDE_MEDIA.json).
 
 
-## Administration boundary
+## Retained initial Administration boundary — schema0005
 
 The /admin frontend uses existing sessions/CSRF and persisted D34.read plus
 identity.admin authorization. Organization directory/session projections and
 facility assistant aggregates exclude clinical bodies and credentials. Private
 named-POC provisioning is explicit, transactional and idempotent; startup does
-not provision accounts. Schema stays0005. Overview reads perform no provider
+not provision accounts. That initial release stayed on schema0005; the current
+extension above uses schema0006. Overview reads perform no provider
 HTTP or model generation. See [operator contract](ADMIN_OPERATIONS.md),
 [API subset](admin/README.md) and [release](ADMIN_RELEASE_20261115.md).
 
 
-## AI preparation workspace
+## Retained initial AI preparation workspace — schema0005
 
 The retained initial AI release source286f391/image9afd established migration0005 and126 tables. The Admin release preserves this schema and AI boundary.
 The four role-scoped preparation profiles use the existing session, CSRF, care
@@ -55,7 +70,7 @@ omitted sources. Operations is2D first; optional lazy3D reads the same scoped
 work and run states and never triggers generation. The foreground cron worker
 and six real application calls passed bounded production acceptance; host reboot
 is NOT_RUN. See the [contract](AI_DRIVEN_CONTRACT_V1.md),
-[release guide](RELEASE_AI_WORKSPACE.md) and exact current evidence in GOAL.md.
+[release guide](RELEASE_AI_WORKSPACE.md) and its dated evidence; current scope is recorded above and in GOAL.md.
 
 ## CareBalance specialist boundary
 

@@ -13,7 +13,7 @@
   <a href="https://his.ai-cie.com">Open the protected POC</a> ·
   <a href="START_HERE.md">เริ่มใช้งานภาษาไทย</a> ·
   <a href="https://his.ai-cie.com/guide">User Guide</a> ·
-  <a href="docs/RELEASE_AI_WORKSPACE.md">Release and evidence</a> ·
+  <a href="docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md">Release and evidence</a> ·
   <a href="docs/ARCHITECTURE.md">Architecture</a>
 </p>
 
@@ -42,14 +42,16 @@ The current deployed milestone adds three connected workflows:
 - **Admin AI operations:** inspect persisted execution/review state, filters,
   timing, usage and unknown costs without opening patient charts or starting AI.
 
-Four authored synthetic production application cases passed the new source
-selection and human-review checks. Final protected-browser AI/Admin acceptance
-is still pending normal Access renewal in the test session. Read the
+Six authored synthetic application cases passed source checks and human review:
+four production API cases and two native protected-browser cases with saved,
+unsigned drafts. The final frontend repairs passed protected desktop/mobile
+reading checks after deployment. Read the
 [dated milestone report](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
-[exact API examples](evidence/ai-team-20261115/api-acceptance.json) and
+[exact application examples](evidence/ai-team-20261115/application-acceptance.json),
+[protected browser checks](evidence/ai-team-20261115/browser-acceptance.json) and
 [task manual](docs/AI_TEAM_OPERATIONS.md) for the evidence boundary.
 
-![Actual protected Team queue after claim, eligible handoff and same-task escalation](evidence/ai-team-20261115/screenshots/team-queue-desktop.jpg)
+![Actual protected Team queue after claim, eligible handoff and same-task escalation](evidence/ai-team-20261115/screenshots/team-queue-final-desktop.jpg)
 
 **Protected demo:** open [his.ai-cie.com](https://his.ai-cie.com), verify an allowed
 email through Cloudflare Access, then use the existing **test01** account with
@@ -196,6 +198,7 @@ replay for nursing, records and laboratory produced no duplicate effects.
 | Source-bound AI workflows | Six real application calls, five decisions, seven saved effects; nine actual role/scope checks | [Application acceptance](evidence/ai-driven-root-20261114/application-acceptance.json) |
 | Protected browser | One visit: queue, source evidence, full omitted note, demonstration edit, apply and full reload; optional 3D navigation checked separately | [Browser acceptance](evidence/ai-driven-public-20261114/visit-browser-acceptance.json) · [3D check](evidence/ai-driven-public-20261114/optional-3d.json) |
 | Administration extension | 38PostgreSQL,171mounted frontend and31unit checks; private account plus protected desktop/mobile reading subset | [Admin release](docs/ADMIN_RELEASE_20261115.md) |
+| AI evidence and team operations | Six further synthetic cases, two native draft saves, accountable queue handoff/escalation, Admin metadata and protected desktop/mobile smoke | [15 November milestone](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md) · [Native evidence](evidence/ai-team-20261115/browser-acceptance.json) |
 | Runtime and preservation | Guard process and identity pins observed; HIS, LabClear and DR ready; old rows/files preserved with intentional HIS additions recorded | [Runtime readback](evidence/ai-driven-root-20261114/assistant-runtime-readback.json) · [Deployment](evidence/ai-driven-root-20261114/deployment-readback.json) |
 
 These are bounded synthetic integration results. The other staff profiles were
@@ -210,21 +213,21 @@ exact scope, source identities, original attempts and limitations.
 
 ## Product direction
 
-The next priorities are stronger **source-aware preparation**, **team ownership**
-and **operational visibility**:
+The current milestone delivers **source-aware preparation**, **team ownership**
+and **operational visibility**. The next evaluation work is to:
 
-- Select clinically relevant permitted sources and show what changed since the
-  previous review, with exact citations and visible omissions.
-- Add a team inbox with claim, handoff, due-date and escalation workflows that
-  preserve one accountable owner under concurrent updates.
-- Extend administration and AI operations with evidence freshness and clearer
-  distinctions between configured, permitted, running and qualified services.
+- Broaden authored and independently reviewed evaluation beyond six examples,
+  including conflicting sources, abstention and longer notes.
+- Measure team completion and handoff outcomes in defined user journeys before
+  claiming that the queue saves staff time.
+- Add an observed worker heartbeat and a separately scoped health check;
+  administration currently labels these as unobserved rather than inferring health
+  from historical completion.
 
-These are proposed improvements beyond the implemented first Admin slice and
-existing preparation workflows. Benefits are hypotheses to measure, not staff
-time already saved. The [product review and roadmap](docs/PRODUCT_REVIEW_20261115.md)
-maps priorities and acceptance criteria across all 38 domains; it does not
-activate those features or expand permissions.
+Benefits remain hypotheses to measure, not staff time already saved. The
+[product review and roadmap](docs/PRODUCT_REVIEW_20261115.md) retains the earlier
+proposal and all38-domain acceptance criteria. New work requires its own scope;
+the roadmap does not expand permissions.
 
 ## Development
 

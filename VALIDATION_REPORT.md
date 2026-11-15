@@ -1,32 +1,94 @@
-# Validation report — User Guide, Admin and protected acceptance
+# Validation report — AI team operations and retained baselines
 
-## Active goal — AI evidence, team queue and Admin AI monitoring
+## Active milestone — AI evidence, team queue and Admin AI operations
 
-Owner-authorized 15 November 2026. Status: DEPLOYED_ACCEPTANCE_IN_PROGRESS.
-Runtime source1960a82 / image dfaad737 / schema0006 is deployed on dr-train.
-Local qualification and preservation migration passed; new bounded model
-and protected-browser acceptance are in progress. Cloudflare Access renewal
-is pending for the browser session. No final acceptance or publication of
-this milestone is claimed. Baseline c47868a remains the published release.
-Copy-only follow-up d8755d9 is locally checked and not yet deployed.
-See [the frozen contract](docs/AI_TEAM_OPERATIONS_CONTRACT.md).
+Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING (15 November 2026).
+The named synthetic POC runs `0006_team_coordination`, backend `1960a827` plus
+frontend `b860725` in image `fcdbb821`. Four final rollout gates passed. The four-file/
+32-asset frontend overlay preserves all 60 backend inputs byte-for-byte; the
+server is a runtime snapshot, not a Git checkout. Deployment and publication are
+separate operations; full identities and the current guard witness are in
+[the handoff](CODEX_HANDOFF.md).
 
-1. Implement profile-ranked exact source passages, original-revision evidence
-   reading and measured selection/quote coverage; preserve the current model,
-   prompt/schema limits, authorization and immutable review workflow.
-2. Implement server-paginated accountable work with eligible claim/handoff,
-   operational due dates and one-task escalation; keep domain completion guards.
-3. Implement read-only Admin AI metadata with truthful timestamps, unknown
-   heartbeat/freshness and scalar allowlists; no chart bodies or host control.
-4. Qualify PostgreSQL/schema compatibility, frontend and independent review,
-   then explicitly migrate/deploy the synthetic dr-train POC and test the real URL.
+All six authored synthetic application cases passed: four in-process HTTPS API
+cases with normal persisted role authentication, plus two actual protected-public
+browser preparations, source/meaning review, unsigned D22 draft save and reload.
+The ledger records 6/8 reserved slots, six observed dispatches, zero unknowns and
+zero corrective reserves. No further generation is planned. The 12 facts were
+exact typed fields; zero literal quote facts were generated. Native quoted-offset
+highlighting was NOT_EXERCISED despite B1's preserved astral-prefix source.
 
-New live acceptance is bounded to at most eight application generations,
-including two corrective reserves; no automatic retries/watch trial/cloud calls.
-Old qualification and public evidence below retain their original scope.
+Final protected native smoke passed at 07:18–07:20 UTC, including normal role login,
+queue deep-link focus and Admin metadata/mobile containment. Final frontend
+qualification passed 227/227 mounted cases across all 14 files with concurrency 1
+and zero skips. The default-parallel Node heap failure remains FAIL, not the
+passing final run. Unit, PG and isolated connector results keep their own scopes.
+Historical 38 L2 domains/10 L3 journeys are maintained, not rerun or promoted to
+new clinical proof. Fresh-backup restore and host reboot recovery remain NOT_RUN.
+
+Closeout audit: PASS at 2026-11-15T07:42:40.269671Z (read-only audit v2).
+Source publication: PENDING_FINAL_REVIEW_AND_NON_FORCE_MAIN_PUSH.
+See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
+[six-case acceptance](evidence/ai-team-20261115/application-acceptance.json),
+[final native smoke](evidence/ai-team-20261115/browser-acceptance.json),
+[final preservation audit](evidence/ai-team-20261115/deployment-preservation.json) and
+[operating manual](docs/AI_TEAM_OPERATIONS.md). Older sections below are historical.
 
 
-## Illustrated in-app User Guide — 15 November 2026
+## Current qualification by evidence channel
+
+| Channel | Executed result | Boundary |
+|---|---|---|
+| Assistant/provider regression | 169 PASS | Disposable PostgreSQL and controlled provider doubles |
+| Source quality/Admin projection | 17 PASS | Eight PostgreSQL and nine pure checks |
+| Admin regression | 35 PASS | Disposable PostgreSQL |
+| Core journeys | 18 PASS | Explicitly seeded isolated PostgreSQL |
+| Team accountability | 33 PASS | Scope, concurrency and idempotency |
+| Legacy/LC/DR coordination | 17 PASS | Actual PostgreSQL with controlled inference/receiver boundaries |
+| LabClear gateway regression | 44 tests + 62 subtests PASS | Isolated PostgreSQL and controlled receiver/client paths |
+| DR gateway regression | 71 PASS, two earlier skips retained | The later PRIMARY isolated HTTP receiver run passed both previously skipped cases separately |
+| Final mounted frontend | 227/227 PASS, 14 files, zero skips | Concurrency 1 on `b860725` |
+| Final typecheck/build | PASS, 32 assets | Same frontend source; no new model call |
+| Application/model acceptance | Six cases PASS | Four API cases and two protected native cases; 6/8 allowance used |
+| Final native smoke | PASS, 07:18–07:20 UTC | Queue focus/reload, Admin detail and mobile containment, source reading and role denial |
+
+These scopes overlap and must not be summed into independent clinical examples.
+The final parallel mounted-suite attempt remains FAIL after a Node allocation
+failure; 221 reported checks before that failure were not full-suite acceptance.
+All 14 files subsequently passed serially without changing source, heap limit or
+test selection. The retained 31 frontend units, guide validation and connector
+receipts remain separate; documentation reconciliation did not rerun tests.
+
+The four API acceptances proved exact same-key replay. Native HTTP same-key replay
+was NOT_RUN. API effects reused four fixture tasks; native cases saved two
+unsigned, unpublished D22 v1 drafts without attestation or extra task effects.
+A1 disclosed 8/17 selected sources, one partial and nine omissions. A4 observed
+both ALT 42 U/L and glucose 105 mg/dL with correct source/value/unit/range
+association; that is typed evidence matching, not range interpretation or clinical
+accuracy. Draft meaning was reviewed by a person.
+
+Trial subset proof retains original assistant row hashes (6 runs, 8 revisions,
+5 decisions, 7 effects and one paused watch) and all nine legacy inferences/nine
+committed results. Current assistant counts are 12/14/11/13/1; no active run/watch
+remained. Final read-only preservation audit v2 passed at
+`2026-11-15T07:42:40.269671Z`. Original row-hash multisets across 126 pretrial
+business tables are retained, with explicit schema0005-to0006 and ordinary logout
+session-revocation exceptions. All business rows across 127 final-stage HIS tables,
+two LabClear tables, ten DR tables, three source files and all 48 trial-bundle
+hashes are exact. The receipt also binds 60 backend inputs, four frontend files,
+32 HTTP assets, current model/engine/GPU/admission and unrelated service identities.
+The audit issued no database/model/service writes. Audit v1 remains NOT_PASS for
+its stale predecessor asset map; separately reviewed/executed v2 corrected only
+the expected 32-asset mapping. Source publication remains pending. See the
+[final preservation receipt](evidence/ai-team-20261115/deployment-preservation.json).
+
+See [scoped local receipts](evidence/ai-team-20261115/local-qualification.json),
+[application acceptance](evidence/ai-team-20261115/application-acceptance.json)
+and [native evidence](evidence/ai-team-20261115/browser-acceptance.json).
+Costs remain null. Clinical effectiveness, staff time savings, a new model
+qualification, current-backup restore and host reboot recovery are NOT_RUN.
+
+## Retained illustrated in-app User Guide — 15 November 2026
 
 Status: DEPLOYED_AND_GUIDE_ACCEPTED for the synthetic protected POC.
 Runtime source 65c5bc5 / image 92166e35 / schema 0005 serves /guide. The guide
