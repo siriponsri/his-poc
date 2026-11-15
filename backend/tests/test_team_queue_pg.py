@@ -11,10 +11,10 @@ from sqlalchemy import event,func,select
 assert os.getenv('HIS_TEST_DATABASE_URL') and os.getenv('HIS_TEST_DATABASE_URL')==os.getenv('DATABASE_URL'),'Disposable PostgreSQL wrapper required'
 
 from backend.app import assistant_core,assistant_provider,team_queue
-from backend.app.common import uid,utcnow
+from backend.app.common import authorization_hash,digest,text_hash,uid,utcnow
 from backend.app.db import SessionLocal,engine
 from backend.app.main import app
-from backend.app.models import AuditEvent,CareAssignment,ClinicalOrder,Document,Encounter,InferenceRun,Membership,Operation,Proposal,Role,RolePermission,Task,TaskCoordination,User,UserPatientScope
+from backend.app.models import AuditEvent,CareAssignment,ClinicalOrder,Document,Encounter,InferenceRun,Membership,Operation,Proposal,Role,RolePermission,SessionRecord,Task,TaskCoordination,User,UserPatientScope
 from backend.app.models_erp import StaffMember
 from backend.app.seed import seed
 
@@ -213,13 +213,26 @@ def test_assignment_requires_reason_and_current_eligible_recipient_even_on_repla
     assert state(identity)['updates']==1 and state(identity)['operations']==1
 
 
-def test_actor_scope_and_domain_revocation_are_revalidated_before_replay():
+def test_actor_care_scope_revocation_is_revalidated_before_replay():
     actor=person();identity=task();key=uid()
     with login(actor) as client:
         mutate(client,identity,'claim',{'version':1},key=key)
         with SessionLocal.begin() as db:db.get(CareAssignment,(actor['id'],'patient-001')).active=False
         mutate(client,identity,'claim',{'version':1},key=key,status=404)
     assert state(identity)['updates']==1
+
+
+def test_persisted_domain_write_revocation_denies_replay_without_restoring_template_grants():
+    role='queue-role-'+uid()
+    with SessionLocal.begin() as db:
+        db.add(Role(id=role,label='Synthetic queue capability'));db.flush()
+        db.add_all([RolePermission(role_id=role,permission_id=permission) for permission in ['D06.read','D06.write']])
+    actor=person(role=role,care=None);identity=task();key=uid()
+    with login(actor) as client:
+        mutate(client,identity,'claim',{'version':1},key=key)
+        with SessionLocal.begin() as db:db.delete(db.get(RolePermission,(role,'D06.write')))
+        mutate(client,identity,'claim',{'version':1},key=key,status=403)
+    assert state(identity)['updates']==state(identity)['operations']==1
 
 
 @pytest.mark.parametrize('body',[{'version':True,'due_at':None,'priority':'normal'},
@@ -324,3 +337,65 @@ def test_team_queue_does_not_generate_or_select_assistant_source_bodies(monkeypa
             mutate(client,identity,'schedule',{'version':first['version'],'due_at':None,'priority':'normal'})
         finally:event.remove(engine,'before_cursor_execute',capture)
     assert statements and not any(word in sql for sql in statements for word in ['source_manifest','inference_view','assistant_revisions','document_versions'])
+
+
+def test_corrupt_operational_counter_fails_closed_without_writes():
+    identity=task(coord={'operational_updates':99});before=state(identity)
+    try:
+        with login() as client:
+            response=mutate(client,identity,'claim',{'version':1},status=409)
+            assert response.json()['detail']['code']=='TASK_OPERATIONAL_VERSION_INVALID'
+        assert state(identity)==before
+    finally:
+        # Keep this deliberately corrupt fixture out of later source-packet tests.
+        with SessionLocal.begin() as db:db.get(TaskCoordination,identity).operational_updates=0
+
+
+def _packet_for_client(client):
+    from backend.app.auth import actor_for
+    from backend.app.assistant_collectors import collect_packet
+    with SessionLocal() as db:
+        session=db.scalar(select(SessionRecord).where(SessionRecord.token_hash==text_hash(client.cookies.get('his_session'))))
+        actor=actor_for(db,db.get(User,session.user_id),session)
+        return collect_packet(db,actor,'nursing_handover','patient-001','encounter-001')
+
+
+def test_real_collector_digest_ignores_coordination_but_tracks_domain_status_change():
+    actor=person();identity=task()
+    with login(actor) as client:
+        before=_packet_for_client(client)['source_digest']
+        claimed=mutate(client,identity,'claim',{'version':1}).json()
+        assert _packet_for_client(client)['source_digest']==before
+        scheduled=mutate(client,identity,'schedule',{'version':claimed['version'],'due_at':(utcnow()-timedelta(hours=1)).isoformat(),'priority':'high'}).json()
+        escalated=mutate(client,identity,'escalate',{'version':scheduled['version'],'reason':'Operational deadline'}).json()
+        assert _packet_for_client(client)['source_digest']==before
+        response=client.post('/api/v2/tasks/'+identity+'/transition',json={'version':escalated['version'],'target':'in_progress'},headers={'Idempotency-Key':uid()})
+        assert response.status_code==200
+        assert _packet_for_client(client)['source_digest']!=before
+    persisted=state(identity);assert persisted['version']-persisted['updates']==2
+
+
+def test_claim_does_not_expose_pristine_generated_task_as_source():
+    from backend.app.auth import actor_for
+    from backend.app.models_assistant import AssistantEffect,AssistantRevision,AssistantRun
+    actor=person();identity=task(title='Synthetic generated followup')
+    with login(actor) as client:
+        with SessionLocal.begin() as db:
+            session=db.scalar(select(SessionRecord).where(SessionRecord.token_hash==text_hash(client.cookies.get('his_session'))))
+            effective=actor_for(db,db.get(User,actor['id']),session)
+            run=AssistantRun(id=uid(),organization_id='org-demo',facility_id='facility-demo',patient_id='patient-001',encounter_id='encounter-001',
+                actor_id=actor['id'],session_id=session.id,profile='nursing_handover',locale='th',authorization_hash=authorization_hash(effective),
+                operation_key=uid(),request_hash='a'*64,source_digest='b'*64,source_manifest={},inference_view={},input_hash='c'*64,
+                execution_state='succeeded',review_state='accepted',provider={})
+            db.add(run);db.flush()
+            revision=AssistantRevision(id=uid(),run_id=run.id,version=1,content_hash=digest({}),source_digest=run.source_digest,artifact={},origin='model',created_by=actor['id'])
+            db.add(revision);db.flush()
+            db.add(AssistantEffect(id=uid(),run_id=run.id,revision_id=revision.id,action_id='a1',kind='create_nursing_followup_task',task_id=identity,
+                receipt={'created':True,'version':1,'status':'open','title':'Synthetic generated followup'}))
+        before=_packet_for_client(client)
+        assert identity not in {source['id'] for source in before['manifest']['sources']}
+        claimed=mutate(client,identity,'claim',{'version':1}).json()
+        after=_packet_for_client(client)
+        assert after['source_digest']==before['source_digest'] and identity not in {source['id'] for source in after['manifest']['sources']}
+        response=client.post('/api/v2/tasks/'+identity+'/transition',json={'version':claimed['version'],'target':'in_progress'},headers={'Idempotency-Key':uid()});assert response.status_code==200
+        assert identity in {source['id'] for source in _packet_for_client(client)['manifest']['sources']}
