@@ -1,0 +1,130 @@
+{
+  "scope": "Illustrated guide only; pointer animations never invoke app commands",
+  "new_native_captures": 8,
+  "existing_exact_copies": 3,
+  "new_inference_requested": false,
+  "clinical_submission_for_capture": false,
+  "screenshots": [
+    {
+      "id": "login",
+      "file": "apps/web/public/guide/login.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:40:36.346Z",
+      "sha256": "53c31964c98928ec10ac7a5db84ca75f179222e286136c493153a51975584506",
+      "width": 1270,
+      "height": 714,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "assistant",
+      "file": "apps/web/public/guide/assistant.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:41:03.603Z",
+      "sha256": "c12b36507e1c02ac97526b9195fa4aaddc3bc4be10c7ae00d7222fcb1dc8434f",
+      "width": 1270,
+      "height": 714,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "workspace",
+      "file": "apps/web/public/guide/workspace.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:41:23.298Z",
+      "sha256": "1f7da04abff8d79b59d211bb8dbab97662dd1736be7eac7bc8fcd810957a4a47",
+      "width": 1270,
+      "height": 714,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "patient",
+      "file": "apps/web/public/guide/patient.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:41:54.663Z",
+      "sha256": "b8b1c3156604629399a10252903ad4227e40505824c7316abec26b51441bbfa2",
+      "width": 1280,
+      "height": 720,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "documents",
+      "file": "apps/web/public/guide/documents.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:42:11.034Z",
+      "sha256": "5ab2c48a8b08820411e7cc39734c1eb5d7bce41709351732aadd04216d1337d1",
+      "width": 1270,
+      "height": 714,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "review",
+      "file": "apps/web/public/guide/review.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:44:09.583Z",
+      "sha256": "067703c9b78f4d12a6bccab243679f307f1d86d20278bc83f280fa3898316d8f",
+      "width": 1270,
+      "height": 714,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "dr",
+      "file": "apps/web/public/guide/dr.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:45:31.572Z",
+      "sha256": "4f2258dddfc0f651a228370783b68fa29a951f88ecd59bd9d925c46ee01eb239",
+      "width": 1280,
+      "height": 720,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "labclear",
+      "file": "apps/web/public/guide/labclear.jpg",
+      "source": "Native CUA screenshot of protected POC, synthetic data only",
+      "captured_at": "2026-11-15T01:46:34.225Z",
+      "sha256": "5e9096f3255e86958851a868fa4c5db91c3420b8976633d6cb7baa80a0d6c66e",
+      "width": 1280,
+      "height": 720,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "admin",
+      "file": "apps/web/public/guide/admin.jpg",
+      "source": "evidence/admin-20261115/admin-desktop.jpg",
+      "captured_at": "2026-11-15",
+      "sha256": "8b4403fd3d2c1c2daf6831708fce28ea5d587bd2a40370655e83cca32d67f2a5",
+      "width": 1270,
+      "height": 714,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "adminMobile",
+      "file": "apps/web/public/guide/adminMobile.jpg",
+      "source": "evidence/admin-20261115/admin-mobile.jpg",
+      "captured_at": "2026-11-15",
+      "sha256": "b3da9e09db562bb08cf375b6d91cec4c0abd327ae0184df115ae5c416d861751",
+      "width": 380,
+      "height": 822,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    },
+    {
+      "id": "labclearConfirmed",
+      "file": "apps/web/public/guide/labclearConfirmed.jpg",
+      "source": "evidence/integrations/public-labclear-20261114/confirmed-final-desktop.jpg",
+      "captured_at": "2026-11-14",
+      "sha256": "2cd240e7620bf7729fa3ed1ed8cbb328e8eb22725c80299ee8303b84451aff44",
+      "width": 920,
+      "height": 763,
+      "image_edited": false,
+      "data": "fictional synthetic POC example"
+    }
+  ]
+}

@@ -167,3 +167,7 @@ Keep source data, screen captures and animation verification distinct. Add a
 new screenshot only after checking that it contains no credential or real
 patient data. A content or screenshot update never authorizes a new transfer,
 model call or clinical action.
+
+## Visual examples
+
+The media bundle uses eight newly captured synthetic gateway/workspace screens, two exact Admin screenshots and one dated retained LabClear confirmed-review example. The latter illustrates the outcome separately from the new pretransfer screenshot; it is not a claim that a new confirmation occurred while preparing this guide. All11media IDs are described in USER_GUIDE_MEDIA.json.

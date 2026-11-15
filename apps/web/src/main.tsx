@@ -8,4 +8,6 @@ import './labclear-review.css'
 import './dr-review.css'
 import './care-workspace.css'
 import './admin-workspace.css'
+import './user-guide.css'
+import './user-guide-shell.css'
 createRoot(document.getElementById('root')!).render(<React.StrictMode><App/></React.StrictMode>)

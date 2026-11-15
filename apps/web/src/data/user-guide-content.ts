@@ -193,7 +193,7 @@ export const GUIDE_CHAPTERS:GuideChapter[] = [
       {title:'เปิด Review with LabClear',paragraphs:['เลือกผลที่เผยแพร่แล้วในบริบทเดียวกัน แล้วกด Review with LabClear เพื่อเปิด Lab result review','อ่าน Released source ให้ครบทั้ง Test, Printed value, Unit และ Printed reference พร้อม Source revision ก่อนส่งต่อ'],screenshot:'labclear'},
       {title:'เลือกงานทบทวนและส่งค่าต้นฉบับ',paragraphs:['เลือก Review task ที่แยกจากงานตรวจแล็บเดิม หากไม่มีงานที่เหมาะสม ใช้ สร้างงานทบทวน แล้วเลือก ส่งค่าต้นฉบับที่เผยแพร่แล้ว','ถ้ามี review ของต้นฉบับนี้อยู่แล้ว ใช้ เปิดการทบทวนเดิม แทนการเริ่มงานซ้ำ การส่งต่อเป็นการกระทำที่ต้องกดเอง ไม่เกิดจากการเปิดหน้า']},
       {title:'เทียบทุกช่องแล้วแยกยืนยัน',paragraphs:['เทียบ Test, Value, Unit, Reference และ Printed flag ใน Review values กับ Released source แก้ช่องที่ต้องแก้ก่อนยืนยัน','เลือกยืนยันว่าตรวจค่าครบและเป็นผลของผู้ป่วยในบริบทนี้ แล้วกด ยืนยันการทบทวน หากแก้ช่องใดใหม่ ต้องตรวจและยืนยันผู้ป่วยอีกครั้ง']},
-      {title:'เปิดผลที่บันทึกแล้วตรวจซ้ำ',paragraphs:['ใช้ ตรวจผลล่าสุด หรือเปิด review เดิมหลังโหลดใหม่ Confirmed review จะแสดงค่าที่บันทึกและปิดการแก้ไข','ผล HIS ต้นฉบับยังคงเดิม การยืนยัน LabClear ไม่ปิด task ไม่แก้ค่า HIS และไม่เผยแพร่ผล HIS ใหม่โดยอัตโนมัติ']}
+      {title:'เปิดผลที่บันทึกแล้วตรวจซ้ำ',paragraphs:['ใช้ ตรวจผลล่าสุด หรือเปิด review เดิมหลังโหลดใหม่ Confirmed review จะแสดงค่าที่บันทึกและปิดการแก้ไข','ผล HIS ต้นฉบับยังคงเดิม การยืนยัน LabClear ไม่ปิด task ไม่แก้ค่า HIS และไม่เผยแพร่ผล HIS ใหม่โดยอัตโนมัติ'],screenshot:'labclearConfirmed'}
     ],
     completion:['ผล HIS ผ่านสถานะเผยแพร่โดยผู้มีสิทธิ์','LabClear ยืนยันค่าที่ทบทวนของ Source revision เดียวกัน','เปิดอ่านค่าที่บันทึกหลัง refresh ได้ โดยต้นฉบับและงาน HIS มีสถานะของตนเอง'],
     troubleshooting:[
