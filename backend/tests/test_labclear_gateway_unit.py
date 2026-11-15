@@ -16,6 +16,7 @@ from backend.app.auth import Actor
 from backend.app.common import authorization_hash, digest, utcnow
 from backend.app.integration_clients import ConnectorOutcomeUnknown, ConnectorRejected
 from backend.app.models_integrations import ConnectorAttempt, ConnectorBinding, ConnectorExchange
+from backend.app.models import TaskCoordination
 
 
 def actor():
@@ -55,7 +56,9 @@ class ControlledSession:
     def add(self, value):
         self.added.append(value)
         self.objects[(type(value), value.id)] = value
-    def get(self, kind, id, **kwargs): return self.objects[(kind, id)]
+    def get(self, kind, id, **kwargs):
+        if kind is TaskCoordination: return self.objects.get((kind, id))
+        return self.objects[(kind, id)]
     def flush(self): pass
     def commit(self): self.commits += 1
     def close(self): self.closed = True
