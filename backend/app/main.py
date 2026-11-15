@@ -47,7 +47,7 @@ def ready():
     try:
         with engine.connect() as conn:
             version=conn.scalar(text('select version_num from alembic_version'))
-            if version!='0005_assistant_workspaces':return JSONResponse(status_code=503,content={'ready':False,'reason':'MIGRATION_REQUIRED'})
+            if version!='0006_team_coordination':return JSONResponse(status_code=503,content={'ready':False,'reason':'MIGRATION_REQUIRED'})
         return {'ready':True,'migration':version}
     except Exception:return JSONResponse(status_code=503,content={'ready':False,'reason':'DATABASE_OR_SCHEMA_UNAVAILABLE'})
 @app.get('/{path:path}',include_in_schema=False)

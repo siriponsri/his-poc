@@ -151,7 +151,7 @@ def test_assistant_counts_are_facility_metadata_without_generation_or_source_rea
         assert {key:result['assistant']['counts'][key]-before[key] for key in before}=={'queued':2,'running':1,'succeeded':2,'failed':5,'awaiting_review':1,'active_watches':1}
         assert result['assistant']['live_status']=='not_checked'
         assert result['assistant']['configured'] is True and result['assistant']['profiles_qualified']==['records_readiness']
-        assert result['database']=={'reachable':True,'migration':'0005_assistant_workspaces'}
+        assert result['database']=={'reachable':True,'migration':'0006_team_coordination'}
         encoded=json.dumps(result)
         assert all(secret not in encoded for secret in ('SECRET_','DO_NOT_READ','password_hash','csrf','token','patient_id','source_manifest'))
         assistant_selects=[statement for statement in statements if 'from assistant_runs' in statement or 'from assistant_watches' in statement]
@@ -365,7 +365,7 @@ def test_provisioned_admin_uses_short_private_password_but_has_no_clinical_or_pl
         assert actor['roles']==['system_admin']
         assert set(actor['permissions'])==permissions_for({'system_admin'})
         assert not {'clinical.approve','clinical.attest','orders.sign'} & set(actor['permissions'])
-        assert read_overview(client)['database']['migration']=='0005_assistant_workspaces'
+        assert read_overview(client)['database']['migration']=='0006_team_coordination'
         assert client.get('/api/v2/documents').status_code==403
         for profile in ('visit_preparation','nursing_handover','records_readiness','laboratory_handoff'):
             assert client.get('/api/v2/assistant/worklist',params={'profile':profile}).status_code==403

@@ -107,6 +107,18 @@ class Task(ID,Stamp,Base):
     version:Mapped[int]=mapped_column(Integer,default=1)
     assignee_id:Mapped[str|None]=mapped_column(ForeignKey('users.id'),nullable=True)
     __table_args__=(ForeignKeyConstraint(['encounter_id','patient_id','organization_id','facility_id'],['encounters.id','encounters.patient_id','encounters.organization_id','encounters.facility_id']),)
+class TaskCoordination(Base):
+    """Operational ownership metadata; Task remains the sole obligation/version."""
+    __tablename__='task_coordination'
+    task_id:Mapped[str]=mapped_column(ForeignKey('tasks.id'),primary_key=True)
+    due_at:Mapped[datetime|None]=mapped_column(DateTime(timezone=True),nullable=True,index=True)
+    priority:Mapped[str]=mapped_column(String(12),default='normal',server_default='normal')
+    escalation_level:Mapped[int]=mapped_column(Integer,default=0,server_default='0')
+    escalation_reason:Mapped[str|None]=mapped_column(String(2000),nullable=True)
+    escalated_at:Mapped[datetime|None]=mapped_column(DateTime(timezone=True),nullable=True)
+    operational_updates:Mapped[int]=mapped_column(Integer,default=0,server_default='0')
+    __table_args__=(CheckConstraint("priority IN ('low','normal','high')",name='operational_priority'),CheckConstraint('escalation_level BETWEEN 0 AND 3 AND operational_updates >= 0',name='operational_bounds'))
+
 class Document(ID,Stamp,Base):
     __tablename__='documents'
     organization_id:Mapped[str]=mapped_column(ForeignKey('organizations.id'),index=True)
