@@ -30,6 +30,53 @@ const posts=()=>requests.filter(item=>item.init?.method==='POST')
 test('queue reads server counts and exact deep-linked task without starting inference or a write',async()=>{
  await mount('/team-queue?task_id=task-a');assert.match(document.querySelector('.team-counts')!.textContent!,/41/);assert.match(document.querySelector('.team-task-detail')!.textContent!,/Authored follow-up/);assert.equal(requests.filter(item=>item.path==='team-queue/tasks/task-a').length,1);assert.equal(posts().length,0);assert.equal(requests.some(item=>item.path.startsWith('assistant/')),false);await click(/Open patient record/);assert.deepEqual(opened,[{patient_id:'patient-a',encounter_id:'visit-a',task_id:'task-a'}]);await click(/สถานะงานและประวัติ/);assert.match(navigated[0],/^\/worklist\?record=task-a/)
 })
+test('deep-linked task waits for the delayed queue page before scrolling and focusing its final heading',async()=>{
+ let releasePage!:(value:unknown)=>void
+ handler=path=>path.startsWith('team-queue?')?new Promise(resolve=>{releasePage=resolve}):undefined
+ record=task({version:7,title:'B1 authored deep-linked task'})
+ const prototype=dom.window.HTMLElement.prototype,previous=prototype.scrollIntoView
+ const scrolls:{heading:HTMLElement;rowCount:number;options:unknown}[]=[]
+ prototype.scrollIntoView=function(options){if(this.matches('.team-task-detail h2'))scrolls.push({heading:this,rowCount:document.querySelectorAll('.team-task-table tbody tr').length,options})}
+ try{
+  await mount('/team-queue?task_id=task-a')
+  const heading=document.querySelector<HTMLElement>('.team-task-detail h2')!
+  assert.equal(heading.textContent,'B1 authored deep-linked task')
+  assert.equal(document.querySelectorAll('.team-task-table tbody tr').length,0)
+  assert.equal(scrolls.length,0,'Do not scroll while the queue still has no final rows')
+  assert.notEqual(document.activeElement,heading,'Do not focus the detail before the pending page can move it')
+  const items=[record,...Array.from({length:22},(_,index)=>task({id:'page-task-'+index,title:'Other authored task '+index}))]
+  await act(async()=>releasePage(page(items)));await flush()
+  assert.equal(document.querySelectorAll('.team-task-table tbody tr').length,23)
+  assert.equal(scrolls.length,1)
+  assert.equal(scrolls[0].heading,heading)
+  assert.equal(scrolls[0].rowCount,23,'Scroll after the page rows have entered the DOM')
+  assert.deepEqual(scrolls[0].options,{block:'start',behavior:'auto'})
+  assert.equal(document.activeElement,heading)
+  assert.match(document.querySelector('.team-task-detail header')!.textContent!,/v7/)
+  assert.equal(posts().length,0)
+ }finally{if(previous)prototype.scrollIntoView=previous;else Reflect.deleteProperty(prototype,'scrollIntoView')}
+})
+test('delayed queue completion keeps focus inside an open handoff dialog and Escape restores its trigger',async()=>{
+ let releasePage!:(value:unknown)=>void
+ handler=path=>path.startsWith('team-queue?')?new Promise(resolve=>{releasePage=resolve}):undefined
+ const prototype=dom.window.HTMLElement.prototype,previous=prototype.scrollIntoView
+ const scrolls:HTMLElement[]=[]
+ prototype.scrollIntoView=function(){if(this.matches('.team-task-detail h2'))scrolls.push(this)}
+ try{
+  await mount('/team-queue?task_id=task-a')
+  const trigger=button(/^ส่งต่องาน$/);trigger.focus();await click(/^ส่งต่องาน$/)
+  const dialog=document.querySelector<HTMLElement>('[role=dialog]')!
+  assert.equal(dialog.contains(document.activeElement),true)
+  await act(async()=>releasePage(page([record,...Array.from({length:22},(_,index)=>task({id:'modal-page-task-'+index}))])));await flush()
+  assert.equal(document.querySelectorAll('.team-task-table tbody tr').length,23)
+  assert.equal(scrolls.length,0,'A completed page must not scroll the background while its dialog is open')
+  assert.equal(dialog.contains(document.activeElement),true,'Keep keyboard focus inside the active modal')
+  await act(async()=>document.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true})))
+  assert.equal(document.querySelector('[role=dialog]'),null)
+  assert.equal(document.activeElement,trigger,'Closing the modal restores its own trigger, not the task heading')
+  assert.equal(scrolls.length,0)
+ }finally{if(previous)prototype.scrollIntoView=previous;else Reflect.deleteProperty(prototype,'scrollIntoView')}
+})
 test('unknown deep link never silently falls back to first listed task',async()=>{
  handler=path=>path==='team-queue/tasks/foreign'?new Response(JSON.stringify({detail:'NOT_FOUND'}),{status:404}):undefined;await mount('/team-queue?task_id=foreign');assert.equal(document.querySelector('.team-task-detail h2')!.textContent,'Task responsibility');assert.match(document.querySelector('.team-task-detail')!.textContent!,/ไม่พบข้อมูล/);assert.equal(button(/^Authored follow-up$/).disabled,false);assert.equal(posts().length,0)
 })

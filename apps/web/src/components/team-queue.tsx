@@ -29,7 +29,7 @@ export function TeamQueue({client,session,navigate,onOpenPatient,requestedTaskId
   useEffect(()=>{mounted.current=true;return()=>{mounted.current=false;listSequence.current++;detailSequence.current++;peopleSequence.current++}},[])
   useEffect(()=>{const timer=setTimeout(()=>void load(),query?200:0);return()=>{clearTimeout(timer);listSequence.current++}},[load,query])
   useEffect(()=>{const id=requestedTaskId===undefined?initialTaskId.current:requestedTaskId;if(pending||id===lastRequested.current)return;lastRequested.current=id;if(id)void readTask(id);else{detailSequence.current++;setSelected(null);setDetailError('')}},[requestedTaskId,readTask,pending])
-  useEffect(()=>{if(selected?.id){detailHeading.current?.scrollIntoView?.({block:'start',behavior:'auto'});detailHeading.current?.focus({preventScroll:true})}},[selected?.id])
+  useEffect(()=>{if(selected?.id&&!loading&&!dialog.current){detailHeading.current?.scrollIntoView?.({block:'start',behavior:'auto'});detailHeading.current?.focus({preventScroll:true})}},[selected?.id,loading])
   useEffect(()=>{window.dispatchEvent(new CustomEvent('his-pending',{detail:!!pending}));const warn=(event:BeforeUnloadEvent)=>{if(pendingRef.current){event.preventDefault();event.returnValue=''}};window.addEventListener('beforeunload',warn);return()=>{window.removeEventListener('beforeunload',warn);window.dispatchEvent(new CustomEvent('his-pending',{detail:false}))}},[pending])
   useEffect(()=>{
     if(!mode)return
