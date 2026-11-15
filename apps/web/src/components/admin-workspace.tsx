@@ -101,7 +101,7 @@ export function AdminWorkspace({client,session,navigate}:{client:Client;session:
  async function readLatest(){if(!selected||pendingRef.current)return;const epoch=dialogEpoch.current;try{const latest=await client.get<Account>('admin/users/'+encodeURIComponent(selected.id));if(!mounted.current||epoch!==dialogEpoch.current)return;if(latest.id!==selected.id)throw new HttpError('FOREIGN_ADMIN_ACCOUNT');setSelected(latest);setPassword('');setCommandError('');setMode('account');await loadUsers()}catch(error){if(mounted.current&&epoch===dialogEpoch.current)setCommandError(errorText(error))}}
  const filtered=accounts
  const userNames=new Map(accounts.map(item=>[item.id,item.display_name]))
- function sessionIdentity(item:Row){const user=item.user as {id?:string;username?:string;display_name?:string}|undefined;return user?.id===item.user_id&&typeof user.username==='string'&&typeof user.display_name==='string'?user.display_name+' · '+user.username:(userNames.get(String(item.user_id))||String(item.user_id))}
+ function sessionIdentity(item:Row){const user=item.user as {id?:string;username?:string;display_name?:string}|undefined;return user&&user.id===item.user_id&&typeof user.username==='string'&&typeof user.display_name==='string'?user.display_name+' · '+user.username:(userNames.get(String(item.user_id))||String(item.user_id))}
  const now=Date.now()
  const currentRole=roles.find(item=>item.role===role)
  const staffRoles=roles.filter(item=>staffRoleNames.includes(item.role))

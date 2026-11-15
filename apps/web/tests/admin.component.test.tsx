@@ -10,7 +10,7 @@ for(const name of ['window','document','Event','CustomEvent','HTMLElement','HTML
 ;(dom.window as any).scrollTo=()=>{}
 ;(dom.window as any).matchMedia=()=>({matches:false,addEventListener(){},removeEventListener(){}})
 const {createRoot}=await import('react-dom/client')
-const baseUser={id:'admin-test',username:'admin-demo',display_name:'Demo administrator',organization_id:'org-test',facility_id:'facility-test',roles:['system_admin'],permissions:['D34.read','D34.write','identity.admin'],patient_scope:null}
+const baseUser={id:'admin-test',username:'admin-demo',display_name:'Demo administrator',organization_id:'org-test',facility_id:'facility-test',roles:['system_admin'],permissions:['D34.read','D34.write','identity.admin','patient.reference','encounter.reference'],patient_scope:null}
 const initialSession={user:baseUser,csrf_token:'synthetic-csrf-only',expires_at:'2099-01-01T00:00:00Z'}
 const account=(id='other-test',version=1)=>({id,version,username:id,display_name:'Fictional account '+id,status:'active',memberships:[{id:'m-'+id,role:id==='admin-test'?'system_admin':'nurse',facility_id:'facility-test',active:true}]})
 const overview={scope:{organization_id:'org-test',facility_id:'facility-test'},users:{total:2,active:2,suspended:0,disabled:0},sessions:{active:1,revoked:0,expired:0},security:{recent_denial_count:3,window_hours:24},database:{reachable:true,migration:'0005_assistant_workspaces'},assistant:{configured:true,route:'dr_train_gpu0_v1',engine_version:'0.12.6',profiles_qualified:['visit_preparation','nursing_handover','records_readiness','laboratory_handoff'],counts:{queued:1,running:1,succeeded:6,failed:0,awaiting_review:1,active_watches:0},live_status:'not_checked'},observed_at:'2026-11-15T00:00:00Z'}
