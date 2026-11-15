@@ -91,6 +91,39 @@ test('role filtering is optional and never changes account permissions',async()=
  await act(async()=>checkbox.click());assert.equal(document.querySelectorAll('.guide-chapter-navigation>ol>li').length,2)
 })
 
+test('a broad audience is compact only when it covers every named core persona',async()=>{
+ const all=['registration','clinician','nurse','laboratory','imaging','pharmacist','billing','finance','inventory','quality','system_admin','operations_admin','auditor','patient']
+ await act(async()=>root.render(<UserGuide chapters={[{...chapters[0],roles:all}]} domains={domains} media={media}/>))
+ assert.equal(document.querySelector('.guide-audience')?.textContent,'เหมาะสำหรับ ทุกบทบาท')
+ const sameCountMissingPatient=[...all.filter(role=>role!=='patient'),'nurse']
+ await act(async()=>root.render(<UserGuide chapters={[{...chapters[0],roles:sameCountMissingPatient}]} domains={domains} media={media}/>))
+ assert.doesNotMatch(document.querySelector('.guide-audience')?.textContent||'',/ทุกบทบาท/)
+ assert.match(document.querySelector('.guide-audience')?.textContent||'',/พยาบาล/)
+})
+
+test('chapter and domain audiences use human role labels while canonical filtering still works',async()=>{
+ await mount('/guide',['nurse'])
+ assert.match(document.querySelector('.guide-audience')?.textContent||'',/ทีมดูแลผู้ป่วย · พยาบาล/)
+ assert.doesNotMatch(document.querySelector('.guide-audience')?.textContent||'',/clinician|nurse/)
+ const checkbox=document.querySelector<HTMLInputElement>('.guide-role-filter input')!
+ await act(async()=>checkbox.click());assert.equal(document.querySelectorAll('.guide-chapter-navigation>ol>li').length,1)
+ await search('พยาบาล');assert.equal(document.querySelectorAll('.guide-chapter-navigation>ol>li').length,1)
+ await search('')
+ await mount('/guide?domain=D34');assert.match(document.querySelector('.guide-audience')?.textContent||'',/ผู้ดูแลระบบ/)
+})
+
+test('return-to-outline action restores search focus without changing the selected chapter or URL',async()=>{
+ await mount()
+ const select=document.getElementById('guide-section-select') as HTMLSelectElement
+ await act(async()=>{select.value='chapter:administration';select.dispatchEvent(new dom.window.Event('change',{bubbles:true}))})
+ assert.equal(document.activeElement,document.querySelector('.guide-reader h2'))
+ const before=location.href,input=document.getElementById('guide-search') as HTMLInputElement
+ let scrolled=0;input.scrollIntoView=()=>{scrolled++}
+ await click('สารบัญและค้นหา ↑')
+ assert.equal(document.activeElement,input);assert.equal(scrolled,1)
+ assert.equal(location.href,before);assert.equal(document.querySelector('.guide-reader h2')?.textContent,'Administration')
+})
+
 test('repeated screenshot references reuse one accessible figure and keep the reading steps',async()=>{
  await mount()
  assert.equal(document.querySelectorAll('.guide-image-open img').length,1)

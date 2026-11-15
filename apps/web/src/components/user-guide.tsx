@@ -15,7 +15,13 @@ const normalize=(value:string)=>value.normalize('NFKC').toLocaleLowerCase('th').
 const matches=(text:string,query:string)=>normalize(query).trim().split(/\s+/).filter(Boolean).every(word=>normalize(text).includes(word))
 const relatedToRole=(roles:string[],viewer:string[])=>roles.length===0||roles.some(role=>['all','everyone','ทุกบทบาท'].includes(normalize(role))||viewer.some(value=>normalize(value)===normalize(role)))
 const selectionKey=(selection:Selection)=>selection.kind+':'+selection.id
-const roleName=(role:string)=>role.replaceAll('_',' ')
+const roleLabels:Record<string,string>={registration:'งานทะเบียน',clinician:'ทีมดูแลผู้ป่วย',nurse:'พยาบาล',laboratory:'ห้องปฏิบัติการ',imaging:'รังสีวินิจฉัย',pharmacist:'เภสัชกร',billing:'งานเรียกเก็บ',finance:'การเงิน',inventory:'พัสดุและคลัง',quality:'งานคุณภาพ',system_admin:'ผู้ดูแลระบบ',operations_admin:'ผู้ดูแลงานปฏิบัติการ',auditor:'ผู้ตรวจสอบ',patient:'ผู้ป่วยและผู้รับบริการ'}
+const broadAudienceRoles=['registration','clinician','nurse','laboratory','imaging','pharmacist','billing','finance','inventory','quality','system_admin','operations_admin','auditor','patient']
+function audienceText(roles:string[],empty='ทุกบทบาท'){
+  const included=new Set(roles)
+  if(broadAudienceRoles.every(role=>included.has(role)))return 'ทุกบทบาท'
+  return roles.map(role=>roleLabels[role]||role.replaceAll('_',' ')).join(' · ')||empty
+}
 
 function initialSelection(chapters:GuideChapter[],domains:GuideDomain[]):Selection{
   const params=typeof window==='undefined'?new URLSearchParams():new URLSearchParams(window.location.search)
@@ -107,11 +113,11 @@ export function GuideScreenshot({media,stepDurationMs=4500}:{media:GuideMedia;st
 export function UserGuide({chapters,domains,media,roles=[]}:Props){
   const [selection,setSelection]=useState<Selection>(()=>initialSelection(chapters,domains))
   const [query,setQuery]=useState(''),[myRoles,setMyRoles]=useState(false)
-  const title=useRef<HTMLHeadingElement>(null),navigated=useRef(false)
+  const title=useRef<HTMLHeadingElement>(null),searchInput=useRef<HTMLInputElement>(null),navigated=useRef(false)
   const chapter=selection.kind==='chapter'?chapters.find(item=>item.id===selection.id):undefined
   const domain=selection.kind==='domain'?domains.find(item=>item.id===selection.id):undefined
-  const filteredChapters=useMemo(()=>chapters.filter(item=>(!myRoles||relatedToRole(item.roles,roles))&&matches([item.title,item.summary,...item.roles,...item.prerequisites,...item.steps.flatMap(step=>[step.title,...step.paragraphs,step.note||'']),...item.completion,...item.troubleshooting.flatMap(problem=>[problem.problem,problem.action]),...item.domains].join(' '),query)),[chapters,myRoles,query,roles])
-  const filteredDomains=useMemo(()=>domains.filter(item=>(!myRoles||relatedToRole(item.roles,roles))&&matches([item.id,item.name,item.purpose,...item.roles,...item.steps,item.completion,item.limits].join(' '),query)),[domains,myRoles,query,roles])
+  const filteredChapters=useMemo(()=>chapters.filter(item=>(!myRoles||relatedToRole(item.roles,roles))&&matches([item.title,item.summary,...item.roles,...item.roles.map(role=>roleLabels[role]||role),audienceText(item.roles),...item.prerequisites,...item.steps.flatMap(step=>[step.title,...step.paragraphs,step.note||'']),...item.completion,...item.troubleshooting.flatMap(problem=>[problem.problem,problem.action]),...item.domains].join(' '),query)),[chapters,myRoles,query,roles])
+  const filteredDomains=useMemo(()=>domains.filter(item=>(!myRoles||relatedToRole(item.roles,roles))&&matches([item.id,item.name,item.purpose,...item.roles,...item.roles.map(role=>roleLabels[role]||role),audienceText(item.roles),...item.steps,item.completion,item.limits].join(' '),query)),[domains,myRoles,query,roles])
   useEffect(()=>{
     const readLocation=()=>setSelection(initialSelection(chapters,domains))
     window.addEventListener('popstate',readLocation)
@@ -130,6 +136,7 @@ export function UserGuide({chapters,domains,media,roles=[]}:Props){
     window.history.replaceState(window.history.state,'',url.pathname+url.search+url.hash)
   }
   const selectKey=(key:string)=>{const [kind,id]=key.split(':');if(kind==='chapter'||kind==='domain')select({kind,id})}
+  function returnToOutline(){searchInput.current?.scrollIntoView?.({block:'start',behavior:'auto'});searchInput.current?.focus({preventScroll:true})}
   const currentIndex=chapter?chapters.findIndex(item=>item.id===chapter.id):-1
   const resultCount=filteredChapters.length+filteredDomains.length
   const figureIds=new Set<string>()
@@ -137,7 +144,7 @@ export function UserGuide({chapters,domains,media,roles=[]}:Props){
     <header className="guide-page-header"><p className="guide-eyebrow">CareBalance / Learning center</p><h1 id="user-guide-title">User Guide</h1><p>เรียนรู้ตามงานที่ต้องทำ ตั้งแต่เปิดเวชระเบียนจนถึงทบทวนและส่งต่องาน</p><span>{chapters.length} หัวข้อการใช้งาน · {domains.length} ส่วนงานอ้างอิง</span></header>
     <div className="guide-layout">
       <aside className="guide-outline" aria-label="สารบัญคู่มือ">
-        <div className="guide-search"><label htmlFor="guide-search">ค้นหาในคู่มือ</label><input id="guide-search" type="search" value={query} placeholder="ชื่อเมนู ขั้นตอน หรือ D01–D38" onChange={event=>setQuery(event.target.value)}/></div>
+        <div className="guide-search"><label htmlFor="guide-search">ค้นหาในคู่มือ</label><input ref={searchInput} id="guide-search" type="search" value={query} placeholder="ชื่อเมนู ขั้นตอน หรือ D01–D38" onChange={event=>setQuery(event.target.value)}/></div>
         {roles.length>0&&<label className="guide-role-filter"><input type="checkbox" checked={myRoles} onChange={event=>setMyRoles(event.target.checked)}/>หัวข้อที่เกี่ยวข้องกับบทบาทของฉัน</label>}
         <p className="guide-result-count" role="status">{query.trim()||myRoles?`${resultCount} หัวข้อที่ตรงกัน`:'เลือกหัวข้อจากสารบัญ'}</p>
         <div className="guide-mobile-navigation"><label htmlFor="guide-section-select">เลือกหัวข้อ</label><select id="guide-section-select" value={selectionKey(selection)} onChange={event=>selectKey(event.target.value)}>
@@ -151,8 +158,9 @@ export function UserGuide({chapters,domains,media,roles=[]}:Props){
         </nav>}
       </aside>
       <article className="guide-reader" aria-label="เนื้อหาคู่มือ">
+        <button type="button" className="guide-back-to-outline" onClick={returnToOutline}>สารบัญและค้นหา <span aria-hidden="true">↑</span></button>
         {chapter?<>
-          <header className="guide-chapter-header"><p className="guide-eyebrow">Usage chapter {String(currentIndex+1).padStart(2,'0')}</p><h2 ref={title} tabIndex={-1}>{chapter.title}</h2><p className="guide-summary">{chapter.summary}</p><p className="guide-audience"><span>เหมาะสำหรับ</span> {chapter.roles.map(roleName).join(' · ')||'ทุกบทบาท'}</p></header>
+          <header className="guide-chapter-header"><p className="guide-eyebrow">Usage chapter {String(currentIndex+1).padStart(2,'0')}</p><h2 ref={title} tabIndex={-1}>{chapter.title}</h2><p className="guide-summary">{chapter.summary}</p><p className="guide-audience"><span>เหมาะสำหรับ</span> {audienceText(chapter.roles)}</p></header>
           {chapter.prerequisites.length>0&&<section className="guide-before" aria-labelledby="guide-before-title"><h3 id="guide-before-title">Before you start</h3><ul>{chapter.prerequisites.map((item,index)=><li key={index}>{item}</li>)}</ul></section>}
           <ol className="guide-steps">{chapter.steps.map((step,index)=>{
             const image=step.screenshot?media[step.screenshot]:undefined,duplicate=Boolean(step.screenshot&&figureIds.has(step.screenshot))
@@ -164,7 +172,7 @@ export function UserGuide({chapters,domains,media,roles=[]}:Props){
           {chapter.domains.length>0&&<div className="guide-related"><h3>Related domains</h3><div>{chapter.domains.map(id=>{const item=domains.find(value=>value.id===id);return item?<button type="button" key={id} onClick={()=>select({kind:'domain',id})}>{id} · {item.name} <span aria-hidden="true">↗</span></button>:null})}</div></div>}
           <footer className="guide-next-chapter">{currentIndex>0?<button type="button" onClick={()=>select({kind:'chapter',id:chapters[currentIndex-1].id})}><span>← Previous chapter</span>{chapters[currentIndex-1].title}</button>:<span/>}{currentIndex<chapters.length-1&&<button type="button" onClick={()=>select({kind:'chapter',id:chapters[currentIndex+1].id})}><span>Next chapter →</span>{chapters[currentIndex+1].title}</button>}</footer>
         </>:domain?<>
-          <header className="guide-chapter-header"><p className="guide-eyebrow">Domain reference / {domain.id}</p><h2 ref={title} tabIndex={-1}>{domain.name}</h2><p className="guide-summary">{domain.purpose}</p><p className="guide-audience"><span>บทบาทที่เกี่ยวข้อง</span> {domain.roles.map(roleName).join(' · ')||'ตามสิทธิ์ที่ได้รับมอบหมาย'}</p></header>
+          <header className="guide-chapter-header"><p className="guide-eyebrow">Domain reference / {domain.id}</p><h2 ref={title} tabIndex={-1}>{domain.name}</h2><p className="guide-summary">{domain.purpose}</p><p className="guide-audience"><span>บทบาทที่เกี่ยวข้อง</span> {audienceText(domain.roles,'ตามสิทธิ์ที่ได้รับมอบหมาย')}</p></header>
           <section className="guide-domain-steps"><h3>Working sequence</h3><ol>{domain.steps.map((step,index)=><li key={index}>{step}</li>)}</ol></section>
           <section className="guide-completion"><h3>Check your work</h3><p>{domain.completion}</p></section>
           <section className="guide-domain-limits"><h3>Scope and limitations</h3><p>{domain.limits}</p></section>
