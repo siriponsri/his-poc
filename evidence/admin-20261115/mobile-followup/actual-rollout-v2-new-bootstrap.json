@@ -1,0 +1,8 @@
+{
+  "status": "PASS_ONCE_CRON_SCHEDULED",
+  "scheduled_utc": "2026-11-15T01:29:00+00:00",
+  "cron_timezone_fresh": "Etc/UTC byte-equal zonefile; existing cron UTC directives retained; no unit/manager nonUTC override",
+  "config_sha256": "a832c643c182d59e1136d8ccf497f901af66819ba877cb4301e02291a555d456",
+  "foreground_start": "NOT_RUN_UNTIL_FRESH_SSH_PROOF",
+  "model_calls": 0
+}

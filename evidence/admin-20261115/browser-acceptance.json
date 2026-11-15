@@ -1,0 +1,48 @@
+{
+  "status": "PASS_PROTECTED_ADMIN_READ_AND_RESPONSIVE_SUBSET",
+  "url": "https://his.ai-cie.com/admin",
+  "initial_runtime_source": "e2bf12dbe750e7f2674a82bc8e98f8916de8a18d",
+  "account": "admin",
+  "checks": {
+    "existing_clinician_workspace_read_after_update": "PASS",
+    "normal_login_and_default_admin_landing": "PASS",
+    "users_22": "PASS",
+    "server_search_admin_returns_3": "PASS",
+    "sessions_identity_independent_of_filtered_directory": "PASS",
+    "security_event_names_and_operator_origin": "PASS",
+    "persisted_roles_read_only": "PASS",
+    "create_dialog_public_min12_no_submission": "PASS",
+    "escape_closes_dialog": "PASS",
+    "desktop_1280_document_width_1270": "PASS"
+  },
+  "mobile_initial": {
+    "status": "FAIL",
+    "viewport_width": 390,
+    "document_width": 492,
+    "cause": "absolutely positioned accessible table header outside positioned scroll wrapper",
+    "repair_source": "74795e2dc8a01f7fcc7f90132aa0acad0874e855",
+    "final_runtime_validation": "PASS"
+  },
+  "browser_admin_mutations": "NOT_RUN; account provision is a separate private CLI receipt",
+  "model_calls": 0,
+  "final_runtime_source": "74795e2dc8a01f7fcc7f90132aa0acad0874e855",
+  "mobile_final": {
+    "viewport_width": 390,
+    "document_width": 380,
+    "height": 844,
+    "css": "/assets/index-BiqKfSV7.css",
+    "dialog_bounds": {
+      "left": 10,
+      "right": 370
+    },
+    "close_button": "PASS",
+    "escape_dispatch": "NOT_RUN; browser tool could not dispatch press to mobile dialog"
+  },
+  "desktop_final": {
+    "viewport_width": 1280,
+    "document_width": 1270,
+    "height": 720
+  },
+  "temporary_viewport_override_cleared": true,
+  "captured_console_errors": []
+}

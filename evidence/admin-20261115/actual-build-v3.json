@@ -1,0 +1,16 @@
+{
+  "status": "PASS_CANDIDATE_BUILD_ONLY",
+  "at": "2026-11-15T00:56:21.258262+00:00",
+  "image_id": "sha256:391df53bbd04e40d6fa128de24bfaedb70259061abe5b577fa1059ef4d31c034",
+  "candidate_tag": "his-poc-server:admin-0305ed5c6ff5-v3",
+  "source_commit": "e2bf12dbe750e7f2674a82bc8e98f8916de8a18d",
+  "runtime_inputs": 315,
+  "source_archive_sha256": "0305ed5c6ff5488adaf83fa417c50b10200f84e40759c4035035042c54e643ab",
+  "actual_dockerfile_sha256": "6ec794c72687f9b16d264829d9c242a83a1086609a90aee12868a91ba4b79a85",
+  "base_image": "sha256:9afd73f2595e35b46cb796f1836eb15c0885d33fb4c4a636c73b41104da72338",
+  "image_config_exact": true,
+  "activation": false,
+  "database_actions": 0,
+  "model_calls": 0,
+  "static_qualification": "NOT_RUN"
+}

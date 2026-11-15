@@ -101,11 +101,4 @@ GitHub's full rendered Markdown page was not inspected by this authoring task.
 The SVG and PNG assets were inspected directly. Publication and any subsequent
 Admin-console claims remain the integrating agent's responsibility.
 
-The subsequent compact Administration and Product direction sections reference
-the integrating Admin-console source update. All73local links passed an
-integration-aware existence check. Their two new document links were checked
-against the integrating UI worktree, where `docs/ADMIN_OPERATIONS.md`
-and `docs/PRODUCT_REVIEW_20261115.md` already exist. Those files are not copied
-onto this documentation branch by this task. Administration is described as
-implemented source with deployment/provisioning pending; the roadmap is
-explicitly proposed. No visual or generator change accompanies these additions.
+Administration now links to its separately verified protected release and native desktop screenshot. Product direction remains proposed work. The three generated visual assets and generator are unchanged by these additions; current link checks are recorded at release. See [Admin release](ADMIN_RELEASE_20261115.md) for deployment, account and browser evidence.

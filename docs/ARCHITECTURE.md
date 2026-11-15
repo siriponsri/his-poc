@@ -1,8 +1,19 @@
 # Full-system architecture
 
+## Administration boundary
+
+The /admin frontend uses existing sessions/CSRF and persisted D34.read plus
+identity.admin authorization. Organization directory/session projections and
+facility assistant aggregates exclude clinical bodies and credentials. Private
+named-POC provisioning is explicit, transactional and idempotent; startup does
+not provision accounts. Schema stays0005. Overview reads perform no provider
+HTTP or model generation. See [operator contract](ADMIN_OPERATIONS.md),
+[API subset](admin/README.md) and [release](ADMIN_RELEASE_20261115.md).
+
+
 ## AI preparation workspace
 
-Runtime source286f391/image9afd uses migration0005 and126 modeled/catalog tables.
+The retained initial AI release source286f391/image9afd established migration0005 and126 tables. The Admin release preserves this schema and AI boundary.
 The four role-scoped preparation profiles use the existing session, CSRF, care
 assignment and domain permissions. Durable assistant runs, revisions, decisions,
 effects and bounded watches are additive; source documents remain immutable.

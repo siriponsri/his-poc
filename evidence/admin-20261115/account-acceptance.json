@@ -1,0 +1,89 @@
+{
+  "status": "PASS",
+  "at": "2026-11-15T01:15:48.737545+00:00",
+  "image": "sha256:391df53bbd04e40d6fa128de24bfaedb70259061abe5b577fa1059ef4d31c034",
+  "provision": {
+    "status": "CREATED",
+    "user_id": "bec86245-be2d-436b-97eb-37c8318b0d34",
+    "username": "admin",
+    "organization_id": "org-demo",
+    "facility_id": "facility-demo",
+    "role": "system_admin",
+    "origin": "private_operator_cli",
+    "password_policy": "named_poc_private_min8"
+  },
+  "normal_login": 200,
+  "roles": [
+    "system_admin"
+  ],
+  "clinical_signing_granted": false,
+  "reads": {
+    "/admin/overview": {
+      "status": 200,
+      "observation": {
+        "scope": {
+          "organization_id": "org-demo",
+          "facility_id": "facility-demo"
+        },
+        "users": {
+          "total": 22,
+          "active": 22,
+          "suspended": 0,
+          "disabled": 0
+        },
+        "sessions": {
+          "active": 6,
+          "revoked": 137,
+          "expired": 57
+        },
+        "security": {
+          "recent_denial_count": 9,
+          "window_hours": 24
+        },
+        "database": {
+          "reachable": true,
+          "migration": "0005_assistant_workspaces"
+        },
+        "assistant": {
+          "configured": true,
+          "route": "dr_train_gpu0_v1",
+          "engine_version": "0.12.6",
+          "profiles_qualified": [
+            "laboratory_handoff",
+            "nursing_handover",
+            "records_readiness",
+            "visit_preparation"
+          ],
+          "counts": {
+            "queued": 0,
+            "running": 0,
+            "succeeded": 6,
+            "failed": 0,
+            "awaiting_review": 1,
+            "active_watches": 0
+          },
+          "live_status": "not_checked"
+        },
+        "observed_at": "2026-11-15T01:15:48.294685+00:00"
+      }
+    },
+    "/admin/users?q=admin&limit=1&offset=0": {
+      "status": 200
+    },
+    "/admin/sessions": {
+      "status": 200
+    },
+    "/admin/roles": {
+      "status": 200
+    },
+    "/admin/security-events": {
+      "status": 200
+    },
+    "/documents": {
+      "status": 403,
+      "expected": "PERMISSION_DENIED"
+    }
+  },
+  "logout": 200,
+  "model_calls": 0
+}

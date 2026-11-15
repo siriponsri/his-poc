@@ -1,0 +1,44 @@
+{
+  "status": "PASS_READONLY_INSPECTION_NO_SERVER_WRITES",
+  "at": "2026-11-15T00:42:49.171762+00:00",
+  "app_image": "sha256:9afd73f2595e35b46cb796f1836eb15c0885d33fb4c4a636c73b41104da72338",
+  "guard_same_identity": true,
+  "guard_config_sha256": "ce87d63c9a5e81f4fdd56325a5572d938400bfc562672668055ea242855516ce",
+  "guard_env_sha256": "bfacb7f0809b31b8587ceeb23268f5021288a6e8fcef6b2873e263c6d7f169c7",
+  "guard_pause": false,
+  "guard_unknown": false,
+  "active_dispatch_marker_observed": false,
+  "cron_matches": true,
+  "ready": {
+    "his": 200,
+    "lc": 200,
+    "dr": 200
+  },
+  "counts": {
+    "assistant_runs": 6,
+    "assistant_revisions": 8,
+    "assistant_decisions": 5,
+    "assistant_effects": 7,
+    "assistant_watches": 1,
+    "legacy_inference_runs": 9,
+    "legacy_committed_results": 9
+  },
+  "queued_running": 0,
+  "active_or_unknown_admission": 0,
+  "existing_named_admin": [],
+  "nonapp_drift_counts": {
+    "removed": 0,
+    "added": 2,
+    "changed": 0
+  },
+  "table_counts": {
+    "his": 126,
+    "lc": 2,
+    "dr": 10
+  },
+  "source_files": 3,
+  "server_writes": 0,
+  "model_calls": 0,
+  "elapsed_seconds": 2.7519949430134147,
+  "private_receipt_sha256": "82daa50e7306d7f082e58a727e2cc71c8f88fe3b7d7799b7a7ecef9b575b2dba"
+}

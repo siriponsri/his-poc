@@ -1,5 +1,15 @@
 # HIS POC v0.3 — เว็บทดสอบพร้อมใช้งาน
 
+## Administration
+
+เปิด [his.ai-cie.com/admin](https://his.ai-cie.com/admin) ผ่าน Cloudflare Access
+แล้วใช้บัญชี **admin** กับรหัสที่เจ้าของระบุไว้ในแชต รหัสไม่อยู่ใน repository
+บัญชีนี้เปิดหน้า Administration เป็นค่าเริ่มต้น ใช้ค้นหาผู้ใช้ จัดการบทบาท
+ตรวจเซสชัน และอ่านเหตุการณ์ความปลอดภัย โดยไม่ได้สิทธิ์ลงนามทางคลินิกหรือดูแล
+เครื่องเซิร์ฟเวอร์อัตโนมัติ อ่าน [วิธีดูแล](docs/ADMIN_OPERATIONS.md) และ
+[ผลตรวจรุ่นนี้](docs/ADMIN_RELEASE_20261115.md)
+
+
 อัปเดต15 พฤศจิกายน2026: Login, Clinical Workspace, Patient panel กว้าง และผู้ป่วยสมมุติ6รายพร้อมบนเว็บแล้ว รวม LabClear และ DR workspace สำหรับทบทวนโดยคน AI เตรียมงาน4กลุ่มใช้ Typhoon จริงบน dr-train ทดสอบผ่านระบบ6ครั้ง บันทึกผลหลังตรวจ5รายการ ได้ร่าง2ฉบับ งานใหม่2รายการ และเชื่อมงานเดิม3ครั้ง ทดสอบ watch ข้อมูลคงเดิมไม่เรียกเพิ่ม และข้อมูลเปลี่ยนเรียกใหม่หนึ่งครั้ง จากนั้นหยุด watch ทดสอบแล้ว Operations เริ่มจาก2D และเลือกเปิด3Dเองได้ อ่าน [วิธีใช้และข้อจำกัด](docs/RELEASE_AI_WORKSPACE.md), [สถานะ](GOAL.md) และ [หลักฐานจริง](evidence/ai-driven-root-20261114/application-acceptance.json) ผลนี้ยังไม่ใช่การรับรองประสิทธิผลทางคลินิก
 
 ผลรอบ 13 พฤศจิกายน 2026: 38 domains ที่ L2 และ J01–J10 ที่ L3 ผ่านบนข้อมูลสังเคราะห์ พร้อม Windows Docker, PostgreSQL, browser และ isolated restore ที่รันจริง อ่าน VALIDATION_REPORT.md และ coverage เพื่อดูขอบเขต หลักฐาน MOCK และ external L4 ที่ยังไม่ได้ตรวจ

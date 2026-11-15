@@ -1,6 +1,30 @@
-# Codex handoff — AI workspace deployed and application acceptance recorded
+# Codex handoff — Admin release, product review and protected acceptance
 
-## Current AI-driven deployment and acceptance
+## Administration and product review release — 15 November 2026
+
+Status: DEPLOYED_AND_ADMIN_ACCEPTED for the named synthetic POC. Runtime source
+74795e2 / immutable image416fbe75 / schema0005 is ready behind existing Access.
+The requested admin account was privately provisioned and normal login passed.
+Dedicated /admin covers users, memberships, sessions and security activity,
+without initial clinical-signing or platform-operator grants.
+
+Local checks passed38PostgreSQL18.6 cases,171mounted frontend checks,31unit
+checks and typecheck/build. Protected-browser acceptance covered login/default
+landing, search, four sections, create-dialog reading/close and desktop/mobile
+layout. An initial390px overflow was retained and repaired with one CSS rule;
+the final live mobile readback passed. No public user-management mutation was
+performed beyond the separately evidenced private account provision/authentication.
+
+The same AI source/configuration and prior6runs/8revisions/5decisions/7effects
+remain; this Admin release issued no model generation. Historical broad-domain,
+AI and specialist evidence below retains its original scope.
+See [Admin release](docs/ADMIN_RELEASE_20261115.md),
+[runtime proof](evidence/admin-20261115/final-runtime.json),
+[browser acceptance](evidence/admin-20261115/browser-acceptance.json) and
+[product review](docs/PRODUCT_REVIEW_20261115.md). The roadmap is proposed work.
+
+
+## Retained AI-driven acceptance before the Admin release
 
 Status: DEPLOYED_AND_APPLICATION_ACCEPTED for the named synthetic POC scope.
 Runtime source286f391 / immutable image9afd73f2 / schema0005 is deployed behind

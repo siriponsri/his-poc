@@ -1,0 +1,16 @@
+{
+  "status": "PASS_CANDIDATE_005_READY_STILL_PAUSED",
+  "at": "2026-11-15T01:28:37.970192+00:00",
+  "app_id": "58e04740622b1cb8f64039d0d7691dcab3f6e5cd9bf0c4db6c30ce13f7ccbac6",
+  "image_id": "sha256:416fbe75837265114f65c1b6ba7695a819e4c2edc7df743b5c08b65bb0267ede",
+  "config_sha256": "a832c643c182d59e1136d8ccf497f901af66819ba877cb4301e02291a555d456",
+  "dr_env_sha256": "19a4af77f3f7f2d3a8cb709253386af4779f6a7238cb31d04149ea1ff79defbd",
+  "worker_env_sha256": "bfacb7f0809b31b8587ceeb23268f5021288a6e8fcef6b2873e263c6d7f169c7",
+  "source_commit": "74795e2dc8a01f7fcc7f90132aa0acad0874e855",
+  "protected_data_exact": true,
+  "guard_started": false,
+  "admin_provisioned": false,
+  "database_writes": 0,
+  "model_calls": 0,
+  "observed_unrelated_additions": {}
+}

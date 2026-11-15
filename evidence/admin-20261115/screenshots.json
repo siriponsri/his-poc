@@ -1,0 +1,48 @@
+{
+  "url": "https://his.ai-cie.com/admin",
+  "account": "admin",
+  "data": "synthetic POC account directory; no credential shown",
+  "screenshots": [
+    {
+      "file": "admin-desktop-initial.jpg",
+      "captured_at": "2026-11-15T01:16:27.943Z",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "sha256": "b7194643fea08de6d4acf6bf4e2edd4c01760120bd34f7e187beb5d6fcab894b",
+      "image_edited": false
+    },
+    {
+      "file": "admin-mobile-before-fix.jpg",
+      "captured_at": "2026-11-15T01:17:32.991Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b6309c19b31ff1a7718e5636e3a6946ba7a30ec63ef15379c510581720d2d89f",
+      "image_edited": false
+    },
+    {
+      "file": "admin-mobile.jpg",
+      "captured_at": "2026-11-15T01:29:24.179Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "b3da9e09db562bb08cf375b6d91cec4c0abd327ae0184df115ae5c416d861751",
+      "image_edited": false
+    },
+    {
+      "file": "admin-desktop.jpg",
+      "captured_at": "2026-11-15T01:30:16.374Z",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "sha256": "8b4403fd3d2c1c2daf6831708fce28ea5d587bd2a40370655e83cca32d67f2a5",
+      "image_edited": false
+    }
+  ],
+  "source": "Exact already-returned native CUA JPEGs"
+}

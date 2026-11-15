@@ -1,0 +1,13 @@
+{
+  "status": "PASS_CANDIDATE_BUILD_ONLY",
+  "at": "2026-11-15T01:24:07.714464+00:00",
+  "image_id": "sha256:416fbe75837265114f65c1b6ba7695a819e4c2edc7df743b5c08b65bb0267ede",
+  "candidate_tag": "his-poc-server:admin-mobile-4e6cdf2df15f",
+  "source_commit": "74795e2dc8a01f7fcc7f90132aa0acad0874e855",
+  "runtime_inputs": 315,
+  "activation": false,
+  "database_actions": 0,
+  "model_calls": 0,
+  "static_qualification": "NOT_RUN",
+  "observed_unrelated_additions": {}
+}

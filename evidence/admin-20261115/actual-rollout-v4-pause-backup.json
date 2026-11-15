@@ -1,0 +1,6 @@
+{
+  "status": "PASS_PAUSED_DRAINED_IDLE_PIDFD_STOPPED",
+  "guard_pid": 564609,
+  "model_calls": 0,
+  "database_writes": 0
+}

@@ -1,0 +1,89 @@
+{
+  "status": "PASS_FINAL_READONLY_PRESERVATION_AND_AUTH_DELTA_AUDIT",
+  "at": "2026-11-15T01:31:29.821446+00:00",
+  "source_commit": "74795e2dc8a01f7fcc7f90132aa0acad0874e855",
+  "image_id": "sha256:416fbe75837265114f65c1b6ba7695a819e4c2edc7df743b5c08b65bb0267ede",
+  "config_sha256": "a832c643c182d59e1136d8ccf497f901af66819ba877cb4301e02291a555d456",
+  "worker_env_sha256": "bfacb7f0809b31b8587ceeb23268f5021288a6e8fcef6b2873e263c6d7f169c7",
+  "migration": "0005_assistant_workspaces",
+  "ready_http": {
+    "his": 200,
+    "lc": 200,
+    "dr": 200
+  },
+  "ai_counts": {
+    "assistant_runs": 6,
+    "assistant_revisions": 8,
+    "assistant_decisions": 5,
+    "assistant_effects": 7,
+    "assistant_watches": 1,
+    "legacy_inference_runs": 9,
+    "legacy_committed_results": 9
+  },
+  "backend_admission_clear": true,
+  "all_non_auth_his_tables_exact": true,
+  "labclear_2tables_all_rows_exact": true,
+  "dr_10tables_all_rows_exact": true,
+  "source_files_3_exact": true,
+  "admin": {
+    "active": true,
+    "single_system_admin_membership": true,
+    "facility_scoped": true,
+    "not_platform_operator": true,
+    "not_clinical_signer": true
+  },
+  "existing_baseline_nonapp_identities_preserved": true,
+  "cron_original_bytes_preserved": true,
+  "model_calls_issued_by_operator": 0,
+  "new_live_inference": "NOT_RUN",
+  "host_reboot": "NOT_RUN",
+  "database_writes": 0,
+  "snapshot_table_counts": {
+    "his": 126,
+    "lc": 2,
+    "dr": 10
+  },
+  "auth_table_delta_counts": {
+    "original_checkpoint": {
+      "public.audit_events": {
+        "before_rows": 1116,
+        "after_rows": 1120,
+        "added_rows_or_versions": 4,
+        "removed_or_replaced_row_hashes": 0
+      },
+      "public.login_attempts": {
+        "before_rows": 203,
+        "after_rows": 205,
+        "added_rows_or_versions": 2,
+        "removed_or_replaced_row_hashes": 0
+      },
+      "public.memberships": {
+        "before_rows": 28,
+        "after_rows": 29,
+        "added_rows_or_versions": 1,
+        "removed_or_replaced_row_hashes": 0
+      },
+      "public.security_events": {
+        "before_rows": 130,
+        "after_rows": 132,
+        "added_rows_or_versions": 2,
+        "removed_or_replaced_row_hashes": 0
+      },
+      "public.sessions": {
+        "before_rows": 199,
+        "after_rows": 201,
+        "added_rows_or_versions": 3,
+        "removed_or_replaced_row_hashes": 1
+      },
+      "public.users": {
+        "before_rows": 22,
+        "after_rows": 23,
+        "added_rows_or_versions": 1,
+        "removed_or_replaced_row_hashes": 0
+      }
+    },
+    "before_css_deploy": {}
+  },
+  "ordinary_test01_logout_existing_session_changes": 1,
+  "observed_unrelated_additions_count": 0
+}

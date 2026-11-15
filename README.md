@@ -58,9 +58,12 @@ workflow and configuration. Source publication and deployment are separate:
 
 ## Administration
 
-This source update adds a dedicated **`/admin`** workspace for authorized identity
-administrators. Deployment and private account provisioning for this extension
-remain separate steps; their completion is not claimed here.
+Open **[Administration](https://his.ai-cie.com/admin)** with the privately
+provisioned administrator account after Cloudflare Access. Normal login and
+desktop/mobile reading flows passed on the protected POC; see the
+[Admin release](docs/ADMIN_RELEASE_20261115.md) for exact acceptance limits.
+
+![Administration on the protected POC, with real synthetic account and session counts](evidence/admin-20261115/admin-desktop.jpg)
 
 The console brings together user search and status, persisted role memberships,
 session review and revocation, security events, and an aggregate assistant-work
@@ -160,6 +163,7 @@ replay for nursing, records and laboratory produced no duplicate effects.
 | Local functional baseline | 38 domains at L2 and 10 journeys at L3 using synthetic PostgreSQL and rendered-browser evidence | [Domain coverage](DOMAIN_COVERAGE.md) · [Journey coverage](JOURNEY_COVERAGE.md) |
 | Source-bound AI workflows | Six real application calls, five decisions, seven saved effects; nine actual role/scope checks | [Application acceptance](evidence/ai-driven-root-20261114/application-acceptance.json) |
 | Protected browser | One visit: queue, source evidence, full omitted note, demonstration edit, apply and full reload; optional 3D navigation checked separately | [Browser acceptance](evidence/ai-driven-public-20261114/visit-browser-acceptance.json) · [3D check](evidence/ai-driven-public-20261114/optional-3d.json) |
+| Administration extension | 38PostgreSQL,171mounted frontend and31unit checks; private account plus protected desktop/mobile reading subset | [Admin release](docs/ADMIN_RELEASE_20261115.md) |
 | Runtime and preservation | Guard process and identity pins observed; HIS, LabClear and DR ready; old rows/files preserved with intentional HIS additions recorded | [Runtime readback](evidence/ai-driven-root-20261114/assistant-runtime-readback.json) · [Deployment](evidence/ai-driven-root-20261114/deployment-readback.json) |
 
 These are bounded synthetic integration results. The other staff profiles were
@@ -216,6 +220,7 @@ database files, backup contents and real patient data outside source control.
 | [`backend/app/`](backend/app/) | Authentication, shared records, domain services and AI boundaries |
 | [`backend/migrations/`](backend/migrations/) | Versioned PostgreSQL migrations |
 | [`docs/integrations/contracts-0005/`](docs/integrations/contracts-0005/) | Current additive API/DDL reference; historical `contracts/v2` stays separate |
+| [`docs/admin/`](docs/admin/) | Additive administration API reference and operator contract |
 | [`spec/`](spec/) | Canonical scope, domain matrix and acceptance criteria |
 | [`evidence/`](evidence/) | Dated execution records with explicit evidence limits |
 

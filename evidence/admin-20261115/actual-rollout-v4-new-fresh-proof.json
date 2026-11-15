@@ -1,0 +1,43 @@
+{
+  "status": "PASS_NEW_FOREGROUND_CRON_GUARD_FRESH_SSH",
+  "at": "2026-11-15T01:18:14.745609+00:00",
+  "pid": 317293,
+  "start_ticks": "31940061",
+  "cgroup": "0::/system.slice/cron.service",
+  "image_id": "sha256:391df53bbd04e40d6fa128de24bfaedb70259061abe5b577fa1059ef4d31c034",
+  "config_sha256": "421f6a0585412bd4dba9f5225bc39010d71ffab31b24797a77833aedbbf0e05e",
+  "worker_env_sha256": "bfacb7f0809b31b8587ceeb23268f5021288a6e8fcef6b2873e263c6d7f169c7",
+  "oneoff_removed_exactly": true,
+  "original_crontab_preserved": true,
+  "source_commit": "e2bf12dbe750e7f2674a82bc8e98f8916de8a18d",
+  "reboot_test": "NOT_RUN",
+  "new_live_inference": "NOT_RUN",
+  "model_calls_issued_by_operator": 0,
+  "fresh_guard_ledger_events": [
+    {
+      "at": "2026-11-15T01:18:02.525285+00:00",
+      "image_id": "sha256:391df53bbd04e40d6fa128de24bfaedb70259061abe5b577fa1059ef4d31c034",
+      "state": "DISPATCHING_ONE_WORKER_ONCE"
+    },
+    {
+      "at": "2026-11-15T01:18:02.534818+00:00",
+      "state": "WORKER_ACTIVE"
+    },
+    {
+      "at": "2026-11-15T01:18:04.874424+00:00",
+      "exit_code": 0,
+      "state": "WORKER_EXITED"
+    }
+  ],
+  "fresh_engine_model_gpu_pins_verified": true,
+  "ai_counts": {
+    "assistant_runs": 6,
+    "assistant_revisions": 8,
+    "assistant_decisions": 5,
+    "assistant_effects": 7,
+    "assistant_watches": 1,
+    "legacy_inference_runs": 9,
+    "legacy_committed_results": 9
+  },
+  "backend_admission_clear": true
+}
