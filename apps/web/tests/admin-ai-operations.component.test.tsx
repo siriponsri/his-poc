@@ -29,6 +29,44 @@ test('metadata monitor keeps current health and heartbeat unknown despite histor
 test('unknown monetary and token measurements stay unmeasured and no uncontracted patient bodies render',async()=>{
  const value=data() as any;value.patient_name='NEVER_SHOW_PATIENT';value.sources=[{text:'NEVER_SHOW_SOURCE'}];value.provider.endpoint='NEVER_SHOW_PRIVATE_URL';value.items[0].output='NEVER_SHOW_MODEL_OUTPUT';handler=()=>value;await mount();await click(/Read AI operation run-a/);assert.match(document.querySelector('.admin-ai-detail')!.textContent!,/ต้นทุนที่บันทึกยังไม่วัด/);assert.match(document.querySelector('.admin-ai-detail')!.textContent!,/Input tokensยังไม่วัด/);assert.doesNotMatch(document.body.textContent!,/NEVER_SHOW|confidence|healthy|clinically qualified/i);assert.equal(requests.some(item=>/^assistant\/|^patients|^documents/.test(item.path)),false)
 })
+test('opening metadata after a twelve-row table scrolls and focuses its heading once without another read',async()=>{
+ const initial=data();handler=()=>data({items:Array.from({length:12},(_,index)=>({...initial.items[0],id:'run-'+(index+1)})),total:12})
+ const prototype=dom.window.HTMLElement.prototype,previous=prototype.scrollIntoView
+ const scrolls:{heading:HTMLElement;rows:number;run:string|null|undefined;options:unknown}[]=[]
+ prototype.scrollIntoView=function(options){if(this.matches('.admin-ai-detail h3'))scrolls.push({heading:this,rows:document.querySelectorAll('.admin-ai-table-wrap[aria-busy] tbody tr').length,run:this.parentElement?.querySelector('p')?.textContent,options})}
+ try{
+  await mount();const initialReads=requests.length
+  assert.equal(document.querySelectorAll('.admin-ai-table-wrap[aria-busy] tbody tr').length,12)
+  assert.equal(scrolls.length,0)
+  await click(/^Read AI operation run-2$/)
+  const heading=document.querySelector<HTMLElement>('.admin-ai-detail h3')!
+  assert.equal(scrolls.length,1)
+  assert.equal(scrolls[0].heading,heading);assert.equal(scrolls[0].rows,12);assert.equal(scrolls[0].run,'run-2')
+  assert.deepEqual(scrolls[0].options,{block:'start',behavior:'auto'})
+  assert.equal(document.activeElement,heading)
+  assert.equal(heading.style.scrollMarginTop,'80px')
+  assert.equal(requests.length,initialReads,'Metadata selection must use the already loaded row')
+  const refresh=button(/^อ่านสถานะล่าสุด$/);refresh.focus();await click(/^อ่านสถานะล่าสุด$/)
+  assert.equal(scrolls.length,1,'Refreshing the same selected run must not move reading focus again')
+  assert.equal(document.activeElement,refresh)
+  assert.equal(requests.some(item=>item.init?.method),false)
+ }finally{if(previous)prototype.scrollIntoView=previous;else Reflect.deleteProperty(prototype,'scrollIntoView')}
+})
+test('selected operation metadata cannot steal focus from an existing administration modal',async()=>{
+ await mount()
+ const modal=document.createElement('section');modal.setAttribute('role','dialog');modal.setAttribute('aria-modal','true')
+ const control=document.createElement('button');control.textContent='Close existing administration dialog';modal.append(control);document.body.append(modal);control.focus()
+ const prototype=dom.window.HTMLElement.prototype,previous=prototype.scrollIntoView;let scrolls=0
+ prototype.scrollIntoView=function(){if(this.matches('.admin-ai-detail h3'))scrolls++}
+ try{
+  await click(/^Read AI operation run-a$/)
+  assert.ok(document.querySelector('.admin-ai-detail'))
+  assert.equal(document.activeElement,control);assert.equal(scrolls,0)
+  modal.remove();const trigger=button(/^Read AI operation run-a$/);trigger.focus();await flush()
+  assert.equal(document.activeElement,trigger);assert.equal(scrolls,0,'Closing a separate modal must not re-trigger metadata heading focus')
+  assert.equal(requests.some(item=>item.init?.method),false)
+ }finally{modal.remove();if(previous)prototype.scrollIntoView=previous;else Reflect.deleteProperty(prototype,'scrollIntoView')}
+})
 test('server profile and state filtering and pagination use bounded query parameters',async()=>{
  handler=path=>data({total:60,offset:Number(new URL(path,'http://test').searchParams.get('offset'))});await mount();await select('AI operations profile','visit_preparation');await select('AI operations state','succeeded');await click(/^ถัดไป$/);const query=new URL(requests.at(-1)!.path,'http://test').searchParams;assert.equal(query.get('profile'),'visit_preparation');assert.equal(query.get('state'),'succeeded');assert.equal(query.get('offset'),'25');assert.equal(query.get('limit'),'25');assert.match(document.querySelector('.admin-ai-counts')!.textContent!,/Needs review3/)
 })
