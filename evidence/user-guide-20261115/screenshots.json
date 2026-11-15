@@ -1,0 +1,50 @@
+{
+  "url": "https://his.ai-cie.com/guide",
+  "account": "test01",
+  "data": "static instructions and synthetic illustrations; no credential shown",
+  "screenshots": [
+    {
+      "file": "guide-mobile.jpg",
+      "captured_at": "2026-11-15T03:28:04.175Z",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "sha256": "6709f9434fc688817279b38c47721cc4203622f1c52344a4a07d682556d534be",
+      "image_edited": false,
+      "image_dimensions": {
+        "width": 380,
+        "height": 822
+      }
+    },
+    {
+      "file": "guide-desktop.jpg",
+      "captured_at": "2026-11-15T03:28:16.463Z",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "sha256": "d8f2399199b3fbe369cc716785f23e13402c5a36dda904535337995a5835abbf",
+      "image_edited": false,
+      "image_dimensions": {
+        "width": 1270,
+        "height": 714
+      }
+    },
+    {
+      "file": "guide-animation.jpg",
+      "captured_at": "2026-11-15T03:28:30.991Z",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "sha256": "3a26c99e2641b9686eca6e446253afc802cd8b6f03a631b4da24a555645afbf4",
+      "image_edited": false,
+      "image_dimensions": {
+        "width": 1270,
+        "height": 714
+      }
+    }
+  ],
+  "source": "Exact already-returned native CUA JPEGs"
+}

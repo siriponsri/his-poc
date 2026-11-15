@@ -107,6 +107,6 @@ This supersedes the old witness for runtime identity checks; old evidence stays.
 - [API reference](admin/README.md), [product review](PRODUCT_REVIEW_20261115.md),
   [README visual provenance](README_VISUALS.md)
 
-After this acceptance, the owner added a separate in-app illustrated User Guide
-task. Its implementation/deployment is tracked separately; this Admin checkpoint
-does not claim that the guide is already available.
+After this Admin acceptance, the owner added the illustrated in-app User Guide.
+Its later implementation/deployment and reading evidence are recorded in
+[User Guide release](RELEASE_USER_GUIDE.md); the Admin checkpoint retains its original scope.

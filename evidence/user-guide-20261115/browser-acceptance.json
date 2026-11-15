@@ -1,0 +1,94 @@
+{
+  "status": "PASS_PROTECTED_USER_GUIDE_READING",
+  "url": "https://his.ai-cie.com/guide",
+  "data": "Synthetic POC; static instructional screenshots",
+  "method": "Native CUA through existing Cloudflare Access; ordinary test01 clinician HIS session",
+  "base_source": "f9621967f6a2c93d1bad03ceec62c18c4ca2bdb9",
+  "final_source": "65c5bc517b0b5905355ebc2a161c93635a9a7c97",
+  "final_image": "sha256:92166e35ebf84c8dc3c6aff480a1d83d6e261f7ad017353af5300f6256323ab9",
+  "checks": {
+    "authenticated_header_guide_shortcut": "PASS",
+    "chapters_and_domains_visible": {
+      "status": "PASS",
+      "chapters": 16,
+      "domains": 38
+    },
+    "search_labclear_and_chapter_navigation": "PASS",
+    "walkthrough_actual_timed_advance_and_pause": "PASS; first explanation advanced to send-when-ready explanation, then paused",
+    "zoom_original_size_focus_trap_arrow_scroll_escape": {
+      "status": "PASS",
+      "horizontal_scroll_before": 0,
+      "horizontal_scroll_after": 40
+    },
+    "role_filter": {
+      "status": "PASS",
+      "clinician_matching_topics": 33,
+      "filter_cleared_after_test": true
+    },
+    "broad_audience_label": "PASS; Getting started displayed ทุกบทบาท",
+    "mobile_contents_return_restores_search_focus": "PASS",
+    "login_help_opens_static_guide_without_HIS_session": "PASS",
+    "unauthenticated_direct_administration_chapter_survives_session_401": "PASS",
+    "ordinary_test01_sign_in_returns_to_deep_guide_url": "PASS",
+    "final_heading_mobile": {
+      "status": "PASS",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "document_width": 380,
+      "heading_top": 79.75,
+      "heading_bottom": 114.75,
+      "scroll_margin": "80px",
+      "sticky_header_height": 56
+    },
+    "final_heading_desktop": {
+      "status": "PASS",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "document_width": 1270,
+      "heading_top": 80,
+      "heading_bottom": 119.20000076293944,
+      "scroll_margin": "80px",
+      "sticky_header_height": 56
+    },
+    "qualified_final_stylesheet": "/assets/index-BaIMExbH.css",
+    "final_console_errors": [],
+    "temporary_viewport_reset": true,
+    "deliverable_tab_retained": true
+  },
+  "initial_issue": {
+    "status": "FAIL_BEFORE_REPAIR",
+    "source": "f962196",
+    "issue": "Selected mobile chapter heading partly covered by sticky workspace header",
+    "heading_top": 23.75,
+    "heading_bottom": 58.75,
+    "old_scroll_margin": "24px",
+    "repair": "65c5bc5 adds one scoped 80px scroll-margin rule",
+    "recheck": "PASS_DESKTOP_AND_MOBILE"
+  },
+  "ordinary_authentication_actions": {
+    "test01_logout": 1,
+    "test01_login": 1,
+    "unauthenticated_session_probe": "401 expected; server event retained"
+  },
+  "clinical_mutations": 0,
+  "model_generations": 0,
+  "specialist_transfers": 0,
+  "admin_account_changes": 0,
+  "not_run": [
+    "Native operating-system reduced-motion preference switching",
+    "New model inference or clinical effectiveness evaluation",
+    "Host reboot",
+    "Rollback execution",
+    "Exact fresh-dump restore"
+  ],
+  "notes": [
+    "Reduced-motion behavior covered by mounted component tests.",
+    "Local preview API refusal was an absent local backend, not public failure.",
+    "One timed locator wait expired while awaiting the walkthrough; subsequent observed caption change and pause established actual advance.",
+    "Screenshots are exact native JPEGs; no edits."
+  ]
+}

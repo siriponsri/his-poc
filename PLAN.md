@@ -1,6 +1,29 @@
-# Goal-based implementation milestones
+# Plan — illustrated User Guide release checkpoint
 
-## Administration and product review release — 15 November 2026
+## Illustrated in-app User Guide — 15 November 2026
+
+Status: DEPLOYED_AND_GUIDE_ACCEPTED for the synthetic protected POC.
+Runtime source 65c5bc5 / image 92166e35 / schema 0005 serves /guide. The guide
+opens from login, the workspace header or sidebar; static help remains readable
+without an HIS session after the existing Cloudflare Access gate.
+
+It includes 16 chapters/101 task steps, 38 domain references/152 working steps,
+11 exact synthetic screenshots and 10 paused-by-default explanatory walkthroughs.
+Search, shareable chapter/domain links, role-oriented navigation, image zoom,
+keyboard scrolling and mobile contents return are implemented. Guide controls
+do not submit clinical work, change roles or request model generation.
+
+PASS on base f962196: 31 frontend units and 195 mounted cases (20 guide + 4 shell).
+Final source 65c5bc5 changes one heading CSS rule; its typecheck/build, independent
+narrow review and protected desktop/mobile heading recheck passed. Content/media
+validation and the remaining native reading checks passed separately. Protected acceptance and current runtime are recorded separately in
+[User Guide release](docs/RELEASE_USER_GUIDE.md) and
+[browser evidence](evidence/user-guide-20261115/browser-acceptance.json).
+The Admin account, workflows, AI source/configuration and specialist services
+remain preserved. This is a guide release, not new clinical/model effectiveness.
+
+
+## Retained Administration release — 15 November 2026
 
 Status: DEPLOYED_AND_ADMIN_ACCEPTED for the named synthetic POC. Runtime source
 74795e2 / immutable image416fbe75 / schema0005 is ready behind existing Access.

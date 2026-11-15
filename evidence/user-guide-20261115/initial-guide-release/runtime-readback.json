@@ -1,0 +1,40 @@
+{
+  "status": "PASS_NEW_FOREGROUND_CRON_GUARD_FRESH_SSH",
+  "at": "2026-11-15T03:15:12.067236+00:00",
+  "image_id": "sha256:60d0d325add4c70a8329667256ccbb8dc09d3d6c4ae2d4be87f85ef3106a3779",
+  "config_sha256": "44fe316a8f37784d97fd55d02ab3759d5b19169ae33cb0c96fd712f01ef7d366",
+  "worker_env_sha256": "bfacb7f0809b31b8587ceeb23268f5021288a6e8fcef6b2873e263c6d7f169c7",
+  "oneoff_removed_exactly": true,
+  "original_crontab_preserved": true,
+  "source_commit": "f9621967f6a2c93d1bad03ceec62c18c4ca2bdb9",
+  "reboot_test": "NOT_RUN",
+  "new_live_inference": "NOT_RUN",
+  "model_calls_issued_by_operator": 0,
+  "fresh_guard_ledger_events": [
+    {
+      "at": "2026-11-15T03:15:02.456854+00:00",
+      "image_id": "sha256:60d0d325add4c70a8329667256ccbb8dc09d3d6c4ae2d4be87f85ef3106a3779",
+      "state": "DISPATCHING_ONE_WORKER_ONCE"
+    },
+    {
+      "at": "2026-11-15T03:15:02.468605+00:00",
+      "state": "WORKER_ACTIVE"
+    },
+    {
+      "at": "2026-11-15T03:15:04.748981+00:00",
+      "exit_code": 0,
+      "state": "WORKER_EXITED"
+    }
+  ],
+  "fresh_engine_model_gpu_pins_verified": true,
+  "ai_counts": {
+    "assistant_runs": 6,
+    "assistant_revisions": 8,
+    "assistant_decisions": 5,
+    "assistant_effects": 7,
+    "assistant_watches": 1,
+    "legacy_inference_runs": 9,
+    "legacy_committed_results": 9
+  },
+  "backend_admission_clear": true
+}

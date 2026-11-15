@@ -1,5 +1,17 @@
 # Full-system architecture
 
+## Static learning workspace
+
+The /guide route lazily loads authored chapter/domain data and self-hosted exact
+synthetic screenshots. Its only shell request is the ordinary session probe;
+the guide is context-free and skips patient/encounter prefetch. An unauthenticated
+HIS reader can use static help behind the existing Access gate. Role filters
+organize lessons and grant no permission. Screenshot tours/zoom are local view
+state, with explicit playback, reduced-motion support and keyboard access.
+No backend router, schema, provider adapter, dependency or business workflow
+changed. See [release](RELEASE_USER_GUIDE.md) and [media provenance](USER_GUIDE_MEDIA.json).
+
+
 ## Administration boundary
 
 The /admin frontend uses existing sessions/CSRF and persisted D34.read plus

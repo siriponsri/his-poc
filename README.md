@@ -12,6 +12,7 @@
 <p align="center">
   <a href="https://his.ai-cie.com">Open the protected POC</a> ·
   <a href="START_HERE.md">เริ่มใช้งานภาษาไทย</a> ·
+  <a href="https://his.ai-cie.com/guide">User Guide</a> ·
   <a href="docs/RELEASE_AI_WORKSPACE.md">Release and evidence</a> ·
   <a href="docs/ARCHITECTURE.md">Architecture</a>
 </p>
@@ -55,6 +56,18 @@ does not seed. `stop` retains the data volumes.
 See [START_HERE.md](START_HERE.md) for the native PostgreSQL alternative, account
 workflow and configuration. Source publication and deployment are separate:
 **a Git push does not update the running application**.
+
+## Learn the workflows
+
+The **[in-app User Guide](https://his.ai-cie.com/guide)** organizes 16 task-based
+chapters and 38 domain references. It includes 11 synthetic screenshots with 10
+step-by-step explanatory walkthroughs, searchable instructions, image zoom and
+mobile navigation. Playback starts only when selected; reduced-motion readers
+can use manual steps and the complete text transcript. Static help is available
+from sign-in and never submits a clinical or AI command.
+
+See the [guide release](docs/RELEASE_USER_GUIDE.md) for reading/browser evidence
+and [content provenance](docs/USER_GUIDE_CONTENT.md) for source and workflow limits.
 
 ## Administration
 

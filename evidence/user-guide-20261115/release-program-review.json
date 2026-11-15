@@ -1,0 +1,44 @@
+{
+  "status": "PASS_ROOT_HASH_COMPILE_AND_INDEPENDENT_REVIEW",
+  "source_commit": "65c5bc517b0b5905355ebc2a161c93635a9a7c97",
+  "candidate_image": "sha256:92166e35ebf84c8dc3c6aff480a1d83d6e261f7ad017353af5300f6256323ab9",
+  "phases": {
+    "pause-backup": {
+      "sha256": "3a1052e1ad332bbb2de3716fbe2be9dd816e84cfa5840dd778d3f2b6e5216c48",
+      "bytes": 416929,
+      "executed": true
+    },
+    "activate-paused": {
+      "sha256": "6dc5e148342e61959e388d1c0bc23e7270c862b0bbd2000f8ed531cb6683bc49",
+      "bytes": 417446,
+      "executed": true
+    },
+    "rollback-paused": {
+      "sha256": "cb3e6bac22629ed9416092e9c2c65cc45b6086283aa071b89864c23c7751f571",
+      "bytes": 417646,
+      "executed": false
+    },
+    "new-bootstrap": {
+      "sha256": "0960949bb626d278778aa36237c5e12a5a888b038a21064b63380a651cb130ca",
+      "bytes": 418623,
+      "executed": true
+    },
+    "new-fresh-proof": {
+      "sha256": "569f352525bcde99734b9c0151188e4e0f0c51dab1c138793ce9f97c40d05822",
+      "bytes": 416345,
+      "executed": true
+    },
+    "rollback-bootstrap": {
+      "sha256": "a7a4cf1403fb719ec1d66cf486ab2d18acabe3d71f6f56b371e699e2c3fdb48e",
+      "bytes": 418708,
+      "executed": false
+    },
+    "rollback-fresh-proof": {
+      "sha256": "4e44f348ef42886f85a55268d9e2caddc6a3c4e6b414adc29e264e30a0b080e0",
+      "bytes": 416380,
+      "executed": false
+    }
+  },
+  "review_scope": "Seven frozen rollout programs; established controls unchanged; unique followup parameters and witness paths reviewed",
+  "rollback_executed": "NOT_RUN"
+}

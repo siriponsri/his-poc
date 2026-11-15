@@ -1,0 +1,53 @@
+{
+  "status": "PASS_LOCAL_GUIDE_QUALIFICATION",
+  "frontend_unit": {
+    "passed": 31
+  },
+  "frontend_mounted": {
+    "passed": 195,
+    "guide_cases": 20,
+    "guide_shell_cases": 4
+  },
+  "typecheck": "PASS",
+  "build": "PASS",
+  "compiled_assets": 32,
+  "content": {
+    "chapters": 16,
+    "chapter_steps": 101,
+    "domains": 38,
+    "domain_steps": 152,
+    "screenshots": 11,
+    "animated_walkthroughs": 10
+  },
+  "native_local": {
+    "search_and_chapter_navigation": "PASS",
+    "automatic_walkthrough_advance": "PASS",
+    "zoom_keyboard_focus_and_native_scroll": {
+      "before": 0,
+      "after": 40
+    },
+    "mobile_viewport": 390,
+    "mobile_document_width": 380,
+    "mobile_return_to_contents_focus": "PASS",
+    "preview_backend": "NOT_RUNNING; expected auth/me proxy refused, static guide remained readable"
+  },
+  "independent_review": "PASS_SOURCE_CONTENT_MEDIA_ROUTE_AND_FINAL_POLISH",
+  "backend": "UNCHANGED_BYTES; no new PostgreSQL suite or inference qualification required for static guide",
+  "model_calls": 0,
+  "clinical_submissions_for_media": 0,
+  "tested_base_source": "f9621967f6a2c93d1bad03ceec62c18c4ca2bdb9",
+  "runtime_source": "65c5bc517b0b5905355ebc2a161c93635a9a7c97",
+  "followup": {
+    "change": "One CSS scroll-margin rule to keep selected chapter headings below signed-in sticky header",
+    "typecheck": "PASS",
+    "build": "PASS",
+    "independent_review": "PASS_NARROW_SOURCE_AND_ALL_SEVEN_RELEASE_PROGRAMS",
+    "browser_heading_check": "PASS_PROTECTED_DESKTOP_80PX_MOBILE_79.75PX"
+  },
+  "package_inventory": {
+    "status": "PASS",
+    "domain_route_inventory": 38,
+    "scope": "static consistency, not acceptance",
+    "first_default_python_attempt": "NOT_RUN_DEPENDENCY_MISSING_SQLALCHEMY; rerun under project venv passed"
+  }
+}

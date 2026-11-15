@@ -171,3 +171,7 @@ model call or clinical action.
 ## Visual examples
 
 The media bundle uses eight newly captured synthetic gateway/workspace screens, two exact Admin screenshots and one dated retained LabClear confirmed-review example. The latter illustrates the outcome separately from the new pretransfer screenshot; it is not a claim that a new confirmation occurred while preparing this guide. All11media IDs are described in USER_GUIDE_MEDIA.json.
+
+## Integrated release
+
+The integrated base source f962196 passed 195 mounted frontend checks, 31 unit checks, typecheck/build, content/media validation and independent review. Protected reading and deployment evidence are in [RELEASE_USER_GUIDE.md](RELEASE_USER_GUIDE.md); these are separate from the authoring-only checks above.
