@@ -19,8 +19,10 @@ at `2026-11-15T07:11:47.673227+00:00`; fresh runtime proof at
 Six bounded application/model cases and final protected native smoke passed
 separately. The model cases ran on the same backend before the frontend overlay;
 the overlay and final smoke made no additional model call. Final read-only
-preservation audit v2 passed at `2026-11-15T07:42:40.269671Z`; source publication
-remains pending. It preserves original 126-table business row-hash subsets with
+preservation audit v2 passed at `2026-11-15T07:42:40.269671Z`. Accepted release
+source is published as [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+A descendant documentation closeout may follow; publication does not redeploy.
+The audit preserves original 126-table business row-hash subsets with
 explicit schema/session exceptions, final-stage 127-table business rows, two
 LabClear/ten DR tables, three source files and 48 trial hashes. All 60 backend
 inputs, four frontend files, 32 HTTP assets and engine/model/GPU/admission pins

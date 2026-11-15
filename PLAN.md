@@ -2,7 +2,7 @@
 
 ## Active milestone — AI evidence, team queue and Admin AI operations
 
-Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING (15 November 2026).
+Status: DEPLOYED_ACCEPTED_AND_PUBLISHED (15 November 2026).
 The named synthetic POC runs `0006_team_coordination`, backend `1960a827` plus
 frontend `b860725` in image `fcdbb821`. Four final rollout gates passed. The four-file/
 32-asset frontend overlay preserves all 60 backend inputs byte-for-byte; the
@@ -27,7 +27,10 @@ Historical 38 L2 domains/10 L3 journeys are maintained, not rerun or promoted to
 new clinical proof. Fresh-backup restore and host reboot recovery remain NOT_RUN.
 
 Closeout audit: PASS at 2026-11-15T07:42:40.269671Z (read-only audit v2).
-Source publication: PENDING_FINAL_REVIEW_AND_NON_FORCE_MAIN_PUSH.
+Source publication: PASS — accepted release [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+The authorized non-force main push was verified against `refs/heads/main`.
+Final documentation closeout may follow as a descendant; it does not redeploy
+the runtime. The goal closes only after that final remote proof.
 See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
 [six-case acceptance](evidence/ai-team-20261115/application-acceptance.json),
 [final native smoke](evidence/ai-team-20261115/browser-acceptance.json),
@@ -35,15 +38,17 @@ See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
 [operating manual](docs/AI_TEAM_OPERATIONS.md). Older sections below are historical.
 
 
-## Remaining closeout sequence
+## Verified release and documentation closeout
 
 1. DONE: final read-only preservation audit v2 passed at 07:42:40.269671 UTC,
    binding the final image/assets, retained business rows/files, six-case ledger
    and unrelated service identities. Audit v1 remains NOT_PASS; v2 corrected only
    the expected 32-asset mapping and was separately reviewed/executed.
-2. Reconcile the release package and public sanitized evidence. Record the actual
-   final source commit and verified non-force main push separately from runtime.
-3. Close the goal after publication proof exists. Do not rerun model cases,
+2. DONE: the accepted feature source, final documentation/evidence and release
+   manifest were published as `c856dbc585ec413ae212a8ef29bf27e117a18c8d`; non-force main
+   push and exact remote SHA were verified separately from runtime.
+3. Publish any final documentation closeout as a descendant, verify its remote
+   SHA, then close the goal. This does not redeploy. Do not rerun model cases,
    consume unused reserves, restart watches or restore/rewind production.
 
 Implementation, PostgreSQL qualification, explicit migration, six-case trial and

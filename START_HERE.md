@@ -13,7 +13,10 @@ API ผ่านสิทธิ์ปกติ 4 กรณี และหน้
 แล้ว ผล native รอบสุดท้ายเวลา 07:18–07:20 UTC วันที่ 15 พฤศจิกายนผ่าน ทั้งการเปิดงาน
 การอ่านข้อมูล Admin การกลับเข้าใช้ตามบทบาทและ mobile layout ผล full preservation
 audit v2 ผ่านเวลา 07:42:40 UTC โดยไม่เขียนฐานข้อมูลหรือเรียกโมเดลเพิ่ม
-ยังรอ final review/commit/push main จึงยังไม่ปิด milestone อ่าน
+เผยแพร่ source ขึ้น main แบบ non-force และตรวจ remote ตรงกับ
+[`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d) แล้ว
+เอกสารปิดงานอาจตามมาเป็น descendant commit โดยไม่ deploy ระบบใหม่
+การปิด goal จะยืนยันหลังมีหลักฐาน remote ของเอกสารรอบสุดท้าย อ่าน
 [สถานะและหลักฐาน](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
 [วิธีใช้งาน](docs/AI_TEAM_OPERATIONS.md) และ [จุดส่งต่องาน](CODEX_HANDOFF.md)
 

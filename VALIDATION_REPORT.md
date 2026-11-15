@@ -2,7 +2,7 @@
 
 ## Active milestone — AI evidence, team queue and Admin AI operations
 
-Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING (15 November 2026).
+Status: DEPLOYED_ACCEPTED_AND_PUBLISHED (15 November 2026).
 The named synthetic POC runs `0006_team_coordination`, backend `1960a827` plus
 frontend `b860725` in image `fcdbb821`. Four final rollout gates passed. The four-file/
 32-asset frontend overlay preserves all 60 backend inputs byte-for-byte; the
@@ -27,7 +27,10 @@ Historical 38 L2 domains/10 L3 journeys are maintained, not rerun or promoted to
 new clinical proof. Fresh-backup restore and host reboot recovery remain NOT_RUN.
 
 Closeout audit: PASS at 2026-11-15T07:42:40.269671Z (read-only audit v2).
-Source publication: PENDING_FINAL_REVIEW_AND_NON_FORCE_MAIN_PUSH.
+Source publication: PASS — accepted release [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+The authorized non-force main push was verified against `refs/heads/main`.
+Final documentation closeout may follow as a descendant; it does not redeploy
+the runtime. The goal closes only after that final remote proof.
 See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
 [six-case acceptance](evidence/ai-team-20261115/application-acceptance.json),
 [final native smoke](evidence/ai-team-20261115/browser-acceptance.json),
@@ -79,7 +82,9 @@ hashes are exact. The receipt also binds 60 backend inputs, four frontend files,
 32 HTTP assets, current model/engine/GPU/admission and unrelated service identities.
 The audit issued no database/model/service writes. Audit v1 remains NOT_PASS for
 its stale predecessor asset map; separately reviewed/executed v2 corrected only
-the expected 32-asset mapping. Source publication remains pending. See the
+the expected 32-asset mapping. Accepted release source is published as
+[`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+Final documentation may follow as a descendant without redeployment. See the
 [final preservation receipt](evidence/ai-team-20261115/deployment-preservation.json).
 
 See [scoped local receipts](evidence/ai-team-20261115/local-qualification.json),

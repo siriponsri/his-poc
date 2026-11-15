@@ -1,6 +1,6 @@
 # AI evidence, accountable work and administration operations
 
-Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING.
+Status: DEPLOYED_ACCEPTED_AND_PUBLISHED.
 Owner authorization: 15 November 2026, this chat. Implementation base:
 `c47868a`; deployed backend `1960a827` plus frontend `b860725`, schema
 `0006_team_coordination`. This extends the retained v1 assistant/Admin contracts.
@@ -13,7 +13,9 @@ six of eight reserved slots, six observed dispatches, no unknowns and no
 corrective reserves. No additional generation is planned; the unused allowance
 does not schedule a retry. Final native queue/Admin/source-reading smoke passed
 at 07:18–07:20 UTC. Final read-only preservation audit v2 passed at
-07:42:40.269671 UTC; source publication remains pending.
+07:42:40.269671 UTC. Accepted release source is published as
+[`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+A descendant documentation closeout may follow without redeployment.
 [Preservation scope](../evidence/ai-team-20261115/deployment-preservation.json).
 
 All 12 generated facts were exact typed fields; no literal quote fact was

@@ -1,6 +1,6 @@
 # AI evidence, accountable work and operations monitoring
 
-Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING. This report separates implementation,
+Status: DEPLOYED_ACCEPTED_AND_PUBLISHED. This report separates implementation,
 local qualification, deployment and application acceptance. It does not extend
 the historical 38-domain/10-journey baseline or establish clinical effectiveness.
 
@@ -208,5 +208,10 @@ application bytes or hide the failed receipt. See the
 and [scoped local checks](../evidence/ai-team-20261115/local-qualification.json).
 
 Fresh-backup restore, recovery after host reboot and fallback activation remain
-NOT_RUN. Their preparations are not recovery acceptance. Source publication
-still awaits the final reviewed non-force main push at this writing checkpoint.
+NOT_RUN. Their preparations are not recovery acceptance.
+
+The accepted release was published by non-force push to `origin/main` as
+[`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d),
+and the remote ref was read back at that exact commit. The documentation closeout
+follows as a descendant; it does not redeploy the runtime. Private operator
+receipts, credentials, database contents and source ZIPs remain outside Git.

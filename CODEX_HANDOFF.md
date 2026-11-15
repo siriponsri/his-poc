@@ -2,7 +2,7 @@
 
 ## Active milestone — AI evidence, team queue and Admin AI operations
 
-Status: DEPLOYED_AND_ACCEPTED_SOURCE_PUBLICATION_PENDING (15 November 2026).
+Status: DEPLOYED_ACCEPTED_AND_PUBLISHED (15 November 2026).
 The named synthetic POC runs `0006_team_coordination`, backend `1960a827` plus
 frontend `b860725` in image `fcdbb821`. Four final rollout gates passed. The four-file/
 32-asset frontend overlay preserves all 60 backend inputs byte-for-byte; the
@@ -27,7 +27,10 @@ Historical 38 L2 domains/10 L3 journeys are maintained, not rerun or promoted to
 new clinical proof. Fresh-backup restore and host reboot recovery remain NOT_RUN.
 
 Closeout audit: PASS at 2026-11-15T07:42:40.269671Z (read-only audit v2).
-Source publication: PENDING_FINAL_REVIEW_AND_NON_FORCE_MAIN_PUSH.
+Source publication: PASS — accepted release [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+The authorized non-force main push was verified against `refs/heads/main`.
+Final documentation closeout may follow as a descendant; it does not redeploy
+the runtime. The goal closes only after that final remote proof.
 See [release scope](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
 [six-case acceptance](evidence/ai-team-20261115/application-acceptance.json),
 [final native smoke](evidence/ai-team-20261115/browser-acceptance.json),
@@ -100,7 +103,7 @@ focus. Admin native next-page acceptance was NOT_EXERCISED because12 rows fit a
 single page; server pagination has separate PG/component evidence. Read the
 [actual native receipt](evidence/ai-team-20261115/browser-acceptance.json).
 
-## Final preservation proof and pending publication
+## Final preservation proof and verified publication
 
 Final read-only audit v2 passed at `2026-11-15T07:42:40.269671Z`. The
 [public receipt](evidence/ai-team-20261115/deployment-preservation.json) SHA-256
@@ -125,11 +128,15 @@ assets, while backend/frontend sources matched. The separately reviewed and
 executed v2 changed only the 32 expected asset hashes to the qualified `b860725`
 set. The earlier failure is retained and is not relabeled PASS.
 
-- SOURCE_PUBLICATION_PENDING: root reviews/stages final docs/evidence, verifies
-  release hashes/package, commits and performs the authorized non-force main
-  push. Record the actual commit and remote proof, not a planned SHA.
+The accepted release was published as [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+The non-force main push advanced `c47868a` to this exact SHA;
+`git ls-remote refs/heads/main` verified the remote result. It includes all
+feature code and 29 final documentation/evidence files with the 1554-entry
+manifest. Final documentation closeout may follow as a descendant; source
+publication does not redeploy or change the current runtime snapshot.
 
-Do not mark the long goal complete until source publication has its own proof.
+The goal closes only after the descendant documentation closeout has its final
+remote proof; do not claim that proof in advance.
 Root owns README, release report and public evidence. Historical0005 release
 sections below must not drive current0006 server or rollback actions.
 

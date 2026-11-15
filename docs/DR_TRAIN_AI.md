@@ -24,8 +24,9 @@ and local offset tests have separate scopes. Narrative draft meaning requires
 human review; evidence matching is not clinical correctness. Costs stay null.
 
 Final native smoke and read-only preservation audit v2 passed; the latter was
-recorded at 07:42:40.269671 UTC without database/model/service writes. Source
-publication remains pending. [Preservation receipt](../evidence/ai-team-20261115/deployment-preservation.json).
+recorded at 07:42:40.269671 UTC without database/model/service writes. The
+accepted release is published as [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+A descendant documentation closeout may follow without redeployment. [Preservation receipt](../evidence/ai-team-20261115/deployment-preservation.json).
 Read the [operations contract](AI_TEAM_OPERATIONS_CONTRACT.md),
 [operator manual](AI_TEAM_OPERATIONS.md),
 [current deployment runbook](DEPLOY_DR_TRAIN.md),

@@ -48,7 +48,8 @@ unsigned drafts. The final frontend repairs passed protected desktop/mobile
 reading checks after deployment. Read the
 [dated milestone report](docs/RELEASE_AI_TEAM_OPERATIONS_20261115.md),
 [exact application examples](evidence/ai-team-20261115/application-acceptance.json),
-[protected browser checks](evidence/ai-team-20261115/browser-acceptance.json) and
+[protected browser checks](evidence/ai-team-20261115/browser-acceptance.json),
+[final data-preservation audit](evidence/ai-team-20261115/deployment-preservation.json) and
 [task manual](docs/AI_TEAM_OPERATIONS.md) for the evidence boundary.
 
 ![Actual protected Team queue after claim, eligible handoff and same-task escalation](evidence/ai-team-20261115/screenshots/team-queue-final-desktop.jpg)

@@ -19,7 +19,9 @@ Admin health/cost/freshness unknowns remain explicit rather than estimated.
 Backend `1960a827` plus frontend `b860725` is deployed on schema0006; the final
 overlay preserves all backend inputs. Six bounded synthetic application/model
 cases and final protected native smoke passed. Final read-only preservation
-audit v2 passed at 07:42:40.269671 UTC; source publication remains pending.
+audit v2 passed at 07:42:40.269671 UTC. The accepted release is published as
+[`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+A descendant documentation closeout may follow without redeployment.
 [Preservation scope](../evidence/ai-team-20261115/deployment-preservation.json).
 None of these results establishes clinical effectiveness. See the [contract](AI_TEAM_OPERATIONS_CONTRACT.md),
 [release](RELEASE_AI_TEAM_OPERATIONS_20261115.md) and

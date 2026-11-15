@@ -13,7 +13,8 @@ all 38 domains or ten journeys, establish clinical effectiveness or upgrade
 external integration status. The six cases produced 12 exact typed fields and
 zero literal quote facts; native quote-offset highlighting was NOT_EXERCISED.
 Final read-only preservation audit v2 passed at 07:42:40.269671 UTC.
-Source publication remains pending.
+The accepted release is published on main as [`c856dbc585ec413ae212a8ef29bf27e117a18c8d`](https://github.com/siriponsri/his-poc/commit/c856dbc585ec413ae212a8ef29bf27e117a18c8d).
+A descendant documentation closeout may follow without redeploying the runtime.
 [Exact preservation scope](evidence/ai-team-20261115/deployment-preservation.json).
 
 [Application acceptance](evidence/ai-team-20261115/application-acceptance.json),
