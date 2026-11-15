@@ -322,7 +322,7 @@ def test_provision_is_idempotent_without_rehash_reset_or_fake_actor(synthetic_ad
     ('wrong_password','EXISTING_PASSWORD_CONFLICT'),('inactive_user','EXISTING_IDENTITY_CONFLICT'),
     ('foreign_identity','EXISTING_IDENTITY_CONFLICT'),('extra_membership','EXISTING_MEMBERSHIP_CONFLICT'),
     ('inactive_membership','EXISTING_MEMBERSHIP_CONFLICT'),('platform_identity','EXISTING_IDENTITY_CONFLICT'),
-    ('role_drift','SYSTEM_ADMIN_PERMISSION_DRIFT'),('wrong_migration','CURRENT_0005_REQUIRED'),
+    ('role_drift','SYSTEM_ADMIN_PERMISSION_DRIFT'),('wrong_migration','SUPPORTED_SCHEMA_REQUIRED'),
 ])
 def test_provision_conflicts_never_repair_existing_identity(synthetic_admin,monkeypatch,change,expected):
     with SessionLocal() as db:

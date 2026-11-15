@@ -39,13 +39,17 @@ def test_actual_pg_collector_provider_schema_worker_and_complete_prompt_budget(r
     assert len(envelope.encode('utf-8'))<=2000
     assert full_input_bytes+TEMPLATE_RESERVE+512<=4096
     assert len((SYSTEM_PROMPT+' '+PROFILE_PROMPTS[profile]+' Write English.').encode('utf-8'))<=1328
-    facts=[{'source_ref':'s1','field':'display_name'}]
+    first=next((source for source in view['sources'] if source.get('text')),None)
+    if first:facts=[{'source_ref':first['ref'],'quote':first['text'][:80]}]
+    else:
+        first=next((source for source in view['sources'] if source['kind']=='lab'),view['sources'][0]);field='result' if first['kind']=='lab' else next(key for key,value in first['fields'].items() if isinstance(value,str))
+        facts=[{'source_ref':first['ref'],'field':field}]
     drafts=[]
     for candidate in view['effect_candidates']:
         if candidate.get('draft_id'):
             note=next((source for source in view['sources'] if source.get('text')),None)
             source=note or view['sources'][0]
-            drafts.append({'id':candidate['draft_id'],'title':'Prepared draft','text':source.get('text') or source['fields']['display_name'],'source_refs':[source['ref']]})
+            drafts.append({'id':candidate['draft_id'],'title':'Prepared draft','text':source.get('text') or next(str(value) for value in source['fields'].values() if isinstance(value,str)),'source_refs':[source['ref']]})
     artifact={'facts':facts,'work_gaps':[],'drafts':drafts,'suggested_effects':view['effect_candidates'],'requires_review':True}
     verified=validate_assistant_artifact(profile,artifact,view)
     handler,calls=responder(artifact)

@@ -20,7 +20,7 @@ from .auth import password_hasher,permissions_for
 from .common import uid
 from .models import Facility,Membership,Organization,Role,RolePermission,SecurityEvent,User
 
-MIGRATION='0005_assistant_workspaces'
+SUPPORTED_MIGRATIONS=('0005_assistant_workspaces','0006_team_coordination')
 DISPLAY_NAME='POC Administrator'
 
 
@@ -38,7 +38,7 @@ def provision_poc_admin(db,*,username,organization_id,facility_id,password):
     check(isinstance(password,str) and 8<=len(password)<=200 and password==password.strip() and not any(c in password for c in '\r\n\0'),'POC_PRIVATE_PASSWORD_POLICY')
     lock=int.from_bytes(hashlib.sha256(('his-authz:'+organization_id).encode()).digest()[:8],'big',signed=True)
     db.execute(text('SELECT pg_advisory_xact_lock(:key)'),{'key':lock})
-    check(db.scalar(text('SELECT version_num FROM alembic_version'))==MIGRATION,'CURRENT_0005_REQUIRED')
+    check(db.scalar(text('SELECT version_num FROM alembic_version')) in SUPPORTED_MIGRATIONS,'SUPPORTED_SCHEMA_REQUIRED')
     check(db.get(Organization,organization_id) is not None,'ORGANIZATION_NOT_FOUND')
     facility=db.get(Facility,facility_id)
     check(facility is not None and facility.organization_id==organization_id,'FACILITY_SCOPE_MISMATCH')

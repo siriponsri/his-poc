@@ -70,7 +70,12 @@ def artifact(view):
     for candidate in view['effect_candidates']:
         if candidate.get('draft_id'):
             drafts.append({'id':candidate['draft_id'],'title':'Prepared draft','text':'Synthetic history for professional review.','source_refs':candidate['source_refs']})
-    return {'facts':[{'source_ref':'s1','field':'display_name','display':view['sources'][0]['fields']['display_name']}],'work_gaps':[],'drafts':drafts,'suggested_effects':view['effect_candidates'],'requires_review':True}
+    source=next((s for s in view['sources'] if s.get('text')),None)
+    if source:fact={'source_ref':source['ref'],'quote':source['text'][:80],'display':source['text'][:80]}
+    else:
+        source=next((s for s in view['sources'] if s['kind']=='lab'),view['sources'][0]);field='result' if source['kind']=='lab' else next(k for k,v in source['fields'].items() if isinstance(v,str))
+        fact={'source_ref':source['ref'],'field':field,'display':source['fields'][field]}
+    return {'facts':[fact],'work_gaps':[],'drafts':drafts,'suggested_effects':view['effect_candidates'],'requires_review':True}
 
 def provider(profile,locale,view):
     return {'outcome':'success','reason':None,'artifact':artifact(view),'provenance':{'test_double':True},'usage':{'input_tokens':12,'output_tokens':8},'measured_cost':None,'elapsed_ms':1}
@@ -400,7 +405,7 @@ def test_generated_task_human_state_change_becomes_eligible():
         task=db.get(M.Task,tid);task.status='in_progress';task.version+=1;db.flush()
         assert collect_packet(db,a,'visit_preparation',pid,eid)['source_digest']!=before
 
-def test_complete_note_omission_is_explicit_and_source_change_still_changes_digest():
+def test_long_note_excerpt_is_explicit_and_full_source_change_still_changes_digest():
     with SessionLocal.begin() as db:
         pid,eid,did=context(db);a=actor(db)
         packet=collect_packet(db,a,'visit_preparation',pid,eid)
@@ -410,9 +415,11 @@ def test_complete_note_omission_is_explicit_and_source_change_still_changes_dige
         db.add(revision);db.flush();doc.current_version_id=revision.id
         large=collect_packet(db,a,'visit_preparation',pid,eid)
         assert large['source_digest']!=packet['source_digest']
-        assert large['view']['coverage']['omitted_sources']>=1
-        assert not any(source.get('text') for source in large['view']['sources'])
-        assert next(s for s in large['manifest']['sources'] if s['kind']=='document')['text']==body
+        selected=next(s for s in large['manifest']['sources'] if s['kind']=='document')
+        assert selected['selection']['kind']=='excerpt' and selected['text']==body
+        inference=next(s for s in large['view']['sources'] if s['ref']==selected['ref'])
+        assert inference['text']==body[selected['selection']['start']:selected['selection']['end']]
+        assert len(inference['text'])<len(body)
 
 def test_actual_legacy_route_refuses_call_while_assistant_running():
     from backend.app import ai
