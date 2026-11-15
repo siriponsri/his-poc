@@ -105,13 +105,17 @@ test('image reading dialog traps focus, closes with Escape and restores reading 
  const opener=document.querySelector<HTMLButtonElement>('.guide-image-open')!;opener.focus()
  await act(async()=>opener.click())
  const dialog=document.querySelector<HTMLElement>('[role=dialog]')!;assert.ok(dialog)
- const close=findButton('ปิดภาพประกอบคู่มือ'),original=findButton('ขนาดต้นฉบับ')
+ const close=findButton('ปิดภาพประกอบคู่มือ'),original=findButton('ขนาดต้นฉบับ'),surface=document.querySelector<HTMLElement>('.guide-zoom-surface')!
  assert.equal(document.activeElement,close);assert.equal(document.body.style.overflow,'hidden')
  await act(async()=>close.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Tab',bubbles:true,cancelable:true})))
+ assert.equal(document.activeElement,surface)
+ await act(async()=>surface.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Tab',bubbles:true,cancelable:true})))
  assert.equal(document.activeElement,original)
  await act(async()=>original.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Tab',shiftKey:true,bubbles:true,cancelable:true})))
+ assert.equal(document.activeElement,surface)
+ await act(async()=>surface.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Tab',shiftKey:true,bubbles:true,cancelable:true})))
  assert.equal(document.activeElement,close)
- await act(async()=>close.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true})))
+ await act(async()=>surface.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Escape',bubbles:true,cancelable:true})))
  assert.equal(document.querySelector('[role=dialog]'),null);assert.equal(document.activeElement,opener);assert.equal(document.body.style.overflow,'')
 })
 
@@ -120,6 +124,20 @@ test('original-size screenshot view is scoped to its own scroll surface',async()
  assert.ok(document.querySelector('.guide-zoom-surface.original-size'))
  assert.equal((document.querySelector('.guide-zoom-surface img') as HTMLImageElement).style.width,'1280px')
  await click('พอดีหน้าจอ');assert.equal(document.querySelector('.guide-zoom-surface.original-size'),null)
+})
+
+test('original-size image can be reached and read through the keyboard scroll region',async()=>{
+ await mount();await act(async()=>document.querySelector<HTMLButtonElement>('.guide-image-open')!.click());await click('ขนาดต้นฉบับ')
+ const close=findButton('ปิดภาพประกอบคู่มือ'),surface=document.querySelector<HTMLElement>('.guide-zoom-surface')!
+ close.focus();await act(async()=>close.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Tab',bubbles:true,cancelable:true})))
+ assert.equal(document.activeElement,surface);assert.equal(surface.getAttribute('role'),'region')
+ assert.match(surface.getAttribute('aria-label')||'',/ปุ่มลูกศร.*เลื่อน/)
+ const arrow=new dom.window.KeyboardEvent('keydown',{key:'ArrowRight',bubbles:true,cancelable:true})
+ await act(async()=>surface.dispatchEvent(arrow))
+ assert.equal(arrow.defaultPrevented,false,'Native arrow scrolling remains available inside the focused image region')
+ assert.equal(document.activeElement,surface)
+ await act(async()=>surface.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Tab',shiftKey:true,bubbles:true,cancelable:true})))
+ assert.equal(document.activeElement,close)
 })
 
 test('walkthrough starts paused and manual next/previous retain a full text equivalent',async()=>{

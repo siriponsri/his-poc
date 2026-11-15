@@ -50,16 +50,16 @@ function GuideImageZoom({media,onClose}:{media:GuideMedia;onClose:()=>void}){
   function keyDown(event:KeyboardEvent){
     if(event.key==='Escape'){event.preventDefault();event.stopPropagation();onClose();return}
     if(event.key!=='Tab')return
-    const controls=dialog.current?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')
+    const controls=dialog.current?.querySelectorAll<HTMLElement>('button:not(:disabled),[tabindex="0"]')
     if(!controls?.length)return
-    const first=controls[0],last=controls[controls.length-1]
-    if(event.shiftKey&&document.activeElement===first){event.preventDefault();last.focus()}
-    else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first.focus()}
+    const current=[...controls].indexOf(document.activeElement as HTMLElement)
+    const next=current<0?(event.shiftKey?controls.length-1:0):(current+(event.shiftKey?-1:1)+controls.length)%controls.length
+    event.preventDefault();controls[next].focus()
   }
   return <div className="guide-zoom-backdrop" onClick={event=>{if(event.target===event.currentTarget)onClose()}}>
     <div className="guide-zoom" ref={dialog} role="dialog" aria-modal="true" aria-labelledby={id} onKeyDown={keyDown}>
       <header><h2 id={id}>ภาพประกอบคู่มือ</h2><div><button type="button" aria-pressed={original} onClick={()=>setOriginal(value=>!value)}>{original?'พอดีหน้าจอ':'ขนาดต้นฉบับ'}</button><button type="button" ref={close} onClick={onClose} aria-label="ปิดภาพประกอบคู่มือ">ปิด <span aria-hidden="true">×</span></button></div></header>
-      <div className={'guide-zoom-surface'+(original?' original-size':'')}><img src={media.src} alt={media.alt} width={media.width} height={media.height} style={original?{width:media.width}:undefined}/></div>
+      <div className={'guide-zoom-surface'+(original?' original-size':'')} tabIndex={0} role="region" aria-label="ภาพประกอบขยาย ใช้ปุ่มลูกศรเพื่อเลื่อนดูรายละเอียด"><img src={media.src} alt={media.alt} width={media.width} height={media.height} style={original?{width:media.width}:undefined}/></div>
       <p>{media.caption}</p>
     </div>
   </div>
